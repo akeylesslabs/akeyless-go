@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowedGateways** | Pointer to **[]string** |  | [optional] 
+**AllowedGateways** | Pointer to [**[]GatewayNameInfo**](GatewayNameInfo.md) |  | [optional] 
 **NextPage** | Pointer to **string** |  | [optional] 
 **Sessions** | Pointer to [**[]SraSessionEntryOut**](SraSessionEntryOut.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAllowedGateways
 
-`func (o *ListSraSessionsOutput) GetAllowedGateways() []string`
+`func (o *ListSraSessionsOutput) GetAllowedGateways() []GatewayNameInfo`
 
 GetAllowedGateways returns the AllowedGateways field if non-nil, zero value otherwise.
 
 ### GetAllowedGatewaysOk
 
-`func (o *ListSraSessionsOutput) GetAllowedGatewaysOk() (*[]string, bool)`
+`func (o *ListSraSessionsOutput) GetAllowedGatewaysOk() (*[]GatewayNameInfo, bool)`
 
 GetAllowedGatewaysOk returns a tuple with the AllowedGateways field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllowedGateways
 
-`func (o *ListSraSessionsOutput) SetAllowedGateways(v []string)`
+`func (o *ListSraSessionsOutput) SetAllowedGateways(v []GatewayNameInfo)`
 
 SetAllowedGateways sets AllowedGateways field to given value.
 

@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CountByHostInfo** | Pointer to **map[string]int64** |  | [optional] 
-**CountInfo** | Pointer to [**map[string]map[string]int64**](map.md) |  | [optional] 
+**CountInfo** | Pointer to **map[string]map[string]int64** |  | [optional] 
 **HostsInUse** | Pointer to **[]string** |  | [optional] 
 **IsInUse** | Pointer to **bool** |  | [optional] 
-**LastUsedItem** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**LastUsedItem** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

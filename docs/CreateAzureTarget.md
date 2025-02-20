@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClientId** | Pointer to **string** |  | [optional] 
-**ClientSecret** | Pointer to **string** |  | [optional] 
+**ClientId** | Pointer to **string** | Azure client/application id | [optional] 
+**ClientSecret** | Pointer to **string** | Azure client secret | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -15,10 +15,10 @@ Name | Type | Description | Notes
 **ResourceGroupName** | Pointer to **string** | The Resource Group name in your Azure subscription | [optional] 
 **ResourceName** | Pointer to **string** | The name of the relevant Resource | [optional] 
 **SubscriptionId** | Pointer to **string** | Azure Subscription Id | [optional] 
-**TenantId** | Pointer to **string** |  | [optional] 
+**TenantId** | Pointer to **string** | Azure tenant id | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
-**UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
+**UseGwCloudIdentity** | Pointer to **bool** | Use the GW&#39;s Cloud IAM [Deprecated: Use connection-type&#x3D;cloud-identity] | [optional] 
 
 ## Methods
 

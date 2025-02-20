@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **LdapCaCert** | Pointer to **string** | LDAP CA Certificate (base64 encoded) | [optional] 
 **LdapEnable** | Pointer to **string** | Enable Ldap [true/false] | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL, e.g. ldap://planetexpress.com:389 | [optional] 
-**LdapAnonymousSearch** | Pointer to **bool** | Ldap Anonymous Search | [optional] 
 **SigningKeyData** | Pointer to **string** | The private key (base64 encoded), associated with the public key defined in the Ldap auth | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -289,31 +288,6 @@ SetLdapUrl sets LdapUrl field to given value.
 `func (o *GatewayUpdateLdapAuthConfig) HasLdapUrl() bool`
 
 HasLdapUrl returns a boolean if a field has been set.
-
-### GetLdapAnonymousSearch
-
-`func (o *GatewayUpdateLdapAuthConfig) GetLdapAnonymousSearch() bool`
-
-GetLdapAnonymousSearch returns the LdapAnonymousSearch field if non-nil, zero value otherwise.
-
-### GetLdapAnonymousSearchOk
-
-`func (o *GatewayUpdateLdapAuthConfig) GetLdapAnonymousSearchOk() (*bool, bool)`
-
-GetLdapAnonymousSearchOk returns a tuple with the LdapAnonymousSearch field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapAnonymousSearch
-
-`func (o *GatewayUpdateLdapAuthConfig) SetLdapAnonymousSearch(v bool)`
-
-SetLdapAnonymousSearch sets LdapAnonymousSearch field to given value.
-
-### HasLdapAnonymousSearch
-
-`func (o *GatewayUpdateLdapAuthConfig) HasLdapAnonymousSearch() bool`
-
-HasLdapAnonymousSearch returns a boolean if a field has been set.
 
 ### GetSigningKeyData
 

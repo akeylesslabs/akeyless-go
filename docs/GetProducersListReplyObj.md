@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Producers** | Pointer to [**[]Producer**](Producer.md) |  | [optional] 
-**ProducersErrors** | Pointer to **map[string]interface{}** |  | [optional] 
+**ProducersErrors** | Pointer to **interface{}** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasProducers returns a boolean if a field has been set.
 
 ### GetProducersErrors
 
-`func (o *GetProducersListReplyObj) GetProducersErrors() map[string]interface{}`
+`func (o *GetProducersListReplyObj) GetProducersErrors() interface{}`
 
 GetProducersErrors returns the ProducersErrors field if non-nil, zero value otherwise.
 
 ### GetProducersErrorsOk
 
-`func (o *GetProducersListReplyObj) GetProducersErrorsOk() (*map[string]interface{}, bool)`
+`func (o *GetProducersListReplyObj) GetProducersErrorsOk() (*interface{}, bool)`
 
 GetProducersErrorsOk returns a tuple with the ProducersErrors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducersErrors
 
-`func (o *GetProducersListReplyObj) SetProducersErrors(v map[string]interface{})`
+`func (o *GetProducersListReplyObj) SetProducersErrors(v interface{})`
 
 SetProducersErrors sets ProducersErrors field to given value.
 
@@ -76,6 +76,16 @@ SetProducersErrors sets ProducersErrors field to given value.
 
 HasProducersErrors returns a boolean if a field has been set.
 
+### SetProducersErrorsNil
+
+`func (o *GetProducersListReplyObj) SetProducersErrorsNil(b bool)`
+
+ SetProducersErrorsNil sets the value for ProducersErrors to be an explicit nil
+
+### UnsetProducersErrors
+`func (o *GetProducersListReplyObj) UnsetProducersErrors()`
+
+UnsetProducersErrors ensures that no value is present for ProducersErrors, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

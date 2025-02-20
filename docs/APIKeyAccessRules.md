@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** | The public key value of the API-key. | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

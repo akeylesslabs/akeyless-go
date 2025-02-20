@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** | Access ID | [optional] 
 **AccessKey** | Pointer to **string** | Access key (relevant only for access-type&#x3D;access_key) | [optional] 
-**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert) | [optional] [default to "access_key"]
+**AccessType** | Pointer to **string** | Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert/oci/kerberos) | [optional] [default to "access_key"]
 **AccountId** | Pointer to **string** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] 
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
@@ -21,16 +21,18 @@ Name | Type | Description | Notes
 **Jwt** | Pointer to **string** | The Json Web Token (relevant only for access-type&#x3D;jwt/oidc) | [optional] 
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
 **K8sServiceAccountToken** | Pointer to **string** | The K8S service account token. (relevant only for access-type&#x3D;k8s) | [optional] 
+**KerberosToken** | Pointer to **string** | KerberosToken represents a Kerberos token generated for the gateway SPN (Service Principal Name). | [optional] 
 **KerberosUsername** | Pointer to **string** | TThe username for the entry within the keytab to authenticate via Kerberos | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert) | [optional] 
 **KeytabData** | Pointer to **string** | Base64-encoded content of a valid keytab file, containing the service account&#39;s entry. | [optional] 
 **Krb5ConfData** | Pointer to **string** | Base64-encoded content of a valid krb5.conf file, specifying the settings and parameters required for Kerberos authentication. | [optional] 
 **LdapPassword** | Pointer to **string** | LDAP password (relevant only for access-type&#x3D;ldap) | [optional] 
-**LdapUsername** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
 **OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
 **OciGroupOcid** | Pointer to **[]string** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] 
+**Otp** | Pointer to **string** |  | [optional] 
 **UidToken** | Pointer to **string** | The universal_identity token (relevant only for access-type&#x3D;universal_identity) | [optional] 
 **UseRemoteBrowser** | Pointer to **bool** | Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc) | [optional] 
+**Username** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
 
 ## Methods
 
@@ -476,6 +478,31 @@ SetK8sServiceAccountToken sets K8sServiceAccountToken field to given value.
 
 HasK8sServiceAccountToken returns a boolean if a field has been set.
 
+### GetKerberosToken
+
+`func (o *Auth) GetKerberosToken() string`
+
+GetKerberosToken returns the KerberosToken field if non-nil, zero value otherwise.
+
+### GetKerberosTokenOk
+
+`func (o *Auth) GetKerberosTokenOk() (*string, bool)`
+
+GetKerberosTokenOk returns a tuple with the KerberosToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberosToken
+
+`func (o *Auth) SetKerberosToken(v string)`
+
+SetKerberosToken sets KerberosToken field to given value.
+
+### HasKerberosToken
+
+`func (o *Auth) HasKerberosToken() bool`
+
+HasKerberosToken returns a boolean if a field has been set.
+
 ### GetKerberosUsername
 
 `func (o *Auth) GetKerberosUsername() string`
@@ -601,31 +628,6 @@ SetLdapPassword sets LdapPassword field to given value.
 
 HasLdapPassword returns a boolean if a field has been set.
 
-### GetLdapUsername
-
-`func (o *Auth) GetLdapUsername() string`
-
-GetLdapUsername returns the LdapUsername field if non-nil, zero value otherwise.
-
-### GetLdapUsernameOk
-
-`func (o *Auth) GetLdapUsernameOk() (*string, bool)`
-
-GetLdapUsernameOk returns a tuple with the LdapUsername field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLdapUsername
-
-`func (o *Auth) SetLdapUsername(v string)`
-
-SetLdapUsername sets LdapUsername field to given value.
-
-### HasLdapUsername
-
-`func (o *Auth) HasLdapUsername() bool`
-
-HasLdapUsername returns a boolean if a field has been set.
-
 ### GetOciAuthType
 
 `func (o *Auth) GetOciAuthType() string`
@@ -676,6 +678,31 @@ SetOciGroupOcid sets OciGroupOcid field to given value.
 
 HasOciGroupOcid returns a boolean if a field has been set.
 
+### GetOtp
+
+`func (o *Auth) GetOtp() string`
+
+GetOtp returns the Otp field if non-nil, zero value otherwise.
+
+### GetOtpOk
+
+`func (o *Auth) GetOtpOk() (*string, bool)`
+
+GetOtpOk returns a tuple with the Otp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOtp
+
+`func (o *Auth) SetOtp(v string)`
+
+SetOtp sets Otp field to given value.
+
+### HasOtp
+
+`func (o *Auth) HasOtp() bool`
+
+HasOtp returns a boolean if a field has been set.
+
 ### GetUidToken
 
 `func (o *Auth) GetUidToken() string`
@@ -725,6 +752,31 @@ SetUseRemoteBrowser sets UseRemoteBrowser field to given value.
 `func (o *Auth) HasUseRemoteBrowser() bool`
 
 HasUseRemoteBrowser returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *Auth) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *Auth) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *Auth) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *Auth) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

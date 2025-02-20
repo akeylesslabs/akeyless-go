@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClassicKeyAttributes** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**ClassicKeyAttributes** | Pointer to **map[string][]string** |  | [optional] 
 **ClassicKeyId** | Pointer to **string** |  | [optional] 
 **CredentialId** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 

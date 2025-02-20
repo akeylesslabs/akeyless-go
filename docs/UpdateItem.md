@@ -24,12 +24,14 @@ Name | Type | Description | Notes
 **SecureAccessAddHost** | Pointer to **[]string** | List of the new hosts that will be attached to SRA servers host | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **string** | Allow providing external user for a domain users [true/false] | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
+**SecureAccessApi** | Pointer to **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.sra-server:9900 (relevant only for ssh cert issuer) | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
 **SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli (relevant only for aws) | [optional] 
 **SecureAccessAwsRegion** | Pointer to **string** | The AWS region (relevant only for aws) | [optional] 
-**SecureAccessBastionApi** | Pointer to **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 (relevant only for ssh cert issuer) | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
-**SecureAccessBastionSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.bastion:22 (relevant only for ssh cert issuer) | [optional] 
+**SecureAccessBastionApi** | Pointer to **string** | Deprecated. use secure-access-api | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessBastionSsh** | Pointer to **string** | Deprecated. use secure-access-ssh | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessClusterEndpoint** | Pointer to **string** | The K8s cluster endpoint URL (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
 **SecureAccessDashboardUrl** | Pointer to **string** | The K8s dashboard url (relevant only for k8s) | [optional] 
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
@@ -40,12 +42,14 @@ Name | Type | Description | Notes
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
 **SecureAccessRmHost** | Pointer to **[]string** | List of the existent hosts that will be removed from SRA servers host | [optional] 
+**SecureAccessSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.sra-server:22 (relevant only for ssh cert issuer) | [optional] 
 **SecureAccessSshCreds** | Pointer to **string** | Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret) | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list (relevant only for ssh cert issuer) | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
-**SecureAccessUseInternalBastion** | Pointer to **bool** | Use internal SSH Bastion | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessUseInternalBastion** | Pointer to **bool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
+**SecureAccessUseInternalSshAccess** | Pointer to **bool** | Use internal SSH Access | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -563,6 +567,31 @@ SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to g
 
 HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
 
+### GetSecureAccessApi
+
+`func (o *UpdateItem) GetSecureAccessApi() string`
+
+GetSecureAccessApi returns the SecureAccessApi field if non-nil, zero value otherwise.
+
+### GetSecureAccessApiOk
+
+`func (o *UpdateItem) GetSecureAccessApiOk() (*string, bool)`
+
+GetSecureAccessApiOk returns a tuple with the SecureAccessApi field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessApi
+
+`func (o *UpdateItem) SetSecureAccessApi(v string)`
+
+SetSecureAccessApi sets SecureAccessApi field to given value.
+
+### HasSecureAccessApi
+
+`func (o *UpdateItem) HasSecureAccessApi() bool`
+
+HasSecureAccessApi returns a boolean if a field has been set.
+
 ### GetSecureAccessAwsAccountId
 
 `func (o *UpdateItem) GetSecureAccessAwsAccountId() string`
@@ -712,6 +741,31 @@ SetSecureAccessBastionSsh sets SecureAccessBastionSsh field to given value.
 `func (o *UpdateItem) HasSecureAccessBastionSsh() bool`
 
 HasSecureAccessBastionSsh returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *UpdateItem) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *UpdateItem) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *UpdateItem) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *UpdateItem) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessClusterEndpoint
 
@@ -963,6 +1017,31 @@ SetSecureAccessRmHost sets SecureAccessRmHost field to given value.
 
 HasSecureAccessRmHost returns a boolean if a field has been set.
 
+### GetSecureAccessSsh
+
+`func (o *UpdateItem) GetSecureAccessSsh() string`
+
+GetSecureAccessSsh returns the SecureAccessSsh field if non-nil, zero value otherwise.
+
+### GetSecureAccessSshOk
+
+`func (o *UpdateItem) GetSecureAccessSshOk() (*string, bool)`
+
+GetSecureAccessSshOk returns a tuple with the SecureAccessSsh field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessSsh
+
+`func (o *UpdateItem) SetSecureAccessSsh(v string)`
+
+SetSecureAccessSsh sets SecureAccessSsh field to given value.
+
+### HasSecureAccessSsh
+
+`func (o *UpdateItem) HasSecureAccessSsh() bool`
+
+HasSecureAccessSsh returns a boolean if a field has been set.
+
 ### GetSecureAccessSshCreds
 
 `func (o *UpdateItem) GetSecureAccessSshCreds() string`
@@ -1062,6 +1141,31 @@ SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to g
 `func (o *UpdateItem) HasSecureAccessUseInternalBastion() bool`
 
 HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
+
+### GetSecureAccessUseInternalSshAccess
+
+`func (o *UpdateItem) GetSecureAccessUseInternalSshAccess() bool`
+
+GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field if non-nil, zero value otherwise.
+
+### GetSecureAccessUseInternalSshAccessOk
+
+`func (o *UpdateItem) GetSecureAccessUseInternalSshAccessOk() (*bool, bool)`
+
+GetSecureAccessUseInternalSshAccessOk returns a tuple with the SecureAccessUseInternalSshAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUseInternalSshAccess
+
+`func (o *UpdateItem) SetSecureAccessUseInternalSshAccess(v bool)`
+
+SetSecureAccessUseInternalSshAccess sets SecureAccessUseInternalSshAccess field to given value.
+
+### HasSecureAccessUseInternalSshAccess
+
+`func (o *UpdateItem) HasSecureAccessUseInternalSshAccess() bool`
+
+HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 
 ### GetSecureAccessWebBrowsing
 

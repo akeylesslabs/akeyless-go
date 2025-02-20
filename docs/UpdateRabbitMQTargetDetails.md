@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **Name** | **string** | Target name | 
 **NewVersion** | Pointer to **bool** | Deprecated | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
-**RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
-**RabbitmqServerUri** | Pointer to **string** |  | [optional] 
-**RabbitmqServerUser** | Pointer to **string** |  | [optional] 
+**Pwd** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Uri** | Pointer to **string** |  | [optional] 
+**User** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -154,80 +154,30 @@ SetProtectionKey sets ProtectionKey field to given value.
 
 HasProtectionKey returns a boolean if a field has been set.
 
-### GetRabbitmqServerPassword
+### GetPwd
 
-`func (o *UpdateRabbitMQTargetDetails) GetRabbitmqServerPassword() string`
+`func (o *UpdateRabbitMQTargetDetails) GetPwd() string`
 
-GetRabbitmqServerPassword returns the RabbitmqServerPassword field if non-nil, zero value otherwise.
+GetPwd returns the Pwd field if non-nil, zero value otherwise.
 
-### GetRabbitmqServerPasswordOk
+### GetPwdOk
 
-`func (o *UpdateRabbitMQTargetDetails) GetRabbitmqServerPasswordOk() (*string, bool)`
+`func (o *UpdateRabbitMQTargetDetails) GetPwdOk() (*string, bool)`
 
-GetRabbitmqServerPasswordOk returns a tuple with the RabbitmqServerPassword field if it's non-nil, zero value otherwise
+GetPwdOk returns a tuple with the Pwd field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRabbitmqServerPassword
+### SetPwd
 
-`func (o *UpdateRabbitMQTargetDetails) SetRabbitmqServerPassword(v string)`
+`func (o *UpdateRabbitMQTargetDetails) SetPwd(v string)`
 
-SetRabbitmqServerPassword sets RabbitmqServerPassword field to given value.
+SetPwd sets Pwd field to given value.
 
-### HasRabbitmqServerPassword
+### HasPwd
 
-`func (o *UpdateRabbitMQTargetDetails) HasRabbitmqServerPassword() bool`
+`func (o *UpdateRabbitMQTargetDetails) HasPwd() bool`
 
-HasRabbitmqServerPassword returns a boolean if a field has been set.
-
-### GetRabbitmqServerUri
-
-`func (o *UpdateRabbitMQTargetDetails) GetRabbitmqServerUri() string`
-
-GetRabbitmqServerUri returns the RabbitmqServerUri field if non-nil, zero value otherwise.
-
-### GetRabbitmqServerUriOk
-
-`func (o *UpdateRabbitMQTargetDetails) GetRabbitmqServerUriOk() (*string, bool)`
-
-GetRabbitmqServerUriOk returns a tuple with the RabbitmqServerUri field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRabbitmqServerUri
-
-`func (o *UpdateRabbitMQTargetDetails) SetRabbitmqServerUri(v string)`
-
-SetRabbitmqServerUri sets RabbitmqServerUri field to given value.
-
-### HasRabbitmqServerUri
-
-`func (o *UpdateRabbitMQTargetDetails) HasRabbitmqServerUri() bool`
-
-HasRabbitmqServerUri returns a boolean if a field has been set.
-
-### GetRabbitmqServerUser
-
-`func (o *UpdateRabbitMQTargetDetails) GetRabbitmqServerUser() string`
-
-GetRabbitmqServerUser returns the RabbitmqServerUser field if non-nil, zero value otherwise.
-
-### GetRabbitmqServerUserOk
-
-`func (o *UpdateRabbitMQTargetDetails) GetRabbitmqServerUserOk() (*string, bool)`
-
-GetRabbitmqServerUserOk returns a tuple with the RabbitmqServerUser field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRabbitmqServerUser
-
-`func (o *UpdateRabbitMQTargetDetails) SetRabbitmqServerUser(v string)`
-
-SetRabbitmqServerUser sets RabbitmqServerUser field to given value.
-
-### HasRabbitmqServerUser
-
-`func (o *UpdateRabbitMQTargetDetails) HasRabbitmqServerUser() bool`
-
-HasRabbitmqServerUser returns a boolean if a field has been set.
+HasPwd returns a boolean if a field has been set.
 
 ### GetToken
 
@@ -278,6 +228,56 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateRabbitMQTargetDetails) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUri
+
+`func (o *UpdateRabbitMQTargetDetails) GetUri() string`
+
+GetUri returns the Uri field if non-nil, zero value otherwise.
+
+### GetUriOk
+
+`func (o *UpdateRabbitMQTargetDetails) GetUriOk() (*string, bool)`
+
+GetUriOk returns a tuple with the Uri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUri
+
+`func (o *UpdateRabbitMQTargetDetails) SetUri(v string)`
+
+SetUri sets Uri field to given value.
+
+### HasUri
+
+`func (o *UpdateRabbitMQTargetDetails) HasUri() bool`
+
+HasUri returns a boolean if a field has been set.
+
+### GetUser
+
+`func (o *UpdateRabbitMQTargetDetails) GetUser() string`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *UpdateRabbitMQTargetDetails) GetUserOk() (*string, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *UpdateRabbitMQTargetDetails) SetUser(v string)`
+
+SetUser sets User field to given value.
+
+### HasUser
+
+`func (o *UpdateRabbitMQTargetDetails) HasUser() bool`
+
+HasUser returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

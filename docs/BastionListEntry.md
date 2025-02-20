@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **AccessId** | Pointer to **string** |  | [optional] 
 **AllowedAccessIds** | Pointer to **[]string** |  | [optional] 
 **AllowedUrls** | Pointer to **[]string** |  | [optional] 
-**AllowedUrlsPerInstance** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**AllowedUrlsPerInstance** | Pointer to **map[string][]string** |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **HasGatewayIdentity** | Pointer to **bool** |  | [optional] 
-**LastReport** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**LastReport** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

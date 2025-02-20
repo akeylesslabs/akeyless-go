@@ -10,28 +10,28 @@ Name | Type | Description | Notes
 **Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
 **Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
 **ServiceAccountKeyDecoded** | Pointer to **string** |  | [optional] 
-**AdDiscoverServices** | Pointer to **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
-**AdDiscoveryTypes** | Pointer to **[]string** | Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration) | [optional] 
-**AdOsFilter** | Pointer to **string** | Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration) | [optional] 
-**AdSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] [default to "22"]
-**AdTargetFormat** | Pointer to **string** | Relevant only for ad-discovery-types&#x3D;computers. For linked, all computers will be migrated into a linked target(s). if set with regular, the migration will create a target for each computer. | [optional] [default to "linked"]
-**AdTargetsType** | Pointer to **string** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional] [default to "windows"]
-**AdWinrmOverHttp** | Pointer to **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
-**AdWinrmPort** | Pointer to **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
-**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes | [optional] 
+**AdDiscoverServices** | Pointer to **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
+**AdDiscoveryTypes** | Pointer to **[]string** | Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration) | [optional] 
 **AdDomainName** | Pointer to **string** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] 
 **AdDomainUsersPathTemplate** | Pointer to **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../DomainUsers/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
 **AdLocalUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Active Directory migration) | [optional] 
 **AdLocalUsersPathTemplate** | Pointer to **string** | Path location template for migrating domain users as Rotated Secrets e.g.: .../LocalUsers/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdOsFilter** | Pointer to **string** | Filter by Operating System to run the migration, can be used with wildcards, e.g. SRV20* (Relevant only for Active Directory migration) | [optional] 
 **AdRotationHour** | Pointer to **int32** | The hour of the scheduled rotation in UTC (Relevant only for Active Directory migration) | [optional] 
 **AdRotationInterval** | Pointer to **int32** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Active Directory migration) | [optional] 
 **AdSraEnableRdp** | Pointer to **string** | Enable/Disable RDP Secure Remote Access for the migrated local users rotated secrets. Default is false: rotated secrets will not be created with SRA (Relevant only for Active Directory migration) | [optional] 
+**AdSshPort** | Pointer to **string** | Set the SSH Port for further connection to the domain servers. Default is port 22 (Relevant only for Active Directory migration) | [optional] [default to "22"]
+**AdTargetFormat** | Pointer to **string** | Relevant only for ad-discovery-types&#x3D;computers. For linked, all computers will be migrated into a linked target(s). if set with regular, the migration will create a target for each computer. | [optional] [default to "linked"]
 **AdTargetName** | Pointer to **string** | Active Directory LDAP Target Name. Server type should be Active Directory (Relevant only for Active Directory migration) | [optional] 
 **AdTargetsPathTemplate** | Pointer to **string** | Path location template for migrating domain servers as SSH/Windows Targets e.g.: .../Servers/{{COMPUTER_NAME}} (Relevant only for Active Directory migration) | [optional] 
+**AdTargetsType** | Pointer to **string** | Set the target type of the domain servers [ssh/windows](Relevant only for Active Directory migration) | [optional] [default to "windows"]
 **AdUserBaseDn** | Pointer to **string** | Distinguished Name of User objects to search in Active Directory, e.g.: CN&#x3D;Users,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
 **AdUserGroups** | Pointer to **string** | Comma-separated list of domain groups from which privileged domain users will be migrated. If empty, migrate all users based on the --ad-user-base-dn (Relevant only for Active Directory migration) | [optional] 
+**AdWinrmOverHttp** | Pointer to **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
+**AdWinrmPort** | Pointer to **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
+**AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes | [optional] 
 **AwsKey** | Pointer to **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | Pointer to **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
 **AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] [default to "us-east-2"]
@@ -238,206 +238,6 @@ SetServiceAccountKeyDecoded sets ServiceAccountKeyDecoded field to given value.
 
 HasServiceAccountKeyDecoded returns a boolean if a field has been set.
 
-### GetAdDiscoverServices
-
-`func (o *GatewayCreateMigration) GetAdDiscoverServices() string`
-
-GetAdDiscoverServices returns the AdDiscoverServices field if non-nil, zero value otherwise.
-
-### GetAdDiscoverServicesOk
-
-`func (o *GatewayCreateMigration) GetAdDiscoverServicesOk() (*string, bool)`
-
-GetAdDiscoverServicesOk returns a tuple with the AdDiscoverServices field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdDiscoverServices
-
-`func (o *GatewayCreateMigration) SetAdDiscoverServices(v string)`
-
-SetAdDiscoverServices sets AdDiscoverServices field to given value.
-
-### HasAdDiscoverServices
-
-`func (o *GatewayCreateMigration) HasAdDiscoverServices() bool`
-
-HasAdDiscoverServices returns a boolean if a field has been set.
-
-### GetAdDiscoveryTypes
-
-`func (o *GatewayCreateMigration) GetAdDiscoveryTypes() []string`
-
-GetAdDiscoveryTypes returns the AdDiscoveryTypes field if non-nil, zero value otherwise.
-
-### GetAdDiscoveryTypesOk
-
-`func (o *GatewayCreateMigration) GetAdDiscoveryTypesOk() (*[]string, bool)`
-
-GetAdDiscoveryTypesOk returns a tuple with the AdDiscoveryTypes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdDiscoveryTypes
-
-`func (o *GatewayCreateMigration) SetAdDiscoveryTypes(v []string)`
-
-SetAdDiscoveryTypes sets AdDiscoveryTypes field to given value.
-
-### HasAdDiscoveryTypes
-
-`func (o *GatewayCreateMigration) HasAdDiscoveryTypes() bool`
-
-HasAdDiscoveryTypes returns a boolean if a field has been set.
-
-### GetAdOsFilter
-
-`func (o *GatewayCreateMigration) GetAdOsFilter() string`
-
-GetAdOsFilter returns the AdOsFilter field if non-nil, zero value otherwise.
-
-### GetAdOsFilterOk
-
-`func (o *GatewayCreateMigration) GetAdOsFilterOk() (*string, bool)`
-
-GetAdOsFilterOk returns a tuple with the AdOsFilter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdOsFilter
-
-`func (o *GatewayCreateMigration) SetAdOsFilter(v string)`
-
-SetAdOsFilter sets AdOsFilter field to given value.
-
-### HasAdOsFilter
-
-`func (o *GatewayCreateMigration) HasAdOsFilter() bool`
-
-HasAdOsFilter returns a boolean if a field has been set.
-
-### GetAdSshPort
-
-`func (o *GatewayCreateMigration) GetAdSshPort() string`
-
-GetAdSshPort returns the AdSshPort field if non-nil, zero value otherwise.
-
-### GetAdSshPortOk
-
-`func (o *GatewayCreateMigration) GetAdSshPortOk() (*string, bool)`
-
-GetAdSshPortOk returns a tuple with the AdSshPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdSshPort
-
-`func (o *GatewayCreateMigration) SetAdSshPort(v string)`
-
-SetAdSshPort sets AdSshPort field to given value.
-
-### HasAdSshPort
-
-`func (o *GatewayCreateMigration) HasAdSshPort() bool`
-
-HasAdSshPort returns a boolean if a field has been set.
-
-### GetAdTargetFormat
-
-`func (o *GatewayCreateMigration) GetAdTargetFormat() string`
-
-GetAdTargetFormat returns the AdTargetFormat field if non-nil, zero value otherwise.
-
-### GetAdTargetFormatOk
-
-`func (o *GatewayCreateMigration) GetAdTargetFormatOk() (*string, bool)`
-
-GetAdTargetFormatOk returns a tuple with the AdTargetFormat field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdTargetFormat
-
-`func (o *GatewayCreateMigration) SetAdTargetFormat(v string)`
-
-SetAdTargetFormat sets AdTargetFormat field to given value.
-
-### HasAdTargetFormat
-
-`func (o *GatewayCreateMigration) HasAdTargetFormat() bool`
-
-HasAdTargetFormat returns a boolean if a field has been set.
-
-### GetAdTargetsType
-
-`func (o *GatewayCreateMigration) GetAdTargetsType() string`
-
-GetAdTargetsType returns the AdTargetsType field if non-nil, zero value otherwise.
-
-### GetAdTargetsTypeOk
-
-`func (o *GatewayCreateMigration) GetAdTargetsTypeOk() (*string, bool)`
-
-GetAdTargetsTypeOk returns a tuple with the AdTargetsType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdTargetsType
-
-`func (o *GatewayCreateMigration) SetAdTargetsType(v string)`
-
-SetAdTargetsType sets AdTargetsType field to given value.
-
-### HasAdTargetsType
-
-`func (o *GatewayCreateMigration) HasAdTargetsType() bool`
-
-HasAdTargetsType returns a boolean if a field has been set.
-
-### GetAdWinrmOverHttp
-
-`func (o *GatewayCreateMigration) GetAdWinrmOverHttp() string`
-
-GetAdWinrmOverHttp returns the AdWinrmOverHttp field if non-nil, zero value otherwise.
-
-### GetAdWinrmOverHttpOk
-
-`func (o *GatewayCreateMigration) GetAdWinrmOverHttpOk() (*string, bool)`
-
-GetAdWinrmOverHttpOk returns a tuple with the AdWinrmOverHttp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdWinrmOverHttp
-
-`func (o *GatewayCreateMigration) SetAdWinrmOverHttp(v string)`
-
-SetAdWinrmOverHttp sets AdWinrmOverHttp field to given value.
-
-### HasAdWinrmOverHttp
-
-`func (o *GatewayCreateMigration) HasAdWinrmOverHttp() bool`
-
-HasAdWinrmOverHttp returns a boolean if a field has been set.
-
-### GetAdWinrmPort
-
-`func (o *GatewayCreateMigration) GetAdWinrmPort() string`
-
-GetAdWinrmPort returns the AdWinrmPort field if non-nil, zero value otherwise.
-
-### GetAdWinrmPortOk
-
-`func (o *GatewayCreateMigration) GetAdWinrmPortOk() (*string, bool)`
-
-GetAdWinrmPortOk returns a tuple with the AdWinrmPort field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdWinrmPort
-
-`func (o *GatewayCreateMigration) SetAdWinrmPort(v string)`
-
-SetAdWinrmPort sets AdWinrmPort field to given value.
-
-### HasAdWinrmPort
-
-`func (o *GatewayCreateMigration) HasAdWinrmPort() bool`
-
-HasAdWinrmPort returns a boolean if a field has been set.
-
 ### GetAdAutoRotate
 
 `func (o *GatewayCreateMigration) GetAdAutoRotate() string`
@@ -488,30 +288,55 @@ SetAdComputerBaseDn sets AdComputerBaseDn field to given value.
 
 HasAdComputerBaseDn returns a boolean if a field has been set.
 
-### GetAdDiscoverLocalUsers
+### GetAdDiscoverServices
 
-`func (o *GatewayCreateMigration) GetAdDiscoverLocalUsers() string`
+`func (o *GatewayCreateMigration) GetAdDiscoverServices() string`
 
-GetAdDiscoverLocalUsers returns the AdDiscoverLocalUsers field if non-nil, zero value otherwise.
+GetAdDiscoverServices returns the AdDiscoverServices field if non-nil, zero value otherwise.
 
-### GetAdDiscoverLocalUsersOk
+### GetAdDiscoverServicesOk
 
-`func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersOk() (*string, bool)`
+`func (o *GatewayCreateMigration) GetAdDiscoverServicesOk() (*string, bool)`
 
-GetAdDiscoverLocalUsersOk returns a tuple with the AdDiscoverLocalUsers field if it's non-nil, zero value otherwise
+GetAdDiscoverServicesOk returns a tuple with the AdDiscoverServices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdDiscoverLocalUsers
+### SetAdDiscoverServices
 
-`func (o *GatewayCreateMigration) SetAdDiscoverLocalUsers(v string)`
+`func (o *GatewayCreateMigration) SetAdDiscoverServices(v string)`
 
-SetAdDiscoverLocalUsers sets AdDiscoverLocalUsers field to given value.
+SetAdDiscoverServices sets AdDiscoverServices field to given value.
 
-### HasAdDiscoverLocalUsers
+### HasAdDiscoverServices
 
-`func (o *GatewayCreateMigration) HasAdDiscoverLocalUsers() bool`
+`func (o *GatewayCreateMigration) HasAdDiscoverServices() bool`
 
-HasAdDiscoverLocalUsers returns a boolean if a field has been set.
+HasAdDiscoverServices returns a boolean if a field has been set.
+
+### GetAdDiscoveryTypes
+
+`func (o *GatewayCreateMigration) GetAdDiscoveryTypes() []string`
+
+GetAdDiscoveryTypes returns the AdDiscoveryTypes field if non-nil, zero value otherwise.
+
+### GetAdDiscoveryTypesOk
+
+`func (o *GatewayCreateMigration) GetAdDiscoveryTypesOk() (*[]string, bool)`
+
+GetAdDiscoveryTypesOk returns a tuple with the AdDiscoveryTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoveryTypes
+
+`func (o *GatewayCreateMigration) SetAdDiscoveryTypes(v []string)`
+
+SetAdDiscoveryTypes sets AdDiscoveryTypes field to given value.
+
+### HasAdDiscoveryTypes
+
+`func (o *GatewayCreateMigration) HasAdDiscoveryTypes() bool`
+
+HasAdDiscoveryTypes returns a boolean if a field has been set.
 
 ### GetAdDomainName
 
@@ -613,6 +438,31 @@ SetAdLocalUsersPathTemplate sets AdLocalUsersPathTemplate field to given value.
 
 HasAdLocalUsersPathTemplate returns a boolean if a field has been set.
 
+### GetAdOsFilter
+
+`func (o *GatewayCreateMigration) GetAdOsFilter() string`
+
+GetAdOsFilter returns the AdOsFilter field if non-nil, zero value otherwise.
+
+### GetAdOsFilterOk
+
+`func (o *GatewayCreateMigration) GetAdOsFilterOk() (*string, bool)`
+
+GetAdOsFilterOk returns a tuple with the AdOsFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdOsFilter
+
+`func (o *GatewayCreateMigration) SetAdOsFilter(v string)`
+
+SetAdOsFilter sets AdOsFilter field to given value.
+
+### HasAdOsFilter
+
+`func (o *GatewayCreateMigration) HasAdOsFilter() bool`
+
+HasAdOsFilter returns a boolean if a field has been set.
+
 ### GetAdRotationHour
 
 `func (o *GatewayCreateMigration) GetAdRotationHour() int32`
@@ -688,6 +538,56 @@ SetAdSraEnableRdp sets AdSraEnableRdp field to given value.
 
 HasAdSraEnableRdp returns a boolean if a field has been set.
 
+### GetAdSshPort
+
+`func (o *GatewayCreateMigration) GetAdSshPort() string`
+
+GetAdSshPort returns the AdSshPort field if non-nil, zero value otherwise.
+
+### GetAdSshPortOk
+
+`func (o *GatewayCreateMigration) GetAdSshPortOk() (*string, bool)`
+
+GetAdSshPortOk returns a tuple with the AdSshPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdSshPort
+
+`func (o *GatewayCreateMigration) SetAdSshPort(v string)`
+
+SetAdSshPort sets AdSshPort field to given value.
+
+### HasAdSshPort
+
+`func (o *GatewayCreateMigration) HasAdSshPort() bool`
+
+HasAdSshPort returns a boolean if a field has been set.
+
+### GetAdTargetFormat
+
+`func (o *GatewayCreateMigration) GetAdTargetFormat() string`
+
+GetAdTargetFormat returns the AdTargetFormat field if non-nil, zero value otherwise.
+
+### GetAdTargetFormatOk
+
+`func (o *GatewayCreateMigration) GetAdTargetFormatOk() (*string, bool)`
+
+GetAdTargetFormatOk returns a tuple with the AdTargetFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetFormat
+
+`func (o *GatewayCreateMigration) SetAdTargetFormat(v string)`
+
+SetAdTargetFormat sets AdTargetFormat field to given value.
+
+### HasAdTargetFormat
+
+`func (o *GatewayCreateMigration) HasAdTargetFormat() bool`
+
+HasAdTargetFormat returns a boolean if a field has been set.
+
 ### GetAdTargetName
 
 `func (o *GatewayCreateMigration) GetAdTargetName() string`
@@ -738,6 +638,31 @@ SetAdTargetsPathTemplate sets AdTargetsPathTemplate field to given value.
 
 HasAdTargetsPathTemplate returns a boolean if a field has been set.
 
+### GetAdTargetsType
+
+`func (o *GatewayCreateMigration) GetAdTargetsType() string`
+
+GetAdTargetsType returns the AdTargetsType field if non-nil, zero value otherwise.
+
+### GetAdTargetsTypeOk
+
+`func (o *GatewayCreateMigration) GetAdTargetsTypeOk() (*string, bool)`
+
+GetAdTargetsTypeOk returns a tuple with the AdTargetsType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdTargetsType
+
+`func (o *GatewayCreateMigration) SetAdTargetsType(v string)`
+
+SetAdTargetsType sets AdTargetsType field to given value.
+
+### HasAdTargetsType
+
+`func (o *GatewayCreateMigration) HasAdTargetsType() bool`
+
+HasAdTargetsType returns a boolean if a field has been set.
+
 ### GetAdUserBaseDn
 
 `func (o *GatewayCreateMigration) GetAdUserBaseDn() string`
@@ -787,6 +712,81 @@ SetAdUserGroups sets AdUserGroups field to given value.
 `func (o *GatewayCreateMigration) HasAdUserGroups() bool`
 
 HasAdUserGroups returns a boolean if a field has been set.
+
+### GetAdWinrmOverHttp
+
+`func (o *GatewayCreateMigration) GetAdWinrmOverHttp() string`
+
+GetAdWinrmOverHttp returns the AdWinrmOverHttp field if non-nil, zero value otherwise.
+
+### GetAdWinrmOverHttpOk
+
+`func (o *GatewayCreateMigration) GetAdWinrmOverHttpOk() (*string, bool)`
+
+GetAdWinrmOverHttpOk returns a tuple with the AdWinrmOverHttp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdWinrmOverHttp
+
+`func (o *GatewayCreateMigration) SetAdWinrmOverHttp(v string)`
+
+SetAdWinrmOverHttp sets AdWinrmOverHttp field to given value.
+
+### HasAdWinrmOverHttp
+
+`func (o *GatewayCreateMigration) HasAdWinrmOverHttp() bool`
+
+HasAdWinrmOverHttp returns a boolean if a field has been set.
+
+### GetAdWinrmPort
+
+`func (o *GatewayCreateMigration) GetAdWinrmPort() string`
+
+GetAdWinrmPort returns the AdWinrmPort field if non-nil, zero value otherwise.
+
+### GetAdWinrmPortOk
+
+`func (o *GatewayCreateMigration) GetAdWinrmPortOk() (*string, bool)`
+
+GetAdWinrmPortOk returns a tuple with the AdWinrmPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdWinrmPort
+
+`func (o *GatewayCreateMigration) SetAdWinrmPort(v string)`
+
+SetAdWinrmPort sets AdWinrmPort field to given value.
+
+### HasAdWinrmPort
+
+`func (o *GatewayCreateMigration) HasAdWinrmPort() bool`
+
+HasAdWinrmPort returns a boolean if a field has been set.
+
+### GetAdDiscoverLocalUsers
+
+`func (o *GatewayCreateMigration) GetAdDiscoverLocalUsers() string`
+
+GetAdDiscoverLocalUsers returns the AdDiscoverLocalUsers field if non-nil, zero value otherwise.
+
+### GetAdDiscoverLocalUsersOk
+
+`func (o *GatewayCreateMigration) GetAdDiscoverLocalUsersOk() (*string, bool)`
+
+GetAdDiscoverLocalUsersOk returns a tuple with the AdDiscoverLocalUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoverLocalUsers
+
+`func (o *GatewayCreateMigration) SetAdDiscoverLocalUsers(v string)`
+
+SetAdDiscoverLocalUsers sets AdDiscoverLocalUsers field to given value.
+
+### HasAdDiscoverLocalUsers
+
+`func (o *GatewayCreateMigration) HasAdDiscoverLocalUsers() bool`
+
+HasAdDiscoverLocalUsers returns a boolean if a field has been set.
 
 ### GetAwsKey
 

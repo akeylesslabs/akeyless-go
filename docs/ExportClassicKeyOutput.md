@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CertificatePem** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **Ssh** | Pointer to **string** |  | [optional] 
+**WrappingIv** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetSsh sets Ssh field to given value.
 `func (o *ExportClassicKeyOutput) HasSsh() bool`
 
 HasSsh returns a boolean if a field has been set.
+
+### GetWrappingIv
+
+`func (o *ExportClassicKeyOutput) GetWrappingIv() string`
+
+GetWrappingIv returns the WrappingIv field if non-nil, zero value otherwise.
+
+### GetWrappingIvOk
+
+`func (o *ExportClassicKeyOutput) GetWrappingIvOk() (*string, bool)`
+
+GetWrappingIvOk returns a tuple with the WrappingIv field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWrappingIv
+
+`func (o *ExportClassicKeyOutput) SetWrappingIv(v string)`
+
+SetWrappingIv sets WrappingIv field to given value.
+
+### HasWrappingIv
+
+`func (o *ExportClassicKeyOutput) HasWrappingIv() bool`
+
+HasWrappingIv returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

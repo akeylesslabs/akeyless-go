@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **DefaultSecretLocation** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
+**IsKerberosAuthEnabled** | Pointer to **bool** |  | [optional] 
+**IsLdapAuthEnabled** | Pointer to **bool** |  | [optional] 
 **ServerlessType** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **StatusDescription** | Pointer to **string** |  | [optional] 
@@ -338,6 +340,56 @@ SetId sets Id field to given value.
 `func (o *GwClusterIdentity) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIsKerberosAuthEnabled
+
+`func (o *GwClusterIdentity) GetIsKerberosAuthEnabled() bool`
+
+GetIsKerberosAuthEnabled returns the IsKerberosAuthEnabled field if non-nil, zero value otherwise.
+
+### GetIsKerberosAuthEnabledOk
+
+`func (o *GwClusterIdentity) GetIsKerberosAuthEnabledOk() (*bool, bool)`
+
+GetIsKerberosAuthEnabledOk returns a tuple with the IsKerberosAuthEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsKerberosAuthEnabled
+
+`func (o *GwClusterIdentity) SetIsKerberosAuthEnabled(v bool)`
+
+SetIsKerberosAuthEnabled sets IsKerberosAuthEnabled field to given value.
+
+### HasIsKerberosAuthEnabled
+
+`func (o *GwClusterIdentity) HasIsKerberosAuthEnabled() bool`
+
+HasIsKerberosAuthEnabled returns a boolean if a field has been set.
+
+### GetIsLdapAuthEnabled
+
+`func (o *GwClusterIdentity) GetIsLdapAuthEnabled() bool`
+
+GetIsLdapAuthEnabled returns the IsLdapAuthEnabled field if non-nil, zero value otherwise.
+
+### GetIsLdapAuthEnabledOk
+
+`func (o *GwClusterIdentity) GetIsLdapAuthEnabledOk() (*bool, bool)`
+
+GetIsLdapAuthEnabledOk returns a tuple with the IsLdapAuthEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsLdapAuthEnabled
+
+`func (o *GwClusterIdentity) SetIsLdapAuthEnabled(v bool)`
+
+SetIsLdapAuthEnabled sets IsLdapAuthEnabled field to given value.
+
+### HasIsLdapAuthEnabled
+
+`func (o *GwClusterIdentity) HasIsLdapAuthEnabled() bool`
+
+HasIsLdapAuthEnabled returns a boolean if a field has been set.
 
 ### GetServerlessType
 

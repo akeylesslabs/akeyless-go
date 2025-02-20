@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | Pointer to **bool** |  | [optional] 
-**EnableTime** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**EnableTime** | Pointer to **time.Time** |  | [optional] 
 **IntervalByDays** | Pointer to **int64** |  | [optional] 
 
 ## Methods

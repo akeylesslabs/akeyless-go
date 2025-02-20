@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ClientId** | Pointer to **string** | The client ID to use when connecting with jwt authentication | [optional] 
 **ClientSecret** | Pointer to **string** | The client secret to use when connecting with jwt authentication | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**EventTypes** | Pointer to **[]string** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report] | [optional] 
+**EventTypes** | Pointer to **[]string** | List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report, secret-sync] | [optional] 
 **Every** | Pointer to **string** | Rate of periodic runner repetition in hours | [optional] 
 **GatewaysEventSourceLocations** | **[]string** | Event sources | 
 **Host** | Pointer to **string** | Workstation Host | [optional] 

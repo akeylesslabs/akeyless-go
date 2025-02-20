@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessId** | Pointer to **string** |  | [optional] 
 **AuthCreds** | Pointer to **string** | Temporary credentials for accessing Auth | [optional] 
 **Expiry** | Pointer to **int64** | Credentials expiration date | [optional] 
 **KfmCreds** | Pointer to **string** | Temporary credentials for accessing the KFMs instances | [optional] 
+**NeedMfaAppFirstConfig** | Pointer to **bool** | If the user didn&#39;t complete to configure the MFA app | [optional] 
 **RequiredMfa** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Credentials tmp token | [optional] 
 **UamCreds** | Pointer to **string** | Temporary credentials for accessing the UAM service | [optional] 
@@ -29,6 +31,31 @@ will change when the set of required properties is changed
 NewSystemAccessCredentialsReplyObjWithDefaults instantiates a new SystemAccessCredentialsReplyObj object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessId
+
+`func (o *SystemAccessCredentialsReplyObj) GetAccessId() string`
+
+GetAccessId returns the AccessId field if non-nil, zero value otherwise.
+
+### GetAccessIdOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetAccessIdOk() (*string, bool)`
+
+GetAccessIdOk returns a tuple with the AccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessId
+
+`func (o *SystemAccessCredentialsReplyObj) SetAccessId(v string)`
+
+SetAccessId sets AccessId field to given value.
+
+### HasAccessId
+
+`func (o *SystemAccessCredentialsReplyObj) HasAccessId() bool`
+
+HasAccessId returns a boolean if a field has been set.
 
 ### GetAuthCreds
 
@@ -104,6 +131,31 @@ SetKfmCreds sets KfmCreds field to given value.
 `func (o *SystemAccessCredentialsReplyObj) HasKfmCreds() bool`
 
 HasKfmCreds returns a boolean if a field has been set.
+
+### GetNeedMfaAppFirstConfig
+
+`func (o *SystemAccessCredentialsReplyObj) GetNeedMfaAppFirstConfig() bool`
+
+GetNeedMfaAppFirstConfig returns the NeedMfaAppFirstConfig field if non-nil, zero value otherwise.
+
+### GetNeedMfaAppFirstConfigOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetNeedMfaAppFirstConfigOk() (*bool, bool)`
+
+GetNeedMfaAppFirstConfigOk returns a tuple with the NeedMfaAppFirstConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNeedMfaAppFirstConfig
+
+`func (o *SystemAccessCredentialsReplyObj) SetNeedMfaAppFirstConfig(v bool)`
+
+SetNeedMfaAppFirstConfig sets NeedMfaAppFirstConfig field to given value.
+
+### HasNeedMfaAppFirstConfig
+
+`func (o *SystemAccessCredentialsReplyObj) HasNeedMfaAppFirstConfig() bool`
+
+HasNeedMfaAppFirstConfig returns a boolean if a field has been set.
 
 ### GetRequiredMfa
 

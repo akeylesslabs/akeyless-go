@@ -25,8 +25,8 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 

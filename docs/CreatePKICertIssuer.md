@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
+**MaxPathLen** | Pointer to **int64** | The maximum path length for the generated certificate. -1, means unlimited | [optional] [default to -1]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NotEnforceHostnames** | Pointer to **bool** | If set, any names are allowed for CN and SANs in the certificate and not only a valid host name | [optional] 
@@ -39,7 +40,7 @@ Name | Type | Description | Notes
 **Province** | Pointer to **string** | A comma-separated list of provinces that will be set in the issued certificate | [optional] 
 **ScheduledRenew** | Pointer to **int64** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | Pointer to **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
+**SignerKeyName** | Pointer to **string** | A key to sign the certificate with, required in Private CA mode | [optional] 
 **StreetAddress** | Pointer to **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -50,7 +51,7 @@ Name | Type | Description | Notes
 
 ### NewCreatePKICertIssuer
 
-`func NewCreatePKICertIssuer(name string, signerKeyName string, ttl string, ) *CreatePKICertIssuer`
+`func NewCreatePKICertIssuer(name string, ttl string, ) *CreatePKICertIssuer`
 
 NewCreatePKICertIssuer instantiates a new CreatePKICertIssuer object
 This constructor will assign default values to properties that have it defined,
@@ -665,6 +666,31 @@ SetLocality sets Locality field to given value.
 
 HasLocality returns a boolean if a field has been set.
 
+### GetMaxPathLen
+
+`func (o *CreatePKICertIssuer) GetMaxPathLen() int64`
+
+GetMaxPathLen returns the MaxPathLen field if non-nil, zero value otherwise.
+
+### GetMaxPathLenOk
+
+`func (o *CreatePKICertIssuer) GetMaxPathLenOk() (*int64, bool)`
+
+GetMaxPathLenOk returns a tuple with the MaxPathLen field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxPathLen
+
+`func (o *CreatePKICertIssuer) SetMaxPathLen(v int64)`
+
+SetMaxPathLen sets MaxPathLen field to given value.
+
+### HasMaxPathLen
+
+`func (o *CreatePKICertIssuer) HasMaxPathLen() bool`
+
+HasMaxPathLen returns a boolean if a field has been set.
+
 ### GetMetadata
 
 `func (o *CreatePKICertIssuer) GetMetadata() string`
@@ -954,6 +980,11 @@ and a boolean to check if the value has been set.
 
 SetSignerKeyName sets SignerKeyName field to given value.
 
+### HasSignerKeyName
+
+`func (o *CreatePKICertIssuer) HasSignerKeyName() bool`
+
+HasSignerKeyName returns a boolean if a field has been set.
 
 ### GetStreetAddress
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AssignmentName** | Pointer to **string** |  | [optional] 
 **AssignmentType** | Pointer to **string** |  | [optional] 
 **GroupId** | Pointer to **string** |  | [optional] 
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 

@@ -27,7 +27,8 @@ Name | Type | Description | Notes
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id | [optional] 
 **SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -645,6 +646,31 @@ SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value
 `func (o *RotatedSecretUpdateAws) HasSecureAccessBastionIssuer() bool`
 
 HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretUpdateAws) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *RotatedSecretUpdateAws) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretUpdateAws) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretUpdateAws) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

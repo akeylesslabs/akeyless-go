@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **GcpAudience** | Pointer to **string** | GCP JWT audience | [optional] [default to "akeyless.io"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAuthConfigName** | Pointer to **string** | The K8S Auth config name (relevant only for access-type&#x3D;k8s) | [optional] 
+**KerberosToken** | Pointer to **string** | KerberosToken represents a Kerberos token generated for the gateway SPN (Service Principal Name). | [optional] 
 **KerberosUsername** | Pointer to **string** | TThe username for the entry within the keytab to authenticate via Kerberos | [optional] 
 **KeyData** | Pointer to **string** | Private key data encoded in base64. Used if file was not provided.(relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
 **KeytabData** | Pointer to **string** | Base64-encoded content of a valid keytab file, containing the service account&#39;s entry. | [optional] 
@@ -446,6 +447,31 @@ SetK8sAuthConfigName sets K8sAuthConfigName field to given value.
 `func (o *Configure) HasK8sAuthConfigName() bool`
 
 HasK8sAuthConfigName returns a boolean if a field has been set.
+
+### GetKerberosToken
+
+`func (o *Configure) GetKerberosToken() string`
+
+GetKerberosToken returns the KerberosToken field if non-nil, zero value otherwise.
+
+### GetKerberosTokenOk
+
+`func (o *Configure) GetKerberosTokenOk() (*string, bool)`
+
+GetKerberosTokenOk returns a tuple with the KerberosToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKerberosToken
+
+`func (o *Configure) SetKerberosToken(v string)`
+
+SetKerberosToken sets KerberosToken field to given value.
+
+### HasKerberosToken
+
+`func (o *Configure) HasKerberosToken() bool`
+
+HasKerberosToken returns a boolean if a field has been set.
 
 ### GetKerberosUsername
 

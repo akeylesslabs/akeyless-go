@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AdminEmail** | **string** | Admin user email | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from | [optional] [default to "ext_email"]
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GroupEmail** | Pointer to **string** | A group email, relevant only for group access-mode | [optional] 
 **GroupRole** | Pointer to **string** |  | [optional] 
@@ -20,8 +21,8 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Name of existing target to use in dynamic secret creation | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -136,6 +137,31 @@ SetDescription sets Description field to given value.
 `func (o *DynamicSecretUpdateGoogleWorkspace) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetFixedUserClaimKeyname() string`
+
+GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetFixedUserClaimKeynameOk
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) GetFixedUserClaimKeynameOk() (*string, bool)`
+
+GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) SetFixedUserClaimKeyname(v string)`
+
+SetFixedUserClaimKeyname sets FixedUserClaimKeyname field to given value.
+
+### HasFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateGoogleWorkspace) HasFixedUserClaimKeyname() bool`
+
+HasFixedUserClaimKeyname returns a boolean if a field has been set.
 
 ### GetGcpKey
 

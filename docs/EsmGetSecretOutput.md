@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BinaryValue** | Pointer to **bool** |  | [optional] 
-**Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
+**Metadata** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 
@@ -53,22 +54,47 @@ SetBinaryValue sets BinaryValue field to given value.
 
 HasBinaryValue returns a boolean if a field has been set.
 
+### GetId
+
+`func (o *EsmGetSecretOutput) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *EsmGetSecretOutput) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *EsmGetSecretOutput) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *EsmGetSecretOutput) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
 ### GetMetadata
 
-`func (o *EsmGetSecretOutput) GetMetadata() map[string]interface{}`
+`func (o *EsmGetSecretOutput) GetMetadata() interface{}`
 
 GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
 ### GetMetadataOk
 
-`func (o *EsmGetSecretOutput) GetMetadataOk() (*map[string]interface{}, bool)`
+`func (o *EsmGetSecretOutput) GetMetadataOk() (*interface{}, bool)`
 
 GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMetadata
 
-`func (o *EsmGetSecretOutput) SetMetadata(v map[string]interface{})`
+`func (o *EsmGetSecretOutput) SetMetadata(v interface{})`
 
 SetMetadata sets Metadata field to given value.
 
@@ -78,6 +104,16 @@ SetMetadata sets Metadata field to given value.
 
 HasMetadata returns a boolean if a field has been set.
 
+### SetMetadataNil
+
+`func (o *EsmGetSecretOutput) SetMetadataNil(b bool)`
+
+ SetMetadataNil sets the value for Metadata to be an explicit nil
+
+### UnsetMetadata
+`func (o *EsmGetSecretOutput) UnsetMetadata()`
+
+UnsetMetadata ensures that no value is present for Metadata, not even an explicit nil
 ### GetName
 
 `func (o *EsmGetSecretOutput) GetName() string`

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessDateDisplay** | Pointer to **string** |  | [optional] 
 **AccessRequestStatus** | Pointer to **string** |  | [optional] 
 **AutoRotate** | Pointer to **bool** |  | [optional] 
@@ -13,10 +13,10 @@ Name | Type | Description | Notes
 **CertificateIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **Certificates** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
-**DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**DeletionDate** | Pointer to **time.Time** |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
 **GatewayDetails** | Pointer to [**[]GatewayBasicInfo**](GatewayBasicInfo.md) |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
@@ -33,17 +33,18 @@ Name | Type | Description | Notes
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
 **ItemVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
-**LastRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**LastRotationDate** | Pointer to **time.Time** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **LinkedDetails** | Pointer to [**LinkedDetails**](LinkedDetails.md) |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**NextRotationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
+**NextRotationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **ProtectionKeyType** | Pointer to **string** |  | [optional] 
 **PublicValue** | Pointer to **string** |  | [optional] 
 **RotationInterval** | Pointer to **int64** |  | [optional] 
 **SharedBy** | Pointer to [**RuleAssigner**](RuleAssigner.md) |  | [optional] 
 **TargetVersions** | Pointer to [**[]TargetItemVersion**](TargetItemVersion.md) |  | [optional] 
+**UscSyncAssociatedItems** | Pointer to [**[]ItemUSCSyncAssociation**](ItemUSCSyncAssociation.md) | for USC item, hold rotated-secrets that are associated to him for rotated-secret, holds the associated USCs | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -1064,6 +1065,31 @@ SetTargetVersions sets TargetVersions field to given value.
 `func (o *Item) HasTargetVersions() bool`
 
 HasTargetVersions returns a boolean if a field has been set.
+
+### GetUscSyncAssociatedItems
+
+`func (o *Item) GetUscSyncAssociatedItems() []ItemUSCSyncAssociation`
+
+GetUscSyncAssociatedItems returns the UscSyncAssociatedItems field if non-nil, zero value otherwise.
+
+### GetUscSyncAssociatedItemsOk
+
+`func (o *Item) GetUscSyncAssociatedItemsOk() (*[]ItemUSCSyncAssociation, bool)`
+
+GetUscSyncAssociatedItemsOk returns a tuple with the UscSyncAssociatedItems field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscSyncAssociatedItems
+
+`func (o *Item) SetUscSyncAssociatedItems(v []ItemUSCSyncAssociation)`
+
+SetUscSyncAssociatedItems sets UscSyncAssociatedItems field to given value.
+
+### HasUscSyncAssociatedItems
+
+`func (o *Item) HasUscSyncAssociatedItems() bool`
+
+HasUscSyncAssociatedItems returns a boolean if a field has been set.
 
 ### GetWithCustomerFragment
 

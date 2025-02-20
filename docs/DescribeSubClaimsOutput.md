@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 

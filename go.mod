@@ -1,7 +1,5 @@
-module github.com/akeylesslabs/akeyless-go/v4
+module github.com/akeylesslabs/akeyless-go/v5
 
 
-go 1.13
-
-require golang.org/x/oauth2 v0.8.0
+go 1.22
 

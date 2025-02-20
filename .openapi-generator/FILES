@@ -31,6 +31,7 @@ docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
 docs/AttributeTypeAndValue.md
 docs/Auth.md
+docs/AuthExpirationEvent.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
 docs/AuthMethodAdditionalData.md
@@ -88,6 +89,7 @@ docs/BatchTokenizationRequestLine.md
 docs/BatchTokenizationResponseLine.md
 docs/CFConfigPart.md
 docs/CacheConfigPart.md
+docs/CalcPasswordSecurityInfo.md
 docs/CertAccessRules.md
 docs/CertificateAnalyticAggregation.md
 docs/CertificateChainInfo.md
@@ -345,6 +347,7 @@ docs/DynamicSecretUpdateVenafi.md
 docs/EKSTargetDetails.md
 docs/ElasticsearchLogForwardingConfig.md
 docs/EmailEntry.md
+docs/EmailError.md
 docs/EmailPassAccessRules.md
 docs/EmailTokenizerInfo.md
 docs/Encrypt.md
@@ -481,6 +484,7 @@ docs/GatewayMigrationGetOutput.md
 docs/GatewayMigrationListOutput.md
 docs/GatewayMigrationSyncOutput.md
 docs/GatewayMigrationUpdateOutput.md
+docs/GatewayNameInfo.md
 docs/GatewayPartialUpdateK8SAuthConfig.md
 docs/GatewayPartialUpdateK8SAuthConfigOutput.md
 docs/GatewayRevokeTmpUsers.md
@@ -576,6 +580,8 @@ docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
 docs/GenerateAcmeEab.md
 docs/GenerateAcmeEabOutput.md
+docs/GenerateCA.md
+docs/GenerateCAOutput.md
 docs/GenerateCsr.md
 docs/GenerateCsrOutput.md
 docs/GetAccountSettings.md
@@ -639,6 +645,7 @@ docs/Item.md
 docs/ItemGeneralInfo.md
 docs/ItemSraStatus.md
 docs/ItemTargetAssociation.md
+docs/ItemUSCSyncAssociation.md
 docs/ItemVersion.md
 docs/JSONError.md
 docs/K8SAuth.md
@@ -738,8 +745,12 @@ docs/OidcClientInfo.md
 docs/OnePasswordMigration.md
 docs/OnePasswordPayload.md
 docs/PKICertificateIssueDetails.md
+docs/PasswordBreachInfo.md
 docs/PasswordExpirationInfo.md
 docs/PasswordPolicyInfo.md
+docs/PasswordScoreInfo.md
+docs/PasswordScoreSetting.md
+docs/PasswordSecurityInfo.md
 docs/PathRule.md
 docs/PingTargetDetails.md
 docs/Producer.md
@@ -751,6 +762,7 @@ docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
 docs/RegexpTokenizerInfo.md
+docs/RemoteSecretInfo.md
 docs/RenewCertificate.md
 docs/RenewCertificateOutput.md
 docs/RequestAccess.md
@@ -758,6 +770,7 @@ docs/RequestAccessOutput.md
 docs/RequiredActivity.md
 docs/ResetAccessKey.md
 docs/ResetAuthMethodAccessKeyOutput.md
+docs/ResponseStopShareItem.md
 docs/ReverseRBAC.md
 docs/ReverseRBACClient.md
 docs/ReverseRBACOutput.md
@@ -792,10 +805,13 @@ docs/RotatedSecretCreateRedshift.md
 docs/RotatedSecretCreateSnowflake.md
 docs/RotatedSecretCreateSsh.md
 docs/RotatedSecretCreateWindows.md
+docs/RotatedSecretDelete.md
+docs/RotatedSecretDeleteSync.md
 docs/RotatedSecretDetailsInfo.md
 docs/RotatedSecretGetValue.md
 docs/RotatedSecretList.md
 docs/RotatedSecretOutput.md
+docs/RotatedSecretSync.md
 docs/RotatedSecretUpdateAws.md
 docs/RotatedSecretUpdateAzure.md
 docs/RotatedSecretUpdateCassandra.md
@@ -833,6 +849,8 @@ docs/ServerInventoryPayload.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
+docs/ShareItemOutput.md
+docs/SharingItemFullInfo.md
 docs/SharingPolicyInfo.md
 docs/SignDataWithClassicKey.md
 docs/SignEcDsa.md
@@ -938,6 +956,8 @@ docs/UidRotateTokenOutput.md
 docs/Unconfigure.md
 docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
+docs/UnwrapToken.md
+docs/UnwrapTokenOutput.md
 docs/Update.md
 docs/UpdateAWSTarget.md
 docs/UpdateAWSTargetDetails.md
@@ -1063,6 +1083,7 @@ docs/VerifyPKCS1.md
 docs/VerifyPKICertOutput.md
 docs/VerifyPKICertWithClassicKey.md
 docs/VerifyRsaSsaPss.md
+docs/WalletDetails.md
 docs/WebBastionConf.md
 docs/WebBastionGuacamole.md
 docs/WebBastionRdpRecord.md
@@ -1097,6 +1118,7 @@ model_assoc_role_auth_method.go
 model_assoc_target_item.go
 model_attribute_type_and_value.go
 model_auth.go
+model_auth_expiration_event.go
 model_auth_method.go
 model_auth_method_access_info.go
 model_auth_method_additional_data.go
@@ -1157,6 +1179,7 @@ model_batch_encryption_response_line.go
 model_batch_tokenization_request_line.go
 model_batch_tokenization_response_line.go
 model_cache_config_part.go
+model_calc_password_security_info.go
 model_cert_access_rules.go
 model_certificate_analytic_aggregation.go
 model_certificate_chain_info.go
@@ -1415,6 +1438,7 @@ model_dynamic_secret_update_venafi.go
 model_eks_target_details.go
 model_elasticsearch_log_forwarding_config.go
 model_email_entry.go
+model_email_error.go
 model_email_pass_access_rules.go
 model_email_tokenizer_info.go
 model_encrypt.go
@@ -1547,6 +1571,7 @@ model_gateway_migration_get_output.go
 model_gateway_migration_list_output.go
 model_gateway_migration_sync_output.go
 model_gateway_migration_update_output.go
+model_gateway_name_info.go
 model_gateway_partial_update_k8_s_auth_config.go
 model_gateway_partial_update_k8_s_auth_config_output.go
 model_gateway_revoke_tmp_users.go
@@ -1645,6 +1670,8 @@ model_gen_customer_fragment.go
 model_general_config_part.go
 model_generate_acme_eab.go
 model_generate_acme_eab_output.go
+model_generate_ca.go
+model_generate_ca_output.go
 model_generate_csr.go
 model_generate_csr_output.go
 model_get_account_settings.go
@@ -1709,6 +1736,7 @@ model_item.go
 model_item_general_info.go
 model_item_sra_status.go
 model_item_target_association.go
+model_item_usc_sync_association.go
 model_item_version.go
 model_json_error.go
 model_k8_s_auth.go
@@ -1807,8 +1835,12 @@ model_oidc_client_info.go
 model_oidc_custom_claim.go
 model_one_password_migration.go
 model_one_password_payload.go
+model_password_breach_info.go
 model_password_expiration_info.go
 model_password_policy_info.go
+model_password_score_info.go
+model_password_score_setting.go
+model_password_security_info.go
 model_path_rule.go
 model_ping_target_details.go
 model_pki_certificate_issue_details.go
@@ -1821,6 +1853,7 @@ model_raw_creds.go
 model_refresh_key.go
 model_refresh_key_output.go
 model_regexp_tokenizer_info.go
+model_remote_secret_info.go
 model_renew_certificate.go
 model_renew_certificate_output.go
 model_request_access.go
@@ -1828,6 +1861,7 @@ model_request_access_output.go
 model_required_activity.go
 model_reset_access_key.go
 model_reset_auth_method_access_key_output.go
+model_response_stop_share_item.go
 model_reverse_rbac.go
 model_reverse_rbac_client.go
 model_reverse_rbac_output.go
@@ -1862,10 +1896,13 @@ model_rotated_secret_create_redshift.go
 model_rotated_secret_create_snowflake.go
 model_rotated_secret_create_ssh.go
 model_rotated_secret_create_windows_.go
+model_rotated_secret_delete.go
+model_rotated_secret_delete_sync.go
 model_rotated_secret_details_info.go
 model_rotated_secret_get_value.go
 model_rotated_secret_list.go
 model_rotated_secret_output.go
+model_rotated_secret_sync.go
 model_rotated_secret_update_aws.go
 model_rotated_secret_update_azure.go
 model_rotated_secret_update_cassandra.go
@@ -1901,6 +1938,8 @@ model_server_inventory_payload.go
 model_set_item_state.go
 model_set_role_rule.go
 model_share_item.go
+model_share_item_output.go
+model_sharing_item_full_info.go
 model_sharing_policy_info.go
 model_sign_data_with_classic_key.go
 model_sign_ec_dsa.go
@@ -2008,6 +2047,8 @@ model_uid_token_details.go
 model_unconfigure.go
 model_universal_identity_access_rules.go
 model_universal_identity_details.go
+model_unwrap_token.go
+model_unwrap_token_output.go
 model_update.go
 model_update_account_settings.go
 model_update_account_settings_output.go
@@ -2132,6 +2173,7 @@ model_verify_pkcs1.go
 model_verify_pki_cert_output.go
 model_verify_pki_cert_with_classic_key.go
 model_verify_rsa_ssa_pss.go
+model_wallet_details.go
 model_web_bastion_conf.go
 model_web_bastion_guacamole.go
 model_web_bastion_rdp_record.go
@@ -2142,4 +2184,5 @@ model_windows_service_attributes.go
 model_windows_target_details.go
 model_zero_ssl_target_details.go
 response.go
+test/api_v2_test.go
 utils.go

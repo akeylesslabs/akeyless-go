@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiVersion** | Pointer to **string** |  | [optional] 
 **Kind** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**ClientData**](clientData.md) |  | [optional] 
+**Status** | Pointer to [**ClientData**](ClientData.md) |  | [optional] 
 
 ## Methods
 

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **GraceRotation** | Pointer to **bool** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
+**ManagedByAkeyless** | Pointer to **bool** |  | [optional] 
 **MaxVersions** | Pointer to **int64** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
@@ -138,6 +139,31 @@ SetLastRotationError sets LastRotationError field to given value.
 `func (o *RotatedSecretDetailsInfo) HasLastRotationError() bool`
 
 HasLastRotationError returns a boolean if a field has been set.
+
+### GetManagedByAkeyless
+
+`func (o *RotatedSecretDetailsInfo) GetManagedByAkeyless() bool`
+
+GetManagedByAkeyless returns the ManagedByAkeyless field if non-nil, zero value otherwise.
+
+### GetManagedByAkeylessOk
+
+`func (o *RotatedSecretDetailsInfo) GetManagedByAkeylessOk() (*bool, bool)`
+
+GetManagedByAkeylessOk returns a tuple with the ManagedByAkeyless field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedByAkeyless
+
+`func (o *RotatedSecretDetailsInfo) SetManagedByAkeyless(v bool)`
+
+SetManagedByAkeyless sets ManagedByAkeyless field to given value.
+
+### HasManagedByAkeyless
+
+`func (o *RotatedSecretDetailsInfo) HasManagedByAkeyless() bool`
+
+HasManagedByAkeyless returns a boolean if a field has been set.
 
 ### GetMaxVersions
 

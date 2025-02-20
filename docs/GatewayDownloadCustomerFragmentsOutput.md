@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CfJson** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
+**CfJson** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCfJson
 
-`func (o *GatewayDownloadCustomerFragmentsOutput) GetCfJson() map[string]map[string]interface{}`
+`func (o *GatewayDownloadCustomerFragmentsOutput) GetCfJson() map[string]interface{}`
 
 GetCfJson returns the CfJson field if non-nil, zero value otherwise.
 
 ### GetCfJsonOk
 
-`func (o *GatewayDownloadCustomerFragmentsOutput) GetCfJsonOk() (*map[string]map[string]interface{}, bool)`
+`func (o *GatewayDownloadCustomerFragmentsOutput) GetCfJsonOk() (*map[string]interface{}, bool)`
 
 GetCfJsonOk returns a tuple with the CfJson field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCfJson
 
-`func (o *GatewayDownloadCustomerFragmentsOutput) SetCfJson(v map[string]map[string]interface{})`
+`func (o *GatewayDownloadCustomerFragmentsOutput) SetCfJson(v map[string]interface{})`
 
 SetCfJson sets CfJson field to given value.
 

@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedOps** | Pointer to **[]string** |  | [optional] 
 **AssocId** | Pointer to **string** |  | [optional] 
-**AuthMethodSubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**AuthMethodSubClaims** | Pointer to **map[string][]string** |  | [optional] 
 **IsSubClaimsCaseSensitive** | Pointer to **bool** |  | [optional] 
 **IsSubclaimsWithOperator** | Pointer to **bool** |  | [optional] 
+**RoleId** | Pointer to **int64** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 
 
@@ -155,6 +156,31 @@ SetIsSubclaimsWithOperator sets IsSubclaimsWithOperator field to given value.
 `func (o *AuthMethodRoleAssociation) HasIsSubclaimsWithOperator() bool`
 
 HasIsSubclaimsWithOperator returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *AuthMethodRoleAssociation) GetRoleId() int64`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *AuthMethodRoleAssociation) GetRoleIdOk() (*int64, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *AuthMethodRoleAssociation) SetRoleId(v int64)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *AuthMethodRoleAssociation) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 
 ### GetRoleName
 

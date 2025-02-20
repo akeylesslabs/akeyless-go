@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessDateDisplay** | Pointer to **string** |  | [optional] 
 **AccessInfo** | Pointer to [**AuthMethodAccessInfo**](AuthMethodAccessInfo.md) |  | [optional] 
 **AccountId** | Pointer to **string** |  | [optional] 
@@ -14,11 +14,12 @@ Name | Type | Description | Notes
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**ExpirationEvents** | Pointer to [**[]AuthExpirationEvent**](AuthExpirationEvent.md) |  | [optional] 
 **IsApproved** | Pointer to **bool** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -363,6 +364,31 @@ SetDescription sets Description field to given value.
 `func (o *AuthMethod) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetExpirationEvents
+
+`func (o *AuthMethod) GetExpirationEvents() []AuthExpirationEvent`
+
+GetExpirationEvents returns the ExpirationEvents field if non-nil, zero value otherwise.
+
+### GetExpirationEventsOk
+
+`func (o *AuthMethod) GetExpirationEventsOk() (*[]AuthExpirationEvent, bool)`
+
+GetExpirationEventsOk returns a tuple with the ExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEvents
+
+`func (o *AuthMethod) SetExpirationEvents(v []AuthExpirationEvent)`
+
+SetExpirationEvents sets ExpirationEvents field to given value.
+
+### HasExpirationEvents
+
+`func (o *AuthMethod) HasExpirationEvents() bool`
+
+HasExpirationEvents returns a boolean if a field has been set.
 
 ### GetIsApproved
 

@@ -6,16 +6,20 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Helper** | Pointer to **map[string]interface{}** |  | [optional] 
 **RcFileOverride** | Pointer to **string** | used to override .akeyless-connect.rc in tests | [optional] 
-**BastionCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
-**BastionCtrlPort** | Pointer to **string** | The Bastion API Port | [optional] [default to "9900"]
-**BastionCtrlProto** | Pointer to **string** | The Bastion API protocol | [optional] [default to "http"]
-**BastionCtrlSubdomain** | Pointer to **string** | The Bastion API prefix | [optional] 
+**BastionCtrlPath** | Pointer to **string** | Deprecated. use bastion-ctrl-path | [optional] 
+**BastionCtrlPort** | Pointer to **string** | Deprecated. use sra-ctrl-port | [optional] 
+**BastionCtrlProto** | Pointer to **string** | Deprecated. use sra-ctrl-proto | [optional] 
+**BastionCtrlSubdomain** | Pointer to **string** | Deprecated. use sra-ctrl-subdomain | [optional] 
 **CertIssuerName** | Pointer to **string** | The Akeyless certificate issuer name | [optional] 
 **GatewayUrl** | Pointer to **string** | The Gateway URL (configuration management) address, e.g. http://localhost:8000 | [optional] 
 **IdentityFile** | Pointer to **string** | The file from which the identity (private key) for public key authentication is read | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Justification** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
+**SraCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
+**SraCtrlPort** | Pointer to **string** | The Bastion API Port | [optional] [default to "9900"]
+**SraCtrlProto** | Pointer to **string** | The SRA API protocol | [optional] [default to "http"]
+**SraCtrlSubdomain** | Pointer to **string** | The SRA API prefix | [optional] 
 **SshCommand** | Pointer to **string** | Path to SSH executable. e.g. /usr/bin/ssh | [optional] 
 **SshExtraArgs** | Pointer to **string** | Additional SSH arguments (except -i) | [optional] 
 **SshLegacySigningAlg** | Pointer to **bool** | Set this option to output legacy (&#39;ssh-rsa-cert-v01@openssh.com&#39;) signing algorithm name in the ssh certificate. | [optional] [default to false]
@@ -23,7 +27,8 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseSshAgent** | Pointer to **bool** | Enable ssh-agent | [optional] 
-**ViaBastion** | Pointer to **string** | The jump box server | [optional] 
+**ViaBastion** | Pointer to **string** | Deprecated. Use via-sra | [optional] 
+**ViaSra** | Pointer to **string** | The jump box server | [optional] 
 
 ## Methods
 
@@ -344,6 +349,106 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetSraCtrlPath
+
+`func (o *Connect) GetSraCtrlPath() string`
+
+GetSraCtrlPath returns the SraCtrlPath field if non-nil, zero value otherwise.
+
+### GetSraCtrlPathOk
+
+`func (o *Connect) GetSraCtrlPathOk() (*string, bool)`
+
+GetSraCtrlPathOk returns a tuple with the SraCtrlPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraCtrlPath
+
+`func (o *Connect) SetSraCtrlPath(v string)`
+
+SetSraCtrlPath sets SraCtrlPath field to given value.
+
+### HasSraCtrlPath
+
+`func (o *Connect) HasSraCtrlPath() bool`
+
+HasSraCtrlPath returns a boolean if a field has been set.
+
+### GetSraCtrlPort
+
+`func (o *Connect) GetSraCtrlPort() string`
+
+GetSraCtrlPort returns the SraCtrlPort field if non-nil, zero value otherwise.
+
+### GetSraCtrlPortOk
+
+`func (o *Connect) GetSraCtrlPortOk() (*string, bool)`
+
+GetSraCtrlPortOk returns a tuple with the SraCtrlPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraCtrlPort
+
+`func (o *Connect) SetSraCtrlPort(v string)`
+
+SetSraCtrlPort sets SraCtrlPort field to given value.
+
+### HasSraCtrlPort
+
+`func (o *Connect) HasSraCtrlPort() bool`
+
+HasSraCtrlPort returns a boolean if a field has been set.
+
+### GetSraCtrlProto
+
+`func (o *Connect) GetSraCtrlProto() string`
+
+GetSraCtrlProto returns the SraCtrlProto field if non-nil, zero value otherwise.
+
+### GetSraCtrlProtoOk
+
+`func (o *Connect) GetSraCtrlProtoOk() (*string, bool)`
+
+GetSraCtrlProtoOk returns a tuple with the SraCtrlProto field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraCtrlProto
+
+`func (o *Connect) SetSraCtrlProto(v string)`
+
+SetSraCtrlProto sets SraCtrlProto field to given value.
+
+### HasSraCtrlProto
+
+`func (o *Connect) HasSraCtrlProto() bool`
+
+HasSraCtrlProto returns a boolean if a field has been set.
+
+### GetSraCtrlSubdomain
+
+`func (o *Connect) GetSraCtrlSubdomain() string`
+
+GetSraCtrlSubdomain returns the SraCtrlSubdomain field if non-nil, zero value otherwise.
+
+### GetSraCtrlSubdomainOk
+
+`func (o *Connect) GetSraCtrlSubdomainOk() (*string, bool)`
+
+GetSraCtrlSubdomainOk returns a tuple with the SraCtrlSubdomain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSraCtrlSubdomain
+
+`func (o *Connect) SetSraCtrlSubdomain(v string)`
+
+SetSraCtrlSubdomain sets SraCtrlSubdomain field to given value.
+
+### HasSraCtrlSubdomain
+
+`func (o *Connect) HasSraCtrlSubdomain() bool`
+
+HasSraCtrlSubdomain returns a boolean if a field has been set.
+
 ### GetSshCommand
 
 `func (o *Connect) GetSshCommand() string`
@@ -543,6 +648,31 @@ SetViaBastion sets ViaBastion field to given value.
 `func (o *Connect) HasViaBastion() bool`
 
 HasViaBastion returns a boolean if a field has been set.
+
+### GetViaSra
+
+`func (o *Connect) GetViaSra() string`
+
+GetViaSra returns the ViaSra field if non-nil, zero value otherwise.
+
+### GetViaSraOk
+
+`func (o *Connect) GetViaSraOk() (*string, bool)`
+
+GetViaSraOk returns a tuple with the ViaSra field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetViaSra
+
+`func (o *Connect) SetViaSra(v string)`
+
+SetViaSra sets ViaSra field to given value.
+
+### HasViaSra
+
+`func (o *Connect) HasViaSra() bool`
+
+HasViaSra returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -24,7 +24,8 @@ Name | Type | Description | Notes
 **RotatorType** | **string** | The rotator type. options: [target/api-key] | 
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id | [optional] 
 **SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 
@@ -564,6 +565,31 @@ SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value
 `func (o *RotatedSecretCreateAws) HasSecureAccessBastionIssuer() bool`
 
 HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretCreateAws) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *RotatedSecretCreateAws) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretCreateAws) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretCreateAws) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

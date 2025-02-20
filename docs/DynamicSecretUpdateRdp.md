@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AllowUserExtendSession** | Pointer to **int64** | AllowUserExtendSession | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) | [optional] [default to "ext_username"]
 **FixedUserOnly** | Pointer to **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **RdpHostPort** | Pointer to **string** | Port | [optional] [default to "22"]
 **RdpUserGroups** | Pointer to **string** | Groups | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users | [optional] [default to false]
+**SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server | [optional] 
@@ -124,6 +126,31 @@ SetDescription sets Description field to given value.
 `func (o *DynamicSecretUpdateRdp) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateRdp) GetFixedUserClaimKeyname() string`
+
+GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetFixedUserClaimKeynameOk
+
+`func (o *DynamicSecretUpdateRdp) GetFixedUserClaimKeynameOk() (*string, bool)`
+
+GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateRdp) SetFixedUserClaimKeyname(v string)`
+
+SetFixedUserClaimKeyname sets FixedUserClaimKeyname field to given value.
+
+### HasFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateRdp) HasFixedUserClaimKeyname() bool`
+
+HasFixedUserClaimKeyname returns a boolean if a field has been set.
 
 ### GetFixedUserOnly
 
@@ -419,6 +446,31 @@ SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to giv
 `func (o *DynamicSecretUpdateRdp) HasSecureAccessAllowExternalUser() bool`
 
 HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
+
+### GetSecureAccessDelay
+
+`func (o *DynamicSecretUpdateRdp) GetSecureAccessDelay() int64`
+
+GetSecureAccessDelay returns the SecureAccessDelay field if non-nil, zero value otherwise.
+
+### GetSecureAccessDelayOk
+
+`func (o *DynamicSecretUpdateRdp) GetSecureAccessDelayOk() (*int64, bool)`
+
+GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDelay
+
+`func (o *DynamicSecretUpdateRdp) SetSecureAccessDelay(v int64)`
+
+SetSecureAccessDelay sets SecureAccessDelay field to given value.
+
+### HasSecureAccessDelay
+
+`func (o *DynamicSecretUpdateRdp) HasSecureAccessDelay() bool`
+
+HasSecureAccessDelay returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

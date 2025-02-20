@@ -42,10 +42,10 @@ Name | Type | Description | Notes
 **UsageEventEnable** | Pointer to **string** | Enable event for objects that have not been used or changed [true/false] | [optional] 
 **UsageEventInterval** | Pointer to **int64** | Interval by days for unused objects. Default and minimum interval is 90 days | [optional] 
 **UsageEventObjectType** | Pointer to **string** | Usage event is supported for auth method or secrets-and-keys [auth/item] | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Password must contain capital letters [true/false] | [optional] 
 **UseLowerLetters** | Pointer to **string** | Password must contain lower case letters [true/false] | [optional] 
 **UseNumbers** | Pointer to **string** | Password must contain numbers [true/false] | [optional] 
 **UseSpecialCharacters** | Pointer to **string** | Password must contain special characters [true/false] | [optional] 
-**UseCapitalLetters** | Pointer to **string** | Password must contain capital letters [true/false] | [optional] 
 
 ## Methods
 
@@ -1016,6 +1016,31 @@ SetUsageEventObjectType sets UsageEventObjectType field to given value.
 
 HasUsageEventObjectType returns a boolean if a field has been set.
 
+### GetUseCapitalLetters
+
+`func (o *UpdateAccountSettings) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *UpdateAccountSettings) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *UpdateAccountSettings) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *UpdateAccountSettings) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
 ### GetUseLowerLetters
 
 `func (o *UpdateAccountSettings) GetUseLowerLetters() string`
@@ -1090,31 +1115,6 @@ SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
 `func (o *UpdateAccountSettings) HasUseSpecialCharacters() bool`
 
 HasUseSpecialCharacters returns a boolean if a field has been set.
-
-### GetUseCapitalLetters
-
-`func (o *UpdateAccountSettings) GetUseCapitalLetters() string`
-
-GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
-
-### GetUseCapitalLettersOk
-
-`func (o *UpdateAccountSettings) GetUseCapitalLettersOk() (*string, bool)`
-
-GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUseCapitalLetters
-
-`func (o *UpdateAccountSettings) SetUseCapitalLetters(v string)`
-
-SetUseCapitalLetters sets UseCapitalLetters field to given value.
-
-### HasUseCapitalLetters
-
-`func (o *UpdateAccountSettings) HasUseCapitalLetters() bool`
-
-HasUseCapitalLetters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

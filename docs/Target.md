@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessDateDisplay** | Pointer to **string** |  | [optional] 
 **AccessRequestStatus** | Pointer to **string** |  | [optional] 
-**Attributes** | Pointer to **map[string]map[string]interface{}** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
+**Attributes** | Pointer to **map[string]interface{}** | this is not \&quot;omitempty\&quot; since an empty value causes no update while an empty map will clear the attributes | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CredentialsLess** | Pointer to **bool** |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **TargetDetails** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
@@ -121,20 +121,20 @@ HasAccessRequestStatus returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *Target) GetAttributes() map[string]map[string]interface{}`
+`func (o *Target) GetAttributes() map[string]interface{}`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *Target) GetAttributesOk() (*map[string]map[string]interface{}, bool)`
+`func (o *Target) GetAttributesOk() (*map[string]interface{}, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *Target) SetAttributes(v map[string]map[string]interface{})`
+`func (o *Target) SetAttributes(v map[string]interface{})`
 
 SetAttributes sets Attributes field to given value.
 

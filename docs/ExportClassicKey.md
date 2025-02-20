@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Version** | Pointer to **int32** | Classic key version | [optional] 
+**WrappingKeyName** | Pointer to **string** | Classic key name to wrap the key material with | [optional] 
 
 ## Methods
 
@@ -226,6 +227,31 @@ SetVersion sets Version field to given value.
 `func (o *ExportClassicKey) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### GetWrappingKeyName
+
+`func (o *ExportClassicKey) GetWrappingKeyName() string`
+
+GetWrappingKeyName returns the WrappingKeyName field if non-nil, zero value otherwise.
+
+### GetWrappingKeyNameOk
+
+`func (o *ExportClassicKey) GetWrappingKeyNameOk() (*string, bool)`
+
+GetWrappingKeyNameOk returns a tuple with the WrappingKeyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWrappingKeyName
+
+`func (o *ExportClassicKey) SetWrappingKeyName(v string)`
+
+SetWrappingKeyName sets WrappingKeyName field to given value.
+
+### HasWrappingKeyName
+
+`func (o *ExportClassicKey) HasWrappingKeyName() bool`
+
+HasWrappingKeyName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

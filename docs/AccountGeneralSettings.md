@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **LockDefaultKey** | Pointer to **bool** | LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty | [optional] 
 **PasswordExpirationInfo** | Pointer to [**PasswordExpirationInfo**](PasswordExpirationInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
+**PasswordScore** | Pointer to [**PasswordScoreSetting**](PasswordScoreSetting.md) |  | [optional] 
 **ProtectItemsByDefault** | Pointer to **bool** |  | [optional] 
 **RotationSecretMaxInterval** | Pointer to [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
 **SharingPolicy** | Pointer to [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 
@@ -364,6 +365,31 @@ SetPasswordPolicy sets PasswordPolicy field to given value.
 `func (o *AccountGeneralSettings) HasPasswordPolicy() bool`
 
 HasPasswordPolicy returns a boolean if a field has been set.
+
+### GetPasswordScore
+
+`func (o *AccountGeneralSettings) GetPasswordScore() PasswordScoreSetting`
+
+GetPasswordScore returns the PasswordScore field if non-nil, zero value otherwise.
+
+### GetPasswordScoreOk
+
+`func (o *AccountGeneralSettings) GetPasswordScoreOk() (*PasswordScoreSetting, bool)`
+
+GetPasswordScoreOk returns a tuple with the PasswordScore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordScore
+
+`func (o *AccountGeneralSettings) SetPasswordScore(v PasswordScoreSetting)`
+
+SetPasswordScore sets PasswordScore field to given value.
+
+### HasPasswordScore
+
+`func (o *AccountGeneralSettings) HasPasswordScore() bool`
+
+HasPasswordScore returns a boolean if a field has been set.
 
 ### GetProtectItemsByDefault
 

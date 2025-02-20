@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertAccessId** | Pointer to **string** | Default Certificate access id for UI login | [optional] [default to "use-existing"]
 **EventOnStatusChange** | Pointer to **string** | Trigger an event when Gateway status is changed [true/false] | [optional] 
+**HvpRouteVersion** | Pointer to **int64** | Hvp route version to use [1/2] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of the gateway default encryption key | [optional] [default to "Default"]
 **OidcAccessId** | Pointer to **string** | Default OIDC access id for UI login | [optional] [default to "use-existing"]
@@ -81,6 +82,31 @@ SetEventOnStatusChange sets EventOnStatusChange field to given value.
 `func (o *GatewayUpdateDefaults) HasEventOnStatusChange() bool`
 
 HasEventOnStatusChange returns a boolean if a field has been set.
+
+### GetHvpRouteVersion
+
+`func (o *GatewayUpdateDefaults) GetHvpRouteVersion() int64`
+
+GetHvpRouteVersion returns the HvpRouteVersion field if non-nil, zero value otherwise.
+
+### GetHvpRouteVersionOk
+
+`func (o *GatewayUpdateDefaults) GetHvpRouteVersionOk() (*int64, bool)`
+
+GetHvpRouteVersionOk returns a tuple with the HvpRouteVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHvpRouteVersion
+
+`func (o *GatewayUpdateDefaults) SetHvpRouteVersion(v int64)`
+
+SetHvpRouteVersion sets HvpRouteVersion field to given value.
+
+### HasHvpRouteVersion
+
+`func (o *GatewayUpdateDefaults) HasHvpRouteVersion() bool`
+
+HasHvpRouteVersion returns a boolean if a field has been set.
 
 ### GetJson
 

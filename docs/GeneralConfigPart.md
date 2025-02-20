@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **EnableTlsCurl** | Pointer to **bool** |  | [optional] 
 **EnableTlsHvp** | Pointer to **bool** |  | [optional] 
 **GwClusterUrl** | Pointer to **string** |  | [optional] 
+**HvpRouteVersion** | Pointer to **int64** |  | [optional] 
 **NotifyOnStatusChange** | Pointer to **bool** |  | [optional] 
 **TcpPort** | Pointer to **string** |  | [optional] 
 **TlsCert** | Pointer to **string** |  | [optional] 
@@ -261,6 +262,31 @@ SetGwClusterUrl sets GwClusterUrl field to given value.
 `func (o *GeneralConfigPart) HasGwClusterUrl() bool`
 
 HasGwClusterUrl returns a boolean if a field has been set.
+
+### GetHvpRouteVersion
+
+`func (o *GeneralConfigPart) GetHvpRouteVersion() int64`
+
+GetHvpRouteVersion returns the HvpRouteVersion field if non-nil, zero value otherwise.
+
+### GetHvpRouteVersionOk
+
+`func (o *GeneralConfigPart) GetHvpRouteVersionOk() (*int64, bool)`
+
+GetHvpRouteVersionOk returns a tuple with the HvpRouteVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHvpRouteVersion
+
+`func (o *GeneralConfigPart) SetHvpRouteVersion(v int64)`
+
+SetHvpRouteVersion sets HvpRouteVersion field to given value.
+
+### HasHvpRouteVersion
+
+`func (o *GeneralConfigPart) HasHvpRouteVersion() bool`
+
+HasHvpRouteVersion returns a boolean if a field has been set.
 
 ### GetNotifyOnStatusChange
 

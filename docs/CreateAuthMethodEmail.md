@@ -10,10 +10,13 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **Email** | **string** | An email address to be invited to have access | 
+**EnableMfa** | Pointer to **string** | Enable MFA for this authentication method [True / False] | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
+**MfaType** | Pointer to **string** | Enable two-factor-authentication via [email/auth app] | [optional] [default to "email"]
 **Name** | **string** | Auth Method name | 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -183,6 +186,56 @@ and a boolean to check if the value has been set.
 SetEmail sets Email field to given value.
 
 
+### GetEnableMfa
+
+`func (o *CreateAuthMethodEmail) GetEnableMfa() string`
+
+GetEnableMfa returns the EnableMfa field if non-nil, zero value otherwise.
+
+### GetEnableMfaOk
+
+`func (o *CreateAuthMethodEmail) GetEnableMfaOk() (*string, bool)`
+
+GetEnableMfaOk returns a tuple with the EnableMfa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableMfa
+
+`func (o *CreateAuthMethodEmail) SetEnableMfa(v string)`
+
+SetEnableMfa sets EnableMfa field to given value.
+
+### HasEnableMfa
+
+`func (o *CreateAuthMethodEmail) HasEnableMfa() bool`
+
+HasEnableMfa returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *CreateAuthMethodEmail) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *CreateAuthMethodEmail) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *CreateAuthMethodEmail) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *CreateAuthMethodEmail) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
+
 ### GetForceSubClaims
 
 `func (o *CreateAuthMethodEmail) GetForceSubClaims() bool`
@@ -282,6 +335,31 @@ SetJwtTtl sets JwtTtl field to given value.
 `func (o *CreateAuthMethodEmail) HasJwtTtl() bool`
 
 HasJwtTtl returns a boolean if a field has been set.
+
+### GetMfaType
+
+`func (o *CreateAuthMethodEmail) GetMfaType() string`
+
+GetMfaType returns the MfaType field if non-nil, zero value otherwise.
+
+### GetMfaTypeOk
+
+`func (o *CreateAuthMethodEmail) GetMfaTypeOk() (*string, bool)`
+
+GetMfaTypeOk returns a tuple with the MfaType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMfaType
+
+`func (o *CreateAuthMethodEmail) SetMfaType(v string)`
+
+SetMfaType sets MfaType field to given value.
+
+### HasMfaType
+
+`func (o *CreateAuthMethodEmail) HasMfaType() bool`
+
+HasMfaType returns a boolean if a field has been set.
 
 ### GetName
 

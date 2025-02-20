@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExpiresAt** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ExpiresAt** | Pointer to **time.Time** |  | [optional] 
 **Kid** | Pointer to **string** |  | [optional] 
 **MacKey** | Pointer to **string** |  | [optional] 
 

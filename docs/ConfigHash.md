@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **MQueue** | Pointer to **string** |  | [optional] 
 **MigrationStatus** | Pointer to **string** |  | [optional] 
 **Migrations** | Pointer to **string** |  | [optional] 
-**Producers** | Pointer to **map[string]interface{}** |  | [optional] 
+**Producers** | Pointer to **interface{}** |  | [optional] 
 **ProducersStatus** | Pointer to **string** |  | [optional] 
-**Rotators** | Pointer to **map[string]interface{}** |  | [optional] 
+**Rotators** | Pointer to **interface{}** |  | [optional] 
 **Saml** | Pointer to **string** |  | [optional] 
 **UniversalIdentity** | Pointer to **string** |  | [optional] 
 
@@ -343,20 +343,20 @@ HasMigrations returns a boolean if a field has been set.
 
 ### GetProducers
 
-`func (o *ConfigHash) GetProducers() map[string]interface{}`
+`func (o *ConfigHash) GetProducers() interface{}`
 
 GetProducers returns the Producers field if non-nil, zero value otherwise.
 
 ### GetProducersOk
 
-`func (o *ConfigHash) GetProducersOk() (*map[string]interface{}, bool)`
+`func (o *ConfigHash) GetProducersOk() (*interface{}, bool)`
 
 GetProducersOk returns a tuple with the Producers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducers
 
-`func (o *ConfigHash) SetProducers(v map[string]interface{})`
+`func (o *ConfigHash) SetProducers(v interface{})`
 
 SetProducers sets Producers field to given value.
 
@@ -366,6 +366,16 @@ SetProducers sets Producers field to given value.
 
 HasProducers returns a boolean if a field has been set.
 
+### SetProducersNil
+
+`func (o *ConfigHash) SetProducersNil(b bool)`
+
+ SetProducersNil sets the value for Producers to be an explicit nil
+
+### UnsetProducers
+`func (o *ConfigHash) UnsetProducers()`
+
+UnsetProducers ensures that no value is present for Producers, not even an explicit nil
 ### GetProducersStatus
 
 `func (o *ConfigHash) GetProducersStatus() string`
@@ -393,20 +403,20 @@ HasProducersStatus returns a boolean if a field has been set.
 
 ### GetRotators
 
-`func (o *ConfigHash) GetRotators() map[string]interface{}`
+`func (o *ConfigHash) GetRotators() interface{}`
 
 GetRotators returns the Rotators field if non-nil, zero value otherwise.
 
 ### GetRotatorsOk
 
-`func (o *ConfigHash) GetRotatorsOk() (*map[string]interface{}, bool)`
+`func (o *ConfigHash) GetRotatorsOk() (*interface{}, bool)`
 
 GetRotatorsOk returns a tuple with the Rotators field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRotators
 
-`func (o *ConfigHash) SetRotators(v map[string]interface{})`
+`func (o *ConfigHash) SetRotators(v interface{})`
 
 SetRotators sets Rotators field to given value.
 
@@ -416,6 +426,16 @@ SetRotators sets Rotators field to given value.
 
 HasRotators returns a boolean if a field has been set.
 
+### SetRotatorsNil
+
+`func (o *ConfigHash) SetRotatorsNil(b bool)`
+
+ SetRotatorsNil sets the value for Rotators to be an explicit nil
+
+### UnsetRotators
+`func (o *ConfigHash) UnsetRotators()`
+
+UnsetRotators ensures that no value is present for Rotators, not even an explicit nil
 ### GetSaml
 
 `func (o *ConfigHash) GetSaml() string`

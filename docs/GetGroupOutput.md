@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | Pointer to **string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **GroupAlias** | Pointer to **string** |  | [optional] 
 **GroupId** | Pointer to **string** |  | [optional] 
 **GroupName** | Pointer to **string** |  | [optional] 
 **IsSubclaimsWithOperator** | Pointer to **bool** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **UserAssignments** | Pointer to [**[]AccessPermissionAssignment**](AccessPermissionAssignment.md) |  | [optional] 
 
 ## Methods

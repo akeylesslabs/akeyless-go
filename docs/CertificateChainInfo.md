@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CertificateChain** | Pointer to [**[]CertificateInfo**](CertificateInfo.md) |  | [optional] 
 **CertificateFormat** | Pointer to **string** |  | [optional] 
 **CertificateHasPrivateKey** | Pointer to **bool** |  | [optional] 
+**CertificateIssuerGwClusterId** | Pointer to **int64** |  | [optional] 
 **CertificateIssuerGwClusterUrl** | Pointer to **string** |  | [optional] 
 **CertificateIssuerItemId** | Pointer to **int64** |  | [optional] 
 **CertificateIssuerName** | Pointer to **string** |  | [optional] 
@@ -135,6 +136,31 @@ SetCertificateHasPrivateKey sets CertificateHasPrivateKey field to given value.
 `func (o *CertificateChainInfo) HasCertificateHasPrivateKey() bool`
 
 HasCertificateHasPrivateKey returns a boolean if a field has been set.
+
+### GetCertificateIssuerGwClusterId
+
+`func (o *CertificateChainInfo) GetCertificateIssuerGwClusterId() int64`
+
+GetCertificateIssuerGwClusterId returns the CertificateIssuerGwClusterId field if non-nil, zero value otherwise.
+
+### GetCertificateIssuerGwClusterIdOk
+
+`func (o *CertificateChainInfo) GetCertificateIssuerGwClusterIdOk() (*int64, bool)`
+
+GetCertificateIssuerGwClusterIdOk returns a tuple with the CertificateIssuerGwClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateIssuerGwClusterId
+
+`func (o *CertificateChainInfo) SetCertificateIssuerGwClusterId(v int64)`
+
+SetCertificateIssuerGwClusterId sets CertificateIssuerGwClusterId field to given value.
+
+### HasCertificateIssuerGwClusterId
+
+`func (o *CertificateChainInfo) HasCertificateIssuerGwClusterId() bool`
+
+HasCertificateIssuerGwClusterId returns a boolean if a field has been set.
 
 ### GetCertificateIssuerGwClusterUrl
 

@@ -34,7 +34,8 @@ Name | Type | Description | Notes
 **SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users (relevant only for rdp) | [optional] [default to false]
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
 **SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The db schema (relevant only for mssql or postgresql) | [optional] 
 **SecureAccessDisableConcurrentConnections** | Pointer to **bool** | Enable this flag to prevent simultaneous use of the same secret | [optional] 
@@ -44,8 +45,8 @@ Name | Type | Description | Notes
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless Web Access Bastion (relevant only for aws or azure) | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser viaAkeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure) | [optional] [default to false]
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] | [optional] 
@@ -842,6 +843,31 @@ SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value
 `func (o *UpdateRotatedSecret) HasSecureAccessBastionIssuer() bool`
 
 HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *UpdateRotatedSecret) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *UpdateRotatedSecret) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *UpdateRotatedSecret) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessDbName
 

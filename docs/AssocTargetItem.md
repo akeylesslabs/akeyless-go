@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CertificatePath** | Pointer to **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | Pointer to **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
 **DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
+**ExternalKeyName** | Pointer to **string** | The external key name to associate with the classic key (Relevant only for Classic Key AWS/Azure/GCP targets) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
 **KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
@@ -120,6 +121,31 @@ SetDisablePreviousKeyVersion sets DisablePreviousKeyVersion field to given value
 `func (o *AssocTargetItem) HasDisablePreviousKeyVersion() bool`
 
 HasDisablePreviousKeyVersion returns a boolean if a field has been set.
+
+### GetExternalKeyName
+
+`func (o *AssocTargetItem) GetExternalKeyName() string`
+
+GetExternalKeyName returns the ExternalKeyName field if non-nil, zero value otherwise.
+
+### GetExternalKeyNameOk
+
+`func (o *AssocTargetItem) GetExternalKeyNameOk() (*string, bool)`
+
+GetExternalKeyNameOk returns a tuple with the ExternalKeyName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalKeyName
+
+`func (o *AssocTargetItem) SetExternalKeyName(v string)`
+
+SetExternalKeyName sets ExternalKeyName field to given value.
+
+### HasExternalKeyName
+
+`func (o *AssocTargetItem) HasExternalKeyName() bool`
+
+HasExternalKeyName returns a boolean if a field has been set.
 
 ### GetJson
 

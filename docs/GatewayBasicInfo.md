@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ClusterId** | Pointer to **int64** |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **ClusterUrl** | Pointer to **string** |  | [optional] 
+**IsClusterAvailable** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetClusterUrl sets ClusterUrl field to given value.
 `func (o *GatewayBasicInfo) HasClusterUrl() bool`
 
 HasClusterUrl returns a boolean if a field has been set.
+
+### GetIsClusterAvailable
+
+`func (o *GatewayBasicInfo) GetIsClusterAvailable() bool`
+
+GetIsClusterAvailable returns the IsClusterAvailable field if non-nil, zero value otherwise.
+
+### GetIsClusterAvailableOk
+
+`func (o *GatewayBasicInfo) GetIsClusterAvailableOk() (*bool, bool)`
+
+GetIsClusterAvailableOk returns a tuple with the IsClusterAvailable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsClusterAvailable
+
+`func (o *GatewayBasicInfo) SetIsClusterAvailable(v bool)`
+
+SetIsClusterAvailable sets IsClusterAvailable field to given value.
+
+### HasIsClusterAvailable
+
+`func (o *GatewayBasicInfo) HasIsClusterAvailable() bool`
+
+HasIsClusterAvailable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

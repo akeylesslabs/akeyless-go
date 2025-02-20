@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Created** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**Created** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**Expiration** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**LastRetrieved** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**Location** | Pointer to **map[string]interface{}** |  | [optional] 
+**Expiration** | Pointer to **time.Time** |  | [optional] 
+**LastRetrieved** | Pointer to **time.Time** |  | [optional] 
+**Location** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **SecretId** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **bool** |  | [optional] 
@@ -137,20 +137,20 @@ HasLastRetrieved returns a boolean if a field has been set.
 
 ### GetLocation
 
-`func (o *SecretInfo) GetLocation() map[string]interface{}`
+`func (o *SecretInfo) GetLocation() interface{}`
 
 GetLocation returns the Location field if non-nil, zero value otherwise.
 
 ### GetLocationOk
 
-`func (o *SecretInfo) GetLocationOk() (*map[string]interface{}, bool)`
+`func (o *SecretInfo) GetLocationOk() (*interface{}, bool)`
 
 GetLocationOk returns a tuple with the Location field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLocation
 
-`func (o *SecretInfo) SetLocation(v map[string]interface{})`
+`func (o *SecretInfo) SetLocation(v interface{})`
 
 SetLocation sets Location field to given value.
 
@@ -160,6 +160,16 @@ SetLocation sets Location field to given value.
 
 HasLocation returns a boolean if a field has been set.
 
+### SetLocationNil
+
+`func (o *SecretInfo) SetLocationNil(b bool)`
+
+ SetLocationNil sets the value for Location to be an explicit nil
+
+### UnsetLocation
+`func (o *SecretInfo) UnsetLocation()`
+
+UnsetLocation ensures that no value is present for Location, not even an explicit nil
 ### GetName
 
 `func (o *SecretInfo) GetName() string`

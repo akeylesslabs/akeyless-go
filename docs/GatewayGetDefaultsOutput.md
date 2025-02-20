@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateAccessId** | Pointer to **string** |  | [optional] 
 **DefaultProtectionKeyId** | Pointer to **string** |  | [optional] 
+**HvpRouteVersion** | Pointer to **int64** |  | [optional] 
 **NotifyOnStatusChange** | Pointer to **bool** |  | [optional] 
 **OidcAccessId** | Pointer to **string** |  | [optional] 
 **SamlAccessId** | Pointer to **string** |  | [optional] 
@@ -78,6 +79,31 @@ SetDefaultProtectionKeyId sets DefaultProtectionKeyId field to given value.
 `func (o *GatewayGetDefaultsOutput) HasDefaultProtectionKeyId() bool`
 
 HasDefaultProtectionKeyId returns a boolean if a field has been set.
+
+### GetHvpRouteVersion
+
+`func (o *GatewayGetDefaultsOutput) GetHvpRouteVersion() int64`
+
+GetHvpRouteVersion returns the HvpRouteVersion field if non-nil, zero value otherwise.
+
+### GetHvpRouteVersionOk
+
+`func (o *GatewayGetDefaultsOutput) GetHvpRouteVersionOk() (*int64, bool)`
+
+GetHvpRouteVersionOk returns a tuple with the HvpRouteVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHvpRouteVersion
+
+`func (o *GatewayGetDefaultsOutput) SetHvpRouteVersion(v int64)`
+
+SetHvpRouteVersion sets HvpRouteVersion field to given value.
+
+### HasHvpRouteVersion
+
+`func (o *GatewayGetDefaultsOutput) HasHvpRouteVersion() bool`
+
+HasHvpRouteVersion returns a boolean if a field has been set.
 
 ### GetNotifyOnStatusChange
 

@@ -5,22 +5,27 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProviderType** | Pointer to **string** |  | [optional] 
-**AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | 
+**AllowedUsers** | **string** | Users allowed to fetch the certificate, e.g root,ubuntu | [default to "-"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Extensions** | Pointer to **map[string]string** | Signed certificates with extensions, e.g permit-port-forwarding&#x3D;\\\&quot;\\\&quot; | [optional] 
+**ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
+**FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | SSH certificate issuer name | 
 **Principals** | Pointer to **string** | Signed certificates with principal, e.g example_role1,example_role2 | [optional] 
-**SecureAccessBastionApi** | Pointer to **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.bastion:9900 | [optional] 
-**SecureAccessBastionSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.bastion:22 | [optional] 
+**SecureAccessApi** | Pointer to **string** | Secure Access SSH control API endpoint. E.g. https://my.sra-server:9900 | [optional] 
+**SecureAccessBastionApi** | Pointer to **string** | Deprecated. use secure-access-api | [optional] 
+**SecureAccessBastionSsh** | Pointer to **string** | Deprecated. use secure-access-ssh | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enable this flag to enforce connections only to the hosts listed in --secure-access-host | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
+**SecureAccessSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.sra-server:22 | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list | [optional] 
-**SecureAccessUseInternalBastion** | Pointer to **bool** | Use internal SSH Bastion | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **bool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
+**SecureAccessUseInternalSshAccess** | Pointer to **bool** | Use internal SSH Access | [optional] 
 **SignerKeyName** | **string** | A key to sign the certificate with | 
 **Tag** | Pointer to **[]string** | List of the tags attached to this key | [optional] 
 **Target** | Pointer to **[]string** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times | [optional] 
@@ -167,6 +172,56 @@ SetExtensions sets Extensions field to given value.
 
 HasExtensions returns a boolean if a field has been set.
 
+### GetExternalUsername
+
+`func (o *CreateSSHCertIssuer) GetExternalUsername() string`
+
+GetExternalUsername returns the ExternalUsername field if non-nil, zero value otherwise.
+
+### GetExternalUsernameOk
+
+`func (o *CreateSSHCertIssuer) GetExternalUsernameOk() (*string, bool)`
+
+GetExternalUsernameOk returns a tuple with the ExternalUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalUsername
+
+`func (o *CreateSSHCertIssuer) SetExternalUsername(v string)`
+
+SetExternalUsername sets ExternalUsername field to given value.
+
+### HasExternalUsername
+
+`func (o *CreateSSHCertIssuer) HasExternalUsername() bool`
+
+HasExternalUsername returns a boolean if a field has been set.
+
+### GetFixedUserClaimKeyname
+
+`func (o *CreateSSHCertIssuer) GetFixedUserClaimKeyname() string`
+
+GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetFixedUserClaimKeynameOk
+
+`func (o *CreateSSHCertIssuer) GetFixedUserClaimKeynameOk() (*string, bool)`
+
+GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserClaimKeyname
+
+`func (o *CreateSSHCertIssuer) SetFixedUserClaimKeyname(v string)`
+
+SetFixedUserClaimKeyname sets FixedUserClaimKeyname field to given value.
+
+### HasFixedUserClaimKeyname
+
+`func (o *CreateSSHCertIssuer) HasFixedUserClaimKeyname() bool`
+
+HasFixedUserClaimKeyname returns a boolean if a field has been set.
+
 ### GetHostProvider
 
 `func (o *CreateSSHCertIssuer) GetHostProvider() string`
@@ -286,6 +341,31 @@ SetPrincipals sets Principals field to given value.
 `func (o *CreateSSHCertIssuer) HasPrincipals() bool`
 
 HasPrincipals returns a boolean if a field has been set.
+
+### GetSecureAccessApi
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessApi() string`
+
+GetSecureAccessApi returns the SecureAccessApi field if non-nil, zero value otherwise.
+
+### GetSecureAccessApiOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessApiOk() (*string, bool)`
+
+GetSecureAccessApiOk returns a tuple with the SecureAccessApi field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessApi
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessApi(v string)`
+
+SetSecureAccessApi sets SecureAccessApi field to given value.
+
+### HasSecureAccessApi
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessApi() bool`
+
+HasSecureAccessApi returns a boolean if a field has been set.
 
 ### GetSecureAccessBastionApi
 
@@ -412,6 +492,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 
 HasSecureAccessHost returns a boolean if a field has been set.
 
+### GetSecureAccessSsh
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessSsh() string`
+
+GetSecureAccessSsh returns the SecureAccessSsh field if non-nil, zero value otherwise.
+
+### GetSecureAccessSshOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessSshOk() (*string, bool)`
+
+GetSecureAccessSshOk returns a tuple with the SecureAccessSsh field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessSsh
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessSsh(v string)`
+
+SetSecureAccessSsh sets SecureAccessSsh field to given value.
+
+### HasSecureAccessSsh
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessSsh() bool`
+
+HasSecureAccessSsh returns a boolean if a field has been set.
+
 ### GetSecureAccessSshCredsUser
 
 `func (o *CreateSSHCertIssuer) GetSecureAccessSshCredsUser() string`
@@ -461,6 +566,31 @@ SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to g
 `func (o *CreateSSHCertIssuer) HasSecureAccessUseInternalBastion() bool`
 
 HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
+
+### GetSecureAccessUseInternalSshAccess
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessUseInternalSshAccess() bool`
+
+GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field if non-nil, zero value otherwise.
+
+### GetSecureAccessUseInternalSshAccessOk
+
+`func (o *CreateSSHCertIssuer) GetSecureAccessUseInternalSshAccessOk() (*bool, bool)`
+
+GetSecureAccessUseInternalSshAccessOk returns a tuple with the SecureAccessUseInternalSshAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUseInternalSshAccess
+
+`func (o *CreateSSHCertIssuer) SetSecureAccessUseInternalSshAccess(v bool)`
+
+SetSecureAccessUseInternalSshAccess sets SecureAccessUseInternalSshAccess field to given value.
+
+### HasSecureAccessUseInternalSshAccess
+
+`func (o *CreateSSHCertIssuer) HasSecureAccessUseInternalSshAccess() bool`
+
+HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 
 ### GetSignerKeyName
 

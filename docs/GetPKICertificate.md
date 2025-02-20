@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ExtraExtensions** | Pointer to **string** | A json string that defines the requested extra extensions for the certificate | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
+**MaxPathLen** | Pointer to **int64** | The maximum path length for the generated certificate. -1, means unlimited unless the signing certificate has a maximum path length set | [optional] [default to -1]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | Pointer to **string** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -230,6 +231,31 @@ SetKeyDataBase64 sets KeyDataBase64 field to given value.
 `func (o *GetPKICertificate) HasKeyDataBase64() bool`
 
 HasKeyDataBase64 returns a boolean if a field has been set.
+
+### GetMaxPathLen
+
+`func (o *GetPKICertificate) GetMaxPathLen() int64`
+
+GetMaxPathLen returns the MaxPathLen field if non-nil, zero value otherwise.
+
+### GetMaxPathLenOk
+
+`func (o *GetPKICertificate) GetMaxPathLenOk() (*int64, bool)`
+
+GetMaxPathLenOk returns a tuple with the MaxPathLen field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxPathLen
+
+`func (o *GetPKICertificate) SetMaxPathLen(v int64)`
+
+SetMaxPathLen sets MaxPathLen field to given value.
+
+### HasMaxPathLen
+
+`func (o *GetPKICertificate) HasMaxPathLen() bool`
+
+HasMaxPathLen returns a boolean if a field has been set.
 
 ### GetToken
 

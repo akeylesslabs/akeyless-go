@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **RevokeAll** | Pointer to **bool** | Revoke All Temp Creds | [optional] 
 **SoftDelete** | Pointer to **bool** | Soft Delete | [optional] 
-**TmpCredsId** | **string** | Tmp Creds ID | [default to "demo_default_tmp_creds_id_for_sdk_bc"]
+**TmpCredsId** | Pointer to **string** | Tmp Creds ID | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewDynamicSecretTmpCredsDelete
 
-`func NewDynamicSecretTmpCredsDelete(name string, tmpCredsId string, ) *DynamicSecretTmpCredsDelete`
+`func NewDynamicSecretTmpCredsDelete(name string, ) *DynamicSecretTmpCredsDelete`
 
 NewDynamicSecretTmpCredsDelete instantiates a new DynamicSecretTmpCredsDelete object
 This constructor will assign default values to properties that have it defined,
@@ -171,6 +171,11 @@ and a boolean to check if the value has been set.
 
 SetTmpCredsId sets TmpCredsId field to given value.
 
+### HasTmpCredsId
+
+`func (o *DynamicSecretTmpCredsDelete) HasTmpCredsId() bool`
+
+HasTmpCredsId returns a boolean if a field has been set.
 
 ### GetToken
 

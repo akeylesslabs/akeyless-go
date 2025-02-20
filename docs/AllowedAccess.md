@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccessId** | Pointer to **string** |  | [optional] 
 **AccessType** | Pointer to **string** |  | [optional] 
 **ClusterId** | Pointer to **int64** |  | [optional] 
-**CreatedAt** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Editable** | Pointer to **bool** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **IsValid** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Permissions** | Pointer to **[]string** |  | [optional] 
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
 **SubClaimsCaseInsensitive** | Pointer to **bool** |  | [optional] 
-**UpdatedAt** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

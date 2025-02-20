@@ -14,8 +14,10 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessClusterEndpoint** | Pointer to **string** | The K8s cluster endpoint URL | [optional] 
+**SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
@@ -313,6 +315,31 @@ SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value
 
 HasSecureAccessBastionIssuer returns a boolean if a field has been set.
 
+### GetSecureAccessCertificateIssuer
+
+`func (o *GatewayCreateProducerGke) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *GatewayCreateProducerGke) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *GatewayCreateProducerGke) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *GatewayCreateProducerGke) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
+
 ### GetSecureAccessClusterEndpoint
 
 `func (o *GatewayCreateProducerGke) GetSecureAccessClusterEndpoint() string`
@@ -337,6 +364,31 @@ SetSecureAccessClusterEndpoint sets SecureAccessClusterEndpoint field to given v
 `func (o *GatewayCreateProducerGke) HasSecureAccessClusterEndpoint() bool`
 
 HasSecureAccessClusterEndpoint returns a boolean if a field has been set.
+
+### GetSecureAccessDelay
+
+`func (o *GatewayCreateProducerGke) GetSecureAccessDelay() int64`
+
+GetSecureAccessDelay returns the SecureAccessDelay field if non-nil, zero value otherwise.
+
+### GetSecureAccessDelayOk
+
+`func (o *GatewayCreateProducerGke) GetSecureAccessDelayOk() (*int64, bool)`
+
+GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDelay
+
+`func (o *GatewayCreateProducerGke) SetSecureAccessDelay(v int64)`
+
+SetSecureAccessDelay sets SecureAccessDelay field to given value.
+
+### HasSecureAccessDelay
+
+`func (o *GatewayCreateProducerGke) HasSecureAccessDelay() bool`
+
+HasSecureAccessDelay returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

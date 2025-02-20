@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
+**FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) | [optional] [default to "ext_username"]
 **GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server | [optional] 
@@ -200,6 +202,31 @@ SetExternalUsername sets ExternalUsername field to given value.
 `func (o *DynamicSecretCreateLdap) HasExternalUsername() bool`
 
 HasExternalUsername returns a boolean if a field has been set.
+
+### GetFixedUserClaimKeyname
+
+`func (o *DynamicSecretCreateLdap) GetFixedUserClaimKeyname() string`
+
+GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetFixedUserClaimKeynameOk
+
+`func (o *DynamicSecretCreateLdap) GetFixedUserClaimKeynameOk() (*string, bool)`
+
+GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserClaimKeyname
+
+`func (o *DynamicSecretCreateLdap) SetFixedUserClaimKeyname(v string)`
+
+SetFixedUserClaimKeyname sets FixedUserClaimKeyname field to given value.
+
+### HasFixedUserClaimKeyname
+
+`func (o *DynamicSecretCreateLdap) HasFixedUserClaimKeyname() bool`
+
+HasFixedUserClaimKeyname returns a boolean if a field has been set.
 
 ### GetGroupDn
 
@@ -395,6 +422,31 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *DynamicSecretCreateLdap) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetSecureAccessDelay
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessDelay() int64`
+
+GetSecureAccessDelay returns the SecureAccessDelay field if non-nil, zero value otherwise.
+
+### GetSecureAccessDelayOk
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessDelayOk() (*int64, bool)`
+
+GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDelay
+
+`func (o *DynamicSecretCreateLdap) SetSecureAccessDelay(v int64)`
+
+SetSecureAccessDelay sets SecureAccessDelay field to given value.
+
+### HasSecureAccessDelay
+
+`func (o *DynamicSecretCreateLdap) HasSecureAccessDelay() bool`
+
+HasSecureAccessDelay returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

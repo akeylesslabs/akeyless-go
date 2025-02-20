@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Hash** | Pointer to **string** |  | [optional] 
 **IsValid** | Pointer to **bool** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 

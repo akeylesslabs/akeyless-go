@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **AzureUsername** | Pointer to **string** |  | [optional] 
+**ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -206,6 +207,31 @@ SetAzureUsername sets AzureUsername field to given value.
 `func (o *AzureTargetDetails) HasAzureUsername() bool`
 
 HasAzureUsername returns a boolean if a field has been set.
+
+### GetExpirationDate
+
+`func (o *AzureTargetDetails) GetExpirationDate() time.Time`
+
+GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
+
+### GetExpirationDateOk
+
+`func (o *AzureTargetDetails) GetExpirationDateOk() (*time.Time, bool)`
+
+GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationDate
+
+`func (o *AzureTargetDetails) SetExpirationDate(v time.Time)`
+
+SetExpirationDate sets ExpirationDate field to given value.
+
+### HasExpirationDate
+
+`func (o *AzureTargetDetails) HasExpirationDate() bool`
+
+HasExpirationDate returns a boolean if a field has been set.
 
 ### GetUseGwCloudIdentity
 

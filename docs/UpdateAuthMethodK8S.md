@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **BoundSaNames** | Pointer to **[]string** | A list of service account names that the access is restricted to | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GenKey** | Pointer to **string** | Automatically generate key-pair for K8S configuration. If set to false, a public key needs to be provided [true/false] | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
@@ -268,6 +269,31 @@ SetDescription sets Description field to given value.
 `func (o *UpdateAuthMethodK8S) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *UpdateAuthMethodK8S) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *UpdateAuthMethodK8S) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *UpdateAuthMethodK8S) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *UpdateAuthMethodK8S) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

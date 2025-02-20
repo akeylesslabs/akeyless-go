@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccessDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessDateDisplay** | Pointer to **string** |  | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
-**ModificationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **RoleAuthMethodsAssoc** | Pointer to [**[]RoleAuthMethodAssociation**](RoleAuthMethodAssociation.md) |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 

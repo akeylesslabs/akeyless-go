@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenPermissions** | Pointer to **[]string** | Optional - installation token&#39;s allowed permissions | [optional] 
 **TokenRepositories** | Pointer to **[]string** | Optional - installation token&#39;s allowed repositories | [optional] 
+**TokenTtl** | Pointer to **string** | Token TTL | [optional] [default to "60m"]
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -383,6 +384,31 @@ SetTokenRepositories sets TokenRepositories field to given value.
 `func (o *GatewayCreateProducerGithub) HasTokenRepositories() bool`
 
 HasTokenRepositories returns a boolean if a field has been set.
+
+### GetTokenTtl
+
+`func (o *GatewayCreateProducerGithub) GetTokenTtl() string`
+
+GetTokenTtl returns the TokenTtl field if non-nil, zero value otherwise.
+
+### GetTokenTtlOk
+
+`func (o *GatewayCreateProducerGithub) GetTokenTtlOk() (*string, bool)`
+
+GetTokenTtlOk returns a tuple with the TokenTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenTtl
+
+`func (o *GatewayCreateProducerGithub) SetTokenTtl(v string)`
+
+SetTokenTtl sets TokenTtl field to given value.
+
+### HasTokenTtl
+
+`func (o *GatewayCreateProducerGithub) HasTokenTtl() bool`
+
+HasTokenTtl returns a boolean if a field has been set.
 
 ### GetUidToken
 

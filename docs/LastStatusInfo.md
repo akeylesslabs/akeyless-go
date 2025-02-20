@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MigrationsStatus** | Pointer to [**MigrationStatus**](MigrationStatus.md) |  | [optional] 
-**ProducersErrors** | Pointer to **map[string]interface{}** |  | [optional] 
+**ProducersErrors** | Pointer to **interface{}** |  | [optional] 
 **WasMigrationsCopiedToNewTable** | Pointer to **bool** | flag to indicate migrationStatus copied to new table | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasMigrationsStatus returns a boolean if a field has been set.
 
 ### GetProducersErrors
 
-`func (o *LastStatusInfo) GetProducersErrors() map[string]interface{}`
+`func (o *LastStatusInfo) GetProducersErrors() interface{}`
 
 GetProducersErrors returns the ProducersErrors field if non-nil, zero value otherwise.
 
 ### GetProducersErrorsOk
 
-`func (o *LastStatusInfo) GetProducersErrorsOk() (*map[string]interface{}, bool)`
+`func (o *LastStatusInfo) GetProducersErrorsOk() (*interface{}, bool)`
 
 GetProducersErrorsOk returns a tuple with the ProducersErrors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProducersErrors
 
-`func (o *LastStatusInfo) SetProducersErrors(v map[string]interface{})`
+`func (o *LastStatusInfo) SetProducersErrors(v interface{})`
 
 SetProducersErrors sets ProducersErrors field to given value.
 
@@ -77,6 +77,16 @@ SetProducersErrors sets ProducersErrors field to given value.
 
 HasProducersErrors returns a boolean if a field has been set.
 
+### SetProducersErrorsNil
+
+`func (o *LastStatusInfo) SetProducersErrorsNil(b bool)`
+
+ SetProducersErrorsNil sets the value for ProducersErrors to be an explicit nil
+
+### UnsetProducersErrors
+`func (o *LastStatusInfo) UnsetProducersErrors()`
+
+UnsetProducersErrors ensures that no value is present for ProducersErrors, not even an explicit nil
 ### GetWasMigrationsCopiedToNewTable
 
 `func (o *LastStatusInfo) GetWasMigrationsCopiedToNewTable() bool`

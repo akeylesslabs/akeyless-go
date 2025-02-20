@@ -6,9 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **Action** | **string** | Action to be performed on the item [start/stop/describe] | 
-**Emails** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
+**Emails** | Pointer to **[]string** | List of emails to start/stop sharing the secret with | [optional] 
 **ItemName** | **string** | Item name | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**ShareType** | Pointer to **string** | Share type [email/token] | [optional] [default to "email"]
+**SharedTokenId** | Pointer to **[]string** | Shared token ids in order to stop sharing a secret | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | Pointer to **int32** | TTL of the Availability of the shared secret in seconds | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -147,6 +149,56 @@ SetJson sets Json field to given value.
 `func (o *ShareItem) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetShareType
+
+`func (o *ShareItem) GetShareType() string`
+
+GetShareType returns the ShareType field if non-nil, zero value otherwise.
+
+### GetShareTypeOk
+
+`func (o *ShareItem) GetShareTypeOk() (*string, bool)`
+
+GetShareTypeOk returns a tuple with the ShareType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShareType
+
+`func (o *ShareItem) SetShareType(v string)`
+
+SetShareType sets ShareType field to given value.
+
+### HasShareType
+
+`func (o *ShareItem) HasShareType() bool`
+
+HasShareType returns a boolean if a field has been set.
+
+### GetSharedTokenId
+
+`func (o *ShareItem) GetSharedTokenId() []string`
+
+GetSharedTokenId returns the SharedTokenId field if non-nil, zero value otherwise.
+
+### GetSharedTokenIdOk
+
+`func (o *ShareItem) GetSharedTokenIdOk() (*[]string, bool)`
+
+GetSharedTokenIdOk returns a tuple with the SharedTokenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedTokenId
+
+`func (o *ShareItem) SetSharedTokenId(v []string)`
+
+SetSharedTokenId sets SharedTokenId field to given value.
+
+### HasSharedTokenId
+
+`func (o *ShareItem) HasSharedTokenId() bool`
+
+HasSharedTokenId returns a boolean if a field has been set.
 
 ### GetToken
 

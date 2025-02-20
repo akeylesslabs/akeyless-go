@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**NotAfter** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
-**NotBefore** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**NotAfter** | Pointer to **time.Time** |  | [optional] 
+**NotBefore** | Pointer to **time.Time** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 
 ## Methods

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **CertType** | Pointer to **int32** |  | [optional] 
 **CriticalOptions** | Pointer to **map[string]string** |  | [optional] 
 **Extensions** | Pointer to **map[string]string** |  | [optional] 
+**ExternallyProvidedUserSubClaimKey** | Pointer to **string** | ExternallyProvidedUserSubClaimKey is the claim key name where the user name should be taken from | [optional] 
+**IsExternallyProvidedUser** | Pointer to **bool** | IsExternallyProvidedUser is true if allow users should be taken from claims and not from AllowedUsers | [optional] 
 **Principals** | Pointer to **[]string** |  | [optional] 
 **StaticKeyId** | Pointer to **string** | In case it is empty, the key ID will be combination of user identifiers and a random string | [optional] 
 
@@ -181,6 +183,56 @@ SetExtensions sets Extensions field to given value.
 `func (o *SSHCertificateIssueDetails) HasExtensions() bool`
 
 HasExtensions returns a boolean if a field has been set.
+
+### GetExternallyProvidedUserSubClaimKey
+
+`func (o *SSHCertificateIssueDetails) GetExternallyProvidedUserSubClaimKey() string`
+
+GetExternallyProvidedUserSubClaimKey returns the ExternallyProvidedUserSubClaimKey field if non-nil, zero value otherwise.
+
+### GetExternallyProvidedUserSubClaimKeyOk
+
+`func (o *SSHCertificateIssueDetails) GetExternallyProvidedUserSubClaimKeyOk() (*string, bool)`
+
+GetExternallyProvidedUserSubClaimKeyOk returns a tuple with the ExternallyProvidedUserSubClaimKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternallyProvidedUserSubClaimKey
+
+`func (o *SSHCertificateIssueDetails) SetExternallyProvidedUserSubClaimKey(v string)`
+
+SetExternallyProvidedUserSubClaimKey sets ExternallyProvidedUserSubClaimKey field to given value.
+
+### HasExternallyProvidedUserSubClaimKey
+
+`func (o *SSHCertificateIssueDetails) HasExternallyProvidedUserSubClaimKey() bool`
+
+HasExternallyProvidedUserSubClaimKey returns a boolean if a field has been set.
+
+### GetIsExternallyProvidedUser
+
+`func (o *SSHCertificateIssueDetails) GetIsExternallyProvidedUser() bool`
+
+GetIsExternallyProvidedUser returns the IsExternallyProvidedUser field if non-nil, zero value otherwise.
+
+### GetIsExternallyProvidedUserOk
+
+`func (o *SSHCertificateIssueDetails) GetIsExternallyProvidedUserOk() (*bool, bool)`
+
+GetIsExternallyProvidedUserOk returns a tuple with the IsExternallyProvidedUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsExternallyProvidedUser
+
+`func (o *SSHCertificateIssueDetails) SetIsExternallyProvidedUser(v bool)`
+
+SetIsExternallyProvidedUser sets IsExternallyProvidedUser field to given value.
+
+### HasIsExternallyProvidedUser
+
+`func (o *SSHCertificateIssueDetails) HasIsExternallyProvidedUser() bool`
+
+HasIsExternallyProvidedUser returns a boolean if a field has been set.
 
 ### GetPrincipals
 

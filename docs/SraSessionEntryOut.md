@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **ClientType** | Pointer to **string** |  | [optional] 
 **ClusterUniqueId** | Pointer to **int64** |  | [optional] 
 **ConnectionType** | Pointer to **string** |  | [optional] 
-**EndTime** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**EndTime** | Pointer to **time.Time** |  | [optional] 
 **ErrorMsg** | Pointer to **string** |  | [optional] 
-**GatewayName** | Pointer to **string** |  | [optional] 
+**GatewayInfo** | Pointer to [**GatewayNameInfo**](GatewayNameInfo.md) |  | [optional] 
 **InstanceId** | Pointer to **string** |  | [optional] 
 **SecretName** | Pointer to **string** |  | [optional] 
 **SessionId** | Pointer to **string** |  | [optional] 
-**StartTime** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**StartTime** | Pointer to **time.Time** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **TargetHost** | Pointer to **string** |  | [optional] 
 **Ttl** | Pointer to **string** |  | [optional] 
@@ -189,30 +189,30 @@ SetErrorMsg sets ErrorMsg field to given value.
 
 HasErrorMsg returns a boolean if a field has been set.
 
-### GetGatewayName
+### GetGatewayInfo
 
-`func (o *SraSessionEntryOut) GetGatewayName() string`
+`func (o *SraSessionEntryOut) GetGatewayInfo() GatewayNameInfo`
 
-GetGatewayName returns the GatewayName field if non-nil, zero value otherwise.
+GetGatewayInfo returns the GatewayInfo field if non-nil, zero value otherwise.
 
-### GetGatewayNameOk
+### GetGatewayInfoOk
 
-`func (o *SraSessionEntryOut) GetGatewayNameOk() (*string, bool)`
+`func (o *SraSessionEntryOut) GetGatewayInfoOk() (*GatewayNameInfo, bool)`
 
-GetGatewayNameOk returns a tuple with the GatewayName field if it's non-nil, zero value otherwise
+GetGatewayInfoOk returns a tuple with the GatewayInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGatewayName
+### SetGatewayInfo
 
-`func (o *SraSessionEntryOut) SetGatewayName(v string)`
+`func (o *SraSessionEntryOut) SetGatewayInfo(v GatewayNameInfo)`
 
-SetGatewayName sets GatewayName field to given value.
+SetGatewayInfo sets GatewayInfo field to given value.
 
-### HasGatewayName
+### HasGatewayInfo
 
-`func (o *SraSessionEntryOut) HasGatewayName() bool`
+`func (o *SraSessionEntryOut) HasGatewayInfo() bool`
 
-HasGatewayName returns a boolean if a field has been set.
+HasGatewayInfo returns a boolean if a field has been set.
 
 ### GetInstanceId
 

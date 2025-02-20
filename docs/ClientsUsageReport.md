@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** |  | [optional] 
 **Clients** | Pointer to [**[]ClientUsageInfo**](ClientUsageInfo.md) |  | [optional] 
 **Product** | Pointer to **string** |  | [optional] 
-**Time** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**Time** | Pointer to **time.Time** |  | [optional] 
 **TotalClients** | Pointer to **int64** |  | [optional] 
 
 ## Methods

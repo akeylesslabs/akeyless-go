@@ -86,11 +86,12 @@ Name | Type | Description | Notes
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
 **EnableAdminRotation** | Pointer to **bool** |  | [optional] 
 **EnforceReplayPrevention** | Pointer to **bool** | relevant for PRIVATE_KEY_JWT client authentication type | [optional] 
+**ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **ExternallyProvidedUser** | Pointer to **string** |  | [optional] 
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
 **GcpKeyAlgo** | Pointer to **string** |  | [optional] 
-**GcpRoleBindings** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**GcpRoleBindings** | Pointer to **map[string][]string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountKeyBase64** | Pointer to **string** |  | [optional] 
@@ -124,6 +125,7 @@ Name | Type | Description | Notes
 **GkeServiceAccountName** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceAccessMode** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceAdminName** | Pointer to **string** |  | [optional] 
+**GoogleWorkspaceFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceGroupName** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceGroupRole** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceRoleName** | Pointer to **string** |  | [optional] 
@@ -159,6 +161,8 @@ Name | Type | Description | Notes
 **LdapBindDn** | Pointer to **string** |  | [optional] 
 **LdapBindPassword** | Pointer to **string** |  | [optional] 
 **LdapCertificate** | Pointer to **string** |  | [optional] 
+**LdapFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
+**LdapFixedUserType** | Pointer to **string** |  | [optional] 
 **LdapGroupDn** | Pointer to **string** |  | [optional] 
 **LdapTokenExpiration** | Pointer to **string** |  | [optional] 
 **LdapUrl** | Pointer to **string** |  | [optional] 
@@ -184,6 +188,7 @@ Name | Type | Description | Notes
 **MysqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **OracleCreationStatements** | Pointer to **string** |  | [optional] 
 **OracleRevocationStatements** | Pointer to **string** |  | [optional] 
+**OracleWalletDetails** | Pointer to [**WalletDetails**](WalletDetails.md) |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **PasswordLength** | Pointer to **int64** |  | [optional] 
 **PasswordPolicy** | Pointer to **string** |  | [optional] 
@@ -200,6 +205,7 @@ Name | Type | Description | Notes
 **RabbitmqUserTags** | Pointer to **string** |  | [optional] 
 **RabbitmqUserVhost** | Pointer to **string** |  | [optional] 
 **RabbitmqUserWritePermission** | Pointer to **string** |  | [optional] 
+**RdpFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
 **RedirectUris** | Pointer to **[]string** |  | [optional] 
 **RedshiftCreationStatements** | Pointer to **string** |  | [optional] 
 **RestrictedScopes** | Pointer to **[]string** |  | [optional] 
@@ -2313,6 +2319,31 @@ SetEnforceReplayPrevention sets EnforceReplayPrevention field to given value.
 
 HasEnforceReplayPrevention returns a boolean if a field has been set.
 
+### GetExpirationDate
+
+`func (o *DSProducerDetails) GetExpirationDate() time.Time`
+
+GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
+
+### GetExpirationDateOk
+
+`func (o *DSProducerDetails) GetExpirationDateOk() (*time.Time, bool)`
+
+GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationDate
+
+`func (o *DSProducerDetails) SetExpirationDate(v time.Time)`
+
+SetExpirationDate sets ExpirationDate field to given value.
+
+### HasExpirationDate
+
+`func (o *DSProducerDetails) HasExpirationDate() bool`
+
+HasExpirationDate returns a boolean if a field has been set.
+
 ### GetExternallyProvidedUser
 
 `func (o *DSProducerDetails) GetExternallyProvidedUser() string`
@@ -3263,6 +3294,31 @@ SetGoogleWorkspaceAdminName sets GoogleWorkspaceAdminName field to given value.
 
 HasGoogleWorkspaceAdminName returns a boolean if a field has been set.
 
+### GetGoogleWorkspaceFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) GetGoogleWorkspaceFixedUserNameSubClaimKey() string`
+
+GetGoogleWorkspaceFixedUserNameSubClaimKey returns the GoogleWorkspaceFixedUserNameSubClaimKey field if non-nil, zero value otherwise.
+
+### GetGoogleWorkspaceFixedUserNameSubClaimKeyOk
+
+`func (o *DSProducerDetails) GetGoogleWorkspaceFixedUserNameSubClaimKeyOk() (*string, bool)`
+
+GetGoogleWorkspaceFixedUserNameSubClaimKeyOk returns a tuple with the GoogleWorkspaceFixedUserNameSubClaimKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleWorkspaceFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) SetGoogleWorkspaceFixedUserNameSubClaimKey(v string)`
+
+SetGoogleWorkspaceFixedUserNameSubClaimKey sets GoogleWorkspaceFixedUserNameSubClaimKey field to given value.
+
+### HasGoogleWorkspaceFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) HasGoogleWorkspaceFixedUserNameSubClaimKey() bool`
+
+HasGoogleWorkspaceFixedUserNameSubClaimKey returns a boolean if a field has been set.
+
 ### GetGoogleWorkspaceGroupName
 
 `func (o *DSProducerDetails) GetGoogleWorkspaceGroupName() string`
@@ -4138,6 +4194,56 @@ SetLdapCertificate sets LdapCertificate field to given value.
 
 HasLdapCertificate returns a boolean if a field has been set.
 
+### GetLdapFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) GetLdapFixedUserNameSubClaimKey() string`
+
+GetLdapFixedUserNameSubClaimKey returns the LdapFixedUserNameSubClaimKey field if non-nil, zero value otherwise.
+
+### GetLdapFixedUserNameSubClaimKeyOk
+
+`func (o *DSProducerDetails) GetLdapFixedUserNameSubClaimKeyOk() (*string, bool)`
+
+GetLdapFixedUserNameSubClaimKeyOk returns a tuple with the LdapFixedUserNameSubClaimKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) SetLdapFixedUserNameSubClaimKey(v string)`
+
+SetLdapFixedUserNameSubClaimKey sets LdapFixedUserNameSubClaimKey field to given value.
+
+### HasLdapFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) HasLdapFixedUserNameSubClaimKey() bool`
+
+HasLdapFixedUserNameSubClaimKey returns a boolean if a field has been set.
+
+### GetLdapFixedUserType
+
+`func (o *DSProducerDetails) GetLdapFixedUserType() string`
+
+GetLdapFixedUserType returns the LdapFixedUserType field if non-nil, zero value otherwise.
+
+### GetLdapFixedUserTypeOk
+
+`func (o *DSProducerDetails) GetLdapFixedUserTypeOk() (*string, bool)`
+
+GetLdapFixedUserTypeOk returns a tuple with the LdapFixedUserType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapFixedUserType
+
+`func (o *DSProducerDetails) SetLdapFixedUserType(v string)`
+
+SetLdapFixedUserType sets LdapFixedUserType field to given value.
+
+### HasLdapFixedUserType
+
+`func (o *DSProducerDetails) HasLdapFixedUserType() bool`
+
+HasLdapFixedUserType returns a boolean if a field has been set.
+
 ### GetLdapGroupDn
 
 `func (o *DSProducerDetails) GetLdapGroupDn() string`
@@ -4763,6 +4869,31 @@ SetOracleRevocationStatements sets OracleRevocationStatements field to given val
 
 HasOracleRevocationStatements returns a boolean if a field has been set.
 
+### GetOracleWalletDetails
+
+`func (o *DSProducerDetails) GetOracleWalletDetails() WalletDetails`
+
+GetOracleWalletDetails returns the OracleWalletDetails field if non-nil, zero value otherwise.
+
+### GetOracleWalletDetailsOk
+
+`func (o *DSProducerDetails) GetOracleWalletDetailsOk() (*WalletDetails, bool)`
+
+GetOracleWalletDetailsOk returns a tuple with the OracleWalletDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleWalletDetails
+
+`func (o *DSProducerDetails) SetOracleWalletDetails(v WalletDetails)`
+
+SetOracleWalletDetails sets OracleWalletDetails field to given value.
+
+### HasOracleWalletDetails
+
+`func (o *DSProducerDetails) HasOracleWalletDetails() bool`
+
+HasOracleWalletDetails returns a boolean if a field has been set.
+
 ### GetPassword
 
 `func (o *DSProducerDetails) GetPassword() string`
@@ -5162,6 +5293,31 @@ SetRabbitmqUserWritePermission sets RabbitmqUserWritePermission field to given v
 `func (o *DSProducerDetails) HasRabbitmqUserWritePermission() bool`
 
 HasRabbitmqUserWritePermission returns a boolean if a field has been set.
+
+### GetRdpFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) GetRdpFixedUserNameSubClaimKey() string`
+
+GetRdpFixedUserNameSubClaimKey returns the RdpFixedUserNameSubClaimKey field if non-nil, zero value otherwise.
+
+### GetRdpFixedUserNameSubClaimKeyOk
+
+`func (o *DSProducerDetails) GetRdpFixedUserNameSubClaimKeyOk() (*string, bool)`
+
+GetRdpFixedUserNameSubClaimKeyOk returns a tuple with the RdpFixedUserNameSubClaimKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdpFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) SetRdpFixedUserNameSubClaimKey(v string)`
+
+SetRdpFixedUserNameSubClaimKey sets RdpFixedUserNameSubClaimKey field to given value.
+
+### HasRdpFixedUserNameSubClaimKey
+
+`func (o *DSProducerDetails) HasRdpFixedUserNameSubClaimKey() bool`
+
+HasRdpFixedUserNameSubClaimKey returns a boolean if a field has been set.
 
 ### GetRedirectUris
 

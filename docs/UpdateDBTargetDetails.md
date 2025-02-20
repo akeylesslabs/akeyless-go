@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DbType** | Pointer to **string** |  | [optional] 
-**HostName** | Pointer to **string** |  | [optional] 
+**Host** | Pointer to **string** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **MongoDbName** | Pointer to **string** |  | [optional] 
@@ -63,30 +63,30 @@ SetDbType sets DbType field to given value.
 
 HasDbType returns a boolean if a field has been set.
 
-### GetHostName
+### GetHost
 
-`func (o *UpdateDBTargetDetails) GetHostName() string`
+`func (o *UpdateDBTargetDetails) GetHost() string`
 
-GetHostName returns the HostName field if non-nil, zero value otherwise.
+GetHost returns the Host field if non-nil, zero value otherwise.
 
-### GetHostNameOk
+### GetHostOk
 
-`func (o *UpdateDBTargetDetails) GetHostNameOk() (*string, bool)`
+`func (o *UpdateDBTargetDetails) GetHostOk() (*string, bool)`
 
-GetHostNameOk returns a tuple with the HostName field if it's non-nil, zero value otherwise
+GetHostOk returns a tuple with the Host field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHostName
+### SetHost
 
-`func (o *UpdateDBTargetDetails) SetHostName(v string)`
+`func (o *UpdateDBTargetDetails) SetHost(v string)`
 
-SetHostName sets HostName field to given value.
+SetHost sets Host field to given value.
 
-### HasHostName
+### HasHost
 
-`func (o *UpdateDBTargetDetails) HasHostName() bool`
+`func (o *UpdateDBTargetDetails) HasHost() bool`
 
-HasHostName returns a boolean if a field has been set.
+HasHost returns a boolean if a field has been set.
 
 ### GetJson
 

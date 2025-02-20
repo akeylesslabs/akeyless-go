@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
+**MaxPathLen** | Pointer to **int64** | The maximum path length for the generated certificate. -1, means unlimited | [optional] [default to -1]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | PKI certificate issuer name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -41,7 +42,7 @@ Name | Type | Description | Notes
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **ScheduledRenew** | Pointer to **int64** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | Pointer to **bool** | If set, certificates will be flagged for server auth use | [optional] 
-**SignerKeyName** | **string** | A key to sign the certificate with, required in Private CA mode | [default to "dummy_signer_key"]
+**SignerKeyName** | Pointer to **string** | A key to sign the certificate with, required in Private CA mode | [optional] 
 **StreetAddress** | Pointer to **string** | A comma-separated list of street addresses that will be set in the issued certificate | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Ttl** | **string** | The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target&#39;s supported maximum TTLs | 
@@ -51,7 +52,7 @@ Name | Type | Description | Notes
 
 ### NewUpdatePKICertIssuer
 
-`func NewUpdatePKICertIssuer(name string, signerKeyName string, ttl string, ) *UpdatePKICertIssuer`
+`func NewUpdatePKICertIssuer(name string, ttl string, ) *UpdatePKICertIssuer`
 
 NewUpdatePKICertIssuer instantiates a new UpdatePKICertIssuer object
 This constructor will assign default values to properties that have it defined,
@@ -666,6 +667,31 @@ SetLocality sets Locality field to given value.
 
 HasLocality returns a boolean if a field has been set.
 
+### GetMaxPathLen
+
+`func (o *UpdatePKICertIssuer) GetMaxPathLen() int64`
+
+GetMaxPathLen returns the MaxPathLen field if non-nil, zero value otherwise.
+
+### GetMaxPathLenOk
+
+`func (o *UpdatePKICertIssuer) GetMaxPathLenOk() (*int64, bool)`
+
+GetMaxPathLenOk returns a tuple with the MaxPathLen field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxPathLen
+
+`func (o *UpdatePKICertIssuer) SetMaxPathLen(v int64)`
+
+SetMaxPathLen sets MaxPathLen field to given value.
+
+### HasMaxPathLen
+
+`func (o *UpdatePKICertIssuer) HasMaxPathLen() bool`
+
+HasMaxPathLen returns a boolean if a field has been set.
+
 ### GetMetadata
 
 `func (o *UpdatePKICertIssuer) GetMetadata() string`
@@ -1005,6 +1031,11 @@ and a boolean to check if the value has been set.
 
 SetSignerKeyName sets SignerKeyName field to given value.
 
+### HasSignerKeyName
+
+`func (o *UpdatePKICertIssuer) HasSignerKeyName() bool`
+
+HasSignerKeyName returns a boolean if a field has been set.
 
 ### GetStreetAddress
 

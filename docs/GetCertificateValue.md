@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **IgnoreCache** | Pointer to **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
 **IssuanceToken** | Pointer to **string** | Token for getting the issued certificate | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Name** | **string** | Certificate name | [default to "dummy_certificate_name"]
+**Name** | Pointer to **string** | Certificate name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Version** | Pointer to **int32** | Certificate version | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewGetCertificateValue
 
-`func NewGetCertificateValue(name string, ) *GetCertificateValue`
+`func NewGetCertificateValue() *GetCertificateValue`
 
 NewGetCertificateValue instantiates a new GetCertificateValue object
 This constructor will assign default values to properties that have it defined,
@@ -177,6 +177,11 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+### HasName
+
+`func (o *GetCertificateValue) HasName() bool`
+
+HasName returns a boolean if a field has been set.
 
 ### GetToken
 

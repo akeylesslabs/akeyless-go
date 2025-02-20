@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Item** | Pointer to **[]string** | A list of items to delete, To specify multiple items use argument multiple times | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
-**Path** | **string** | Path to delete the items from | [default to "dummy_path"]
+**Path** | Pointer to **string** | Path to delete the items from | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewDeleteItems
 
-`func NewDeleteItems(path string, ) *DeleteItems`
+`func NewDeleteItems() *DeleteItems`
 
 NewDeleteItems instantiates a new DeleteItems object
 This constructor will assign default values to properties that have it defined,
@@ -98,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetPath sets Path field to given value.
 
+### HasPath
+
+`func (o *DeleteItems) HasPath() bool`
+
+HasPath returns a boolean if a field has been set.
 
 ### GetToken
 

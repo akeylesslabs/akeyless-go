@@ -17,8 +17,10 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessBastionIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Bastion | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema | [optional] 
+**SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
@@ -392,6 +394,31 @@ SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value
 
 HasSecureAccessBastionIssuer returns a boolean if a field has been set.
 
+### GetSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateMsSql) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *DynamicSecretCreateMsSql) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateMsSql) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateMsSql) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
+
 ### GetSecureAccessDbSchema
 
 `func (o *DynamicSecretCreateMsSql) GetSecureAccessDbSchema() string`
@@ -416,6 +443,31 @@ SetSecureAccessDbSchema sets SecureAccessDbSchema field to given value.
 `func (o *DynamicSecretCreateMsSql) HasSecureAccessDbSchema() bool`
 
 HasSecureAccessDbSchema returns a boolean if a field has been set.
+
+### GetSecureAccessDelay
+
+`func (o *DynamicSecretCreateMsSql) GetSecureAccessDelay() int64`
+
+GetSecureAccessDelay returns the SecureAccessDelay field if non-nil, zero value otherwise.
+
+### GetSecureAccessDelayOk
+
+`func (o *DynamicSecretCreateMsSql) GetSecureAccessDelayOk() (*int64, bool)`
+
+GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDelay
+
+`func (o *DynamicSecretCreateMsSql) SetSecureAccessDelay(v int64)`
+
+SetSecureAccessDelay sets SecureAccessDelay field to given value.
+
+### HasSecureAccessDelay
+
+`func (o *DynamicSecretCreateMsSql) HasSecureAccessDelay() bool`
+
+HasSecureAccessDelay returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

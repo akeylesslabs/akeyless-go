@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Format** | Pointer to **string** | StaticSecretFormat defines the format of static secret (e.g. Text) | [optional] 
 **MaxVersions** | Pointer to **int64** |  | [optional] 
 **NotifyOnChangeEvent** | Pointer to **bool** |  | [optional] 
+**PasswordSecurityInfo** | Pointer to [**PasswordSecurityInfo**](PasswordSecurityInfo.md) |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **Website** | Pointer to **string** | deprecated | [optional] 
 **Websites** | Pointer to **[]string** |  | [optional] 
@@ -104,6 +105,31 @@ SetNotifyOnChangeEvent sets NotifyOnChangeEvent field to given value.
 `func (o *StaticSecretDetailsInfo) HasNotifyOnChangeEvent() bool`
 
 HasNotifyOnChangeEvent returns a boolean if a field has been set.
+
+### GetPasswordSecurityInfo
+
+`func (o *StaticSecretDetailsInfo) GetPasswordSecurityInfo() PasswordSecurityInfo`
+
+GetPasswordSecurityInfo returns the PasswordSecurityInfo field if non-nil, zero value otherwise.
+
+### GetPasswordSecurityInfoOk
+
+`func (o *StaticSecretDetailsInfo) GetPasswordSecurityInfoOk() (*PasswordSecurityInfo, bool)`
+
+GetPasswordSecurityInfoOk returns a tuple with the PasswordSecurityInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordSecurityInfo
+
+`func (o *StaticSecretDetailsInfo) SetPasswordSecurityInfo(v PasswordSecurityInfo)`
+
+SetPasswordSecurityInfo sets PasswordSecurityInfo field to given value.
+
+### HasPasswordSecurityInfo
+
+`func (o *StaticSecretDetailsInfo) HasPasswordSecurityInfo() bool`
+
+HasPasswordSecurityInfo returns a boolean if a field has been set.
 
 ### GetUsername
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** |  | [optional] 
 **AccessType** | Pointer to **string** |  | [optional] 
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 

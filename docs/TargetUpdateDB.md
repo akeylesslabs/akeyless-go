@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **CloudServiceProvider** | Pointer to **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
 **ClusterMode** | Pointer to **bool** | Cluster Mode | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
-**ConnectionType** | **string** | (Optional) Type of connection to mssql database [credentials/cloud-identity] | [default to "credentials"]
+**ConnectionType** | **string** | Type of connection to mssql/oracle database [credentials/cloud-identity/wallet] | [default to "credentials"]
 **DbName** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
@@ -30,7 +30,10 @@ Name | Type | Description | Notes
 **MongodbUriOptions** | Pointer to **string** | MongoDB server URI options | [optional] 
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
-**OracleServiceName** | Pointer to **string** |  | [optional] 
+**OracleServiceName** | Pointer to **string** | Oracle db service name | [optional] 
+**OracleWalletLoginType** | Pointer to **string** | Oracle Wallet login type (password/mtls) | [optional] 
+**OracleWalletP12FileData** | Pointer to **string** | Oracle wallet p12 file data in base64 | [optional] 
+**OracleWalletSsoFileData** | Pointer to **string** | Oracle wallet sso file data in base64 | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
@@ -720,6 +723,81 @@ SetOracleServiceName sets OracleServiceName field to given value.
 `func (o *TargetUpdateDB) HasOracleServiceName() bool`
 
 HasOracleServiceName returns a boolean if a field has been set.
+
+### GetOracleWalletLoginType
+
+`func (o *TargetUpdateDB) GetOracleWalletLoginType() string`
+
+GetOracleWalletLoginType returns the OracleWalletLoginType field if non-nil, zero value otherwise.
+
+### GetOracleWalletLoginTypeOk
+
+`func (o *TargetUpdateDB) GetOracleWalletLoginTypeOk() (*string, bool)`
+
+GetOracleWalletLoginTypeOk returns a tuple with the OracleWalletLoginType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleWalletLoginType
+
+`func (o *TargetUpdateDB) SetOracleWalletLoginType(v string)`
+
+SetOracleWalletLoginType sets OracleWalletLoginType field to given value.
+
+### HasOracleWalletLoginType
+
+`func (o *TargetUpdateDB) HasOracleWalletLoginType() bool`
+
+HasOracleWalletLoginType returns a boolean if a field has been set.
+
+### GetOracleWalletP12FileData
+
+`func (o *TargetUpdateDB) GetOracleWalletP12FileData() string`
+
+GetOracleWalletP12FileData returns the OracleWalletP12FileData field if non-nil, zero value otherwise.
+
+### GetOracleWalletP12FileDataOk
+
+`func (o *TargetUpdateDB) GetOracleWalletP12FileDataOk() (*string, bool)`
+
+GetOracleWalletP12FileDataOk returns a tuple with the OracleWalletP12FileData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleWalletP12FileData
+
+`func (o *TargetUpdateDB) SetOracleWalletP12FileData(v string)`
+
+SetOracleWalletP12FileData sets OracleWalletP12FileData field to given value.
+
+### HasOracleWalletP12FileData
+
+`func (o *TargetUpdateDB) HasOracleWalletP12FileData() bool`
+
+HasOracleWalletP12FileData returns a boolean if a field has been set.
+
+### GetOracleWalletSsoFileData
+
+`func (o *TargetUpdateDB) GetOracleWalletSsoFileData() string`
+
+GetOracleWalletSsoFileData returns the OracleWalletSsoFileData field if non-nil, zero value otherwise.
+
+### GetOracleWalletSsoFileDataOk
+
+`func (o *TargetUpdateDB) GetOracleWalletSsoFileDataOk() (*string, bool)`
+
+GetOracleWalletSsoFileDataOk returns a tuple with the OracleWalletSsoFileData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleWalletSsoFileData
+
+`func (o *TargetUpdateDB) SetOracleWalletSsoFileData(v string)`
+
+SetOracleWalletSsoFileData sets OracleWalletSsoFileData field to given value.
+
+### HasOracleWalletSsoFileData
+
+`func (o *TargetUpdateDB) HasOracleWalletSsoFileData() bool`
+
+HasOracleWalletSsoFileData returns a boolean if a field has been set.
 
 ### GetPort
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DeletionDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**DeletionDate** | Pointer to **time.Time** |  | [optional] 
 **ItemId** | Pointer to **int64** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
 **VersionDeleted** | Pointer to **int32** |  | [optional] 

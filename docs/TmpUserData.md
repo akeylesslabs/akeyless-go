@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** |  | [optional] 
-**CreationDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CustomTtl** | Pointer to **int64** |  | [optional] 
 **DynamicSecretType** | Pointer to **string** |  | [optional] 
+**EncryptedSecret** | Pointer to **string** |  | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
-**SubClaims** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 
@@ -130,6 +131,31 @@ SetDynamicSecretType sets DynamicSecretType field to given value.
 `func (o *TmpUserData) HasDynamicSecretType() bool`
 
 HasDynamicSecretType returns a boolean if a field has been set.
+
+### GetEncryptedSecret
+
+`func (o *TmpUserData) GetEncryptedSecret() string`
+
+GetEncryptedSecret returns the EncryptedSecret field if non-nil, zero value otherwise.
+
+### GetEncryptedSecretOk
+
+`func (o *TmpUserData) GetEncryptedSecretOk() (*string, bool)`
+
+GetEncryptedSecretOk returns a tuple with the EncryptedSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptedSecret
+
+`func (o *TmpUserData) SetEncryptedSecret(v string)`
+
+SetEncryptedSecret sets EncryptedSecret field to given value.
+
+### HasEncryptedSecret
+
+`func (o *TmpUserData) HasEncryptedSecret() bool`
+
+HasEncryptedSecret returns a boolean if a field has been set.
 
 ### GetHost
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessStatus** | Pointer to **string** |  | [optional] 
-**EventCreatedAt** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**EventCreatedAt** | Pointer to **time.Time** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 
 ## Methods

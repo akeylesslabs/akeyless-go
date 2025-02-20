@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **FailMessage** | Pointer to **string** |  | [optional] 
 **SuccessMessage** | Pointer to **string** |  | [optional] 
 **HostNames** | Pointer to **[]string** |  | [optional] 
-**ProvisionedAt** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ProvisionedAt** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 

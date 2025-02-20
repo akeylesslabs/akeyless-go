@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **AllowCopyExtFromCsr** | Pointer to **bool** |  | [optional] 
 **AllowSubdomains** | Pointer to **bool** |  | [optional] 
 **AllowedDomainsList** | Pointer to **[]string** |  | [optional] 
-**AllowedExtraExtensions** | Pointer to [**map[string][]string**](array.md) |  | [optional] 
+**AllowedExtraExtensions** | Pointer to **map[string][]string** |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
 **AutoRenewCertificate** | Pointer to **bool** |  | [optional] 
 **BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
@@ -29,10 +29,12 @@ Name | Type | Description | Notes
 **KeyType** | Pointer to **string** |  | [optional] 
 **KeyUsageList** | Pointer to **[]string** |  | [optional] 
 **Locality** | Pointer to **[]string** |  | [optional] 
+**MaxPathLen** | Pointer to **int64** |  | [optional] 
 **NonCriticalKeyUsage** | Pointer to **bool** |  | [optional] 
 **NotBeforeDuration** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
 **OrganizationList** | Pointer to **[]string** |  | [optional] 
 **OrganizationUnitList** | Pointer to **[]string** |  | [optional] 
+**PkiIssuerType** | Pointer to **string** |  | [optional] 
 **PostalCode** | Pointer to **[]string** |  | [optional] 
 **ProtectGeneratedCertificates** | Pointer to **bool** | ProtectGeneratedCertificates dictates whether the created certificates should be protected from deletion | [optional] 
 **Province** | Pointer to **[]string** |  | [optional] 
@@ -685,6 +687,31 @@ SetLocality sets Locality field to given value.
 
 HasLocality returns a boolean if a field has been set.
 
+### GetMaxPathLen
+
+`func (o *PKICertificateIssueDetails) GetMaxPathLen() int64`
+
+GetMaxPathLen returns the MaxPathLen field if non-nil, zero value otherwise.
+
+### GetMaxPathLenOk
+
+`func (o *PKICertificateIssueDetails) GetMaxPathLenOk() (*int64, bool)`
+
+GetMaxPathLenOk returns a tuple with the MaxPathLen field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxPathLen
+
+`func (o *PKICertificateIssueDetails) SetMaxPathLen(v int64)`
+
+SetMaxPathLen sets MaxPathLen field to given value.
+
+### HasMaxPathLen
+
+`func (o *PKICertificateIssueDetails) HasMaxPathLen() bool`
+
+HasMaxPathLen returns a boolean if a field has been set.
+
 ### GetNonCriticalKeyUsage
 
 `func (o *PKICertificateIssueDetails) GetNonCriticalKeyUsage() bool`
@@ -784,6 +811,31 @@ SetOrganizationUnitList sets OrganizationUnitList field to given value.
 `func (o *PKICertificateIssueDetails) HasOrganizationUnitList() bool`
 
 HasOrganizationUnitList returns a boolean if a field has been set.
+
+### GetPkiIssuerType
+
+`func (o *PKICertificateIssueDetails) GetPkiIssuerType() string`
+
+GetPkiIssuerType returns the PkiIssuerType field if non-nil, zero value otherwise.
+
+### GetPkiIssuerTypeOk
+
+`func (o *PKICertificateIssueDetails) GetPkiIssuerTypeOk() (*string, bool)`
+
+GetPkiIssuerTypeOk returns a tuple with the PkiIssuerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPkiIssuerType
+
+`func (o *PKICertificateIssueDetails) SetPkiIssuerType(v string)`
+
+SetPkiIssuerType sets PkiIssuerType field to given value.
+
+### HasPkiIssuerType
+
+`func (o *PKICertificateIssueDetails) HasPkiIssuerType() bool`
+
+HasPkiIssuerType returns a boolean if a field has been set.
 
 ### GetPostalCode
 

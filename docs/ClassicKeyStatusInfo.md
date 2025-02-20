@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ErrorDate** | Pointer to [**time.Time**](time.Time.md) |  | [optional] 
+**ErrorDate** | Pointer to **time.Time** |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
 **LastStatus** | Pointer to **string** | ClassicKeyTargetStatus defines status of classic key target | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 

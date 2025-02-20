@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbTenantId** | Pointer to **string** |  | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
+**OracleWalletDetails** | Pointer to [**WalletDetails**](WalletDetails.md) |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
 **SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
 **SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
@@ -416,6 +417,31 @@ SetDbUserName sets DbUserName field to given value.
 `func (o *DbTargetDetails) HasDbUserName() bool`
 
 HasDbUserName returns a boolean if a field has been set.
+
+### GetOracleWalletDetails
+
+`func (o *DbTargetDetails) GetOracleWalletDetails() WalletDetails`
+
+GetOracleWalletDetails returns the OracleWalletDetails field if non-nil, zero value otherwise.
+
+### GetOracleWalletDetailsOk
+
+`func (o *DbTargetDetails) GetOracleWalletDetailsOk() (*WalletDetails, bool)`
+
+GetOracleWalletDetailsOk returns a tuple with the OracleWalletDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOracleWalletDetails
+
+`func (o *DbTargetDetails) SetOracleWalletDetails(v WalletDetails)`
+
+SetOracleWalletDetails sets OracleWalletDetails field to given value.
+
+### HasOracleWalletDetails
+
+`func (o *DbTargetDetails) HasOracleWalletDetails() bool`
+
+HasOracleWalletDetails returns a boolean if a field has been set.
 
 ### GetSfAccount
 

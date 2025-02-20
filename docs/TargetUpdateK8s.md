@@ -9,10 +9,10 @@ Name | Type | Description | Notes
 **K8sAuthType** | Pointer to **string** | K8S auth type [token/certificate] | [optional] [default to "token"]
 **K8sClientCertificate** | Pointer to **string** | Content of the k8 client certificate (PEM format) in a Base64 format | [optional] 
 **K8sClientKey** | Pointer to **string** | Content of the k8 client private key (PEM format) in a Base64 format | [optional] 
-**K8sClusterCaCert** | **string** | K8S cluster CA certificate | [default to "dummy_val"]
-**K8sClusterEndpoint** | **string** | K8S cluster URL endpoint | [default to "dummy_val"]
+**K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
+**K8sClusterEndpoint** | Pointer to **string** | K8S cluster URL endpoint | [optional] 
 **K8sClusterName** | Pointer to **string** | K8S cluster name | [optional] 
-**K8sClusterToken** | **string** | K8S cluster Bearer token | [default to "dummy_val"]
+**K8sClusterToken** | Pointer to **string** | K8S cluster Bearer token | [optional] 
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewTargetUpdateK8s
 
-`func NewTargetUpdateK8s(k8sClusterCaCert string, k8sClusterEndpoint string, k8sClusterToken string, name string, ) *TargetUpdateK8s`
+`func NewTargetUpdateK8s(name string, ) *TargetUpdateK8s`
 
 NewTargetUpdateK8s instantiates a new TargetUpdateK8s object
 This constructor will assign default values to properties that have it defined,
@@ -185,6 +185,11 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterCaCert sets K8sClusterCaCert field to given value.
 
+### HasK8sClusterCaCert
+
+`func (o *TargetUpdateK8s) HasK8sClusterCaCert() bool`
+
+HasK8sClusterCaCert returns a boolean if a field has been set.
 
 ### GetK8sClusterEndpoint
 
@@ -205,6 +210,11 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterEndpoint sets K8sClusterEndpoint field to given value.
 
+### HasK8sClusterEndpoint
+
+`func (o *TargetUpdateK8s) HasK8sClusterEndpoint() bool`
+
+HasK8sClusterEndpoint returns a boolean if a field has been set.
 
 ### GetK8sClusterName
 
@@ -250,6 +260,11 @@ and a boolean to check if the value has been set.
 
 SetK8sClusterToken sets K8sClusterToken field to given value.
 
+### HasK8sClusterToken
+
+`func (o *TargetUpdateK8s) HasK8sClusterToken() bool`
+
+HasK8sClusterToken returns a boolean if a field has been set.
 
 ### GetKeepPrevVersion
 

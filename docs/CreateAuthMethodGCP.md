@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **BoundZones** | Pointer to **[]string** | &#x3D;&#x3D;&#x3D; Machine authentication section &#x3D;&#x3D;&#x3D; List of zones that a GCE instance must belong to in order to be authenticated. TODO: If bound_instance_groups is provided, it is assumed to be a zonal group and the group must belong to this zone. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -315,6 +316,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateAuthMethodGCP) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *CreateAuthMethodGCP) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *CreateAuthMethodGCP) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *CreateAuthMethodGCP) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *CreateAuthMethodGCP) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

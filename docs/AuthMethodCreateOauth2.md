@@ -13,13 +13,14 @@ Name | Type | Description | Notes
 **CertFileData** | Pointer to **string** | CertificateFileData PEM Certificate in a Base64 format. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Auth Method description | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
 **GatewayUrl** | Pointer to **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when the jwks-uri is accessible only from the gateway. | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **JwksJsonData** | Pointer to **string** | The JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. base64 encoded string | [optional] 
-**JwksUri** | **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [default to "default_jwks_url"]
+**JwksUri** | Pointer to **string** | The URL to the JSON Web Key Set (JWKS) that containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server. | [optional] 
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
@@ -32,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewAuthMethodCreateOauth2
 
-`func NewAuthMethodCreateOauth2(jwksUri string, name string, uniqueIdentifier string, ) *AuthMethodCreateOauth2`
+`func NewAuthMethodCreateOauth2(name string, uniqueIdentifier string, ) *AuthMethodCreateOauth2`
 
 NewAuthMethodCreateOauth2 instantiates a new AuthMethodCreateOauth2 object
 This constructor will assign default values to properties that have it defined,
@@ -272,6 +273,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetExpirationEventIn
+
+`func (o *AuthMethodCreateOauth2) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *AuthMethodCreateOauth2) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *AuthMethodCreateOauth2) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *AuthMethodCreateOauth2) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
+
 ### GetForceSubClaims
 
 `func (o *AuthMethodCreateOauth2) GetForceSubClaims() bool`
@@ -441,6 +467,11 @@ and a boolean to check if the value has been set.
 
 SetJwksUri sets JwksUri field to given value.
 
+### HasJwksUri
+
+`func (o *AuthMethodCreateOauth2) HasJwksUri() bool`
+
+HasJwksUri returns a boolean if a field has been set.
 
 ### GetJwtTtl
 

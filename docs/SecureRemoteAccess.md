@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **BlockConcurrentConnections** | Pointer to **bool** |  | [optional] 
 **BlockConcurrentConnectionsLevel** | Pointer to **string** |  | [optional] 
 **Category** | Pointer to **string** |  | [optional] 
+**ConnectionDelaySeconds** | Pointer to **int64** |  | [optional] 
 **DashboardUrl** | Pointer to **string** |  | [optional] 
 **DbName** | Pointer to **string** |  | [optional] 
 **Domain** | Pointer to **string** |  | [optional] 
@@ -309,6 +310,31 @@ SetCategory sets Category field to given value.
 `func (o *SecureRemoteAccess) HasCategory() bool`
 
 HasCategory returns a boolean if a field has been set.
+
+### GetConnectionDelaySeconds
+
+`func (o *SecureRemoteAccess) GetConnectionDelaySeconds() int64`
+
+GetConnectionDelaySeconds returns the ConnectionDelaySeconds field if non-nil, zero value otherwise.
+
+### GetConnectionDelaySecondsOk
+
+`func (o *SecureRemoteAccess) GetConnectionDelaySecondsOk() (*int64, bool)`
+
+GetConnectionDelaySecondsOk returns a tuple with the ConnectionDelaySeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionDelaySeconds
+
+`func (o *SecureRemoteAccess) SetConnectionDelaySeconds(v int64)`
+
+SetConnectionDelaySeconds sets ConnectionDelaySeconds field to given value.
+
+### HasConnectionDelaySeconds
+
+`func (o *SecureRemoteAccess) HasConnectionDelaySeconds() bool`
+
+HasConnectionDelaySeconds returns a boolean if a field has been set.
 
 ### GetDashboardUrl
 
