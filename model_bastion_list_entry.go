@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -25,6 +25,8 @@ type BastionListEntry struct {
 	AllowedAccessIds []string `json:"allowed_access_ids,omitempty"`
 	AllowedUrls []string `json:"allowed_urls,omitempty"`
 	AllowedUrlsPerInstance *map[string][]string `json:"allowed_urls_per_instance,omitempty"`
+	BastionSshPort *int64 `json:"bastion_ssh_port,omitempty"`
+	BastionUrlsPerType *map[string]string `json:"bastion_urls_per_type,omitempty"`
 	ClusterName *string `json:"cluster_name,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
 	HasGatewayIdentity *bool `json:"has_gateway_identity,omitempty"`
@@ -176,6 +178,70 @@ func (o *BastionListEntry) SetAllowedUrlsPerInstance(v map[string][]string) {
 	o.AllowedUrlsPerInstance = &v
 }
 
+// GetBastionSshPort returns the BastionSshPort field value if set, zero value otherwise.
+func (o *BastionListEntry) GetBastionSshPort() int64 {
+	if o == nil || IsNil(o.BastionSshPort) {
+		var ret int64
+		return ret
+	}
+	return *o.BastionSshPort
+}
+
+// GetBastionSshPortOk returns a tuple with the BastionSshPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionListEntry) GetBastionSshPortOk() (*int64, bool) {
+	if o == nil || IsNil(o.BastionSshPort) {
+		return nil, false
+	}
+	return o.BastionSshPort, true
+}
+
+// HasBastionSshPort returns a boolean if a field has been set.
+func (o *BastionListEntry) HasBastionSshPort() bool {
+	if o != nil && !IsNil(o.BastionSshPort) {
+		return true
+	}
+
+	return false
+}
+
+// SetBastionSshPort gets a reference to the given int64 and assigns it to the BastionSshPort field.
+func (o *BastionListEntry) SetBastionSshPort(v int64) {
+	o.BastionSshPort = &v
+}
+
+// GetBastionUrlsPerType returns the BastionUrlsPerType field value if set, zero value otherwise.
+func (o *BastionListEntry) GetBastionUrlsPerType() map[string]string {
+	if o == nil || IsNil(o.BastionUrlsPerType) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.BastionUrlsPerType
+}
+
+// GetBastionUrlsPerTypeOk returns a tuple with the BastionUrlsPerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionListEntry) GetBastionUrlsPerTypeOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.BastionUrlsPerType) {
+		return nil, false
+	}
+	return o.BastionUrlsPerType, true
+}
+
+// HasBastionUrlsPerType returns a boolean if a field has been set.
+func (o *BastionListEntry) HasBastionUrlsPerType() bool {
+	if o != nil && !IsNil(o.BastionUrlsPerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetBastionUrlsPerType gets a reference to the given map[string]string and assigns it to the BastionUrlsPerType field.
+func (o *BastionListEntry) SetBastionUrlsPerType(v map[string]string) {
+	o.BastionUrlsPerType = &v
+}
+
 // GetClusterName returns the ClusterName field value if set, zero value otherwise.
 func (o *BastionListEntry) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
@@ -325,6 +391,12 @@ func (o BastionListEntry) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AllowedUrlsPerInstance) {
 		toSerialize["allowed_urls_per_instance"] = o.AllowedUrlsPerInstance
+	}
+	if !IsNil(o.BastionSshPort) {
+		toSerialize["bastion_ssh_port"] = o.BastionSshPort
+	}
+	if !IsNil(o.BastionUrlsPerType) {
+		toSerialize["bastion_urls_per_type"] = o.BastionUrlsPerType
 	}
 	if !IsNil(o.ClusterName) {
 		toSerialize["cluster_name"] = o.ClusterName

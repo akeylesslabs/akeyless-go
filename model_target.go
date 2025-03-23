@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -29,10 +29,10 @@ type Target struct {
 	ClientPermissions []string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
-	CredentialsLess *bool `json:"credentials_less,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
+	ParentTargetName *string `json:"parent_target_name,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	TargetDetails *string `json:"target_details,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
@@ -285,38 +285,6 @@ func (o *Target) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
 }
 
-// GetCredentialsLess returns the CredentialsLess field value if set, zero value otherwise.
-func (o *Target) GetCredentialsLess() bool {
-	if o == nil || IsNil(o.CredentialsLess) {
-		var ret bool
-		return ret
-	}
-	return *o.CredentialsLess
-}
-
-// GetCredentialsLessOk returns a tuple with the CredentialsLess field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Target) GetCredentialsLessOk() (*bool, bool) {
-	if o == nil || IsNil(o.CredentialsLess) {
-		return nil, false
-	}
-	return o.CredentialsLess, true
-}
-
-// HasCredentialsLess returns a boolean if a field has been set.
-func (o *Target) HasCredentialsLess() bool {
-	if o != nil && !IsNil(o.CredentialsLess) {
-		return true
-	}
-
-	return false
-}
-
-// SetCredentialsLess gets a reference to the given bool and assigns it to the CredentialsLess field.
-func (o *Target) SetCredentialsLess(v bool) {
-	o.CredentialsLess = &v
-}
-
 // GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
 func (o *Target) GetIsAccessRequestEnabled() bool {
 	if o == nil || IsNil(o.IsAccessRequestEnabled) {
@@ -411,6 +379,38 @@ func (o *Target) HasModificationDate() bool {
 // SetModificationDate gets a reference to the given time.Time and assigns it to the ModificationDate field.
 func (o *Target) SetModificationDate(v time.Time) {
 	o.ModificationDate = &v
+}
+
+// GetParentTargetName returns the ParentTargetName field value if set, zero value otherwise.
+func (o *Target) GetParentTargetName() string {
+	if o == nil || IsNil(o.ParentTargetName) {
+		var ret string
+		return ret
+	}
+	return *o.ParentTargetName
+}
+
+// GetParentTargetNameOk returns a tuple with the ParentTargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetParentTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ParentTargetName) {
+		return nil, false
+	}
+	return o.ParentTargetName, true
+}
+
+// HasParentTargetName returns a boolean if a field has been set.
+func (o *Target) HasParentTargetName() bool {
+	if o != nil && !IsNil(o.ParentTargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetParentTargetName gets a reference to the given string and assigns it to the ParentTargetName field.
+func (o *Target) SetParentTargetName(v string) {
+	o.ParentTargetName = &v
 }
 
 // GetProtectionKeyName returns the ProtectionKeyName field value if set, zero value otherwise.
@@ -732,9 +732,6 @@ func (o Target) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreationDate) {
 		toSerialize["creation_date"] = o.CreationDate
 	}
-	if !IsNil(o.CredentialsLess) {
-		toSerialize["credentials_less"] = o.CredentialsLess
-	}
 	if !IsNil(o.IsAccessRequestEnabled) {
 		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled
 	}
@@ -743,6 +740,9 @@ func (o Target) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ModificationDate) {
 		toSerialize["modification_date"] = o.ModificationDate
+	}
+	if !IsNil(o.ParentTargetName) {
+		toSerialize["parent_target_name"] = o.ParentTargetName
 	}
 	if !IsNil(o.ProtectionKeyName) {
 		toSerialize["protection_key_name"] = o.ProtectionKeyName

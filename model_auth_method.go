@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -28,6 +28,7 @@ type AuthMethod struct {
 	AssociatedGwIds []int64 `json:"associated_gw_ids,omitempty"`
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
 	AuthMethodAdditionalData *AuthMethodAdditionalData `json:"auth_method_additional_data,omitempty"`
+	AuthMethodId *int64 `json:"auth_method_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodRolesAssoc []AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
 	ClientPermissions []string `json:"client_permissions,omitempty"`
@@ -278,6 +279,38 @@ func (o *AuthMethod) HasAuthMethodAdditionalData() bool {
 // SetAuthMethodAdditionalData gets a reference to the given AuthMethodAdditionalData and assigns it to the AuthMethodAdditionalData field.
 func (o *AuthMethod) SetAuthMethodAdditionalData(v AuthMethodAdditionalData) {
 	o.AuthMethodAdditionalData = &v
+}
+
+// GetAuthMethodId returns the AuthMethodId field value if set, zero value otherwise.
+func (o *AuthMethod) GetAuthMethodId() int64 {
+	if o == nil || IsNil(o.AuthMethodId) {
+		var ret int64
+		return ret
+	}
+	return *o.AuthMethodId
+}
+
+// GetAuthMethodIdOk returns a tuple with the AuthMethodId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetAuthMethodIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.AuthMethodId) {
+		return nil, false
+	}
+	return o.AuthMethodId, true
+}
+
+// HasAuthMethodId returns a boolean if a field has been set.
+func (o *AuthMethod) HasAuthMethodId() bool {
+	if o != nil && !IsNil(o.AuthMethodId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMethodId gets a reference to the given int64 and assigns it to the AuthMethodId field.
+func (o *AuthMethod) SetAuthMethodId(v int64) {
+	o.AuthMethodId = &v
 }
 
 // GetAuthMethodName returns the AuthMethodName field value if set, zero value otherwise.
@@ -598,6 +631,9 @@ func (o AuthMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuthMethodAdditionalData) {
 		toSerialize["auth_method_additional_data"] = o.AuthMethodAdditionalData
+	}
+	if !IsNil(o.AuthMethodId) {
+		toSerialize["auth_method_id"] = o.AuthMethodId
 	}
 	if !IsNil(o.AuthMethodName) {
 		toSerialize["auth_method_name"] = o.AuthMethodName

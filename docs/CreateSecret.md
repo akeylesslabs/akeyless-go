@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessGateway** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Remote Desktop Username | [optional] 
 **SecureAccessSshCreds** | Pointer to **string** | Static-Secret values contains SSH Credentials, either Private Key or Password [password/private-key] | [optional] 
@@ -473,6 +474,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 `func (o *CreateSecret) HasSecureAccessEnable() bool`
 
 HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessGateway
+
+`func (o *CreateSecret) GetSecureAccessGateway() string`
+
+GetSecureAccessGateway returns the SecureAccessGateway field if non-nil, zero value otherwise.
+
+### GetSecureAccessGatewayOk
+
+`func (o *CreateSecret) GetSecureAccessGatewayOk() (*string, bool)`
+
+GetSecureAccessGatewayOk returns a tuple with the SecureAccessGateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessGateway
+
+`func (o *CreateSecret) SetSecureAccessGateway(v string)`
+
+SetSecureAccessGateway sets SecureAccessGateway field to given value.
+
+### HasSecureAccessGateway
+
+`func (o *CreateSecret) HasSecureAccessGateway() bool`
+
+HasSecureAccessGateway returns a boolean if a field has been set.
 
 ### GetSecureAccessHost
 

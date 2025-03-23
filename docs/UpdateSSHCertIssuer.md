@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionSsh** | Pointer to **string** | Deprecated. use secure-access-ssh | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enable this flag to enforce connections only to the hosts listed in --secure-access-host | [optional] 
+**SecureAccessGateway** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessSsh** | Pointer to **string** | Bastion&#39;s SSH server. E.g. my.sra-server:22 | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list | [optional] 
@@ -542,6 +543,31 @@ SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction 
 `func (o *UpdateSSHCertIssuer) HasSecureAccessEnforceHostsRestriction() bool`
 
 HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+
+### GetSecureAccessGateway
+
+`func (o *UpdateSSHCertIssuer) GetSecureAccessGateway() string`
+
+GetSecureAccessGateway returns the SecureAccessGateway field if non-nil, zero value otherwise.
+
+### GetSecureAccessGatewayOk
+
+`func (o *UpdateSSHCertIssuer) GetSecureAccessGatewayOk() (*string, bool)`
+
+GetSecureAccessGatewayOk returns a tuple with the SecureAccessGateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessGateway
+
+`func (o *UpdateSSHCertIssuer) SetSecureAccessGateway(v string)`
+
+SetSecureAccessGateway sets SecureAccessGateway field to given value.
+
+### HasSecureAccessGateway
+
+`func (o *UpdateSSHCertIssuer) HasSecureAccessGateway() bool`
+
+HasSecureAccessGateway returns a boolean if a field has been set.
 
 ### GetSecureAccessHost
 

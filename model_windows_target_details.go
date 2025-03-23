@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &WindowsTargetDetails{}
 // WindowsTargetDetails WindowsTargetDetails
 type WindowsTargetDetails struct {
 	Certificate *string `json:"certificate,omitempty"`
+	ConnectionType *string `json:"connection_type,omitempty"`
 	DomainName *string `json:"domain_name,omitempty"`
 	Hostname *string `json:"hostname,omitempty"`
 	Password *string `json:"password,omitempty"`
@@ -76,6 +77,38 @@ func (o *WindowsTargetDetails) HasCertificate() bool {
 // SetCertificate gets a reference to the given string and assigns it to the Certificate field.
 func (o *WindowsTargetDetails) SetCertificate(v string) {
 	o.Certificate = &v
+}
+
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+func (o *WindowsTargetDetails) GetConnectionType() string {
+	if o == nil || IsNil(o.ConnectionType) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WindowsTargetDetails) GetConnectionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectionType) {
+		return nil, false
+	}
+	return o.ConnectionType, true
+}
+
+// HasConnectionType returns a boolean if a field has been set.
+func (o *WindowsTargetDetails) HasConnectionType() bool {
+	if o != nil && !IsNil(o.ConnectionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+func (o *WindowsTargetDetails) SetConnectionType(v string) {
+	o.ConnectionType = &v
 }
 
 // GetDomainName returns the DomainName field value if set, zero value otherwise.
@@ -282,6 +315,9 @@ func (o WindowsTargetDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
+	}
+	if !IsNil(o.ConnectionType) {
+		toSerialize["connection_type"] = o.ConnectionType
 	}
 	if !IsNil(o.DomainName) {
 		toSerialize["domain_name"] = o.DomainName

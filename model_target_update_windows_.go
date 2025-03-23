@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -24,6 +24,8 @@ var _ MappedNullable = &TargetUpdateWindows{}
 type TargetUpdateWindows struct {
 	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
 	Certificate *string `json:"certificate,omitempty"`
+	// Type of connection to Windows Server [credentials/parent-target]
+	ConnectionType *string `json:"connection-type,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// User domain name
@@ -42,6 +44,8 @@ type TargetUpdateWindows struct {
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
+	// Name of the parent target, relevant only when connection-type is parent-target
+	ParentTargetName *string `json:"parent-target-name,omitempty"`
 	// Privileged user password
 	Password string `json:"password"`
 	// Server WinRM port
@@ -64,6 +68,8 @@ type _TargetUpdateWindows TargetUpdateWindows
 // will change when the set of required properties is changed
 func NewTargetUpdateWindows(hostname string, name string, password string, username string) *TargetUpdateWindows {
 	this := TargetUpdateWindows{}
+	var connectionType string = "credentials"
+	this.ConnectionType = &connectionType
 	this.Hostname = hostname
 	var json bool = false
 	this.Json = &json
@@ -82,12 +88,18 @@ func NewTargetUpdateWindows(hostname string, name string, password string, usern
 // but it doesn't guarantee that properties required by API are set
 func NewTargetUpdateWindowsWithDefaults() *TargetUpdateWindows {
 	this := TargetUpdateWindows{}
+	var connectionType string = "credentials"
+	this.ConnectionType = &connectionType
 	var json bool = false
 	this.Json = &json
+	var password string = "dummy_value"
+	this.Password = password
 	var port string = "5986"
 	this.Port = &port
 	var useTls string = "true"
 	this.UseTls = &useTls
+	var username string = "dummy_value"
+	this.Username = username
 	return &this
 }
 
@@ -121,6 +133,38 @@ func (o *TargetUpdateWindows) HasCertificate() bool {
 // SetCertificate gets a reference to the given string and assigns it to the Certificate field.
 func (o *TargetUpdateWindows) SetCertificate(v string) {
 	o.Certificate = &v
+}
+
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+func (o *TargetUpdateWindows) GetConnectionType() string {
+	if o == nil || IsNil(o.ConnectionType) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateWindows) GetConnectionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectionType) {
+		return nil, false
+	}
+	return o.ConnectionType, true
+}
+
+// HasConnectionType returns a boolean if a field has been set.
+func (o *TargetUpdateWindows) HasConnectionType() bool {
+	if o != nil && !IsNil(o.ConnectionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+func (o *TargetUpdateWindows) SetConnectionType(v string) {
+	o.ConnectionType = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -395,6 +439,38 @@ func (o *TargetUpdateWindows) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetParentTargetName returns the ParentTargetName field value if set, zero value otherwise.
+func (o *TargetUpdateWindows) GetParentTargetName() string {
+	if o == nil || IsNil(o.ParentTargetName) {
+		var ret string
+		return ret
+	}
+	return *o.ParentTargetName
+}
+
+// GetParentTargetNameOk returns a tuple with the ParentTargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateWindows) GetParentTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ParentTargetName) {
+		return nil, false
+	}
+	return o.ParentTargetName, true
+}
+
+// HasParentTargetName returns a boolean if a field has been set.
+func (o *TargetUpdateWindows) HasParentTargetName() bool {
+	if o != nil && !IsNil(o.ParentTargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetParentTargetName gets a reference to the given string and assigns it to the ParentTargetName field.
+func (o *TargetUpdateWindows) SetParentTargetName(v string) {
+	o.ParentTargetName = &v
+}
+
 // GetPassword returns the Password field value
 func (o *TargetUpdateWindows) GetPassword() string {
 	if o == nil {
@@ -584,6 +660,9 @@ func (o TargetUpdateWindows) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
 	}
+	if !IsNil(o.ConnectionType) {
+		toSerialize["connection-type"] = o.ConnectionType
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -606,6 +685,9 @@ func (o TargetUpdateWindows) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.ParentTargetName) {
+		toSerialize["parent-target-name"] = o.ParentTargetName
 	}
 	toSerialize["password"] = o.Password
 	if !IsNil(o.Port) {

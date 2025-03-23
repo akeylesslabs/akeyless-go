@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Enable** | Pointer to **bool** |  | [optional] 
 **Endpoint** | Pointer to **string** |  | [optional] 
 **EnforceHostsRestriction** | Pointer to **bool** |  | [optional] 
+**GwClusterId** | Pointer to **int64** |  | [optional] 
 **Host** | Pointer to **[]string** |  | [optional] 
 **HostProviderType** | Pointer to **string** |  | [optional] 
 **IsCli** | Pointer to **bool** |  | [optional] 
@@ -485,6 +486,31 @@ SetEnforceHostsRestriction sets EnforceHostsRestriction field to given value.
 `func (o *SecureRemoteAccess) HasEnforceHostsRestriction() bool`
 
 HasEnforceHostsRestriction returns a boolean if a field has been set.
+
+### GetGwClusterId
+
+`func (o *SecureRemoteAccess) GetGwClusterId() int64`
+
+GetGwClusterId returns the GwClusterId field if non-nil, zero value otherwise.
+
+### GetGwClusterIdOk
+
+`func (o *SecureRemoteAccess) GetGwClusterIdOk() (*int64, bool)`
+
+GetGwClusterIdOk returns a tuple with the GwClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwClusterId
+
+`func (o *SecureRemoteAccess) SetGwClusterId(v int64)`
+
+SetGwClusterId sets GwClusterId field to given value.
+
+### HasGwClusterId
+
+`func (o *SecureRemoteAccess) HasGwClusterId() bool`
+
+HasGwClusterId returns a boolean if a field has been set.
 
 ### GetHost
 

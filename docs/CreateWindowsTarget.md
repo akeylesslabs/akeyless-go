@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | Pointer to **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
+**ConnectionType** | Pointer to **string** | Type of connection to Windows Server [credentials/parent-target] | [optional] [default to "credentials"]
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Domain** | Pointer to **string** | User domain name | [optional] 
 **Hostname** | **string** | Server hostname | 
@@ -12,12 +13,13 @@ Name | Type | Description | Notes
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
-**Password** | **string** | Privileged user password | 
+**ParentTargetName** | Pointer to **string** | Name of the parent target, relevant only when connection-type is parent-target | [optional] 
+**Password** | **string** | Privileged user password | [default to "dummy_value"]
 **Port** | Pointer to **string** | Server WinRM port | [optional] [default to "5986"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseTls** | Pointer to **string** | Enable/Disable TLS for WinRM over HTTPS [true/false] | [optional] [default to "true"]
-**Username** | **string** | Privileged username | 
+**Username** | **string** | Privileged username | [default to "dummy_value"]
 
 ## Methods
 
@@ -62,6 +64,31 @@ SetCertificate sets Certificate field to given value.
 `func (o *CreateWindowsTarget) HasCertificate() bool`
 
 HasCertificate returns a boolean if a field has been set.
+
+### GetConnectionType
+
+`func (o *CreateWindowsTarget) GetConnectionType() string`
+
+GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
+
+### GetConnectionTypeOk
+
+`func (o *CreateWindowsTarget) GetConnectionTypeOk() (*string, bool)`
+
+GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionType
+
+`func (o *CreateWindowsTarget) SetConnectionType(v string)`
+
+SetConnectionType sets ConnectionType field to given value.
+
+### HasConnectionType
+
+`func (o *CreateWindowsTarget) HasConnectionType() bool`
+
+HasConnectionType returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -227,6 +254,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetParentTargetName
+
+`func (o *CreateWindowsTarget) GetParentTargetName() string`
+
+GetParentTargetName returns the ParentTargetName field if non-nil, zero value otherwise.
+
+### GetParentTargetNameOk
+
+`func (o *CreateWindowsTarget) GetParentTargetNameOk() (*string, bool)`
+
+GetParentTargetNameOk returns a tuple with the ParentTargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentTargetName
+
+`func (o *CreateWindowsTarget) SetParentTargetName(v string)`
+
+SetParentTargetName sets ParentTargetName field to given value.
+
+### HasParentTargetName
+
+`func (o *CreateWindowsTarget) HasParentTargetName() bool`
+
+HasParentTargetName returns a boolean if a field has been set.
 
 ### GetPassword
 

@@ -36072,7 +36072,7 @@ No authorization required
 
 ## UscCreate
 
-> UscCreateSecretOutput UscCreate(ctx).UscUpdate(uscUpdate).Execute()
+> UscCreateSecretOutput UscCreate(ctx).UscCreate(uscCreate).Execute()
 
 
 
@@ -36089,11 +36089,11 @@ import (
 )
 
 func main() {
-	uscUpdate := *openapiclient.NewUscUpdate("SecretId_example", "UscName_example", "Value_example") // UscUpdate | 
+	uscCreate := *openapiclient.NewUscCreate("SecretName_example", "UscName_example", "Value_example") // UscCreate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.V2Api.UscCreate(context.Background()).UscUpdate(uscUpdate).Execute()
+	resp, r, err := apiClient.V2Api.UscCreate(context.Background()).UscCreate(uscCreate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UscCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -36114,7 +36114,7 @@ Other parameters are passed through a pointer to a apiUscCreateRequest struct vi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **uscUpdate** | [**UscUpdate**](UscUpdate.md) |  | 
+ **uscCreate** | [**UscCreate**](UscCreate.md) |  | 
 
 ### Return type
 
@@ -36328,7 +36328,7 @@ No authorization required
 
 ## UscUpdate
 
-> UscUpdateSecretOutput UscUpdate(ctx).Execute()
+> UscUpdateSecretOutput UscUpdate(ctx).UscUpdate(uscUpdate).Execute()
 
 
 
@@ -36345,10 +36345,11 @@ import (
 )
 
 func main() {
+	uscUpdate := *openapiclient.NewUscUpdate("SecretId_example", "UscName_example", "Value_example") // UscUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.V2Api.UscUpdate(context.Background()).Execute()
+	resp, r, err := apiClient.V2Api.UscUpdate(context.Background()).UscUpdate(uscUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UscUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -36360,12 +36361,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUscUpdateRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uscUpdate** | [**UscUpdate**](UscUpdate.md) |  | 
 
 ### Return type
 
@@ -36377,7 +36382,7 @@ No authorization required
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

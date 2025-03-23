@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -28,6 +28,7 @@ type AccountGeneralSettings struct {
 	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
+	DefaultHomePage *DefaultHomePage `json:"default_home_page,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	// InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention
@@ -250,6 +251,38 @@ func (o *AccountGeneralSettings) HasDataProtectionSection() bool {
 // SetDataProtectionSection gets a reference to the given DataProtectionSection and assigns it to the DataProtectionSection field.
 func (o *AccountGeneralSettings) SetDataProtectionSection(v DataProtectionSection) {
 	o.DataProtectionSection = &v
+}
+
+// GetDefaultHomePage returns the DefaultHomePage field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetDefaultHomePage() DefaultHomePage {
+	if o == nil || IsNil(o.DefaultHomePage) {
+		var ret DefaultHomePage
+		return ret
+	}
+	return *o.DefaultHomePage
+}
+
+// GetDefaultHomePageOk returns a tuple with the DefaultHomePage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetDefaultHomePageOk() (*DefaultHomePage, bool) {
+	if o == nil || IsNil(o.DefaultHomePage) {
+		return nil, false
+	}
+	return o.DefaultHomePage, true
+}
+
+// HasDefaultHomePage returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasDefaultHomePage() bool {
+	if o != nil && !IsNil(o.DefaultHomePage) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultHomePage gets a reference to the given DefaultHomePage and assigns it to the DefaultHomePage field.
+func (o *AccountGeneralSettings) SetDefaultHomePage(v DefaultHomePage) {
+	o.DefaultHomePage = &v
 }
 
 // GetDynamicSecretMaxTtl returns the DynamicSecretMaxTtl field value if set, zero value otherwise.
@@ -631,6 +664,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DataProtectionSection) {
 		toSerialize["data_protection_section"] = o.DataProtectionSection
+	}
+	if !IsNil(o.DefaultHomePage) {
+		toSerialize["default_home_page"] = o.DefaultHomePage
 	}
 	if !IsNil(o.DynamicSecretMaxTtl) {
 		toSerialize["dynamic_secret_max_ttl"] = o.DynamicSecretMaxTtl

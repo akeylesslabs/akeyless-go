@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **AllowedAccessIds** | Pointer to **[]string** |  | [optional] 
 **AllowedUrls** | Pointer to **[]string** |  | [optional] 
 **AllowedUrlsPerInstance** | Pointer to **map[string][]string** |  | [optional] 
+**BastionSshPort** | Pointer to **int64** |  | [optional] 
+**BastionUrlsPerType** | Pointer to **map[string]string** |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **HasGatewayIdentity** | Pointer to **bool** |  | [optional] 
@@ -131,6 +133,56 @@ SetAllowedUrlsPerInstance sets AllowedUrlsPerInstance field to given value.
 `func (o *BastionListEntry) HasAllowedUrlsPerInstance() bool`
 
 HasAllowedUrlsPerInstance returns a boolean if a field has been set.
+
+### GetBastionSshPort
+
+`func (o *BastionListEntry) GetBastionSshPort() int64`
+
+GetBastionSshPort returns the BastionSshPort field if non-nil, zero value otherwise.
+
+### GetBastionSshPortOk
+
+`func (o *BastionListEntry) GetBastionSshPortOk() (*int64, bool)`
+
+GetBastionSshPortOk returns a tuple with the BastionSshPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBastionSshPort
+
+`func (o *BastionListEntry) SetBastionSshPort(v int64)`
+
+SetBastionSshPort sets BastionSshPort field to given value.
+
+### HasBastionSshPort
+
+`func (o *BastionListEntry) HasBastionSshPort() bool`
+
+HasBastionSshPort returns a boolean if a field has been set.
+
+### GetBastionUrlsPerType
+
+`func (o *BastionListEntry) GetBastionUrlsPerType() map[string]string`
+
+GetBastionUrlsPerType returns the BastionUrlsPerType field if non-nil, zero value otherwise.
+
+### GetBastionUrlsPerTypeOk
+
+`func (o *BastionListEntry) GetBastionUrlsPerTypeOk() (*map[string]string, bool)`
+
+GetBastionUrlsPerTypeOk returns a tuple with the BastionUrlsPerType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBastionUrlsPerType
+
+`func (o *BastionListEntry) SetBastionUrlsPerType(v map[string]string)`
+
+SetBastionUrlsPerType sets BastionUrlsPerType field to given value.
+
+### HasBastionUrlsPerType
+
+`func (o *BastionListEntry) HasBastionUrlsPerType() bool`
+
+HasBastionUrlsPerType returns a boolean if a field has been set.
 
 ### GetClusterName
 

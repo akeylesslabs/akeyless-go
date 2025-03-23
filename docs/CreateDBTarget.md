@@ -4,14 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DBDefinedConnectionType** | Pointer to **string** |  | [optional] 
 **AzureClientId** | Pointer to **string** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureClientSecret** | Pointer to **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | Pointer to **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **CloudServiceProvider** | Pointer to **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
 **ClusterMode** | Pointer to **bool** | Cluster Mode | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
-**ConnectionType** | **string** | Type of connection to mssql/oracle database [credentials/cloud-identity/wallet] | [default to "credentials"]
+**ConnectionType** | **string** | Type of connection to mssql database [credentials/cloud-identity/wallet/parent-target] | [default to "credentials"]
 **DbName** | Pointer to **string** |  | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
@@ -32,6 +31,7 @@ Name | Type | Description | Notes
 **OracleWalletLoginType** | Pointer to **string** | Oracle Wallet login type (password/mtls) | [optional] 
 **OracleWalletP12FileData** | Pointer to **string** | Oracle wallet p12 file data in base64 | [optional] 
 **OracleWalletSsoFileData** | Pointer to **string** | Oracle wallet sso file data in base64 | [optional] 
+**ParentTargetName** | Pointer to **string** | Name of the parent target, relevant only when connection-type is parent-target | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
@@ -61,31 +61,6 @@ will change when the set of required properties is changed
 NewCreateDBTargetWithDefaults instantiates a new CreateDBTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDBDefinedConnectionType
-
-`func (o *CreateDBTarget) GetDBDefinedConnectionType() string`
-
-GetDBDefinedConnectionType returns the DBDefinedConnectionType field if non-nil, zero value otherwise.
-
-### GetDBDefinedConnectionTypeOk
-
-`func (o *CreateDBTarget) GetDBDefinedConnectionTypeOk() (*string, bool)`
-
-GetDBDefinedConnectionTypeOk returns a tuple with the DBDefinedConnectionType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDBDefinedConnectionType
-
-`func (o *CreateDBTarget) SetDBDefinedConnectionType(v string)`
-
-SetDBDefinedConnectionType sets DBDefinedConnectionType field to given value.
-
-### HasDBDefinedConnectionType
-
-`func (o *CreateDBTarget) HasDBDefinedConnectionType() bool`
-
-HasDBDefinedConnectionType returns a boolean if a field has been set.
 
 ### GetAzureClientId
 
@@ -746,6 +721,31 @@ SetOracleWalletSsoFileData sets OracleWalletSsoFileData field to given value.
 `func (o *CreateDBTarget) HasOracleWalletSsoFileData() bool`
 
 HasOracleWalletSsoFileData returns a boolean if a field has been set.
+
+### GetParentTargetName
+
+`func (o *CreateDBTarget) GetParentTargetName() string`
+
+GetParentTargetName returns the ParentTargetName field if non-nil, zero value otherwise.
+
+### GetParentTargetNameOk
+
+`func (o *CreateDBTarget) GetParentTargetNameOk() (*string, bool)`
+
+GetParentTargetNameOk returns a tuple with the ParentTargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentTargetName
+
+`func (o *CreateDBTarget) SetParentTargetName(v string)`
+
+SetParentTargetName sets ParentTargetName field to given value.
+
+### HasParentTargetName
+
+`func (o *CreateDBTarget) HasParentTargetName() bool`
+
+HasParentTargetName returns a boolean if a field has been set.
 
 ### GetPort
 

@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &AkeylessGatewayConfig{}
 // AkeylessGatewayConfig struct for AkeylessGatewayConfig
 type AkeylessGatewayConfig struct {
 	Admins *AdminsConfigPart `json:"admins,omitempty"`
+	CaCertificates *CaCertificatesConfigPart `json:"ca_certificates,omitempty"`
 	Cache *CacheConfigPart `json:"cache,omitempty"`
 	Cf *CFConfigPart `json:"cf,omitempty"`
 	ConfigProtectionKeyName *string `json:"config_protection_key_name,omitempty"`
@@ -86,6 +87,38 @@ func (o *AkeylessGatewayConfig) HasAdmins() bool {
 // SetAdmins gets a reference to the given AdminsConfigPart and assigns it to the Admins field.
 func (o *AkeylessGatewayConfig) SetAdmins(v AdminsConfigPart) {
 	o.Admins = &v
+}
+
+// GetCaCertificates returns the CaCertificates field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetCaCertificates() CaCertificatesConfigPart {
+	if o == nil || IsNil(o.CaCertificates) {
+		var ret CaCertificatesConfigPart
+		return ret
+	}
+	return *o.CaCertificates
+}
+
+// GetCaCertificatesOk returns a tuple with the CaCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetCaCertificatesOk() (*CaCertificatesConfigPart, bool) {
+	if o == nil || IsNil(o.CaCertificates) {
+		return nil, false
+	}
+	return o.CaCertificates, true
+}
+
+// HasCaCertificates returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasCaCertificates() bool {
+	if o != nil && !IsNil(o.CaCertificates) {
+		return true
+	}
+
+	return false
+}
+
+// SetCaCertificates gets a reference to the given CaCertificatesConfigPart and assigns it to the CaCertificates field.
+func (o *AkeylessGatewayConfig) SetCaCertificates(v CaCertificatesConfigPart) {
+	o.CaCertificates = &v
 }
 
 // GetCache returns the Cache field value if set, zero value otherwise.
@@ -612,6 +645,9 @@ func (o AkeylessGatewayConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Admins) {
 		toSerialize["admins"] = o.Admins
+	}
+	if !IsNil(o.CaCertificates) {
+		toSerialize["ca_certificates"] = o.CaCertificates
 	}
 	if !IsNil(o.Cache) {
 		toSerialize["cache"] = o.Cache

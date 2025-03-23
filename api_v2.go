@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -68708,18 +68708,18 @@ func (a *V2ApiService) UploadRSAExecute(r ApiUploadRSARequest) (map[string]inter
 type ApiUscCreateRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
-	uscUpdate *UscUpdate
+	uscCreate *UscCreate
     body interface{}
 }
 
-func (r ApiUscCreateRequest) UscUpdate(uscUpdate UscUpdate) ApiUscCreateRequest {
-	r.uscUpdate = &uscUpdate
+func (r ApiUscCreateRequest) UscCreate(uscCreate UscCreate) ApiUscCreateRequest {
+	r.uscCreate = &uscCreate
 	return r
 }
 
 
     // Body sets the body payload for the API call.
-func (r ApiUscCreateRequest) Body(body UscUpdate) ApiUscCreateRequest {
+func (r ApiUscCreateRequest) Body(body UscCreate) ApiUscCreateRequest {
     r.body = body
     return r
 }
@@ -69204,10 +69204,21 @@ func (a *V2ApiService) UscListExecute(r ApiUscListRequest) (*UscListSecretsOutpu
 type ApiUscUpdateRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
+	uscUpdate *UscUpdate
     body interface{}
 }
 
+func (r ApiUscUpdateRequest) UscUpdate(uscUpdate UscUpdate) ApiUscUpdateRequest {
+	r.uscUpdate = &uscUpdate
+	return r
+}
 
+
+    // Body sets the body payload for the API call.
+func (r ApiUscUpdateRequest) Body(body UscUpdate) ApiUscUpdateRequest {
+    r.body = body
+    return r
+}
 
 func (r ApiUscUpdateRequest) Execute() (*UscUpdateSecretOutput, *http.Response, error) {
 	return r.ApiService.UscUpdateExecute(r)
@@ -69246,9 +69257,12 @@ func (a *V2ApiService) UscUpdateExecute(r ApiUscUpdateRequest) (*UscUpdateSecret
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -69264,6 +69278,8 @@ func (a *V2ApiService) UscUpdateExecute(r ApiUscUpdateRequest) (*UscUpdateSecret
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

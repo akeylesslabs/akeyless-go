@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -22,7 +22,6 @@ var _ MappedNullable = &UpdateDBTarget{}
 
 // UpdateDBTarget updateDBTarget is a command that updates an existing target. [Deprecated: Use target-update-db command]
 type UpdateDBTarget struct {
-	DBDefinedConnectionType *string `json:"DBDefinedConnectionType,omitempty"`
 	// (Optional) Client id (relevant for \"cloud-service-provider\" only)
 	AzureClientId *string `json:"azure-client-id,omitempty"`
 	// (Optional) Client secret (relevant for \"cloud-service-provider\" only)
@@ -35,7 +34,7 @@ type UpdateDBTarget struct {
 	ClusterMode *bool `json:"cluster-mode,omitempty"`
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
-	// Type of connection to mssql/oracle database [credentials/cloud-identity/wallet]
+	// Type of connection to mssql database [credentials/cloud-identity/wallet/parent-target]
 	ConnectionType string `json:"connection-type"`
 	DbName *string `json:"db-name,omitempty"`
 	// (Optional) DB server certificates
@@ -77,6 +76,8 @@ type UpdateDBTarget struct {
 	OracleWalletP12FileData *string `json:"oracle-wallet-p12-file-data,omitempty"`
 	// Oracle wallet sso file data in base64
 	OracleWalletSsoFileData *string `json:"oracle-wallet-sso-file-data,omitempty"`
+	// Name of the parent target, relevant only when connection-type is parent-target
+	ParentTargetName *string `json:"parent-target-name,omitempty"`
 	Port *string `json:"port,omitempty"`
 	Pwd *string `json:"pwd,omitempty"`
 	SnowflakeAccount *string `json:"snowflake-account,omitempty"`
@@ -127,38 +128,6 @@ func NewUpdateDBTargetWithDefaults() *UpdateDBTarget {
 	var ssl bool = false
 	this.Ssl = &ssl
 	return &this
-}
-
-// GetDBDefinedConnectionType returns the DBDefinedConnectionType field value if set, zero value otherwise.
-func (o *UpdateDBTarget) GetDBDefinedConnectionType() string {
-	if o == nil || IsNil(o.DBDefinedConnectionType) {
-		var ret string
-		return ret
-	}
-	return *o.DBDefinedConnectionType
-}
-
-// GetDBDefinedConnectionTypeOk returns a tuple with the DBDefinedConnectionType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UpdateDBTarget) GetDBDefinedConnectionTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.DBDefinedConnectionType) {
-		return nil, false
-	}
-	return o.DBDefinedConnectionType, true
-}
-
-// HasDBDefinedConnectionType returns a boolean if a field has been set.
-func (o *UpdateDBTarget) HasDBDefinedConnectionType() bool {
-	if o != nil && !IsNil(o.DBDefinedConnectionType) {
-		return true
-	}
-
-	return false
-}
-
-// SetDBDefinedConnectionType gets a reference to the given string and assigns it to the DBDefinedConnectionType field.
-func (o *UpdateDBTarget) SetDBDefinedConnectionType(v string) {
-	o.DBDefinedConnectionType = &v
 }
 
 // GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
@@ -1065,6 +1034,38 @@ func (o *UpdateDBTarget) SetOracleWalletSsoFileData(v string) {
 	o.OracleWalletSsoFileData = &v
 }
 
+// GetParentTargetName returns the ParentTargetName field value if set, zero value otherwise.
+func (o *UpdateDBTarget) GetParentTargetName() string {
+	if o == nil || IsNil(o.ParentTargetName) {
+		var ret string
+		return ret
+	}
+	return *o.ParentTargetName
+}
+
+// GetParentTargetNameOk returns a tuple with the ParentTargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateDBTarget) GetParentTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ParentTargetName) {
+		return nil, false
+	}
+	return o.ParentTargetName, true
+}
+
+// HasParentTargetName returns a boolean if a field has been set.
+func (o *UpdateDBTarget) HasParentTargetName() bool {
+	if o != nil && !IsNil(o.ParentTargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetParentTargetName gets a reference to the given string and assigns it to the ParentTargetName field.
+func (o *UpdateDBTarget) SetParentTargetName(v string) {
+	o.ParentTargetName = &v
+}
+
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *UpdateDBTarget) GetPort() string {
 	if o == nil || IsNil(o.Port) {
@@ -1427,9 +1428,6 @@ func (o UpdateDBTarget) MarshalJSON() ([]byte, error) {
 
 func (o UpdateDBTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.DBDefinedConnectionType) {
-		toSerialize["DBDefinedConnectionType"] = o.DBDefinedConnectionType
-	}
 	if !IsNil(o.AzureClientId) {
 		toSerialize["azure-client-id"] = o.AzureClientId
 	}
@@ -1510,6 +1508,9 @@ func (o UpdateDBTarget) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OracleWalletSsoFileData) {
 		toSerialize["oracle-wallet-sso-file-data"] = o.OracleWalletSsoFileData
+	}
+	if !IsNil(o.ParentTargetName) {
+		toSerialize["parent-target-name"] = o.ParentTargetName
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port

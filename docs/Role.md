@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **RoleAuthMethodsAssoc** | Pointer to [**[]RoleAuthMethodAssociation**](RoleAuthMethodAssociation.md) |  | [optional] 
+**RoleId** | Pointer to **int64** |  | [optional] 
 **RoleName** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**Rules**](Rules.md) |  | [optional] 
 
@@ -233,6 +234,31 @@ SetRoleAuthMethodsAssoc sets RoleAuthMethodsAssoc field to given value.
 `func (o *Role) HasRoleAuthMethodsAssoc() bool`
 
 HasRoleAuthMethodsAssoc returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *Role) GetRoleId() int64`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *Role) GetRoleIdOk() (*int64, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *Role) SetRoleId(v int64)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *Role) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 
 ### GetRoleName
 

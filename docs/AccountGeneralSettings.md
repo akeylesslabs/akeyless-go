@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowedGatewaysIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AuthUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
+**DefaultHomePage** | Pointer to [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **InvalidCharacters** | Pointer to **string** | InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention | [optional] 
@@ -190,6 +191,31 @@ SetDataProtectionSection sets DataProtectionSection field to given value.
 `func (o *AccountGeneralSettings) HasDataProtectionSection() bool`
 
 HasDataProtectionSection returns a boolean if a field has been set.
+
+### GetDefaultHomePage
+
+`func (o *AccountGeneralSettings) GetDefaultHomePage() DefaultHomePage`
+
+GetDefaultHomePage returns the DefaultHomePage field if non-nil, zero value otherwise.
+
+### GetDefaultHomePageOk
+
+`func (o *AccountGeneralSettings) GetDefaultHomePageOk() (*DefaultHomePage, bool)`
+
+GetDefaultHomePageOk returns a tuple with the DefaultHomePage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultHomePage
+
+`func (o *AccountGeneralSettings) SetDefaultHomePage(v DefaultHomePage)`
+
+SetDefaultHomePage sets DefaultHomePage field to given value.
+
+### HasDefaultHomePage
+
+`func (o *AccountGeneralSettings) HasDefaultHomePage() bool`
+
+HasDefaultHomePage returns a boolean if a field has been set.
 
 ### GetDynamicSecretMaxTtl
 

@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -29,6 +29,7 @@ type Role struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	RoleAuthMethodsAssoc []RoleAuthMethodAssociation `json:"role_auth_methods_assoc,omitempty"`
+	RoleId *int64 `json:"role_id,omitempty"`
 	RoleName *string `json:"role_name,omitempty"`
 	Rules *Rules `json:"rules,omitempty"`
 }
@@ -306,6 +307,38 @@ func (o *Role) SetRoleAuthMethodsAssoc(v []RoleAuthMethodAssociation) {
 	o.RoleAuthMethodsAssoc = v
 }
 
+// GetRoleId returns the RoleId field value if set, zero value otherwise.
+func (o *Role) GetRoleId() int64 {
+	if o == nil || IsNil(o.RoleId) {
+		var ret int64
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Role) GetRoleIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.RoleId) {
+		return nil, false
+	}
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *Role) HasRoleId() bool {
+	if o != nil && !IsNil(o.RoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given int64 and assigns it to the RoleId field.
+func (o *Role) SetRoleId(v int64) {
+	o.RoleId = &v
+}
+
 // GetRoleName returns the RoleName field value if set, zero value otherwise.
 func (o *Role) GetRoleName() string {
 	if o == nil || IsNil(o.RoleName) {
@@ -403,6 +436,9 @@ func (o Role) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RoleAuthMethodsAssoc) {
 		toSerialize["role_auth_methods_assoc"] = o.RoleAuthMethodsAssoc
+	}
+	if !IsNil(o.RoleId) {
+		toSerialize["role_id"] = o.RoleId
 	}
 	if !IsNil(o.RoleName) {
 		toSerialize["role_name"] = o.RoleName

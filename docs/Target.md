@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
-**CredentialsLess** | Pointer to **bool** |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
+**ParentTargetName** | Pointer to **string** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
 **TargetDetails** | Pointer to **string** |  | [optional] 
 **TargetId** | Pointer to **int64** |  | [optional] 
@@ -219,31 +219,6 @@ SetCreationDate sets CreationDate field to given value.
 
 HasCreationDate returns a boolean if a field has been set.
 
-### GetCredentialsLess
-
-`func (o *Target) GetCredentialsLess() bool`
-
-GetCredentialsLess returns the CredentialsLess field if non-nil, zero value otherwise.
-
-### GetCredentialsLessOk
-
-`func (o *Target) GetCredentialsLessOk() (*bool, bool)`
-
-GetCredentialsLessOk returns a tuple with the CredentialsLess field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCredentialsLess
-
-`func (o *Target) SetCredentialsLess(v bool)`
-
-SetCredentialsLess sets CredentialsLess field to given value.
-
-### HasCredentialsLess
-
-`func (o *Target) HasCredentialsLess() bool`
-
-HasCredentialsLess returns a boolean if a field has been set.
-
 ### GetIsAccessRequestEnabled
 
 `func (o *Target) GetIsAccessRequestEnabled() bool`
@@ -318,6 +293,31 @@ SetModificationDate sets ModificationDate field to given value.
 `func (o *Target) HasModificationDate() bool`
 
 HasModificationDate returns a boolean if a field has been set.
+
+### GetParentTargetName
+
+`func (o *Target) GetParentTargetName() string`
+
+GetParentTargetName returns the ParentTargetName field if non-nil, zero value otherwise.
+
+### GetParentTargetNameOk
+
+`func (o *Target) GetParentTargetNameOk() (*string, bool)`
+
+GetParentTargetNameOk returns a tuple with the ParentTargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentTargetName
+
+`func (o *Target) SetParentTargetName(v string)`
+
+SetParentTargetName sets ParentTargetName field to given value.
+
+### HasParentTargetName
+
+`func (o *Target) HasParentTargetName() bool`
+
+HasParentTargetName returns a boolean if a field has been set.
 
 ### GetProtectionKeyName
 

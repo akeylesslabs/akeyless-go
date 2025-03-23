@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowSubdomains** | Pointer to **bool** | If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains | [optional] 
 **AllowedDomains** | Pointer to **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
 **AllowedExtraExtensions** | Pointer to **string** | A json string containing the allowed extra extensions for the pki cert issuer | [optional] 
+**AllowedIpSans** | Pointer to **string** | A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AllowedUriSans** | Pointer to **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AutoRenew** | Pointer to **bool** | Automatically renew certificates before expiration | [optional] 
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
@@ -216,6 +217,31 @@ SetAllowedExtraExtensions sets AllowedExtraExtensions field to given value.
 `func (o *UpdatePKICertIssuer) HasAllowedExtraExtensions() bool`
 
 HasAllowedExtraExtensions returns a boolean if a field has been set.
+
+### GetAllowedIpSans
+
+`func (o *UpdatePKICertIssuer) GetAllowedIpSans() string`
+
+GetAllowedIpSans returns the AllowedIpSans field if non-nil, zero value otherwise.
+
+### GetAllowedIpSansOk
+
+`func (o *UpdatePKICertIssuer) GetAllowedIpSansOk() (*string, bool)`
+
+GetAllowedIpSansOk returns a tuple with the AllowedIpSans field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedIpSans
+
+`func (o *UpdatePKICertIssuer) SetAllowedIpSans(v string)`
+
+SetAllowedIpSans sets AllowedIpSans field to given value.
+
+### HasAllowedIpSans
+
+`func (o *UpdatePKICertIssuer) HasAllowedIpSans() bool`
+
+HasAllowedIpSans returns a boolean if a field has been set.
 
 ### GetAllowedUriSans
 

@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -34,6 +34,8 @@ type UpdatePKICertIssuer struct {
 	AllowedDomains *string `json:"allowed-domains,omitempty"`
 	// A json string containing the allowed extra extensions for the pki cert issuer
 	AllowedExtraExtensions *string `json:"allowed-extra-extensions,omitempty"`
+	// A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list)
+	AllowedIpSans *string `json:"allowed-ip-sans,omitempty"`
 	// A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list)
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
 	// Automatically renew certificates before expiration
@@ -337,6 +339,38 @@ func (o *UpdatePKICertIssuer) HasAllowedExtraExtensions() bool {
 // SetAllowedExtraExtensions gets a reference to the given string and assigns it to the AllowedExtraExtensions field.
 func (o *UpdatePKICertIssuer) SetAllowedExtraExtensions(v string) {
 	o.AllowedExtraExtensions = &v
+}
+
+// GetAllowedIpSans returns the AllowedIpSans field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetAllowedIpSans() string {
+	if o == nil || IsNil(o.AllowedIpSans) {
+		var ret string
+		return ret
+	}
+	return *o.AllowedIpSans
+}
+
+// GetAllowedIpSansOk returns a tuple with the AllowedIpSans field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetAllowedIpSansOk() (*string, bool) {
+	if o == nil || IsNil(o.AllowedIpSans) {
+		return nil, false
+	}
+	return o.AllowedIpSans, true
+}
+
+// HasAllowedIpSans returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasAllowedIpSans() bool {
+	if o != nil && !IsNil(o.AllowedIpSans) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedIpSans gets a reference to the given string and assigns it to the AllowedIpSans field.
+func (o *UpdatePKICertIssuer) SetAllowedIpSans(v string) {
+	o.AllowedIpSans = &v
 }
 
 // GetAllowedUriSans returns the AllowedUriSans field value if set, zero value otherwise.
@@ -1534,6 +1568,9 @@ func (o UpdatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AllowedExtraExtensions) {
 		toSerialize["allowed-extra-extensions"] = o.AllowedExtraExtensions
+	}
+	if !IsNil(o.AllowedIpSans) {
+		toSerialize["allowed-ip-sans"] = o.AllowedIpSans
 	}
 	if !IsNil(o.AllowedUriSans) {
 		toSerialize["allowed-uri-sans"] = o.AllowedUriSans

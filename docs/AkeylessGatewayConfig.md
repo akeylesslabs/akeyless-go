@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Admins** | Pointer to [**AdminsConfigPart**](AdminsConfigPart.md) |  | [optional] 
+**CaCertificates** | Pointer to [**CaCertificatesConfigPart**](CaCertificatesConfigPart.md) |  | [optional] 
 **Cache** | Pointer to [**CacheConfigPart**](CacheConfigPart.md) |  | [optional] 
 **Cf** | Pointer to [**CFConfigPart**](CFConfigPart.md) |  | [optional] 
 **ConfigProtectionKeyName** | Pointer to **string** |  | [optional] 
@@ -65,6 +66,31 @@ SetAdmins sets Admins field to given value.
 `func (o *AkeylessGatewayConfig) HasAdmins() bool`
 
 HasAdmins returns a boolean if a field has been set.
+
+### GetCaCertificates
+
+`func (o *AkeylessGatewayConfig) GetCaCertificates() CaCertificatesConfigPart`
+
+GetCaCertificates returns the CaCertificates field if non-nil, zero value otherwise.
+
+### GetCaCertificatesOk
+
+`func (o *AkeylessGatewayConfig) GetCaCertificatesOk() (*CaCertificatesConfigPart, bool)`
+
+GetCaCertificatesOk returns a tuple with the CaCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCaCertificates
+
+`func (o *AkeylessGatewayConfig) SetCaCertificates(v CaCertificatesConfigPart)`
+
+SetCaCertificates sets CaCertificates field to given value.
+
+### HasCaCertificates
+
+`func (o *AkeylessGatewayConfig) HasCaCertificates() bool`
+
+HasCaCertificates returns a boolean if a field has been set.
 
 ### GetCache
 

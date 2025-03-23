@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -56,6 +56,7 @@ type CreateSecret struct {
 	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	SecureAccessGateway *string `json:"secure-access-gateway,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Remote Desktop Username
@@ -665,6 +666,38 @@ func (o *CreateSecret) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessGateway returns the SecureAccessGateway field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessGateway() string {
+	if o == nil || IsNil(o.SecureAccessGateway) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessGateway
+}
+
+// GetSecureAccessGatewayOk returns a tuple with the SecureAccessGateway field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessGatewayOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessGateway) {
+		return nil, false
+	}
+	return o.SecureAccessGateway, true
+}
+
+// HasSecureAccessGateway returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessGateway() bool {
+	if o != nil && !IsNil(o.SecureAccessGateway) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessGateway gets a reference to the given string and assigns it to the SecureAccessGateway field.
+func (o *CreateSecret) SetSecureAccessGateway(v string) {
+	o.SecureAccessGateway = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *CreateSecret) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -1131,6 +1164,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if !IsNil(o.SecureAccessGateway) {
+		toSerialize["secure-access-gateway"] = o.SecureAccessGateway
 	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost

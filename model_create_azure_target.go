@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -28,6 +28,8 @@ type CreateAzureTarget struct {
 	ClientSecret *string `json:"client-secret,omitempty"`
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Type of connection [credentials/cloud-identity]
+	ConnectionType *string `json:"connection-type,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
@@ -62,6 +64,8 @@ type _CreateAzureTarget CreateAzureTarget
 // will change when the set of required properties is changed
 func NewCreateAzureTarget(name string) *CreateAzureTarget {
 	this := CreateAzureTarget{}
+	var connectionType string = "credentials"
+	this.ConnectionType = &connectionType
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -73,6 +77,8 @@ func NewCreateAzureTarget(name string) *CreateAzureTarget {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateAzureTargetWithDefaults() *CreateAzureTarget {
 	this := CreateAzureTarget{}
+	var connectionType string = "credentials"
+	this.ConnectionType = &connectionType
 	var json bool = false
 	this.Json = &json
 	return &this
@@ -172,6 +178,38 @@ func (o *CreateAzureTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *CreateAzureTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+func (o *CreateAzureTarget) GetConnectionType() string {
+	if o == nil || IsNil(o.ConnectionType) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAzureTarget) GetConnectionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectionType) {
+		return nil, false
+	}
+	return o.ConnectionType, true
+}
+
+// HasConnectionType returns a boolean if a field has been set.
+func (o *CreateAzureTarget) HasConnectionType() bool {
+	if o != nil && !IsNil(o.ConnectionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+func (o *CreateAzureTarget) SetConnectionType(v string) {
+	o.ConnectionType = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -568,6 +606,9 @@ func (o CreateAzureTarget) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.ConnectionType) {
+		toSerialize["connection-type"] = o.ConnectionType
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

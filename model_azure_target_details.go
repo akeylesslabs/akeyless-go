@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -28,6 +28,7 @@ type AzureTargetDetails struct {
 	AzureSubscriptionId *string `json:"azure_subscription_id,omitempty"`
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
 	AzureUsername *string `json:"azure_username,omitempty"`
+	ConnectionType *string `json:"connection_type,omitempty"`
 	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 }
@@ -273,6 +274,38 @@ func (o *AzureTargetDetails) SetAzureUsername(v string) {
 	o.AzureUsername = &v
 }
 
+// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
+func (o *AzureTargetDetails) GetConnectionType() string {
+	if o == nil || IsNil(o.ConnectionType) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionType
+}
+
+// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureTargetDetails) GetConnectionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectionType) {
+		return nil, false
+	}
+	return o.ConnectionType, true
+}
+
+// HasConnectionType returns a boolean if a field has been set.
+func (o *AzureTargetDetails) HasConnectionType() bool {
+	if o != nil && !IsNil(o.ConnectionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
+func (o *AzureTargetDetails) SetConnectionType(v string) {
+	o.ConnectionType = &v
+}
+
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
 func (o *AzureTargetDetails) GetExpirationDate() time.Time {
 	if o == nil || IsNil(o.ExpirationDate) {
@@ -367,6 +400,9 @@ func (o AzureTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureUsername) {
 		toSerialize["azure_username"] = o.AzureUsername
+	}
+	if !IsNil(o.ConnectionType) {
+		toSerialize["connection_type"] = o.ConnectionType
 	}
 	if !IsNil(o.ExpirationDate) {
 		toSerialize["expiration_date"] = o.ExpirationDate

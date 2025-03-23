@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **AzureUsername** | Pointer to **string** |  | [optional] 
+**ConnectionType** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 
@@ -207,6 +208,31 @@ SetAzureUsername sets AzureUsername field to given value.
 `func (o *AzureTargetDetails) HasAzureUsername() bool`
 
 HasAzureUsername returns a boolean if a field has been set.
+
+### GetConnectionType
+
+`func (o *AzureTargetDetails) GetConnectionType() string`
+
+GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
+
+### GetConnectionTypeOk
+
+`func (o *AzureTargetDetails) GetConnectionTypeOk() (*string, bool)`
+
+GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionType
+
+`func (o *AzureTargetDetails) SetConnectionType(v string)`
+
+SetConnectionType sets ConnectionType field to given value.
+
+### HasConnectionType
+
+`func (o *AzureTargetDetails) HasConnectionType() bool`
+
+HasConnectionType returns a boolean if a field has been set.
 
 ### GetExpirationDate
 

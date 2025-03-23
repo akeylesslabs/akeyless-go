@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -18,7 +18,7 @@ import (
 // checks if the TargetItemAssociation type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TargetItemAssociation{}
 
-// TargetItemAssociation TargetItemAssociation includes details of an association between a target and an item. Also, between targets in case of CredentialsLess target or Linked target.
+// TargetItemAssociation TargetItemAssociation includes details of an association between a target and an item. Also, between targets in case of child target or Linked target.
 type TargetItemAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`

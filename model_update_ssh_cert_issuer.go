@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -61,6 +61,7 @@ type UpdateSSHCertIssuer struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Enable this flag to enforce connections only to the hosts listed in --secure-access-host
 	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
+	SecureAccessGateway *string `json:"secure-access-gateway,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Bastion's SSH server. E.g. my.sra-server:22
@@ -738,6 +739,38 @@ func (o *UpdateSSHCertIssuer) SetSecureAccessEnforceHostsRestriction(v bool) {
 	o.SecureAccessEnforceHostsRestriction = &v
 }
 
+// GetSecureAccessGateway returns the SecureAccessGateway field value if set, zero value otherwise.
+func (o *UpdateSSHCertIssuer) GetSecureAccessGateway() string {
+	if o == nil || IsNil(o.SecureAccessGateway) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessGateway
+}
+
+// GetSecureAccessGatewayOk returns a tuple with the SecureAccessGateway field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateSSHCertIssuer) GetSecureAccessGatewayOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessGateway) {
+		return nil, false
+	}
+	return o.SecureAccessGateway, true
+}
+
+// HasSecureAccessGateway returns a boolean if a field has been set.
+func (o *UpdateSSHCertIssuer) HasSecureAccessGateway() bool {
+	if o != nil && !IsNil(o.SecureAccessGateway) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessGateway gets a reference to the given string and assigns it to the SecureAccessGateway field.
+func (o *UpdateSSHCertIssuer) SetSecureAccessGateway(v string) {
+	o.SecureAccessGateway = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *UpdateSSHCertIssuer) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -1075,6 +1108,9 @@ func (o UpdateSSHCertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
 		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
+	if !IsNil(o.SecureAccessGateway) {
+		toSerialize["secure-access-gateway"] = o.SecureAccessGateway
 	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost

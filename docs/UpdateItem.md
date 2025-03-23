@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessGateway** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server (relevant only for rdp) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
@@ -891,6 +892,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 `func (o *UpdateItem) HasSecureAccessEnable() bool`
 
 HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessGateway
+
+`func (o *UpdateItem) GetSecureAccessGateway() string`
+
+GetSecureAccessGateway returns the SecureAccessGateway field if non-nil, zero value otherwise.
+
+### GetSecureAccessGatewayOk
+
+`func (o *UpdateItem) GetSecureAccessGatewayOk() (*string, bool)`
+
+GetSecureAccessGatewayOk returns a tuple with the SecureAccessGateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessGateway
+
+`func (o *UpdateItem) SetSecureAccessGateway(v string)`
+
+SetSecureAccessGateway sets SecureAccessGateway field to given value.
+
+### HasSecureAccessGateway
+
+`func (o *UpdateItem) HasSecureAccessGateway() bool`
+
+HasSecureAccessGateway returns a boolean if a field has been set.
 
 ### GetSecureAccessHost
 

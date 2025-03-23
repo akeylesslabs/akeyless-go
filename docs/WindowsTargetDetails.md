@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | Pointer to **string** |  | [optional] 
+**ConnectionType** | Pointer to **string** |  | [optional] 
 **DomainName** | Pointer to **string** |  | [optional] 
 **Hostname** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
@@ -55,6 +56,31 @@ SetCertificate sets Certificate field to given value.
 `func (o *WindowsTargetDetails) HasCertificate() bool`
 
 HasCertificate returns a boolean if a field has been set.
+
+### GetConnectionType
+
+`func (o *WindowsTargetDetails) GetConnectionType() string`
+
+GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
+
+### GetConnectionTypeOk
+
+`func (o *WindowsTargetDetails) GetConnectionTypeOk() (*string, bool)`
+
+GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionType
+
+`func (o *WindowsTargetDetails) SetConnectionType(v string)`
+
+SetConnectionType sets ConnectionType field to given value.
+
+### HasConnectionType
+
+`func (o *WindowsTargetDetails) HasConnectionType() bool`
+
+HasConnectionType returns a boolean if a field has been set.
 
 ### GetDomainName
 

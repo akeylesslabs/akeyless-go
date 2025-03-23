@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ClientId** | Pointer to **string** | Azure client/application id | [optional] 
 **ClientSecret** | Pointer to **string** | Azure client secret | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
+**ConnectionType** | Pointer to **string** | Type of connection [credentials/cloud-identity] | [optional] [default to "credentials"]
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -113,6 +114,31 @@ SetComment sets Comment field to given value.
 `func (o *CreateAzureTarget) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### GetConnectionType
+
+`func (o *CreateAzureTarget) GetConnectionType() string`
+
+GetConnectionType returns the ConnectionType field if non-nil, zero value otherwise.
+
+### GetConnectionTypeOk
+
+`func (o *CreateAzureTarget) GetConnectionTypeOk() (*string, bool)`
+
+GetConnectionTypeOk returns a tuple with the ConnectionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionType
+
+`func (o *CreateAzureTarget) SetConnectionType(v string)`
+
+SetConnectionType sets ConnectionType field to given value.
+
+### HasConnectionType
+
+`func (o *CreateAzureTarget) HasConnectionType() bool`
+
+HasConnectionType returns a boolean if a field has been set.
 
 ### GetDescription
 

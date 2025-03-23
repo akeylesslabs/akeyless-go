@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -37,6 +37,7 @@ type SecureRemoteAccess struct {
 	Enable *bool `json:"enable,omitempty"`
 	Endpoint *string `json:"endpoint,omitempty"`
 	EnforceHostsRestriction *bool `json:"enforce_hosts_restriction,omitempty"`
+	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	Host []string `json:"host,omitempty"`
 	HostProviderType *string `json:"host_provider_type,omitempty"`
 	IsCli *bool `json:"is_cli,omitempty"`
@@ -618,6 +619,38 @@ func (o *SecureRemoteAccess) HasEnforceHostsRestriction() bool {
 // SetEnforceHostsRestriction gets a reference to the given bool and assigns it to the EnforceHostsRestriction field.
 func (o *SecureRemoteAccess) SetEnforceHostsRestriction(v bool) {
 	o.EnforceHostsRestriction = &v
+}
+
+// GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetGwClusterId() int64 {
+	if o == nil || IsNil(o.GwClusterId) {
+		var ret int64
+		return ret
+	}
+	return *o.GwClusterId
+}
+
+// GetGwClusterIdOk returns a tuple with the GwClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetGwClusterIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.GwClusterId) {
+		return nil, false
+	}
+	return o.GwClusterId, true
+}
+
+// HasGwClusterId returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasGwClusterId() bool {
+	if o != nil && !IsNil(o.GwClusterId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGwClusterId gets a reference to the given int64 and assigns it to the GwClusterId field.
+func (o *SecureRemoteAccess) SetGwClusterId(v int64) {
+	o.GwClusterId = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -1320,6 +1353,9 @@ func (o SecureRemoteAccess) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnforceHostsRestriction) {
 		toSerialize["enforce_hosts_restriction"] = o.EnforceHostsRestriction
+	}
+	if !IsNil(o.GwClusterId) {
+		toSerialize["gw_cluster_id"] = o.GwClusterId
 	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host

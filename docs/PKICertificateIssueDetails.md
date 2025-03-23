@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AllowSubdomains** | Pointer to **bool** |  | [optional] 
 **AllowedDomainsList** | Pointer to **[]string** |  | [optional] 
 **AllowedExtraExtensions** | Pointer to **map[string][]string** |  | [optional] 
+**AllowedIpSans** | Pointer to **[]string** |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
 **AutoRenewCertificate** | Pointer to **bool** |  | [optional] 
 **BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
@@ -211,6 +212,31 @@ SetAllowedExtraExtensions sets AllowedExtraExtensions field to given value.
 `func (o *PKICertificateIssueDetails) HasAllowedExtraExtensions() bool`
 
 HasAllowedExtraExtensions returns a boolean if a field has been set.
+
+### GetAllowedIpSans
+
+`func (o *PKICertificateIssueDetails) GetAllowedIpSans() []string`
+
+GetAllowedIpSans returns the AllowedIpSans field if non-nil, zero value otherwise.
+
+### GetAllowedIpSansOk
+
+`func (o *PKICertificateIssueDetails) GetAllowedIpSansOk() (*[]string, bool)`
+
+GetAllowedIpSansOk returns a tuple with the AllowedIpSans field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedIpSans
+
+`func (o *PKICertificateIssueDetails) SetAllowedIpSans(v []string)`
+
+SetAllowedIpSans sets AllowedIpSans field to given value.
+
+### HasAllowedIpSans
+
+`func (o *PKICertificateIssueDetails) HasAllowedIpSans() bool`
+
+HasAllowedIpSans returns a boolean if a field has been set.
 
 ### GetAllowedUriSans
 
