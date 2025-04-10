@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiGatewayUrl** | Pointer to **string** |  | [optional] 
 **ClusterId** | Pointer to **string** |  | [optional] 
+**DesktopApp** | Pointer to [**SraDesktopAppConf**](SraDesktopAppConf.md) |  | [optional] 
 **GatorClusterId** | Pointer to **int64** |  | [optional] 
 **Global** | Pointer to [**BastionGlobalConf**](BastionGlobalConf.md) |  | [optional] 
 **SshBastion** | Pointer to [**SshBastionConf**](SshBastionConf.md) |  | [optional] 
@@ -29,31 +29,6 @@ will change when the set of required properties is changed
 NewBastionConfigReplyObjWithDefaults instantiates a new BastionConfigReplyObj object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetApiGatewayUrl
-
-`func (o *BastionConfigReplyObj) GetApiGatewayUrl() string`
-
-GetApiGatewayUrl returns the ApiGatewayUrl field if non-nil, zero value otherwise.
-
-### GetApiGatewayUrlOk
-
-`func (o *BastionConfigReplyObj) GetApiGatewayUrlOk() (*string, bool)`
-
-GetApiGatewayUrlOk returns a tuple with the ApiGatewayUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApiGatewayUrl
-
-`func (o *BastionConfigReplyObj) SetApiGatewayUrl(v string)`
-
-SetApiGatewayUrl sets ApiGatewayUrl field to given value.
-
-### HasApiGatewayUrl
-
-`func (o *BastionConfigReplyObj) HasApiGatewayUrl() bool`
-
-HasApiGatewayUrl returns a boolean if a field has been set.
 
 ### GetClusterId
 
@@ -79,6 +54,31 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BastionConfigReplyObj) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### GetDesktopApp
+
+`func (o *BastionConfigReplyObj) GetDesktopApp() SraDesktopAppConf`
+
+GetDesktopApp returns the DesktopApp field if non-nil, zero value otherwise.
+
+### GetDesktopAppOk
+
+`func (o *BastionConfigReplyObj) GetDesktopAppOk() (*SraDesktopAppConf, bool)`
+
+GetDesktopAppOk returns a tuple with the DesktopApp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDesktopApp
+
+`func (o *BastionConfigReplyObj) SetDesktopApp(v SraDesktopAppConf)`
+
+SetDesktopApp sets DesktopApp field to given value.
+
+### HasDesktopApp
+
+`func (o *BastionConfigReplyObj) HasDesktopApp() bool`
+
+HasDesktopApp returns a boolean if a field has been set.
 
 ### GetGatorClusterId
 

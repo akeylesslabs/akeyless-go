@@ -24,6 +24,7 @@ var _ MappedNullable = &UscList{}
 type UscList struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	ObjectType *string `json:"object-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -86,6 +87,38 @@ func (o *UscList) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UscList) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetObjectType returns the ObjectType field value if set, zero value otherwise.
+func (o *UscList) GetObjectType() string {
+	if o == nil || IsNil(o.ObjectType) {
+		var ret string
+		return ret
+	}
+	return *o.ObjectType
+}
+
+// GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetObjectTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ObjectType) {
+		return nil, false
+	}
+	return o.ObjectType, true
+}
+
+// HasObjectType returns a boolean if a field has been set.
+func (o *UscList) HasObjectType() bool {
+	if o != nil && !IsNil(o.ObjectType) {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
+func (o *UscList) SetObjectType(v string) {
+	o.ObjectType = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -188,6 +221,9 @@ func (o UscList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.ObjectType) {
+		toSerialize["object-type"] = o.ObjectType
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

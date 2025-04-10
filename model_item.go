@@ -35,7 +35,7 @@ type Item struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
-	GatewayDetails []GatewayBasicInfo `json:"gateway_details,omitempty"`
+	GatewayDetails []GatewayDetailsForItemReplyObj `json:"gateway_details,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
@@ -533,9 +533,9 @@ func (o *Item) SetDisplayId(v string) {
 }
 
 // GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
-func (o *Item) GetGatewayDetails() []GatewayBasicInfo {
+func (o *Item) GetGatewayDetails() []GatewayDetailsForItemReplyObj {
 	if o == nil || IsNil(o.GatewayDetails) {
-		var ret []GatewayBasicInfo
+		var ret []GatewayDetailsForItemReplyObj
 		return ret
 	}
 	return o.GatewayDetails
@@ -543,7 +543,7 @@ func (o *Item) GetGatewayDetails() []GatewayBasicInfo {
 
 // GetGatewayDetailsOk returns a tuple with the GatewayDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Item) GetGatewayDetailsOk() ([]GatewayBasicInfo, bool) {
+func (o *Item) GetGatewayDetailsOk() ([]GatewayDetailsForItemReplyObj, bool) {
 	if o == nil || IsNil(o.GatewayDetails) {
 		return nil, false
 	}
@@ -559,8 +559,8 @@ func (o *Item) HasGatewayDetails() bool {
 	return false
 }
 
-// SetGatewayDetails gets a reference to the given []GatewayBasicInfo and assigns it to the GatewayDetails field.
-func (o *Item) SetGatewayDetails(v []GatewayBasicInfo) {
+// SetGatewayDetails gets a reference to the given []GatewayDetailsForItemReplyObj and assigns it to the GatewayDetails field.
+func (o *Item) SetGatewayDetails(v []GatewayDetailsForItemReplyObj) {
 	o.GatewayDetails = v
 }
 

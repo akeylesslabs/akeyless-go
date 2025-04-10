@@ -62,7 +62,7 @@ type Connect struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
-	// Enable ssh-agent
+	// Deprecated
 	UseSshAgent *bool `json:"use-ssh-agent,omitempty"`
 	// Deprecated. Use via-sra
 	ViaBastion *string `json:"via-bastion,omitempty"`

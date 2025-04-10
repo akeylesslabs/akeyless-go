@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **SecretId** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **bool** |  | [optional] 
 **Tags** | Pointer to **map[string]string** |  | [optional] 
+**Thumbprint** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
 
@@ -269,6 +270,31 @@ SetTags sets Tags field to given value.
 `func (o *SecretInfo) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetThumbprint
+
+`func (o *SecretInfo) GetThumbprint() string`
+
+GetThumbprint returns the Thumbprint field if non-nil, zero value otherwise.
+
+### GetThumbprintOk
+
+`func (o *SecretInfo) GetThumbprintOk() (*string, bool)`
+
+GetThumbprintOk returns a tuple with the Thumbprint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThumbprint
+
+`func (o *SecretInfo) SetThumbprint(v string)`
+
+SetThumbprint sets Thumbprint field to given value.
+
+### HasThumbprint
+
+`func (o *SecretInfo) HasThumbprint() bool`
+
+HasThumbprint returns a boolean if a field has been set.
 
 ### GetType
 

@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **Host** | Pointer to **[]string** |  | [optional] 
 **HostProviderType** | Pointer to **string** |  | [optional] 
 **IsCli** | Pointer to **bool** |  | [optional] 
+**IsDesktopApp** | Pointer to **bool** |  | [optional] 
 **IsWeb** | Pointer to **bool** |  | [optional] 
 **Isolated** | Pointer to **bool** |  | [optional] 
 **Native** | Pointer to **bool** |  | [optional] 
@@ -586,6 +587,31 @@ SetIsCli sets IsCli field to given value.
 `func (o *SecureRemoteAccess) HasIsCli() bool`
 
 HasIsCli returns a boolean if a field has been set.
+
+### GetIsDesktopApp
+
+`func (o *SecureRemoteAccess) GetIsDesktopApp() bool`
+
+GetIsDesktopApp returns the IsDesktopApp field if non-nil, zero value otherwise.
+
+### GetIsDesktopAppOk
+
+`func (o *SecureRemoteAccess) GetIsDesktopAppOk() (*bool, bool)`
+
+GetIsDesktopAppOk returns a tuple with the IsDesktopApp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDesktopApp
+
+`func (o *SecureRemoteAccess) SetIsDesktopApp(v bool)`
+
+SetIsDesktopApp sets IsDesktopApp field to given value.
+
+### HasIsDesktopApp
+
+`func (o *SecureRemoteAccess) HasIsDesktopApp() bool`
+
+HasIsDesktopApp returns a boolean if a field has been set.
 
 ### GetIsWeb
 

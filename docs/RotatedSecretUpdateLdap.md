@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Default domain name server. i.e. microsoft.com | [optional] 
@@ -576,6 +578,56 @@ SetRotationInterval sets RotationInterval field to given value.
 `func (o *RotatedSecretUpdateLdap) HasRotationInterval() bool`
 
 HasRotationInterval returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *RotatedSecretUpdateLdap) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *RotatedSecretUpdateLdap) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *RotatedSecretUpdateLdap) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *RotatedSecretUpdateLdap) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretUpdateLdap) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *RotatedSecretUpdateLdap) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretUpdateLdap) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *RotatedSecretUpdateLdap) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessEnable
 

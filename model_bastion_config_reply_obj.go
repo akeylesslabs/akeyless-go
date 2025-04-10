@@ -20,8 +20,8 @@ var _ MappedNullable = &BastionConfigReplyObj{}
 
 // BastionConfigReplyObj struct for BastionConfigReplyObj
 type BastionConfigReplyObj struct {
-	ApiGatewayUrl *string `json:"api_gateway_url,omitempty"`
 	ClusterId *string `json:"cluster_id,omitempty"`
+	DesktopApp *SraDesktopAppConf `json:"desktop_app,omitempty"`
 	GatorClusterId *int64 `json:"gator_cluster_id,omitempty"`
 	Global *BastionGlobalConf `json:"global,omitempty"`
 	SshBastion *SshBastionConf `json:"ssh_bastion,omitempty"`
@@ -43,38 +43,6 @@ func NewBastionConfigReplyObj() *BastionConfigReplyObj {
 func NewBastionConfigReplyObjWithDefaults() *BastionConfigReplyObj {
 	this := BastionConfigReplyObj{}
 	return &this
-}
-
-// GetApiGatewayUrl returns the ApiGatewayUrl field value if set, zero value otherwise.
-func (o *BastionConfigReplyObj) GetApiGatewayUrl() string {
-	if o == nil || IsNil(o.ApiGatewayUrl) {
-		var ret string
-		return ret
-	}
-	return *o.ApiGatewayUrl
-}
-
-// GetApiGatewayUrlOk returns a tuple with the ApiGatewayUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BastionConfigReplyObj) GetApiGatewayUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiGatewayUrl) {
-		return nil, false
-	}
-	return o.ApiGatewayUrl, true
-}
-
-// HasApiGatewayUrl returns a boolean if a field has been set.
-func (o *BastionConfigReplyObj) HasApiGatewayUrl() bool {
-	if o != nil && !IsNil(o.ApiGatewayUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetApiGatewayUrl gets a reference to the given string and assigns it to the ApiGatewayUrl field.
-func (o *BastionConfigReplyObj) SetApiGatewayUrl(v string) {
-	o.ApiGatewayUrl = &v
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
@@ -107,6 +75,38 @@ func (o *BastionConfigReplyObj) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BastionConfigReplyObj) SetClusterId(v string) {
 	o.ClusterId = &v
+}
+
+// GetDesktopApp returns the DesktopApp field value if set, zero value otherwise.
+func (o *BastionConfigReplyObj) GetDesktopApp() SraDesktopAppConf {
+	if o == nil || IsNil(o.DesktopApp) {
+		var ret SraDesktopAppConf
+		return ret
+	}
+	return *o.DesktopApp
+}
+
+// GetDesktopAppOk returns a tuple with the DesktopApp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionConfigReplyObj) GetDesktopAppOk() (*SraDesktopAppConf, bool) {
+	if o == nil || IsNil(o.DesktopApp) {
+		return nil, false
+	}
+	return o.DesktopApp, true
+}
+
+// HasDesktopApp returns a boolean if a field has been set.
+func (o *BastionConfigReplyObj) HasDesktopApp() bool {
+	if o != nil && !IsNil(o.DesktopApp) {
+		return true
+	}
+
+	return false
+}
+
+// SetDesktopApp gets a reference to the given SraDesktopAppConf and assigns it to the DesktopApp field.
+func (o *BastionConfigReplyObj) SetDesktopApp(v SraDesktopAppConf) {
+	o.DesktopApp = &v
 }
 
 // GetGatorClusterId returns the GatorClusterId field value if set, zero value otherwise.
@@ -247,11 +247,11 @@ func (o BastionConfigReplyObj) MarshalJSON() ([]byte, error) {
 
 func (o BastionConfigReplyObj) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApiGatewayUrl) {
-		toSerialize["api_gateway_url"] = o.ApiGatewayUrl
-	}
 	if !IsNil(o.ClusterId) {
 		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.DesktopApp) {
+		toSerialize["desktop_app"] = o.DesktopApp
 	}
 	if !IsNil(o.GatorClusterId) {
 		toSerialize["gator_cluster_id"] = o.GatorClusterId

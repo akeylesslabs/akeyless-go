@@ -309,6 +309,7 @@ Method | HTTP request | Description
 [**GatewayUpdateProducerSnowflake**](V2Api.md#GatewayUpdateProducerSnowflake) | **Post** /gateway-update-producer-snowflake | 
 [**GatewayUpdateProducerVenafi**](V2Api.md#GatewayUpdateProducerVenafi) | **Post** /gateway-update-producer-certificate-automation | 
 [**GatewayUpdateRemoteAccess**](V2Api.md#GatewayUpdateRemoteAccess) | **Post** /gateway-update-remote-access | 
+[**GatewayUpdateRemoteAccessDesktopApp**](V2Api.md#GatewayUpdateRemoteAccessDesktopApp) | **Post** /gateway-update-remote-access-desktop-app | 
 [**GatewayUpdateRemoteAccessRdpRecordings**](V2Api.md#GatewayUpdateRemoteAccessRdpRecordings) | **Post** /gateway-update-remote-access-rdp-recording | 
 [**GatewayUpdateTlsCert**](V2Api.md#GatewayUpdateTlsCert) | **Post** /gateway-update-tls-cert | 
 [**GatewayUpdateTmpUsers**](V2Api.md#GatewayUpdateTmpUsers) | **Post** /gateway-update-producer-tmp-creds | 
@@ -20070,6 +20071,70 @@ Other parameters are passed through a pointer to a apiGatewayUpdateRemoteAccessR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **gatewayUpdateRemoteAccess** | [**GatewayUpdateRemoteAccess**](GatewayUpdateRemoteAccess.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GatewayUpdateRemoteAccessDesktopApp
+
+> map[string]interface{} GatewayUpdateRemoteAccessDesktopApp(ctx).GatewayUpdateRemoteAccessDesktopApp(gatewayUpdateRemoteAccessDesktopApp).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	gatewayUpdateRemoteAccessDesktopApp := *openapiclient.NewGatewayUpdateRemoteAccessDesktopApp() // GatewayUpdateRemoteAccessDesktopApp | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.GatewayUpdateRemoteAccessDesktopApp(context.Background()).GatewayUpdateRemoteAccessDesktopApp(gatewayUpdateRemoteAccessDesktopApp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GatewayUpdateRemoteAccessDesktopApp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GatewayUpdateRemoteAccessDesktopApp`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.GatewayUpdateRemoteAccessDesktopApp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGatewayUpdateRemoteAccessDesktopAppRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gatewayUpdateRemoteAccessDesktopApp** | [**GatewayUpdateRemoteAccessDesktopApp**](GatewayUpdateRemoteAccessDesktopApp.md) |  | 
 
 ### Return type
 

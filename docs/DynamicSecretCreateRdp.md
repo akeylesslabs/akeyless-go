@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **RdpHostPort** | Pointer to **string** | Port | [optional] [default to "22"]
 **RdpUserGroups** | Pointer to **string** | Groups | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users | [optional] [default to false]
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
@@ -420,6 +422,56 @@ SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to giv
 `func (o *DynamicSecretCreateRdp) HasSecureAccessAllowExternalUser() bool`
 
 HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *DynamicSecretCreateRdp) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *DynamicSecretCreateRdp) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *DynamicSecretCreateRdp) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *DynamicSecretCreateRdp) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateRdp) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *DynamicSecretCreateRdp) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateRdp) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateRdp) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessDelay
 

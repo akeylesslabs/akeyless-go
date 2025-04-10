@@ -42,6 +42,10 @@ type CreateUSC struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Prefix for all secrets created in AWS Secrets Manager
+	UscPrefix *string `json:"usc-prefix,omitempty"`
+	// Whether to filter the USC secret list using the specified usc-prefix [true/false]
+	UsePrefixAsFilter *string `json:"use-prefix-as-filter,omitempty"`
 }
 
 type _CreateUSC CreateUSC
@@ -56,6 +60,8 @@ func NewCreateUSC(name string, targetToAssociate string) *CreateUSC {
 	this.Json = &json
 	this.Name = name
 	this.TargetToAssociate = targetToAssociate
+	var usePrefixAsFilter string = "false"
+	this.UsePrefixAsFilter = &usePrefixAsFilter
 	return &this
 }
 
@@ -66,6 +72,8 @@ func NewCreateUSCWithDefaults() *CreateUSC {
 	this := CreateUSC{}
 	var json bool = false
 	this.Json = &json
+	var usePrefixAsFilter string = "false"
+	this.UsePrefixAsFilter = &usePrefixAsFilter
 	return &this
 }
 
@@ -373,6 +381,70 @@ func (o *CreateUSC) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUscPrefix returns the UscPrefix field value if set, zero value otherwise.
+func (o *CreateUSC) GetUscPrefix() string {
+	if o == nil || IsNil(o.UscPrefix) {
+		var ret string
+		return ret
+	}
+	return *o.UscPrefix
+}
+
+// GetUscPrefixOk returns a tuple with the UscPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetUscPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.UscPrefix) {
+		return nil, false
+	}
+	return o.UscPrefix, true
+}
+
+// HasUscPrefix returns a boolean if a field has been set.
+func (o *CreateUSC) HasUscPrefix() bool {
+	if o != nil && !IsNil(o.UscPrefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscPrefix gets a reference to the given string and assigns it to the UscPrefix field.
+func (o *CreateUSC) SetUscPrefix(v string) {
+	o.UscPrefix = &v
+}
+
+// GetUsePrefixAsFilter returns the UsePrefixAsFilter field value if set, zero value otherwise.
+func (o *CreateUSC) GetUsePrefixAsFilter() string {
+	if o == nil || IsNil(o.UsePrefixAsFilter) {
+		var ret string
+		return ret
+	}
+	return *o.UsePrefixAsFilter
+}
+
+// GetUsePrefixAsFilterOk returns a tuple with the UsePrefixAsFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetUsePrefixAsFilterOk() (*string, bool) {
+	if o == nil || IsNil(o.UsePrefixAsFilter) {
+		return nil, false
+	}
+	return o.UsePrefixAsFilter, true
+}
+
+// HasUsePrefixAsFilter returns a boolean if a field has been set.
+func (o *CreateUSC) HasUsePrefixAsFilter() bool {
+	if o != nil && !IsNil(o.UsePrefixAsFilter) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsePrefixAsFilter gets a reference to the given string and assigns it to the UsePrefixAsFilter field.
+func (o *CreateUSC) SetUsePrefixAsFilter(v string) {
+	o.UsePrefixAsFilter = &v
+}
+
 func (o CreateUSC) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -408,6 +480,12 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UscPrefix) {
+		toSerialize["usc-prefix"] = o.UscPrefix
+	}
+	if !IsNil(o.UsePrefixAsFilter) {
+		toSerialize["use-prefix-as-filter"] = o.UsePrefixAsFilter
 	}
 	return toSerialize, nil
 }

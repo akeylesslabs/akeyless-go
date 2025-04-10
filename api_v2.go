@@ -37817,6 +37817,130 @@ func (a *V2ApiService) GatewayUpdateRemoteAccessExecute(r ApiGatewayUpdateRemote
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGatewayUpdateRemoteAccessDesktopAppRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	gatewayUpdateRemoteAccessDesktopApp *GatewayUpdateRemoteAccessDesktopApp
+    body interface{}
+}
+
+func (r ApiGatewayUpdateRemoteAccessDesktopAppRequest) GatewayUpdateRemoteAccessDesktopApp(gatewayUpdateRemoteAccessDesktopApp GatewayUpdateRemoteAccessDesktopApp) ApiGatewayUpdateRemoteAccessDesktopAppRequest {
+	r.gatewayUpdateRemoteAccessDesktopApp = &gatewayUpdateRemoteAccessDesktopApp
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiGatewayUpdateRemoteAccessDesktopAppRequest) Body(body GatewayUpdateRemoteAccessDesktopApp) ApiGatewayUpdateRemoteAccessDesktopAppRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiGatewayUpdateRemoteAccessDesktopAppRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.GatewayUpdateRemoteAccessDesktopAppExecute(r)
+}
+
+/*
+GatewayUpdateRemoteAccessDesktopApp Method for GatewayUpdateRemoteAccessDesktopApp
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGatewayUpdateRemoteAccessDesktopAppRequest
+*/
+func (a *V2ApiService) GatewayUpdateRemoteAccessDesktopApp(ctx context.Context) ApiGatewayUpdateRemoteAccessDesktopAppRequest {
+	return ApiGatewayUpdateRemoteAccessDesktopAppRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]interface{}
+func (a *V2ApiService) GatewayUpdateRemoteAccessDesktopAppExecute(r ApiGatewayUpdateRemoteAccessDesktopAppRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.GatewayUpdateRemoteAccessDesktopApp")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/gateway-update-remote-access-desktop-app"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGatewayUpdateRemoteAccessRdpRecordingsRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService

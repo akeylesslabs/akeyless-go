@@ -54,6 +54,10 @@ type DynamicSecretUpdateRdp struct {
 	RdpUserGroups *string `json:"rdp-user-groups,omitempty"`
 	// Allow providing external user for a domain users
 	SecureAccessAllowExternalUser *bool `json:"secure-access-allow-external-user,omitempty"`
+	// Deprecated. use secure-access-certificate-issuer
+	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
+	// Path to the SSH Certificate Issuer for your Akeyless Secure Access
+	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
 	// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
 	SecureAccessDelay *int64 `json:"secure-access-delay,omitempty"`
 	// Enable/Disable secure remote access [true/false]
@@ -628,6 +632,70 @@ func (o *DynamicSecretUpdateRdp) SetSecureAccessAllowExternalUser(v bool) {
 	o.SecureAccessAllowExternalUser = &v
 }
 
+// GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateRdp) GetSecureAccessBastionIssuer() string {
+	if o == nil || IsNil(o.SecureAccessBastionIssuer) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessBastionIssuer
+}
+
+// GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateRdp) GetSecureAccessBastionIssuerOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessBastionIssuer) {
+		return nil, false
+	}
+	return o.SecureAccessBastionIssuer, true
+}
+
+// HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateRdp) HasSecureAccessBastionIssuer() bool {
+	if o != nil && !IsNil(o.SecureAccessBastionIssuer) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessBastionIssuer gets a reference to the given string and assigns it to the SecureAccessBastionIssuer field.
+func (o *DynamicSecretUpdateRdp) SetSecureAccessBastionIssuer(v string) {
+	o.SecureAccessBastionIssuer = &v
+}
+
+// GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateRdp) GetSecureAccessCertificateIssuer() string {
+	if o == nil || IsNil(o.SecureAccessCertificateIssuer) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessCertificateIssuer
+}
+
+// GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateRdp) GetSecureAccessCertificateIssuerOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessCertificateIssuer) {
+		return nil, false
+	}
+	return o.SecureAccessCertificateIssuer, true
+}
+
+// HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateRdp) HasSecureAccessCertificateIssuer() bool {
+	if o != nil && !IsNil(o.SecureAccessCertificateIssuer) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessCertificateIssuer gets a reference to the given string and assigns it to the SecureAccessCertificateIssuer field.
+func (o *DynamicSecretUpdateRdp) SetSecureAccessCertificateIssuer(v string) {
+	o.SecureAccessCertificateIssuer = &v
+}
+
 // GetSecureAccessDelay returns the SecureAccessDelay field value if set, zero value otherwise.
 func (o *DynamicSecretUpdateRdp) GetSecureAccessDelay() int64 {
 	if o == nil || IsNil(o.SecureAccessDelay) {
@@ -1067,6 +1135,12 @@ func (o DynamicSecretUpdateRdp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessAllowExternalUser) {
 		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
+	}
+	if !IsNil(o.SecureAccessBastionIssuer) {
+		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
+	}
+	if !IsNil(o.SecureAccessCertificateIssuer) {
+		toSerialize["secure-access-certificate-issuer"] = o.SecureAccessCertificateIssuer
 	}
 	if !IsNil(o.SecureAccessDelay) {
 		toSerialize["secure-access-delay"] = o.SecureAccessDelay

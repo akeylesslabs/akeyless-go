@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
+**SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
@@ -422,6 +424,56 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *DynamicSecretCreateLdap) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetSecureAccessBastionIssuer
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessBastionIssuer() string`
+
+GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessBastionIssuerOk
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessBastionIssuerOk() (*string, bool)`
+
+GetSecureAccessBastionIssuerOk returns a tuple with the SecureAccessBastionIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessBastionIssuer
+
+`func (o *DynamicSecretCreateLdap) SetSecureAccessBastionIssuer(v string)`
+
+SetSecureAccessBastionIssuer sets SecureAccessBastionIssuer field to given value.
+
+### HasSecureAccessBastionIssuer
+
+`func (o *DynamicSecretCreateLdap) HasSecureAccessBastionIssuer() bool`
+
+HasSecureAccessBastionIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessCertificateIssuer() string`
+
+GetSecureAccessCertificateIssuer returns the SecureAccessCertificateIssuer field if non-nil, zero value otherwise.
+
+### GetSecureAccessCertificateIssuerOk
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessCertificateIssuerOk() (*string, bool)`
+
+GetSecureAccessCertificateIssuerOk returns a tuple with the SecureAccessCertificateIssuer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateLdap) SetSecureAccessCertificateIssuer(v string)`
+
+SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to given value.
+
+### HasSecureAccessCertificateIssuer
+
+`func (o *DynamicSecretCreateLdap) HasSecureAccessCertificateIssuer() bool`
+
+HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
 
 ### GetSecureAccessDelay
 

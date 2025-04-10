@@ -74,6 +74,8 @@ type RotatedSecretCreateSsh struct {
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
 	// Override the SSH username as indicated in SSH Certificate Issuer
 	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
+	// Specify target type. Options are ssh or rdp
+	SecureAccessTargetType *string `json:"secure-access-target-type,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -102,6 +104,8 @@ func NewRotatedSecretCreateSsh(name string, rotatorType string, targetName strin
 	this.RotatorType = rotatorType
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
+	var secureAccessTargetType string = "false"
+	this.SecureAccessTargetType = &secureAccessTargetType
 	this.TargetName = targetName
 	return &this
 }
@@ -119,6 +123,8 @@ func NewRotatedSecretCreateSshWithDefaults() *RotatedSecretCreateSsh {
 	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
+	var secureAccessTargetType string = "false"
+	this.SecureAccessTargetType = &secureAccessTargetType
 	return &this
 }
 
@@ -938,6 +944,38 @@ func (o *RotatedSecretCreateSsh) SetSecureAccessSshUser(v string) {
 	o.SecureAccessSshUser = &v
 }
 
+// GetSecureAccessTargetType returns the SecureAccessTargetType field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetSecureAccessTargetType() string {
+	if o == nil || IsNil(o.SecureAccessTargetType) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessTargetType
+}
+
+// GetSecureAccessTargetTypeOk returns a tuple with the SecureAccessTargetType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetSecureAccessTargetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessTargetType) {
+		return nil, false
+	}
+	return o.SecureAccessTargetType, true
+}
+
+// HasSecureAccessTargetType returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasSecureAccessTargetType() bool {
+	if o != nil && !IsNil(o.SecureAccessTargetType) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessTargetType gets a reference to the given string and assigns it to the SecureAccessTargetType field.
+func (o *RotatedSecretCreateSsh) SetSecureAccessTargetType(v string) {
+	o.SecureAccessTargetType = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RotatedSecretCreateSsh) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1141,6 +1179,9 @@ func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessSshUser) {
 		toSerialize["secure-access-ssh-user"] = o.SecureAccessSshUser
+	}
+	if !IsNil(o.SecureAccessTargetType) {
+		toSerialize["secure-access-target-type"] = o.SecureAccessTargetType
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

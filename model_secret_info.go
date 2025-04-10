@@ -30,6 +30,7 @@ type SecretInfo struct {
 	SecretId *string `json:"secret_id,omitempty"`
 	Status *bool `json:"status,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
+	Thumbprint *string `json:"thumbprint,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Version *int64 `json:"version,omitempty"`
 }
@@ -340,6 +341,38 @@ func (o *SecretInfo) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
+// GetThumbprint returns the Thumbprint field value if set, zero value otherwise.
+func (o *SecretInfo) GetThumbprint() string {
+	if o == nil || IsNil(o.Thumbprint) {
+		var ret string
+		return ret
+	}
+	return *o.Thumbprint
+}
+
+// GetThumbprintOk returns a tuple with the Thumbprint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetThumbprintOk() (*string, bool) {
+	if o == nil || IsNil(o.Thumbprint) {
+		return nil, false
+	}
+	return o.Thumbprint, true
+}
+
+// HasThumbprint returns a boolean if a field has been set.
+func (o *SecretInfo) HasThumbprint() bool {
+	if o != nil && !IsNil(o.Thumbprint) {
+		return true
+	}
+
+	return false
+}
+
+// SetThumbprint gets a reference to the given string and assigns it to the Thumbprint field.
+func (o *SecretInfo) SetThumbprint(v string) {
+	o.Thumbprint = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *SecretInfo) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -440,6 +473,9 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Thumbprint) {
+		toSerialize["thumbprint"] = o.Thumbprint
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

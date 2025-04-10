@@ -276,6 +276,7 @@ docs/DescribePermissions.md
 docs/DescribePermissionsOutput.md
 docs/DescribeSubClaims.md
 docs/DescribeSubClaimsOutput.md
+docs/DesktopAppConf.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DockerhubTargetDetails.md
@@ -393,7 +394,6 @@ docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
 docs/GKETargetDetails.md
-docs/GatewayBasicInfo.md
 docs/GatewayCreateAllowedAccess.md
 docs/GatewayCreateK8SAuthConfig.md
 docs/GatewayCreateK8SAuthConfigOutput.md
@@ -458,6 +458,7 @@ docs/GatewayDeleteK8SAuthConfigOutput.md
 docs/GatewayDeleteMigration.md
 docs/GatewayDeleteProducer.md
 docs/GatewayDeleteProducerOutput.md
+docs/GatewayDetailsForItemReplyObj.md
 docs/GatewayDownloadCustomerFragments.md
 docs/GatewayDownloadCustomerFragmentsOutput.md
 docs/GatewayGetAllowedAccess.md
@@ -573,6 +574,7 @@ docs/GatewayUpdateProducerSnowflakeOutput.md
 docs/GatewayUpdateProducerVenafi.md
 docs/GatewayUpdateProducerVenafiOutput.md
 docs/GatewayUpdateRemoteAccess.md
+docs/GatewayUpdateRemoteAccessDesktopApp.md
 docs/GatewayUpdateRemoteAccessRdpRecordings.md
 docs/GatewayUpdateTlsCert.md
 docs/GatewayUpdateTlsCertOutput.md
@@ -871,6 +873,7 @@ docs/SignRsaSsaPss.md
 docs/SignRsaSsaPssOutput.md
 docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
+docs/SraDesktopAppConf.md
 docs/SraInfo.md
 docs/SraSessionEntryOut.md
 docs/SshBastionConf.md
@@ -1369,6 +1372,7 @@ model_describe_permissions.go
 model_describe_permissions_output.go
 model_describe_sub_claims.go
 model_describe_sub_claims_output.go
+model_desktop_app_conf.go
 model_detokenize.go
 model_detokenize_output.go
 model_dockerhub_target_details.go
@@ -1483,7 +1487,6 @@ model_export_classic_key.go
 model_export_classic_key_output.go
 model_extension.go
 model_external_kms_key_id.go
-model_gateway_basic_info.go
 model_gateway_create_allowed_access.go
 model_gateway_create_k8_s_auth_config.go
 model_gateway_create_k8_s_auth_config_output.go
@@ -1548,6 +1551,7 @@ model_gateway_delete_k8_s_auth_config_output.go
 model_gateway_delete_migration.go
 model_gateway_delete_producer.go
 model_gateway_delete_producer_output.go
+model_gateway_details_for_item_reply_obj.go
 model_gateway_download_customer_fragments.go
 model_gateway_download_customer_fragments_output.go
 model_gateway_get_allowed_access.go
@@ -1663,6 +1667,7 @@ model_gateway_update_producer_snowflake_output.go
 model_gateway_update_producer_venafi.go
 model_gateway_update_producer_venafi_output.go
 model_gateway_update_remote_access.go
+model_gateway_update_remote_access_desktop_app.go
 model_gateway_update_remote_access_rdp_recordings.go
 model_gateway_update_tls_cert.go
 model_gateway_update_tls_cert_output.go
@@ -1963,6 +1968,7 @@ model_sign_rsa_ssa_pss.go
 model_sign_rsa_ssa_pss_output.go
 model_sm_info.go
 model_splunk_log_forwarding_config.go
+model_sra_desktop_app_conf.go
 model_sra_info.go
 model_sra_session_entry_out.go
 model_ssh_bastion_conf.go

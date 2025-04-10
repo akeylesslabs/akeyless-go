@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **SecureAccessRdpDomain** | Pointer to **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
 **SecureAccessSshUser** | Pointer to **string** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] 
+**SecureAccessTargetType** | Pointer to **string** | Specify target type. Options are ssh or rdp | [optional] [default to "false"]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -693,6 +694,31 @@ SetSecureAccessSshUser sets SecureAccessSshUser field to given value.
 `func (o *RotatedSecretCreateSsh) HasSecureAccessSshUser() bool`
 
 HasSecureAccessSshUser returns a boolean if a field has been set.
+
+### GetSecureAccessTargetType
+
+`func (o *RotatedSecretCreateSsh) GetSecureAccessTargetType() string`
+
+GetSecureAccessTargetType returns the SecureAccessTargetType field if non-nil, zero value otherwise.
+
+### GetSecureAccessTargetTypeOk
+
+`func (o *RotatedSecretCreateSsh) GetSecureAccessTargetTypeOk() (*string, bool)`
+
+GetSecureAccessTargetTypeOk returns a tuple with the SecureAccessTargetType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessTargetType
+
+`func (o *RotatedSecretCreateSsh) SetSecureAccessTargetType(v string)`
+
+SetSecureAccessTargetType sets SecureAccessTargetType field to given value.
+
+### HasSecureAccessTargetType
+
+`func (o *RotatedSecretCreateSsh) HasSecureAccessTargetType() bool`
+
+HasSecureAccessTargetType returns a boolean if a field has been set.
 
 ### GetTags
 

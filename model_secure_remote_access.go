@@ -41,6 +41,7 @@ type SecureRemoteAccess struct {
 	Host []string `json:"host,omitempty"`
 	HostProviderType *string `json:"host_provider_type,omitempty"`
 	IsCli *bool `json:"is_cli,omitempty"`
+	IsDesktopApp *bool `json:"is_desktop_app,omitempty"`
 	IsWeb *bool `json:"is_web,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
 	Native *bool `json:"native,omitempty"`
@@ -749,6 +750,38 @@ func (o *SecureRemoteAccess) SetIsCli(v bool) {
 	o.IsCli = &v
 }
 
+// GetIsDesktopApp returns the IsDesktopApp field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetIsDesktopApp() bool {
+	if o == nil || IsNil(o.IsDesktopApp) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDesktopApp
+}
+
+// GetIsDesktopAppOk returns a tuple with the IsDesktopApp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetIsDesktopAppOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDesktopApp) {
+		return nil, false
+	}
+	return o.IsDesktopApp, true
+}
+
+// HasIsDesktopApp returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasIsDesktopApp() bool {
+	if o != nil && !IsNil(o.IsDesktopApp) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDesktopApp gets a reference to the given bool and assigns it to the IsDesktopApp field.
+func (o *SecureRemoteAccess) SetIsDesktopApp(v bool) {
+	o.IsDesktopApp = &v
+}
+
 // GetIsWeb returns the IsWeb field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetIsWeb() bool {
 	if o == nil || IsNil(o.IsWeb) {
@@ -1365,6 +1398,9 @@ func (o SecureRemoteAccess) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsCli) {
 		toSerialize["is_cli"] = o.IsCli
+	}
+	if !IsNil(o.IsDesktopApp) {
+		toSerialize["is_desktop_app"] = o.IsDesktopApp
 	}
 	if !IsNil(o.IsWeb) {
 		toSerialize["is_web"] = o.IsWeb

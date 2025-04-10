@@ -30,6 +30,7 @@ type UscCreate struct {
 	Json *bool `json:"json,omitempty"`
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
+	ObjectType *string `json:"object-type,omitempty"`
 	// Name for the new universal secrets
 	SecretName string `json:"secret-name"`
 	// Tags for the universal secrets
@@ -196,6 +197,38 @@ func (o *UscCreate) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *UscCreate) SetNamespace(v string) {
 	o.Namespace = &v
+}
+
+// GetObjectType returns the ObjectType field value if set, zero value otherwise.
+func (o *UscCreate) GetObjectType() string {
+	if o == nil || IsNil(o.ObjectType) {
+		var ret string
+		return ret
+	}
+	return *o.ObjectType
+}
+
+// GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetObjectTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ObjectType) {
+		return nil, false
+	}
+	return o.ObjectType, true
+}
+
+// HasObjectType returns a boolean if a field has been set.
+func (o *UscCreate) HasObjectType() bool {
+	if o != nil && !IsNil(o.ObjectType) {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
+func (o *UscCreate) SetObjectType(v string) {
+	o.ObjectType = &v
 }
 
 // GetSecretName returns the SecretName field value
@@ -387,6 +420,9 @@ func (o UscCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.ObjectType) {
+		toSerialize["object-type"] = o.ObjectType
 	}
 	toSerialize["secret-name"] = o.SecretName
 	if !IsNil(o.Tags) {

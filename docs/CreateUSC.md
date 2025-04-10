@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **TargetToAssociate** | **string** | Target Universal Secrets Connector to connect | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UscPrefix** | Pointer to **string** | Prefix for all secrets created in AWS Secrets Manager | [optional] 
+**UsePrefixAsFilter** | Pointer to **string** | Whether to filter the USC secret list using the specified usc-prefix [true/false] | [optional] [default to "false"]
 
 ## Methods
 
@@ -273,6 +275,56 @@ SetUidToken sets UidToken field to given value.
 `func (o *CreateUSC) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUscPrefix
+
+`func (o *CreateUSC) GetUscPrefix() string`
+
+GetUscPrefix returns the UscPrefix field if non-nil, zero value otherwise.
+
+### GetUscPrefixOk
+
+`func (o *CreateUSC) GetUscPrefixOk() (*string, bool)`
+
+GetUscPrefixOk returns a tuple with the UscPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscPrefix
+
+`func (o *CreateUSC) SetUscPrefix(v string)`
+
+SetUscPrefix sets UscPrefix field to given value.
+
+### HasUscPrefix
+
+`func (o *CreateUSC) HasUscPrefix() bool`
+
+HasUscPrefix returns a boolean if a field has been set.
+
+### GetUsePrefixAsFilter
+
+`func (o *CreateUSC) GetUsePrefixAsFilter() string`
+
+GetUsePrefixAsFilter returns the UsePrefixAsFilter field if non-nil, zero value otherwise.
+
+### GetUsePrefixAsFilterOk
+
+`func (o *CreateUSC) GetUsePrefixAsFilterOk() (*string, bool)`
+
+GetUsePrefixAsFilterOk returns a tuple with the UsePrefixAsFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsePrefixAsFilter
+
+`func (o *CreateUSC) SetUsePrefixAsFilter(v string)`
+
+SetUsePrefixAsFilter sets UsePrefixAsFilter field to given value.
+
+### HasUsePrefixAsFilter
+
+`func (o *CreateUSC) HasUsePrefixAsFilter() bool`
+
+HasUsePrefixAsFilter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
