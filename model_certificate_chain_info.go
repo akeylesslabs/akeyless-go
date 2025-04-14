@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CertificateChainInfo type satisfies the MappedNullable interface at compile time
@@ -30,8 +31,13 @@ type CertificateChainInfo struct {
 	CertificateIssuerName *string `json:"certificate_issuer_name,omitempty"`
 	CertificatePem *string `json:"certificate_pem,omitempty"`
 	CertificateStatus *string `json:"certificate_status,omitempty"`
+	CommonName *string `json:"common_name,omitempty"`
 	ErrorMessage *string `json:"error_message,omitempty"`
+	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
+	ExternalCaId *NullString `json:"external_ca_id,omitempty"`
+	IssuanceStatus *string `json:"issuance_status,omitempty"`
+	NotBefore *time.Time `json:"not_before,omitempty"`
 	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
 }
 
@@ -372,6 +378,38 @@ func (o *CertificateChainInfo) SetCertificateStatus(v string) {
 	o.CertificateStatus = &v
 }
 
+// GetCommonName returns the CommonName field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetCommonName() string {
+	if o == nil || IsNil(o.CommonName) {
+		var ret string
+		return ret
+	}
+	return *o.CommonName
+}
+
+// GetCommonNameOk returns a tuple with the CommonName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetCommonNameOk() (*string, bool) {
+	if o == nil || IsNil(o.CommonName) {
+		return nil, false
+	}
+	return o.CommonName, true
+}
+
+// HasCommonName returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasCommonName() bool {
+	if o != nil && !IsNil(o.CommonName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommonName gets a reference to the given string and assigns it to the CommonName field.
+func (o *CertificateChainInfo) SetCommonName(v string) {
+	o.CommonName = &v
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *CertificateChainInfo) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -404,6 +442,38 @@ func (o *CertificateChainInfo) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
+// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetExpirationDate() time.Time {
+	if o == nil || IsNil(o.ExpirationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpirationDate
+}
+
+// GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetExpirationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ExpirationDate) {
+		return nil, false
+	}
+	return o.ExpirationDate, true
+}
+
+// HasExpirationDate returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasExpirationDate() bool {
+	if o != nil && !IsNil(o.ExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationDate gets a reference to the given time.Time and assigns it to the ExpirationDate field.
+func (o *CertificateChainInfo) SetExpirationDate(v time.Time) {
+	o.ExpirationDate = &v
+}
+
 // GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
 func (o *CertificateChainInfo) GetExpirationEvents() []CertificateExpirationEvent {
 	if o == nil || IsNil(o.ExpirationEvents) {
@@ -434,6 +504,102 @@ func (o *CertificateChainInfo) HasExpirationEvents() bool {
 // SetExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the ExpirationEvents field.
 func (o *CertificateChainInfo) SetExpirationEvents(v []CertificateExpirationEvent) {
 	o.ExpirationEvents = v
+}
+
+// GetExternalCaId returns the ExternalCaId field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetExternalCaId() NullString {
+	if o == nil || IsNil(o.ExternalCaId) {
+		var ret NullString
+		return ret
+	}
+	return *o.ExternalCaId
+}
+
+// GetExternalCaIdOk returns a tuple with the ExternalCaId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetExternalCaIdOk() (*NullString, bool) {
+	if o == nil || IsNil(o.ExternalCaId) {
+		return nil, false
+	}
+	return o.ExternalCaId, true
+}
+
+// HasExternalCaId returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasExternalCaId() bool {
+	if o != nil && !IsNil(o.ExternalCaId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalCaId gets a reference to the given NullString and assigns it to the ExternalCaId field.
+func (o *CertificateChainInfo) SetExternalCaId(v NullString) {
+	o.ExternalCaId = &v
+}
+
+// GetIssuanceStatus returns the IssuanceStatus field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetIssuanceStatus() string {
+	if o == nil || IsNil(o.IssuanceStatus) {
+		var ret string
+		return ret
+	}
+	return *o.IssuanceStatus
+}
+
+// GetIssuanceStatusOk returns a tuple with the IssuanceStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetIssuanceStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.IssuanceStatus) {
+		return nil, false
+	}
+	return o.IssuanceStatus, true
+}
+
+// HasIssuanceStatus returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasIssuanceStatus() bool {
+	if o != nil && !IsNil(o.IssuanceStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuanceStatus gets a reference to the given string and assigns it to the IssuanceStatus field.
+func (o *CertificateChainInfo) SetIssuanceStatus(v string) {
+	o.IssuanceStatus = &v
+}
+
+// GetNotBefore returns the NotBefore field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetNotBefore() time.Time {
+	if o == nil || IsNil(o.NotBefore) {
+		var ret time.Time
+		return ret
+	}
+	return *o.NotBefore
+}
+
+// GetNotBeforeOk returns a tuple with the NotBefore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetNotBeforeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.NotBefore) {
+		return nil, false
+	}
+	return o.NotBefore, true
+}
+
+// HasNotBefore returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasNotBefore() bool {
+	if o != nil && !IsNil(o.NotBefore) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotBefore gets a reference to the given time.Time and assigns it to the NotBefore field.
+func (o *CertificateChainInfo) SetNotBefore(v time.Time) {
+	o.NotBefore = &v
 }
 
 // GetRenewBeforeExpirationInDays returns the RenewBeforeExpirationInDays field value if set, zero value otherwise.
@@ -508,11 +674,26 @@ func (o CertificateChainInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CertificateStatus) {
 		toSerialize["certificate_status"] = o.CertificateStatus
 	}
+	if !IsNil(o.CommonName) {
+		toSerialize["common_name"] = o.CommonName
+	}
 	if !IsNil(o.ErrorMessage) {
 		toSerialize["error_message"] = o.ErrorMessage
 	}
+	if !IsNil(o.ExpirationDate) {
+		toSerialize["expiration_date"] = o.ExpirationDate
+	}
 	if !IsNil(o.ExpirationEvents) {
 		toSerialize["expiration_events"] = o.ExpirationEvents
+	}
+	if !IsNil(o.ExternalCaId) {
+		toSerialize["external_ca_id"] = o.ExternalCaId
+	}
+	if !IsNil(o.IssuanceStatus) {
+		toSerialize["issuance_status"] = o.IssuanceStatus
+	}
+	if !IsNil(o.NotBefore) {
+		toSerialize["not_before"] = o.NotBefore
 	}
 	if !IsNil(o.RenewBeforeExpirationInDays) {
 		toSerialize["renew_before_expiration_in_days"] = o.RenewBeforeExpirationInDays

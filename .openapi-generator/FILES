@@ -740,6 +740,7 @@ docs/Name.md
 docs/NativeK8sTargetDetails.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
+docs/NullString.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OCIAccessRules.md
@@ -1837,6 +1838,7 @@ model_name.go
 model_native_k8s_target_details.go
 model_next_auto_rotation_event.go
 model_noti_forwarder.go
+model_null_string.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
 model_object_version_settings_output.go

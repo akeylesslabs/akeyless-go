@@ -14,8 +14,13 @@ Name | Type | Description | Notes
 **CertificateIssuerName** | Pointer to **string** |  | [optional] 
 **CertificatePem** | Pointer to **string** |  | [optional] 
 **CertificateStatus** | Pointer to **string** |  | [optional] 
+**CommonName** | Pointer to **string** |  | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
+**ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
+**ExternalCaId** | Pointer to [**NullString**](NullString.md) |  | [optional] 
+**IssuanceStatus** | Pointer to **string** |  | [optional] 
+**NotBefore** | Pointer to **time.Time** |  | [optional] 
 **RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -287,6 +292,31 @@ SetCertificateStatus sets CertificateStatus field to given value.
 
 HasCertificateStatus returns a boolean if a field has been set.
 
+### GetCommonName
+
+`func (o *CertificateChainInfo) GetCommonName() string`
+
+GetCommonName returns the CommonName field if non-nil, zero value otherwise.
+
+### GetCommonNameOk
+
+`func (o *CertificateChainInfo) GetCommonNameOk() (*string, bool)`
+
+GetCommonNameOk returns a tuple with the CommonName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommonName
+
+`func (o *CertificateChainInfo) SetCommonName(v string)`
+
+SetCommonName sets CommonName field to given value.
+
+### HasCommonName
+
+`func (o *CertificateChainInfo) HasCommonName() bool`
+
+HasCommonName returns a boolean if a field has been set.
+
 ### GetErrorMessage
 
 `func (o *CertificateChainInfo) GetErrorMessage() string`
@@ -312,6 +342,31 @@ SetErrorMessage sets ErrorMessage field to given value.
 
 HasErrorMessage returns a boolean if a field has been set.
 
+### GetExpirationDate
+
+`func (o *CertificateChainInfo) GetExpirationDate() time.Time`
+
+GetExpirationDate returns the ExpirationDate field if non-nil, zero value otherwise.
+
+### GetExpirationDateOk
+
+`func (o *CertificateChainInfo) GetExpirationDateOk() (*time.Time, bool)`
+
+GetExpirationDateOk returns a tuple with the ExpirationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationDate
+
+`func (o *CertificateChainInfo) SetExpirationDate(v time.Time)`
+
+SetExpirationDate sets ExpirationDate field to given value.
+
+### HasExpirationDate
+
+`func (o *CertificateChainInfo) HasExpirationDate() bool`
+
+HasExpirationDate returns a boolean if a field has been set.
+
 ### GetExpirationEvents
 
 `func (o *CertificateChainInfo) GetExpirationEvents() []CertificateExpirationEvent`
@@ -336,6 +391,81 @@ SetExpirationEvents sets ExpirationEvents field to given value.
 `func (o *CertificateChainInfo) HasExpirationEvents() bool`
 
 HasExpirationEvents returns a boolean if a field has been set.
+
+### GetExternalCaId
+
+`func (o *CertificateChainInfo) GetExternalCaId() NullString`
+
+GetExternalCaId returns the ExternalCaId field if non-nil, zero value otherwise.
+
+### GetExternalCaIdOk
+
+`func (o *CertificateChainInfo) GetExternalCaIdOk() (*NullString, bool)`
+
+GetExternalCaIdOk returns a tuple with the ExternalCaId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalCaId
+
+`func (o *CertificateChainInfo) SetExternalCaId(v NullString)`
+
+SetExternalCaId sets ExternalCaId field to given value.
+
+### HasExternalCaId
+
+`func (o *CertificateChainInfo) HasExternalCaId() bool`
+
+HasExternalCaId returns a boolean if a field has been set.
+
+### GetIssuanceStatus
+
+`func (o *CertificateChainInfo) GetIssuanceStatus() string`
+
+GetIssuanceStatus returns the IssuanceStatus field if non-nil, zero value otherwise.
+
+### GetIssuanceStatusOk
+
+`func (o *CertificateChainInfo) GetIssuanceStatusOk() (*string, bool)`
+
+GetIssuanceStatusOk returns a tuple with the IssuanceStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuanceStatus
+
+`func (o *CertificateChainInfo) SetIssuanceStatus(v string)`
+
+SetIssuanceStatus sets IssuanceStatus field to given value.
+
+### HasIssuanceStatus
+
+`func (o *CertificateChainInfo) HasIssuanceStatus() bool`
+
+HasIssuanceStatus returns a boolean if a field has been set.
+
+### GetNotBefore
+
+`func (o *CertificateChainInfo) GetNotBefore() time.Time`
+
+GetNotBefore returns the NotBefore field if non-nil, zero value otherwise.
+
+### GetNotBeforeOk
+
+`func (o *CertificateChainInfo) GetNotBeforeOk() (*time.Time, bool)`
+
+GetNotBeforeOk returns a tuple with the NotBefore field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotBefore
+
+`func (o *CertificateChainInfo) SetNotBefore(v time.Time)`
+
+SetNotBefore sets NotBefore field to given value.
+
+### HasNotBefore
+
+`func (o *CertificateChainInfo) HasNotBefore() bool`
+
+HasNotBefore returns a boolean if a field has been set.
 
 ### GetRenewBeforeExpirationInDays
 
