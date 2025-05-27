@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -54,6 +54,8 @@ type DynamicSecretUpdatePostgreSql struct {
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	// Path to the SSH Certificate Issuer for your Akeyless Secure Access
 	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
+	// The DB name (relevant only for DB Dynamic-Secret)
+	SecureAccessDbName *string `json:"secure-access-db-name,omitempty"`
 	// The DB schema
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
 	// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
@@ -626,6 +628,38 @@ func (o *DynamicSecretUpdatePostgreSql) SetSecureAccessCertificateIssuer(v strin
 	o.SecureAccessCertificateIssuer = &v
 }
 
+// GetSecureAccessDbName returns the SecureAccessDbName field value if set, zero value otherwise.
+func (o *DynamicSecretUpdatePostgreSql) GetSecureAccessDbName() string {
+	if o == nil || IsNil(o.SecureAccessDbName) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessDbName
+}
+
+// GetSecureAccessDbNameOk returns a tuple with the SecureAccessDbName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdatePostgreSql) GetSecureAccessDbNameOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessDbName) {
+		return nil, false
+	}
+	return o.SecureAccessDbName, true
+}
+
+// HasSecureAccessDbName returns a boolean if a field has been set.
+func (o *DynamicSecretUpdatePostgreSql) HasSecureAccessDbName() bool {
+	if o != nil && !IsNil(o.SecureAccessDbName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDbName gets a reference to the given string and assigns it to the SecureAccessDbName field.
+func (o *DynamicSecretUpdatePostgreSql) SetSecureAccessDbName(v string) {
+	o.SecureAccessDbName = &v
+}
+
 // GetSecureAccessDbSchema returns the SecureAccessDbSchema field value if set, zero value otherwise.
 func (o *DynamicSecretUpdatePostgreSql) GetSecureAccessDbSchema() string {
 	if o == nil || IsNil(o.SecureAccessDbSchema) {
@@ -1033,6 +1067,9 @@ func (o DynamicSecretUpdatePostgreSql) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessCertificateIssuer) {
 		toSerialize["secure-access-certificate-issuer"] = o.SecureAccessCertificateIssuer
+	}
+	if !IsNil(o.SecureAccessDbName) {
+		toSerialize["secure-access-db-name"] = o.SecureAccessDbName
 	}
 	if !IsNil(o.SecureAccessDbSchema) {
 		toSerialize["secure-access-db-schema"] = o.SecureAccessDbSchema

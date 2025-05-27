@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -21,6 +21,7 @@ var _ MappedNullable = &ListItemsInPathOutput{}
 // ListItemsInPathOutput struct for ListItemsInPathOutput
 type ListItemsInPathOutput struct {
 	Folders []string `json:"folders,omitempty"`
+	HasNext *bool `json:"has_next,omitempty"`
 	Items []Item `json:"items,omitempty"`
 	NextPage *string `json:"next_page,omitempty"`
 }
@@ -72,6 +73,38 @@ func (o *ListItemsInPathOutput) HasFolders() bool {
 // SetFolders gets a reference to the given []string and assigns it to the Folders field.
 func (o *ListItemsInPathOutput) SetFolders(v []string) {
 	o.Folders = v
+}
+
+// GetHasNext returns the HasNext field value if set, zero value otherwise.
+func (o *ListItemsInPathOutput) GetHasNext() bool {
+	if o == nil || IsNil(o.HasNext) {
+		var ret bool
+		return ret
+	}
+	return *o.HasNext
+}
+
+// GetHasNextOk returns a tuple with the HasNext field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItemsInPathOutput) GetHasNextOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasNext) {
+		return nil, false
+	}
+	return o.HasNext, true
+}
+
+// HasHasNext returns a boolean if a field has been set.
+func (o *ListItemsInPathOutput) HasHasNext() bool {
+	if o != nil && !IsNil(o.HasNext) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasNext gets a reference to the given bool and assigns it to the HasNext field.
+func (o *ListItemsInPathOutput) SetHasNext(v bool) {
+	o.HasNext = &v
 }
 
 // GetItems returns the Items field value if set, zero value otherwise.
@@ -150,6 +183,9 @@ func (o ListItemsInPathOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Folders) {
 		toSerialize["folders"] = o.Folders
+	}
+	if !IsNil(o.HasNext) {
+		toSerialize["has_next"] = o.HasNext
 	}
 	if !IsNil(o.Items) {
 		toSerialize["items"] = o.Items

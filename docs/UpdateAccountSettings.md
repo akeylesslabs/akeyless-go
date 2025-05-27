@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **EnablePasswordExpiration** | Pointer to **string** | Enable password expiration policy [true/false] | [optional] 
 **ForceNewVersions** | Pointer to **string** | If set to true, new version will be created on update | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that acts as a trusted Gateway entity. | [optional] 
+**HidePersonalFolder** | Pointer to **string** | Hide personal folder, if set - users will not be able to use personal folder [true/false] | [optional] 
+**HideStaticPassword** | Pointer to **string** | Hide static secret&#39;s password type [true/false] | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **ItemsDeletionProtection** | Pointer to **string** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] 
@@ -440,6 +442,56 @@ SetGwBoundIps sets GwBoundIps field to given value.
 `func (o *UpdateAccountSettings) HasGwBoundIps() bool`
 
 HasGwBoundIps returns a boolean if a field has been set.
+
+### GetHidePersonalFolder
+
+`func (o *UpdateAccountSettings) GetHidePersonalFolder() string`
+
+GetHidePersonalFolder returns the HidePersonalFolder field if non-nil, zero value otherwise.
+
+### GetHidePersonalFolderOk
+
+`func (o *UpdateAccountSettings) GetHidePersonalFolderOk() (*string, bool)`
+
+GetHidePersonalFolderOk returns a tuple with the HidePersonalFolder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHidePersonalFolder
+
+`func (o *UpdateAccountSettings) SetHidePersonalFolder(v string)`
+
+SetHidePersonalFolder sets HidePersonalFolder field to given value.
+
+### HasHidePersonalFolder
+
+`func (o *UpdateAccountSettings) HasHidePersonalFolder() bool`
+
+HasHidePersonalFolder returns a boolean if a field has been set.
+
+### GetHideStaticPassword
+
+`func (o *UpdateAccountSettings) GetHideStaticPassword() string`
+
+GetHideStaticPassword returns the HideStaticPassword field if non-nil, zero value otherwise.
+
+### GetHideStaticPasswordOk
+
+`func (o *UpdateAccountSettings) GetHideStaticPasswordOk() (*string, bool)`
+
+GetHideStaticPasswordOk returns a tuple with the HideStaticPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHideStaticPassword
+
+`func (o *UpdateAccountSettings) SetHideStaticPassword(v string)`
+
+SetHideStaticPassword sets HideStaticPassword field to given value.
+
+### HasHideStaticPassword
+
+`func (o *UpdateAccountSettings) HasHideStaticPassword() bool`
+
+HasHideStaticPassword returns a boolean if a field has been set.
 
 ### GetInvalidCharacters
 

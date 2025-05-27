@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -32,6 +32,8 @@ type RotatedSecretCreateCustom struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Enable password policy
+	EnablePasswordPolicy *string `json:"enable-password-policy,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -84,6 +86,14 @@ type RotatedSecretCreateCustom struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Password must contain capital letters [true/false]
+	UseCapitalLetters *string `json:"use-capital-letters,omitempty"`
+	// Password must contain lower case letters [true/false]
+	UseLowerLetters *string `json:"use-lower-letters,omitempty"`
+	// Password must contain numbers [true/false]
+	UseNumbers *string `json:"use-numbers,omitempty"`
+	// Password must contain special characters [true/false]
+	UseSpecialCharacters *string `json:"use-special-characters,omitempty"`
 }
 
 type _RotatedSecretCreateCustom RotatedSecretCreateCustom
@@ -297,6 +307,38 @@ func (o *RotatedSecretCreateCustom) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *RotatedSecretCreateCustom) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnablePasswordPolicy returns the EnablePasswordPolicy field value if set, zero value otherwise.
+func (o *RotatedSecretCreateCustom) GetEnablePasswordPolicy() string {
+	if o == nil || IsNil(o.EnablePasswordPolicy) {
+		var ret string
+		return ret
+	}
+	return *o.EnablePasswordPolicy
+}
+
+// GetEnablePasswordPolicyOk returns a tuple with the EnablePasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateCustom) GetEnablePasswordPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.EnablePasswordPolicy) {
+		return nil, false
+	}
+	return o.EnablePasswordPolicy, true
+}
+
+// HasEnablePasswordPolicy returns a boolean if a field has been set.
+func (o *RotatedSecretCreateCustom) HasEnablePasswordPolicy() bool {
+	if o != nil && !IsNil(o.EnablePasswordPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnablePasswordPolicy gets a reference to the given string and assigns it to the EnablePasswordPolicy field.
+func (o *RotatedSecretCreateCustom) SetEnablePasswordPolicy(v string) {
+	o.EnablePasswordPolicy = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -1115,6 +1157,134 @@ func (o *RotatedSecretCreateCustom) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseCapitalLetters returns the UseCapitalLetters field value if set, zero value otherwise.
+func (o *RotatedSecretCreateCustom) GetUseCapitalLetters() string {
+	if o == nil || IsNil(o.UseCapitalLetters) {
+		var ret string
+		return ret
+	}
+	return *o.UseCapitalLetters
+}
+
+// GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateCustom) GetUseCapitalLettersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseCapitalLetters) {
+		return nil, false
+	}
+	return o.UseCapitalLetters, true
+}
+
+// HasUseCapitalLetters returns a boolean if a field has been set.
+func (o *RotatedSecretCreateCustom) HasUseCapitalLetters() bool {
+	if o != nil && !IsNil(o.UseCapitalLetters) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseCapitalLetters gets a reference to the given string and assigns it to the UseCapitalLetters field.
+func (o *RotatedSecretCreateCustom) SetUseCapitalLetters(v string) {
+	o.UseCapitalLetters = &v
+}
+
+// GetUseLowerLetters returns the UseLowerLetters field value if set, zero value otherwise.
+func (o *RotatedSecretCreateCustom) GetUseLowerLetters() string {
+	if o == nil || IsNil(o.UseLowerLetters) {
+		var ret string
+		return ret
+	}
+	return *o.UseLowerLetters
+}
+
+// GetUseLowerLettersOk returns a tuple with the UseLowerLetters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateCustom) GetUseLowerLettersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseLowerLetters) {
+		return nil, false
+	}
+	return o.UseLowerLetters, true
+}
+
+// HasUseLowerLetters returns a boolean if a field has been set.
+func (o *RotatedSecretCreateCustom) HasUseLowerLetters() bool {
+	if o != nil && !IsNil(o.UseLowerLetters) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLowerLetters gets a reference to the given string and assigns it to the UseLowerLetters field.
+func (o *RotatedSecretCreateCustom) SetUseLowerLetters(v string) {
+	o.UseLowerLetters = &v
+}
+
+// GetUseNumbers returns the UseNumbers field value if set, zero value otherwise.
+func (o *RotatedSecretCreateCustom) GetUseNumbers() string {
+	if o == nil || IsNil(o.UseNumbers) {
+		var ret string
+		return ret
+	}
+	return *o.UseNumbers
+}
+
+// GetUseNumbersOk returns a tuple with the UseNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateCustom) GetUseNumbersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseNumbers) {
+		return nil, false
+	}
+	return o.UseNumbers, true
+}
+
+// HasUseNumbers returns a boolean if a field has been set.
+func (o *RotatedSecretCreateCustom) HasUseNumbers() bool {
+	if o != nil && !IsNil(o.UseNumbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseNumbers gets a reference to the given string and assigns it to the UseNumbers field.
+func (o *RotatedSecretCreateCustom) SetUseNumbers(v string) {
+	o.UseNumbers = &v
+}
+
+// GetUseSpecialCharacters returns the UseSpecialCharacters field value if set, zero value otherwise.
+func (o *RotatedSecretCreateCustom) GetUseSpecialCharacters() string {
+	if o == nil || IsNil(o.UseSpecialCharacters) {
+		var ret string
+		return ret
+	}
+	return *o.UseSpecialCharacters
+}
+
+// GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateCustom) GetUseSpecialCharactersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseSpecialCharacters) {
+		return nil, false
+	}
+	return o.UseSpecialCharacters, true
+}
+
+// HasUseSpecialCharacters returns a boolean if a field has been set.
+func (o *RotatedSecretCreateCustom) HasUseSpecialCharacters() bool {
+	if o != nil && !IsNil(o.UseSpecialCharacters) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseSpecialCharacters gets a reference to the given string and assigns it to the UseSpecialCharacters field.
+func (o *RotatedSecretCreateCustom) SetUseSpecialCharacters(v string) {
+	o.UseSpecialCharacters = &v
+}
+
 func (o RotatedSecretCreateCustom) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1139,6 +1309,9 @@ func (o RotatedSecretCreateCustom) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnablePasswordPolicy) {
+		toSerialize["enable-password-policy"] = o.EnablePasswordPolicy
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
@@ -1213,6 +1386,18 @@ func (o RotatedSecretCreateCustom) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UseCapitalLetters) {
+		toSerialize["use-capital-letters"] = o.UseCapitalLetters
+	}
+	if !IsNil(o.UseLowerLetters) {
+		toSerialize["use-lower-letters"] = o.UseLowerLetters
+	}
+	if !IsNil(o.UseNumbers) {
+		toSerialize["use-numbers"] = o.UseNumbers
+	}
+	if !IsNil(o.UseSpecialCharacters) {
+		toSerialize["use-special-characters"] = o.UseSpecialCharacters
 	}
 	return toSerialize, nil
 }

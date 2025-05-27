@@ -6,7 +6,7 @@ info:
     url: http://akeyless.io
   description: The purpose of this application is to provide access to Akeyless API.
   title: Akeyless API
-  version: "3.0"
+  version: "2.0"
 servers:
 - url: https://api.akeyless.io
 paths:
@@ -18914,6 +18914,7 @@ components:
           enable: true
           enable_time: 2000-01-23T04:56:07.000+00:00
           interval_by_days: 6
+        hide_personal_folder: true
         allowed_clients_ips:
           cidr_whitelist: cidr_whitelist
           lock: true
@@ -18936,6 +18937,7 @@ components:
           enable: true
         data_protection_section:
           enable_classic_key_protection: true
+        hide_static_password: true
         password_score:
           enabled: true
         lock_default_key: true
@@ -18980,6 +18982,12 @@ components:
         enable_request_for_access:
           type: boolean
           x-go-name: EnableRequestForAccess
+        hide_personal_folder:
+          type: boolean
+          x-go-name: HidePersonalFolder
+        hide_static_password:
+          type: boolean
+          x-go-name: HideStaticPassword
         invalid_characters:
           description: InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder
             naming convention
@@ -21275,6 +21283,9 @@ components:
           x-go-name: Token
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    AutoRotateType:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AwsAuthType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/log
@@ -21552,6 +21563,7 @@ components:
     AzureTargetDetails:
       example:
         use_gw_cloud_identity: true
+        grace_rotated_secret_key: grace_rotated_secret_key
         azure_subscription_id: azure_subscription_id
         connection_type: connection_type
         azure_resource_name: azure_resource_name
@@ -21590,6 +21602,9 @@ components:
           format: date-time
           type: string
           x-go-name: ExpirationDate
+        grace_rotated_secret_key:
+          type: string
+          x-go-name: GraceRotatedSecretKey
         use_gw_cloud_identity:
           type: boolean
           x-go-name: AzureUseDefaultIdentity
@@ -24356,13 +24371,13 @@ components:
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 8
+          target_id: 3
         - assoc_id: assoc_id
           target_name: target_name
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 8
+          target_id: 3
         chef_server_username: chef_server_username
         k8s_client_cert_data: k8s_client_cert_data
         tags:
@@ -24476,7 +24491,7 @@ components:
               key:
                 key: 7
             count_by_host_info:
-              key: 3
+              key: 0
           bastion_ssh: bastion_ssh
           isolated: true
           target_hosts:
@@ -24497,7 +24512,7 @@ components:
           is_web: true
           endpoint: endpoint
           rd_gateway_server: rd_gateway_server
-          gw_cluster_id: 3
+          gw_cluster_id: 7
           native: true
           enable: true
           is_desktop_app: true
@@ -24513,7 +24528,7 @@ components:
           rdp_user: rdp_user
           enforce_hosts_restriction: true
           url: url
-          connection_delay_seconds: 6
+          connection_delay_seconds: 3
           account_id: account_id
           db_name: db_name
           allow_providing_external_username: true
@@ -24523,7 +24538,7 @@ components:
           category: category
           region: region
           ssh_password: true
-          bastion_issuer_id: 5
+          bastion_issuer_id: 3
         ldap_group_dn: ldap_group_dn
         google_workspace_group_role: google_workspace_group_role
         chef_server_host_name: chef_server_host_name
@@ -24614,6 +24629,7 @@ components:
         ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
         artifactory_admin_apikey: artifactory_admin_apikey
         cluster_mode: true
+        grace_rotated_secret_key: grace_rotated_secret_key
         azure_app_object_id: azure_app_object_id
         ldap_bind_password: ldap_bind_password
         subject_dn: subject_dn
@@ -25077,6 +25093,9 @@ components:
         google_workspace_role_scope:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
+        grace_rotated_secret_key:
+          type: string
+          x-go-name: GraceRotatedSecretKey
         grant_types:
           items:
             type: string
@@ -26075,8 +26094,8 @@ components:
         emails
       example:
         fixed_domain_suffix: fixed_domain_suffix
-        keep_prefix_length: 6
-        domain_suffix_length: 7
+        keep_prefix_length: 4
+        domain_suffix_length: 0
       properties:
         domain_suffix_length:
           description: |-
@@ -26928,6 +26947,7 @@ components:
     GcpTargetDetails:
       example:
         use_gw_cloud_identity: true
+        grace_rotated_secret_key: grace_rotated_secret_key
         gcp_service_account_key_id: gcp_service_account_key_id
         gcp_service_account_key_base64: gcp_service_account_key_base64
         gcp_service_account_email: gcp_service_account_email
@@ -26945,6 +26965,9 @@ components:
         gcp_service_account_key_id:
           type: string
           x-go-name: GCPServiceAccountKeyId
+        grace_rotated_secret_key:
+          type: string
+          x-go-name: GraceRotatedSecretKey
         use_gw_cloud_identity:
           type: boolean
           x-go-name: GCPUseDefaultIdentity
@@ -27188,6 +27211,7 @@ components:
             enable: true
             enable_time: 2000-01-23T04:56:07.000+00:00
             interval_by_days: 6
+          hide_personal_folder: true
           allowed_clients_ips:
             cidr_whitelist: cidr_whitelist
             lock: true
@@ -27210,6 +27234,7 @@ components:
             enable: true
           data_protection_section:
             enable_classic_key_protection: true
+          hide_static_password: true
           password_score:
             enabled: true
           lock_default_key: true
@@ -27598,6 +27623,7 @@ components:
             username: username
           gcp_target_details:
             use_gw_cloud_identity: true
+            grace_rotated_secret_key: grace_rotated_secret_key
             gcp_service_account_key_id: gcp_service_account_key_id
             gcp_service_account_key_base64: gcp_service_account_key_base64
             gcp_service_account_email: gcp_service_account_email
@@ -27666,6 +27692,7 @@ components:
             chef_server_username: chef_server_username
           azure_target_details:
             use_gw_cloud_identity: true
+            grace_rotated_secret_key: grace_rotated_secret_key
             azure_subscription_id: azure_subscription_id
             connection_type: connection_type
             azure_resource_name: azure_resource_name
@@ -27762,7 +27789,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -27776,7 +27803,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -28340,21 +28367,23 @@ components:
       example:
         usc_sync_associated_items:
         - assoc_id: assoc_id
-          item_id: 5
+          item_id: 4
           item_type: item_type
           attributes:
             secret_id: secret_id
             secret_name: secret_name
             namespace: namespace
+            jq_secret_filter: jq_secret_filter
             last_error: last_error
           item_name: item_name
         - assoc_id: assoc_id
-          item_id: 5
+          item_id: 4
           item_type: item_type
           attributes:
             secret_id: secret_id
             secret_name: secret_name
             namespace: namespace
+            jq_secret_filter: jq_secret_filter
             last_error: last_error
           item_name: item_name
         item_accessibility: 7
@@ -28375,7 +28404,7 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           access_date_display: access_date_display
-          version: 7
+          version: 3
           certificate_version_info:
             not_after: 2000-01-23T04:56:07.000+00:00
             not_before: 2000-01-23T04:56:07.000+00:00
@@ -28389,7 +28418,7 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           access_date_display: access_date_display
-          version: 7
+          version: 3
           certificate_version_info:
             not_after: 2000-01-23T04:56:07.000+00:00
             not_before: 2000-01-23T04:56:07.000+00:00
@@ -28398,15 +28427,15 @@ components:
         shared_by:
           unique_id: unique_id
           access_id: access_id
-        item_size: 4
+        item_size: 7
         protection_key_type: protection_key_type
         is_enabled: true
-        rotation_interval: 3
+        rotation_interval: 5
         target_versions:
         - target_name: target_name
           access_date: 2000-01-23T04:56:07.000+00:00
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 7
+          version: 3
           customer_fragment_id: customer_fragment_id
           item_version_state: item_version_state
           with_customer_fragment: true
@@ -28422,7 +28451,7 @@ components:
         - target_name: target_name
           access_date: 2000-01-23T04:56:07.000+00:00
           creation_date: 2000-01-23T04:56:07.000+00:00
-          version: 7
+          version: 3
           customer_fragment_id: customer_fragment_id
           item_version_state: item_version_state
           with_customer_fragment: true
@@ -28439,7 +28468,7 @@ components:
         modification_date: 2000-01-23T04:56:07.000+00:00
         protection_key_name: protection_key_name
         cert_issuer_signer_key_name: cert_issuer_signer_key_name
-        item_id: 0
+        item_id: 8
         item_tags:
         - item_tags
         - item_tags
@@ -28540,13 +28569,13 @@ components:
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 8
+          target_id: 3
         - assoc_id: assoc_id
           target_name: target_name
           target_type: target_type
           attributes:
             key: attributes
-          target_id: 8
+          target_id: 3
         item_name: item_name
         creation_date: 2000-01-23T04:56:07.000+00:00
         last_rotation_date: 2000-01-23T04:56:07.000+00:00
@@ -28594,7 +28623,7 @@ components:
                 - null
                 - null
                 status: status
-            max_versions: 0
+            max_versions: 6
             username: username
           oidc_client_info:
             audience:
@@ -28639,7 +28668,10 @@ components:
             - response_types
           rotated_secret_details:
             same_password: true
-            rotation_hour: 6
+            enable_custom_password_policy: true
+            rotation_hour: 5
+            next_auto_rotate_type: next_auto_rotate_type
+            grace_rotation_interval: 1
             grace_rotation: true
             rotation_interval_min: true
             delete_previous_version_in_days: 3
@@ -28657,15 +28689,16 @@ components:
                 use_tls: true
                 connection_type: connection_type
                 port: port
+            grace_rotation_hour: 6
             rotator_creds_type: rotator_creds_type
-            gw_cluster_id: 6
+            gw_cluster_id: 2
             rotation_statement: rotation_statement
             rotator_status: rotator_status
             rotator_type: rotator_type
             timeout_seconds: 6
             managed_by_akeyless: true
-            max_versions: 1
-            number_of_versions_to_save: 2
+            max_versions: 6
+            number_of_versions_to_save: 6
           secure_remote_access_details:
             schema: schema
             host_provider_type: host_provider_type
@@ -28680,7 +28713,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -28701,7 +28734,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -28717,7 +28750,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -28727,7 +28760,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           importer_info:
             version: 8
             external_item_id: external_item_id
@@ -29030,8 +29063,8 @@ components:
               tweak: tweak
               email_tokenizer_info:
                 fixed_domain_suffix: fixed_domain_suffix
-                keep_prefix_length: 6
-                domain_suffix_length: 7
+                keep_prefix_length: 4
+                domain_suffix_length: 0
               template_type: template_type
               tweak_type: tweak_type
               regexp_tokenizer_info:
@@ -29145,7 +29178,7 @@ components:
               allowed_user_key_lengths:
                 key: 3
             cert_issuer_type: cert_issuer_type
-        last_version: 3
+        last_version: 7
         next_rotation_date: 2000-01-23T04:56:07.000+00:00
         delete_protection: true
         bastion_details:
@@ -29384,7 +29417,7 @@ components:
               - null
               - null
               status: status
-          max_versions: 0
+          max_versions: 6
           username: username
         oidc_client_info:
           audience:
@@ -29429,7 +29462,10 @@ components:
           - response_types
         rotated_secret_details:
           same_password: true
-          rotation_hour: 6
+          enable_custom_password_policy: true
+          rotation_hour: 5
+          next_auto_rotate_type: next_auto_rotate_type
+          grace_rotation_interval: 1
           grace_rotation: true
           rotation_interval_min: true
           delete_previous_version_in_days: 3
@@ -29447,15 +29483,16 @@ components:
               use_tls: true
               connection_type: connection_type
               port: port
+          grace_rotation_hour: 6
           rotator_creds_type: rotator_creds_type
-          gw_cluster_id: 6
+          gw_cluster_id: 2
           rotation_statement: rotation_statement
           rotator_status: rotator_status
           rotator_type: rotator_type
           timeout_seconds: 6
           managed_by_akeyless: true
-          max_versions: 1
-          number_of_versions_to_save: 2
+          max_versions: 6
+          number_of_versions_to_save: 6
         secure_remote_access_details:
           schema: schema
           host_provider_type: host_provider_type
@@ -29470,7 +29507,7 @@ components:
               key:
                 key: 7
             count_by_host_info:
-              key: 3
+              key: 0
           bastion_ssh: bastion_ssh
           isolated: true
           target_hosts:
@@ -29491,7 +29528,7 @@ components:
           is_web: true
           endpoint: endpoint
           rd_gateway_server: rd_gateway_server
-          gw_cluster_id: 3
+          gw_cluster_id: 7
           native: true
           enable: true
           is_desktop_app: true
@@ -29507,7 +29544,7 @@ components:
           rdp_user: rdp_user
           enforce_hosts_restriction: true
           url: url
-          connection_delay_seconds: 6
+          connection_delay_seconds: 3
           account_id: account_id
           db_name: db_name
           allow_providing_external_username: true
@@ -29517,7 +29554,7 @@ components:
           category: category
           region: region
           ssh_password: true
-          bastion_issuer_id: 5
+          bastion_issuer_id: 3
         importer_info:
           version: 8
           external_item_id: external_item_id
@@ -29820,8 +29857,8 @@ components:
             tweak: tweak
             email_tokenizer_info:
               fixed_domain_suffix: fixed_domain_suffix
-              keep_prefix_length: 6
-              domain_suffix_length: 7
+              keep_prefix_length: 4
+              domain_suffix_length: 0
             template_type: template_type
             tweak_type: tweak_type
             regexp_tokenizer_info:
@@ -29993,7 +30030,7 @@ components:
           key:
             key: 7
         count_by_host_info:
-          key: 3
+          key: 0
       properties:
         count_by_host_info:
           additionalProperties:
@@ -30039,7 +30076,7 @@ components:
         target_type: target_type
         attributes:
           key: attributes
-        target_id: 8
+        target_id: 3
       properties:
         assoc_id:
           type: string
@@ -30070,12 +30107,13 @@ components:
       description: ItemUSCSyncAssociation includes details of usc sync associations
       example:
         assoc_id: assoc_id
-        item_id: 5
+        item_id: 4
         item_type: item_type
         attributes:
           secret_id: secret_id
           secret_name: secret_name
           namespace: namespace
+          jq_secret_filter: jq_secret_filter
           last_error: last_error
         item_name: item_name
       properties:
@@ -30083,7 +30121,7 @@ components:
           type: string
           x-go-name: AssociationID
         attributes:
-          $ref: '#/components/schemas/RemoteSecretInfo'
+          $ref: '#/components/schemas/UscSyncInfo'
         item_id:
           format: int64
           type: integer
@@ -30106,7 +30144,7 @@ components:
         protection_key_name: protection_key_name
         creation_date: 2000-01-23T04:56:07.000+00:00
         access_date_display: access_date_display
-        version: 7
+        version: 3
         certificate_version_info:
           not_after: 2000-01-23T04:56:07.000+00:00
           not_before: 2000-01-23T04:56:07.000+00:00
@@ -32351,24 +32389,27 @@ components:
         folders:
         - folders
         - folders
+        has_next: true
         items:
         - usc_sync_associated_items:
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           item_accessibility: 7
@@ -32389,7 +32430,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -32403,7 +32444,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -32412,15 +32453,15 @@ components:
           shared_by:
             unique_id: unique_id
             access_id: access_id
-          item_size: 4
+          item_size: 7
           protection_key_type: protection_key_type
           is_enabled: true
-          rotation_interval: 3
+          rotation_interval: 5
           target_versions:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -32436,7 +32477,7 @@ components:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -32453,7 +32494,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 0
+          item_id: 8
           item_tags:
           - item_tags
           - item_tags
@@ -32554,13 +32595,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           item_name: item_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
@@ -32608,7 +32649,7 @@ components:
                   - null
                   - null
                   status: status
-              max_versions: 0
+              max_versions: 6
               username: username
             oidc_client_info:
               audience:
@@ -32653,7 +32694,10 @@ components:
               - response_types
             rotated_secret_details:
               same_password: true
-              rotation_hour: 6
+              enable_custom_password_policy: true
+              rotation_hour: 5
+              next_auto_rotate_type: next_auto_rotate_type
+              grace_rotation_interval: 1
               grace_rotation: true
               rotation_interval_min: true
               delete_previous_version_in_days: 3
@@ -32671,15 +32715,16 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
-              gw_cluster_id: 6
+              gw_cluster_id: 2
               rotation_statement: rotation_statement
               rotator_status: rotator_status
               rotator_type: rotator_type
               timeout_seconds: 6
               managed_by_akeyless: true
-              max_versions: 1
-              number_of_versions_to_save: 2
+              max_versions: 6
+              number_of_versions_to_save: 6
             secure_remote_access_details:
               schema: schema
               host_provider_type: host_provider_type
@@ -32694,7 +32739,7 @@ components:
                   key:
                     key: 7
                 count_by_host_info:
-                  key: 3
+                  key: 0
               bastion_ssh: bastion_ssh
               isolated: true
               target_hosts:
@@ -32715,7 +32760,7 @@ components:
               is_web: true
               endpoint: endpoint
               rd_gateway_server: rd_gateway_server
-              gw_cluster_id: 3
+              gw_cluster_id: 7
               native: true
               enable: true
               is_desktop_app: true
@@ -32731,7 +32776,7 @@ components:
               rdp_user: rdp_user
               enforce_hosts_restriction: true
               url: url
-              connection_delay_seconds: 6
+              connection_delay_seconds: 3
               account_id: account_id
               db_name: db_name
               allow_providing_external_username: true
@@ -32741,7 +32786,7 @@ components:
               category: category
               region: region
               ssh_password: true
-              bastion_issuer_id: 5
+              bastion_issuer_id: 3
             importer_info:
               version: 8
               external_item_id: external_item_id
@@ -33044,8 +33089,8 @@ components:
                 tweak: tweak
                 email_tokenizer_info:
                   fixed_domain_suffix: fixed_domain_suffix
-                  keep_prefix_length: 6
-                  domain_suffix_length: 7
+                  keep_prefix_length: 4
+                  domain_suffix_length: 0
                 template_type: template_type
                 tweak_type: tweak_type
                 regexp_tokenizer_info:
@@ -33159,7 +33204,7 @@ components:
                 allowed_user_key_lengths:
                   key: 3
               cert_issuer_type: cert_issuer_type
-          last_version: 3
+          last_version: 7
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           delete_protection: true
           bastion_details:
@@ -33211,21 +33256,23 @@ components:
           public_value: public_value
         - usc_sync_associated_items:
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           item_accessibility: 7
@@ -33246,7 +33293,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -33260,7 +33307,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -33269,15 +33316,15 @@ components:
           shared_by:
             unique_id: unique_id
             access_id: access_id
-          item_size: 4
+          item_size: 7
           protection_key_type: protection_key_type
           is_enabled: true
-          rotation_interval: 3
+          rotation_interval: 5
           target_versions:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -33293,7 +33340,7 @@ components:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -33310,7 +33357,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 0
+          item_id: 8
           item_tags:
           - item_tags
           - item_tags
@@ -33411,13 +33458,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           item_name: item_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
@@ -33465,7 +33512,7 @@ components:
                   - null
                   - null
                   status: status
-              max_versions: 0
+              max_versions: 6
               username: username
             oidc_client_info:
               audience:
@@ -33510,7 +33557,10 @@ components:
               - response_types
             rotated_secret_details:
               same_password: true
-              rotation_hour: 6
+              enable_custom_password_policy: true
+              rotation_hour: 5
+              next_auto_rotate_type: next_auto_rotate_type
+              grace_rotation_interval: 1
               grace_rotation: true
               rotation_interval_min: true
               delete_previous_version_in_days: 3
@@ -33528,15 +33578,16 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
-              gw_cluster_id: 6
+              gw_cluster_id: 2
               rotation_statement: rotation_statement
               rotator_status: rotator_status
               rotator_type: rotator_type
               timeout_seconds: 6
               managed_by_akeyless: true
-              max_versions: 1
-              number_of_versions_to_save: 2
+              max_versions: 6
+              number_of_versions_to_save: 6
             secure_remote_access_details:
               schema: schema
               host_provider_type: host_provider_type
@@ -33551,7 +33602,7 @@ components:
                   key:
                     key: 7
                 count_by_host_info:
-                  key: 3
+                  key: 0
               bastion_ssh: bastion_ssh
               isolated: true
               target_hosts:
@@ -33572,7 +33623,7 @@ components:
               is_web: true
               endpoint: endpoint
               rd_gateway_server: rd_gateway_server
-              gw_cluster_id: 3
+              gw_cluster_id: 7
               native: true
               enable: true
               is_desktop_app: true
@@ -33588,7 +33639,7 @@ components:
               rdp_user: rdp_user
               enforce_hosts_restriction: true
               url: url
-              connection_delay_seconds: 6
+              connection_delay_seconds: 3
               account_id: account_id
               db_name: db_name
               allow_providing_external_username: true
@@ -33598,7 +33649,7 @@ components:
               category: category
               region: region
               ssh_password: true
-              bastion_issuer_id: 5
+              bastion_issuer_id: 3
             importer_info:
               version: 8
               external_item_id: external_item_id
@@ -33901,8 +33952,8 @@ components:
                 tweak: tweak
                 email_tokenizer_info:
                   fixed_domain_suffix: fixed_domain_suffix
-                  keep_prefix_length: 6
-                  domain_suffix_length: 7
+                  keep_prefix_length: 4
+                  domain_suffix_length: 0
                 template_type: template_type
                 tweak_type: tweak_type
                 regexp_tokenizer_info:
@@ -34016,7 +34067,7 @@ components:
                 allowed_user_key_lengths:
                   key: 3
               cert_issuer_type: cert_issuer_type
-          last_version: 3
+          last_version: 7
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           delete_protection: true
           bastion_details:
@@ -34072,6 +34123,9 @@ components:
             type: string
           type: array
           x-go-name: Folders
+        has_next:
+          type: boolean
+          x-go-name: HasNext
         items:
           items:
             $ref: '#/components/schemas/Item'
@@ -34087,24 +34141,27 @@ components:
     ListItemsOutput:
       example:
         next_page: next_page
+        has_next: true
         items:
         - usc_sync_associated_items:
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           item_accessibility: 7
@@ -34125,7 +34182,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -34139,7 +34196,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -34148,15 +34205,15 @@ components:
           shared_by:
             unique_id: unique_id
             access_id: access_id
-          item_size: 4
+          item_size: 7
           protection_key_type: protection_key_type
           is_enabled: true
-          rotation_interval: 3
+          rotation_interval: 5
           target_versions:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -34172,7 +34229,7 @@ components:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -34189,7 +34246,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 0
+          item_id: 8
           item_tags:
           - item_tags
           - item_tags
@@ -34290,13 +34347,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           item_name: item_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
@@ -34344,7 +34401,7 @@ components:
                   - null
                   - null
                   status: status
-              max_versions: 0
+              max_versions: 6
               username: username
             oidc_client_info:
               audience:
@@ -34389,7 +34446,10 @@ components:
               - response_types
             rotated_secret_details:
               same_password: true
-              rotation_hour: 6
+              enable_custom_password_policy: true
+              rotation_hour: 5
+              next_auto_rotate_type: next_auto_rotate_type
+              grace_rotation_interval: 1
               grace_rotation: true
               rotation_interval_min: true
               delete_previous_version_in_days: 3
@@ -34407,15 +34467,16 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
-              gw_cluster_id: 6
+              gw_cluster_id: 2
               rotation_statement: rotation_statement
               rotator_status: rotator_status
               rotator_type: rotator_type
               timeout_seconds: 6
               managed_by_akeyless: true
-              max_versions: 1
-              number_of_versions_to_save: 2
+              max_versions: 6
+              number_of_versions_to_save: 6
             secure_remote_access_details:
               schema: schema
               host_provider_type: host_provider_type
@@ -34430,7 +34491,7 @@ components:
                   key:
                     key: 7
                 count_by_host_info:
-                  key: 3
+                  key: 0
               bastion_ssh: bastion_ssh
               isolated: true
               target_hosts:
@@ -34451,7 +34512,7 @@ components:
               is_web: true
               endpoint: endpoint
               rd_gateway_server: rd_gateway_server
-              gw_cluster_id: 3
+              gw_cluster_id: 7
               native: true
               enable: true
               is_desktop_app: true
@@ -34467,7 +34528,7 @@ components:
               rdp_user: rdp_user
               enforce_hosts_restriction: true
               url: url
-              connection_delay_seconds: 6
+              connection_delay_seconds: 3
               account_id: account_id
               db_name: db_name
               allow_providing_external_username: true
@@ -34477,7 +34538,7 @@ components:
               category: category
               region: region
               ssh_password: true
-              bastion_issuer_id: 5
+              bastion_issuer_id: 3
             importer_info:
               version: 8
               external_item_id: external_item_id
@@ -34780,8 +34841,8 @@ components:
                 tweak: tweak
                 email_tokenizer_info:
                   fixed_domain_suffix: fixed_domain_suffix
-                  keep_prefix_length: 6
-                  domain_suffix_length: 7
+                  keep_prefix_length: 4
+                  domain_suffix_length: 0
                 template_type: template_type
                 tweak_type: tweak_type
                 regexp_tokenizer_info:
@@ -34895,7 +34956,7 @@ components:
                 allowed_user_key_lengths:
                   key: 3
               cert_issuer_type: cert_issuer_type
-          last_version: 3
+          last_version: 7
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           delete_protection: true
           bastion_details:
@@ -34947,21 +35008,23 @@ components:
           public_value: public_value
         - usc_sync_associated_items:
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           - assoc_id: assoc_id
-            item_id: 5
+            item_id: 4
             item_type: item_type
             attributes:
               secret_id: secret_id
               secret_name: secret_name
               namespace: namespace
+              jq_secret_filter: jq_secret_filter
               last_error: last_error
             item_name: item_name
           item_accessibility: 7
@@ -34982,7 +35045,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -34996,7 +35059,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -35005,15 +35068,15 @@ components:
           shared_by:
             unique_id: unique_id
             access_id: access_id
-          item_size: 4
+          item_size: 7
           protection_key_type: protection_key_type
           is_enabled: true
-          rotation_interval: 3
+          rotation_interval: 5
           target_versions:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -35029,7 +35092,7 @@ components:
           - target_name: target_name
             access_date: 2000-01-23T04:56:07.000+00:00
             creation_date: 2000-01-23T04:56:07.000+00:00
-            version: 7
+            version: 3
             customer_fragment_id: customer_fragment_id
             item_version_state: item_version_state
             with_customer_fragment: true
@@ -35046,7 +35109,7 @@ components:
           modification_date: 2000-01-23T04:56:07.000+00:00
           protection_key_name: protection_key_name
           cert_issuer_signer_key_name: cert_issuer_signer_key_name
-          item_id: 0
+          item_id: 8
           item_tags:
           - item_tags
           - item_tags
@@ -35147,13 +35210,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           item_name: item_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           last_rotation_date: 2000-01-23T04:56:07.000+00:00
@@ -35201,7 +35264,7 @@ components:
                   - null
                   - null
                   status: status
-              max_versions: 0
+              max_versions: 6
               username: username
             oidc_client_info:
               audience:
@@ -35246,7 +35309,10 @@ components:
               - response_types
             rotated_secret_details:
               same_password: true
-              rotation_hour: 6
+              enable_custom_password_policy: true
+              rotation_hour: 5
+              next_auto_rotate_type: next_auto_rotate_type
+              grace_rotation_interval: 1
               grace_rotation: true
               rotation_interval_min: true
               delete_previous_version_in_days: 3
@@ -35264,15 +35330,16 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
-              gw_cluster_id: 6
+              gw_cluster_id: 2
               rotation_statement: rotation_statement
               rotator_status: rotator_status
               rotator_type: rotator_type
               timeout_seconds: 6
               managed_by_akeyless: true
-              max_versions: 1
-              number_of_versions_to_save: 2
+              max_versions: 6
+              number_of_versions_to_save: 6
             secure_remote_access_details:
               schema: schema
               host_provider_type: host_provider_type
@@ -35287,7 +35354,7 @@ components:
                   key:
                     key: 7
                 count_by_host_info:
-                  key: 3
+                  key: 0
               bastion_ssh: bastion_ssh
               isolated: true
               target_hosts:
@@ -35308,7 +35375,7 @@ components:
               is_web: true
               endpoint: endpoint
               rd_gateway_server: rd_gateway_server
-              gw_cluster_id: 3
+              gw_cluster_id: 7
               native: true
               enable: true
               is_desktop_app: true
@@ -35324,7 +35391,7 @@ components:
               rdp_user: rdp_user
               enforce_hosts_restriction: true
               url: url
-              connection_delay_seconds: 6
+              connection_delay_seconds: 3
               account_id: account_id
               db_name: db_name
               allow_providing_external_username: true
@@ -35334,7 +35401,7 @@ components:
               category: category
               region: region
               ssh_password: true
-              bastion_issuer_id: 5
+              bastion_issuer_id: 3
             importer_info:
               version: 8
               external_item_id: external_item_id
@@ -35637,8 +35704,8 @@ components:
                 tweak: tweak
                 email_tokenizer_info:
                   fixed_domain_suffix: fixed_domain_suffix
-                  keep_prefix_length: 6
-                  domain_suffix_length: 7
+                  keep_prefix_length: 4
+                  domain_suffix_length: 0
                 template_type: template_type
                 tweak_type: tweak_type
                 regexp_tokenizer_info:
@@ -35752,7 +35819,7 @@ components:
                 allowed_user_key_lengths:
                   key: 3
               cert_issuer_type: cert_issuer_type
-          last_version: 3
+          last_version: 7
           next_rotation_date: 2000-01-23T04:56:07.000+00:00
           delete_protection: true
           bastion_details:
@@ -35803,6 +35870,9 @@ components:
           access_request_status: access_request_status
           public_value: public_value
       properties:
+        has_next:
+          type: boolean
+          x-go-name: HasNext
         items:
           items:
             $ref: '#/components/schemas/Item'
@@ -36059,7 +36129,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -36073,7 +36143,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -36124,7 +36194,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -36138,7 +36208,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -37143,7 +37213,7 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           access_date_display: access_date_display
-          version: 7
+          version: 3
           certificate_version_info:
             not_after: 2000-01-23T04:56:07.000+00:00
             not_before: 2000-01-23T04:56:07.000+00:00
@@ -37157,7 +37227,7 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           access_date_display: access_date_display
-          version: 7
+          version: 3
           certificate_version_info:
             not_after: 2000-01-23T04:56:07.000+00:00
             not_before: 2000-01-23T04:56:07.000+00:00
@@ -38320,27 +38390,6 @@ components:
           x-go-name: Pattern
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
-    RemoteSecretInfo:
-      example:
-        secret_id: secret_id
-        secret_name: secret_name
-        namespace: namespace
-        last_error: last_error
-      properties:
-        last_error:
-          type: string
-          x-go-name: LastError
-        namespace:
-          type: string
-          x-go-name: Namespace
-        secret_id:
-          type: string
-          x-go-name: SecretId
-        secret_name:
-          type: string
-          x-go-name: SecretName
-      type: object
-      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     RenewCertificate:
       example:
         cert-issuer-name: cert-issuer-name
@@ -38955,7 +39004,10 @@ components:
       description: RotatedSecretDetailsInfo The rotated secret rotator info
       example:
         same_password: true
-        rotation_hour: 6
+        enable_custom_password_policy: true
+        rotation_hour: 5
+        next_auto_rotate_type: next_auto_rotate_type
+        grace_rotation_interval: 1
         grace_rotation: true
         rotation_interval_min: true
         delete_previous_version_in_days: 3
@@ -38973,23 +39025,35 @@ components:
             use_tls: true
             connection_type: connection_type
             port: port
+        grace_rotation_hour: 6
         rotator_creds_type: rotator_creds_type
-        gw_cluster_id: 6
+        gw_cluster_id: 2
         rotation_statement: rotation_statement
         rotator_status: rotator_status
         rotator_type: rotator_type
         timeout_seconds: 6
         managed_by_akeyless: true
-        max_versions: 1
-        number_of_versions_to_save: 2
+        max_versions: 6
+        number_of_versions_to_save: 6
       properties:
         delete_previous_version_in_days:
           format: int32
           type: integer
           x-go-name: DeletePreviousVersionInDays
+        enable_custom_password_policy:
+          type: boolean
+          x-go-name: EnableCustomPasswordPolicy
         grace_rotation:
           type: boolean
           x-go-name: GraceRotation
+        grace_rotation_hour:
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace_rotation_interval:
+          format: int32
+          type: integer
+          x-go-name: GraceRotationInterval
         gw_cluster_id:
           format: int64
           type: integer
@@ -39004,6 +39068,9 @@ components:
           format: int64
           type: integer
           x-go-name: MaxVersions
+        next_auto_rotate_type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         number_of_versions_to_save:
           format: int32
           type: integer
@@ -39549,7 +39616,7 @@ components:
             key:
               key: 7
           count_by_host_info:
-            key: 3
+            key: 0
         bastion_ssh: bastion_ssh
         isolated: true
         target_hosts:
@@ -39570,7 +39637,7 @@ components:
         is_web: true
         endpoint: endpoint
         rd_gateway_server: rd_gateway_server
-        gw_cluster_id: 3
+        gw_cluster_id: 7
         native: true
         enable: true
         is_desktop_app: true
@@ -39586,7 +39653,7 @@ components:
         rdp_user: rdp_user
         enforce_hosts_restriction: true
         url: url
-        connection_delay_seconds: 6
+        connection_delay_seconds: 3
         account_id: account_id
         db_name: db_name
         allow_providing_external_username: true
@@ -39596,7 +39663,7 @@ components:
         category: category
         region: region
         ssh_password: true
-        bastion_issuer_id: 5
+        bastion_issuer_id: 3
       properties:
         account_id:
           type: string
@@ -40229,7 +40296,7 @@ components:
             - null
             - null
             status: status
-        max_versions: 0
+        max_versions: 6
         username: username
       properties:
         format:
@@ -40421,7 +40488,7 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           access_date_display: access_date_display
-          version: 7
+          version: 3
           certificate_version_info:
             not_after: 2000-01-23T04:56:07.000+00:00
             not_before: 2000-01-23T04:56:07.000+00:00
@@ -40435,7 +40502,7 @@ components:
           protection_key_name: protection_key_name
           creation_date: 2000-01-23T04:56:07.000+00:00
           access_date_display: access_date_display
-          version: 7
+          version: 3
           certificate_version_info:
             not_after: 2000-01-23T04:56:07.000+00:00
             not_before: 2000-01-23T04:56:07.000+00:00
@@ -40579,7 +40646,7 @@ components:
         target_name: target_name
         access_date: 2000-01-23T04:56:07.000+00:00
         creation_date: 2000-01-23T04:56:07.000+00:00
-        version: 7
+        version: 3
         customer_fragment_id: customer_fragment_id
         item_version_state: item_version_state
         with_customer_fragment: true
@@ -40754,6 +40821,7 @@ components:
           username: username
         gcp_target_details:
           use_gw_cloud_identity: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           gcp_service_account_key_id: gcp_service_account_key_id
           gcp_service_account_key_base64: gcp_service_account_key_base64
           gcp_service_account_email: gcp_service_account_email
@@ -40822,6 +40890,7 @@ components:
           chef_server_username: chef_server_username
         azure_target_details:
           use_gw_cloud_identity: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_subscription_id: azure_subscription_id
           connection_type: connection_type
           azure_resource_name: azure_resource_name
@@ -41006,8 +41075,8 @@ components:
           tweak: tweak
           email_tokenizer_info:
             fixed_domain_suffix: fixed_domain_suffix
-            keep_prefix_length: 6
-            domain_suffix_length: 7
+            keep_prefix_length: 4
+            domain_suffix_length: 0
           template_type: template_type
           tweak_type: tweak_type
           regexp_tokenizer_info:
@@ -41633,6 +41702,31 @@ components:
           x-go-name: SecretsList
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    UscSyncInfo:
+      example:
+        secret_id: secret_id
+        secret_name: secret_name
+        namespace: namespace
+        jq_secret_filter: jq_secret_filter
+        last_error: last_error
+      properties:
+        jq_secret_filter:
+          type: string
+          x-go-name: JqSecretFilter
+        last_error:
+          type: string
+          x-go-name: LastError
+        namespace:
+          type: string
+          x-go-name: Namespace
+        secret_id:
+          type: string
+          x-go-name: SecretId
+        secret_name:
+          type: string
+          x-go-name: SecretName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     UscUpdateSecretOutput:
       example:
         secret_id: secret_id
@@ -41682,8 +41776,8 @@ components:
         tweak: tweak
         email_tokenizer_info:
           fixed_domain_suffix: fixed_domain_suffix
-          keep_prefix_length: 6
-          domain_suffix_length: 7
+          keep_prefix_length: 4
+          domain_suffix_length: 0
         template_type: template_type
         tweak_type: tweak_type
         regexp_tokenizer_info:
@@ -54029,6 +54123,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -54467,6 +54565,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -54585,6 +54687,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -54715,6 +54821,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -54936,13 +55046,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -55056,7 +55166,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -55077,7 +55187,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -55093,7 +55203,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -55103,7 +55213,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -55194,6 +55304,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -55470,6 +55581,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -57819,6 +57934,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -58269,6 +58388,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -58391,6 +58514,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -58525,6 +58652,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -58750,13 +58881,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -58870,7 +59001,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -58891,7 +59022,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -58907,7 +59038,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -58917,7 +59048,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -59008,6 +59139,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -59292,6 +59424,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -60992,7 +61128,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -61006,7 +61142,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -62196,13 +62332,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -62316,7 +62452,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -62337,7 +62473,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -62353,7 +62489,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -62363,7 +62499,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -62454,6 +62590,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -62706,13 +62843,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -62826,7 +62963,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -62847,7 +62984,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -62863,7 +63000,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -62873,7 +63010,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -62964,6 +63101,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -63185,13 +63323,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -63305,7 +63443,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -63326,7 +63464,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -63342,7 +63480,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -63352,7 +63490,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -63443,6 +63581,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -63624,13 +63763,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -63744,7 +63883,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -63765,7 +63904,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -63781,7 +63920,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -63791,7 +63930,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -63882,6 +64021,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -64053,13 +64193,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -64173,7 +64313,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -64194,7 +64334,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -64210,7 +64350,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -64220,7 +64360,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -64311,6 +64451,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -64494,13 +64635,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -64614,7 +64755,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -64635,7 +64776,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -64651,7 +64792,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -64661,7 +64802,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -64752,6 +64893,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -64913,13 +65055,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -65033,7 +65175,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -65054,7 +65196,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -65070,7 +65212,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -65080,7 +65222,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -65171,6 +65313,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -65378,13 +65521,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -65498,7 +65641,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -65519,7 +65662,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -65535,7 +65678,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -65545,7 +65688,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -65636,6 +65779,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -65812,13 +65956,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -65932,7 +66076,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -65953,7 +66097,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -65969,7 +66113,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -65979,7 +66123,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -66070,6 +66214,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -66253,13 +66398,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -66373,7 +66518,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -66394,7 +66539,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -66410,7 +66555,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -66420,7 +66565,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -66511,6 +66656,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -66709,13 +66855,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -66829,7 +66975,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -66850,7 +66996,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -66866,7 +67012,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -66876,7 +67022,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -66967,6 +67113,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -67093,6 +67240,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -67182,13 +67333,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -67302,7 +67453,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -67323,7 +67474,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -67339,7 +67490,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -67349,7 +67500,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -67440,6 +67591,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -67685,13 +67837,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -67805,7 +67957,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -67826,7 +67978,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -67842,7 +67994,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -67852,7 +68004,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -67943,6 +68095,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -68063,6 +68216,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -68158,13 +68315,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -68278,7 +68435,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -68299,7 +68456,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -68315,7 +68472,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -68325,7 +68482,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -68416,6 +68573,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -68557,6 +68715,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -68648,13 +68810,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -68768,7 +68930,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -68789,7 +68951,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -68805,7 +68967,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -68815,7 +68977,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -68906,6 +69068,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -69034,6 +69197,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -69134,13 +69301,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -69254,7 +69421,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -69275,7 +69442,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -69291,7 +69458,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -69301,7 +69468,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -69392,6 +69559,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -69636,13 +69804,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -69756,7 +69924,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -69777,7 +69945,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -69793,7 +69961,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -69803,7 +69971,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -69894,6 +70062,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -70108,13 +70277,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -70228,7 +70397,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -70249,7 +70418,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -70265,7 +70434,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -70275,7 +70444,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -70366,6 +70535,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -70611,13 +70781,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -70731,7 +70901,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -70752,7 +70922,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -70768,7 +70938,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -70778,7 +70948,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -70869,6 +71039,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -70989,6 +71160,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -71089,13 +71264,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -71209,7 +71384,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -71230,7 +71405,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -71246,7 +71421,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -71256,7 +71431,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -71347,6 +71522,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -71552,13 +71728,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -71672,7 +71848,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -71693,7 +71869,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -71709,7 +71885,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -71719,7 +71895,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -71810,6 +71986,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -72046,13 +72223,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -72166,7 +72343,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -72187,7 +72364,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -72203,7 +72380,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -72213,7 +72390,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -72304,6 +72481,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -72488,13 +72666,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -72608,7 +72786,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -72629,7 +72807,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -72645,7 +72823,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -72655,7 +72833,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -72746,6 +72924,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -72938,13 +73117,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -73058,7 +73237,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -73079,7 +73258,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -73095,7 +73274,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -73105,7 +73284,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -73196,6 +73375,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -73374,13 +73554,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -73494,7 +73674,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -73515,7 +73695,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -73531,7 +73711,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -73541,7 +73721,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -73632,6 +73812,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -73857,13 +74038,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -73977,7 +74158,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -73998,7 +74179,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -74014,7 +74195,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -74024,7 +74205,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -74115,6 +74296,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -77434,13 +77616,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -77554,7 +77736,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -77575,7 +77757,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -77591,7 +77773,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -77601,7 +77783,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -77692,6 +77874,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -77948,13 +78131,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -78068,7 +78251,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -78089,7 +78272,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -78105,7 +78288,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -78115,7 +78298,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -78206,6 +78389,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -78431,13 +78615,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -78551,7 +78735,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -78572,7 +78756,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -78588,7 +78772,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -78598,7 +78782,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -78689,6 +78873,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -78874,13 +79059,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -78994,7 +79179,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -79015,7 +79200,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -79031,7 +79216,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -79041,7 +79226,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -79132,6 +79317,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -79307,13 +79493,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -79427,7 +79613,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -79448,7 +79634,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -79464,7 +79650,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -79474,7 +79660,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -79565,6 +79751,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -79752,13 +79939,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -79872,7 +80059,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -79893,7 +80080,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -79909,7 +80096,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -79919,7 +80106,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -80010,6 +80197,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -80175,13 +80363,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -80295,7 +80483,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -80316,7 +80504,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -80332,7 +80520,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -80342,7 +80530,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -80433,6 +80621,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -80644,13 +80833,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -80764,7 +80953,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -80785,7 +80974,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -80801,7 +80990,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -80811,7 +81000,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -80902,6 +81091,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -81082,13 +81272,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -81202,7 +81392,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -81223,7 +81413,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -81239,7 +81429,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -81249,7 +81439,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -81340,6 +81530,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -81527,13 +81718,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -81647,7 +81838,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -81668,7 +81859,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -81684,7 +81875,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -81694,7 +81885,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -81785,6 +81976,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -81987,13 +82179,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -82107,7 +82299,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -82128,7 +82320,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -82144,7 +82336,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -82154,7 +82346,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -82245,6 +82437,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -82369,6 +82562,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -82458,13 +82655,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -82578,7 +82775,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -82599,7 +82796,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -82615,7 +82812,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -82625,7 +82822,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -82716,6 +82913,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -82965,13 +83163,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -83085,7 +83283,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -83106,7 +83304,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -83122,7 +83320,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -83132,7 +83330,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -83223,6 +83421,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -83347,6 +83546,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -83442,13 +83645,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -83562,7 +83765,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -83583,7 +83786,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -83599,7 +83802,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -83609,7 +83812,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -83700,6 +83903,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -83845,6 +84049,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -83936,13 +84144,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -84056,7 +84264,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -84077,7 +84285,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -84093,7 +84301,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -84103,7 +84311,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -84194,6 +84402,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -84326,6 +84535,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-delay:
           description: "The delay duration, in seconds, to wait after generating just-in-time\
             \ credentials. Accepted range: 0-120 seconds"
@@ -84426,13 +84639,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -84546,7 +84759,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -84567,7 +84780,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -84583,7 +84796,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -84593,7 +84806,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -84684,6 +84897,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -84932,13 +85146,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -85052,7 +85266,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -85073,7 +85287,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -85089,7 +85303,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -85099,7 +85313,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -85190,6 +85404,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -85408,13 +85623,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -85528,7 +85743,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -85549,7 +85764,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -85565,7 +85780,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -85575,7 +85790,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -85666,6 +85881,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -85915,13 +86131,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -86035,7 +86251,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -86056,7 +86272,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -86072,7 +86288,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -86082,7 +86298,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -86173,6 +86389,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -86297,6 +86514,10 @@ components:
             Access
           type: string
           x-go-name: SecureAccessCertIssuer
+        secure-access-db-name:
+          description: The DB name (relevant only for DB Dynamic-Secret)
+          type: string
+          x-go-name: SecureAccessDBName
         secure-access-db-schema:
           description: The DB schema
           type: string
@@ -86397,13 +86618,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -86517,7 +86738,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -86538,7 +86759,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -86554,7 +86775,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -86564,7 +86785,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -86655,6 +86876,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -86864,13 +87086,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -86984,7 +87206,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -87005,7 +87227,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -87021,7 +87243,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -87031,7 +87253,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -87122,6 +87344,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -87362,13 +87585,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -87482,7 +87705,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -87503,7 +87726,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -87519,7 +87742,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -87529,7 +87752,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -87620,6 +87843,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -87808,13 +88032,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -87928,7 +88152,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -87949,7 +88173,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -87965,7 +88189,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -87975,7 +88199,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -88066,6 +88290,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -88262,13 +88487,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -88382,7 +88607,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -88403,7 +88628,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -88419,7 +88644,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -88429,7 +88654,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -88520,6 +88745,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -88702,13 +88928,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -88822,7 +89048,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -88843,7 +89069,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -88859,7 +89085,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -88869,7 +89095,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -88960,6 +89186,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -89189,13 +89416,13 @@ components:
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           - assoc_id: assoc_id
             target_name: target_name
             target_type: target_type
             attributes:
               key: attributes
-            target_id: 8
+            target_id: 3
           chef_server_username: chef_server_username
           k8s_client_cert_data: k8s_client_cert_data
           tags:
@@ -89309,7 +89536,7 @@ components:
                 key:
                   key: 7
               count_by_host_info:
-                key: 3
+                key: 0
             bastion_ssh: bastion_ssh
             isolated: true
             target_hosts:
@@ -89330,7 +89557,7 @@ components:
             is_web: true
             endpoint: endpoint
             rd_gateway_server: rd_gateway_server
-            gw_cluster_id: 3
+            gw_cluster_id: 7
             native: true
             enable: true
             is_desktop_app: true
@@ -89346,7 +89573,7 @@ components:
             rdp_user: rdp_user
             enforce_hosts_restriction: true
             url: url
-            connection_delay_seconds: 6
+            connection_delay_seconds: 3
             account_id: account_id
             db_name: db_name
             allow_providing_external_username: true
@@ -89356,7 +89583,7 @@ components:
             category: category
             region: region
             ssh_password: true
-            bastion_issuer_id: 5
+            bastion_issuer_id: 3
           ldap_group_dn: ldap_group_dn
           google_workspace_group_role: google_workspace_group_role
           chef_server_host_name: chef_server_host_name
@@ -89447,6 +89674,7 @@ components:
           ldap_fixed_user_name_sub_claim_key: ldap_fixed_user_name_sub_claim_key
           artifactory_admin_apikey: artifactory_admin_apikey
           cluster_mode: true
+          grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
           subject_dn: subject_dn
@@ -90091,7 +90319,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -90105,7 +90333,7 @@ components:
             protection_key_name: protection_key_name
             creation_date: 2000-01-23T04:56:07.000+00:00
             access_date_display: access_date_display
-            version: 7
+            version: 3
             certificate_version_info:
               not_after: 2000-01-23T04:56:07.000+00:00
               not_before: 2000-01-23T04:56:07.000+00:00
@@ -92542,9 +92770,19 @@ components:
           x-go-name: Description
         grace-rotation:
           description: "Create a new access key without deleting the old key from\
-            \ AWS for backup (relevant only for AWS) [true/false]"
+            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
           type: string
           x-go-name: GraceRotation
+        grace-rotation-hour:
+          description: The Hour of the grace rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace-rotation-interval:
+          description: The number of days to wait before deleting the old key (must
+            be bigger than rotation-interval)
+          type: string
+          x-go-name: GraceRotationInterval
         json:
           default: false
           description: Set output format to JSON
@@ -92674,6 +92912,26 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        explicitly-set-sa:
+          default: "false"
+          description: "If set, explicitly provide the storage account details [true/false]"
+          type: string
+          x-go-name: ProvideAccountDetails
+        grace-rotation:
+          description: "Create a new access key without deleting the old key from\
+            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          type: string
+          x-go-name: GraceRotation
+        grace-rotation-hour:
+          description: The Hour of the grace rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace-rotation-interval:
+          description: The number of days to wait before deleting the old key (must
+            be bigger than rotation-interval)
+          type: string
+          x-go-name: GraceRotationInterval
         json:
           default: false
           description: Set output format to JSON
@@ -92697,6 +92955,14 @@ components:
           description: The length of the password to be generated
           type: string
           x-go-name: PasswordLengthInput
+        resource-group-name:
+          description: The resource group name (only relevant when explicitly-set-sa=true)
+          type: string
+          x-go-name: ResourceGroupName
+        resource-name:
+          description: The name of the storage account (only relevant when explicitly-set-sa=true)
+          type: string
+          x-go-name: ResourceName
         rotate-after-disconnect:
           default: "false"
           description: "Rotate the value of the secret after SRA session ends [true/false]"
@@ -92911,6 +93177,10 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        enable-password-policy:
+          description: Enable password policy
+          type: string
+          x-go-name: EnablePasswordPolicy
         json:
           default: false
           description: Set output format to JSON
@@ -93039,6 +93309,22 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Password must contain capital letters [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Password must contain lower case letters [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Password must contain numbers [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          description: "Password must contain special characters [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - target-name
@@ -93162,6 +93448,21 @@ components:
           description: The key id of the gcp service account to rotate
           type: string
           x-go-name: GcpServiceAccountKeyId
+        grace-rotation:
+          description: "Create a new access key without deleting the old key from\
+            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          type: string
+          x-go-name: GraceRotation
+        grace-rotation-hour:
+          description: The Hour of the grace rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace-rotation-interval:
+          description: The number of days to wait before deleting the old key (must
+            be bigger than rotation-interval)
+          type: string
+          x-go-name: GraceRotationInterval
         json:
           default: false
           description: Set output format to JSON
@@ -94952,6 +95253,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretSync:
       properties:
+        filter-secret-value:
+          description: JQ expression to filter or transform the secret value
+          type: string
+          x-go-name: FilterSecretValue
         json:
           default: false
           description: Set output format to JSON
@@ -95033,9 +95338,19 @@ components:
           x-go-name: Description
         grace-rotation:
           description: "Create a new access key without deleting the old key from\
-            \ AWS for backup (relevant only for AWS) [true/false]"
+            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
           type: string
           x-go-name: GraceRotation
+        grace-rotation-hour:
+          description: The Hour of the grace rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace-rotation-interval:
+          description: The number of days to wait before deleting the old key (must
+            be bigger than rotation-interval)
+          type: string
+          x-go-name: GraceRotationInterval
         json:
           default: false
           description: Set output format to JSON
@@ -95171,6 +95486,26 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        explicitly-set-sa:
+          default: "false"
+          description: "If set, explicitly provide the storage account details [true/false]"
+          type: string
+          x-go-name: ProvideAccountDetails
+        grace-rotation:
+          description: "Create a new access key without deleting the old key from\
+            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          type: string
+          x-go-name: GraceRotation
+        grace-rotation-hour:
+          description: The Hour of the grace rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace-rotation-interval:
+          description: The number of days to wait before deleting the old key (must
+            be bigger than rotation-interval)
+          type: string
+          x-go-name: GraceRotationInterval
         json:
           default: false
           description: Set output format to JSON
@@ -95203,6 +95538,14 @@ components:
           description: The length of the password to be generated
           type: string
           x-go-name: PasswordLengthInput
+        resource-group-name:
+          description: The resource group name (only relevant when explicitly-set-sa=true)
+          type: string
+          x-go-name: ResourceGroupName
+        resource-name:
+          description: The name of the storage account (only relevant when explicitly-set-sa=true)
+          type: string
+          x-go-name: ResourceName
         rm-tag:
           description: List of the existent tags that will be removed from this item
           items:
@@ -95420,6 +95763,10 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        enable-password-policy:
+          description: Enable password policy
+          type: string
+          x-go-name: EnablePasswordPolicy
         json:
           default: false
           description: Set output format to JSON
@@ -95552,6 +95899,22 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Password must contain capital letters [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Password must contain lower case letters [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Password must contain numbers [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          description: "Password must contain special characters [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateCustom is a command that updates a rotated secret.
@@ -95692,6 +96055,21 @@ components:
           description: The key id of the gcp service account to rotate
           type: string
           x-go-name: GcpServiceAccountKeyId
+        grace-rotation:
+          description: "Create a new access key without deleting the old key from\
+            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          type: string
+          x-go-name: GraceRotation
+        grace-rotation-hour:
+          description: The Hour of the grace rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: GraceRotationHour
+        grace-rotation-interval:
+          description: The number of days to wait before deleting the old key (must
+            be bigger than rotation-interval)
+          type: string
+          x-go-name: GraceRotationInterval
         json:
           default: false
           description: Set output format to JSON
@@ -102492,6 +102870,15 @@ components:
             type: string
           type: array
           x-go-name: GWCIDRWhitelist
+        hide-personal-folder:
+          description: "Hide personal folder, if set - users will not be able to use\
+            \ personal folder [true/false]"
+          type: string
+          x-go-name: HidePersonalFolder
+        hide-static-password:
+          description: "Hide static secret's password type [true/false]"
+          type: string
+          x-go-name: HideStaticPassword
         invalid-characters:
           default: notReceivedInvalidCharacter
           description: |-

@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -50,6 +50,10 @@ type UpdateAccountSettings struct {
 	ForceNewVersions *string `json:"force-new-versions,omitempty"`
 	// A default list of comma-separated CIDR block that acts as a trusted Gateway entity.
 	GwBoundIps []string `json:"gw-bound-ips,omitempty"`
+	// Hide personal folder, if set - users will not be able to use personal folder [true/false]
+	HidePersonalFolder *string `json:"hide-personal-folder,omitempty"`
+	// Hide static secret's password type [true/false]
+	HideStaticPassword *string `json:"hide-static-password,omitempty"`
 	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
 	InvalidCharacters *string `json:"invalid-characters,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
@@ -609,6 +613,70 @@ func (o *UpdateAccountSettings) HasGwBoundIps() bool {
 // SetGwBoundIps gets a reference to the given []string and assigns it to the GwBoundIps field.
 func (o *UpdateAccountSettings) SetGwBoundIps(v []string) {
 	o.GwBoundIps = v
+}
+
+// GetHidePersonalFolder returns the HidePersonalFolder field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetHidePersonalFolder() string {
+	if o == nil || IsNil(o.HidePersonalFolder) {
+		var ret string
+		return ret
+	}
+	return *o.HidePersonalFolder
+}
+
+// GetHidePersonalFolderOk returns a tuple with the HidePersonalFolder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetHidePersonalFolderOk() (*string, bool) {
+	if o == nil || IsNil(o.HidePersonalFolder) {
+		return nil, false
+	}
+	return o.HidePersonalFolder, true
+}
+
+// HasHidePersonalFolder returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasHidePersonalFolder() bool {
+	if o != nil && !IsNil(o.HidePersonalFolder) {
+		return true
+	}
+
+	return false
+}
+
+// SetHidePersonalFolder gets a reference to the given string and assigns it to the HidePersonalFolder field.
+func (o *UpdateAccountSettings) SetHidePersonalFolder(v string) {
+	o.HidePersonalFolder = &v
+}
+
+// GetHideStaticPassword returns the HideStaticPassword field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetHideStaticPassword() string {
+	if o == nil || IsNil(o.HideStaticPassword) {
+		var ret string
+		return ret
+	}
+	return *o.HideStaticPassword
+}
+
+// GetHideStaticPasswordOk returns a tuple with the HideStaticPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetHideStaticPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.HideStaticPassword) {
+		return nil, false
+	}
+	return o.HideStaticPassword, true
+}
+
+// HasHideStaticPassword returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasHideStaticPassword() bool {
+	if o != nil && !IsNil(o.HideStaticPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetHideStaticPassword gets a reference to the given string and assigns it to the HideStaticPassword field.
+func (o *UpdateAccountSettings) SetHideStaticPassword(v string) {
+	o.HideStaticPassword = &v
 }
 
 // GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
@@ -1529,6 +1597,12 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GwBoundIps) {
 		toSerialize["gw-bound-ips"] = o.GwBoundIps
+	}
+	if !IsNil(o.HidePersonalFolder) {
+		toSerialize["hide-personal-folder"] = o.HidePersonalFolder
+	}
+	if !IsNil(o.HideStaticPassword) {
+		toSerialize["hide-static-password"] = o.HideStaticPassword
 	}
 	if !IsNil(o.InvalidCharacters) {
 		toSerialize["invalid-characters"] = o.InvalidCharacters

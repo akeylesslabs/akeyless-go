@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**EnablePasswordPolicy** | Pointer to **string** | Enable password policy | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
@@ -35,6 +36,10 @@ Name | Type | Description | Notes
 **TimeoutSec** | Pointer to **int64** | Maximum allowed time in seconds for the custom rotator to return the results | [optional] [default to 40]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Password must contain capital letters [true/false] | [optional] 
+**UseLowerLetters** | Pointer to **string** | Password must contain lower case letters [true/false] | [optional] 
+**UseNumbers** | Pointer to **string** | Password must contain numbers [true/false] | [optional] 
+**UseSpecialCharacters** | Pointer to **string** | Password must contain special characters [true/false] | [optional] 
 
 ## Methods
 
@@ -179,6 +184,31 @@ SetDescription sets Description field to given value.
 `func (o *RotatedSecretCreateCustom) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnablePasswordPolicy
+
+`func (o *RotatedSecretCreateCustom) GetEnablePasswordPolicy() string`
+
+GetEnablePasswordPolicy returns the EnablePasswordPolicy field if non-nil, zero value otherwise.
+
+### GetEnablePasswordPolicyOk
+
+`func (o *RotatedSecretCreateCustom) GetEnablePasswordPolicyOk() (*string, bool)`
+
+GetEnablePasswordPolicyOk returns a tuple with the EnablePasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnablePasswordPolicy
+
+`func (o *RotatedSecretCreateCustom) SetEnablePasswordPolicy(v string)`
+
+SetEnablePasswordPolicy sets EnablePasswordPolicy field to given value.
+
+### HasEnablePasswordPolicy
+
+`func (o *RotatedSecretCreateCustom) HasEnablePasswordPolicy() bool`
+
+HasEnablePasswordPolicy returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -819,6 +849,106 @@ SetUidToken sets UidToken field to given value.
 `func (o *RotatedSecretCreateCustom) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *RotatedSecretCreateCustom) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *RotatedSecretCreateCustom) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *RotatedSecretCreateCustom) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *RotatedSecretCreateCustom) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
+### GetUseLowerLetters
+
+`func (o *RotatedSecretCreateCustom) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *RotatedSecretCreateCustom) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *RotatedSecretCreateCustom) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *RotatedSecretCreateCustom) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *RotatedSecretCreateCustom) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *RotatedSecretCreateCustom) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *RotatedSecretCreateCustom) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *RotatedSecretCreateCustom) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *RotatedSecretCreateCustom) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *RotatedSecretCreateCustom) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *RotatedSecretCreateCustom) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *RotatedSecretCreateCustom) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **DefaultHomePage** | Pointer to [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
+**HidePersonalFolder** | Pointer to **bool** |  | [optional] 
+**HideStaticPassword** | Pointer to **bool** |  | [optional] 
 **InvalidCharacters** | Pointer to **string** | InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention | [optional] 
 **ItemUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **LockDefaultKey** | Pointer to **bool** | LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty | [optional] 
@@ -266,6 +268,56 @@ SetEnableRequestForAccess sets EnableRequestForAccess field to given value.
 `func (o *AccountGeneralSettings) HasEnableRequestForAccess() bool`
 
 HasEnableRequestForAccess returns a boolean if a field has been set.
+
+### GetHidePersonalFolder
+
+`func (o *AccountGeneralSettings) GetHidePersonalFolder() bool`
+
+GetHidePersonalFolder returns the HidePersonalFolder field if non-nil, zero value otherwise.
+
+### GetHidePersonalFolderOk
+
+`func (o *AccountGeneralSettings) GetHidePersonalFolderOk() (*bool, bool)`
+
+GetHidePersonalFolderOk returns a tuple with the HidePersonalFolder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHidePersonalFolder
+
+`func (o *AccountGeneralSettings) SetHidePersonalFolder(v bool)`
+
+SetHidePersonalFolder sets HidePersonalFolder field to given value.
+
+### HasHidePersonalFolder
+
+`func (o *AccountGeneralSettings) HasHidePersonalFolder() bool`
+
+HasHidePersonalFolder returns a boolean if a field has been set.
+
+### GetHideStaticPassword
+
+`func (o *AccountGeneralSettings) GetHideStaticPassword() bool`
+
+GetHideStaticPassword returns the HideStaticPassword field if non-nil, zero value otherwise.
+
+### GetHideStaticPasswordOk
+
+`func (o *AccountGeneralSettings) GetHideStaticPasswordOk() (*bool, bool)`
+
+GetHideStaticPasswordOk returns a tuple with the HideStaticPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHideStaticPassword
+
+`func (o *AccountGeneralSettings) SetHideStaticPassword(v bool)`
+
+SetHideStaticPassword sets HideStaticPassword field to given value.
+
+### HasHideStaticPassword
+
+`func (o *AccountGeneralSettings) HasHideStaticPassword() bool`
+
+HasHideStaticPassword returns a boolean if a field has been set.
 
 ### GetInvalidCharacters
 

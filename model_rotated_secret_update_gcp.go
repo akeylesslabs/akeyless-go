@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -38,6 +38,12 @@ type RotatedSecretUpdateGcp struct {
 	GcpServiceAccountEmail *string `json:"gcp-service-account-email,omitempty"`
 	// The key id of the gcp service account to rotate
 	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
+	// Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]
+	GraceRotation *string `json:"grace-rotation,omitempty"`
+	// The Hour of the grace rotation in UTC
+	GraceRotationHour *int32 `json:"grace-rotation-hour,omitempty"`
+	// The number of days to wait before deleting the old key (must be bigger than rotation-interval)
+	GraceRotationInterval *string `json:"grace-rotation-interval,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
@@ -355,6 +361,102 @@ func (o *RotatedSecretUpdateGcp) HasGcpServiceAccountKeyId() bool {
 // SetGcpServiceAccountKeyId gets a reference to the given string and assigns it to the GcpServiceAccountKeyId field.
 func (o *RotatedSecretUpdateGcp) SetGcpServiceAccountKeyId(v string) {
 	o.GcpServiceAccountKeyId = &v
+}
+
+// GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateGcp) GetGraceRotation() string {
+	if o == nil || IsNil(o.GraceRotation) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotation
+}
+
+// GetGraceRotationOk returns a tuple with the GraceRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateGcp) GetGraceRotationOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotation) {
+		return nil, false
+	}
+	return o.GraceRotation, true
+}
+
+// HasGraceRotation returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateGcp) HasGraceRotation() bool {
+	if o != nil && !IsNil(o.GraceRotation) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotation gets a reference to the given string and assigns it to the GraceRotation field.
+func (o *RotatedSecretUpdateGcp) SetGraceRotation(v string) {
+	o.GraceRotation = &v
+}
+
+// GetGraceRotationHour returns the GraceRotationHour field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateGcp) GetGraceRotationHour() int32 {
+	if o == nil || IsNil(o.GraceRotationHour) {
+		var ret int32
+		return ret
+	}
+	return *o.GraceRotationHour
+}
+
+// GetGraceRotationHourOk returns a tuple with the GraceRotationHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateGcp) GetGraceRotationHourOk() (*int32, bool) {
+	if o == nil || IsNil(o.GraceRotationHour) {
+		return nil, false
+	}
+	return o.GraceRotationHour, true
+}
+
+// HasGraceRotationHour returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateGcp) HasGraceRotationHour() bool {
+	if o != nil && !IsNil(o.GraceRotationHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationHour gets a reference to the given int32 and assigns it to the GraceRotationHour field.
+func (o *RotatedSecretUpdateGcp) SetGraceRotationHour(v int32) {
+	o.GraceRotationHour = &v
+}
+
+// GetGraceRotationInterval returns the GraceRotationInterval field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateGcp) GetGraceRotationInterval() string {
+	if o == nil || IsNil(o.GraceRotationInterval) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotationInterval
+}
+
+// GetGraceRotationIntervalOk returns a tuple with the GraceRotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateGcp) GetGraceRotationIntervalOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotationInterval) {
+		return nil, false
+	}
+	return o.GraceRotationInterval, true
+}
+
+// HasGraceRotationInterval returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateGcp) HasGraceRotationInterval() bool {
+	if o != nil && !IsNil(o.GraceRotationInterval) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationInterval gets a reference to the given string and assigns it to the GraceRotationInterval field.
+func (o *RotatedSecretUpdateGcp) SetGraceRotationInterval(v string) {
+	o.GraceRotationInterval = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -822,6 +924,15 @@ func (o RotatedSecretUpdateGcp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpServiceAccountKeyId) {
 		toSerialize["gcp-service-account-key-id"] = o.GcpServiceAccountKeyId
+	}
+	if !IsNil(o.GraceRotation) {
+		toSerialize["grace-rotation"] = o.GraceRotation
+	}
+	if !IsNil(o.GraceRotationHour) {
+		toSerialize["grace-rotation-hour"] = o.GraceRotationHour
+	}
+	if !IsNil(o.GraceRotationInterval) {
+		toSerialize["grace-rotation-interval"] = o.GraceRotationInterval
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

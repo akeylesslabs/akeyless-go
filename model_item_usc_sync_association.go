@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -21,7 +21,7 @@ var _ MappedNullable = &ItemUSCSyncAssociation{}
 // ItemUSCSyncAssociation ItemUSCSyncAssociation includes details of usc sync associations
 type ItemUSCSyncAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
-	Attributes *RemoteSecretInfo `json:"attributes,omitempty"`
+	Attributes *UscSyncInfo `json:"attributes,omitempty"`
 	ItemId *int64 `json:"item_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
@@ -77,9 +77,9 @@ func (o *ItemUSCSyncAssociation) SetAssocId(v string) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *ItemUSCSyncAssociation) GetAttributes() RemoteSecretInfo {
+func (o *ItemUSCSyncAssociation) GetAttributes() UscSyncInfo {
 	if o == nil || IsNil(o.Attributes) {
-		var ret RemoteSecretInfo
+		var ret UscSyncInfo
 		return ret
 	}
 	return *o.Attributes
@@ -87,7 +87,7 @@ func (o *ItemUSCSyncAssociation) GetAttributes() RemoteSecretInfo {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ItemUSCSyncAssociation) GetAttributesOk() (*RemoteSecretInfo, bool) {
+func (o *ItemUSCSyncAssociation) GetAttributesOk() (*UscSyncInfo, bool) {
 	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *ItemUSCSyncAssociation) HasAttributes() bool {
 	return false
 }
 
-// SetAttributes gets a reference to the given RemoteSecretInfo and assigns it to the Attributes field.
-func (o *ItemUSCSyncAssociation) SetAttributes(v RemoteSecretInfo) {
+// SetAttributes gets a reference to the given UscSyncInfo and assigns it to the Attributes field.
+func (o *ItemUSCSyncAssociation) SetAttributes(v UscSyncInfo) {
 	o.Attributes = &v
 }
 

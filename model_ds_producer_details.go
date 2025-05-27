@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -152,6 +152,7 @@ type DSProducerDetails struct {
 	GoogleWorkspaceGroupRole *string `json:"google_workspace_group_role,omitempty"`
 	GoogleWorkspaceRoleName *string `json:"google_workspace_role_name,omitempty"`
 	GoogleWorkspaceRoleScope *string `json:"google_workspace_role_scope,omitempty"`
+	GraceRotatedSecretKey *string `json:"grace_rotated_secret_key,omitempty"`
 	GrantTypes []string `json:"grant_types,omitempty"`
 	Groups *string `json:"groups,omitempty"`
 	HanadbCreationStatements *string `json:"hanadb_creation_statements,omitempty"`
@@ -4336,6 +4337,38 @@ func (o *DSProducerDetails) HasGoogleWorkspaceRoleScope() bool {
 // SetGoogleWorkspaceRoleScope gets a reference to the given string and assigns it to the GoogleWorkspaceRoleScope field.
 func (o *DSProducerDetails) SetGoogleWorkspaceRoleScope(v string) {
 	o.GoogleWorkspaceRoleScope = &v
+}
+
+// GetGraceRotatedSecretKey returns the GraceRotatedSecretKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGraceRotatedSecretKey() string {
+	if o == nil || IsNil(o.GraceRotatedSecretKey) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotatedSecretKey
+}
+
+// GetGraceRotatedSecretKeyOk returns a tuple with the GraceRotatedSecretKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGraceRotatedSecretKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotatedSecretKey) {
+		return nil, false
+	}
+	return o.GraceRotatedSecretKey, true
+}
+
+// HasGraceRotatedSecretKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGraceRotatedSecretKey() bool {
+	if o != nil && !IsNil(o.GraceRotatedSecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotatedSecretKey gets a reference to the given string and assigns it to the GraceRotatedSecretKey field.
+func (o *DSProducerDetails) SetGraceRotatedSecretKey(v string) {
+	o.GraceRotatedSecretKey = &v
 }
 
 // GetGrantTypes returns the GrantTypes field value if set, zero value otherwise.
@@ -8533,6 +8566,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GoogleWorkspaceRoleScope) {
 		toSerialize["google_workspace_role_scope"] = o.GoogleWorkspaceRoleScope
+	}
+	if !IsNil(o.GraceRotatedSecretKey) {
+		toSerialize["grace_rotated_secret_key"] = o.GraceRotatedSecretKey
 	}
 	if !IsNil(o.GrantTypes) {
 		toSerialize["grant_types"] = o.GrantTypes

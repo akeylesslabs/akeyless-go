@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
-**Attributes** | Pointer to [**RemoteSecretInfo**](RemoteSecretInfo.md) |  | [optional] 
+**Attributes** | Pointer to [**UscSyncInfo**](UscSyncInfo.md) |  | [optional] 
 **ItemId** | Pointer to **int64** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
@@ -56,20 +56,20 @@ HasAssocId returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *ItemUSCSyncAssociation) GetAttributes() RemoteSecretInfo`
+`func (o *ItemUSCSyncAssociation) GetAttributes() UscSyncInfo`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *ItemUSCSyncAssociation) GetAttributesOk() (*RemoteSecretInfo, bool)`
+`func (o *ItemUSCSyncAssociation) GetAttributesOk() (*UscSyncInfo, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *ItemUSCSyncAssociation) SetAttributes(v RemoteSecretInfo)`
+`func (o *ItemUSCSyncAssociation) SetAttributes(v UscSyncInfo)`
 
 SetAttributes sets Attributes field to given value.
 

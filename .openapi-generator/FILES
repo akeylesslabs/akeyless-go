@@ -768,7 +768,6 @@ docs/RawCreds.md
 docs/RefreshKey.md
 docs/RefreshKeyOutput.md
 docs/RegexpTokenizerInfo.md
-docs/RemoteSecretInfo.md
 docs/RenewCertificate.md
 docs/RenewCertificateOutput.md
 docs/RequestAccess.md
@@ -1074,6 +1073,7 @@ docs/UscGet.md
 docs/UscGetSecretOutput.md
 docs/UscList.md
 docs/UscListSecretsOutput.md
+docs/UscSyncInfo.md
 docs/UscUpdate.md
 docs/UscUpdateSecretOutput.md
 docs/V2Api.md
@@ -1866,7 +1866,6 @@ model_raw_creds.go
 model_refresh_key.go
 model_refresh_key_output.go
 model_regexp_tokenizer_info.go
-model_remote_secret_info.go
 model_renew_certificate.go
 model_renew_certificate_output.go
 model_request_access.go
@@ -2172,6 +2171,7 @@ model_usc_get.go
 model_usc_get_secret_output.go
 model_usc_list.go
 model_usc_list_secrets_output.go
+model_usc_sync_info.go
 model_usc_update.go
 model_usc_update_secret_output.go
 model_validate_token.go

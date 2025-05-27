@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
+**SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
@@ -417,6 +418,31 @@ SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to giv
 `func (o *GatewayUpdateProducerHanaDb) HasSecureAccessCertificateIssuer() bool`
 
 HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessDbName
+
+`func (o *GatewayUpdateProducerHanaDb) GetSecureAccessDbName() string`
+
+GetSecureAccessDbName returns the SecureAccessDbName field if non-nil, zero value otherwise.
+
+### GetSecureAccessDbNameOk
+
+`func (o *GatewayUpdateProducerHanaDb) GetSecureAccessDbNameOk() (*string, bool)`
+
+GetSecureAccessDbNameOk returns a tuple with the SecureAccessDbName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDbName
+
+`func (o *GatewayUpdateProducerHanaDb) SetSecureAccessDbName(v string)`
+
+SetSecureAccessDbName sets SecureAccessDbName field to given value.
+
+### HasSecureAccessDbName
+
+`func (o *GatewayUpdateProducerHanaDb) HasSecureAccessDbName() bool`
+
+HasSecureAccessDbName returns a boolean if a field has been set.
 
 ### GetSecureAccessDbSchema
 

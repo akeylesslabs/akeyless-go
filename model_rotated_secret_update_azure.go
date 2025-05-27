@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -38,6 +38,14 @@ type RotatedSecretUpdateAzure struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// If set, explicitly provide the storage account details [true/false]
+	ExplicitlySetSa *string `json:"explicitly-set-sa,omitempty"`
+	// Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]
+	GraceRotation *string `json:"grace-rotation,omitempty"`
+	// The Hour of the grace rotation in UTC
+	GraceRotationHour *int32 `json:"grace-rotation-hour,omitempty"`
+	// The number of days to wait before deleting the old key (must be bigger than rotation-interval)
+	GraceRotationInterval *string `json:"grace-rotation-interval,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
@@ -52,6 +60,10 @@ type RotatedSecretUpdateAzure struct {
 	NewName *string `json:"new-name,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
+	// The resource group name (only relevant when explicitly-set-sa=true)
+	ResourceGroupName *string `json:"resource-group-name,omitempty"`
+	// The name of the storage account (only relevant when explicitly-set-sa=true)
+	ResourceName *string `json:"resource-name,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag []string `json:"rm-tag,omitempty"`
 	// Rotate the value of the secret after SRA session ends [true/false]
@@ -96,6 +108,8 @@ func NewRotatedSecretUpdateAzure(name string) *RotatedSecretUpdateAzure {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var description string = "default_metadata"
 	this.Description = &description
+	var explicitlySetSa string = "false"
+	this.ExplicitlySetSa = &explicitlySetSa
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -119,6 +133,8 @@ func NewRotatedSecretUpdateAzureWithDefaults() *RotatedSecretUpdateAzure {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var description string = "default_metadata"
 	this.Description = &description
+	var explicitlySetSa string = "false"
+	this.ExplicitlySetSa = &explicitlySetSa
 	var json bool = false
 	this.Json = &json
 	var rotateAfterDisconnect string = "false"
@@ -388,6 +404,134 @@ func (o *RotatedSecretUpdateAzure) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetExplicitlySetSa returns the ExplicitlySetSa field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetExplicitlySetSa() string {
+	if o == nil || IsNil(o.ExplicitlySetSa) {
+		var ret string
+		return ret
+	}
+	return *o.ExplicitlySetSa
+}
+
+// GetExplicitlySetSaOk returns a tuple with the ExplicitlySetSa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetExplicitlySetSaOk() (*string, bool) {
+	if o == nil || IsNil(o.ExplicitlySetSa) {
+		return nil, false
+	}
+	return o.ExplicitlySetSa, true
+}
+
+// HasExplicitlySetSa returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasExplicitlySetSa() bool {
+	if o != nil && !IsNil(o.ExplicitlySetSa) {
+		return true
+	}
+
+	return false
+}
+
+// SetExplicitlySetSa gets a reference to the given string and assigns it to the ExplicitlySetSa field.
+func (o *RotatedSecretUpdateAzure) SetExplicitlySetSa(v string) {
+	o.ExplicitlySetSa = &v
+}
+
+// GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetGraceRotation() string {
+	if o == nil || IsNil(o.GraceRotation) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotation
+}
+
+// GetGraceRotationOk returns a tuple with the GraceRotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetGraceRotationOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotation) {
+		return nil, false
+	}
+	return o.GraceRotation, true
+}
+
+// HasGraceRotation returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasGraceRotation() bool {
+	if o != nil && !IsNil(o.GraceRotation) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotation gets a reference to the given string and assigns it to the GraceRotation field.
+func (o *RotatedSecretUpdateAzure) SetGraceRotation(v string) {
+	o.GraceRotation = &v
+}
+
+// GetGraceRotationHour returns the GraceRotationHour field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetGraceRotationHour() int32 {
+	if o == nil || IsNil(o.GraceRotationHour) {
+		var ret int32
+		return ret
+	}
+	return *o.GraceRotationHour
+}
+
+// GetGraceRotationHourOk returns a tuple with the GraceRotationHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetGraceRotationHourOk() (*int32, bool) {
+	if o == nil || IsNil(o.GraceRotationHour) {
+		return nil, false
+	}
+	return o.GraceRotationHour, true
+}
+
+// HasGraceRotationHour returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasGraceRotationHour() bool {
+	if o != nil && !IsNil(o.GraceRotationHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationHour gets a reference to the given int32 and assigns it to the GraceRotationHour field.
+func (o *RotatedSecretUpdateAzure) SetGraceRotationHour(v int32) {
+	o.GraceRotationHour = &v
+}
+
+// GetGraceRotationInterval returns the GraceRotationInterval field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetGraceRotationInterval() string {
+	if o == nil || IsNil(o.GraceRotationInterval) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotationInterval
+}
+
+// GetGraceRotationIntervalOk returns a tuple with the GraceRotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetGraceRotationIntervalOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotationInterval) {
+		return nil, false
+	}
+	return o.GraceRotationInterval, true
+}
+
+// HasGraceRotationInterval returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasGraceRotationInterval() bool {
+	if o != nil && !IsNil(o.GraceRotationInterval) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationInterval gets a reference to the given string and assigns it to the GraceRotationInterval field.
+func (o *RotatedSecretUpdateAzure) SetGraceRotationInterval(v string) {
+	o.GraceRotationInterval = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateAzure) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -602,6 +746,70 @@ func (o *RotatedSecretUpdateAzure) HasPasswordLength() bool {
 // SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
 func (o *RotatedSecretUpdateAzure) SetPasswordLength(v string) {
 	o.PasswordLength = &v
+}
+
+// GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetResourceGroupName() string {
+	if o == nil || IsNil(o.ResourceGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceGroupName
+}
+
+// GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetResourceGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceGroupName) {
+		return nil, false
+	}
+	return o.ResourceGroupName, true
+}
+
+// HasResourceGroupName returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasResourceGroupName() bool {
+	if o != nil && !IsNil(o.ResourceGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
+func (o *RotatedSecretUpdateAzure) SetResourceGroupName(v string) {
+	o.ResourceGroupName = &v
+}
+
+// GetResourceName returns the ResourceName field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetResourceName() string {
+	if o == nil || IsNil(o.ResourceName) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceName
+}
+
+// GetResourceNameOk returns a tuple with the ResourceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetResourceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceName) {
+		return nil, false
+	}
+	return o.ResourceName, true
+}
+
+// HasResourceName returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasResourceName() bool {
+	if o != nil && !IsNil(o.ResourceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceName gets a reference to the given string and assigns it to the ResourceName field.
+func (o *RotatedSecretUpdateAzure) SetResourceName(v string) {
+	o.ResourceName = &v
 }
 
 // GetRmTag returns the RmTag field value if set, zero value otherwise.
@@ -1118,6 +1326,18 @@ func (o RotatedSecretUpdateAzure) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.ExplicitlySetSa) {
+		toSerialize["explicitly-set-sa"] = o.ExplicitlySetSa
+	}
+	if !IsNil(o.GraceRotation) {
+		toSerialize["grace-rotation"] = o.GraceRotation
+	}
+	if !IsNil(o.GraceRotationHour) {
+		toSerialize["grace-rotation-hour"] = o.GraceRotationHour
+	}
+	if !IsNil(o.GraceRotationInterval) {
+		toSerialize["grace-rotation-interval"] = o.GraceRotationInterval
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
@@ -1136,6 +1356,12 @@ func (o RotatedSecretUpdateAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
+	}
+	if !IsNil(o.ResourceGroupName) {
+		toSerialize["resource-group-name"] = o.ResourceGroupName
+	}
+	if !IsNil(o.ResourceName) {
+		toSerialize["resource-name"] = o.ResourceName
 	}
 	if !IsNil(o.RmTag) {
 		toSerialize["rm-tag"] = o.RmTag

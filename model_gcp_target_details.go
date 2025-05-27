@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -24,6 +24,7 @@ type GcpTargetDetails struct {
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
 	GcpServiceAccountKeyBase64 *string `json:"gcp_service_account_key_base64,omitempty"`
 	GcpServiceAccountKeyId *string `json:"gcp_service_account_key_id,omitempty"`
+	GraceRotatedSecretKey *string `json:"grace_rotated_secret_key,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 }
 
@@ -172,6 +173,38 @@ func (o *GcpTargetDetails) SetGcpServiceAccountKeyId(v string) {
 	o.GcpServiceAccountKeyId = &v
 }
 
+// GetGraceRotatedSecretKey returns the GraceRotatedSecretKey field value if set, zero value otherwise.
+func (o *GcpTargetDetails) GetGraceRotatedSecretKey() string {
+	if o == nil || IsNil(o.GraceRotatedSecretKey) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotatedSecretKey
+}
+
+// GetGraceRotatedSecretKeyOk returns a tuple with the GraceRotatedSecretKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GcpTargetDetails) GetGraceRotatedSecretKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotatedSecretKey) {
+		return nil, false
+	}
+	return o.GraceRotatedSecretKey, true
+}
+
+// HasGraceRotatedSecretKey returns a boolean if a field has been set.
+func (o *GcpTargetDetails) HasGraceRotatedSecretKey() bool {
+	if o != nil && !IsNil(o.GraceRotatedSecretKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotatedSecretKey gets a reference to the given string and assigns it to the GraceRotatedSecretKey field.
+func (o *GcpTargetDetails) SetGraceRotatedSecretKey(v string) {
+	o.GraceRotatedSecretKey = &v
+}
+
 // GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
 func (o *GcpTargetDetails) GetUseGwCloudIdentity() bool {
 	if o == nil || IsNil(o.UseGwCloudIdentity) {
@@ -225,6 +258,9 @@ func (o GcpTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpServiceAccountKeyId) {
 		toSerialize["gcp_service_account_key_id"] = o.GcpServiceAccountKeyId
+	}
+	if !IsNil(o.GraceRotatedSecretKey) {
+		toSerialize["grace_rotated_secret_key"] = o.GraceRotatedSecretKey
 	}
 	if !IsNil(o.UseGwCloudIdentity) {
 		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity

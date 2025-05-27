@@ -11,11 +11,17 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**ExplicitlySetSa** | Pointer to **string** | If set, explicitly provide the storage account details [true/false] | [optional] [default to "false"]
+**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
+**GraceRotationInterval** | Pointer to **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
+**ResourceGroupName** | Pointer to **string** | The resource group name (only relevant when explicitly-set-sa&#x3D;true) | [optional] 
+**ResourceName** | Pointer to **string** | The name of the storage account (only relevant when explicitly-set-sa&#x3D;true) | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
@@ -228,6 +234,106 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetExplicitlySetSa
+
+`func (o *RotatedSecretCreateAzure) GetExplicitlySetSa() string`
+
+GetExplicitlySetSa returns the ExplicitlySetSa field if non-nil, zero value otherwise.
+
+### GetExplicitlySetSaOk
+
+`func (o *RotatedSecretCreateAzure) GetExplicitlySetSaOk() (*string, bool)`
+
+GetExplicitlySetSaOk returns a tuple with the ExplicitlySetSa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExplicitlySetSa
+
+`func (o *RotatedSecretCreateAzure) SetExplicitlySetSa(v string)`
+
+SetExplicitlySetSa sets ExplicitlySetSa field to given value.
+
+### HasExplicitlySetSa
+
+`func (o *RotatedSecretCreateAzure) HasExplicitlySetSa() bool`
+
+HasExplicitlySetSa returns a boolean if a field has been set.
+
+### GetGraceRotation
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotation() string`
+
+GetGraceRotation returns the GraceRotation field if non-nil, zero value otherwise.
+
+### GetGraceRotationOk
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationOk() (*string, bool)`
+
+GetGraceRotationOk returns a tuple with the GraceRotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotation
+
+`func (o *RotatedSecretCreateAzure) SetGraceRotation(v string)`
+
+SetGraceRotation sets GraceRotation field to given value.
+
+### HasGraceRotation
+
+`func (o *RotatedSecretCreateAzure) HasGraceRotation() bool`
+
+HasGraceRotation returns a boolean if a field has been set.
+
+### GetGraceRotationHour
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationHour() int32`
+
+GetGraceRotationHour returns the GraceRotationHour field if non-nil, zero value otherwise.
+
+### GetGraceRotationHourOk
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationHourOk() (*int32, bool)`
+
+GetGraceRotationHourOk returns a tuple with the GraceRotationHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationHour
+
+`func (o *RotatedSecretCreateAzure) SetGraceRotationHour(v int32)`
+
+SetGraceRotationHour sets GraceRotationHour field to given value.
+
+### HasGraceRotationHour
+
+`func (o *RotatedSecretCreateAzure) HasGraceRotationHour() bool`
+
+HasGraceRotationHour returns a boolean if a field has been set.
+
+### GetGraceRotationInterval
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationInterval() string`
+
+GetGraceRotationInterval returns the GraceRotationInterval field if non-nil, zero value otherwise.
+
+### GetGraceRotationIntervalOk
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationIntervalOk() (*string, bool)`
+
+GetGraceRotationIntervalOk returns a tuple with the GraceRotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationInterval
+
+`func (o *RotatedSecretCreateAzure) SetGraceRotationInterval(v string)`
+
+SetGraceRotationInterval sets GraceRotationInterval field to given value.
+
+### HasGraceRotationInterval
+
+`func (o *RotatedSecretCreateAzure) HasGraceRotationInterval() bool`
+
+HasGraceRotationInterval returns a boolean if a field has been set.
+
 ### GetJson
 
 `func (o *RotatedSecretCreateAzure) GetJson() bool`
@@ -347,6 +453,56 @@ SetPasswordLength sets PasswordLength field to given value.
 `func (o *RotatedSecretCreateAzure) HasPasswordLength() bool`
 
 HasPasswordLength returns a boolean if a field has been set.
+
+### GetResourceGroupName
+
+`func (o *RotatedSecretCreateAzure) GetResourceGroupName() string`
+
+GetResourceGroupName returns the ResourceGroupName field if non-nil, zero value otherwise.
+
+### GetResourceGroupNameOk
+
+`func (o *RotatedSecretCreateAzure) GetResourceGroupNameOk() (*string, bool)`
+
+GetResourceGroupNameOk returns a tuple with the ResourceGroupName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceGroupName
+
+`func (o *RotatedSecretCreateAzure) SetResourceGroupName(v string)`
+
+SetResourceGroupName sets ResourceGroupName field to given value.
+
+### HasResourceGroupName
+
+`func (o *RotatedSecretCreateAzure) HasResourceGroupName() bool`
+
+HasResourceGroupName returns a boolean if a field has been set.
+
+### GetResourceName
+
+`func (o *RotatedSecretCreateAzure) GetResourceName() string`
+
+GetResourceName returns the ResourceName field if non-nil, zero value otherwise.
+
+### GetResourceNameOk
+
+`func (o *RotatedSecretCreateAzure) GetResourceNameOk() (*string, bool)`
+
+GetResourceNameOk returns a tuple with the ResourceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceName
+
+`func (o *RotatedSecretCreateAzure) SetResourceName(v string)`
+
+SetResourceName sets ResourceName field to given value.
+
+### HasResourceName
+
+`func (o *RotatedSecretCreateAzure) HasResourceName() bool`
+
+HasResourceName returns a boolean if a field has been set.
 
 ### GetRotateAfterDisconnect
 

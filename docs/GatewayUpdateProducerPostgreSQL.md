@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **RevocationStatement** | Pointer to **string** | PostgreSQL Revocation statements | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
+**SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema | [optional] 
 **SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
@@ -419,6 +420,31 @@ SetSecureAccessCertificateIssuer sets SecureAccessCertificateIssuer field to giv
 `func (o *GatewayUpdateProducerPostgreSQL) HasSecureAccessCertificateIssuer() bool`
 
 HasSecureAccessCertificateIssuer returns a boolean if a field has been set.
+
+### GetSecureAccessDbName
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetSecureAccessDbName() string`
+
+GetSecureAccessDbName returns the SecureAccessDbName field if non-nil, zero value otherwise.
+
+### GetSecureAccessDbNameOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetSecureAccessDbNameOk() (*string, bool)`
+
+GetSecureAccessDbNameOk returns a tuple with the SecureAccessDbName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDbName
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetSecureAccessDbName(v string)`
+
+SetSecureAccessDbName sets SecureAccessDbName field to given value.
+
+### HasSecureAccessDbName
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasSecureAccessDbName() bool`
+
+HasSecureAccessDbName returns a boolean if a field has been set.
 
 ### GetSecureAccessDbSchema
 

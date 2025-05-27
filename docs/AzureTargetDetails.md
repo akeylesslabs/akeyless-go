@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AzureUsername** | Pointer to **string** |  | [optional] 
 **ConnectionType** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
+**GraceRotatedSecretKey** | Pointer to **string** |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -258,6 +259,31 @@ SetExpirationDate sets ExpirationDate field to given value.
 `func (o *AzureTargetDetails) HasExpirationDate() bool`
 
 HasExpirationDate returns a boolean if a field has been set.
+
+### GetGraceRotatedSecretKey
+
+`func (o *AzureTargetDetails) GetGraceRotatedSecretKey() string`
+
+GetGraceRotatedSecretKey returns the GraceRotatedSecretKey field if non-nil, zero value otherwise.
+
+### GetGraceRotatedSecretKeyOk
+
+`func (o *AzureTargetDetails) GetGraceRotatedSecretKeyOk() (*string, bool)`
+
+GetGraceRotatedSecretKeyOk returns a tuple with the GraceRotatedSecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotatedSecretKey
+
+`func (o *AzureTargetDetails) SetGraceRotatedSecretKey(v string)`
+
+SetGraceRotatedSecretKey sets GraceRotatedSecretKey field to given value.
+
+### HasGraceRotatedSecretKey
+
+`func (o *AzureTargetDetails) HasGraceRotatedSecretKey() bool`
+
+HasGraceRotatedSecretKey returns a boolean if a field has been set.
 
 ### GetUseGwCloudIdentity
 

@@ -130,6 +130,7 @@ Name | Type | Description | Notes
 **GoogleWorkspaceGroupRole** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceRoleName** | Pointer to **string** |  | [optional] 
 **GoogleWorkspaceRoleScope** | Pointer to **string** |  | [optional] 
+**GraceRotatedSecretKey** | Pointer to **string** |  | [optional] 
 **GrantTypes** | Pointer to **[]string** |  | [optional] 
 **Groups** | Pointer to **string** |  | [optional] 
 **HanadbCreationStatements** | Pointer to **string** |  | [optional] 
@@ -3418,6 +3419,31 @@ SetGoogleWorkspaceRoleScope sets GoogleWorkspaceRoleScope field to given value.
 `func (o *DSProducerDetails) HasGoogleWorkspaceRoleScope() bool`
 
 HasGoogleWorkspaceRoleScope returns a boolean if a field has been set.
+
+### GetGraceRotatedSecretKey
+
+`func (o *DSProducerDetails) GetGraceRotatedSecretKey() string`
+
+GetGraceRotatedSecretKey returns the GraceRotatedSecretKey field if non-nil, zero value otherwise.
+
+### GetGraceRotatedSecretKeyOk
+
+`func (o *DSProducerDetails) GetGraceRotatedSecretKeyOk() (*string, bool)`
+
+GetGraceRotatedSecretKeyOk returns a tuple with the GraceRotatedSecretKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotatedSecretKey
+
+`func (o *DSProducerDetails) SetGraceRotatedSecretKey(v string)`
+
+SetGraceRotatedSecretKey sets GraceRotatedSecretKey field to given value.
+
+### HasGraceRotatedSecretKey
+
+`func (o *DSProducerDetails) HasGraceRotatedSecretKey() bool`
+
+HasGraceRotatedSecretKey returns a boolean if a field has been set.
 
 ### GetGrantTypes
 

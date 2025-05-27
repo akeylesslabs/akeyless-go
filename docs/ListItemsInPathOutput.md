@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Folders** | Pointer to **[]string** |  | [optional] 
+**HasNext** | Pointer to **bool** |  | [optional] 
 **Items** | Pointer to [**[]Item**](Item.md) |  | [optional] 
 **NextPage** | Pointer to **string** |  | [optional] 
 
@@ -51,6 +52,31 @@ SetFolders sets Folders field to given value.
 `func (o *ListItemsInPathOutput) HasFolders() bool`
 
 HasFolders returns a boolean if a field has been set.
+
+### GetHasNext
+
+`func (o *ListItemsInPathOutput) GetHasNext() bool`
+
+GetHasNext returns the HasNext field if non-nil, zero value otherwise.
+
+### GetHasNextOk
+
+`func (o *ListItemsInPathOutput) GetHasNextOk() (*bool, bool)`
+
+GetHasNextOk returns a tuple with the HasNext field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasNext
+
+`func (o *ListItemsInPathOutput) SetHasNext(v bool)`
+
+SetHasNext sets HasNext field to given value.
+
+### HasHasNext
+
+`func (o *ListItemsInPathOutput) HasHasNext() bool`
+
+HasHasNext returns a boolean if a field has been set.
 
 ### GetItems
 

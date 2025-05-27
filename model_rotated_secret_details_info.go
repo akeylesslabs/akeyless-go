@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -21,11 +21,15 @@ var _ MappedNullable = &RotatedSecretDetailsInfo{}
 // RotatedSecretDetailsInfo RotatedSecretDetailsInfo The rotated secret rotator info
 type RotatedSecretDetailsInfo struct {
 	DeletePreviousVersionInDays *int32 `json:"delete_previous_version_in_days,omitempty"`
+	EnableCustomPasswordPolicy *bool `json:"enable_custom_password_policy,omitempty"`
 	GraceRotation *bool `json:"grace_rotation,omitempty"`
+	GraceRotationHour *int32 `json:"grace_rotation_hour,omitempty"`
+	GraceRotationInterval *int32 `json:"grace_rotation_interval,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
 	ManagedByAkeyless *bool `json:"managed_by_akeyless,omitempty"`
 	MaxVersions *int64 `json:"max_versions,omitempty"`
+	NextAutoRotateType *string `json:"next_auto_rotate_type,omitempty"`
 	NumberOfVersionsToSave *int32 `json:"number_of_versions_to_save,omitempty"`
 	RotationHour *int32 `json:"rotation_hour,omitempty"`
 	RotationIntervalMin *bool `json:"rotation_interval_min,omitempty"`
@@ -88,6 +92,38 @@ func (o *RotatedSecretDetailsInfo) SetDeletePreviousVersionInDays(v int32) {
 	o.DeletePreviousVersionInDays = &v
 }
 
+// GetEnableCustomPasswordPolicy returns the EnableCustomPasswordPolicy field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetEnableCustomPasswordPolicy() bool {
+	if o == nil || IsNil(o.EnableCustomPasswordPolicy) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableCustomPasswordPolicy
+}
+
+// GetEnableCustomPasswordPolicyOk returns a tuple with the EnableCustomPasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetEnableCustomPasswordPolicyOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableCustomPasswordPolicy) {
+		return nil, false
+	}
+	return o.EnableCustomPasswordPolicy, true
+}
+
+// HasEnableCustomPasswordPolicy returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasEnableCustomPasswordPolicy() bool {
+	if o != nil && !IsNil(o.EnableCustomPasswordPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableCustomPasswordPolicy gets a reference to the given bool and assigns it to the EnableCustomPasswordPolicy field.
+func (o *RotatedSecretDetailsInfo) SetEnableCustomPasswordPolicy(v bool) {
+	o.EnableCustomPasswordPolicy = &v
+}
+
 // GetGraceRotation returns the GraceRotation field value if set, zero value otherwise.
 func (o *RotatedSecretDetailsInfo) GetGraceRotation() bool {
 	if o == nil || IsNil(o.GraceRotation) {
@@ -118,6 +154,70 @@ func (o *RotatedSecretDetailsInfo) HasGraceRotation() bool {
 // SetGraceRotation gets a reference to the given bool and assigns it to the GraceRotation field.
 func (o *RotatedSecretDetailsInfo) SetGraceRotation(v bool) {
 	o.GraceRotation = &v
+}
+
+// GetGraceRotationHour returns the GraceRotationHour field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationHour() int32 {
+	if o == nil || IsNil(o.GraceRotationHour) {
+		var ret int32
+		return ret
+	}
+	return *o.GraceRotationHour
+}
+
+// GetGraceRotationHourOk returns a tuple with the GraceRotationHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationHourOk() (*int32, bool) {
+	if o == nil || IsNil(o.GraceRotationHour) {
+		return nil, false
+	}
+	return o.GraceRotationHour, true
+}
+
+// HasGraceRotationHour returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasGraceRotationHour() bool {
+	if o != nil && !IsNil(o.GraceRotationHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationHour gets a reference to the given int32 and assigns it to the GraceRotationHour field.
+func (o *RotatedSecretDetailsInfo) SetGraceRotationHour(v int32) {
+	o.GraceRotationHour = &v
+}
+
+// GetGraceRotationInterval returns the GraceRotationInterval field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationInterval() int32 {
+	if o == nil || IsNil(o.GraceRotationInterval) {
+		var ret int32
+		return ret
+	}
+	return *o.GraceRotationInterval
+}
+
+// GetGraceRotationIntervalOk returns a tuple with the GraceRotationInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationIntervalOk() (*int32, bool) {
+	if o == nil || IsNil(o.GraceRotationInterval) {
+		return nil, false
+	}
+	return o.GraceRotationInterval, true
+}
+
+// HasGraceRotationInterval returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasGraceRotationInterval() bool {
+	if o != nil && !IsNil(o.GraceRotationInterval) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationInterval gets a reference to the given int32 and assigns it to the GraceRotationInterval field.
+func (o *RotatedSecretDetailsInfo) SetGraceRotationInterval(v int32) {
+	o.GraceRotationInterval = &v
 }
 
 // GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
@@ -246,6 +346,38 @@ func (o *RotatedSecretDetailsInfo) HasMaxVersions() bool {
 // SetMaxVersions gets a reference to the given int64 and assigns it to the MaxVersions field.
 func (o *RotatedSecretDetailsInfo) SetMaxVersions(v int64) {
 	o.MaxVersions = &v
+}
+
+// GetNextAutoRotateType returns the NextAutoRotateType field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetNextAutoRotateType() string {
+	if o == nil || IsNil(o.NextAutoRotateType) {
+		var ret string
+		return ret
+	}
+	return *o.NextAutoRotateType
+}
+
+// GetNextAutoRotateTypeOk returns a tuple with the NextAutoRotateType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetNextAutoRotateTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.NextAutoRotateType) {
+		return nil, false
+	}
+	return o.NextAutoRotateType, true
+}
+
+// HasNextAutoRotateType returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasNextAutoRotateType() bool {
+	if o != nil && !IsNil(o.NextAutoRotateType) {
+		return true
+	}
+
+	return false
+}
+
+// SetNextAutoRotateType gets a reference to the given string and assigns it to the NextAutoRotateType field.
+func (o *RotatedSecretDetailsInfo) SetNextAutoRotateType(v string) {
+	o.NextAutoRotateType = &v
 }
 
 // GetNumberOfVersionsToSave returns the NumberOfVersionsToSave field value if set, zero value otherwise.
@@ -581,8 +713,17 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeletePreviousVersionInDays) {
 		toSerialize["delete_previous_version_in_days"] = o.DeletePreviousVersionInDays
 	}
+	if !IsNil(o.EnableCustomPasswordPolicy) {
+		toSerialize["enable_custom_password_policy"] = o.EnableCustomPasswordPolicy
+	}
 	if !IsNil(o.GraceRotation) {
 		toSerialize["grace_rotation"] = o.GraceRotation
+	}
+	if !IsNil(o.GraceRotationHour) {
+		toSerialize["grace_rotation_hour"] = o.GraceRotationHour
+	}
+	if !IsNil(o.GraceRotationInterval) {
+		toSerialize["grace_rotation_interval"] = o.GraceRotationInterval
 	}
 	if !IsNil(o.GwClusterId) {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
@@ -595,6 +736,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max_versions"] = o.MaxVersions
+	}
+	if !IsNil(o.NextAutoRotateType) {
+		toSerialize["next_auto_rotate_type"] = o.NextAutoRotateType
 	}
 	if !IsNil(o.NumberOfVersionsToSave) {
 		toSerialize["number_of_versions_to_save"] = o.NumberOfVersionsToSave

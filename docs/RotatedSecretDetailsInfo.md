@@ -5,11 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeletePreviousVersionInDays** | Pointer to **int32** |  | [optional] 
+**EnableCustomPasswordPolicy** | Pointer to **bool** |  | [optional] 
 **GraceRotation** | Pointer to **bool** |  | [optional] 
+**GraceRotationHour** | Pointer to **int32** |  | [optional] 
+**GraceRotationInterval** | Pointer to **int32** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
 **ManagedByAkeyless** | Pointer to **bool** |  | [optional] 
 **MaxVersions** | Pointer to **int64** |  | [optional] 
+**NextAutoRotateType** | Pointer to **string** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationIntervalMin** | Pointer to **bool** |  | [optional] 
@@ -65,6 +69,31 @@ SetDeletePreviousVersionInDays sets DeletePreviousVersionInDays field to given v
 
 HasDeletePreviousVersionInDays returns a boolean if a field has been set.
 
+### GetEnableCustomPasswordPolicy
+
+`func (o *RotatedSecretDetailsInfo) GetEnableCustomPasswordPolicy() bool`
+
+GetEnableCustomPasswordPolicy returns the EnableCustomPasswordPolicy field if non-nil, zero value otherwise.
+
+### GetEnableCustomPasswordPolicyOk
+
+`func (o *RotatedSecretDetailsInfo) GetEnableCustomPasswordPolicyOk() (*bool, bool)`
+
+GetEnableCustomPasswordPolicyOk returns a tuple with the EnableCustomPasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableCustomPasswordPolicy
+
+`func (o *RotatedSecretDetailsInfo) SetEnableCustomPasswordPolicy(v bool)`
+
+SetEnableCustomPasswordPolicy sets EnableCustomPasswordPolicy field to given value.
+
+### HasEnableCustomPasswordPolicy
+
+`func (o *RotatedSecretDetailsInfo) HasEnableCustomPasswordPolicy() bool`
+
+HasEnableCustomPasswordPolicy returns a boolean if a field has been set.
+
 ### GetGraceRotation
 
 `func (o *RotatedSecretDetailsInfo) GetGraceRotation() bool`
@@ -89,6 +118,56 @@ SetGraceRotation sets GraceRotation field to given value.
 `func (o *RotatedSecretDetailsInfo) HasGraceRotation() bool`
 
 HasGraceRotation returns a boolean if a field has been set.
+
+### GetGraceRotationHour
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationHour() int32`
+
+GetGraceRotationHour returns the GraceRotationHour field if non-nil, zero value otherwise.
+
+### GetGraceRotationHourOk
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationHourOk() (*int32, bool)`
+
+GetGraceRotationHourOk returns a tuple with the GraceRotationHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationHour
+
+`func (o *RotatedSecretDetailsInfo) SetGraceRotationHour(v int32)`
+
+SetGraceRotationHour sets GraceRotationHour field to given value.
+
+### HasGraceRotationHour
+
+`func (o *RotatedSecretDetailsInfo) HasGraceRotationHour() bool`
+
+HasGraceRotationHour returns a boolean if a field has been set.
+
+### GetGraceRotationInterval
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationInterval() int32`
+
+GetGraceRotationInterval returns the GraceRotationInterval field if non-nil, zero value otherwise.
+
+### GetGraceRotationIntervalOk
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationIntervalOk() (*int32, bool)`
+
+GetGraceRotationIntervalOk returns a tuple with the GraceRotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationInterval
+
+`func (o *RotatedSecretDetailsInfo) SetGraceRotationInterval(v int32)`
+
+SetGraceRotationInterval sets GraceRotationInterval field to given value.
+
+### HasGraceRotationInterval
+
+`func (o *RotatedSecretDetailsInfo) HasGraceRotationInterval() bool`
+
+HasGraceRotationInterval returns a boolean if a field has been set.
 
 ### GetGwClusterId
 
@@ -189,6 +268,31 @@ SetMaxVersions sets MaxVersions field to given value.
 `func (o *RotatedSecretDetailsInfo) HasMaxVersions() bool`
 
 HasMaxVersions returns a boolean if a field has been set.
+
+### GetNextAutoRotateType
+
+`func (o *RotatedSecretDetailsInfo) GetNextAutoRotateType() string`
+
+GetNextAutoRotateType returns the NextAutoRotateType field if non-nil, zero value otherwise.
+
+### GetNextAutoRotateTypeOk
+
+`func (o *RotatedSecretDetailsInfo) GetNextAutoRotateTypeOk() (*string, bool)`
+
+GetNextAutoRotateTypeOk returns a tuple with the NextAutoRotateType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextAutoRotateType
+
+`func (o *RotatedSecretDetailsInfo) SetNextAutoRotateType(v string)`
+
+SetNextAutoRotateType sets NextAutoRotateType field to given value.
+
+### HasNextAutoRotateType
+
+`func (o *RotatedSecretDetailsInfo) HasNextAutoRotateType() bool`
+
+HasNextAutoRotateType returns a boolean if a field has been set.
 
 ### GetNumberOfVersionsToSave
 

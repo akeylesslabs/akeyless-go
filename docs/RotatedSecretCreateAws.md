@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **AwsRegion** | Pointer to **string** | Aws Region | [optional] [default to "us-east-2"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
+**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
+**GraceRotationInterval** | Pointer to **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
@@ -250,6 +252,56 @@ SetGraceRotation sets GraceRotation field to given value.
 `func (o *RotatedSecretCreateAws) HasGraceRotation() bool`
 
 HasGraceRotation returns a boolean if a field has been set.
+
+### GetGraceRotationHour
+
+`func (o *RotatedSecretCreateAws) GetGraceRotationHour() int32`
+
+GetGraceRotationHour returns the GraceRotationHour field if non-nil, zero value otherwise.
+
+### GetGraceRotationHourOk
+
+`func (o *RotatedSecretCreateAws) GetGraceRotationHourOk() (*int32, bool)`
+
+GetGraceRotationHourOk returns a tuple with the GraceRotationHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationHour
+
+`func (o *RotatedSecretCreateAws) SetGraceRotationHour(v int32)`
+
+SetGraceRotationHour sets GraceRotationHour field to given value.
+
+### HasGraceRotationHour
+
+`func (o *RotatedSecretCreateAws) HasGraceRotationHour() bool`
+
+HasGraceRotationHour returns a boolean if a field has been set.
+
+### GetGraceRotationInterval
+
+`func (o *RotatedSecretCreateAws) GetGraceRotationInterval() string`
+
+GetGraceRotationInterval returns the GraceRotationInterval field if non-nil, zero value otherwise.
+
+### GetGraceRotationIntervalOk
+
+`func (o *RotatedSecretCreateAws) GetGraceRotationIntervalOk() (*string, bool)`
+
+GetGraceRotationIntervalOk returns a tuple with the GraceRotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationInterval
+
+`func (o *RotatedSecretCreateAws) SetGraceRotationInterval(v string)`
+
+SetGraceRotationInterval sets GraceRotationInterval field to given value.
+
+### HasGraceRotationInterval
+
+`func (o *RotatedSecretCreateAws) HasGraceRotationInterval() bool`
+
+HasGraceRotationInterval returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretSync{}
 
 // RotatedSecretSync struct for RotatedSecretSync
 type RotatedSecretSync struct {
+	// JQ expression to filter or transform the secret value
+	FilterSecretValue *string `json:"filter-secret-value,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Rotated secret name
@@ -60,6 +62,38 @@ func NewRotatedSecretSyncWithDefaults() *RotatedSecretSync {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetFilterSecretValue returns the FilterSecretValue field value if set, zero value otherwise.
+func (o *RotatedSecretSync) GetFilterSecretValue() string {
+	if o == nil || IsNil(o.FilterSecretValue) {
+		var ret string
+		return ret
+	}
+	return *o.FilterSecretValue
+}
+
+// GetFilterSecretValueOk returns a tuple with the FilterSecretValue field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretSync) GetFilterSecretValueOk() (*string, bool) {
+	if o == nil || IsNil(o.FilterSecretValue) {
+		return nil, false
+	}
+	return o.FilterSecretValue, true
+}
+
+// HasFilterSecretValue returns a boolean if a field has been set.
+func (o *RotatedSecretSync) HasFilterSecretValue() bool {
+	if o != nil && !IsNil(o.FilterSecretValue) {
+		return true
+	}
+
+	return false
+}
+
+// SetFilterSecretValue gets a reference to the given string and assigns it to the FilterSecretValue field.
+func (o *RotatedSecretSync) SetFilterSecretValue(v string) {
+	o.FilterSecretValue = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -288,6 +322,9 @@ func (o RotatedSecretSync) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretSync) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FilterSecretValue) {
+		toSerialize["filter-secret-value"] = o.FilterSecretValue
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

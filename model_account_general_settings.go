@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 3.0
+API version: 2.0
 Contact: support@akeyless.io
 */
 
@@ -31,6 +31,8 @@ type AccountGeneralSettings struct {
 	DefaultHomePage *DefaultHomePage `json:"default_home_page,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
+	HidePersonalFolder *bool `json:"hide_personal_folder,omitempty"`
+	HideStaticPassword *bool `json:"hide_static_password,omitempty"`
 	// InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention
 	InvalidCharacters *string `json:"invalid_characters,omitempty"`
 	ItemUsageEvent *UsageEventSetting `json:"item_usage_event,omitempty"`
@@ -347,6 +349,70 @@ func (o *AccountGeneralSettings) HasEnableRequestForAccess() bool {
 // SetEnableRequestForAccess gets a reference to the given bool and assigns it to the EnableRequestForAccess field.
 func (o *AccountGeneralSettings) SetEnableRequestForAccess(v bool) {
 	o.EnableRequestForAccess = &v
+}
+
+// GetHidePersonalFolder returns the HidePersonalFolder field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetHidePersonalFolder() bool {
+	if o == nil || IsNil(o.HidePersonalFolder) {
+		var ret bool
+		return ret
+	}
+	return *o.HidePersonalFolder
+}
+
+// GetHidePersonalFolderOk returns a tuple with the HidePersonalFolder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetHidePersonalFolderOk() (*bool, bool) {
+	if o == nil || IsNil(o.HidePersonalFolder) {
+		return nil, false
+	}
+	return o.HidePersonalFolder, true
+}
+
+// HasHidePersonalFolder returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasHidePersonalFolder() bool {
+	if o != nil && !IsNil(o.HidePersonalFolder) {
+		return true
+	}
+
+	return false
+}
+
+// SetHidePersonalFolder gets a reference to the given bool and assigns it to the HidePersonalFolder field.
+func (o *AccountGeneralSettings) SetHidePersonalFolder(v bool) {
+	o.HidePersonalFolder = &v
+}
+
+// GetHideStaticPassword returns the HideStaticPassword field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetHideStaticPassword() bool {
+	if o == nil || IsNil(o.HideStaticPassword) {
+		var ret bool
+		return ret
+	}
+	return *o.HideStaticPassword
+}
+
+// GetHideStaticPasswordOk returns a tuple with the HideStaticPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetHideStaticPasswordOk() (*bool, bool) {
+	if o == nil || IsNil(o.HideStaticPassword) {
+		return nil, false
+	}
+	return o.HideStaticPassword, true
+}
+
+// HasHideStaticPassword returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasHideStaticPassword() bool {
+	if o != nil && !IsNil(o.HideStaticPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetHideStaticPassword gets a reference to the given bool and assigns it to the HideStaticPassword field.
+func (o *AccountGeneralSettings) SetHideStaticPassword(v bool) {
+	o.HideStaticPassword = &v
 }
 
 // GetInvalidCharacters returns the InvalidCharacters field value if set, zero value otherwise.
@@ -673,6 +739,12 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableRequestForAccess) {
 		toSerialize["enable_request_for_access"] = o.EnableRequestForAccess
+	}
+	if !IsNil(o.HidePersonalFolder) {
+		toSerialize["hide_personal_folder"] = o.HidePersonalFolder
+	}
+	if !IsNil(o.HideStaticPassword) {
+		toSerialize["hide_static_password"] = o.HideStaticPassword
 	}
 	if !IsNil(o.InvalidCharacters) {
 		toSerialize["invalid_characters"] = o.InvalidCharacters
