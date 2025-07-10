@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayUpdateProducerOracleDb{}
 
 // GatewayUpdateProducerOracleDb gatewayUpdateProducerOracleDb is a command that updates oracle db producer [Deprecated: Use dynamic-secret-update-oracledb command]
 type GatewayUpdateProducerOracleDb struct {
+	// Customize how temporary usernames are generated using go template
+	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// (Optional) DB server certificates
 	DbServerCertificates *string `json:"db-server-certificates,omitempty"`
 	// (Optional) Server name for certificate verification
@@ -116,6 +118,38 @@ func NewGatewayUpdateProducerOracleDbWithDefaults() *GatewayUpdateProducerOracle
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerOracleDb) GetCustomUsernameTemplate() string {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CustomUsernameTemplate
+}
+
+// GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerOracleDb) GetCustomUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		return nil, false
+	}
+	return o.CustomUsernameTemplate, true
+}
+
+// HasCustomUsernameTemplate returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerOracleDb) HasCustomUsernameTemplate() bool {
+	if o != nil && !IsNil(o.CustomUsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomUsernameTemplate gets a reference to the given string and assigns it to the CustomUsernameTemplate field.
+func (o *GatewayUpdateProducerOracleDb) SetCustomUsernameTemplate(v string) {
+	o.CustomUsernameTemplate = &v
 }
 
 // GetDbServerCertificates returns the DbServerCertificates field value if set, zero value otherwise.
@@ -920,6 +954,9 @@ func (o GatewayUpdateProducerOracleDb) MarshalJSON() ([]byte, error) {
 
 func (o GatewayUpdateProducerOracleDb) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CustomUsernameTemplate) {
+		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
+	}
 	if !IsNil(o.DbServerCertificates) {
 		toSerialize["db-server-certificates"] = o.DbServerCertificates
 	}

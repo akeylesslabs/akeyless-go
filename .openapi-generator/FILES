@@ -6,6 +6,7 @@ api_v2.go
 client.go
 configuration.go
 docs/APIKeyAccessRules.md
+docs/AWSGatewayCloudIdentityExternalIdOpt.md
 docs/AWSIAMAccessRules.md
 docs/AWSPayload.md
 docs/AWSSecretsMigration.md
@@ -95,6 +96,7 @@ docs/CertAccessRules.md
 docs/CertificateAnalyticAggregation.md
 docs/CertificateChainInfo.md
 docs/CertificateExpirationEvent.md
+docs/CertificateExpirationEventsSettings.md
 docs/CertificateInfo.md
 docs/CertificateIssueInfo.md
 docs/CertificateStore.md
@@ -812,6 +814,7 @@ docs/RotatedSecretCreateSsh.md
 docs/RotatedSecretCreateWindows.md
 docs/RotatedSecretDelete.md
 docs/RotatedSecretDeleteSync.md
+docs/RotatedSecretDeleteSyncOutput.md
 docs/RotatedSecretDetailsInfo.md
 docs/RotatedSecretGetValue.md
 docs/RotatedSecretList.md
@@ -847,6 +850,7 @@ docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
 docs/SecretInfo.md
+docs/SecretSyncOutput.md
 docs/SectigoTargetDetails.md
 docs/SecureRemoteAccess.md
 docs/ServerInventoryMigration.md
@@ -880,7 +884,10 @@ docs/SshBastionConf.md
 docs/SshBastionSessionTermination.md
 docs/StaticCredsAuth.md
 docs/StaticCredsAuthOutput.md
+docs/StaticSecretDeleteSync.md
+docs/StaticSecretDeleteSyncOutput.md
 docs/StaticSecretDetailsInfo.md
+docs/StaticSecretSync.md
 docs/SumologicLogForwardingConfig.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
@@ -1165,6 +1172,7 @@ model_auth_method_update_output.go
 model_auth_method_update_saml.go
 model_auth_method_update_universal_identity.go
 model_auth_output.go
+model_aws_gateway_cloud_identity_external_id_opt.go
 model_aws_payload.go
 model_aws_s3_log_forwarding_config.go
 model_aws_secrets_migration.go
@@ -1192,6 +1200,7 @@ model_cert_access_rules.go
 model_certificate_analytic_aggregation.go
 model_certificate_chain_info.go
 model_certificate_expiration_event.go
+model_certificate_expiration_events_settings.go
 model_certificate_info.go
 model_certificate_issue_info.go
 model_certificate_store.go
@@ -1910,6 +1919,7 @@ model_rotated_secret_create_ssh.go
 model_rotated_secret_create_windows_.go
 model_rotated_secret_delete.go
 model_rotated_secret_delete_sync.go
+model_rotated_secret_delete_sync_output.go
 model_rotated_secret_details_info.go
 model_rotated_secret_get_value.go
 model_rotated_secret_list.go
@@ -1943,6 +1953,7 @@ model_salesforce_target_details.go
 model_saml_access_rules.go
 model_saml_attribute.go
 model_secret_info.go
+model_secret_sync_output.go
 model_sectigo_target_details.go
 model_secure_remote_access.go
 model_server_inventory_migration.go
@@ -1978,7 +1989,10 @@ model_ssh_certificate_issue_details.go
 model_ssh_target_details.go
 model_static_creds_auth.go
 model_static_creds_auth_output.go
+model_static_secret_delete_sync.go
+model_static_secret_delete_sync_output.go
 model_static_secret_details_info.go
+model_static_secret_sync.go
 model_sumologic_log_forwarding_config.go
 model_syslog_log_forwarding_config.go
 model_system_access_credentials_reply_obj.go

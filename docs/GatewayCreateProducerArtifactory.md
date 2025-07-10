@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ArtifactoryTokenAudience** | **string** | Token Audience | 
 **ArtifactoryTokenScope** | **string** | Token Scope | 
 **BaseUrl** | Pointer to **string** | Base URL | [optional] 
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -152,6 +153,31 @@ SetBaseUrl sets BaseUrl field to given value.
 `func (o *GatewayCreateProducerArtifactory) HasBaseUrl() bool`
 
 HasBaseUrl returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerArtifactory) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *GatewayCreateProducerArtifactory) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerArtifactory) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerArtifactory) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

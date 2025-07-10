@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -26,7 +26,7 @@ type CreatePKICertIssuer struct {
 	AllowAnyName *bool `json:"allow-any-name,omitempty"`
 	// If set, will allow copying the extra extensions from the csr file (if given)
 	AllowCopyExtFromCsr *bool `json:"allow-copy-ext-from-csr,omitempty"`
-	// If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains
+	// If set, clients can request certificates for subdomains of the allowed domains
 	AllowSubdomains *bool `json:"allow-subdomains,omitempty"`
 	// A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list)
 	AllowedDomains *string `json:"allowed-domains,omitempty"`
@@ -58,6 +58,8 @@ type CreatePKICertIssuer struct {
 	Description *string `json:"description,omitempty"`
 	// A path in which to save generated certificates
 	DestinationPath *string `json:"destination-path,omitempty"`
+	// If set, generation of wildcard certificates will be disabled.
+	DisableWildcards *bool `json:"disable-wildcards,omitempty"`
 	// If set, the cert issuer will support the acme protocol
 	EnableAcme *bool `json:"enable-acme,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
@@ -721,6 +723,38 @@ func (o *CreatePKICertIssuer) HasDestinationPath() bool {
 // SetDestinationPath gets a reference to the given string and assigns it to the DestinationPath field.
 func (o *CreatePKICertIssuer) SetDestinationPath(v string) {
 	o.DestinationPath = &v
+}
+
+// GetDisableWildcards returns the DisableWildcards field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetDisableWildcards() bool {
+	if o == nil || IsNil(o.DisableWildcards) {
+		var ret bool
+		return ret
+	}
+	return *o.DisableWildcards
+}
+
+// GetDisableWildcardsOk returns a tuple with the DisableWildcards field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetDisableWildcardsOk() (*bool, bool) {
+	if o == nil || IsNil(o.DisableWildcards) {
+		return nil, false
+	}
+	return o.DisableWildcards, true
+}
+
+// HasDisableWildcards returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasDisableWildcards() bool {
+	if o != nil && !IsNil(o.DisableWildcards) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableWildcards gets a reference to the given bool and assigns it to the DisableWildcards field.
+func (o *CreatePKICertIssuer) SetDisableWildcards(v bool) {
+	o.DisableWildcards = &v
 }
 
 // GetEnableAcme returns the EnableAcme field value if set, zero value otherwise.
@@ -1570,6 +1604,9 @@ func (o CreatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DestinationPath) {
 		toSerialize["destination-path"] = o.DestinationPath
+	}
+	if !IsNil(o.DisableWildcards) {
+		toSerialize["disable-wildcards"] = o.DisableWildcards
 	}
 	if !IsNil(o.EnableAcme) {
 		toSerialize["enable-acme"] = o.EnableAcme

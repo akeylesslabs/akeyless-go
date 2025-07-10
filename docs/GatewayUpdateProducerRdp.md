@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowUserExtendSession** | Pointer to **int64** | AllowUserExtendSession | [optional] 
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) | [optional] [default to "ext_username"]
 **FixedUserOnly** | Pointer to **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
@@ -77,6 +78,31 @@ SetAllowUserExtendSession sets AllowUserExtendSession field to given value.
 `func (o *GatewayUpdateProducerRdp) HasAllowUserExtendSession() bool`
 
 HasAllowUserExtendSession returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerRdp) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *GatewayUpdateProducerRdp) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerRdp) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerRdp) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

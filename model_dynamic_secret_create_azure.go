@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -24,12 +24,16 @@ var _ MappedNullable = &DynamicSecretCreateAzure{}
 type DynamicSecretCreateAzure struct {
 	// Azure App Object Id
 	AppObjId *string `json:"app-obj-id,omitempty"`
+	// Azure AD administrative unit (relevant only when azure-user-portal-access=true)
+	AzureAdministrativeUnit *string `json:"azure-administrative-unit,omitempty"`
 	// Azure Client ID
 	AzureClientId *string `json:"azure-client-id,omitempty"`
 	// Azure Client Secret
 	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// Azure Tenant ID
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// Customize how temporary usernames are generated using go template
+	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -166,6 +170,38 @@ func (o *DynamicSecretCreateAzure) SetAppObjId(v string) {
 	o.AppObjId = &v
 }
 
+// GetAzureAdministrativeUnit returns the AzureAdministrativeUnit field value if set, zero value otherwise.
+func (o *DynamicSecretCreateAzure) GetAzureAdministrativeUnit() string {
+	if o == nil || IsNil(o.AzureAdministrativeUnit) {
+		var ret string
+		return ret
+	}
+	return *o.AzureAdministrativeUnit
+}
+
+// GetAzureAdministrativeUnitOk returns a tuple with the AzureAdministrativeUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateAzure) GetAzureAdministrativeUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureAdministrativeUnit) {
+		return nil, false
+	}
+	return o.AzureAdministrativeUnit, true
+}
+
+// HasAzureAdministrativeUnit returns a boolean if a field has been set.
+func (o *DynamicSecretCreateAzure) HasAzureAdministrativeUnit() bool {
+	if o != nil && !IsNil(o.AzureAdministrativeUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureAdministrativeUnit gets a reference to the given string and assigns it to the AzureAdministrativeUnit field.
+func (o *DynamicSecretCreateAzure) SetAzureAdministrativeUnit(v string) {
+	o.AzureAdministrativeUnit = &v
+}
+
 // GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
 func (o *DynamicSecretCreateAzure) GetAzureClientId() string {
 	if o == nil || IsNil(o.AzureClientId) {
@@ -260,6 +296,38 @@ func (o *DynamicSecretCreateAzure) HasAzureTenantId() bool {
 // SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *DynamicSecretCreateAzure) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
+}
+
+// GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
+func (o *DynamicSecretCreateAzure) GetCustomUsernameTemplate() string {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CustomUsernameTemplate
+}
+
+// GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateAzure) GetCustomUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		return nil, false
+	}
+	return o.CustomUsernameTemplate, true
+}
+
+// HasCustomUsernameTemplate returns a boolean if a field has been set.
+func (o *DynamicSecretCreateAzure) HasCustomUsernameTemplate() bool {
+	if o != nil && !IsNil(o.CustomUsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomUsernameTemplate gets a reference to the given string and assigns it to the CustomUsernameTemplate field.
+func (o *DynamicSecretCreateAzure) SetCustomUsernameTemplate(v string) {
+	o.CustomUsernameTemplate = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1003,6 +1071,9 @@ func (o DynamicSecretCreateAzure) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AppObjId) {
 		toSerialize["app-obj-id"] = o.AppObjId
 	}
+	if !IsNil(o.AzureAdministrativeUnit) {
+		toSerialize["azure-administrative-unit"] = o.AzureAdministrativeUnit
+	}
 	if !IsNil(o.AzureClientId) {
 		toSerialize["azure-client-id"] = o.AzureClientId
 	}
@@ -1011,6 +1082,9 @@ func (o DynamicSecretCreateAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureTenantId) {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
+	}
+	if !IsNil(o.CustomUsernameTemplate) {
+		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection

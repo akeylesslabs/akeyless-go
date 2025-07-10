@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ChefServerKey** | Pointer to **string** | Server key | [optional] 
 **ChefServerUrl** | Pointer to **string** | Server URL | [optional] 
 **ChefServerUsername** | Pointer to **string** | Server username | [optional] 
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -138,6 +139,31 @@ SetChefServerUsername sets ChefServerUsername field to given value.
 `func (o *GatewayCreateProducerChef) HasChefServerUsername() bool`
 
 HasChefServerUsername returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerChef) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *GatewayCreateProducerChef) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerChef) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerChef) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

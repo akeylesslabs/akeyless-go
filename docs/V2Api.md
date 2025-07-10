@@ -438,6 +438,8 @@ Method | HTTP request | Description
 [**SignPKICertWithClassicKey**](V2Api.md#SignPKICertWithClassicKey) | **Post** /sign-pki-cert-with-classic-key | 
 [**SignRsaSsaPss**](V2Api.md#SignRsaSsaPss) | **Post** /sign-rsassa-pss | 
 [**StaticCredsAuth**](V2Api.md#StaticCredsAuth) | **Post** /static-creds-auth | 
+[**StaticSecretDeleteSync**](V2Api.md#StaticSecretDeleteSync) | **Post** /static-secret-delete-sync | 
+[**StaticSecretSync**](V2Api.md#StaticSecretSync) | **Post** /static-secret-sync | 
 [**TargetCreateArtifactory**](V2Api.md#TargetCreateArtifactory) | **Post** /target-create-artifactory | 
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
 [**TargetCreateAzure**](V2Api.md#TargetCreateAzure) | **Post** /target-create-azure | 
@@ -26217,7 +26219,7 @@ No authorization required
 
 ## RotatedSecretDeleteSync
 
-> map[string]interface{} RotatedSecretDeleteSync(ctx).RotatedSecretDeleteSync(rotatedSecretDeleteSync).Execute()
+> RotatedSecretDeleteSyncOutput RotatedSecretDeleteSync(ctx).RotatedSecretDeleteSync(rotatedSecretDeleteSync).Execute()
 
 
 
@@ -26243,7 +26245,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretDeleteSync``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RotatedSecretDeleteSync`: map[string]interface{}
+	// response from `RotatedSecretDeleteSync`: RotatedSecretDeleteSyncOutput
 	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretDeleteSync`: %v\n", resp)
 }
 ```
@@ -26263,7 +26265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**RotatedSecretDeleteSyncOutput**](RotatedSecretDeleteSyncOutput.md)
 
 ### Authorization
 
@@ -28312,6 +28314,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StaticCredsAuthOutput**](StaticCredsAuthOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StaticSecretDeleteSync
+
+> StaticSecretDeleteSyncOutput StaticSecretDeleteSync(ctx).StaticSecretDeleteSync(staticSecretDeleteSync).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	staticSecretDeleteSync := *openapiclient.NewStaticSecretDeleteSync("Name_example", "UscName_example") // StaticSecretDeleteSync | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.StaticSecretDeleteSync(context.Background()).StaticSecretDeleteSync(staticSecretDeleteSync).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.StaticSecretDeleteSync``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StaticSecretDeleteSync`: StaticSecretDeleteSyncOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.StaticSecretDeleteSync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStaticSecretDeleteSyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staticSecretDeleteSync** | [**StaticSecretDeleteSync**](StaticSecretDeleteSync.md) |  | 
+
+### Return type
+
+[**StaticSecretDeleteSyncOutput**](StaticSecretDeleteSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StaticSecretSync
+
+> SecretSyncOutput StaticSecretSync(ctx).StaticSecretSync(staticSecretSync).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	staticSecretSync := *openapiclient.NewStaticSecretSync("Name_example") // StaticSecretSync | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.StaticSecretSync(context.Background()).StaticSecretSync(staticSecretSync).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.StaticSecretSync``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StaticSecretSync`: SecretSyncOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.StaticSecretSync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStaticSecretSyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staticSecretSync** | [**StaticSecretSync**](StaticSecretSync.md) |  | 
+
+### Return type
+
+[**SecretSyncOutput**](SecretSyncOutput.md)
 
 ### Authorization
 

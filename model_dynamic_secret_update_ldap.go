@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -27,6 +27,8 @@ type DynamicSecretUpdateLdap struct {
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
 	BindDnPassword *string `json:"bind-dn-password,omitempty"`
+	// Customize how temporary usernames are generated using go template
+	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -217,6 +219,38 @@ func (o *DynamicSecretUpdateLdap) HasBindDnPassword() bool {
 // SetBindDnPassword gets a reference to the given string and assigns it to the BindDnPassword field.
 func (o *DynamicSecretUpdateLdap) SetBindDnPassword(v string) {
 	o.BindDnPassword = &v
+}
+
+// GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateLdap) GetCustomUsernameTemplate() string {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CustomUsernameTemplate
+}
+
+// GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateLdap) GetCustomUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		return nil, false
+	}
+	return o.CustomUsernameTemplate, true
+}
+
+// HasCustomUsernameTemplate returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateLdap) HasCustomUsernameTemplate() bool {
+	if o != nil && !IsNil(o.CustomUsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomUsernameTemplate gets a reference to the given string and assigns it to the CustomUsernameTemplate field.
+func (o *DynamicSecretUpdateLdap) SetCustomUsernameTemplate(v string) {
+	o.CustomUsernameTemplate = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1157,6 +1191,9 @@ func (o DynamicSecretUpdateLdap) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BindDnPassword) {
 		toSerialize["bind-dn-password"] = o.BindDnPassword
+	}
+	if !IsNil(o.CustomUsernameTemplate) {
+		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection

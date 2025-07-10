@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
@@ -47,6 +48,31 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerOracleDbWithDefaults instantiates a new GatewayCreateProducerOracleDb object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerOracleDb) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *GatewayCreateProducerOracleDb) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerOracleDb) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *GatewayCreateProducerOracleDb) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDbServerCertificates
 

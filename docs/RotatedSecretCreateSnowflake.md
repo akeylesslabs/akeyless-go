@@ -13,12 +13,14 @@ Name | Type | Description | Notes
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
+**PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) to rotate (relevant only for rotator-type&#x3D;key) | [optional] 
+**PrivateKeyFileName** | Pointer to **string** | The path to the file containing the private key (relevant only for rotator-type&#x3D;key) | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
-**RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password or rotator-type&#x3D;key) | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
-**RotatorType** | **string** | The rotator type. options: [target/password] | 
+**RotatorType** | **string** | The rotator type. options: [target/password/key] | 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -262,6 +264,56 @@ SetPasswordLength sets PasswordLength field to given value.
 `func (o *RotatedSecretCreateSnowflake) HasPasswordLength() bool`
 
 HasPasswordLength returns a boolean if a field has been set.
+
+### GetPrivateKey
+
+`func (o *RotatedSecretCreateSnowflake) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *RotatedSecretCreateSnowflake) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *RotatedSecretCreateSnowflake) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *RotatedSecretCreateSnowflake) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### GetPrivateKeyFileName
+
+`func (o *RotatedSecretCreateSnowflake) GetPrivateKeyFileName() string`
+
+GetPrivateKeyFileName returns the PrivateKeyFileName field if non-nil, zero value otherwise.
+
+### GetPrivateKeyFileNameOk
+
+`func (o *RotatedSecretCreateSnowflake) GetPrivateKeyFileNameOk() (*string, bool)`
+
+GetPrivateKeyFileNameOk returns a tuple with the PrivateKeyFileName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyFileName
+
+`func (o *RotatedSecretCreateSnowflake) SetPrivateKeyFileName(v string)`
+
+SetPrivateKeyFileName sets PrivateKeyFileName field to given value.
+
+### HasPrivateKeyFileName
+
+`func (o *RotatedSecretCreateSnowflake) HasPrivateKeyFileName() bool`
+
+HasPrivateKeyFileName returns a boolean if a field has been set.
 
 ### GetRotatedPassword
 

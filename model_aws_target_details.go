@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -24,6 +24,7 @@ type AWSTargetDetails struct {
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
 	AwsSessionToken *string `json:"aws_session_token,omitempty"`
+	GwCloudIdentityExternalIdOpt *AWSGatewayCloudIdentityExternalIdOpt `json:"gw_cloud_identity_external_id_opt,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 }
 
@@ -172,6 +173,38 @@ func (o *AWSTargetDetails) SetAwsSessionToken(v string) {
 	o.AwsSessionToken = &v
 }
 
+// GetGwCloudIdentityExternalIdOpt returns the GwCloudIdentityExternalIdOpt field value if set, zero value otherwise.
+func (o *AWSTargetDetails) GetGwCloudIdentityExternalIdOpt() AWSGatewayCloudIdentityExternalIdOpt {
+	if o == nil || IsNil(o.GwCloudIdentityExternalIdOpt) {
+		var ret AWSGatewayCloudIdentityExternalIdOpt
+		return ret
+	}
+	return *o.GwCloudIdentityExternalIdOpt
+}
+
+// GetGwCloudIdentityExternalIdOptOk returns a tuple with the GwCloudIdentityExternalIdOpt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AWSTargetDetails) GetGwCloudIdentityExternalIdOptOk() (*AWSGatewayCloudIdentityExternalIdOpt, bool) {
+	if o == nil || IsNil(o.GwCloudIdentityExternalIdOpt) {
+		return nil, false
+	}
+	return o.GwCloudIdentityExternalIdOpt, true
+}
+
+// HasGwCloudIdentityExternalIdOpt returns a boolean if a field has been set.
+func (o *AWSTargetDetails) HasGwCloudIdentityExternalIdOpt() bool {
+	if o != nil && !IsNil(o.GwCloudIdentityExternalIdOpt) {
+		return true
+	}
+
+	return false
+}
+
+// SetGwCloudIdentityExternalIdOpt gets a reference to the given AWSGatewayCloudIdentityExternalIdOpt and assigns it to the GwCloudIdentityExternalIdOpt field.
+func (o *AWSTargetDetails) SetGwCloudIdentityExternalIdOpt(v AWSGatewayCloudIdentityExternalIdOpt) {
+	o.GwCloudIdentityExternalIdOpt = &v
+}
+
 // GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
 func (o *AWSTargetDetails) GetUseGwCloudIdentity() bool {
 	if o == nil || IsNil(o.UseGwCloudIdentity) {
@@ -225,6 +258,9 @@ func (o AWSTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsSessionToken) {
 		toSerialize["aws_session_token"] = o.AwsSessionToken
+	}
+	if !IsNil(o.GwCloudIdentityExternalIdOpt) {
+		toSerialize["gw_cloud_identity_external_id_opt"] = o.GwCloudIdentityExternalIdOpt
 	}
 	if !IsNil(o.UseGwCloudIdentity) {
 		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity

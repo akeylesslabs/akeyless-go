@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -49628,7 +49628,7 @@ func (r ApiRotatedSecretDeleteSyncRequest) Body(body RotatedSecretDeleteSync) Ap
     return r
 }
 
-func (r ApiRotatedSecretDeleteSyncRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiRotatedSecretDeleteSyncRequest) Execute() (*RotatedSecretDeleteSyncOutput, *http.Response, error) {
 	return r.ApiService.RotatedSecretDeleteSyncExecute(r)
 }
 
@@ -49646,13 +49646,13 @@ func (a *V2ApiService) RotatedSecretDeleteSync(ctx context.Context) ApiRotatedSe
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *V2ApiService) RotatedSecretDeleteSyncExecute(r ApiRotatedSecretDeleteSyncRequest) (map[string]interface{}, *http.Response, error) {
+//  @return RotatedSecretDeleteSyncOutput
+func (a *V2ApiService) RotatedSecretDeleteSyncExecute(r ApiRotatedSecretDeleteSyncRequest) (*RotatedSecretDeleteSyncOutput, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *RotatedSecretDeleteSyncOutput
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretDeleteSync")
@@ -53629,6 +53629,254 @@ func (a *V2ApiService) StaticCredsAuthExecute(r ApiStaticCredsAuthRequest) (*Sta
 	}
 
 	localVarPath := localBasePath + "/static-creds-auth"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStaticSecretDeleteSyncRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	staticSecretDeleteSync *StaticSecretDeleteSync
+    body interface{}
+}
+
+func (r ApiStaticSecretDeleteSyncRequest) StaticSecretDeleteSync(staticSecretDeleteSync StaticSecretDeleteSync) ApiStaticSecretDeleteSyncRequest {
+	r.staticSecretDeleteSync = &staticSecretDeleteSync
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiStaticSecretDeleteSyncRequest) Body(body StaticSecretDeleteSync) ApiStaticSecretDeleteSyncRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiStaticSecretDeleteSyncRequest) Execute() (*StaticSecretDeleteSyncOutput, *http.Response, error) {
+	return r.ApiService.StaticSecretDeleteSyncExecute(r)
+}
+
+/*
+StaticSecretDeleteSync Method for StaticSecretDeleteSync
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStaticSecretDeleteSyncRequest
+*/
+func (a *V2ApiService) StaticSecretDeleteSync(ctx context.Context) ApiStaticSecretDeleteSyncRequest {
+	return ApiStaticSecretDeleteSyncRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return StaticSecretDeleteSyncOutput
+func (a *V2ApiService) StaticSecretDeleteSyncExecute(r ApiStaticSecretDeleteSyncRequest) (*StaticSecretDeleteSyncOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StaticSecretDeleteSyncOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.StaticSecretDeleteSync")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/static-secret-delete-sync"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiStaticSecretSyncRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	staticSecretSync *StaticSecretSync
+    body interface{}
+}
+
+func (r ApiStaticSecretSyncRequest) StaticSecretSync(staticSecretSync StaticSecretSync) ApiStaticSecretSyncRequest {
+	r.staticSecretSync = &staticSecretSync
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiStaticSecretSyncRequest) Body(body StaticSecretSync) ApiStaticSecretSyncRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiStaticSecretSyncRequest) Execute() (*SecretSyncOutput, *http.Response, error) {
+	return r.ApiService.StaticSecretSyncExecute(r)
+}
+
+/*
+StaticSecretSync Method for StaticSecretSync
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiStaticSecretSyncRequest
+*/
+func (a *V2ApiService) StaticSecretSync(ctx context.Context) ApiStaticSecretSyncRequest {
+	return ApiStaticSecretSyncRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return SecretSyncOutput
+func (a *V2ApiService) StaticSecretSyncExecute(r ApiStaticSecretSyncRequest) (*SecretSyncOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SecretSyncOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.StaticSecretSync")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/static-secret-sync"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

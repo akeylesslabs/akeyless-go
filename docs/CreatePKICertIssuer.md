@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowAnyName** | Pointer to **bool** | If set, clients can request certificates for any CN | [optional] 
 **AllowCopyExtFromCsr** | Pointer to **bool** | If set, will allow copying the extra extensions from the csr file (if given) | [optional] 
-**AllowSubdomains** | Pointer to **bool** | If set, clients can request certificates for subdomains and wildcard subdomains of the allowed domains | [optional] 
+**AllowSubdomains** | Pointer to **bool** | If set, clients can request certificates for subdomains of the allowed domains | [optional] 
 **AllowedDomains** | Pointer to **string** | A list of the allowed domains that clients can request to be included in the certificate (in a comma-delimited list) | [optional] 
 **AllowedExtraExtensions** | Pointer to **string** | A json string containing the allowed extra extensions for the pki cert issuer | [optional] 
 **AllowedIpSans** | Pointer to **string** | A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list) | [optional] 
@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **DestinationPath** | Pointer to **string** | A path in which to save generated certificates | [optional] 
+**DisableWildcards** | Pointer to **bool** | If set, generation of wildcard certificates will be disabled. | [optional] 
 **EnableAcme** | Pointer to **bool** | If set, the cert issuer will support the acme protocol | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME | [optional] 
@@ -516,6 +517,31 @@ SetDestinationPath sets DestinationPath field to given value.
 `func (o *CreatePKICertIssuer) HasDestinationPath() bool`
 
 HasDestinationPath returns a boolean if a field has been set.
+
+### GetDisableWildcards
+
+`func (o *CreatePKICertIssuer) GetDisableWildcards() bool`
+
+GetDisableWildcards returns the DisableWildcards field if non-nil, zero value otherwise.
+
+### GetDisableWildcardsOk
+
+`func (o *CreatePKICertIssuer) GetDisableWildcardsOk() (*bool, bool)`
+
+GetDisableWildcardsOk returns a tuple with the DisableWildcards field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableWildcards
+
+`func (o *CreatePKICertIssuer) SetDisableWildcards(v bool)`
+
+SetDisableWildcards sets DisableWildcards field to given value.
+
+### HasDisableWildcards
+
+`func (o *CreatePKICertIssuer) HasDisableWildcards() bool`
+
+HasDisableWildcards returns a boolean if a field has been set.
 
 ### GetEnableAcme
 

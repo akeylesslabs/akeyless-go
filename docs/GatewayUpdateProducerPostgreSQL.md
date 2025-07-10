@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreationStatements** | Pointer to **string** | PostgreSQL Creation statements | [optional] 
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -75,6 +76,31 @@ SetCreationStatements sets CreationStatements field to given value.
 `func (o *GatewayUpdateProducerPostgreSQL) HasCreationStatements() bool`
 
 HasCreationStatements returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

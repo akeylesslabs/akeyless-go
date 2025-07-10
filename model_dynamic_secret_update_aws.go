@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -29,6 +29,8 @@ type DynamicSecretUpdateAws struct {
 	AwsAccessKeyId *string `json:"aws-access-key-id,omitempty"`
 	// Secret Access Key
 	AwsAccessSecretKey *string `json:"aws-access-secret-key,omitempty"`
+	// The AWS External ID associated with the AWS role (relevant only for assume_role mode)
+	AwsExternalId *string `json:"aws-external-id,omitempty"`
 	// AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode)
 	AwsRoleArns *string `json:"aws-role-arns,omitempty"`
 	// AWS User console access
@@ -39,6 +41,8 @@ type DynamicSecretUpdateAws struct {
 	AwsUserPolicies *string `json:"aws-user-policies,omitempty"`
 	// Enable AWS User programmatic access
 	AwsUserProgrammaticAccess *bool `json:"aws-user-programmatic-access,omitempty"`
+	// Customize how temporary usernames are generated using go template
+	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -279,6 +283,38 @@ func (o *DynamicSecretUpdateAws) SetAwsAccessSecretKey(v string) {
 	o.AwsAccessSecretKey = &v
 }
 
+// GetAwsExternalId returns the AwsExternalId field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateAws) GetAwsExternalId() string {
+	if o == nil || IsNil(o.AwsExternalId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsExternalId
+}
+
+// GetAwsExternalIdOk returns a tuple with the AwsExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateAws) GetAwsExternalIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsExternalId) {
+		return nil, false
+	}
+	return o.AwsExternalId, true
+}
+
+// HasAwsExternalId returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateAws) HasAwsExternalId() bool {
+	if o != nil && !IsNil(o.AwsExternalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsExternalId gets a reference to the given string and assigns it to the AwsExternalId field.
+func (o *DynamicSecretUpdateAws) SetAwsExternalId(v string) {
+	o.AwsExternalId = &v
+}
+
 // GetAwsRoleArns returns the AwsRoleArns field value if set, zero value otherwise.
 func (o *DynamicSecretUpdateAws) GetAwsRoleArns() string {
 	if o == nil || IsNil(o.AwsRoleArns) {
@@ -437,6 +473,38 @@ func (o *DynamicSecretUpdateAws) HasAwsUserProgrammaticAccess() bool {
 // SetAwsUserProgrammaticAccess gets a reference to the given bool and assigns it to the AwsUserProgrammaticAccess field.
 func (o *DynamicSecretUpdateAws) SetAwsUserProgrammaticAccess(v bool) {
 	o.AwsUserProgrammaticAccess = &v
+}
+
+// GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateAws) GetCustomUsernameTemplate() string {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CustomUsernameTemplate
+}
+
+// GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateAws) GetCustomUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		return nil, false
+	}
+	return o.CustomUsernameTemplate, true
+}
+
+// HasCustomUsernameTemplate returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateAws) HasCustomUsernameTemplate() bool {
+	if o != nil && !IsNil(o.CustomUsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomUsernameTemplate gets a reference to the given string and assigns it to the CustomUsernameTemplate field.
+func (o *DynamicSecretUpdateAws) SetCustomUsernameTemplate(v string) {
+	o.CustomUsernameTemplate = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1253,6 +1321,9 @@ func (o DynamicSecretUpdateAws) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsAccessSecretKey) {
 		toSerialize["aws-access-secret-key"] = o.AwsAccessSecretKey
 	}
+	if !IsNil(o.AwsExternalId) {
+		toSerialize["aws-external-id"] = o.AwsExternalId
+	}
 	if !IsNil(o.AwsRoleArns) {
 		toSerialize["aws-role-arns"] = o.AwsRoleArns
 	}
@@ -1267,6 +1338,9 @@ func (o DynamicSecretUpdateAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsUserProgrammaticAccess) {
 		toSerialize["aws-user-programmatic-access"] = o.AwsUserProgrammaticAccess
+	}
+	if !IsNil(o.CustomUsernameTemplate) {
+		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection

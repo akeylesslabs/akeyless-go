@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -28,12 +28,17 @@ type GatewayCreateProducerSnowflake struct {
 	AccountPassword *string `json:"account-password,omitempty"`
 	// Database Username
 	AccountUsername *string `json:"account-username,omitempty"`
+	// The authentication mode for the temporary user [password/key]
+	AuthMode *string `json:"auth-mode,omitempty"`
+	// Customize how temporary usernames are generated using go template
+	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Database name
 	DbName *string `json:"db-name,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	KeyAlgo *string `json:"key-algo,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
 	// The length of the password to be generated
@@ -66,6 +71,8 @@ type _GatewayCreateProducerSnowflake GatewayCreateProducerSnowflake
 // will change when the set of required properties is changed
 func NewGatewayCreateProducerSnowflake(name string) *GatewayCreateProducerSnowflake {
 	this := GatewayCreateProducerSnowflake{}
+	var authMode string = "password"
+	this.AuthMode = &authMode
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -79,6 +86,8 @@ func NewGatewayCreateProducerSnowflake(name string) *GatewayCreateProducerSnowfl
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerSnowflakeWithDefaults() *GatewayCreateProducerSnowflake {
 	this := GatewayCreateProducerSnowflake{}
+	var authMode string = "password"
+	this.AuthMode = &authMode
 	var json bool = false
 	this.Json = &json
 	var userTtl string = "24h"
@@ -182,6 +191,70 @@ func (o *GatewayCreateProducerSnowflake) SetAccountUsername(v string) {
 	o.AccountUsername = &v
 }
 
+// GetAuthMode returns the AuthMode field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetAuthMode() string {
+	if o == nil || IsNil(o.AuthMode) {
+		var ret string
+		return ret
+	}
+	return *o.AuthMode
+}
+
+// GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetAuthModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthMode) {
+		return nil, false
+	}
+	return o.AuthMode, true
+}
+
+// HasAuthMode returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasAuthMode() bool {
+	if o != nil && !IsNil(o.AuthMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMode gets a reference to the given string and assigns it to the AuthMode field.
+func (o *GatewayCreateProducerSnowflake) SetAuthMode(v string) {
+	o.AuthMode = &v
+}
+
+// GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetCustomUsernameTemplate() string {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CustomUsernameTemplate
+}
+
+// GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetCustomUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		return nil, false
+	}
+	return o.CustomUsernameTemplate, true
+}
+
+// HasCustomUsernameTemplate returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasCustomUsernameTemplate() bool {
+	if o != nil && !IsNil(o.CustomUsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomUsernameTemplate gets a reference to the given string and assigns it to the CustomUsernameTemplate field.
+func (o *GatewayCreateProducerSnowflake) SetCustomUsernameTemplate(v string) {
+	o.CustomUsernameTemplate = &v
+}
+
 // GetDbName returns the DbName field value if set, zero value otherwise.
 func (o *GatewayCreateProducerSnowflake) GetDbName() string {
 	if o == nil || IsNil(o.DbName) {
@@ -276,6 +349,38 @@ func (o *GatewayCreateProducerSnowflake) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *GatewayCreateProducerSnowflake) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetKeyAlgo returns the KeyAlgo field value if set, zero value otherwise.
+func (o *GatewayCreateProducerSnowflake) GetKeyAlgo() string {
+	if o == nil || IsNil(o.KeyAlgo) {
+		var ret string
+		return ret
+	}
+	return *o.KeyAlgo
+}
+
+// GetKeyAlgoOk returns a tuple with the KeyAlgo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerSnowflake) GetKeyAlgoOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyAlgo) {
+		return nil, false
+	}
+	return o.KeyAlgo, true
+}
+
+// HasKeyAlgo returns a boolean if a field has been set.
+func (o *GatewayCreateProducerSnowflake) HasKeyAlgo() bool {
+	if o != nil && !IsNil(o.KeyAlgo) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyAlgo gets a reference to the given string and assigns it to the KeyAlgo field.
+func (o *GatewayCreateProducerSnowflake) SetKeyAlgo(v string) {
+	o.KeyAlgo = &v
 }
 
 // GetName returns the Name field value
@@ -641,6 +746,12 @@ func (o GatewayCreateProducerSnowflake) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.AccountUsername) {
 		toSerialize["account-username"] = o.AccountUsername
 	}
+	if !IsNil(o.AuthMode) {
+		toSerialize["auth-mode"] = o.AuthMode
+	}
+	if !IsNil(o.CustomUsernameTemplate) {
+		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
+	}
 	if !IsNil(o.DbName) {
 		toSerialize["db-name"] = o.DbName
 	}
@@ -649,6 +760,9 @@ func (o GatewayCreateProducerSnowflake) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.KeyAlgo) {
+		toSerialize["key-algo"] = o.KeyAlgo
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.PasswordLength) {

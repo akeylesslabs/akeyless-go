@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -31,6 +31,8 @@ type UscCreate struct {
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
 	ObjectType *string `json:"object-type,omitempty"`
+	// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
+	PfxPassword *string `json:"pfx-password,omitempty"`
 	// Name for the new universal secrets
 	SecretName string `json:"secret-name"`
 	// Tags for the universal secrets
@@ -231,6 +233,38 @@ func (o *UscCreate) SetObjectType(v string) {
 	o.ObjectType = &v
 }
 
+// GetPfxPassword returns the PfxPassword field value if set, zero value otherwise.
+func (o *UscCreate) GetPfxPassword() string {
+	if o == nil || IsNil(o.PfxPassword) {
+		var ret string
+		return ret
+	}
+	return *o.PfxPassword
+}
+
+// GetPfxPasswordOk returns a tuple with the PfxPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetPfxPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.PfxPassword) {
+		return nil, false
+	}
+	return o.PfxPassword, true
+}
+
+// HasPfxPassword returns a boolean if a field has been set.
+func (o *UscCreate) HasPfxPassword() bool {
+	if o != nil && !IsNil(o.PfxPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetPfxPassword gets a reference to the given string and assigns it to the PfxPassword field.
+func (o *UscCreate) SetPfxPassword(v string) {
+	o.PfxPassword = &v
+}
+
 // GetSecretName returns the SecretName field value
 func (o *UscCreate) GetSecretName() string {
 	if o == nil {
@@ -423,6 +457,9 @@ func (o UscCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ObjectType) {
 		toSerialize["object-type"] = o.ObjectType
+	}
+	if !IsNil(o.PfxPassword) {
+		toSerialize["pfx-password"] = o.PfxPassword
 	}
 	toSerialize["secret-name"] = o.SecretName
 	if !IsNil(o.Tags) {

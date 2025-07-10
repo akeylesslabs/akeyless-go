@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the universal secrets | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update | 
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -133,6 +134,31 @@ SetNamespace sets Namespace field to given value.
 `func (o *UscUpdate) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### GetPfxPassword
+
+`func (o *UscUpdate) GetPfxPassword() string`
+
+GetPfxPassword returns the PfxPassword field if non-nil, zero value otherwise.
+
+### GetPfxPasswordOk
+
+`func (o *UscUpdate) GetPfxPasswordOk() (*string, bool)`
+
+GetPfxPasswordOk returns a tuple with the PfxPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPfxPassword
+
+`func (o *UscUpdate) SetPfxPassword(v string)`
+
+SetPfxPassword sets PfxPassword field to given value.
+
+### HasPfxPassword
+
+`func (o *UscUpdate) HasPfxPassword() bool`
+
+HasPfxPassword returns a boolean if a field has been set.
 
 ### GetSecretId
 

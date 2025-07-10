@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -30,6 +30,8 @@ type UscUpdate struct {
 	Json *bool `json:"json,omitempty"`
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
+	// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
+	PfxPassword *string `json:"pfx-password,omitempty"`
 	// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update
 	SecretId string `json:"secret-id"`
 	// Tags for the universal secrets
@@ -196,6 +198,38 @@ func (o *UscUpdate) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *UscUpdate) SetNamespace(v string) {
 	o.Namespace = &v
+}
+
+// GetPfxPassword returns the PfxPassword field value if set, zero value otherwise.
+func (o *UscUpdate) GetPfxPassword() string {
+	if o == nil || IsNil(o.PfxPassword) {
+		var ret string
+		return ret
+	}
+	return *o.PfxPassword
+}
+
+// GetPfxPasswordOk returns a tuple with the PfxPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetPfxPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.PfxPassword) {
+		return nil, false
+	}
+	return o.PfxPassword, true
+}
+
+// HasPfxPassword returns a boolean if a field has been set.
+func (o *UscUpdate) HasPfxPassword() bool {
+	if o != nil && !IsNil(o.PfxPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetPfxPassword gets a reference to the given string and assigns it to the PfxPassword field.
+func (o *UscUpdate) SetPfxPassword(v string) {
+	o.PfxPassword = &v
 }
 
 // GetSecretId returns the SecretId field value
@@ -387,6 +421,9 @@ func (o UscUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.PfxPassword) {
+		toSerialize["pfx-password"] = o.PfxPassword
 	}
 	toSerialize["secret-id"] = o.SecretId
 	if !IsNil(o.Tags) {

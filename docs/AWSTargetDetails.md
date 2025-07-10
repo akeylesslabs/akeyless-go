@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
 **AwsSessionToken** | Pointer to **string** |  | [optional] 
+**GwCloudIdentityExternalIdOpt** | Pointer to [**AWSGatewayCloudIdentityExternalIdOpt**](AWSGatewayCloudIdentityExternalIdOpt.md) |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -128,6 +129,31 @@ SetAwsSessionToken sets AwsSessionToken field to given value.
 `func (o *AWSTargetDetails) HasAwsSessionToken() bool`
 
 HasAwsSessionToken returns a boolean if a field has been set.
+
+### GetGwCloudIdentityExternalIdOpt
+
+`func (o *AWSTargetDetails) GetGwCloudIdentityExternalIdOpt() AWSGatewayCloudIdentityExternalIdOpt`
+
+GetGwCloudIdentityExternalIdOpt returns the GwCloudIdentityExternalIdOpt field if non-nil, zero value otherwise.
+
+### GetGwCloudIdentityExternalIdOptOk
+
+`func (o *AWSTargetDetails) GetGwCloudIdentityExternalIdOptOk() (*AWSGatewayCloudIdentityExternalIdOpt, bool)`
+
+GetGwCloudIdentityExternalIdOptOk returns a tuple with the GwCloudIdentityExternalIdOpt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwCloudIdentityExternalIdOpt
+
+`func (o *AWSTargetDetails) SetGwCloudIdentityExternalIdOpt(v AWSGatewayCloudIdentityExternalIdOpt)`
+
+SetGwCloudIdentityExternalIdOpt sets GwCloudIdentityExternalIdOpt field to given value.
+
+### HasGwCloudIdentityExternalIdOpt
+
+`func (o *AWSTargetDetails) HasGwCloudIdentityExternalIdOpt() bool`
+
+HasGwCloudIdentityExternalIdOpt returns a boolean if a field has been set.
 
 ### GetUseGwCloudIdentity
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccessKey** | **string** | AWS secret access key | 
 **AccessKeyId** | **string** | AWS access key ID | 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**GenerateExternalId** | Pointer to **bool** | A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Target name | 
 **NewName** | Pointer to **string** | New target name | [optional] 
 **Region** | Pointer to **string** | AWS region | [optional] [default to "us-east-2"]
+**RoleArn** | Pointer to **string** | AWS IAM role identifier that Gateway will assume in your AWS account, relevant only when using external ID | [optional] 
 **SessionToken** | Pointer to **string** | Required only for temporary security credentials retrieved using STS | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -102,6 +104,31 @@ SetDescription sets Description field to given value.
 `func (o *TargetUpdateAws) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetGenerateExternalId
+
+`func (o *TargetUpdateAws) GetGenerateExternalId() bool`
+
+GetGenerateExternalId returns the GenerateExternalId field if non-nil, zero value otherwise.
+
+### GetGenerateExternalIdOk
+
+`func (o *TargetUpdateAws) GetGenerateExternalIdOk() (*bool, bool)`
+
+GetGenerateExternalIdOk returns a tuple with the GenerateExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGenerateExternalId
+
+`func (o *TargetUpdateAws) SetGenerateExternalId(v bool)`
+
+SetGenerateExternalId sets GenerateExternalId field to given value.
+
+### HasGenerateExternalId
+
+`func (o *TargetUpdateAws) HasGenerateExternalId() bool`
+
+HasGenerateExternalId returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -272,6 +299,31 @@ SetRegion sets Region field to given value.
 `func (o *TargetUpdateAws) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetRoleArn
+
+`func (o *TargetUpdateAws) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *TargetUpdateAws) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *TargetUpdateAws) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
+
+### HasRoleArn
+
+`func (o *TargetUpdateAws) HasRoleArn() bool`
+
+HasRoleArn returns a boolean if a field has been set.
 
 ### GetSessionToken
 

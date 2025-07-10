@@ -16,9 +16,11 @@ Name | Type | Description | Notes
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
+**PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) to rotate (relevant only for rotator-type&#x3D;key) | [optional] 
+**PrivateKeyFileName** | Pointer to **string** | The path to the file containing the private key (relevant only for rotator-type&#x3D;key) | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
-**RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password or rotator-type&#x3D;key) | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
@@ -338,6 +340,56 @@ SetPasswordLength sets PasswordLength field to given value.
 `func (o *RotatedSecretUpdateSnowflake) HasPasswordLength() bool`
 
 HasPasswordLength returns a boolean if a field has been set.
+
+### GetPrivateKey
+
+`func (o *RotatedSecretUpdateSnowflake) GetPrivateKey() string`
+
+GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
+
+### GetPrivateKeyOk
+
+`func (o *RotatedSecretUpdateSnowflake) GetPrivateKeyOk() (*string, bool)`
+
+GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKey
+
+`func (o *RotatedSecretUpdateSnowflake) SetPrivateKey(v string)`
+
+SetPrivateKey sets PrivateKey field to given value.
+
+### HasPrivateKey
+
+`func (o *RotatedSecretUpdateSnowflake) HasPrivateKey() bool`
+
+HasPrivateKey returns a boolean if a field has been set.
+
+### GetPrivateKeyFileName
+
+`func (o *RotatedSecretUpdateSnowflake) GetPrivateKeyFileName() string`
+
+GetPrivateKeyFileName returns the PrivateKeyFileName field if non-nil, zero value otherwise.
+
+### GetPrivateKeyFileNameOk
+
+`func (o *RotatedSecretUpdateSnowflake) GetPrivateKeyFileNameOk() (*string, bool)`
+
+GetPrivateKeyFileNameOk returns a tuple with the PrivateKeyFileName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateKeyFileName
+
+`func (o *RotatedSecretUpdateSnowflake) SetPrivateKeyFileName(v string)`
+
+SetPrivateKeyFileName sets PrivateKeyFileName field to given value.
+
+### HasPrivateKeyFileName
+
+`func (o *RotatedSecretUpdateSnowflake) HasPrivateKeyFileName() bool`
+
+HasPrivateKeyFileName returns a boolean if a field has been set.
 
 ### GetRmTag
 

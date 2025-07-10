@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -23,6 +23,7 @@ var _ MappedNullable = &TargetItemVersion{}
 type TargetItemVersion struct {
 	AccessDate *time.Time `json:"access_date,omitempty"`
 	AccessDateDisplay *string `json:"access_date_display,omitempty"`
+	AccessId *string `json:"access_id,omitempty"`
 	CertificateVersionInfo *CertificateVersionInfo `json:"certificate_version_info,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	CustomerFragmentId *string `json:"customer_fragment_id,omitempty"`
@@ -33,6 +34,7 @@ type TargetItemVersion struct {
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
+	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 	WithCustomerFragment *bool `json:"with_customer_fragment,omitempty"`
 }
@@ -116,6 +118,38 @@ func (o *TargetItemVersion) HasAccessDateDisplay() bool {
 // SetAccessDateDisplay gets a reference to the given string and assigns it to the AccessDateDisplay field.
 func (o *TargetItemVersion) SetAccessDateDisplay(v string) {
 	o.AccessDateDisplay = &v
+}
+
+// GetAccessId returns the AccessId field value if set, zero value otherwise.
+func (o *TargetItemVersion) GetAccessId() string {
+	if o == nil || IsNil(o.AccessId) {
+		var ret string
+		return ret
+	}
+	return *o.AccessId
+}
+
+// GetAccessIdOk returns a tuple with the AccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemVersion) GetAccessIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessId) {
+		return nil, false
+	}
+	return o.AccessId, true
+}
+
+// HasAccessId returns a boolean if a field has been set.
+func (o *TargetItemVersion) HasAccessId() bool {
+	if o != nil && !IsNil(o.AccessId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessId gets a reference to the given string and assigns it to the AccessId field.
+func (o *TargetItemVersion) SetAccessId(v string) {
+	o.AccessId = &v
 }
 
 // GetCertificateVersionInfo returns the CertificateVersionInfo field value if set, zero value otherwise.
@@ -406,6 +440,38 @@ func (o *TargetItemVersion) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
+// GetUniqueIdentifier returns the UniqueIdentifier field value if set, zero value otherwise.
+func (o *TargetItemVersion) GetUniqueIdentifier() string {
+	if o == nil || IsNil(o.UniqueIdentifier) {
+		var ret string
+		return ret
+	}
+	return *o.UniqueIdentifier
+}
+
+// GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemVersion) GetUniqueIdentifierOk() (*string, bool) {
+	if o == nil || IsNil(o.UniqueIdentifier) {
+		return nil, false
+	}
+	return o.UniqueIdentifier, true
+}
+
+// HasUniqueIdentifier returns a boolean if a field has been set.
+func (o *TargetItemVersion) HasUniqueIdentifier() bool {
+	if o != nil && !IsNil(o.UniqueIdentifier) {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueIdentifier gets a reference to the given string and assigns it to the UniqueIdentifier field.
+func (o *TargetItemVersion) SetUniqueIdentifier(v string) {
+	o.UniqueIdentifier = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *TargetItemVersion) GetVersion() int32 {
 	if o == nil || IsNil(o.Version) {
@@ -486,6 +552,9 @@ func (o TargetItemVersion) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessDateDisplay) {
 		toSerialize["access_date_display"] = o.AccessDateDisplay
 	}
+	if !IsNil(o.AccessId) {
+		toSerialize["access_id"] = o.AccessId
+	}
 	if !IsNil(o.CertificateVersionInfo) {
 		toSerialize["certificate_version_info"] = o.CertificateVersionInfo
 	}
@@ -512,6 +581,9 @@ func (o TargetItemVersion) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TargetName) {
 		toSerialize["target_name"] = o.TargetName
+	}
+	if !IsNil(o.UniqueIdentifier) {
+		toSerialize["unique_identifier"] = o.UniqueIdentifier
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

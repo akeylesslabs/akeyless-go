@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -20,6 +20,7 @@ var _ MappedNullable = &GatewayDetailsForItemReplyObj{}
 
 // GatewayDetailsForItemReplyObj struct for GatewayDetailsForItemReplyObj
 type GatewayDetailsForItemReplyObj struct {
+	ClusterId *int64 `json:"cluster_id,omitempty"`
 	ClusterName *string `json:"cluster_name,omitempty"`
 	ClusterUrl *string `json:"cluster_url,omitempty"`
 	DesktopApp *DesktopAppConf `json:"desktop_app,omitempty"`
@@ -41,6 +42,38 @@ func NewGatewayDetailsForItemReplyObj() *GatewayDetailsForItemReplyObj {
 func NewGatewayDetailsForItemReplyObjWithDefaults() *GatewayDetailsForItemReplyObj {
 	this := GatewayDetailsForItemReplyObj{}
 	return &this
+}
+
+// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+func (o *GatewayDetailsForItemReplyObj) GetClusterId() int64 {
+	if o == nil || IsNil(o.ClusterId) {
+		var ret int64
+		return ret
+	}
+	return *o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayDetailsForItemReplyObj) GetClusterIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ClusterId) {
+		return nil, false
+	}
+	return o.ClusterId, true
+}
+
+// HasClusterId returns a boolean if a field has been set.
+func (o *GatewayDetailsForItemReplyObj) HasClusterId() bool {
+	if o != nil && !IsNil(o.ClusterId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterId gets a reference to the given int64 and assigns it to the ClusterId field.
+func (o *GatewayDetailsForItemReplyObj) SetClusterId(v int64) {
+	o.ClusterId = &v
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise.
@@ -181,6 +214,9 @@ func (o GatewayDetailsForItemReplyObj) MarshalJSON() ([]byte, error) {
 
 func (o GatewayDetailsForItemReplyObj) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClusterId) {
+		toSerialize["cluster_id"] = o.ClusterId
+	}
 	if !IsNil(o.ClusterName) {
 		toSerialize["cluster_name"] = o.ClusterName
 	}

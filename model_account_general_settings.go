@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -27,6 +27,7 @@ type AccountGeneralSettings struct {
 	AllowedClientsIps *AllowedIpSettings `json:"allowed_clients_ips,omitempty"`
 	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
+	CertificateExpirationEvents *CertificateExpirationEventsSettings `json:"certificate_expiration_events,omitempty"`
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
 	DefaultHomePage *DefaultHomePage `json:"default_home_page,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
@@ -221,6 +222,38 @@ func (o *AccountGeneralSettings) HasAuthUsageEvent() bool {
 // SetAuthUsageEvent gets a reference to the given UsageEventSetting and assigns it to the AuthUsageEvent field.
 func (o *AccountGeneralSettings) SetAuthUsageEvent(v UsageEventSetting) {
 	o.AuthUsageEvent = &v
+}
+
+// GetCertificateExpirationEvents returns the CertificateExpirationEvents field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetCertificateExpirationEvents() CertificateExpirationEventsSettings {
+	if o == nil || IsNil(o.CertificateExpirationEvents) {
+		var ret CertificateExpirationEventsSettings
+		return ret
+	}
+	return *o.CertificateExpirationEvents
+}
+
+// GetCertificateExpirationEventsOk returns a tuple with the CertificateExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetCertificateExpirationEventsOk() (*CertificateExpirationEventsSettings, bool) {
+	if o == nil || IsNil(o.CertificateExpirationEvents) {
+		return nil, false
+	}
+	return o.CertificateExpirationEvents, true
+}
+
+// HasCertificateExpirationEvents returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasCertificateExpirationEvents() bool {
+	if o != nil && !IsNil(o.CertificateExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateExpirationEvents gets a reference to the given CertificateExpirationEventsSettings and assigns it to the CertificateExpirationEvents field.
+func (o *AccountGeneralSettings) SetCertificateExpirationEvents(v CertificateExpirationEventsSettings) {
+	o.CertificateExpirationEvents = &v
 }
 
 // GetDataProtectionSection returns the DataProtectionSection field value if set, zero value otherwise.
@@ -727,6 +760,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuthUsageEvent) {
 		toSerialize["auth_usage_event"] = o.AuthUsageEvent
+	}
+	if !IsNil(o.CertificateExpirationEvents) {
+		toSerialize["certificate_expiration_events"] = o.CertificateExpirationEvents
 	}
 	if !IsNil(o.DataProtectionSection) {
 		toSerialize["data_protection_section"] = o.DataProtectionSection

@@ -8,11 +8,13 @@ Name | Type | Description | Notes
 **AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
 **AwsAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
 **AwsAccessSecretKey** | Pointer to **string** | Secret Access Key | [optional] 
+**AwsExternalId** | Pointer to **string** | The AWS External ID associated with the AWS role (relevant only for assume_role mode) | [optional] 
 **AwsRoleArns** | Pointer to **string** | AWS Role ARNs to be used in the Assume Role operation (relevant only for assume_role mode) | [optional] 
 **AwsUserConsoleAccess** | Pointer to **bool** | AWS User console access | [optional] [default to false]
 **AwsUserGroups** | Pointer to **string** | AWS User groups | [optional] 
 **AwsUserPolicies** | Pointer to **string** | AWS User policies | [optional] 
 **AwsUserProgrammaticAccess** | Pointer to **bool** | Enable AWS User programmatic access | [optional] [default to true]
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
@@ -157,6 +159,31 @@ SetAwsAccessSecretKey sets AwsAccessSecretKey field to given value.
 
 HasAwsAccessSecretKey returns a boolean if a field has been set.
 
+### GetAwsExternalId
+
+`func (o *DynamicSecretCreateAws) GetAwsExternalId() string`
+
+GetAwsExternalId returns the AwsExternalId field if non-nil, zero value otherwise.
+
+### GetAwsExternalIdOk
+
+`func (o *DynamicSecretCreateAws) GetAwsExternalIdOk() (*string, bool)`
+
+GetAwsExternalIdOk returns a tuple with the AwsExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsExternalId
+
+`func (o *DynamicSecretCreateAws) SetAwsExternalId(v string)`
+
+SetAwsExternalId sets AwsExternalId field to given value.
+
+### HasAwsExternalId
+
+`func (o *DynamicSecretCreateAws) HasAwsExternalId() bool`
+
+HasAwsExternalId returns a boolean if a field has been set.
+
 ### GetAwsRoleArns
 
 `func (o *DynamicSecretCreateAws) GetAwsRoleArns() string`
@@ -281,6 +308,31 @@ SetAwsUserProgrammaticAccess sets AwsUserProgrammaticAccess field to given value
 `func (o *DynamicSecretCreateAws) HasAwsUserProgrammaticAccess() bool`
 
 HasAwsUserProgrammaticAccess returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateAws) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *DynamicSecretCreateAws) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateAws) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateAws) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

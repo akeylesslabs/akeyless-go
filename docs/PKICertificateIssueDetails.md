@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **CreatePrivateCrl** | Pointer to **bool** |  | [optional] 
 **CreatePublicCrl** | Pointer to **bool** |  | [optional] 
 **DestinationPath** | Pointer to **string** | DestinationPath is the destination to save generated certificates | [optional] 
+**DisableWildcards** | Pointer to **bool** |  | [optional] 
 **EnforceHostnames** | Pointer to **bool** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) | ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
@@ -487,6 +488,31 @@ SetDestinationPath sets DestinationPath field to given value.
 `func (o *PKICertificateIssueDetails) HasDestinationPath() bool`
 
 HasDestinationPath returns a boolean if a field has been set.
+
+### GetDisableWildcards
+
+`func (o *PKICertificateIssueDetails) GetDisableWildcards() bool`
+
+GetDisableWildcards returns the DisableWildcards field if non-nil, zero value otherwise.
+
+### GetDisableWildcardsOk
+
+`func (o *PKICertificateIssueDetails) GetDisableWildcardsOk() (*bool, bool)`
+
+GetDisableWildcardsOk returns a tuple with the DisableWildcards field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableWildcards
+
+`func (o *PKICertificateIssueDetails) SetDisableWildcards(v bool)`
+
+SetDisableWildcards sets DisableWildcards field to given value.
+
+### HasDisableWildcards
+
+`func (o *PKICertificateIssueDetails) HasDisableWildcards() bool`
+
+HasDisableWildcards returns a boolean if a field has been set.
 
 ### GetEnforceHostnames
 

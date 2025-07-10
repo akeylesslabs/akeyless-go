@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClusterId** | Pointer to **int64** |  | [optional] 
 **ClusterName** | Pointer to **string** |  | [optional] 
 **ClusterUrl** | Pointer to **string** |  | [optional] 
 **DesktopApp** | Pointer to [**DesktopAppConf**](DesktopAppConf.md) |  | [optional] 
@@ -27,6 +28,31 @@ will change when the set of required properties is changed
 NewGatewayDetailsForItemReplyObjWithDefaults instantiates a new GatewayDetailsForItemReplyObj object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClusterId
+
+`func (o *GatewayDetailsForItemReplyObj) GetClusterId() int64`
+
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
+
+### GetClusterIdOk
+
+`func (o *GatewayDetailsForItemReplyObj) GetClusterIdOk() (*int64, bool)`
+
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterId
+
+`func (o *GatewayDetailsForItemReplyObj) SetClusterId(v int64)`
+
+SetClusterId sets ClusterId field to given value.
+
+### HasClusterId
+
+`func (o *GatewayDetailsForItemReplyObj) HasClusterId() bool`
+
+HasClusterId returns a boolean if a field has been set.
 
 ### GetClusterName
 

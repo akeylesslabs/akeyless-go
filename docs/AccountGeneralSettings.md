@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AllowedClientsIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AllowedGatewaysIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AuthUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
+**CertificateExpirationEvents** | Pointer to [**CertificateExpirationEventsSettings**](CertificateExpirationEventsSettings.md) |  | [optional] 
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
 **DefaultHomePage** | Pointer to [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
@@ -168,6 +169,31 @@ SetAuthUsageEvent sets AuthUsageEvent field to given value.
 `func (o *AccountGeneralSettings) HasAuthUsageEvent() bool`
 
 HasAuthUsageEvent returns a boolean if a field has been set.
+
+### GetCertificateExpirationEvents
+
+`func (o *AccountGeneralSettings) GetCertificateExpirationEvents() CertificateExpirationEventsSettings`
+
+GetCertificateExpirationEvents returns the CertificateExpirationEvents field if non-nil, zero value otherwise.
+
+### GetCertificateExpirationEventsOk
+
+`func (o *AccountGeneralSettings) GetCertificateExpirationEventsOk() (*CertificateExpirationEventsSettings, bool)`
+
+GetCertificateExpirationEventsOk returns a tuple with the CertificateExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateExpirationEvents
+
+`func (o *AccountGeneralSettings) SetCertificateExpirationEvents(v CertificateExpirationEventsSettings)`
+
+SetCertificateExpirationEvents sets CertificateExpirationEvents field to given value.
+
+### HasCertificateExpirationEvents
+
+`func (o *AccountGeneralSettings) HasCertificateExpirationEvents() bool`
+
+HasCertificateExpirationEvents returns a boolean if a field has been set.
 
 ### GetDataProtectionSection
 

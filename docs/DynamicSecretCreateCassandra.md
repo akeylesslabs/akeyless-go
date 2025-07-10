@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CassandraPassword** | Pointer to **string** | Cassandra superuser password | [optional] 
 **CassandraPort** | Pointer to **string** | Cassandra port | [optional] [default to "9042"]
 **CassandraUsername** | Pointer to **string** | Cassandra superuser username | [optional] 
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -166,6 +167,31 @@ SetCassandraUsername sets CassandraUsername field to given value.
 `func (o *DynamicSecretCreateCassandra) HasCassandraUsername() bool`
 
 HasCassandraUsername returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateCassandra) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *DynamicSecretCreateCassandra) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateCassandra) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateCassandra) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

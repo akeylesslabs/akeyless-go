@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **AuthorizationPort** | Pointer to **string** |  | [optional] 
 **AwsAccessKeyId** | Pointer to **string** |  | [optional] 
 **AwsAccessMode** | Pointer to **string** |  | [optional] 
+**AwsExternalId** | Pointer to **string** |  | [optional] 
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsRoleArns** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
@@ -29,6 +30,7 @@ Name | Type | Description | Notes
 **AwsUserGroups** | Pointer to **string** |  | [optional] 
 **AwsUserPolicies** | Pointer to **string** |  | [optional] 
 **AwsUserProgrammaticAccess** | Pointer to **bool** |  | [optional] 
+**AzureAdministrativeUnit** | Pointer to **string** |  | [optional] 
 **AzureAppObjectId** | Pointer to **string** |  | [optional] 
 **AzureClientId** | Pointer to **string** |  | [optional] 
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
@@ -133,6 +135,7 @@ Name | Type | Description | Notes
 **GraceRotatedSecretKey** | Pointer to **string** |  | [optional] 
 **GrantTypes** | Pointer to **[]string** |  | [optional] 
 **Groups** | Pointer to **string** |  | [optional] 
+**GwCloudIdentityExternalIdOpt** | Pointer to [**AWSGatewayCloudIdentityExternalIdOpt**](AWSGatewayCloudIdentityExternalIdOpt.md) |  | [optional] 
 **HanadbCreationStatements** | Pointer to **string** |  | [optional] 
 **HanadbRevocationStatements** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
@@ -216,6 +219,8 @@ Name | Type | Description | Notes
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 **SessionExtensionWarnIntervalMin** | Pointer to **int64** |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
+**SfAuthMode** | Pointer to **string** |  | [optional] 
+**SfKeyAlgo** | Pointer to **string** |  | [optional] 
 **SfUserRole** | Pointer to **string** | generated  users info | [optional] 
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
@@ -233,6 +238,7 @@ Name | Type | Description | Notes
 **UserTtl** | Pointer to **string** |  | [optional] 
 **UsernameLength** | Pointer to **int64** |  | [optional] 
 **UsernamePolicy** | Pointer to **string** |  | [optional] 
+**UsernameTemplate** | Pointer to **string** |  | [optional] 
 **VenafiAllowSubdomains** | Pointer to **bool** |  | [optional] 
 **VenafiAllowedDomains** | Pointer to **[]string** |  | [optional] 
 **VenafiApiKey** | Pointer to **string** |  | [optional] 
@@ -645,6 +651,31 @@ SetAwsAccessMode sets AwsAccessMode field to given value.
 
 HasAwsAccessMode returns a boolean if a field has been set.
 
+### GetAwsExternalId
+
+`func (o *DSProducerDetails) GetAwsExternalId() string`
+
+GetAwsExternalId returns the AwsExternalId field if non-nil, zero value otherwise.
+
+### GetAwsExternalIdOk
+
+`func (o *DSProducerDetails) GetAwsExternalIdOk() (*string, bool)`
+
+GetAwsExternalIdOk returns a tuple with the AwsExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsExternalId
+
+`func (o *DSProducerDetails) SetAwsExternalId(v string)`
+
+SetAwsExternalId sets AwsExternalId field to given value.
+
+### HasAwsExternalId
+
+`func (o *DSProducerDetails) HasAwsExternalId() bool`
+
+HasAwsExternalId returns a boolean if a field has been set.
+
 ### GetAwsRegion
 
 `func (o *DSProducerDetails) GetAwsRegion() string`
@@ -894,6 +925,31 @@ SetAwsUserProgrammaticAccess sets AwsUserProgrammaticAccess field to given value
 `func (o *DSProducerDetails) HasAwsUserProgrammaticAccess() bool`
 
 HasAwsUserProgrammaticAccess returns a boolean if a field has been set.
+
+### GetAzureAdministrativeUnit
+
+`func (o *DSProducerDetails) GetAzureAdministrativeUnit() string`
+
+GetAzureAdministrativeUnit returns the AzureAdministrativeUnit field if non-nil, zero value otherwise.
+
+### GetAzureAdministrativeUnitOk
+
+`func (o *DSProducerDetails) GetAzureAdministrativeUnitOk() (*string, bool)`
+
+GetAzureAdministrativeUnitOk returns a tuple with the AzureAdministrativeUnit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureAdministrativeUnit
+
+`func (o *DSProducerDetails) SetAzureAdministrativeUnit(v string)`
+
+SetAzureAdministrativeUnit sets AzureAdministrativeUnit field to given value.
+
+### HasAzureAdministrativeUnit
+
+`func (o *DSProducerDetails) HasAzureAdministrativeUnit() bool`
+
+HasAzureAdministrativeUnit returns a boolean if a field has been set.
 
 ### GetAzureAppObjectId
 
@@ -3495,6 +3551,31 @@ SetGroups sets Groups field to given value.
 
 HasGroups returns a boolean if a field has been set.
 
+### GetGwCloudIdentityExternalIdOpt
+
+`func (o *DSProducerDetails) GetGwCloudIdentityExternalIdOpt() AWSGatewayCloudIdentityExternalIdOpt`
+
+GetGwCloudIdentityExternalIdOpt returns the GwCloudIdentityExternalIdOpt field if non-nil, zero value otherwise.
+
+### GetGwCloudIdentityExternalIdOptOk
+
+`func (o *DSProducerDetails) GetGwCloudIdentityExternalIdOptOk() (*AWSGatewayCloudIdentityExternalIdOpt, bool)`
+
+GetGwCloudIdentityExternalIdOptOk returns a tuple with the GwCloudIdentityExternalIdOpt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGwCloudIdentityExternalIdOpt
+
+`func (o *DSProducerDetails) SetGwCloudIdentityExternalIdOpt(v AWSGatewayCloudIdentityExternalIdOpt)`
+
+SetGwCloudIdentityExternalIdOpt sets GwCloudIdentityExternalIdOpt field to given value.
+
+### HasGwCloudIdentityExternalIdOpt
+
+`func (o *DSProducerDetails) HasGwCloudIdentityExternalIdOpt() bool`
+
+HasGwCloudIdentityExternalIdOpt returns a boolean if a field has been set.
+
 ### GetHanadbCreationStatements
 
 `func (o *DSProducerDetails) GetHanadbCreationStatements() string`
@@ -5570,6 +5651,56 @@ SetSfAccount sets SfAccount field to given value.
 
 HasSfAccount returns a boolean if a field has been set.
 
+### GetSfAuthMode
+
+`func (o *DSProducerDetails) GetSfAuthMode() string`
+
+GetSfAuthMode returns the SfAuthMode field if non-nil, zero value otherwise.
+
+### GetSfAuthModeOk
+
+`func (o *DSProducerDetails) GetSfAuthModeOk() (*string, bool)`
+
+GetSfAuthModeOk returns a tuple with the SfAuthMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSfAuthMode
+
+`func (o *DSProducerDetails) SetSfAuthMode(v string)`
+
+SetSfAuthMode sets SfAuthMode field to given value.
+
+### HasSfAuthMode
+
+`func (o *DSProducerDetails) HasSfAuthMode() bool`
+
+HasSfAuthMode returns a boolean if a field has been set.
+
+### GetSfKeyAlgo
+
+`func (o *DSProducerDetails) GetSfKeyAlgo() string`
+
+GetSfKeyAlgo returns the SfKeyAlgo field if non-nil, zero value otherwise.
+
+### GetSfKeyAlgoOk
+
+`func (o *DSProducerDetails) GetSfKeyAlgoOk() (*string, bool)`
+
+GetSfKeyAlgoOk returns a tuple with the SfKeyAlgo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSfKeyAlgo
+
+`func (o *DSProducerDetails) SetSfKeyAlgo(v string)`
+
+SetSfKeyAlgo sets SfKeyAlgo field to given value.
+
+### HasSfKeyAlgo
+
+`func (o *DSProducerDetails) HasSfKeyAlgo() bool`
+
+HasSfKeyAlgo returns a boolean if a field has been set.
+
 ### GetSfUserRole
 
 `func (o *DSProducerDetails) GetSfUserRole() string`
@@ -5994,6 +6125,31 @@ SetUsernamePolicy sets UsernamePolicy field to given value.
 `func (o *DSProducerDetails) HasUsernamePolicy() bool`
 
 HasUsernamePolicy returns a boolean if a field has been set.
+
+### GetUsernameTemplate
+
+`func (o *DSProducerDetails) GetUsernameTemplate() string`
+
+GetUsernameTemplate returns the UsernameTemplate field if non-nil, zero value otherwise.
+
+### GetUsernameTemplateOk
+
+`func (o *DSProducerDetails) GetUsernameTemplateOk() (*string, bool)`
+
+GetUsernameTemplateOk returns a tuple with the UsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsernameTemplate
+
+`func (o *DSProducerDetails) SetUsernameTemplate(v string)`
+
+SetUsernameTemplate sets UsernameTemplate field to given value.
+
+### HasUsernameTemplate
+
+`func (o *DSProducerDetails) HasUsernameTemplate() bool`
+
+HasUsernameTemplate returns a boolean if a field has been set.
 
 ### GetVenafiAllowSubdomains
 

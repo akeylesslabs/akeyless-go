@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessDate** | Pointer to **time.Time** |  | [optional] 
 **AccessDateDisplay** | Pointer to **string** |  | [optional] 
+**AccessId** | Pointer to **string** |  | [optional] 
 **CertificateVersionInfo** | Pointer to [**CertificateVersionInfo**](CertificateVersionInfo.md) |  | [optional] 
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
 **CustomerFragmentId** | Pointer to **string** |  | [optional] 
@@ -13,6 +14,7 @@ Name | Type | Description | Notes
 **ItemVersionState** | Pointer to **string** | ItemState defines the different states an Item can be in | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
+**UniqueIdentifier** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 **WithCustomerFragment** | Pointer to **bool** |  | [optional] 
 
@@ -84,6 +86,31 @@ SetAccessDateDisplay sets AccessDateDisplay field to given value.
 `func (o *ItemVersion) HasAccessDateDisplay() bool`
 
 HasAccessDateDisplay returns a boolean if a field has been set.
+
+### GetAccessId
+
+`func (o *ItemVersion) GetAccessId() string`
+
+GetAccessId returns the AccessId field if non-nil, zero value otherwise.
+
+### GetAccessIdOk
+
+`func (o *ItemVersion) GetAccessIdOk() (*string, bool)`
+
+GetAccessIdOk returns a tuple with the AccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessId
+
+`func (o *ItemVersion) SetAccessId(v string)`
+
+SetAccessId sets AccessId field to given value.
+
+### HasAccessId
+
+`func (o *ItemVersion) HasAccessId() bool`
+
+HasAccessId returns a boolean if a field has been set.
 
 ### GetCertificateVersionInfo
 
@@ -259,6 +286,31 @@ SetProtectionKeyName sets ProtectionKeyName field to given value.
 `func (o *ItemVersion) HasProtectionKeyName() bool`
 
 HasProtectionKeyName returns a boolean if a field has been set.
+
+### GetUniqueIdentifier
+
+`func (o *ItemVersion) GetUniqueIdentifier() string`
+
+GetUniqueIdentifier returns the UniqueIdentifier field if non-nil, zero value otherwise.
+
+### GetUniqueIdentifierOk
+
+`func (o *ItemVersion) GetUniqueIdentifierOk() (*string, bool)`
+
+GetUniqueIdentifierOk returns a tuple with the UniqueIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueIdentifier
+
+`func (o *ItemVersion) SetUniqueIdentifier(v string)`
+
+SetUniqueIdentifier sets UniqueIdentifier field to given value.
+
+### HasUniqueIdentifier
+
+`func (o *ItemVersion) HasUniqueIdentifier() bool`
+
+HasUniqueIdentifier returns a boolean if a field has been set.
 
 ### GetVersion
 

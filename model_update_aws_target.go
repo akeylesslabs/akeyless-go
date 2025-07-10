@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -30,6 +30,8 @@ type UpdateAWSTarget struct {
 	Comment *string `json:"comment,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID
+	GenerateExternalId *bool `json:"generate-external-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
@@ -44,6 +46,8 @@ type UpdateAWSTarget struct {
 	NewName *string `json:"new-name,omitempty"`
 	// AWS region
 	Region *string `json:"region,omitempty"`
+	// AWS IAM role identifier that Gateway will assume in your AWS account, relevant only when using external ID
+	RoleArn *string `json:"role-arn,omitempty"`
 	// Required only for temporary security credentials retrieved using STS
 	SessionToken *string `json:"session-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -196,6 +200,38 @@ func (o *UpdateAWSTarget) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *UpdateAWSTarget) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetGenerateExternalId returns the GenerateExternalId field value if set, zero value otherwise.
+func (o *UpdateAWSTarget) GetGenerateExternalId() bool {
+	if o == nil || IsNil(o.GenerateExternalId) {
+		var ret bool
+		return ret
+	}
+	return *o.GenerateExternalId
+}
+
+// GetGenerateExternalIdOk returns a tuple with the GenerateExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAWSTarget) GetGenerateExternalIdOk() (*bool, bool) {
+	if o == nil || IsNil(o.GenerateExternalId) {
+		return nil, false
+	}
+	return o.GenerateExternalId, true
+}
+
+// HasGenerateExternalId returns a boolean if a field has been set.
+func (o *UpdateAWSTarget) HasGenerateExternalId() bool {
+	if o != nil && !IsNil(o.GenerateExternalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenerateExternalId gets a reference to the given bool and assigns it to the GenerateExternalId field.
+func (o *UpdateAWSTarget) SetGenerateExternalId(v bool) {
+	o.GenerateExternalId = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -414,6 +450,38 @@ func (o *UpdateAWSTarget) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+func (o *UpdateAWSTarget) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAWSTarget) GetRoleArnOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleArn) {
+		return nil, false
+	}
+	return o.RoleArn, true
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *UpdateAWSTarget) HasRoleArn() bool {
+	if o != nil && !IsNil(o.RoleArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+func (o *UpdateAWSTarget) SetRoleArn(v string) {
+	o.RoleArn = &v
+}
+
 // GetSessionToken returns the SessionToken field value if set, zero value otherwise.
 func (o *UpdateAWSTarget) GetSessionToken() string {
 	if o == nil || IsNil(o.SessionToken) {
@@ -592,6 +660,9 @@ func (o UpdateAWSTarget) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.GenerateExternalId) {
+		toSerialize["generate-external-id"] = o.GenerateExternalId
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
@@ -610,6 +681,9 @@ func (o UpdateAWSTarget) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.RoleArn) {
+		toSerialize["role-arn"] = o.RoleArn
 	}
 	if !IsNil(o.SessionToken) {
 		toSerialize["session-token"] = o.SessionToken

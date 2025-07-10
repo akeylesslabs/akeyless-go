@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -38,6 +38,7 @@ type PKICertificateIssueDetails struct {
 	CreatePublicCrl *bool `json:"create_public_crl,omitempty"`
 	// DestinationPath is the destination to save generated certificates
 	DestinationPath *string `json:"destination_path,omitempty"`
+	DisableWildcards *bool `json:"disable_wildcards,omitempty"`
 	EnforceHostnames *bool `json:"enforce_hostnames,omitempty"`
 	// ExpirationNotification holds a list of expiration notices that should be sent in case a certificate is about to expire, this value is being propagated to the Certificate resources that are created
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
@@ -625,6 +626,38 @@ func (o *PKICertificateIssueDetails) HasDestinationPath() bool {
 // SetDestinationPath gets a reference to the given string and assigns it to the DestinationPath field.
 func (o *PKICertificateIssueDetails) SetDestinationPath(v string) {
 	o.DestinationPath = &v
+}
+
+// GetDisableWildcards returns the DisableWildcards field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetDisableWildcards() bool {
+	if o == nil || IsNil(o.DisableWildcards) {
+		var ret bool
+		return ret
+	}
+	return *o.DisableWildcards
+}
+
+// GetDisableWildcardsOk returns a tuple with the DisableWildcards field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetDisableWildcardsOk() (*bool, bool) {
+	if o == nil || IsNil(o.DisableWildcards) {
+		return nil, false
+	}
+	return o.DisableWildcards, true
+}
+
+// HasDisableWildcards returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasDisableWildcards() bool {
+	if o != nil && !IsNil(o.DisableWildcards) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableWildcards gets a reference to the given bool and assigns it to the DisableWildcards field.
+func (o *PKICertificateIssueDetails) SetDisableWildcards(v bool) {
+	o.DisableWildcards = &v
 }
 
 // GetEnforceHostnames returns the EnforceHostnames field value if set, zero value otherwise.
@@ -1391,6 +1424,9 @@ func (o PKICertificateIssueDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DestinationPath) {
 		toSerialize["destination_path"] = o.DestinationPath
+	}
+	if !IsNil(o.DisableWildcards) {
+		toSerialize["disable_wildcards"] = o.DisableWildcards
 	}
 	if !IsNil(o.EnforceHostnames) {
 		toSerialize["enforce_hostnames"] = o.EnforceHostnames

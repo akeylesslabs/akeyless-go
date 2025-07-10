@@ -7,10 +7,13 @@ Name | Type | Description | Notes
 **Account** | Pointer to **string** | Account name | [optional] 
 **AccountPassword** | Pointer to **string** | Database Password | [optional] 
 **AccountUsername** | Pointer to **string** | Database Username | [optional] 
+**AuthMode** | Pointer to **string** | The authentication mode for the temporary user [password/key] | [optional] [default to "password"]
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbName** | Pointer to **string** | Database name | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeyAlgo** | Pointer to **string** |  | [optional] 
 **Name** | **string** | Dynamic secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
@@ -117,6 +120,56 @@ SetAccountUsername sets AccountUsername field to given value.
 
 HasAccountUsername returns a boolean if a field has been set.
 
+### GetAuthMode
+
+`func (o *DynamicSecretCreateSnowflake) GetAuthMode() string`
+
+GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
+
+### GetAuthModeOk
+
+`func (o *DynamicSecretCreateSnowflake) GetAuthModeOk() (*string, bool)`
+
+GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMode
+
+`func (o *DynamicSecretCreateSnowflake) SetAuthMode(v string)`
+
+SetAuthMode sets AuthMode field to given value.
+
+### HasAuthMode
+
+`func (o *DynamicSecretCreateSnowflake) HasAuthMode() bool`
+
+HasAuthMode returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateSnowflake) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *DynamicSecretCreateSnowflake) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateSnowflake) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *DynamicSecretCreateSnowflake) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
+
 ### GetDbName
 
 `func (o *DynamicSecretCreateSnowflake) GetDbName() string`
@@ -216,6 +269,31 @@ SetJson sets Json field to given value.
 `func (o *DynamicSecretCreateSnowflake) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetKeyAlgo
+
+`func (o *DynamicSecretCreateSnowflake) GetKeyAlgo() string`
+
+GetKeyAlgo returns the KeyAlgo field if non-nil, zero value otherwise.
+
+### GetKeyAlgoOk
+
+`func (o *DynamicSecretCreateSnowflake) GetKeyAlgoOk() (*string, bool)`
+
+GetKeyAlgoOk returns a tuple with the KeyAlgo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyAlgo
+
+`func (o *DynamicSecretCreateSnowflake) SetKeyAlgo(v string)`
+
+SetKeyAlgo sets KeyAlgo field to given value.
+
+### HasKeyAlgo
+
+`func (o *DynamicSecretCreateSnowflake) HasKeyAlgo() bool`
+
+HasKeyAlgo returns a boolean if a field has been set.
 
 ### GetName
 

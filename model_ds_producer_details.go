@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -36,6 +36,7 @@ type DSProducerDetails struct {
 	AuthorizationPort *string `json:"authorization_port,omitempty"`
 	AwsAccessKeyId *string `json:"aws_access_key_id,omitempty"`
 	AwsAccessMode *string `json:"aws_access_mode,omitempty"`
+	AwsExternalId *string `json:"aws_external_id,omitempty"`
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsRoleArns *string `json:"aws_role_arns,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
@@ -46,6 +47,7 @@ type DSProducerDetails struct {
 	AwsUserGroups *string `json:"aws_user_groups,omitempty"`
 	AwsUserPolicies *string `json:"aws_user_policies,omitempty"`
 	AwsUserProgrammaticAccess *bool `json:"aws_user_programmatic_access,omitempty"`
+	AzureAdministrativeUnit *string `json:"azure_administrative_unit,omitempty"`
 	AzureAppObjectId *string `json:"azure_app_object_id,omitempty"`
 	AzureClientId *string `json:"azure_client_id,omitempty"`
 	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
@@ -155,6 +157,7 @@ type DSProducerDetails struct {
 	GraceRotatedSecretKey *string `json:"grace_rotated_secret_key,omitempty"`
 	GrantTypes []string `json:"grant_types,omitempty"`
 	Groups *string `json:"groups,omitempty"`
+	GwCloudIdentityExternalIdOpt *AWSGatewayCloudIdentityExternalIdOpt `json:"gw_cloud_identity_external_id_opt,omitempty"`
 	HanadbCreationStatements *string `json:"hanadb_creation_statements,omitempty"`
 	HanadbRevocationStatements *string `json:"hanadb_revocation_statements,omitempty"`
 	HostName *string `json:"host_name,omitempty"`
@@ -248,6 +251,8 @@ type DSProducerDetails struct {
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
 	SessionExtensionWarnIntervalMin *int64 `json:"session_extension_warn_interval_min,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
+	SfAuthMode *string `json:"sf_auth_mode,omitempty"`
+	SfKeyAlgo *string `json:"sf_key_algo,omitempty"`
 	// generated  users info
 	SfUserRole *string `json:"sf_user_role,omitempty"`
 	SfWarehouseName *string `json:"sf_warehouse_name,omitempty"`
@@ -269,6 +274,7 @@ type DSProducerDetails struct {
 	UserTtl *string `json:"user_ttl,omitempty"`
 	UsernameLength *int64 `json:"username_length,omitempty"`
 	UsernamePolicy *string `json:"username_policy,omitempty"`
+	UsernameTemplate *string `json:"username_template,omitempty"`
 	VenafiAllowSubdomains *bool `json:"venafi_allow_subdomains,omitempty"`
 	VenafiAllowedDomains []string `json:"venafi_allowed_domains,omitempty"`
 	VenafiApiKey *string `json:"venafi_api_key,omitempty"`
@@ -787,6 +793,38 @@ func (o *DSProducerDetails) SetAwsAccessMode(v string) {
 	o.AwsAccessMode = &v
 }
 
+// GetAwsExternalId returns the AwsExternalId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAwsExternalId() string {
+	if o == nil || IsNil(o.AwsExternalId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsExternalId
+}
+
+// GetAwsExternalIdOk returns a tuple with the AwsExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAwsExternalIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsExternalId) {
+		return nil, false
+	}
+	return o.AwsExternalId, true
+}
+
+// HasAwsExternalId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAwsExternalId() bool {
+	if o != nil && !IsNil(o.AwsExternalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsExternalId gets a reference to the given string and assigns it to the AwsExternalId field.
+func (o *DSProducerDetails) SetAwsExternalId(v string) {
+	o.AwsExternalId = &v
+}
+
 // GetAwsRegion returns the AwsRegion field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetAwsRegion() string {
 	if o == nil || IsNil(o.AwsRegion) {
@@ -1105,6 +1143,38 @@ func (o *DSProducerDetails) HasAwsUserProgrammaticAccess() bool {
 // SetAwsUserProgrammaticAccess gets a reference to the given bool and assigns it to the AwsUserProgrammaticAccess field.
 func (o *DSProducerDetails) SetAwsUserProgrammaticAccess(v bool) {
 	o.AwsUserProgrammaticAccess = &v
+}
+
+// GetAzureAdministrativeUnit returns the AzureAdministrativeUnit field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureAdministrativeUnit() string {
+	if o == nil || IsNil(o.AzureAdministrativeUnit) {
+		var ret string
+		return ret
+	}
+	return *o.AzureAdministrativeUnit
+}
+
+// GetAzureAdministrativeUnitOk returns a tuple with the AzureAdministrativeUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureAdministrativeUnitOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureAdministrativeUnit) {
+		return nil, false
+	}
+	return o.AzureAdministrativeUnit, true
+}
+
+// HasAzureAdministrativeUnit returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureAdministrativeUnit() bool {
+	if o != nil && !IsNil(o.AzureAdministrativeUnit) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureAdministrativeUnit gets a reference to the given string and assigns it to the AzureAdministrativeUnit field.
+func (o *DSProducerDetails) SetAzureAdministrativeUnit(v string) {
+	o.AzureAdministrativeUnit = &v
 }
 
 // GetAzureAppObjectId returns the AzureAppObjectId field value if set, zero value otherwise.
@@ -4435,6 +4505,38 @@ func (o *DSProducerDetails) SetGroups(v string) {
 	o.Groups = &v
 }
 
+// GetGwCloudIdentityExternalIdOpt returns the GwCloudIdentityExternalIdOpt field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGwCloudIdentityExternalIdOpt() AWSGatewayCloudIdentityExternalIdOpt {
+	if o == nil || IsNil(o.GwCloudIdentityExternalIdOpt) {
+		var ret AWSGatewayCloudIdentityExternalIdOpt
+		return ret
+	}
+	return *o.GwCloudIdentityExternalIdOpt
+}
+
+// GetGwCloudIdentityExternalIdOptOk returns a tuple with the GwCloudIdentityExternalIdOpt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGwCloudIdentityExternalIdOptOk() (*AWSGatewayCloudIdentityExternalIdOpt, bool) {
+	if o == nil || IsNil(o.GwCloudIdentityExternalIdOpt) {
+		return nil, false
+	}
+	return o.GwCloudIdentityExternalIdOpt, true
+}
+
+// HasGwCloudIdentityExternalIdOpt returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGwCloudIdentityExternalIdOpt() bool {
+	if o != nil && !IsNil(o.GwCloudIdentityExternalIdOpt) {
+		return true
+	}
+
+	return false
+}
+
+// SetGwCloudIdentityExternalIdOpt gets a reference to the given AWSGatewayCloudIdentityExternalIdOpt and assigns it to the GwCloudIdentityExternalIdOpt field.
+func (o *DSProducerDetails) SetGwCloudIdentityExternalIdOpt(v AWSGatewayCloudIdentityExternalIdOpt) {
+	o.GwCloudIdentityExternalIdOpt = &v
+}
+
 // GetHanadbCreationStatements returns the HanadbCreationStatements field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetHanadbCreationStatements() string {
 	if o == nil || IsNil(o.HanadbCreationStatements) {
@@ -7091,6 +7193,70 @@ func (o *DSProducerDetails) SetSfAccount(v string) {
 	o.SfAccount = &v
 }
 
+// GetSfAuthMode returns the SfAuthMode field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSfAuthMode() string {
+	if o == nil || IsNil(o.SfAuthMode) {
+		var ret string
+		return ret
+	}
+	return *o.SfAuthMode
+}
+
+// GetSfAuthModeOk returns a tuple with the SfAuthMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSfAuthModeOk() (*string, bool) {
+	if o == nil || IsNil(o.SfAuthMode) {
+		return nil, false
+	}
+	return o.SfAuthMode, true
+}
+
+// HasSfAuthMode returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSfAuthMode() bool {
+	if o != nil && !IsNil(o.SfAuthMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetSfAuthMode gets a reference to the given string and assigns it to the SfAuthMode field.
+func (o *DSProducerDetails) SetSfAuthMode(v string) {
+	o.SfAuthMode = &v
+}
+
+// GetSfKeyAlgo returns the SfKeyAlgo field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetSfKeyAlgo() string {
+	if o == nil || IsNil(o.SfKeyAlgo) {
+		var ret string
+		return ret
+	}
+	return *o.SfKeyAlgo
+}
+
+// GetSfKeyAlgoOk returns a tuple with the SfKeyAlgo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetSfKeyAlgoOk() (*string, bool) {
+	if o == nil || IsNil(o.SfKeyAlgo) {
+		return nil, false
+	}
+	return o.SfKeyAlgo, true
+}
+
+// HasSfKeyAlgo returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasSfKeyAlgo() bool {
+	if o != nil && !IsNil(o.SfKeyAlgo) {
+		return true
+	}
+
+	return false
+}
+
+// SetSfKeyAlgo gets a reference to the given string and assigns it to the SfKeyAlgo field.
+func (o *DSProducerDetails) SetSfKeyAlgo(v string) {
+	o.SfKeyAlgo = &v
+}
+
 // GetSfUserRole returns the SfUserRole field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetSfUserRole() string {
 	if o == nil || IsNil(o.SfUserRole) {
@@ -7633,6 +7799,38 @@ func (o *DSProducerDetails) HasUsernamePolicy() bool {
 // SetUsernamePolicy gets a reference to the given string and assigns it to the UsernamePolicy field.
 func (o *DSProducerDetails) SetUsernamePolicy(v string) {
 	o.UsernamePolicy = &v
+}
+
+// GetUsernameTemplate returns the UsernameTemplate field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetUsernameTemplate() string {
+	if o == nil || IsNil(o.UsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.UsernameTemplate
+}
+
+// GetUsernameTemplateOk returns a tuple with the UsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.UsernameTemplate) {
+		return nil, false
+	}
+	return o.UsernameTemplate, true
+}
+
+// HasUsernameTemplate returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasUsernameTemplate() bool {
+	if o != nil && !IsNil(o.UsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsernameTemplate gets a reference to the given string and assigns it to the UsernameTemplate field.
+func (o *DSProducerDetails) SetUsernameTemplate(v string) {
+	o.UsernameTemplate = &v
 }
 
 // GetVenafiAllowSubdomains returns the VenafiAllowSubdomains field value if set, zero value otherwise.
@@ -8234,6 +8432,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsAccessMode) {
 		toSerialize["aws_access_mode"] = o.AwsAccessMode
 	}
+	if !IsNil(o.AwsExternalId) {
+		toSerialize["aws_external_id"] = o.AwsExternalId
+	}
 	if !IsNil(o.AwsRegion) {
 		toSerialize["aws_region"] = o.AwsRegion
 	}
@@ -8263,6 +8464,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsUserProgrammaticAccess) {
 		toSerialize["aws_user_programmatic_access"] = o.AwsUserProgrammaticAccess
+	}
+	if !IsNil(o.AzureAdministrativeUnit) {
+		toSerialize["azure_administrative_unit"] = o.AzureAdministrativeUnit
 	}
 	if !IsNil(o.AzureAppObjectId) {
 		toSerialize["azure_app_object_id"] = o.AzureAppObjectId
@@ -8576,6 +8780,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
+	if !IsNil(o.GwCloudIdentityExternalIdOpt) {
+		toSerialize["gw_cloud_identity_external_id_opt"] = o.GwCloudIdentityExternalIdOpt
+	}
 	if !IsNil(o.HanadbCreationStatements) {
 		toSerialize["hanadb_creation_statements"] = o.HanadbCreationStatements
 	}
@@ -8825,6 +9032,12 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SfAccount) {
 		toSerialize["sf_account"] = o.SfAccount
 	}
+	if !IsNil(o.SfAuthMode) {
+		toSerialize["sf_auth_mode"] = o.SfAuthMode
+	}
+	if !IsNil(o.SfKeyAlgo) {
+		toSerialize["sf_key_algo"] = o.SfKeyAlgo
+	}
 	if !IsNil(o.SfUserRole) {
 		toSerialize["sf_user_role"] = o.SfUserRole
 	}
@@ -8875,6 +9088,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UsernamePolicy) {
 		toSerialize["username_policy"] = o.UsernamePolicy
+	}
+	if !IsNil(o.UsernameTemplate) {
+		toSerialize["username_template"] = o.UsernameTemplate
 	}
 	if !IsNil(o.VenafiAllowSubdomains) {
 		toSerialize["venafi_allow_subdomains"] = o.VenafiAllowSubdomains

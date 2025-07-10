@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -30,6 +30,8 @@ type UpdateAccountSettings struct {
 	CompanyName *string `json:"company-name,omitempty"`
 	// Country
 	Country *string `json:"country,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified. To specify multiple events, use argument multiple times: --default-certificate-expiration-notification-days 1 --default-certificate-expiration-notification-days 5
+	DefaultCertificateExpirationNotificationDays []string `json:"default-certificate-expiration-notification-days,omitempty"`
 	// Set the account default key based on the DFC key name. Use \"set-original-akeyless-default-key\" to revert to using the original default key of the account.
 	DefaultKeyName *string `json:"default-key-name,omitempty"`
 	// Set the default ttl in minutes for sharing item number between 60 and 43200
@@ -42,6 +44,8 @@ type UpdateAccountSettings struct {
 	DynamicSecretMaxTtl *int64 `json:"dynamic-secret-max-ttl,omitempty"`
 	// Set a maximum ttl for dynamic secrets [true/false]
 	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified. [true/false]
+	EnableDefaultCertificateExpirationEvent *string `json:"enable-default-certificate-expiration-event,omitempty"`
 	// Enable sharing items [true/false]
 	EnableItemSharing *string `json:"enable-item-sharing,omitempty"`
 	// Enable password expiration policy [true/false]
@@ -295,6 +299,38 @@ func (o *UpdateAccountSettings) SetCountry(v string) {
 	o.Country = &v
 }
 
+// GetDefaultCertificateExpirationNotificationDays returns the DefaultCertificateExpirationNotificationDays field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetDefaultCertificateExpirationNotificationDays() []string {
+	if o == nil || IsNil(o.DefaultCertificateExpirationNotificationDays) {
+		var ret []string
+		return ret
+	}
+	return o.DefaultCertificateExpirationNotificationDays
+}
+
+// GetDefaultCertificateExpirationNotificationDaysOk returns a tuple with the DefaultCertificateExpirationNotificationDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetDefaultCertificateExpirationNotificationDaysOk() ([]string, bool) {
+	if o == nil || IsNil(o.DefaultCertificateExpirationNotificationDays) {
+		return nil, false
+	}
+	return o.DefaultCertificateExpirationNotificationDays, true
+}
+
+// HasDefaultCertificateExpirationNotificationDays returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasDefaultCertificateExpirationNotificationDays() bool {
+	if o != nil && !IsNil(o.DefaultCertificateExpirationNotificationDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultCertificateExpirationNotificationDays gets a reference to the given []string and assigns it to the DefaultCertificateExpirationNotificationDays field.
+func (o *UpdateAccountSettings) SetDefaultCertificateExpirationNotificationDays(v []string) {
+	o.DefaultCertificateExpirationNotificationDays = v
+}
+
 // GetDefaultKeyName returns the DefaultKeyName field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetDefaultKeyName() string {
 	if o == nil || IsNil(o.DefaultKeyName) {
@@ -485,6 +521,38 @@ func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool {
 // SetDynamicSecretMaxTtlEnable gets a reference to the given string and assigns it to the DynamicSecretMaxTtlEnable field.
 func (o *UpdateAccountSettings) SetDynamicSecretMaxTtlEnable(v string) {
 	o.DynamicSecretMaxTtlEnable = &v
+}
+
+// GetEnableDefaultCertificateExpirationEvent returns the EnableDefaultCertificateExpirationEvent field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetEnableDefaultCertificateExpirationEvent() string {
+	if o == nil || IsNil(o.EnableDefaultCertificateExpirationEvent) {
+		var ret string
+		return ret
+	}
+	return *o.EnableDefaultCertificateExpirationEvent
+}
+
+// GetEnableDefaultCertificateExpirationEventOk returns a tuple with the EnableDefaultCertificateExpirationEvent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetEnableDefaultCertificateExpirationEventOk() (*string, bool) {
+	if o == nil || IsNil(o.EnableDefaultCertificateExpirationEvent) {
+		return nil, false
+	}
+	return o.EnableDefaultCertificateExpirationEvent, true
+}
+
+// HasEnableDefaultCertificateExpirationEvent returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasEnableDefaultCertificateExpirationEvent() bool {
+	if o != nil && !IsNil(o.EnableDefaultCertificateExpirationEvent) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableDefaultCertificateExpirationEvent gets a reference to the given string and assigns it to the EnableDefaultCertificateExpirationEvent field.
+func (o *UpdateAccountSettings) SetEnableDefaultCertificateExpirationEvent(v string) {
+	o.EnableDefaultCertificateExpirationEvent = &v
 }
 
 // GetEnableItemSharing returns the EnableItemSharing field value if set, zero value otherwise.
@@ -1568,6 +1636,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Country) {
 		toSerialize["country"] = o.Country
 	}
+	if !IsNil(o.DefaultCertificateExpirationNotificationDays) {
+		toSerialize["default-certificate-expiration-notification-days"] = o.DefaultCertificateExpirationNotificationDays
+	}
 	if !IsNil(o.DefaultKeyName) {
 		toSerialize["default-key-name"] = o.DefaultKeyName
 	}
@@ -1585,6 +1656,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DynamicSecretMaxTtlEnable) {
 		toSerialize["dynamic-secret-max-ttl-enable"] = o.DynamicSecretMaxTtlEnable
+	}
+	if !IsNil(o.EnableDefaultCertificateExpirationEvent) {
+		toSerialize["enable-default-certificate-expiration-event"] = o.EnableDefaultCertificateExpirationEvent
 	}
 	if !IsNil(o.EnableItemSharing) {
 		toSerialize["enable-item-sharing"] = o.EnableItemSharing

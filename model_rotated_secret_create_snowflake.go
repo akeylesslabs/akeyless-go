@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -40,9 +40,13 @@ type RotatedSecretCreateSnowflake struct {
 	Name string `json:"name"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
+	// RSA Private key (base64 encoded) to rotate (relevant only for rotator-type=key)
+	PrivateKey *string `json:"private-key,omitempty"`
+	// The path to the file containing the private key (relevant only for rotator-type=key)
+	PrivateKeyFileName *string `json:"private-key-file-name,omitempty"`
 	// rotated-username password (relevant only for rotator-type=password)
 	RotatedPassword *string `json:"rotated-password,omitempty"`
-	// username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it's own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type=password)
+	// username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it's own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type=password or rotator-type=key)
 	RotatedUsername *string `json:"rotated-username,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
@@ -50,7 +54,7 @@ type RotatedSecretCreateSnowflake struct {
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
-	// The rotator type. options: [target/password]
+	// The rotator type. options: [target/password/key]
 	RotatorType string `json:"rotator-type"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
@@ -370,6 +374,70 @@ func (o *RotatedSecretCreateSnowflake) HasPasswordLength() bool {
 // SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
 func (o *RotatedSecretCreateSnowflake) SetPasswordLength(v string) {
 	o.PasswordLength = &v
+}
+
+// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSnowflake) GetPrivateKey() string {
+	if o == nil || IsNil(o.PrivateKey) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKey
+}
+
+// GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSnowflake) GetPrivateKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateKey) {
+		return nil, false
+	}
+	return o.PrivateKey, true
+}
+
+// HasPrivateKey returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSnowflake) HasPrivateKey() bool {
+	if o != nil && !IsNil(o.PrivateKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
+func (o *RotatedSecretCreateSnowflake) SetPrivateKey(v string) {
+	o.PrivateKey = &v
+}
+
+// GetPrivateKeyFileName returns the PrivateKeyFileName field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSnowflake) GetPrivateKeyFileName() string {
+	if o == nil || IsNil(o.PrivateKeyFileName) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateKeyFileName
+}
+
+// GetPrivateKeyFileNameOk returns a tuple with the PrivateKeyFileName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSnowflake) GetPrivateKeyFileNameOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateKeyFileName) {
+		return nil, false
+	}
+	return o.PrivateKeyFileName, true
+}
+
+// HasPrivateKeyFileName returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSnowflake) HasPrivateKeyFileName() bool {
+	if o != nil && !IsNil(o.PrivateKeyFileName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateKeyFileName gets a reference to the given string and assigns it to the PrivateKeyFileName field.
+func (o *RotatedSecretCreateSnowflake) SetPrivateKeyFileName(v string) {
+	o.PrivateKeyFileName = &v
 }
 
 // GetRotatedPassword returns the RotatedPassword field value if set, zero value otherwise.
@@ -710,6 +778,12 @@ func (o RotatedSecretCreateSnowflake) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
+	}
+	if !IsNil(o.PrivateKey) {
+		toSerialize["private-key"] = o.PrivateKey
+	}
+	if !IsNil(o.PrivateKeyFileName) {
+		toSerialize["private-key-file-name"] = o.PrivateKeyFileName
 	}
 	if !IsNil(o.RotatedPassword) {
 		toSerialize["rotated-password"] = o.RotatedPassword

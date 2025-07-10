@@ -5,9 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | Pointer to **string** | Azure App Object Id | [optional] 
+**AzureAdministrativeUnit** | Pointer to **string** | Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true) | [optional] 
 **AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Tenant ID | [optional] 
+**CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **FixedUserClaimKeyname** | Pointer to **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | Pointer to **bool** | Fixed user | [optional] [default to false]
@@ -75,6 +77,31 @@ SetAppObjId sets AppObjId field to given value.
 `func (o *GatewayUpdateProducerAzure) HasAppObjId() bool`
 
 HasAppObjId returns a boolean if a field has been set.
+
+### GetAzureAdministrativeUnit
+
+`func (o *GatewayUpdateProducerAzure) GetAzureAdministrativeUnit() string`
+
+GetAzureAdministrativeUnit returns the AzureAdministrativeUnit field if non-nil, zero value otherwise.
+
+### GetAzureAdministrativeUnitOk
+
+`func (o *GatewayUpdateProducerAzure) GetAzureAdministrativeUnitOk() (*string, bool)`
+
+GetAzureAdministrativeUnitOk returns a tuple with the AzureAdministrativeUnit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureAdministrativeUnit
+
+`func (o *GatewayUpdateProducerAzure) SetAzureAdministrativeUnit(v string)`
+
+SetAzureAdministrativeUnit sets AzureAdministrativeUnit field to given value.
+
+### HasAzureAdministrativeUnit
+
+`func (o *GatewayUpdateProducerAzure) HasAzureAdministrativeUnit() bool`
+
+HasAzureAdministrativeUnit returns a boolean if a field has been set.
 
 ### GetAzureClientId
 
@@ -150,6 +177,31 @@ SetAzureTenantId sets AzureTenantId field to given value.
 `func (o *GatewayUpdateProducerAzure) HasAzureTenantId() bool`
 
 HasAzureTenantId returns a boolean if a field has been set.
+
+### GetCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerAzure) GetCustomUsernameTemplate() string`
+
+GetCustomUsernameTemplate returns the CustomUsernameTemplate field if non-nil, zero value otherwise.
+
+### GetCustomUsernameTemplateOk
+
+`func (o *GatewayUpdateProducerAzure) GetCustomUsernameTemplateOk() (*string, bool)`
+
+GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerAzure) SetCustomUsernameTemplate(v string)`
+
+SetCustomUsernameTemplate sets CustomUsernameTemplate field to given value.
+
+### HasCustomUsernameTemplate
+
+`func (o *GatewayUpdateProducerAzure) HasCustomUsernameTemplate() bool`
+
+HasCustomUsernameTemplate returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

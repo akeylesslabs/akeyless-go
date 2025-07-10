@@ -3,7 +3,7 @@ Akeyless API
 
 The purpose of this application is to provide access to Akeyless API.
 
-API version: 2.0
+API version: 3.0
 Contact: support@akeyless.io
 */
 
@@ -24,6 +24,8 @@ var _ MappedNullable = &GatewayCreateProducerRdp{}
 type GatewayCreateProducerRdp struct {
 	// AllowUserExtendSession
 	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
+	// Customize how temporary usernames are generated using go template
+	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only=true)
@@ -154,6 +156,38 @@ func (o *GatewayCreateProducerRdp) HasAllowUserExtendSession() bool {
 // SetAllowUserExtendSession gets a reference to the given int64 and assigns it to the AllowUserExtendSession field.
 func (o *GatewayCreateProducerRdp) SetAllowUserExtendSession(v int64) {
 	o.AllowUserExtendSession = &v
+}
+
+// GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRdp) GetCustomUsernameTemplate() string {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CustomUsernameTemplate
+}
+
+// GetCustomUsernameTemplateOk returns a tuple with the CustomUsernameTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRdp) GetCustomUsernameTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomUsernameTemplate) {
+		return nil, false
+	}
+	return o.CustomUsernameTemplate, true
+}
+
+// HasCustomUsernameTemplate returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRdp) HasCustomUsernameTemplate() bool {
+	if o != nil && !IsNil(o.CustomUsernameTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomUsernameTemplate gets a reference to the given string and assigns it to the CustomUsernameTemplate field.
+func (o *GatewayCreateProducerRdp) SetCustomUsernameTemplate(v string) {
+	o.CustomUsernameTemplate = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1024,6 +1058,9 @@ func (o GatewayCreateProducerRdp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AllowUserExtendSession) {
 		toSerialize["allow-user-extend-session"] = o.AllowUserExtendSession
+	}
+	if !IsNil(o.CustomUsernameTemplate) {
+		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
