@@ -46,6 +46,8 @@ type DynamicSecretUpdateK8s struct {
 	K8sPredefinedRoleName *string `json:"k8s-predefined-role-name,omitempty"`
 	// Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type=dynamic)
 	K8sPredefinedRoleType *string `json:"k8s-predefined-role-type,omitempty"`
+	// Content of the yaml in a Base64 format.
+	K8sRolebindingYamlData *string `json:"k8s-rolebinding-yaml-data,omitempty"`
 	// Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type=dynamic)
 	K8sRolebindingYamlDef *string `json:"k8s-rolebinding-yaml-def,omitempty"`
 	// K8S ServiceAccount to extract token from.
@@ -514,6 +516,38 @@ func (o *DynamicSecretUpdateK8s) HasK8sPredefinedRoleType() bool {
 // SetK8sPredefinedRoleType gets a reference to the given string and assigns it to the K8sPredefinedRoleType field.
 func (o *DynamicSecretUpdateK8s) SetK8sPredefinedRoleType(v string) {
 	o.K8sPredefinedRoleType = &v
+}
+
+// GetK8sRolebindingYamlData returns the K8sRolebindingYamlData field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateK8s) GetK8sRolebindingYamlData() string {
+	if o == nil || IsNil(o.K8sRolebindingYamlData) {
+		var ret string
+		return ret
+	}
+	return *o.K8sRolebindingYamlData
+}
+
+// GetK8sRolebindingYamlDataOk returns a tuple with the K8sRolebindingYamlData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateK8s) GetK8sRolebindingYamlDataOk() (*string, bool) {
+	if o == nil || IsNil(o.K8sRolebindingYamlData) {
+		return nil, false
+	}
+	return o.K8sRolebindingYamlData, true
+}
+
+// HasK8sRolebindingYamlData returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateK8s) HasK8sRolebindingYamlData() bool {
+	if o != nil && !IsNil(o.K8sRolebindingYamlData) {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sRolebindingYamlData gets a reference to the given string and assigns it to the K8sRolebindingYamlData field.
+func (o *DynamicSecretUpdateK8s) SetK8sRolebindingYamlData(v string) {
+	o.K8sRolebindingYamlData = &v
 }
 
 // GetK8sRolebindingYamlDef returns the K8sRolebindingYamlDef field value if set, zero value otherwise.
@@ -1257,6 +1291,9 @@ func (o DynamicSecretUpdateK8s) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.K8sPredefinedRoleType) {
 		toSerialize["k8s-predefined-role-type"] = o.K8sPredefinedRoleType
+	}
+	if !IsNil(o.K8sRolebindingYamlData) {
+		toSerialize["k8s-rolebinding-yaml-data"] = o.K8sRolebindingYamlData
 	}
 	if !IsNil(o.K8sRolebindingYamlDef) {
 		toSerialize["k8s-rolebinding-yaml-def"] = o.K8sRolebindingYamlDef

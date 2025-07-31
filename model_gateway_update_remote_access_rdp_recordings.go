@@ -44,6 +44,12 @@ type GatewayUpdateRemoteAccessRdpRecordings struct {
 	Json *bool `json:"json,omitempty"`
 	// Enable recording of rdp session [true/false]
 	RdpSessionRecording *string `json:"rdp-session-recording,omitempty"`
+	// Whether to compress recording files before upload
+	RdpSessionRecordingCompress *bool `json:"rdp-session-recording-compress,omitempty"`
+	// If provided, this key will be used to encrypt uploaded recordings.
+	RdpSessionRecordingEncryptionKey *string `json:"rdp-session-recording-encryption-key,omitempty"`
+	// RDP session recording quality [low/medium/high]
+	RdpSessionRecordingQuality *string `json:"rdp-session-recording-quality,omitempty"`
 	// Rdp session recording storage destination [local/aws/azure]
 	RdpSessionStorage *string `json:"rdp-session-storage,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -457,6 +463,102 @@ func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecording(v string
 	o.RdpSessionRecording = &v
 }
 
+// GetRdpSessionRecordingCompress returns the RdpSessionRecordingCompress field value if set, zero value otherwise.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingCompress() bool {
+	if o == nil || IsNil(o.RdpSessionRecordingCompress) {
+		var ret bool
+		return ret
+	}
+	return *o.RdpSessionRecordingCompress
+}
+
+// GetRdpSessionRecordingCompressOk returns a tuple with the RdpSessionRecordingCompress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingCompressOk() (*bool, bool) {
+	if o == nil || IsNil(o.RdpSessionRecordingCompress) {
+		return nil, false
+	}
+	return o.RdpSessionRecordingCompress, true
+}
+
+// HasRdpSessionRecordingCompress returns a boolean if a field has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecordingCompress() bool {
+	if o != nil && !IsNil(o.RdpSessionRecordingCompress) {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpSessionRecordingCompress gets a reference to the given bool and assigns it to the RdpSessionRecordingCompress field.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecordingCompress(v bool) {
+	o.RdpSessionRecordingCompress = &v
+}
+
+// GetRdpSessionRecordingEncryptionKey returns the RdpSessionRecordingEncryptionKey field value if set, zero value otherwise.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingEncryptionKey() string {
+	if o == nil || IsNil(o.RdpSessionRecordingEncryptionKey) {
+		var ret string
+		return ret
+	}
+	return *o.RdpSessionRecordingEncryptionKey
+}
+
+// GetRdpSessionRecordingEncryptionKeyOk returns a tuple with the RdpSessionRecordingEncryptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingEncryptionKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.RdpSessionRecordingEncryptionKey) {
+		return nil, false
+	}
+	return o.RdpSessionRecordingEncryptionKey, true
+}
+
+// HasRdpSessionRecordingEncryptionKey returns a boolean if a field has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecordingEncryptionKey() bool {
+	if o != nil && !IsNil(o.RdpSessionRecordingEncryptionKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpSessionRecordingEncryptionKey gets a reference to the given string and assigns it to the RdpSessionRecordingEncryptionKey field.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecordingEncryptionKey(v string) {
+	o.RdpSessionRecordingEncryptionKey = &v
+}
+
+// GetRdpSessionRecordingQuality returns the RdpSessionRecordingQuality field value if set, zero value otherwise.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingQuality() string {
+	if o == nil || IsNil(o.RdpSessionRecordingQuality) {
+		var ret string
+		return ret
+	}
+	return *o.RdpSessionRecordingQuality
+}
+
+// GetRdpSessionRecordingQualityOk returns a tuple with the RdpSessionRecordingQuality field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingQualityOk() (*string, bool) {
+	if o == nil || IsNil(o.RdpSessionRecordingQuality) {
+		return nil, false
+	}
+	return o.RdpSessionRecordingQuality, true
+}
+
+// HasRdpSessionRecordingQuality returns a boolean if a field has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecordingQuality() bool {
+	if o != nil && !IsNil(o.RdpSessionRecordingQuality) {
+		return true
+	}
+
+	return false
+}
+
+// SetRdpSessionRecordingQuality gets a reference to the given string and assigns it to the RdpSessionRecordingQuality field.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecordingQuality(v string) {
+	o.RdpSessionRecordingQuality = &v
+}
+
 // GetRdpSessionStorage returns the RdpSessionStorage field value if set, zero value otherwise.
 func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionStorage() string {
 	if o == nil || IsNil(o.RdpSessionStorage) {
@@ -598,6 +700,15 @@ func (o GatewayUpdateRemoteAccessRdpRecordings) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.RdpSessionRecording) {
 		toSerialize["rdp-session-recording"] = o.RdpSessionRecording
+	}
+	if !IsNil(o.RdpSessionRecordingCompress) {
+		toSerialize["rdp-session-recording-compress"] = o.RdpSessionRecordingCompress
+	}
+	if !IsNil(o.RdpSessionRecordingEncryptionKey) {
+		toSerialize["rdp-session-recording-encryption-key"] = o.RdpSessionRecordingEncryptionKey
+	}
+	if !IsNil(o.RdpSessionRecordingQuality) {
+		toSerialize["rdp-session-recording-quality"] = o.RdpSessionRecordingQuality
 	}
 	if !IsNil(o.RdpSessionStorage) {
 		toSerialize["rdp-session-storage"] = o.RdpSessionStorage

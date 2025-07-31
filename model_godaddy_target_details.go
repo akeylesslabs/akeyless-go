@@ -26,6 +26,8 @@ type GodaddyTargetDetails struct {
 	ImapUser *string `json:"imap_user,omitempty"`
 	Key *string `json:"key,omitempty"`
 	Secret *string `json:"secret,omitempty"`
+	// Optional, used to find the certificate ID in GoDaddy's API
+	ShopperId *string `json:"shopper_id,omitempty"`
 	// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
 	Timeout *int64 `json:"timeout,omitempty"`
 	ValidationEmail *string `json:"validation_email,omitempty"`
@@ -240,6 +242,38 @@ func (o *GodaddyTargetDetails) SetSecret(v string) {
 	o.Secret = &v
 }
 
+// GetShopperId returns the ShopperId field value if set, zero value otherwise.
+func (o *GodaddyTargetDetails) GetShopperId() string {
+	if o == nil || IsNil(o.ShopperId) {
+		var ret string
+		return ret
+	}
+	return *o.ShopperId
+}
+
+// GetShopperIdOk returns a tuple with the ShopperId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GodaddyTargetDetails) GetShopperIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ShopperId) {
+		return nil, false
+	}
+	return o.ShopperId, true
+}
+
+// HasShopperId returns a boolean if a field has been set.
+func (o *GodaddyTargetDetails) HasShopperId() bool {
+	if o != nil && !IsNil(o.ShopperId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShopperId gets a reference to the given string and assigns it to the ShopperId field.
+func (o *GodaddyTargetDetails) SetShopperId(v string) {
+	o.ShopperId = &v
+}
+
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
 func (o *GodaddyTargetDetails) GetTimeout() int64 {
 	if o == nil || IsNil(o.Timeout) {
@@ -331,6 +365,9 @@ func (o GodaddyTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Secret) {
 		toSerialize["secret"] = o.Secret
+	}
+	if !IsNil(o.ShopperId) {
+		toSerialize["shopper_id"] = o.ShopperId
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout

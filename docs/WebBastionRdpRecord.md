@@ -6,6 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Aws** | Pointer to [**AwsStorage**](AwsStorage.md) |  | [optional] 
 **Azure** | Pointer to [**AzureStorage**](AzureStorage.md) |  | [optional] 
+**Compress** | Pointer to **bool** |  | [optional] 
+**EncryptionKey** | Pointer to **string** |  | [optional] 
+**RecordingQuality** | Pointer to **string** |  | [optional] 
 **StorageType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -76,6 +79,81 @@ SetAzure sets Azure field to given value.
 `func (o *WebBastionRdpRecord) HasAzure() bool`
 
 HasAzure returns a boolean if a field has been set.
+
+### GetCompress
+
+`func (o *WebBastionRdpRecord) GetCompress() bool`
+
+GetCompress returns the Compress field if non-nil, zero value otherwise.
+
+### GetCompressOk
+
+`func (o *WebBastionRdpRecord) GetCompressOk() (*bool, bool)`
+
+GetCompressOk returns a tuple with the Compress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompress
+
+`func (o *WebBastionRdpRecord) SetCompress(v bool)`
+
+SetCompress sets Compress field to given value.
+
+### HasCompress
+
+`func (o *WebBastionRdpRecord) HasCompress() bool`
+
+HasCompress returns a boolean if a field has been set.
+
+### GetEncryptionKey
+
+`func (o *WebBastionRdpRecord) GetEncryptionKey() string`
+
+GetEncryptionKey returns the EncryptionKey field if non-nil, zero value otherwise.
+
+### GetEncryptionKeyOk
+
+`func (o *WebBastionRdpRecord) GetEncryptionKeyOk() (*string, bool)`
+
+GetEncryptionKeyOk returns a tuple with the EncryptionKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptionKey
+
+`func (o *WebBastionRdpRecord) SetEncryptionKey(v string)`
+
+SetEncryptionKey sets EncryptionKey field to given value.
+
+### HasEncryptionKey
+
+`func (o *WebBastionRdpRecord) HasEncryptionKey() bool`
+
+HasEncryptionKey returns a boolean if a field has been set.
+
+### GetRecordingQuality
+
+`func (o *WebBastionRdpRecord) GetRecordingQuality() string`
+
+GetRecordingQuality returns the RecordingQuality field if non-nil, zero value otherwise.
+
+### GetRecordingQualityOk
+
+`func (o *WebBastionRdpRecord) GetRecordingQualityOk() (*string, bool)`
+
+GetRecordingQualityOk returns a tuple with the RecordingQuality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecordingQuality
+
+`func (o *WebBastionRdpRecord) SetRecordingQuality(v string)`
+
+SetRecordingQuality sets RecordingQuality field to given value.
+
+### HasRecordingQuality
+
+`func (o *WebBastionRdpRecord) HasRecordingQuality() bool`
+
+HasRecordingQuality returns a boolean if a field has been set.
 
 ### GetStorageType
 

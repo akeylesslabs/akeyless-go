@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ImapUser** | Pointer to **string** |  | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **Secret** | Pointer to **string** |  | [optional] 
+**ShopperId** | Pointer to **string** | Optional, used to find the certificate ID in GoDaddy&#39;s API | [optional] 
 **Timeout** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
 **ValidationEmail** | Pointer to **string** |  | [optional] 
 
@@ -181,6 +182,31 @@ SetSecret sets Secret field to given value.
 `func (o *GodaddyTargetDetails) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
+
+### GetShopperId
+
+`func (o *GodaddyTargetDetails) GetShopperId() string`
+
+GetShopperId returns the ShopperId field if non-nil, zero value otherwise.
+
+### GetShopperIdOk
+
+`func (o *GodaddyTargetDetails) GetShopperIdOk() (*string, bool)`
+
+GetShopperIdOk returns a tuple with the ShopperId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopperId
+
+`func (o *GodaddyTargetDetails) SetShopperId(v string)`
+
+SetShopperId sets ShopperId field to given value.
+
+### HasShopperId
+
+`func (o *GodaddyTargetDetails) HasShopperId() bool`
+
+HasShopperId returns a boolean if a field has been set.
 
 ### GetTimeout
 

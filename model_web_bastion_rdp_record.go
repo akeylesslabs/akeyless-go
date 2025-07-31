@@ -22,6 +22,9 @@ var _ MappedNullable = &WebBastionRdpRecord{}
 type WebBastionRdpRecord struct {
 	Aws *AwsStorage `json:"aws,omitempty"`
 	Azure *AzureStorage `json:"azure,omitempty"`
+	Compress *bool `json:"compress,omitempty"`
+	EncryptionKey *string `json:"encryption_key,omitempty"`
+	RecordingQuality *string `json:"recording_quality,omitempty"`
 	StorageType *string `json:"storage_type,omitempty"`
 }
 
@@ -106,6 +109,102 @@ func (o *WebBastionRdpRecord) SetAzure(v AzureStorage) {
 	o.Azure = &v
 }
 
+// GetCompress returns the Compress field value if set, zero value otherwise.
+func (o *WebBastionRdpRecord) GetCompress() bool {
+	if o == nil || IsNil(o.Compress) {
+		var ret bool
+		return ret
+	}
+	return *o.Compress
+}
+
+// GetCompressOk returns a tuple with the Compress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebBastionRdpRecord) GetCompressOk() (*bool, bool) {
+	if o == nil || IsNil(o.Compress) {
+		return nil, false
+	}
+	return o.Compress, true
+}
+
+// HasCompress returns a boolean if a field has been set.
+func (o *WebBastionRdpRecord) HasCompress() bool {
+	if o != nil && !IsNil(o.Compress) {
+		return true
+	}
+
+	return false
+}
+
+// SetCompress gets a reference to the given bool and assigns it to the Compress field.
+func (o *WebBastionRdpRecord) SetCompress(v bool) {
+	o.Compress = &v
+}
+
+// GetEncryptionKey returns the EncryptionKey field value if set, zero value otherwise.
+func (o *WebBastionRdpRecord) GetEncryptionKey() string {
+	if o == nil || IsNil(o.EncryptionKey) {
+		var ret string
+		return ret
+	}
+	return *o.EncryptionKey
+}
+
+// GetEncryptionKeyOk returns a tuple with the EncryptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebBastionRdpRecord) GetEncryptionKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.EncryptionKey) {
+		return nil, false
+	}
+	return o.EncryptionKey, true
+}
+
+// HasEncryptionKey returns a boolean if a field has been set.
+func (o *WebBastionRdpRecord) HasEncryptionKey() bool {
+	if o != nil && !IsNil(o.EncryptionKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionKey gets a reference to the given string and assigns it to the EncryptionKey field.
+func (o *WebBastionRdpRecord) SetEncryptionKey(v string) {
+	o.EncryptionKey = &v
+}
+
+// GetRecordingQuality returns the RecordingQuality field value if set, zero value otherwise.
+func (o *WebBastionRdpRecord) GetRecordingQuality() string {
+	if o == nil || IsNil(o.RecordingQuality) {
+		var ret string
+		return ret
+	}
+	return *o.RecordingQuality
+}
+
+// GetRecordingQualityOk returns a tuple with the RecordingQuality field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebBastionRdpRecord) GetRecordingQualityOk() (*string, bool) {
+	if o == nil || IsNil(o.RecordingQuality) {
+		return nil, false
+	}
+	return o.RecordingQuality, true
+}
+
+// HasRecordingQuality returns a boolean if a field has been set.
+func (o *WebBastionRdpRecord) HasRecordingQuality() bool {
+	if o != nil && !IsNil(o.RecordingQuality) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecordingQuality gets a reference to the given string and assigns it to the RecordingQuality field.
+func (o *WebBastionRdpRecord) SetRecordingQuality(v string) {
+	o.RecordingQuality = &v
+}
+
 // GetStorageType returns the StorageType field value if set, zero value otherwise.
 func (o *WebBastionRdpRecord) GetStorageType() string {
 	if o == nil || IsNil(o.StorageType) {
@@ -153,6 +252,15 @@ func (o WebBastionRdpRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Azure) {
 		toSerialize["azure"] = o.Azure
+	}
+	if !IsNil(o.Compress) {
+		toSerialize["compress"] = o.Compress
+	}
+	if !IsNil(o.EncryptionKey) {
+		toSerialize["encryption_key"] = o.EncryptionKey
+	}
+	if !IsNil(o.RecordingQuality) {
+		toSerialize["recording_quality"] = o.RecordingQuality
 	}
 	if !IsNil(o.StorageType) {
 		toSerialize["storage_type"] = o.StorageType

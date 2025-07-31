@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **AzureStorageTenantId** | Pointer to **string** | Azure tenant id. For more information refer to https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **RdpSessionRecording** | Pointer to **string** | Enable recording of rdp session [true/false] | [optional] 
+**RdpSessionRecordingCompress** | Pointer to **bool** | Whether to compress recording files before upload | [optional] 
+**RdpSessionRecordingEncryptionKey** | Pointer to **string** | If provided, this key will be used to encrypt uploaded recordings. | [optional] 
+**RdpSessionRecordingQuality** | Pointer to **string** | RDP session recording quality [low/medium/high] | [optional] 
 **RdpSessionStorage** | Pointer to **string** | Rdp session recording storage destination [local/aws/azure] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -338,6 +341,81 @@ SetRdpSessionRecording sets RdpSessionRecording field to given value.
 `func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecording() bool`
 
 HasRdpSessionRecording returns a boolean if a field has been set.
+
+### GetRdpSessionRecordingCompress
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingCompress() bool`
+
+GetRdpSessionRecordingCompress returns the RdpSessionRecordingCompress field if non-nil, zero value otherwise.
+
+### GetRdpSessionRecordingCompressOk
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingCompressOk() (*bool, bool)`
+
+GetRdpSessionRecordingCompressOk returns a tuple with the RdpSessionRecordingCompress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdpSessionRecordingCompress
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecordingCompress(v bool)`
+
+SetRdpSessionRecordingCompress sets RdpSessionRecordingCompress field to given value.
+
+### HasRdpSessionRecordingCompress
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecordingCompress() bool`
+
+HasRdpSessionRecordingCompress returns a boolean if a field has been set.
+
+### GetRdpSessionRecordingEncryptionKey
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingEncryptionKey() string`
+
+GetRdpSessionRecordingEncryptionKey returns the RdpSessionRecordingEncryptionKey field if non-nil, zero value otherwise.
+
+### GetRdpSessionRecordingEncryptionKeyOk
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingEncryptionKeyOk() (*string, bool)`
+
+GetRdpSessionRecordingEncryptionKeyOk returns a tuple with the RdpSessionRecordingEncryptionKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdpSessionRecordingEncryptionKey
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecordingEncryptionKey(v string)`
+
+SetRdpSessionRecordingEncryptionKey sets RdpSessionRecordingEncryptionKey field to given value.
+
+### HasRdpSessionRecordingEncryptionKey
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecordingEncryptionKey() bool`
+
+HasRdpSessionRecordingEncryptionKey returns a boolean if a field has been set.
+
+### GetRdpSessionRecordingQuality
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingQuality() string`
+
+GetRdpSessionRecordingQuality returns the RdpSessionRecordingQuality field if non-nil, zero value otherwise.
+
+### GetRdpSessionRecordingQualityOk
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetRdpSessionRecordingQualityOk() (*string, bool)`
+
+GetRdpSessionRecordingQualityOk returns a tuple with the RdpSessionRecordingQuality field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRdpSessionRecordingQuality
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) SetRdpSessionRecordingQuality(v string)`
+
+SetRdpSessionRecordingQuality sets RdpSessionRecordingQuality field to given value.
+
+### HasRdpSessionRecordingQuality
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) HasRdpSessionRecordingQuality() bool`
+
+HasRdpSessionRecordingQuality returns a boolean if a field has been set.
 
 ### GetRdpSessionStorage
 

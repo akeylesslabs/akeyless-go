@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** | Key of the api credentials to the Godaddy account | 
+**CustomerId** | Pointer to **string** | Customer ID (ShopperId) required for renewal of imported certificates | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **ImapFqdn** | **string** | ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS | 
 **ImapPassword** | **string** | ImapPassword to access the IMAP service | 
@@ -57,6 +58,31 @@ and a boolean to check if the value has been set.
 
 SetApiKey sets ApiKey field to given value.
 
+
+### GetCustomerId
+
+`func (o *CreateGodaddyTarget) GetCustomerId() string`
+
+GetCustomerId returns the CustomerId field if non-nil, zero value otherwise.
+
+### GetCustomerIdOk
+
+`func (o *CreateGodaddyTarget) GetCustomerIdOk() (*string, bool)`
+
+GetCustomerIdOk returns a tuple with the CustomerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerId
+
+`func (o *CreateGodaddyTarget) SetCustomerId(v string)`
+
+SetCustomerId sets CustomerId field to given value.
+
+### HasCustomerId
+
+`func (o *CreateGodaddyTarget) HasCustomerId() bool`
+
+HasCustomerId returns a boolean if a field has been set.
 
 ### GetDescription
 

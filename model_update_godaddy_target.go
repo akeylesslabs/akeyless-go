@@ -26,6 +26,8 @@ type UpdateGodaddyTarget struct {
 	ApiKey string `json:"api-key"`
 	// Deprecated - use description
 	Comment *string `json:"comment,omitempty"`
+	// Customer ID (ShopperId) required for renewal of imported certificates
+	CustomerId *string `json:"customer_id,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS
@@ -151,6 +153,38 @@ func (o *UpdateGodaddyTarget) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *UpdateGodaddyTarget) SetComment(v string) {
 	o.Comment = &v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *UpdateGodaddyTarget) GetCustomerId() string {
+	if o == nil || IsNil(o.CustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateGodaddyTarget) GetCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *UpdateGodaddyTarget) HasCustomerId() bool {
+	if o != nil && !IsNil(o.CustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *UpdateGodaddyTarget) SetCustomerId(v string) {
+	o.CustomerId = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -638,6 +672,9 @@ func (o UpdateGodaddyTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize["api-key"] = o.ApiKey
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
+	}
+	if !IsNil(o.CustomerId) {
+		toSerialize["customer_id"] = o.CustomerId
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

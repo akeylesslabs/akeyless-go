@@ -24,6 +24,8 @@ var _ MappedNullable = &TargetUpdateGodaddy{}
 type TargetUpdateGodaddy struct {
 	// Key of the api credentials to the Godaddy account
 	ApiKey string `json:"api-key"`
+	// Customer ID (ShopperId) required for renewal of imported certificates
+	CustomerId *string `json:"customer_id,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS
@@ -115,6 +117,38 @@ func (o *TargetUpdateGodaddy) GetApiKeyOk() (*string, bool) {
 // SetApiKey sets field value
 func (o *TargetUpdateGodaddy) SetApiKey(v string) {
 	o.ApiKey = v
+}
+
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
+func (o *TargetUpdateGodaddy) GetCustomerId() string {
+	if o == nil || IsNil(o.CustomerId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerId
+}
+
+// GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateGodaddy) GetCustomerIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerId) {
+		return nil, false
+	}
+	return o.CustomerId, true
+}
+
+// HasCustomerId returns a boolean if a field has been set.
+func (o *TargetUpdateGodaddy) HasCustomerId() bool {
+	if o != nil && !IsNil(o.CustomerId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
+func (o *TargetUpdateGodaddy) SetCustomerId(v string) {
+	o.CustomerId = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -568,6 +602,9 @@ func (o TargetUpdateGodaddy) MarshalJSON() ([]byte, error) {
 func (o TargetUpdateGodaddy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["api-key"] = o.ApiKey
+	if !IsNil(o.CustomerId) {
+		toSerialize["customer_id"] = o.CustomerId
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **K8sNamespace** | Pointer to **string** | K8S Namespace where the ServiceAccount exists. | [optional] 
 **K8sPredefinedRoleName** | Pointer to **string** | The pre-existing Role or ClusterRole name to bind the generated ServiceAccount to (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
 **K8sPredefinedRoleType** | Pointer to **string** | Specifies the type of the pre-existing K8S role [Role, ClusterRole] (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
+**K8sRolebindingYamlData** | Pointer to **string** | Content of the yaml in a Base64 format. | [optional] 
 **K8sRolebindingYamlDef** | Pointer to **string** | Path to yaml file that contains definitions of K8S role and role binding (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
 **K8sServiceAccount** | Pointer to **string** | K8S ServiceAccount to extract token from. | [optional] 
 **K8sServiceAccountType** | Pointer to **string** | K8S ServiceAccount type [fixed, dynamic]. | [optional] 
@@ -357,6 +358,31 @@ SetK8sPredefinedRoleType sets K8sPredefinedRoleType field to given value.
 `func (o *DynamicSecretUpdateK8s) HasK8sPredefinedRoleType() bool`
 
 HasK8sPredefinedRoleType returns a boolean if a field has been set.
+
+### GetK8sRolebindingYamlData
+
+`func (o *DynamicSecretUpdateK8s) GetK8sRolebindingYamlData() string`
+
+GetK8sRolebindingYamlData returns the K8sRolebindingYamlData field if non-nil, zero value otherwise.
+
+### GetK8sRolebindingYamlDataOk
+
+`func (o *DynamicSecretUpdateK8s) GetK8sRolebindingYamlDataOk() (*string, bool)`
+
+GetK8sRolebindingYamlDataOk returns a tuple with the K8sRolebindingYamlData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sRolebindingYamlData
+
+`func (o *DynamicSecretUpdateK8s) SetK8sRolebindingYamlData(v string)`
+
+SetK8sRolebindingYamlData sets K8sRolebindingYamlData field to given value.
+
+### HasK8sRolebindingYamlData
+
+`func (o *DynamicSecretUpdateK8s) HasK8sRolebindingYamlData() bool`
+
+HasK8sRolebindingYamlData returns a boolean if a field has been set.
 
 ### GetK8sRolebindingYamlDef
 
