@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | Pointer to **string** | Enable Log Forwarding [true/false] | [optional] [default to "true"]
+**EnableBatch** | Pointer to **string** | Enable batch forwarding [true/false] | [optional] [default to "true"]
 **EnableTls** | Pointer to **bool** | Enable tls | [optional] 
 **Index** | Pointer to **string** | Splunk index | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -61,6 +62,31 @@ SetEnable sets Enable field to given value.
 `func (o *GwUpdateRemoteAccessSessionLogsSplunk) HasEnable() bool`
 
 HasEnable returns a boolean if a field has been set.
+
+### GetEnableBatch
+
+`func (o *GwUpdateRemoteAccessSessionLogsSplunk) GetEnableBatch() string`
+
+GetEnableBatch returns the EnableBatch field if non-nil, zero value otherwise.
+
+### GetEnableBatchOk
+
+`func (o *GwUpdateRemoteAccessSessionLogsSplunk) GetEnableBatchOk() (*string, bool)`
+
+GetEnableBatchOk returns a tuple with the EnableBatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableBatch
+
+`func (o *GwUpdateRemoteAccessSessionLogsSplunk) SetEnableBatch(v string)`
+
+SetEnableBatch sets EnableBatch field to given value.
+
+### HasEnableBatch
+
+`func (o *GwUpdateRemoteAccessSessionLogsSplunk) HasEnableBatch() bool`
+
+HasEnableBatch returns a boolean if a field has been set.
 
 ### GetEnableTls
 

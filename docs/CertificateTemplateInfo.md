@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Country** | Pointer to **string** |  | [optional] 
 **CsrCnfBase64** | Pointer to **string** |  | [optional] 
 **DigestAlgo** | Pointer to **string** |  | [optional] 
+**HashAlgorithm** | Pointer to **string** |  | [optional] 
 **Locality** | Pointer to **string** |  | [optional] 
 **Organization** | Pointer to **string** |  | [optional] 
 **Province** | Pointer to **string** |  | [optional] 
@@ -132,6 +133,31 @@ SetDigestAlgo sets DigestAlgo field to given value.
 `func (o *CertificateTemplateInfo) HasDigestAlgo() bool`
 
 HasDigestAlgo returns a boolean if a field has been set.
+
+### GetHashAlgorithm
+
+`func (o *CertificateTemplateInfo) GetHashAlgorithm() string`
+
+GetHashAlgorithm returns the HashAlgorithm field if non-nil, zero value otherwise.
+
+### GetHashAlgorithmOk
+
+`func (o *CertificateTemplateInfo) GetHashAlgorithmOk() (*string, bool)`
+
+GetHashAlgorithmOk returns a tuple with the HashAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashAlgorithm
+
+`func (o *CertificateTemplateInfo) SetHashAlgorithm(v string)`
+
+SetHashAlgorithm sets HashAlgorithm field to given value.
+
+### HasHashAlgorithm
+
+`func (o *CertificateTemplateInfo) HasHashAlgorithm() bool`
+
+HasHashAlgorithm returns a boolean if a field has been set.
 
 ### GetLocality
 

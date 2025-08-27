@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enable** | Pointer to **string** | Enable Log Forwarding [true/false] | [optional] [default to "true"]
+**EnableBatch** | Pointer to **string** | Enable batch forwarding [true/false] | [optional] [default to "true"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **OutputFormat** | Pointer to **string** | Logs format [text/json] | [optional] [default to "text"]
 **PullInterval** | Pointer to **string** | Pull interval in seconds | [optional] [default to "10"]
@@ -56,6 +57,31 @@ SetEnable sets Enable field to given value.
 `func (o *GatewayUpdateLogForwardingAzureAnalytics) HasEnable() bool`
 
 HasEnable returns a boolean if a field has been set.
+
+### GetEnableBatch
+
+`func (o *GatewayUpdateLogForwardingAzureAnalytics) GetEnableBatch() string`
+
+GetEnableBatch returns the EnableBatch field if non-nil, zero value otherwise.
+
+### GetEnableBatchOk
+
+`func (o *GatewayUpdateLogForwardingAzureAnalytics) GetEnableBatchOk() (*string, bool)`
+
+GetEnableBatchOk returns a tuple with the EnableBatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableBatch
+
+`func (o *GatewayUpdateLogForwardingAzureAnalytics) SetEnableBatch(v string)`
+
+SetEnableBatch sets EnableBatch field to given value.
+
+### HasEnableBatch
+
+`func (o *GatewayUpdateLogForwardingAzureAnalytics) HasEnableBatch() bool`
+
+HasEnableBatch returns a boolean if a field has been set.
 
 ### GetJson
 

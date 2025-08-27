@@ -43,6 +43,8 @@ type GenerateCsr struct {
 	ExportPrivateKey *bool `json:"export-private-key,omitempty"`
 	// Generate a new classic key for the csr
 	GenerateKey *bool `json:"generate-key,omitempty"`
+	// Specifies the hash algorithm used for the encryption key's operations, available options: SHA256, SHA384, SHA512
+	HashAlgorithm *string `json:"hash-algorithm,omitempty"`
 	// A comma-separated list of ip addresses alternative names
 	IpAddresses *string `json:"ip-addresses,omitempty"`
 	// Set output format to JSON
@@ -76,6 +78,8 @@ func NewGenerateCsr(commonName string, keyType string, name string) *GenerateCsr
 	this.CommonName = commonName
 	var exportPrivateKey bool = false
 	this.ExportPrivateKey = &exportPrivateKey
+	var hashAlgorithm string = "SHA256"
+	this.HashAlgorithm = &hashAlgorithm
 	var json bool = false
 	this.Json = &json
 	this.KeyType = keyType
@@ -92,6 +96,8 @@ func NewGenerateCsrWithDefaults() *GenerateCsr {
 	this := GenerateCsr{}
 	var exportPrivateKey bool = false
 	this.ExportPrivateKey = &exportPrivateKey
+	var hashAlgorithm string = "SHA256"
+	this.HashAlgorithm = &hashAlgorithm
 	var json bool = false
 	this.Json = &json
 	var keyType string = "classic-key"
@@ -445,6 +451,38 @@ func (o *GenerateCsr) SetGenerateKey(v bool) {
 	o.GenerateKey = &v
 }
 
+// GetHashAlgorithm returns the HashAlgorithm field value if set, zero value otherwise.
+func (o *GenerateCsr) GetHashAlgorithm() string {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		var ret string
+		return ret
+	}
+	return *o.HashAlgorithm
+}
+
+// GetHashAlgorithmOk returns a tuple with the HashAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenerateCsr) GetHashAlgorithmOk() (*string, bool) {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		return nil, false
+	}
+	return o.HashAlgorithm, true
+}
+
+// HasHashAlgorithm returns a boolean if a field has been set.
+func (o *GenerateCsr) HasHashAlgorithm() bool {
+	if o != nil && !IsNil(o.HashAlgorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetHashAlgorithm gets a reference to the given string and assigns it to the HashAlgorithm field.
+func (o *GenerateCsr) SetHashAlgorithm(v string) {
+	o.HashAlgorithm = &v
+}
+
 // GetIpAddresses returns the IpAddresses field value if set, zero value otherwise.
 func (o *GenerateCsr) GetIpAddresses() string {
 	if o == nil || IsNil(o.IpAddresses) {
@@ -789,6 +827,9 @@ func (o GenerateCsr) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GenerateKey) {
 		toSerialize["generate-key"] = o.GenerateKey
+	}
+	if !IsNil(o.HashAlgorithm) {
+		toSerialize["hash-algorithm"] = o.HashAlgorithm
 	}
 	if !IsNil(o.IpAddresses) {
 		toSerialize["ip-addresses"] = o.IpAddresses

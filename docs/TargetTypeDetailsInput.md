@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DockerhubTargetDetails** | Pointer to [**DockerhubTargetDetails**](DockerhubTargetDetails.md) |  | [optional] 
 **EksTargetDetails** | Pointer to [**EKSTargetDetails**](EKSTargetDetails.md) |  | [optional] 
 **GcpTargetDetails** | Pointer to [**GcpTargetDetails**](GcpTargetDetails.md) |  | [optional] 
+**GeminiTargetDetails** | Pointer to [**GeminiTargetDetails**](GeminiTargetDetails.md) |  | [optional] 
 **GithubTargetDetails** | Pointer to [**GithubTargetDetails**](GithubTargetDetails.md) |  | [optional] 
 **GitlabTargetDetails** | Pointer to [**GitlabTargetDetails**](GitlabTargetDetails.md) |  | [optional] 
 **GkeTargetDetails** | Pointer to [**GKETargetDetails**](GKETargetDetails.md) |  | [optional] 
@@ -24,6 +25,7 @@ Name | Type | Description | Notes
 **LinkedTargetDetails** | Pointer to [**LinkedTargetDetails**](LinkedTargetDetails.md) |  | [optional] 
 **MongoDbTargetDetails** | Pointer to [**MongoDBTargetDetails**](MongoDBTargetDetails.md) |  | [optional] 
 **NativeK8sTargetDetails** | Pointer to [**NativeK8sTargetDetails**](NativeK8sTargetDetails.md) |  | [optional] 
+**OpenaiTargetDetails** | Pointer to [**OpenAITargetDetails**](OpenAITargetDetails.md) |  | [optional] 
 **PingTargetDetails** | Pointer to [**PingTargetDetails**](PingTargetDetails.md) |  | [optional] 
 **RabbitMqTargetDetails** | Pointer to [**RabbitMQTargetDetails**](RabbitMQTargetDetails.md) |  | [optional] 
 **SalesforceTargetDetails** | Pointer to [**SalesforceTargetDetails**](SalesforceTargetDetails.md) |  | [optional] 
@@ -277,6 +279,31 @@ SetGcpTargetDetails sets GcpTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasGcpTargetDetails() bool`
 
 HasGcpTargetDetails returns a boolean if a field has been set.
+
+### GetGeminiTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetGeminiTargetDetails() GeminiTargetDetails`
+
+GetGeminiTargetDetails returns the GeminiTargetDetails field if non-nil, zero value otherwise.
+
+### GetGeminiTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetGeminiTargetDetailsOk() (*GeminiTargetDetails, bool)`
+
+GetGeminiTargetDetailsOk returns a tuple with the GeminiTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeminiTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetGeminiTargetDetails(v GeminiTargetDetails)`
+
+SetGeminiTargetDetails sets GeminiTargetDetails field to given value.
+
+### HasGeminiTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasGeminiTargetDetails() bool`
+
+HasGeminiTargetDetails returns a boolean if a field has been set.
 
 ### GetGithubTargetDetails
 
@@ -552,6 +579,31 @@ SetNativeK8sTargetDetails sets NativeK8sTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasNativeK8sTargetDetails() bool`
 
 HasNativeK8sTargetDetails returns a boolean if a field has been set.
+
+### GetOpenaiTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetOpenaiTargetDetails() OpenAITargetDetails`
+
+GetOpenaiTargetDetails returns the OpenaiTargetDetails field if non-nil, zero value otherwise.
+
+### GetOpenaiTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetOpenaiTargetDetailsOk() (*OpenAITargetDetails, bool)`
+
+GetOpenaiTargetDetailsOk returns a tuple with the OpenaiTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenaiTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetOpenaiTargetDetails(v OpenAITargetDetails)`
+
+SetOpenaiTargetDetails sets OpenaiTargetDetails field to given value.
+
+### HasOpenaiTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasOpenaiTargetDetails() bool`
+
+HasOpenaiTargetDetails returns a boolean if a field has been set.
 
 ### GetPingTargetDetails
 

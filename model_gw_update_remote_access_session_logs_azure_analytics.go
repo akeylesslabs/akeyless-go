@@ -22,6 +22,8 @@ var _ MappedNullable = &GwUpdateRemoteAccessSessionLogsAzureAnalytics{}
 type GwUpdateRemoteAccessSessionLogsAzureAnalytics struct {
 	// Enable Log Forwarding [true/false]
 	Enable *string `json:"enable,omitempty"`
+	// Enable batch forwarding [true/false]
+	EnableBatch *string `json:"enable-batch,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Logs format [text/json]
@@ -46,6 +48,8 @@ func NewGwUpdateRemoteAccessSessionLogsAzureAnalytics() *GwUpdateRemoteAccessSes
 	this := GwUpdateRemoteAccessSessionLogsAzureAnalytics{}
 	var enable string = "true"
 	this.Enable = &enable
+	var enableBatch string = "true"
+	this.EnableBatch = &enableBatch
 	var json bool = false
 	this.Json = &json
 	var outputFormat string = "text"
@@ -62,6 +66,8 @@ func NewGwUpdateRemoteAccessSessionLogsAzureAnalyticsWithDefaults() *GwUpdateRem
 	this := GwUpdateRemoteAccessSessionLogsAzureAnalytics{}
 	var enable string = "true"
 	this.Enable = &enable
+	var enableBatch string = "true"
+	this.EnableBatch = &enableBatch
 	var json bool = false
 	this.Json = &json
 	var outputFormat string = "text"
@@ -101,6 +107,38 @@ func (o *GwUpdateRemoteAccessSessionLogsAzureAnalytics) HasEnable() bool {
 // SetEnable gets a reference to the given string and assigns it to the Enable field.
 func (o *GwUpdateRemoteAccessSessionLogsAzureAnalytics) SetEnable(v string) {
 	o.Enable = &v
+}
+
+// GetEnableBatch returns the EnableBatch field value if set, zero value otherwise.
+func (o *GwUpdateRemoteAccessSessionLogsAzureAnalytics) GetEnableBatch() string {
+	if o == nil || IsNil(o.EnableBatch) {
+		var ret string
+		return ret
+	}
+	return *o.EnableBatch
+}
+
+// GetEnableBatchOk returns a tuple with the EnableBatch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GwUpdateRemoteAccessSessionLogsAzureAnalytics) GetEnableBatchOk() (*string, bool) {
+	if o == nil || IsNil(o.EnableBatch) {
+		return nil, false
+	}
+	return o.EnableBatch, true
+}
+
+// HasEnableBatch returns a boolean if a field has been set.
+func (o *GwUpdateRemoteAccessSessionLogsAzureAnalytics) HasEnableBatch() bool {
+	if o != nil && !IsNil(o.EnableBatch) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableBatch gets a reference to the given string and assigns it to the EnableBatch field.
+func (o *GwUpdateRemoteAccessSessionLogsAzureAnalytics) SetEnableBatch(v string) {
+	o.EnableBatch = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -339,6 +377,9 @@ func (o GwUpdateRemoteAccessSessionLogsAzureAnalytics) ToMap() (map[string]inter
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
+	}
+	if !IsNil(o.EnableBatch) {
+		toSerialize["enable-batch"] = o.EnableBatch
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

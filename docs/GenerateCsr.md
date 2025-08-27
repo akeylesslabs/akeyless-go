@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **EmailAddresses** | Pointer to **string** | A comma-separated list of email addresses alternative names | [optional] 
 **ExportPrivateKey** | Pointer to **bool** | The flag to indicate if the private key should be exported | [optional] [default to false]
 **GenerateKey** | Pointer to **bool** | Generate a new classic key for the csr | [optional] 
+**HashAlgorithm** | Pointer to **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512 | [optional] [default to "SHA256"]
 **IpAddresses** | Pointer to **string** | A comma-separated list of ip addresses alternative names | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyType** | **string** | The type of the key to generate (classic-key/dfc) | [default to "classic-key"]
@@ -314,6 +315,31 @@ SetGenerateKey sets GenerateKey field to given value.
 `func (o *GenerateCsr) HasGenerateKey() bool`
 
 HasGenerateKey returns a boolean if a field has been set.
+
+### GetHashAlgorithm
+
+`func (o *GenerateCsr) GetHashAlgorithm() string`
+
+GetHashAlgorithm returns the HashAlgorithm field if non-nil, zero value otherwise.
+
+### GetHashAlgorithmOk
+
+`func (o *GenerateCsr) GetHashAlgorithmOk() (*string, bool)`
+
+GetHashAlgorithmOk returns a tuple with the HashAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashAlgorithm
+
+`func (o *GenerateCsr) SetHashAlgorithm(v string)`
+
+SetHashAlgorithm sets HashAlgorithm field to given value.
+
+### HasHashAlgorithm
+
+`func (o *GenerateCsr) HasHashAlgorithm() bool`
+
+HasHashAlgorithm returns a boolean if a field has been set.
 
 ### GetIpAddresses
 

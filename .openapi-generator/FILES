@@ -583,6 +583,7 @@ docs/GatewayUpdateTlsCertOutput.md
 docs/GatewayUpdateTmpUsers.md
 docs/GatewaysListResponse.md
 docs/GcpTargetDetails.md
+docs/GeminiTargetDetails.md
 docs/GenCustomerFragment.md
 docs/GeneralConfigPart.md
 docs/GenerateAcmeEab.md
@@ -752,6 +753,7 @@ docs/ObjectVersionSettingsOutput.md
 docs/OidcClientInfo.md
 docs/OnePasswordMigration.md
 docs/OnePasswordPayload.md
+docs/OpenAITargetDetails.md
 docs/PKICertificateIssueDetails.md
 docs/PasswordBreachInfo.md
 docs/PasswordExpirationInfo.md
@@ -900,6 +902,7 @@ docs/TargetCreateDB.md
 docs/TargetCreateDockerhub.md
 docs/TargetCreateEks.md
 docs/TargetCreateGcp.md
+docs/TargetCreateGemini.md
 docs/TargetCreateGithub.md
 docs/TargetCreateGitlab.md
 docs/TargetCreateGke.md
@@ -910,6 +913,7 @@ docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
 docs/TargetCreateLdap.md
 docs/TargetCreateLinked.md
+docs/TargetCreateOpenAI.md
 docs/TargetCreateOutput.md
 docs/TargetCreatePing.md
 docs/TargetCreateRabbitMq.md
@@ -934,6 +938,7 @@ docs/TargetUpdateDB.md
 docs/TargetUpdateDockerhub.md
 docs/TargetUpdateEks.md
 docs/TargetUpdateGcp.md
+docs/TargetUpdateGemini.md
 docs/TargetUpdateGithub.md
 docs/TargetUpdateGitlab.md
 docs/TargetUpdateGke.md
@@ -944,6 +949,7 @@ docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
 docs/TargetUpdateLdap.md
 docs/TargetUpdateLinked.md
+docs/TargetUpdateOpenAI.md
 docs/TargetUpdateOutput.md
 docs/TargetUpdatePing.md
 docs/TargetUpdateRabbitMq.md
@@ -1687,6 +1693,7 @@ model_gcp_access_rules.go
 model_gcp_payload.go
 model_gcp_secrets_migration.go
 model_gcp_target_details.go
+model_gemini_target_details.go
 model_gen_customer_fragment.go
 model_general_config_part.go
 model_generate_acme_eab.go
@@ -1857,6 +1864,7 @@ model_oidc_client_info.go
 model_oidc_custom_claim.go
 model_one_password_migration.go
 model_one_password_payload.go
+model_open_ai_target_details.go
 model_password_breach_info.go
 model_password_expiration_info.go
 model_password_policy_info.go
@@ -2005,6 +2013,7 @@ model_target_create_db.go
 model_target_create_dockerhub.go
 model_target_create_eks.go
 model_target_create_gcp.go
+model_target_create_gemini.go
 model_target_create_github.go
 model_target_create_gitlab.go
 model_target_create_gke.go
@@ -2015,6 +2024,7 @@ model_target_create_hashi_vault.go
 model_target_create_k8s.go
 model_target_create_ldap.go
 model_target_create_linked.go
+model_target_create_open_ai.go
 model_target_create_output.go
 model_target_create_ping.go
 model_target_create_rabbit_mq.go
@@ -2039,6 +2049,7 @@ model_target_update_db.go
 model_target_update_dockerhub.go
 model_target_update_eks.go
 model_target_update_gcp.go
+model_target_update_gemini.go
 model_target_update_github.go
 model_target_update_gitlab.go
 model_target_update_gke.go
@@ -2049,6 +2060,7 @@ model_target_update_hashi_vault.go
 model_target_update_k8s.go
 model_target_update_ldap.go
 model_target_update_linked.go
+model_target_update_open_ai.go
 model_target_update_output.go
 model_target_update_ping.go
 model_target_update_rabbit_mq.go

@@ -20,6 +20,7 @@ var _ MappedNullable = &SplunkLogForwardingConfig{}
 
 // SplunkLogForwardingConfig struct for SplunkLogForwardingConfig
 type SplunkLogForwardingConfig struct {
+	SplunkEnableBatch *string `json:"splunk_enable_batch,omitempty"`
 	SplunkEnableTls *bool `json:"splunk_enable_tls,omitempty"`
 	SplunkIndex *string `json:"splunk_index,omitempty"`
 	SplunkSource *string `json:"splunk_source,omitempty"`
@@ -44,6 +45,38 @@ func NewSplunkLogForwardingConfig() *SplunkLogForwardingConfig {
 func NewSplunkLogForwardingConfigWithDefaults() *SplunkLogForwardingConfig {
 	this := SplunkLogForwardingConfig{}
 	return &this
+}
+
+// GetSplunkEnableBatch returns the SplunkEnableBatch field value if set, zero value otherwise.
+func (o *SplunkLogForwardingConfig) GetSplunkEnableBatch() string {
+	if o == nil || IsNil(o.SplunkEnableBatch) {
+		var ret string
+		return ret
+	}
+	return *o.SplunkEnableBatch
+}
+
+// GetSplunkEnableBatchOk returns a tuple with the SplunkEnableBatch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SplunkLogForwardingConfig) GetSplunkEnableBatchOk() (*string, bool) {
+	if o == nil || IsNil(o.SplunkEnableBatch) {
+		return nil, false
+	}
+	return o.SplunkEnableBatch, true
+}
+
+// HasSplunkEnableBatch returns a boolean if a field has been set.
+func (o *SplunkLogForwardingConfig) HasSplunkEnableBatch() bool {
+	if o != nil && !IsNil(o.SplunkEnableBatch) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplunkEnableBatch gets a reference to the given string and assigns it to the SplunkEnableBatch field.
+func (o *SplunkLogForwardingConfig) SetSplunkEnableBatch(v string) {
+	o.SplunkEnableBatch = &v
 }
 
 // GetSplunkEnableTls returns the SplunkEnableTls field value if set, zero value otherwise.
@@ -280,6 +313,9 @@ func (o SplunkLogForwardingConfig) MarshalJSON() ([]byte, error) {
 
 func (o SplunkLogForwardingConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SplunkEnableBatch) {
+		toSerialize["splunk_enable_batch"] = o.SplunkEnableBatch
+	}
 	if !IsNil(o.SplunkEnableTls) {
 		toSerialize["splunk_enable_tls"] = o.SplunkEnableTls
 	}

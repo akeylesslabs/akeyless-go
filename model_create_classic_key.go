@@ -32,7 +32,7 @@ type CreateClassicKey struct {
 	CertificateCommonName *string `json:"certificate-common-name,omitempty"`
 	// Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
 	CertificateCountry *string `json:"certificate-country,omitempty"`
-	// Digest algorithm to be used for the certificate key signing. Currently, we support only \"sha256\" so we hide this option for CLI.
+	// Digest algorithm to be used for the certificate key signing.
 	CertificateDigestAlgo *string `json:"certificate-digest-algo,omitempty"`
 	CertificateFormat *string `json:"certificate-format,omitempty"`
 	// Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
@@ -55,6 +55,8 @@ type CreateClassicKey struct {
 	GenerateSelfSignedCertificate *bool `json:"generate-self-signed-certificate,omitempty"`
 	// gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]
 	GpgAlg *string `json:"gpg-alg,omitempty"`
+	// Specifies the hash algorithm used for the encryption key's operations, available options: [SHA256, SHA384, SHA512]
+	HashAlgorithm *string `json:"hash-algorithm,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Base64-encoded classic key value
@@ -86,6 +88,8 @@ type _CreateClassicKey CreateClassicKey
 func NewCreateClassicKey(alg string, name string) *CreateClassicKey {
 	this := CreateClassicKey{}
 	this.Alg = alg
+	var hashAlgorithm string = "SHA256"
+	this.HashAlgorithm = &hashAlgorithm
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -97,6 +101,8 @@ func NewCreateClassicKey(alg string, name string) *CreateClassicKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateClassicKeyWithDefaults() *CreateClassicKey {
 	this := CreateClassicKey{}
+	var hashAlgorithm string = "SHA256"
+	this.HashAlgorithm = &hashAlgorithm
 	var json bool = false
 	this.Json = &json
 	return &this
@@ -638,6 +644,38 @@ func (o *CreateClassicKey) SetGpgAlg(v string) {
 	o.GpgAlg = &v
 }
 
+// GetHashAlgorithm returns the HashAlgorithm field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetHashAlgorithm() string {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		var ret string
+		return ret
+	}
+	return *o.HashAlgorithm
+}
+
+// GetHashAlgorithmOk returns a tuple with the HashAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetHashAlgorithmOk() (*string, bool) {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		return nil, false
+	}
+	return o.HashAlgorithm, true
+}
+
+// HasHashAlgorithm returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasHashAlgorithm() bool {
+	if o != nil && !IsNil(o.HashAlgorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetHashAlgorithm gets a reference to the given string and assigns it to the HashAlgorithm field.
+func (o *CreateClassicKey) SetHashAlgorithm(v string) {
+	o.HashAlgorithm = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -1008,6 +1046,9 @@ func (o CreateClassicKey) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GpgAlg) {
 		toSerialize["gpg-alg"] = o.GpgAlg
+	}
+	if !IsNil(o.HashAlgorithm) {
+		toSerialize["hash-algorithm"] = o.HashAlgorithm
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

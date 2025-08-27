@@ -24,6 +24,7 @@ type CertificateTemplateInfo struct {
 	Country *string `json:"country,omitempty"`
 	CsrCnfBase64 *string `json:"csr_cnf_base_64,omitempty"`
 	DigestAlgo *string `json:"digest_algo,omitempty"`
+	HashAlgorithm *string `json:"hash_algorithm,omitempty"`
 	Locality *string `json:"locality,omitempty"`
 	Organization *string `json:"organization,omitempty"`
 	Province *string `json:"province,omitempty"`
@@ -174,6 +175,38 @@ func (o *CertificateTemplateInfo) HasDigestAlgo() bool {
 // SetDigestAlgo gets a reference to the given string and assigns it to the DigestAlgo field.
 func (o *CertificateTemplateInfo) SetDigestAlgo(v string) {
 	o.DigestAlgo = &v
+}
+
+// GetHashAlgorithm returns the HashAlgorithm field value if set, zero value otherwise.
+func (o *CertificateTemplateInfo) GetHashAlgorithm() string {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		var ret string
+		return ret
+	}
+	return *o.HashAlgorithm
+}
+
+// GetHashAlgorithmOk returns a tuple with the HashAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateTemplateInfo) GetHashAlgorithmOk() (*string, bool) {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		return nil, false
+	}
+	return o.HashAlgorithm, true
+}
+
+// HasHashAlgorithm returns a boolean if a field has been set.
+func (o *CertificateTemplateInfo) HasHashAlgorithm() bool {
+	if o != nil && !IsNil(o.HashAlgorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetHashAlgorithm gets a reference to the given string and assigns it to the HashAlgorithm field.
+func (o *CertificateTemplateInfo) SetHashAlgorithm(v string) {
+	o.HashAlgorithm = &v
 }
 
 // GetLocality returns the Locality field value if set, zero value otherwise.
@@ -357,6 +390,9 @@ func (o CertificateTemplateInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DigestAlgo) {
 		toSerialize["digest_algo"] = o.DigestAlgo
+	}
+	if !IsNil(o.HashAlgorithm) {
+		toSerialize["hash_algorithm"] = o.HashAlgorithm
 	}
 	if !IsNil(o.Locality) {
 		toSerialize["locality"] = o.Locality

@@ -20,6 +20,7 @@ var _ MappedNullable = &AzureLogAnalyticsForwardingConfig{}
 
 // AzureLogAnalyticsForwardingConfig struct for AzureLogAnalyticsForwardingConfig
 type AzureLogAnalyticsForwardingConfig struct {
+	AzureEnableBatch *string `json:"azure_enable_batch,omitempty"`
 	AzureWorkspaceId *string `json:"azure_workspace_id,omitempty"`
 	AzureWorkspaceKey *string `json:"azure_workspace_key,omitempty"`
 }
@@ -39,6 +40,38 @@ func NewAzureLogAnalyticsForwardingConfig() *AzureLogAnalyticsForwardingConfig {
 func NewAzureLogAnalyticsForwardingConfigWithDefaults() *AzureLogAnalyticsForwardingConfig {
 	this := AzureLogAnalyticsForwardingConfig{}
 	return &this
+}
+
+// GetAzureEnableBatch returns the AzureEnableBatch field value if set, zero value otherwise.
+func (o *AzureLogAnalyticsForwardingConfig) GetAzureEnableBatch() string {
+	if o == nil || IsNil(o.AzureEnableBatch) {
+		var ret string
+		return ret
+	}
+	return *o.AzureEnableBatch
+}
+
+// GetAzureEnableBatchOk returns a tuple with the AzureEnableBatch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureLogAnalyticsForwardingConfig) GetAzureEnableBatchOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureEnableBatch) {
+		return nil, false
+	}
+	return o.AzureEnableBatch, true
+}
+
+// HasAzureEnableBatch returns a boolean if a field has been set.
+func (o *AzureLogAnalyticsForwardingConfig) HasAzureEnableBatch() bool {
+	if o != nil && !IsNil(o.AzureEnableBatch) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureEnableBatch gets a reference to the given string and assigns it to the AzureEnableBatch field.
+func (o *AzureLogAnalyticsForwardingConfig) SetAzureEnableBatch(v string) {
+	o.AzureEnableBatch = &v
 }
 
 // GetAzureWorkspaceId returns the AzureWorkspaceId field value if set, zero value otherwise.
@@ -115,6 +148,9 @@ func (o AzureLogAnalyticsForwardingConfig) MarshalJSON() ([]byte, error) {
 
 func (o AzureLogAnalyticsForwardingConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AzureEnableBatch) {
+		toSerialize["azure_enable_batch"] = o.AzureEnableBatch
+	}
 	if !IsNil(o.AzureWorkspaceId) {
 		toSerialize["azure_workspace_id"] = o.AzureWorkspaceId
 	}

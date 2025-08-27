@@ -28,7 +28,7 @@ type CreateKey struct {
 	CertificateCommonName *string `json:"certificate-common-name,omitempty"`
 	// Country name for the generated certificate. Relevant only for generate-self-signed-certificate.
 	CertificateCountry *string `json:"certificate-country,omitempty"`
-	// Digest algorithm to be used for the certificate key signing. Currently, we support only \"sha256\" so we hide this option for CLI.
+	// Digest algorithm to be used for the certificate key signing.
 	CertificateDigestAlgo *string `json:"certificate-digest-algo,omitempty"`
 	// Locality for the generated certificate. Relevant only for generate-self-signed-certificate.
 	CertificateLocality *string `json:"certificate-locality,omitempty"`
@@ -48,6 +48,8 @@ type CreateKey struct {
 	Description *string `json:"description,omitempty"`
 	// Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided.
 	GenerateSelfSignedCertificate *bool `json:"generate-self-signed-certificate,omitempty"`
+	// Specifies the hash algorithm used for the encryption key's operations, available options: [SHA256, SHA384, SHA512]
+	HashAlgorithm *string `json:"hash-algorithm,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
@@ -73,6 +75,8 @@ type _CreateKey CreateKey
 func NewCreateKey(alg string, name string) *CreateKey {
 	this := CreateKey{}
 	this.Alg = alg
+	var hashAlgorithm string = "SHA256"
+	this.HashAlgorithm = &hashAlgorithm
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -86,6 +90,8 @@ func NewCreateKey(alg string, name string) *CreateKey {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateKeyWithDefaults() *CreateKey {
 	this := CreateKey{}
+	var hashAlgorithm string = "SHA256"
+	this.HashAlgorithm = &hashAlgorithm
 	var json bool = false
 	this.Json = &json
 	var splitLevel int64 = 3
@@ -501,6 +507,38 @@ func (o *CreateKey) SetGenerateSelfSignedCertificate(v bool) {
 	o.GenerateSelfSignedCertificate = &v
 }
 
+// GetHashAlgorithm returns the HashAlgorithm field value if set, zero value otherwise.
+func (o *CreateKey) GetHashAlgorithm() string {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		var ret string
+		return ret
+	}
+	return *o.HashAlgorithm
+}
+
+// GetHashAlgorithmOk returns a tuple with the HashAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateKey) GetHashAlgorithmOk() (*string, bool) {
+	if o == nil || IsNil(o.HashAlgorithm) {
+		return nil, false
+	}
+	return o.HashAlgorithm, true
+}
+
+// HasHashAlgorithm returns a boolean if a field has been set.
+func (o *CreateKey) HasHashAlgorithm() bool {
+	if o != nil && !IsNil(o.HashAlgorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetHashAlgorithm gets a reference to the given string and assigns it to the HashAlgorithm field.
+func (o *CreateKey) SetHashAlgorithm(v string) {
+	o.HashAlgorithm = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *CreateKey) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -763,6 +801,9 @@ func (o CreateKey) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GenerateSelfSignedCertificate) {
 		toSerialize["generate-self-signed-certificate"] = o.GenerateSelfSignedCertificate
+	}
+	if !IsNil(o.HashAlgorithm) {
+		toSerialize["hash-algorithm"] = o.HashAlgorithm
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

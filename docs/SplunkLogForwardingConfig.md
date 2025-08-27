@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**SplunkEnableBatch** | Pointer to **string** |  | [optional] 
 **SplunkEnableTls** | Pointer to **bool** |  | [optional] 
 **SplunkIndex** | Pointer to **string** |  | [optional] 
 **SplunkSource** | Pointer to **string** |  | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewSplunkLogForwardingConfigWithDefaults instantiates a new SplunkLogForwardingConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetSplunkEnableBatch
+
+`func (o *SplunkLogForwardingConfig) GetSplunkEnableBatch() string`
+
+GetSplunkEnableBatch returns the SplunkEnableBatch field if non-nil, zero value otherwise.
+
+### GetSplunkEnableBatchOk
+
+`func (o *SplunkLogForwardingConfig) GetSplunkEnableBatchOk() (*string, bool)`
+
+GetSplunkEnableBatchOk returns a tuple with the SplunkEnableBatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplunkEnableBatch
+
+`func (o *SplunkLogForwardingConfig) SetSplunkEnableBatch(v string)`
+
+SetSplunkEnableBatch sets SplunkEnableBatch field to given value.
+
+### HasSplunkEnableBatch
+
+`func (o *SplunkLogForwardingConfig) HasSplunkEnableBatch() bool`
+
+HasSplunkEnableBatch returns a boolean if a field has been set.
 
 ### GetSplunkEnableTls
 

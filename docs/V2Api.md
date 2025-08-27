@@ -447,6 +447,7 @@ Method | HTTP request | Description
 [**TargetCreateDockerhub**](V2Api.md#TargetCreateDockerhub) | **Post** /target-create-dockerhub | 
 [**TargetCreateEks**](V2Api.md#TargetCreateEks) | **Post** /target-create-eks | 
 [**TargetCreateGcp**](V2Api.md#TargetCreateGcp) | **Post** /target-create-gcp | 
+[**TargetCreateGemini**](V2Api.md#TargetCreateGemini) | **Post** /target-create-gemini | 
 [**TargetCreateGithub**](V2Api.md#TargetCreateGithub) | **Post** /target-create-github | 
 [**TargetCreateGitlab**](V2Api.md#TargetCreateGitlab) | **Post** /target-create-gitlab | 
 [**TargetCreateGke**](V2Api.md#TargetCreateGke) | **Post** /target-create-gke | 
@@ -457,6 +458,7 @@ Method | HTTP request | Description
 [**TargetCreateK8s**](V2Api.md#TargetCreateK8s) | **Post** /target-create-k8s | 
 [**TargetCreateLdap**](V2Api.md#TargetCreateLdap) | **Post** /target-create-ldap | 
 [**TargetCreateLinked**](V2Api.md#TargetCreateLinked) | **Post** /target-create-linked | 
+[**TargetCreateOpenAI**](V2Api.md#TargetCreateOpenAI) | **Post** /target-create-openai | 
 [**TargetCreatePing**](V2Api.md#TargetCreatePing) | **Post** /target-create-ping | 
 [**TargetCreateRabbitMq**](V2Api.md#TargetCreateRabbitMq) | **Post** /target-create-rabbitmq | 
 [**TargetCreateSalesforce**](V2Api.md#TargetCreateSalesforce) | **Post** /target-create-salesforce | 
@@ -476,6 +478,7 @@ Method | HTTP request | Description
 [**TargetUpdateDockerhub**](V2Api.md#TargetUpdateDockerhub) | **Post** /target-update-dockerhub | 
 [**TargetUpdateEks**](V2Api.md#TargetUpdateEks) | **Post** /target-update-eks | 
 [**TargetUpdateGcp**](V2Api.md#TargetUpdateGcp) | **Post** /target-update-gcp | 
+[**TargetUpdateGemini**](V2Api.md#TargetUpdateGemini) | **Post** /target-update-gemini | 
 [**TargetUpdateGithub**](V2Api.md#TargetUpdateGithub) | **Post** /target-update-github | 
 [**TargetUpdateGitlab**](V2Api.md#TargetUpdateGitlab) | **Post** /target-update-gitlab | 
 [**TargetUpdateGke**](V2Api.md#TargetUpdateGke) | **Post** /target-update-gke | 
@@ -486,6 +489,7 @@ Method | HTTP request | Description
 [**TargetUpdateK8s**](V2Api.md#TargetUpdateK8s) | **Post** /target-update-k8s | 
 [**TargetUpdateLdap**](V2Api.md#TargetUpdateLdap) | **Post** /target-update-ldap | 
 [**TargetUpdateLinked**](V2Api.md#TargetUpdateLinked) | **Post** /target-update-linked | 
+[**TargetUpdateOpenAI**](V2Api.md#TargetUpdateOpenAI) | **Post** /target-update-openai | 
 [**TargetUpdatePing**](V2Api.md#TargetUpdatePing) | **Post** /target-update-ping | 
 [**TargetUpdateRabbitMq**](V2Api.md#TargetUpdateRabbitMq) | **Post** /target-update-rabbitmq | 
 [**TargetUpdateSalesforce**](V2Api.md#TargetUpdateSalesforce) | **Post** /target-update-salesforce | 
@@ -28905,6 +28909,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateGemini
+
+> TargetCreateOutput TargetCreateGemini(ctx).TargetCreateGemini(targetCreateGemini).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateGemini := *openapiclient.NewTargetCreateGemini("Name_example") // TargetCreateGemini | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateGemini(context.Background()).TargetCreateGemini(targetCreateGemini).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateGemini``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateGemini`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateGemini`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateGeminiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateGemini** | [**TargetCreateGemini**](TargetCreateGemini.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateGithub
 
 > TargetCreateOutput TargetCreateGithub(ctx).TargetCreateGithub(targetCreateGithub).Execute()
@@ -29526,6 +29594,70 @@ Other parameters are passed through a pointer to a apiTargetCreateLinkedRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateLinked** | [**TargetCreateLinked**](TargetCreateLinked.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateOpenAI
+
+> TargetCreateOutput TargetCreateOpenAI(ctx).TargetCreateOpenAI(targetCreateOpenAI).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateOpenAI := *openapiclient.NewTargetCreateOpenAI("Name_example") // TargetCreateOpenAI | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateOpenAI(context.Background()).TargetCreateOpenAI(targetCreateOpenAI).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateOpenAI``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateOpenAI`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateOpenAI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateOpenAIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateOpenAI** | [**TargetCreateOpenAI**](TargetCreateOpenAI.md) |  | 
 
 ### Return type
 
@@ -30761,6 +30893,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateGemini
+
+> TargetUpdateOutput TargetUpdateGemini(ctx).TargetUpdateGemini(targetUpdateGemini).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateGemini := *openapiclient.NewTargetUpdateGemini("Name_example") // TargetUpdateGemini | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateGemini(context.Background()).TargetUpdateGemini(targetUpdateGemini).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateGemini``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateGemini`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateGemini`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateGeminiRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateGemini** | [**TargetUpdateGemini**](TargetUpdateGemini.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateGithub
 
 > TargetUpdateOutput TargetUpdateGithub(ctx).TargetUpdateGithub(targetUpdateGithub).Execute()
@@ -31382,6 +31578,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateLinkedRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateLinked** | [**TargetUpdateLinked**](TargetUpdateLinked.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateOpenAI
+
+> TargetUpdateOutput TargetUpdateOpenAI(ctx).TargetUpdateOpenAI(targetUpdateOpenAI).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateOpenAI := *openapiclient.NewTargetUpdateOpenAI("Name_example") // TargetUpdateOpenAI | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateOpenAI(context.Background()).TargetUpdateOpenAI(targetUpdateOpenAI).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateOpenAI``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateOpenAI`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateOpenAI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateOpenAIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateOpenAI** | [**TargetUpdateOpenAI**](TargetUpdateOpenAI.md) |  | 
 
 ### Return type
 

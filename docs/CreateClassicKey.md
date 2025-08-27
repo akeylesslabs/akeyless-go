@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **CertFileData** | Pointer to **string** | Certificate in a PEM format. | [optional] 
 **CertificateCommonName** | Pointer to **string** | Common name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateCountry** | Pointer to **string** | Country name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
-**CertificateDigestAlgo** | Pointer to **string** | Digest algorithm to be used for the certificate key signing. Currently, we support only \&quot;sha256\&quot; so we hide this option for CLI. | [optional] 
+**CertificateDigestAlgo** | Pointer to **string** | Digest algorithm to be used for the certificate key signing. | [optional] 
 **CertificateFormat** | Pointer to **string** |  | [optional] 
 **CertificateLocality** | Pointer to **string** | Locality for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
 **CertificateOrganization** | Pointer to **string** | Organization name for the generated certificate. Relevant only for generate-self-signed-certificate. | [optional] 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GenerateSelfSignedCertificate** | Pointer to **bool** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] 
 **GpgAlg** | Pointer to **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
+**HashAlgorithm** | Pointer to **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512] | [optional] [default to "SHA256"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
@@ -470,6 +471,31 @@ SetGpgAlg sets GpgAlg field to given value.
 `func (o *CreateClassicKey) HasGpgAlg() bool`
 
 HasGpgAlg returns a boolean if a field has been set.
+
+### GetHashAlgorithm
+
+`func (o *CreateClassicKey) GetHashAlgorithm() string`
+
+GetHashAlgorithm returns the HashAlgorithm field if non-nil, zero value otherwise.
+
+### GetHashAlgorithmOk
+
+`func (o *CreateClassicKey) GetHashAlgorithmOk() (*string, bool)`
+
+GetHashAlgorithmOk returns a tuple with the HashAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashAlgorithm
+
+`func (o *CreateClassicKey) SetHashAlgorithm(v string)`
+
+SetHashAlgorithm sets HashAlgorithm field to given value.
+
+### HasHashAlgorithm
+
+`func (o *CreateClassicKey) HasHashAlgorithm() bool`
+
+HasHashAlgorithm returns a boolean if a field has been set.
 
 ### GetJson
 

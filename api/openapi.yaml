@@ -11905,6 +11905,33 @@ paths:
             field.
       tags:
       - v2
+  /target-create-gemini:
+    post:
+      operationId: targetCreateGemini
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetCreateGemini'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetCreateOutput'
+          description: targetCreateGeminiResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /target-create-github:
     post:
       operationId: targetCreateGithub
@@ -12165,6 +12192,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/targetCreateOutput'
           description: targetCreateLinkedResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /target-create-openai:
+    post:
+      operationId: targetCreateOpenAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetCreateOpenAI'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetCreateOutput'
+          description: targetCreateOpenAIResponse wraps response body.
         default:
           content:
             application/json:
@@ -12688,6 +12742,33 @@ paths:
             field.
       tags:
       - v2
+  /target-update-gemini:
+    post:
+      operationId: targetUpdateGemini
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetUpdateGemini'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetUpdateOutput'
+          description: targetUpdateGeminiResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /target-update-github:
     post:
       operationId: targetUpdateGithub
@@ -12948,6 +13029,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/targetUpdateOutput'
           description: targetUpdateLinkedResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /target-update-openai:
+    post:
+      operationId: targetUpdateOpenAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetUpdateOpenAI'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetUpdateOutput'
+          description: targetUpdateOpenAIResponse wraps response body.
         default:
           content:
             application/json:
@@ -17991,6 +18099,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetCreateOutput'
       description: targetCreateGcpResponse wraps response body.
+    targetCreateGeminiResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetCreateOutput'
+      description: targetCreateGeminiResponse wraps response body.
     targetCreateGithubResponse:
       content:
         application/json:
@@ -18051,6 +18165,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetCreateOutput'
       description: targetCreateLinkedResponse wraps response body.
+    targetCreateOpenAIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetCreateOutput'
+      description: targetCreateOpenAIResponse wraps response body.
     targetCreatePingResponse:
       content:
         application/json:
@@ -18165,6 +18285,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetUpdateOutput'
       description: targetUpdateGcpResponse wraps response body.
+    targetUpdateGeminiResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetUpdateOutput'
+      description: targetUpdateGeminiResponse wraps response body.
     targetUpdateGithubResponse:
       content:
         application/json:
@@ -18225,6 +18351,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetUpdateOutput'
       description: targetUpdateLinkedResponse wraps response body.
+    targetUpdateOpenAIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetUpdateOutput'
+      description: targetUpdateOpenAIResponse wraps response body.
     targetUpdatePingResponse:
       content:
         application/json:
@@ -19844,6 +19976,7 @@ components:
           logan_url: logan_url
           json_output: true
           azure_analytics_config:
+            azure_enable_batch: azure_enable_batch
             azure_workspace_key: azure_workspace_key
             azure_workspace_id: azure_workspace_id
           splunk_config:
@@ -19851,6 +19984,7 @@ components:
             splunk_source: splunk_source
             splunk_index: splunk_index
             splunk_sourcetype: splunk_sourcetype
+            splunk_enable_batch: splunk_enable_batch
             splunk_enable_tls: true
             splunk_tls_certificate: splunk_tls_certificate
             splunk_url: splunk_url
@@ -21595,9 +21729,13 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     AzureLogAnalyticsForwardingConfig:
       example:
+        azure_enable_batch: azure_enable_batch
         azure_workspace_key: azure_workspace_key
         azure_workspace_id: azure_workspace_id
       properties:
+        azure_enable_batch:
+          type: string
+          x-go-name: AzureEnableBatch
         azure_workspace_id:
           type: string
           x-go-name: AzureWorkspaceId
@@ -21758,6 +21896,7 @@ components:
             logan_url: logan_url
             json_output: true
             azure_analytics_config:
+              azure_enable_batch: azure_enable_batch
               azure_workspace_key: azure_workspace_key
               azure_workspace_id: azure_workspace_id
             splunk_config:
@@ -21765,6 +21904,7 @@ components:
               splunk_source: splunk_source
               splunk_index: splunk_index
               splunk_sourcetype: splunk_sourcetype
+              splunk_enable_batch: splunk_enable_batch
               splunk_enable_tls: true
               splunk_tls_certificate: splunk_tls_certificate
               splunk_url: splunk_url
@@ -22920,6 +23060,7 @@ components:
         province: province
         digest_algo: digest_algo
         organization: organization
+        hash_algorithm: hash_algorithm
         locality: locality
         csr_cnf_base_64: csr_cnf_base_64
         common_name: common_name
@@ -22938,6 +23079,9 @@ components:
         digest_algo:
           type: string
           x-go-name: DigestAlgo
+        hash_algorithm:
+          type: string
+          x-go-name: HashAlgorithm
         locality:
           type: string
           x-go-name: Locality
@@ -23609,6 +23753,7 @@ components:
         certificate-organization: certificate-organization
         name: name
         certificate-common-name: certificate-common-name
+        hash-algorithm: SHA256
       properties:
         alg:
           description: "Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV,\
@@ -23635,8 +23780,7 @@ components:
           type: string
           x-go-name: CertificateCountry
         certificate-digest-algo:
-          description: "Digest algorithm to be used for the certificate key signing.\
-            \ Currently, we support only \"sha256\" so we hide this option for CLI."
+          description: Digest algorithm to be used for the certificate key signing.
           type: string
           x-go-name: CertificateDigestAlgo
         certificate-format:
@@ -23691,6 +23835,12 @@ components:
             \ [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519]"
           type: string
           x-go-name: GPGAlg
+        hash-algorithm:
+          default: SHA256
+          description: "Specifies the hash algorithm used for the encryption key's\
+            \ operations, available options: [SHA256, SHA384, SHA512]"
+          type: string
+          x-go-name: CertificateHashAlgorithm
         json:
           default: false
           description: Set output format to JSON
@@ -27130,6 +27280,25 @@ components:
       title: GcpTargetDetails ...
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    GeminiTargetDetails:
+      description: GeminiTargetDetails defines details related to connecting to a
+        Google Gemini provider
+      example:
+        api_key: api_key
+        base_url: base_url
+        model: model
+      properties:
+        api_key:
+          type: string
+          x-go-name: ApiKey
+        base_url:
+          type: string
+          x-go-name: BaseURL
+        model:
+          type: string
+          x-go-name: Model
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     GeneralConfigPart:
       example:
         tcp_port: tcp_port
@@ -27761,6 +27930,12 @@ components:
               is_enabled: true
               role_arn: role_arn
             aws_secret_access_key: aws_secret_access_key
+          openai_target_details:
+            api_key: api_key
+            organization_id: organization_id
+            base_url: base_url
+            model: model
+            api_key_id: api_key_id
           mongo_db_target_details:
             mongodb_default_auth_db: mongodb_default_auth_db
             mongodb_is_atlas: true
@@ -27855,6 +28030,10 @@ components:
             chef_skip_ssl: true
             chef_server_host_name: chef_server_host_name
             chef_server_username: chef_server_username
+          gemini_target_details:
+            api_key: api_key
+            base_url: base_url
+            model: model
           azure_target_details:
             use_gw_cloud_identity: true
             grace_rotated_secret_key: grace_rotated_secret_key
@@ -29182,6 +29361,7 @@ components:
             province: province
             digest_algo: digest_algo
             organization: organization
+            hash_algorithm: hash_algorithm
             locality: locality
             csr_cnf_base_64: csr_cnf_base_64
             common_name: common_name
@@ -29977,6 +30157,7 @@ components:
           province: province
           digest_algo: digest_algo
           organization: organization
+          hash_algorithm: hash_algorithm
           locality: locality
           csr_cnf_base_64: csr_cnf_base_64
           common_name: common_name
@@ -33229,6 +33410,7 @@ components:
               province: province
               digest_algo: digest_algo
               organization: organization
+              hash_algorithm: hash_algorithm
               locality: locality
               csr_cnf_base_64: csr_cnf_base_64
               common_name: common_name
@@ -34104,6 +34286,7 @@ components:
               province: province
               digest_algo: digest_algo
               organization: organization
+              hash_algorithm: hash_algorithm
               locality: locality
               csr_cnf_base_64: csr_cnf_base_64
               common_name: common_name
@@ -35005,6 +35188,7 @@ components:
               province: province
               digest_algo: digest_algo
               organization: organization
+              hash_algorithm: hash_algorithm
               locality: locality
               csr_cnf_base_64: csr_cnf_base_64
               common_name: common_name
@@ -35880,6 +36064,7 @@ components:
               province: province
               digest_algo: digest_algo
               organization: organization
+              hash_algorithm: hash_algorithm
               locality: locality
               csr_cnf_base_64: csr_cnf_base_64
               common_name: common_name
@@ -36501,6 +36686,7 @@ components:
         logan_url: logan_url
         json_output: true
         azure_analytics_config:
+          azure_enable_batch: azure_enable_batch
           azure_workspace_key: azure_workspace_key
           azure_workspace_id: azure_workspace_id
         splunk_config:
@@ -36508,6 +36694,7 @@ components:
           splunk_source: splunk_source
           splunk_index: splunk_index
           splunk_sourcetype: splunk_sourcetype
+          splunk_enable_batch: splunk_enable_batch
           splunk_enable_tls: true
           splunk_tls_certificate: splunk_tls_certificate
           splunk_url: splunk_url
@@ -38034,6 +38221,33 @@ components:
           x-go-name: Vaults
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    OpenAITargetDetails:
+      description: OpenAITargetDetails defines details related to connecting to an
+        OpenAI provider
+      example:
+        api_key: api_key
+        organization_id: organization_id
+        base_url: base_url
+        model: model
+        api_key_id: api_key_id
+      properties:
+        api_key:
+          type: string
+          x-go-name: ApiKey
+        api_key_id:
+          type: string
+          x-go-name: ApiKeyID
+        base_url:
+          type: string
+          x-go-name: BaseURL
+        model:
+          type: string
+          x-go-name: Model
+        organization_id:
+          type: string
+          x-go-name: OrganizationID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     PKICertificateIssueDetails:
       example:
         certificate_authority_mode: certificate_authority_mode
@@ -40314,10 +40528,14 @@ components:
         splunk_source: splunk_source
         splunk_index: splunk_index
         splunk_sourcetype: splunk_sourcetype
+        splunk_enable_batch: splunk_enable_batch
         splunk_enable_tls: true
         splunk_tls_certificate: splunk_tls_certificate
         splunk_url: splunk_url
       properties:
+        splunk_enable_batch:
+          type: string
+          x-go-name: SplunkEnableBatch
         splunk_enable_tls:
           type: boolean
           x-go-name: SplunkEnableTLS
@@ -40470,6 +40688,7 @@ components:
           logan_url: logan_url
           json_output: true
           azure_analytics_config:
+            azure_enable_batch: azure_enable_batch
             azure_workspace_key: azure_workspace_key
             azure_workspace_id: azure_workspace_id
           splunk_config:
@@ -40477,6 +40696,7 @@ components:
             splunk_source: splunk_source
             splunk_index: splunk_index
             splunk_sourcetype: splunk_sourcetype
+            splunk_enable_batch: splunk_enable_batch
             splunk_enable_tls: true
             splunk_tls_certificate: splunk_tls_certificate
             splunk_url: splunk_url
@@ -41119,6 +41339,12 @@ components:
             is_enabled: true
             role_arn: role_arn
           aws_secret_access_key: aws_secret_access_key
+        openai_target_details:
+          api_key: api_key
+          organization_id: organization_id
+          base_url: base_url
+          model: model
+          api_key_id: api_key_id
         mongo_db_target_details:
           mongodb_default_auth_db: mongodb_default_auth_db
           mongodb_is_atlas: true
@@ -41213,6 +41439,10 @@ components:
           chef_skip_ssl: true
           chef_server_host_name: chef_server_host_name
           chef_server_username: chef_server_username
+        gemini_target_details:
+          api_key: api_key
+          base_url: base_url
+          model: model
         azure_target_details:
           use_gw_cloud_identity: true
           grace_rotated_secret_key: grace_rotated_secret_key
@@ -41295,6 +41525,8 @@ components:
           $ref: '#/components/schemas/EKSTargetDetails'
         gcp_target_details:
           $ref: '#/components/schemas/GcpTargetDetails'
+        gemini_target_details:
+          $ref: '#/components/schemas/GeminiTargetDetails'
         github_target_details:
           $ref: '#/components/schemas/GithubTargetDetails'
         gitlab_target_details:
@@ -41317,6 +41549,8 @@ components:
           $ref: '#/components/schemas/MongoDBTargetDetails'
         native_k8s_target_details:
           $ref: '#/components/schemas/NativeK8sTargetDetails'
+        openai_target_details:
+          $ref: '#/components/schemas/OpenAITargetDetails'
         ping_target_details:
           $ref: '#/components/schemas/PingTargetDetails'
         rabbit_mq_target_details:
@@ -49140,8 +49374,7 @@ components:
           type: string
           x-go-name: CertificateCountry
         certificate-digest-algo:
-          description: "Digest algorithm to be used for the certificate key signing.\
-            \ Currently, we support only \"sha256\" so we hide this option for CLI."
+          description: Digest algorithm to be used for the certificate key signing.
           type: string
           x-go-name: CertificateDigestAlgo
         certificate-format:
@@ -49196,6 +49429,12 @@ components:
             \ If set, --certificate-ttl must be provided."
           type: boolean
           x-go-name: GenerateSelfSignedCertificate
+        hash-algorithm:
+          default: SHA256
+          description: "Specifies the hash algorithm used for the encryption key's\
+            \ operations, available options: [SHA256, SHA384, SHA512]"
+          type: string
+          x-go-name: CertificateHashAlgorithm
         json:
           default: false
           description: Set output format to JSON
@@ -50259,8 +50498,7 @@ components:
           type: string
           x-go-name: CertificateCountry
         certificate-digest-algo:
-          description: "Digest algorithm to be used for the certificate key signing.\
-            \ Currently, we support only \"sha256\" so we hide this option for CLI."
+          description: Digest algorithm to be used for the certificate key signing.
           type: string
           x-go-name: CertificateDigestAlgo
         certificate-locality:
@@ -50306,6 +50544,12 @@ components:
             \ If set, --certificate-ttl must be provided."
           type: boolean
           x-go-name: GenerateSelfSignedCertificate
+        hash-algorithm:
+          default: SHA256
+          description: "Specifies the hash algorithm used for the encryption key's\
+            \ operations, available options: [SHA256, SHA384, SHA512]"
+          type: string
+          x-go-name: CertificateHashAlgorithm
         json:
           default: false
           description: Set output format to JSON
@@ -77475,6 +77719,11 @@ components:
           description: "Enable Log Forwarding [true/false]"
           type: string
           x-go-name: Enable
+        enable-batch:
+          default: "true"
+          description: "Enable batch forwarding [true/false]"
+          type: string
+          x-go-name: EnableBatch
         json:
           default: false
           description: Set output format to JSON
@@ -77808,6 +78057,11 @@ components:
           description: "Enable Log Forwarding [true/false]"
           type: string
           x-go-name: Enable
+        enable-batch:
+          default: "true"
+          description: "Enable batch forwarding [true/false]"
+          type: string
+          x-go-name: EnableBatch
         enable-tls:
           description: Enable tls
           type: boolean
@@ -91285,6 +91539,12 @@ components:
           description: Generate a new classic key for the csr
           type: boolean
           x-go-name: GenerateKey
+        hash-algorithm:
+          default: SHA256
+          description: "Specifies the hash algorithm used for the encryption key's\
+            \ operations, available options: SHA256, SHA384, SHA512"
+          type: string
+          x-go-name: HashAlgorithm
         ip-addresses:
           description: A comma-separated list of ip addresses alternative names
           type: string
@@ -92154,6 +92414,11 @@ components:
           description: "Enable Log Forwarding [true/false]"
           type: string
           x-go-name: Enable
+        enable-batch:
+          default: "true"
+          description: "Enable batch forwarding [true/false]"
+          type: string
+          x-go-name: EnableBatch
         json:
           default: false
           description: Set output format to JSON
@@ -92478,6 +92743,11 @@ components:
           description: "Enable Log Forwarding [true/false]"
           type: string
           x-go-name: Enable
+        enable-batch:
+          default: "true"
+          description: "Enable batch forwarding [true/false]"
+          type: string
+          x-go-name: EnableBatch
         enable-tls:
           description: Enable tls
           type: boolean
@@ -99841,6 +100111,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     staticSecretSync:
       properties:
+        filter-secret-value:
+          description: JQ expression to filter or transform the secret value
+          type: string
+          x-go-name: FilterSecretValue
         json:
           default: false
           description: Set output format to JSON
@@ -100406,6 +100680,58 @@ components:
       required:
       - name
       title: targetCreateGcp is a command that creates a new GCP target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetCreateGemini:
+      description: targetCreateGemini is a command that creates a new gemini target
+      properties:
+        api-key:
+          description: API key for Gemini
+          type: string
+          x-go-name: ApiKey
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        gemini-url:
+          default: https://generativelanguage.googleapis.com
+          description: Base URL of the Gemini API
+          type: string
+          x-go-name: BaseURL
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        model:
+          description: Default model to use with Gemini
+          type: string
+          x-go-name: Model
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateGithub:
@@ -101044,6 +101370,66 @@ components:
       - name
       title: targetCreateLinked is a command that creates a new Linked Target which
         can inherit credentials from existing Targets.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetCreateOpenAI:
+      description: targetCreateOpenAI is a command that creates a new openai target
+      properties:
+        api-key:
+          description: API key for OpenAI
+          type: string
+          x-go-name: ApiKey
+        api-key-id:
+          description: API key ID
+          type: string
+          x-go-name: ApiKeyID
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        model:
+          description: Default model to use with OpenAI
+          type: string
+          x-go-name: Model
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        openai-url:
+          default: https://api.openai.com/v1
+          description: Base URL of the OpenAI API
+          type: string
+          x-go-name: BaseURL
+        organization-id:
+          description: Organization ID
+          type: string
+          x-go-name: OrganizationID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateOutput:
@@ -102337,6 +102723,74 @@ components:
       title: targetUpdateGcp is a command that updates an existing GCP target.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetUpdateGemini:
+      description: targetUpdateGemini is a command that updates an existing gemini
+        target
+      properties:
+        api-key:
+          description: API key for Gemini
+          type: string
+          x-go-name: ApiKey
+        description:
+          default: default_comment
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        gemini-url:
+          default: https://generativelanguage.googleapis.com
+          description: Base URL of the Gemini API
+          type: string
+          x-go-name: BaseURL
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        model:
+          description: Default model to use with Gemini
+          type: string
+          x-go-name: Model
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-comment:
+          default: default_comment
+          description: Deprecated - use description
+          type: string
+          x-go-name: NewComment
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateGithub:
       properties:
         description:
@@ -103071,6 +103525,82 @@ components:
       required:
       - name
       title: targetUpdateLinked is a command that updates an existing Linked Target.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetUpdateOpenAI:
+      description: targetUpdateOpenAI is a command that updates an existing openai
+        target
+      properties:
+        api-key:
+          description: API key for OpenAI
+          type: string
+          x-go-name: ApiKey
+        api-key-id:
+          description: API key ID
+          type: string
+          x-go-name: ApiKeyID
+        description:
+          default: default_comment
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        model:
+          description: Default model to use with OpenAI
+          type: string
+          x-go-name: Model
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-comment:
+          default: default_comment
+          description: Deprecated - use description
+          type: string
+          x-go-name: NewComment
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        openai-url:
+          default: https://api.openai.com/v1
+          description: Base URL of the OpenAI API
+          type: string
+          x-go-name: BaseURL
+        organization-id:
+          description: Organization ID
+          type: string
+          x-go-name: OrganizationID
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateOutput:

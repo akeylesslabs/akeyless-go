@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AzureEnableBatch** | Pointer to **string** |  | [optional] 
 **AzureWorkspaceId** | Pointer to **string** |  | [optional] 
 **AzureWorkspaceKey** | Pointer to **string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewAzureLogAnalyticsForwardingConfigWithDefaults instantiates a new AzureLogAnalyticsForwardingConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAzureEnableBatch
+
+`func (o *AzureLogAnalyticsForwardingConfig) GetAzureEnableBatch() string`
+
+GetAzureEnableBatch returns the AzureEnableBatch field if non-nil, zero value otherwise.
+
+### GetAzureEnableBatchOk
+
+`func (o *AzureLogAnalyticsForwardingConfig) GetAzureEnableBatchOk() (*string, bool)`
+
+GetAzureEnableBatchOk returns a tuple with the AzureEnableBatch field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureEnableBatch
+
+`func (o *AzureLogAnalyticsForwardingConfig) SetAzureEnableBatch(v string)`
+
+SetAzureEnableBatch sets AzureEnableBatch field to given value.
+
+### HasAzureEnableBatch
+
+`func (o *AzureLogAnalyticsForwardingConfig) HasAzureEnableBatch() bool`
+
+HasAzureEnableBatch returns a boolean if a field has been set.
 
 ### GetAzureWorkspaceId
 

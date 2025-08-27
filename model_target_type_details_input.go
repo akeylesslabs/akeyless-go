@@ -29,6 +29,7 @@ type TargetTypeDetailsInput struct {
 	DockerhubTargetDetails *DockerhubTargetDetails `json:"dockerhub_target_details,omitempty"`
 	EksTargetDetails *EKSTargetDetails `json:"eks_target_details,omitempty"`
 	GcpTargetDetails *GcpTargetDetails `json:"gcp_target_details,omitempty"`
+	GeminiTargetDetails *GeminiTargetDetails `json:"gemini_target_details,omitempty"`
 	GithubTargetDetails *GithubTargetDetails `json:"github_target_details,omitempty"`
 	GitlabTargetDetails *GitlabTargetDetails `json:"gitlab_target_details,omitempty"`
 	GkeTargetDetails *GKETargetDetails `json:"gke_target_details,omitempty"`
@@ -40,6 +41,7 @@ type TargetTypeDetailsInput struct {
 	LinkedTargetDetails *LinkedTargetDetails `json:"linked_target_details,omitempty"`
 	MongoDbTargetDetails *MongoDBTargetDetails `json:"mongo_db_target_details,omitempty"`
 	NativeK8sTargetDetails *NativeK8sTargetDetails `json:"native_k8s_target_details,omitempty"`
+	OpenaiTargetDetails *OpenAITargetDetails `json:"openai_target_details,omitempty"`
 	PingTargetDetails *PingTargetDetails `json:"ping_target_details,omitempty"`
 	RabbitMqTargetDetails *RabbitMQTargetDetails `json:"rabbit_mq_target_details,omitempty"`
 	SalesforceTargetDetails *SalesforceTargetDetails `json:"salesforce_target_details,omitempty"`
@@ -354,6 +356,38 @@ func (o *TargetTypeDetailsInput) HasGcpTargetDetails() bool {
 // SetGcpTargetDetails gets a reference to the given GcpTargetDetails and assigns it to the GcpTargetDetails field.
 func (o *TargetTypeDetailsInput) SetGcpTargetDetails(v GcpTargetDetails) {
 	o.GcpTargetDetails = &v
+}
+
+// GetGeminiTargetDetails returns the GeminiTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGeminiTargetDetails() GeminiTargetDetails {
+	if o == nil || IsNil(o.GeminiTargetDetails) {
+		var ret GeminiTargetDetails
+		return ret
+	}
+	return *o.GeminiTargetDetails
+}
+
+// GetGeminiTargetDetailsOk returns a tuple with the GeminiTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGeminiTargetDetailsOk() (*GeminiTargetDetails, bool) {
+	if o == nil || IsNil(o.GeminiTargetDetails) {
+		return nil, false
+	}
+	return o.GeminiTargetDetails, true
+}
+
+// HasGeminiTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGeminiTargetDetails() bool {
+	if o != nil && !IsNil(o.GeminiTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGeminiTargetDetails gets a reference to the given GeminiTargetDetails and assigns it to the GeminiTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGeminiTargetDetails(v GeminiTargetDetails) {
+	o.GeminiTargetDetails = &v
 }
 
 // GetGithubTargetDetails returns the GithubTargetDetails field value if set, zero value otherwise.
@@ -708,6 +742,38 @@ func (o *TargetTypeDetailsInput) SetNativeK8sTargetDetails(v NativeK8sTargetDeta
 	o.NativeK8sTargetDetails = &v
 }
 
+// GetOpenaiTargetDetails returns the OpenaiTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetOpenaiTargetDetails() OpenAITargetDetails {
+	if o == nil || IsNil(o.OpenaiTargetDetails) {
+		var ret OpenAITargetDetails
+		return ret
+	}
+	return *o.OpenaiTargetDetails
+}
+
+// GetOpenaiTargetDetailsOk returns a tuple with the OpenaiTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetOpenaiTargetDetailsOk() (*OpenAITargetDetails, bool) {
+	if o == nil || IsNil(o.OpenaiTargetDetails) {
+		return nil, false
+	}
+	return o.OpenaiTargetDetails, true
+}
+
+// HasOpenaiTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasOpenaiTargetDetails() bool {
+	if o != nil && !IsNil(o.OpenaiTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenaiTargetDetails gets a reference to the given OpenAITargetDetails and assigns it to the OpenaiTargetDetails field.
+func (o *TargetTypeDetailsInput) SetOpenaiTargetDetails(v OpenAITargetDetails) {
+	o.OpenaiTargetDetails = &v
+}
+
 // GetPingTargetDetails returns the PingTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetPingTargetDetails() PingTargetDetails {
 	if o == nil || IsNil(o.PingTargetDetails) {
@@ -1033,6 +1099,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpTargetDetails) {
 		toSerialize["gcp_target_details"] = o.GcpTargetDetails
 	}
+	if !IsNil(o.GeminiTargetDetails) {
+		toSerialize["gemini_target_details"] = o.GeminiTargetDetails
+	}
 	if !IsNil(o.GithubTargetDetails) {
 		toSerialize["github_target_details"] = o.GithubTargetDetails
 	}
@@ -1065,6 +1134,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NativeK8sTargetDetails) {
 		toSerialize["native_k8s_target_details"] = o.NativeK8sTargetDetails
+	}
+	if !IsNil(o.OpenaiTargetDetails) {
+		toSerialize["openai_target_details"] = o.OpenaiTargetDetails
 	}
 	if !IsNil(o.PingTargetDetails) {
 		toSerialize["ping_target_details"] = o.PingTargetDetails
