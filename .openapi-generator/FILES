@@ -596,6 +596,8 @@ docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAnalyticsData.md
 docs/GetAuthMethod.md
+docs/GetCertChallenge.md
+docs/GetCertChallengeOutput.md
 docs/GetCertificateValue.md
 docs/GetCertificateValueOutput.md
 docs/GetDynamicSecretValue.md
@@ -1706,6 +1708,8 @@ model_get_account_settings.go
 model_get_account_settings_command_output.go
 model_get_analytics_data.go
 model_get_auth_method.go
+model_get_cert_challenge.go
+model_get_cert_challenge_output.go
 model_get_certificate_value.go
 model_get_certificate_value_output.go
 model_get_dynamic_secret_value.go

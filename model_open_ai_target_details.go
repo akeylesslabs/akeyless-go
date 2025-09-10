@@ -22,8 +22,8 @@ var _ MappedNullable = &OpenAITargetDetails{}
 type OpenAITargetDetails struct {
 	ApiKey *string `json:"api_key,omitempty"`
 	ApiKeyId *string `json:"api_key_id,omitempty"`
-	BaseUrl *string `json:"base_url,omitempty"`
 	Model *string `json:"model,omitempty"`
+	OpenaiUrl *string `json:"openai_url,omitempty"`
 	OrganizationId *string `json:"organization_id,omitempty"`
 }
 
@@ -108,38 +108,6 @@ func (o *OpenAITargetDetails) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
 }
 
-// GetBaseUrl returns the BaseUrl field value if set, zero value otherwise.
-func (o *OpenAITargetDetails) GetBaseUrl() string {
-	if o == nil || IsNil(o.BaseUrl) {
-		var ret string
-		return ret
-	}
-	return *o.BaseUrl
-}
-
-// GetBaseUrlOk returns a tuple with the BaseUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenAITargetDetails) GetBaseUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.BaseUrl) {
-		return nil, false
-	}
-	return o.BaseUrl, true
-}
-
-// HasBaseUrl returns a boolean if a field has been set.
-func (o *OpenAITargetDetails) HasBaseUrl() bool {
-	if o != nil && !IsNil(o.BaseUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetBaseUrl gets a reference to the given string and assigns it to the BaseUrl field.
-func (o *OpenAITargetDetails) SetBaseUrl(v string) {
-	o.BaseUrl = &v
-}
-
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *OpenAITargetDetails) GetModel() string {
 	if o == nil || IsNil(o.Model) {
@@ -170,6 +138,38 @@ func (o *OpenAITargetDetails) HasModel() bool {
 // SetModel gets a reference to the given string and assigns it to the Model field.
 func (o *OpenAITargetDetails) SetModel(v string) {
 	o.Model = &v
+}
+
+// GetOpenaiUrl returns the OpenaiUrl field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetOpenaiUrl() string {
+	if o == nil || IsNil(o.OpenaiUrl) {
+		var ret string
+		return ret
+	}
+	return *o.OpenaiUrl
+}
+
+// GetOpenaiUrlOk returns a tuple with the OpenaiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetOpenaiUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.OpenaiUrl) {
+		return nil, false
+	}
+	return o.OpenaiUrl, true
+}
+
+// HasOpenaiUrl returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasOpenaiUrl() bool {
+	if o != nil && !IsNil(o.OpenaiUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenaiUrl gets a reference to the given string and assigns it to the OpenaiUrl field.
+func (o *OpenAITargetDetails) SetOpenaiUrl(v string) {
+	o.OpenaiUrl = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -220,11 +220,11 @@ func (o OpenAITargetDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApiKeyId) {
 		toSerialize["api_key_id"] = o.ApiKeyId
 	}
-	if !IsNil(o.BaseUrl) {
-		toSerialize["base_url"] = o.BaseUrl
-	}
 	if !IsNil(o.Model) {
 		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.OpenaiUrl) {
+		toSerialize["openai_url"] = o.OpenaiUrl
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organization_id"] = o.OrganizationId

@@ -320,6 +320,7 @@ Method | HTTP request | Description
 [**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
 [**GetAnalyticsData**](V2Api.md#GetAnalyticsData) | **Post** /get-analytics-data | 
 [**GetAuthMethod**](V2Api.md#GetAuthMethod) | **Post** /get-auth-method | 
+[**GetCertChallenge**](V2Api.md#GetCertChallenge) | **Post** /get-cert-challenge | 
 [**GetCertificateValue**](V2Api.md#GetCertificateValue) | **Post** /get-certificate-value | 
 [**GetDynamicSecretValue**](V2Api.md#GetDynamicSecretValue) | **Post** /get-dynamic-secret-value | 
 [**GetEventForwarder**](V2Api.md#GetEventForwarder) | **Post** /get-event-forwarder | 
@@ -20778,6 +20779,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AuthMethod**](AuthMethod.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCertChallenge
+
+> GetCertChallengeOutput GetCertChallenge(ctx).GetCertChallenge(getCertChallenge).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	getCertChallenge := *openapiclient.NewGetCertChallenge() // GetCertChallenge | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.GetCertChallenge(context.Background()).GetCertChallenge(getCertChallenge).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetCertChallenge``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetCertChallenge`: GetCertChallengeOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.GetCertChallenge`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCertChallengeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **getCertChallenge** | [**GetCertChallenge**](GetCertChallenge.md) |  | 
+
+### Return type
+
+[**GetCertChallengeOutput**](GetCertChallengeOutput.md)
 
 ### Authorization
 

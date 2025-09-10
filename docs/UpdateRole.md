@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Role name | 
 **NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New Role name | [optional] 
+**ReverseRbacAccess** | Pointer to **string** | Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;. | [optional] 
 **SraReportsAccess** | Pointer to **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -308,6 +309,31 @@ SetNewName sets NewName field to given value.
 `func (o *UpdateRole) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetReverseRbacAccess
+
+`func (o *UpdateRole) GetReverseRbacAccess() string`
+
+GetReverseRbacAccess returns the ReverseRbacAccess field if non-nil, zero value otherwise.
+
+### GetReverseRbacAccessOk
+
+`func (o *UpdateRole) GetReverseRbacAccessOk() (*string, bool)`
+
+GetReverseRbacAccessOk returns a tuple with the ReverseRbacAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReverseRbacAccess
+
+`func (o *UpdateRole) SetReverseRbacAccess(v string)`
+
+SetReverseRbacAccess sets ReverseRbacAccess field to given value.
+
+### HasReverseRbacAccess
+
+`func (o *UpdateRole) HasReverseRbacAccess() bool`
+
+HasReverseRbacAccess returns a boolean if a field has been set.
 
 ### GetSraReportsAccess
 

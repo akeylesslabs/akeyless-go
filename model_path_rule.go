@@ -26,6 +26,8 @@ type PathRule struct {
 	Cb *int32 `json:"cb,omitempty"`
 	// flag that indicate that this rule is allowed to be access RemainingAccess of times.
 	IsLimitAccess *bool `json:"is_limit_access,omitempty"`
+	// The item id this rule directly refers to (when applicable)
+	ItemId *int64 `json:"item_id,omitempty"`
 	NumberOfAccessUsed *int64 `json:"number_of_access_used,omitempty"`
 	NumberOfAllowedAccess *int64 `json:"number_of_allowed_access,omitempty"`
 	// The path the rule refers to
@@ -178,6 +180,38 @@ func (o *PathRule) HasIsLimitAccess() bool {
 // SetIsLimitAccess gets a reference to the given bool and assigns it to the IsLimitAccess field.
 func (o *PathRule) SetIsLimitAccess(v bool) {
 	o.IsLimitAccess = &v
+}
+
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *PathRule) GetItemId() int64 {
+	if o == nil || IsNil(o.ItemId) {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PathRule) GetItemIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ItemId) {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *PathRule) HasItemId() bool {
+	if o != nil && !IsNil(o.ItemId) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *PathRule) SetItemId(v int64) {
+	o.ItemId = &v
 }
 
 // GetNumberOfAccessUsed returns the NumberOfAccessUsed field value if set, zero value otherwise.
@@ -393,6 +427,9 @@ func (o PathRule) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsLimitAccess) {
 		toSerialize["is_limit_access"] = o.IsLimitAccess
+	}
+	if !IsNil(o.ItemId) {
+		toSerialize["item_id"] = o.ItemId
 	}
 	if !IsNil(o.NumberOfAccessUsed) {
 		toSerialize["number_of_access_used"] = o.NumberOfAccessUsed

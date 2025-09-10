@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CompleteAuthLink** | Pointer to **string** |  | [optional] 
 **Creds** | Pointer to [**SystemAccessCredentialsReplyObj**](SystemAccessCredentialsReplyObj.md) |  | [optional] 
+**Expiration** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetCreds sets Creds field to given value.
 `func (o *AuthOutput) HasCreds() bool`
 
 HasCreds returns a boolean if a field has been set.
+
+### GetExpiration
+
+`func (o *AuthOutput) GetExpiration() string`
+
+GetExpiration returns the Expiration field if non-nil, zero value otherwise.
+
+### GetExpirationOk
+
+`func (o *AuthOutput) GetExpirationOk() (*string, bool)`
+
+GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiration
+
+`func (o *AuthOutput) SetExpiration(v string)`
+
+SetExpiration sets Expiration field to given value.
+
+### HasExpiration
+
+`func (o *AuthOutput) HasExpiration() bool`
+
+HasExpiration returns a boolean if a field has been set.
 
 ### GetToken
 

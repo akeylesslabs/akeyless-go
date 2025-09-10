@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **GwAnalyticsAccess** | Pointer to **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Role name | 
+**ReverseRbacAccess** | Pointer to **string** | Allow this role to view Reverse RBAC. Supported values: &#39;own&#39;, &#39;all&#39;. | [optional] 
 **SraReportsAccess** | Pointer to **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -282,6 +283,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetReverseRbacAccess
+
+`func (o *CreateRole) GetReverseRbacAccess() string`
+
+GetReverseRbacAccess returns the ReverseRbacAccess field if non-nil, zero value otherwise.
+
+### GetReverseRbacAccessOk
+
+`func (o *CreateRole) GetReverseRbacAccessOk() (*string, bool)`
+
+GetReverseRbacAccessOk returns a tuple with the ReverseRbacAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReverseRbacAccess
+
+`func (o *CreateRole) SetReverseRbacAccess(v string)`
+
+SetReverseRbacAccess sets ReverseRbacAccess field to given value.
+
+### HasReverseRbacAccess
+
+`func (o *CreateRole) HasReverseRbacAccess() bool`
+
+HasReverseRbacAccess returns a boolean if a field has been set.
 
 ### GetSraReportsAccess
 

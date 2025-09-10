@@ -21,7 +21,7 @@ var _ MappedNullable = &GeminiTargetDetails{}
 // GeminiTargetDetails GeminiTargetDetails defines details related to connecting to a Google Gemini provider
 type GeminiTargetDetails struct {
 	ApiKey *string `json:"api_key,omitempty"`
-	BaseUrl *string `json:"base_url,omitempty"`
+	GeminiUrl *string `json:"gemini_url,omitempty"`
 	Model *string `json:"model,omitempty"`
 }
 
@@ -74,36 +74,36 @@ func (o *GeminiTargetDetails) SetApiKey(v string) {
 	o.ApiKey = &v
 }
 
-// GetBaseUrl returns the BaseUrl field value if set, zero value otherwise.
-func (o *GeminiTargetDetails) GetBaseUrl() string {
-	if o == nil || IsNil(o.BaseUrl) {
+// GetGeminiUrl returns the GeminiUrl field value if set, zero value otherwise.
+func (o *GeminiTargetDetails) GetGeminiUrl() string {
+	if o == nil || IsNil(o.GeminiUrl) {
 		var ret string
 		return ret
 	}
-	return *o.BaseUrl
+	return *o.GeminiUrl
 }
 
-// GetBaseUrlOk returns a tuple with the BaseUrl field value if set, nil otherwise
+// GetGeminiUrlOk returns a tuple with the GeminiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GeminiTargetDetails) GetBaseUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.BaseUrl) {
+func (o *GeminiTargetDetails) GetGeminiUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.GeminiUrl) {
 		return nil, false
 	}
-	return o.BaseUrl, true
+	return o.GeminiUrl, true
 }
 
-// HasBaseUrl returns a boolean if a field has been set.
-func (o *GeminiTargetDetails) HasBaseUrl() bool {
-	if o != nil && !IsNil(o.BaseUrl) {
+// HasGeminiUrl returns a boolean if a field has been set.
+func (o *GeminiTargetDetails) HasGeminiUrl() bool {
+	if o != nil && !IsNil(o.GeminiUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetBaseUrl gets a reference to the given string and assigns it to the BaseUrl field.
-func (o *GeminiTargetDetails) SetBaseUrl(v string) {
-	o.BaseUrl = &v
+// SetGeminiUrl gets a reference to the given string and assigns it to the GeminiUrl field.
+func (o *GeminiTargetDetails) SetGeminiUrl(v string) {
+	o.GeminiUrl = &v
 }
 
 // GetModel returns the Model field value if set, zero value otherwise.
@@ -151,8 +151,8 @@ func (o GeminiTargetDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApiKey) {
 		toSerialize["api_key"] = o.ApiKey
 	}
-	if !IsNil(o.BaseUrl) {
-		toSerialize["base_url"] = o.BaseUrl
+	if !IsNil(o.GeminiUrl) {
+		toSerialize["gemini_url"] = o.GeminiUrl
 	}
 	if !IsNil(o.Model) {
 		toSerialize["model"] = o.Model

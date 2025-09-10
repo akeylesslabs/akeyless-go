@@ -22,6 +22,7 @@ var _ MappedNullable = &AuthOutput{}
 type AuthOutput struct {
 	CompleteAuthLink *string `json:"complete_auth_link,omitempty"`
 	Creds *SystemAccessCredentialsReplyObj `json:"creds,omitempty"`
+	Expiration *string `json:"expiration,omitempty"`
 	Token *string `json:"token,omitempty"`
 }
 
@@ -106,6 +107,38 @@ func (o *AuthOutput) SetCreds(v SystemAccessCredentialsReplyObj) {
 	o.Creds = &v
 }
 
+// GetExpiration returns the Expiration field value if set, zero value otherwise.
+func (o *AuthOutput) GetExpiration() string {
+	if o == nil || IsNil(o.Expiration) {
+		var ret string
+		return ret
+	}
+	return *o.Expiration
+}
+
+// GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthOutput) GetExpirationOk() (*string, bool) {
+	if o == nil || IsNil(o.Expiration) {
+		return nil, false
+	}
+	return o.Expiration, true
+}
+
+// HasExpiration returns a boolean if a field has been set.
+func (o *AuthOutput) HasExpiration() bool {
+	if o != nil && !IsNil(o.Expiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiration gets a reference to the given string and assigns it to the Expiration field.
+func (o *AuthOutput) SetExpiration(v string) {
+	o.Expiration = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *AuthOutput) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -153,6 +186,9 @@ func (o AuthOutput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Creds) {
 		toSerialize["creds"] = o.Creds
+	}
+	if !IsNil(o.Expiration) {
+		toSerialize["expiration"] = o.Expiration
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

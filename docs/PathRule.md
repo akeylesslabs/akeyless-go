@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Capabilities** | Pointer to **[]string** | The approved/denied capabilities in the path | [optional] 
 **Cb** | Pointer to **int32** |  | [optional] 
 **IsLimitAccess** | Pointer to **bool** | flag that indicate that this rule is allowed to be access RemainingAccess of times. | [optional] 
+**ItemId** | Pointer to **int64** | The item id this rule directly refers to (when applicable) | [optional] 
 **NumberOfAccessUsed** | Pointer to **int64** |  | [optional] 
 **NumberOfAllowedAccess** | Pointer to **int64** |  | [optional] 
 **Path** | Pointer to **string** | The path the rule refers to | [optional] 
@@ -133,6 +134,31 @@ SetIsLimitAccess sets IsLimitAccess field to given value.
 `func (o *PathRule) HasIsLimitAccess() bool`
 
 HasIsLimitAccess returns a boolean if a field has been set.
+
+### GetItemId
+
+`func (o *PathRule) GetItemId() int64`
+
+GetItemId returns the ItemId field if non-nil, zero value otherwise.
+
+### GetItemIdOk
+
+`func (o *PathRule) GetItemIdOk() (*int64, bool)`
+
+GetItemIdOk returns a tuple with the ItemId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemId
+
+`func (o *PathRule) SetItemId(v int64)`
+
+SetItemId sets ItemId field to given value.
+
+### HasItemId
+
+`func (o *PathRule) HasItemId() bool`
+
+HasItemId returns a boolean if a field has been set.
 
 ### GetNumberOfAccessUsed
 

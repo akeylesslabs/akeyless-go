@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Assocs** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
+**AuthMethodId** | Pointer to **int64** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetAssocs sets Assocs field to given value.
 `func (o *ReverseRBACClient) HasAssocs() bool`
 
 HasAssocs returns a boolean if a field has been set.
+
+### GetAuthMethodId
+
+`func (o *ReverseRBACClient) GetAuthMethodId() int64`
+
+GetAuthMethodId returns the AuthMethodId field if non-nil, zero value otherwise.
+
+### GetAuthMethodIdOk
+
+`func (o *ReverseRBACClient) GetAuthMethodIdOk() (*int64, bool)`
+
+GetAuthMethodIdOk returns a tuple with the AuthMethodId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMethodId
+
+`func (o *ReverseRBACClient) SetAuthMethodId(v int64)`
+
+SetAuthMethodId sets AuthMethodId field to given value.
+
+### HasAuthMethodId
+
+`func (o *ReverseRBACClient) HasAuthMethodId() bool`
+
+HasAuthMethodId returns a boolean if a field has been set.
 
 ### GetAuthMethodName
 

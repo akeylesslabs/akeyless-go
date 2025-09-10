@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
 **AuthMethodAccessId** | Pointer to **string** |  | [optional] 
+**AuthMethodId** | Pointer to **int64** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodSubClaims** | Pointer to **map[string][]string** |  | [optional] 
 **IsSubclaimsWithOperator** | Pointer to **bool** |  | [optional] 
@@ -79,6 +80,31 @@ SetAuthMethodAccessId sets AuthMethodAccessId field to given value.
 `func (o *RoleAuthMethodAssociation) HasAuthMethodAccessId() bool`
 
 HasAuthMethodAccessId returns a boolean if a field has been set.
+
+### GetAuthMethodId
+
+`func (o *RoleAuthMethodAssociation) GetAuthMethodId() int64`
+
+GetAuthMethodId returns the AuthMethodId field if non-nil, zero value otherwise.
+
+### GetAuthMethodIdOk
+
+`func (o *RoleAuthMethodAssociation) GetAuthMethodIdOk() (*int64, bool)`
+
+GetAuthMethodIdOk returns a tuple with the AuthMethodId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMethodId
+
+`func (o *RoleAuthMethodAssociation) SetAuthMethodId(v int64)`
+
+SetAuthMethodId sets AuthMethodId field to given value.
+
+### HasAuthMethodId
+
+`func (o *RoleAuthMethodAssociation) HasAuthMethodId() bool`
+
+HasAuthMethodId returns a boolean if a field has been set.
 
 ### GetAuthMethodName
 

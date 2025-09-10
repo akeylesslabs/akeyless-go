@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to **string** |  | [optional] 
-**BaseUrl** | Pointer to **string** |  | [optional] 
+**GeminiUrl** | Pointer to **string** |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -52,30 +52,30 @@ SetApiKey sets ApiKey field to given value.
 
 HasApiKey returns a boolean if a field has been set.
 
-### GetBaseUrl
+### GetGeminiUrl
 
-`func (o *GeminiTargetDetails) GetBaseUrl() string`
+`func (o *GeminiTargetDetails) GetGeminiUrl() string`
 
-GetBaseUrl returns the BaseUrl field if non-nil, zero value otherwise.
+GetGeminiUrl returns the GeminiUrl field if non-nil, zero value otherwise.
 
-### GetBaseUrlOk
+### GetGeminiUrlOk
 
-`func (o *GeminiTargetDetails) GetBaseUrlOk() (*string, bool)`
+`func (o *GeminiTargetDetails) GetGeminiUrlOk() (*string, bool)`
 
-GetBaseUrlOk returns a tuple with the BaseUrl field if it's non-nil, zero value otherwise
+GetGeminiUrlOk returns a tuple with the GeminiUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetBaseUrl
+### SetGeminiUrl
 
-`func (o *GeminiTargetDetails) SetBaseUrl(v string)`
+`func (o *GeminiTargetDetails) SetGeminiUrl(v string)`
 
-SetBaseUrl sets BaseUrl field to given value.
+SetGeminiUrl sets GeminiUrl field to given value.
 
-### HasBaseUrl
+### HasGeminiUrl
 
-`func (o *GeminiTargetDetails) HasBaseUrl() bool`
+`func (o *GeminiTargetDetails) HasGeminiUrl() bool`
 
-HasBaseUrl returns a boolean if a field has been set.
+HasGeminiUrl returns a boolean if a field has been set.
 
 ### GetModel
 

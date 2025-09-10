@@ -32,6 +32,8 @@ type Auth struct {
 	AdminEmail *string `json:"admin-email,omitempty"`
 	// Password (relevant only for access-type=password)
 	AdminPassword *string `json:"admin-password,omitempty"`
+	// Certificate challenge encoded in base64. (relevant only for access-type=cert)
+	CertChallenge *string `json:"cert-challenge,omitempty"`
 	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert)
 	CertData *string `json:"cert-data,omitempty"`
 	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
@@ -70,6 +72,8 @@ type Auth struct {
 	// A list of Oracle Cloud IDs groups (relevant only for access-type=oci)
 	OciGroupOcid []string `json:"oci-group-ocid,omitempty"`
 	Otp *string `json:"otp,omitempty"`
+	// Signed certificate challenge encoded in base64. (relevant only for access-type=cert)
+	SignedCertChallenge *string `json:"signed-cert-challenge,omitempty"`
 	// The universal_identity token (relevant only for access-type=universal_identity)
 	UidToken *string `json:"uid-token,omitempty"`
 	// Returns a link to complete the authentication remotely (relevant only for access-type=saml/oidc)
@@ -301,6 +305,38 @@ func (o *Auth) HasAdminPassword() bool {
 // SetAdminPassword gets a reference to the given string and assigns it to the AdminPassword field.
 func (o *Auth) SetAdminPassword(v string) {
 	o.AdminPassword = &v
+}
+
+// GetCertChallenge returns the CertChallenge field value if set, zero value otherwise.
+func (o *Auth) GetCertChallenge() string {
+	if o == nil || IsNil(o.CertChallenge) {
+		var ret string
+		return ret
+	}
+	return *o.CertChallenge
+}
+
+// GetCertChallengeOk returns a tuple with the CertChallenge field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetCertChallengeOk() (*string, bool) {
+	if o == nil || IsNil(o.CertChallenge) {
+		return nil, false
+	}
+	return o.CertChallenge, true
+}
+
+// HasCertChallenge returns a boolean if a field has been set.
+func (o *Auth) HasCertChallenge() bool {
+	if o != nil && !IsNil(o.CertChallenge) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertChallenge gets a reference to the given string and assigns it to the CertChallenge field.
+func (o *Auth) SetCertChallenge(v string) {
+	o.CertChallenge = &v
 }
 
 // GetCertData returns the CertData field value if set, zero value otherwise.
@@ -943,6 +979,38 @@ func (o *Auth) SetOtp(v string) {
 	o.Otp = &v
 }
 
+// GetSignedCertChallenge returns the SignedCertChallenge field value if set, zero value otherwise.
+func (o *Auth) GetSignedCertChallenge() string {
+	if o == nil || IsNil(o.SignedCertChallenge) {
+		var ret string
+		return ret
+	}
+	return *o.SignedCertChallenge
+}
+
+// GetSignedCertChallengeOk returns a tuple with the SignedCertChallenge field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetSignedCertChallengeOk() (*string, bool) {
+	if o == nil || IsNil(o.SignedCertChallenge) {
+		return nil, false
+	}
+	return o.SignedCertChallenge, true
+}
+
+// HasSignedCertChallenge returns a boolean if a field has been set.
+func (o *Auth) HasSignedCertChallenge() bool {
+	if o != nil && !IsNil(o.SignedCertChallenge) {
+		return true
+	}
+
+	return false
+}
+
+// SetSignedCertChallenge gets a reference to the given string and assigns it to the SignedCertChallenge field.
+func (o *Auth) SetSignedCertChallenge(v string) {
+	o.SignedCertChallenge = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *Auth) GetUidToken() string {
 	if o == nil || IsNil(o.UidToken) {
@@ -1067,6 +1135,9 @@ func (o Auth) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdminPassword) {
 		toSerialize["admin-password"] = o.AdminPassword
 	}
+	if !IsNil(o.CertChallenge) {
+		toSerialize["cert-challenge"] = o.CertChallenge
+	}
 	if !IsNil(o.CertData) {
 		toSerialize["cert-data"] = o.CertData
 	}
@@ -1126,6 +1197,9 @@ func (o Auth) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Otp) {
 		toSerialize["otp"] = o.Otp
+	}
+	if !IsNil(o.SignedCertChallenge) {
+		toSerialize["signed-cert-challenge"] = o.SignedCertChallenge
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] 
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
+**CertChallenge** | Pointer to **string** | Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert) | [optional] 
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
 **Debug** | Pointer to **bool** |  | [optional] 
@@ -30,6 +31,7 @@ Name | Type | Description | Notes
 **OciAuthType** | Pointer to **string** | The type of the OCI configuration to use [instance/apikey/resource] (relevant only for access-type&#x3D;oci) | [optional] [default to "apikey"]
 **OciGroupOcid** | Pointer to **[]string** | A list of Oracle Cloud IDs groups (relevant only for access-type&#x3D;oci) | [optional] 
 **Otp** | Pointer to **string** |  | [optional] 
+**SignedCertChallenge** | Pointer to **string** | Signed certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert) | [optional] 
 **UidToken** | Pointer to **string** | The universal_identity token (relevant only for access-type&#x3D;universal_identity) | [optional] 
 **UseRemoteBrowser** | Pointer to **bool** | Returns a link to complete the authentication remotely (relevant only for access-type&#x3D;saml/oidc) | [optional] 
 **Username** | Pointer to **string** | LDAP username (relevant only for access-type&#x3D;ldap) | [optional] 
@@ -202,6 +204,31 @@ SetAdminPassword sets AdminPassword field to given value.
 `func (o *Auth) HasAdminPassword() bool`
 
 HasAdminPassword returns a boolean if a field has been set.
+
+### GetCertChallenge
+
+`func (o *Auth) GetCertChallenge() string`
+
+GetCertChallenge returns the CertChallenge field if non-nil, zero value otherwise.
+
+### GetCertChallengeOk
+
+`func (o *Auth) GetCertChallengeOk() (*string, bool)`
+
+GetCertChallengeOk returns a tuple with the CertChallenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertChallenge
+
+`func (o *Auth) SetCertChallenge(v string)`
+
+SetCertChallenge sets CertChallenge field to given value.
+
+### HasCertChallenge
+
+`func (o *Auth) HasCertChallenge() bool`
+
+HasCertChallenge returns a boolean if a field has been set.
 
 ### GetCertData
 
@@ -702,6 +729,31 @@ SetOtp sets Otp field to given value.
 `func (o *Auth) HasOtp() bool`
 
 HasOtp returns a boolean if a field has been set.
+
+### GetSignedCertChallenge
+
+`func (o *Auth) GetSignedCertChallenge() string`
+
+GetSignedCertChallenge returns the SignedCertChallenge field if non-nil, zero value otherwise.
+
+### GetSignedCertChallengeOk
+
+`func (o *Auth) GetSignedCertChallengeOk() (*string, bool)`
+
+GetSignedCertChallengeOk returns a tuple with the SignedCertChallenge field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSignedCertChallenge
+
+`func (o *Auth) SetSignedCertChallenge(v string)`
+
+SetSignedCertChallenge sets SignedCertChallenge field to given value.
+
+### HasSignedCertChallenge
+
+`func (o *Auth) HasSignedCertChallenge() bool`
+
+HasSignedCertChallenge returns a boolean if a field has been set.
 
 ### GetUidToken
 

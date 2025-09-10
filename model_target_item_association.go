@@ -23,6 +23,7 @@ type TargetItemAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	Attributes *map[string]string `json:"attributes,omitempty"`
 	ClusterId *int64 `json:"cluster_id,omitempty"`
+	ItemId *int64 `json:"item_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
 	Relationship *string `json:"relationship,omitempty"`
@@ -141,6 +142,38 @@ func (o *TargetItemAssociation) SetClusterId(v int64) {
 	o.ClusterId = &v
 }
 
+// GetItemId returns the ItemId field value if set, zero value otherwise.
+func (o *TargetItemAssociation) GetItemId() int64 {
+	if o == nil || IsNil(o.ItemId) {
+		var ret int64
+		return ret
+	}
+	return *o.ItemId
+}
+
+// GetItemIdOk returns a tuple with the ItemId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetItemAssociation) GetItemIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ItemId) {
+		return nil, false
+	}
+	return o.ItemId, true
+}
+
+// HasItemId returns a boolean if a field has been set.
+func (o *TargetItemAssociation) HasItemId() bool {
+	if o != nil && !IsNil(o.ItemId) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemId gets a reference to the given int64 and assigns it to the ItemId field.
+func (o *TargetItemAssociation) SetItemId(v int64) {
+	o.ItemId = &v
+}
+
 // GetItemName returns the ItemName field value if set, zero value otherwise.
 func (o *TargetItemAssociation) GetItemName() string {
 	if o == nil || IsNil(o.ItemName) {
@@ -255,6 +288,9 @@ func (o TargetItemAssociation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClusterId) {
 		toSerialize["cluster_id"] = o.ClusterId
+	}
+	if !IsNil(o.ItemId) {
+		toSerialize["item_id"] = o.ItemId
 	}
 	if !IsNil(o.ItemName) {
 		toSerialize["item_name"] = o.ItemName

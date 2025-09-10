@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to **string** |  | [optional] 
 **ApiKeyId** | Pointer to **string** |  | [optional] 
-**BaseUrl** | Pointer to **string** |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
+**OpenaiUrl** | Pointer to **string** |  | [optional] 
 **OrganizationId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -79,31 +79,6 @@ SetApiKeyId sets ApiKeyId field to given value.
 
 HasApiKeyId returns a boolean if a field has been set.
 
-### GetBaseUrl
-
-`func (o *OpenAITargetDetails) GetBaseUrl() string`
-
-GetBaseUrl returns the BaseUrl field if non-nil, zero value otherwise.
-
-### GetBaseUrlOk
-
-`func (o *OpenAITargetDetails) GetBaseUrlOk() (*string, bool)`
-
-GetBaseUrlOk returns a tuple with the BaseUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBaseUrl
-
-`func (o *OpenAITargetDetails) SetBaseUrl(v string)`
-
-SetBaseUrl sets BaseUrl field to given value.
-
-### HasBaseUrl
-
-`func (o *OpenAITargetDetails) HasBaseUrl() bool`
-
-HasBaseUrl returns a boolean if a field has been set.
-
 ### GetModel
 
 `func (o *OpenAITargetDetails) GetModel() string`
@@ -128,6 +103,31 @@ SetModel sets Model field to given value.
 `func (o *OpenAITargetDetails) HasModel() bool`
 
 HasModel returns a boolean if a field has been set.
+
+### GetOpenaiUrl
+
+`func (o *OpenAITargetDetails) GetOpenaiUrl() string`
+
+GetOpenaiUrl returns the OpenaiUrl field if non-nil, zero value otherwise.
+
+### GetOpenaiUrlOk
+
+`func (o *OpenAITargetDetails) GetOpenaiUrlOk() (*string, bool)`
+
+GetOpenaiUrlOk returns a tuple with the OpenaiUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenaiUrl
+
+`func (o *OpenAITargetDetails) SetOpenaiUrl(v string)`
+
+SetOpenaiUrl sets OpenaiUrl field to given value.
+
+### HasOpenaiUrl
+
+`func (o *OpenAITargetDetails) HasOpenaiUrl() bool`
+
+HasOpenaiUrl returns a boolean if a field has been set.
 
 ### GetOrganizationId
 

@@ -21,6 +21,7 @@ var _ MappedNullable = &ReverseRBACClient{}
 // ReverseRBACClient struct for ReverseRBACClient
 type ReverseRBACClient struct {
 	Assocs []AuthMethodRoleAssociation `json:"assocs,omitempty"`
+	AuthMethodId *int64 `json:"auth_method_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 }
 
@@ -73,6 +74,38 @@ func (o *ReverseRBACClient) SetAssocs(v []AuthMethodRoleAssociation) {
 	o.Assocs = v
 }
 
+// GetAuthMethodId returns the AuthMethodId field value if set, zero value otherwise.
+func (o *ReverseRBACClient) GetAuthMethodId() int64 {
+	if o == nil || IsNil(o.AuthMethodId) {
+		var ret int64
+		return ret
+	}
+	return *o.AuthMethodId
+}
+
+// GetAuthMethodIdOk returns a tuple with the AuthMethodId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReverseRBACClient) GetAuthMethodIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.AuthMethodId) {
+		return nil, false
+	}
+	return o.AuthMethodId, true
+}
+
+// HasAuthMethodId returns a boolean if a field has been set.
+func (o *ReverseRBACClient) HasAuthMethodId() bool {
+	if o != nil && !IsNil(o.AuthMethodId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMethodId gets a reference to the given int64 and assigns it to the AuthMethodId field.
+func (o *ReverseRBACClient) SetAuthMethodId(v int64) {
+	o.AuthMethodId = &v
+}
+
 // GetAuthMethodName returns the AuthMethodName field value if set, zero value otherwise.
 func (o *ReverseRBACClient) GetAuthMethodName() string {
 	if o == nil || IsNil(o.AuthMethodName) {
@@ -117,6 +150,9 @@ func (o ReverseRBACClient) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Assocs) {
 		toSerialize["assocs"] = o.Assocs
+	}
+	if !IsNil(o.AuthMethodId) {
+		toSerialize["auth_method_id"] = o.AuthMethodId
 	}
 	if !IsNil(o.AuthMethodName) {
 		toSerialize["auth_method_name"] = o.AuthMethodName

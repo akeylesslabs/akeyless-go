@@ -42,6 +42,8 @@ type CreateRole struct {
 	Json *bool `json:"json,omitempty"`
 	// Role name
 	Name string `json:"name"`
+	// Allow this role to view Reverse RBAC. Supported values: 'own', 'all'.
+	ReverseRbacAccess *string `json:"reverse-rbac-access,omitempty"`
 	// Allow this role to view SRA Clusters. Currently only 'none', 'own', 'all' values are supported.
 	SraReportsAccess *string `json:"sra-reports-access,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -388,6 +390,38 @@ func (o *CreateRole) SetName(v string) {
 	o.Name = v
 }
 
+// GetReverseRbacAccess returns the ReverseRbacAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetReverseRbacAccess() string {
+	if o == nil || IsNil(o.ReverseRbacAccess) {
+		var ret string
+		return ret
+	}
+	return *o.ReverseRbacAccess
+}
+
+// GetReverseRbacAccessOk returns a tuple with the ReverseRbacAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetReverseRbacAccessOk() (*string, bool) {
+	if o == nil || IsNil(o.ReverseRbacAccess) {
+		return nil, false
+	}
+	return o.ReverseRbacAccess, true
+}
+
+// HasReverseRbacAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasReverseRbacAccess() bool {
+	if o != nil && !IsNil(o.ReverseRbacAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetReverseRbacAccess gets a reference to the given string and assigns it to the ReverseRbacAccess field.
+func (o *CreateRole) SetReverseRbacAccess(v string) {
+	o.ReverseRbacAccess = &v
+}
+
 // GetSraReportsAccess returns the SraReportsAccess field value if set, zero value otherwise.
 func (o *CreateRole) GetSraReportsAccess() string {
 	if o == nil || IsNil(o.SraReportsAccess) {
@@ -554,6 +588,9 @@ func (o CreateRole) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.ReverseRbacAccess) {
+		toSerialize["reverse-rbac-access"] = o.ReverseRbacAccess
+	}
 	if !IsNil(o.SraReportsAccess) {
 		toSerialize["sra-reports-access"] = o.SraReportsAccess
 	}

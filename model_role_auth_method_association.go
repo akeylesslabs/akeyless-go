@@ -22,6 +22,7 @@ var _ MappedNullable = &RoleAuthMethodAssociation{}
 type RoleAuthMethodAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	AuthMethodAccessId *string `json:"auth_method_access_id,omitempty"`
+	AuthMethodId *int64 `json:"auth_method_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodSubClaims *map[string][]string `json:"auth_method_sub_claims,omitempty"`
 	IsSubclaimsWithOperator *bool `json:"is_subclaims_with_operator,omitempty"`
@@ -107,6 +108,38 @@ func (o *RoleAuthMethodAssociation) HasAuthMethodAccessId() bool {
 // SetAuthMethodAccessId gets a reference to the given string and assigns it to the AuthMethodAccessId field.
 func (o *RoleAuthMethodAssociation) SetAuthMethodAccessId(v string) {
 	o.AuthMethodAccessId = &v
+}
+
+// GetAuthMethodId returns the AuthMethodId field value if set, zero value otherwise.
+func (o *RoleAuthMethodAssociation) GetAuthMethodId() int64 {
+	if o == nil || IsNil(o.AuthMethodId) {
+		var ret int64
+		return ret
+	}
+	return *o.AuthMethodId
+}
+
+// GetAuthMethodIdOk returns a tuple with the AuthMethodId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RoleAuthMethodAssociation) GetAuthMethodIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.AuthMethodId) {
+		return nil, false
+	}
+	return o.AuthMethodId, true
+}
+
+// HasAuthMethodId returns a boolean if a field has been set.
+func (o *RoleAuthMethodAssociation) HasAuthMethodId() bool {
+	if o != nil && !IsNil(o.AuthMethodId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMethodId gets a reference to the given int64 and assigns it to the AuthMethodId field.
+func (o *RoleAuthMethodAssociation) SetAuthMethodId(v int64) {
+	o.AuthMethodId = &v
 }
 
 // GetAuthMethodName returns the AuthMethodName field value if set, zero value otherwise.
@@ -252,6 +285,9 @@ func (o RoleAuthMethodAssociation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuthMethodAccessId) {
 		toSerialize["auth_method_access_id"] = o.AuthMethodAccessId
+	}
+	if !IsNil(o.AuthMethodId) {
+		toSerialize["auth_method_id"] = o.AuthMethodId
 	}
 	if !IsNil(o.AuthMethodName) {
 		toSerialize["auth_method_name"] = o.AuthMethodName
