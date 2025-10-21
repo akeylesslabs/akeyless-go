@@ -24128,6 +24128,7 @@ components:
         k8s-namespace: k8s-namespace
         azure-kv-name: azure-kv-name
         uid-token: uid-token
+        gcp-project-id: gcp-project-id
         tags:
         - tags
         - tags
@@ -24145,6 +24146,10 @@ components:
           description: Description of the External Secrets Manager
           type: string
           x-go-name: Description
+        gcp-project-id:
+          description: GCP Project ID (Relevant only for GCP targets)
+          type: string
+          x-go-name: GcpProjectId
         json:
           default: false
           description: Set output format to JSON
@@ -24655,19 +24660,20 @@ components:
       description: CreateUSC is a command that creates a Universal Secrets Connector
       example:
         target-to-associate: target-to-associate
-        delete_protection: delete_protection
-        name: name
         use-prefix-as-filter: "false"
         description: description
-        json: false
         usc-prefix: usc-prefix
-        k8s-namespace: k8s-namespace
         azure-kv-name: azure-kv-name
         uid-token: uid-token
+        gcp-project-id: gcp-project-id
         tags:
         - tags
         - tags
         token: token
+        delete_protection: delete_protection
+        name: name
+        json: false
+        k8s-namespace: k8s-namespace
       properties:
         azure-kv-name:
           description: Azure Key Vault name (Relevant only for Azure targets)
@@ -24681,6 +24687,10 @@ components:
           description: Description of the Universal Secrets Connector
           type: string
           x-go-name: Description
+        gcp-project-id:
+          description: GCP Project ID (Relevant only for GCP targets)
+          type: string
+          x-go-name: GcpProjectId
         json:
           default: false
           description: Set output format to JSON
@@ -24825,6 +24835,7 @@ components:
           - gcp_role_bindings
         ldap_url: ldap_url
         username_policy: username_policy
+        gcp_project_id: gcp_project_id
         gcp_token_scope: gcp_token_scope
         venafi_allowed_domains:
         - venafi_allowed_domains
@@ -25457,6 +25468,9 @@ components:
         gcp_key_algo:
           type: string
           x-go-name: GCPKeyAlgorithm
+        gcp_project_id:
+          type: string
+          x-go-name: GCPProjectId
         gcp_role_bindings:
           additionalProperties:
             items:
@@ -54601,6 +54615,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -56114,6 +56133,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -58557,6 +58577,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -60122,6 +60147,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -63335,28 +63361,6 @@ components:
     gatewayCreateMigration:
       description: gatewayCreateMigration is a command that create migration
       properties:
-        "1password-email":
-          description: 1Password user email to connect to the API
-          type: string
-          x-go-name: OpEmail
-        "1password-password":
-          description: 1Password user password to connect to the API
-          type: string
-          x-go-name: OpPassword
-        "1password-secret-key":
-          description: 1Password user secret key to connect to the API
-          type: string
-          x-go-name: OpSecretKey
-        "1password-url":
-          description: 1Password api container url
-          type: string
-          x-go-name: OpUrl
-        "1password-vaults":
-          description: 1Password list of vault to get the items from
-          items:
-            type: string
-          type: array
-          x-go-name: Vaults
         ServiceAccountKeyDecoded:
           type: string
         ad-auto-rotate:
@@ -63690,7 +63694,7 @@ components:
           type: string
           x-go-name: Profile
         type:
-          description: Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory)
+          description: Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory)
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -63803,6 +63807,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -64337,6 +64342,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -64839,6 +64845,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -65297,6 +65304,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -65745,6 +65753,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -66201,6 +66210,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -66635,6 +66645,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -67115,6 +67126,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -67485,6 +67497,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -67568,6 +67585,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -68024,6 +68042,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -68495,6 +68514,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -68991,6 +69011,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -69513,6 +69534,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -70009,6 +70031,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -70522,6 +70545,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -71031,6 +71055,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -71556,6 +71581,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -72047,6 +72073,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -72565,6 +72592,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -73066,6 +73094,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -73544,6 +73573,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -74057,6 +74087,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -74518,6 +74549,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -74987,6 +75019,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -75451,6 +75484,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -75949,6 +75983,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -79070,28 +79105,6 @@ components:
     gatewayUpdateMigration:
       description: gatewayUpdateMigration is a command that update migration
       properties:
-        "1password-email":
-          description: 1Password user email to connect to the API
-          type: string
-          x-go-name: OpEmail
-        "1password-password":
-          description: 1Password user password to connect to the API
-          type: string
-          x-go-name: OpPassword
-        "1password-secret-key":
-          description: 1Password user secret key to connect to the API
-          type: string
-          x-go-name: OpSecretKey
-        "1password-url":
-          description: 1Password api container url
-          type: string
-          x-go-name: OpUrl
-        "1password-vaults":
-          description: 1Password list of vault to get the items from
-          items:
-            type: string
-          type: array
-          x-go-name: Vaults
         ServiceAccountKeyDecoded:
           type: string
         ad-auto-rotate:
@@ -79555,6 +79568,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -80093,6 +80107,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -80599,6 +80614,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -81061,6 +81077,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -81513,6 +81530,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -81973,6 +81991,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -82411,6 +82430,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -82895,6 +82915,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -83265,6 +83286,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -83352,6 +83378,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -83812,6 +83839,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -84287,6 +84315,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -84781,6 +84810,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -85307,6 +85337,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -85807,6 +85838,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -86324,6 +86356,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -86837,6 +86870,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -87366,6 +87400,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -87861,6 +87896,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -88383,6 +88419,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -88888,6 +88925,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -89370,6 +89408,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -89887,6 +89926,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -90352,6 +90392,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -90825,6 +90866,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -91293,6 +91335,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains
@@ -91795,6 +91838,7 @@ components:
             - gcp_role_bindings
           ldap_url: ldap_url
           username_policy: username_policy
+          gcp_project_id: gcp_project_id
           gcp_token_scope: gcp_token_scope
           venafi_allowed_domains:
           - venafi_allowed_domains

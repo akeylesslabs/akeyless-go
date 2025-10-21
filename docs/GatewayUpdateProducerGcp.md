@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **GcpCredType** | Pointer to **string** |  | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpKeyAlgo** | Pointer to **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 
+**GcpProjectId** | Pointer to **string** | GCP Project ID override for dynamic secret operations (tmp service accounts) | [optional] 
 **GcpSaEmail** | Pointer to **string** | The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed) | [optional] 
 **GcpTokenScopes** | Pointer to **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -166,6 +167,31 @@ SetGcpKeyAlgo sets GcpKeyAlgo field to given value.
 `func (o *GatewayUpdateProducerGcp) HasGcpKeyAlgo() bool`
 
 HasGcpKeyAlgo returns a boolean if a field has been set.
+
+### GetGcpProjectId
+
+`func (o *GatewayUpdateProducerGcp) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *GatewayUpdateProducerGcp) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *GatewayUpdateProducerGcp) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *GatewayUpdateProducerGcp) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetGcpSaEmail
 

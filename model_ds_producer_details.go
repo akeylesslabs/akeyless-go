@@ -116,6 +116,7 @@ type DSProducerDetails struct {
 	FailureMessage *string `json:"failure_message,omitempty"`
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
 	GcpKeyAlgo *string `json:"gcp_key_algo,omitempty"`
+	GcpProjectId *string `json:"gcp_project_id,omitempty"`
 	GcpRoleBindings *map[string][]string `json:"gcp_role_bindings,omitempty"`
 	// GCPServiceAccountEmail overrides the deprecated field from the target
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
@@ -3228,6 +3229,38 @@ func (o *DSProducerDetails) HasGcpKeyAlgo() bool {
 // SetGcpKeyAlgo gets a reference to the given string and assigns it to the GcpKeyAlgo field.
 func (o *DSProducerDetails) SetGcpKeyAlgo(v string) {
 	o.GcpKeyAlgo = &v
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *DSProducerDetails) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
 }
 
 // GetGcpRoleBindings returns the GcpRoleBindings field value if set, zero value otherwise.
@@ -8824,6 +8857,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpKeyAlgo) {
 		toSerialize["gcp_key_algo"] = o.GcpKeyAlgo
+	}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp_project_id"] = o.GcpProjectId
 	}
 	if !IsNil(o.GcpRoleBindings) {
 		toSerialize["gcp_role_bindings"] = o.GcpRoleBindings

@@ -95,6 +95,7 @@ Name | Type | Description | Notes
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
 **GcpKeyAlgo** | Pointer to **string** |  | [optional] 
+**GcpProjectId** | Pointer to **string** |  | [optional] 
 **GcpRoleBindings** | Pointer to **map[string][]string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
@@ -2555,6 +2556,31 @@ SetGcpKeyAlgo sets GcpKeyAlgo field to given value.
 `func (o *DSProducerDetails) HasGcpKeyAlgo() bool`
 
 HasGcpKeyAlgo returns a boolean if a field has been set.
+
+### GetGcpProjectId
+
+`func (o *DSProducerDetails) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *DSProducerDetails) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *DSProducerDetails) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *DSProducerDetails) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetGcpRoleBindings
 

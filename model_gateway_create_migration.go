@@ -22,16 +22,6 @@ var _ MappedNullable = &GatewayCreateMigration{}
 
 // GatewayCreateMigration gatewayCreateMigration is a command that create migration
 type GatewayCreateMigration struct {
-	// 1Password user email to connect to the API
-	Var1passwordEmail *string `json:"1password-email,omitempty"`
-	// 1Password user password to connect to the API
-	Var1passwordPassword *string `json:"1password-password,omitempty"`
-	// 1Password user secret key to connect to the API
-	Var1passwordSecretKey *string `json:"1password-secret-key,omitempty"`
-	// 1Password api container url
-	Var1passwordUrl *string `json:"1password-url,omitempty"`
-	// 1Password list of vault to get the items from
-	Var1passwordVaults []string `json:"1password-vaults,omitempty"`
 	ServiceAccountKeyDecoded *string `json:"ServiceAccountKeyDecoded,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration)
 	AdAutoRotate *string `json:"ad-auto-rotate,omitempty"`
@@ -145,7 +135,7 @@ type GatewayCreateMigration struct {
 	TargetLocation string `json:"target-location"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory)
+	// Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory)
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -212,166 +202,6 @@ func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	var siSraEnableRdp string = "false"
 	this.SiSraEnableRdp = &siSraEnableRdp
 	return &this
-}
-
-// GetVar1passwordEmail returns the Var1passwordEmail field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetVar1passwordEmail() string {
-	if o == nil || IsNil(o.Var1passwordEmail) {
-		var ret string
-		return ret
-	}
-	return *o.Var1passwordEmail
-}
-
-// GetVar1passwordEmailOk returns a tuple with the Var1passwordEmail field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetVar1passwordEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Var1passwordEmail) {
-		return nil, false
-	}
-	return o.Var1passwordEmail, true
-}
-
-// HasVar1passwordEmail returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasVar1passwordEmail() bool {
-	if o != nil && !IsNil(o.Var1passwordEmail) {
-		return true
-	}
-
-	return false
-}
-
-// SetVar1passwordEmail gets a reference to the given string and assigns it to the Var1passwordEmail field.
-func (o *GatewayCreateMigration) SetVar1passwordEmail(v string) {
-	o.Var1passwordEmail = &v
-}
-
-// GetVar1passwordPassword returns the Var1passwordPassword field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetVar1passwordPassword() string {
-	if o == nil || IsNil(o.Var1passwordPassword) {
-		var ret string
-		return ret
-	}
-	return *o.Var1passwordPassword
-}
-
-// GetVar1passwordPasswordOk returns a tuple with the Var1passwordPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetVar1passwordPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Var1passwordPassword) {
-		return nil, false
-	}
-	return o.Var1passwordPassword, true
-}
-
-// HasVar1passwordPassword returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasVar1passwordPassword() bool {
-	if o != nil && !IsNil(o.Var1passwordPassword) {
-		return true
-	}
-
-	return false
-}
-
-// SetVar1passwordPassword gets a reference to the given string and assigns it to the Var1passwordPassword field.
-func (o *GatewayCreateMigration) SetVar1passwordPassword(v string) {
-	o.Var1passwordPassword = &v
-}
-
-// GetVar1passwordSecretKey returns the Var1passwordSecretKey field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetVar1passwordSecretKey() string {
-	if o == nil || IsNil(o.Var1passwordSecretKey) {
-		var ret string
-		return ret
-	}
-	return *o.Var1passwordSecretKey
-}
-
-// GetVar1passwordSecretKeyOk returns a tuple with the Var1passwordSecretKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetVar1passwordSecretKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.Var1passwordSecretKey) {
-		return nil, false
-	}
-	return o.Var1passwordSecretKey, true
-}
-
-// HasVar1passwordSecretKey returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasVar1passwordSecretKey() bool {
-	if o != nil && !IsNil(o.Var1passwordSecretKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetVar1passwordSecretKey gets a reference to the given string and assigns it to the Var1passwordSecretKey field.
-func (o *GatewayCreateMigration) SetVar1passwordSecretKey(v string) {
-	o.Var1passwordSecretKey = &v
-}
-
-// GetVar1passwordUrl returns the Var1passwordUrl field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetVar1passwordUrl() string {
-	if o == nil || IsNil(o.Var1passwordUrl) {
-		var ret string
-		return ret
-	}
-	return *o.Var1passwordUrl
-}
-
-// GetVar1passwordUrlOk returns a tuple with the Var1passwordUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetVar1passwordUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Var1passwordUrl) {
-		return nil, false
-	}
-	return o.Var1passwordUrl, true
-}
-
-// HasVar1passwordUrl returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasVar1passwordUrl() bool {
-	if o != nil && !IsNil(o.Var1passwordUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetVar1passwordUrl gets a reference to the given string and assigns it to the Var1passwordUrl field.
-func (o *GatewayCreateMigration) SetVar1passwordUrl(v string) {
-	o.Var1passwordUrl = &v
-}
-
-// GetVar1passwordVaults returns the Var1passwordVaults field value if set, zero value otherwise.
-func (o *GatewayCreateMigration) GetVar1passwordVaults() []string {
-	if o == nil || IsNil(o.Var1passwordVaults) {
-		var ret []string
-		return ret
-	}
-	return o.Var1passwordVaults
-}
-
-// GetVar1passwordVaultsOk returns a tuple with the Var1passwordVaults field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayCreateMigration) GetVar1passwordVaultsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Var1passwordVaults) {
-		return nil, false
-	}
-	return o.Var1passwordVaults, true
-}
-
-// HasVar1passwordVaults returns a boolean if a field has been set.
-func (o *GatewayCreateMigration) HasVar1passwordVaults() bool {
-	if o != nil && !IsNil(o.Var1passwordVaults) {
-		return true
-	}
-
-	return false
-}
-
-// SetVar1passwordVaults gets a reference to the given []string and assigns it to the Var1passwordVaults field.
-func (o *GatewayCreateMigration) SetVar1passwordVaults(v []string) {
-	o.Var1passwordVaults = v
 }
 
 // GetServiceAccountKeyDecoded returns the ServiceAccountKeyDecoded field value if set, zero value otherwise.
@@ -2240,21 +2070,6 @@ func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 
 func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Var1passwordEmail) {
-		toSerialize["1password-email"] = o.Var1passwordEmail
-	}
-	if !IsNil(o.Var1passwordPassword) {
-		toSerialize["1password-password"] = o.Var1passwordPassword
-	}
-	if !IsNil(o.Var1passwordSecretKey) {
-		toSerialize["1password-secret-key"] = o.Var1passwordSecretKey
-	}
-	if !IsNil(o.Var1passwordUrl) {
-		toSerialize["1password-url"] = o.Var1passwordUrl
-	}
-	if !IsNil(o.Var1passwordVaults) {
-		toSerialize["1password-vaults"] = o.Var1passwordVaults
-	}
 	if !IsNil(o.ServiceAccountKeyDecoded) {
 		toSerialize["ServiceAccountKeyDecoded"] = o.ServiceAccountKeyDecoded
 	}

@@ -4,11 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Var1passwordEmail** | Pointer to **string** | 1Password user email to connect to the API | [optional] 
-**Var1passwordPassword** | Pointer to **string** | 1Password user password to connect to the API | [optional] 
-**Var1passwordSecretKey** | Pointer to **string** | 1Password user secret key to connect to the API | [optional] 
-**Var1passwordUrl** | Pointer to **string** | 1Password api container url | [optional] 
-**Var1passwordVaults** | Pointer to **[]string** | 1Password list of vault to get the items from | [optional] 
 **ServiceAccountKeyDecoded** | Pointer to **string** |  | [optional] 
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
@@ -66,7 +61,7 @@ Name | Type | Description | Notes
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/1password/active_directory) | [optional] 
+**Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -87,131 +82,6 @@ will change when the set of required properties is changed
 NewGatewayCreateMigrationWithDefaults instantiates a new GatewayCreateMigration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetVar1passwordEmail
-
-`func (o *GatewayCreateMigration) GetVar1passwordEmail() string`
-
-GetVar1passwordEmail returns the Var1passwordEmail field if non-nil, zero value otherwise.
-
-### GetVar1passwordEmailOk
-
-`func (o *GatewayCreateMigration) GetVar1passwordEmailOk() (*string, bool)`
-
-GetVar1passwordEmailOk returns a tuple with the Var1passwordEmail field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVar1passwordEmail
-
-`func (o *GatewayCreateMigration) SetVar1passwordEmail(v string)`
-
-SetVar1passwordEmail sets Var1passwordEmail field to given value.
-
-### HasVar1passwordEmail
-
-`func (o *GatewayCreateMigration) HasVar1passwordEmail() bool`
-
-HasVar1passwordEmail returns a boolean if a field has been set.
-
-### GetVar1passwordPassword
-
-`func (o *GatewayCreateMigration) GetVar1passwordPassword() string`
-
-GetVar1passwordPassword returns the Var1passwordPassword field if non-nil, zero value otherwise.
-
-### GetVar1passwordPasswordOk
-
-`func (o *GatewayCreateMigration) GetVar1passwordPasswordOk() (*string, bool)`
-
-GetVar1passwordPasswordOk returns a tuple with the Var1passwordPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVar1passwordPassword
-
-`func (o *GatewayCreateMigration) SetVar1passwordPassword(v string)`
-
-SetVar1passwordPassword sets Var1passwordPassword field to given value.
-
-### HasVar1passwordPassword
-
-`func (o *GatewayCreateMigration) HasVar1passwordPassword() bool`
-
-HasVar1passwordPassword returns a boolean if a field has been set.
-
-### GetVar1passwordSecretKey
-
-`func (o *GatewayCreateMigration) GetVar1passwordSecretKey() string`
-
-GetVar1passwordSecretKey returns the Var1passwordSecretKey field if non-nil, zero value otherwise.
-
-### GetVar1passwordSecretKeyOk
-
-`func (o *GatewayCreateMigration) GetVar1passwordSecretKeyOk() (*string, bool)`
-
-GetVar1passwordSecretKeyOk returns a tuple with the Var1passwordSecretKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVar1passwordSecretKey
-
-`func (o *GatewayCreateMigration) SetVar1passwordSecretKey(v string)`
-
-SetVar1passwordSecretKey sets Var1passwordSecretKey field to given value.
-
-### HasVar1passwordSecretKey
-
-`func (o *GatewayCreateMigration) HasVar1passwordSecretKey() bool`
-
-HasVar1passwordSecretKey returns a boolean if a field has been set.
-
-### GetVar1passwordUrl
-
-`func (o *GatewayCreateMigration) GetVar1passwordUrl() string`
-
-GetVar1passwordUrl returns the Var1passwordUrl field if non-nil, zero value otherwise.
-
-### GetVar1passwordUrlOk
-
-`func (o *GatewayCreateMigration) GetVar1passwordUrlOk() (*string, bool)`
-
-GetVar1passwordUrlOk returns a tuple with the Var1passwordUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVar1passwordUrl
-
-`func (o *GatewayCreateMigration) SetVar1passwordUrl(v string)`
-
-SetVar1passwordUrl sets Var1passwordUrl field to given value.
-
-### HasVar1passwordUrl
-
-`func (o *GatewayCreateMigration) HasVar1passwordUrl() bool`
-
-HasVar1passwordUrl returns a boolean if a field has been set.
-
-### GetVar1passwordVaults
-
-`func (o *GatewayCreateMigration) GetVar1passwordVaults() []string`
-
-GetVar1passwordVaults returns the Var1passwordVaults field if non-nil, zero value otherwise.
-
-### GetVar1passwordVaultsOk
-
-`func (o *GatewayCreateMigration) GetVar1passwordVaultsOk() (*[]string, bool)`
-
-GetVar1passwordVaultsOk returns a tuple with the Var1passwordVaults field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetVar1passwordVaults
-
-`func (o *GatewayCreateMigration) SetVar1passwordVaults(v []string)`
-
-SetVar1passwordVaults sets Var1passwordVaults field to given value.
-
-### HasVar1passwordVaults
-
-`func (o *GatewayCreateMigration) HasVar1passwordVaults() bool`
-
-HasVar1passwordVaults returns a boolean if a field has been set.
 
 ### GetServiceAccountKeyDecoded
 
