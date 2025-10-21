@@ -301,6 +301,7 @@ docs/DynamicSecretCreateLdap.md
 docs/DynamicSecretCreateMongoDb.md
 docs/DynamicSecretCreateMsSql.md
 docs/DynamicSecretCreateMySql.md
+docs/DynamicSecretCreateOpenAI.md
 docs/DynamicSecretCreateOracleDb.md
 docs/DynamicSecretCreateOutput.md
 docs/DynamicSecretCreatePing.md
@@ -340,6 +341,7 @@ docs/DynamicSecretUpdateLdap.md
 docs/DynamicSecretUpdateMongoDb.md
 docs/DynamicSecretUpdateMsSql.md
 docs/DynamicSecretUpdateMySql.md
+docs/DynamicSecretUpdateOpenAI.md
 docs/DynamicSecretUpdateOracleDb.md
 docs/DynamicSecretUpdateOutput.md
 docs/DynamicSecretUpdatePing.md
@@ -378,6 +380,7 @@ docs/EventAction.md
 docs/EventForwarderCreateEmail.md
 docs/EventForwarderCreateServiceNow.md
 docs/EventForwarderCreateSlack.md
+docs/EventForwarderCreateTeams.md
 docs/EventForwarderCreateUpdateOutput.md
 docs/EventForwarderCreateWebhook.md
 docs/EventForwarderDelete.md
@@ -387,6 +390,7 @@ docs/EventForwarderGetOutput.md
 docs/EventForwarderUpdateEmail.md
 docs/EventForwarderUpdateServiceNow.md
 docs/EventForwarderUpdateSlack.md
+docs/EventForwarderUpdateTeams.md
 docs/EventForwarderUpdateWebhook.md
 docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
@@ -1414,6 +1418,7 @@ model_dynamic_secret_create_ldap.go
 model_dynamic_secret_create_mongo_db.go
 model_dynamic_secret_create_ms_sql.go
 model_dynamic_secret_create_my_sql.go
+model_dynamic_secret_create_open_ai.go
 model_dynamic_secret_create_oracle_db.go
 model_dynamic_secret_create_output.go
 model_dynamic_secret_create_ping.go
@@ -1453,6 +1458,7 @@ model_dynamic_secret_update_ldap.go
 model_dynamic_secret_update_mongo_db.go
 model_dynamic_secret_update_ms_sql.go
 model_dynamic_secret_update_my_sql.go
+model_dynamic_secret_update_open_ai.go
 model_dynamic_secret_update_oracle_db.go
 model_dynamic_secret_update_output.go
 model_dynamic_secret_update_ping.go
@@ -1491,6 +1497,7 @@ model_event_action.go
 model_event_forwarder_create_email.go
 model_event_forwarder_create_service_now.go
 model_event_forwarder_create_slack.go
+model_event_forwarder_create_teams.go
 model_event_forwarder_create_update_output.go
 model_event_forwarder_create_webhook.go
 model_event_forwarder_delete.go
@@ -1500,6 +1507,7 @@ model_event_forwarder_get_output.go
 model_event_forwarder_update_email.go
 model_event_forwarder_update_service_now.go
 model_event_forwarder_update_slack.go
+model_event_forwarder_update_teams.go
 model_event_forwarder_update_webhook.go
 model_export_classic_key.go
 model_export_classic_key_output.go

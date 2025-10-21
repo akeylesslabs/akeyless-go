@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **ProtectionKey** | Pointer to **string** |  | [optional] 
 **RunnerType** | Pointer to **string** |  | [optional] 
 **SlackNotiForwarderPublicDetails** | Pointer to **map[string]interface{}** |  | [optional] 
+**TeamsNotiForwarderPublicDetails** | Pointer to **map[string]interface{}** |  | [optional] 
 **TimespanInSeconds** | Pointer to **int64** |  | [optional] 
 **ToEmails** | Pointer to [**[]EmailEntry**](EmailEntry.md) |  | [optional] 
 **UserEmail** | Pointer to **string** |  | [optional] 
@@ -575,6 +576,31 @@ SetSlackNotiForwarderPublicDetails sets SlackNotiForwarderPublicDetails field to
 `func (o *NotiForwarder) HasSlackNotiForwarderPublicDetails() bool`
 
 HasSlackNotiForwarderPublicDetails returns a boolean if a field has been set.
+
+### GetTeamsNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) GetTeamsNotiForwarderPublicDetails() map[string]interface{}`
+
+GetTeamsNotiForwarderPublicDetails returns the TeamsNotiForwarderPublicDetails field if non-nil, zero value otherwise.
+
+### GetTeamsNotiForwarderPublicDetailsOk
+
+`func (o *NotiForwarder) GetTeamsNotiForwarderPublicDetailsOk() (*map[string]interface{}, bool)`
+
+GetTeamsNotiForwarderPublicDetailsOk returns a tuple with the TeamsNotiForwarderPublicDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTeamsNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) SetTeamsNotiForwarderPublicDetails(v map[string]interface{})`
+
+SetTeamsNotiForwarderPublicDetails sets TeamsNotiForwarderPublicDetails field to given value.
+
+### HasTeamsNotiForwarderPublicDetails
+
+`func (o *NotiForwarder) HasTeamsNotiForwarderPublicDetails() bool`
+
+HasTeamsNotiForwarderPublicDetails returns a boolean if a field has been set.
 
 ### GetTimespanInSeconds
 

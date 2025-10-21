@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BinaryValue** | Pointer to **bool** |  | [optional] 
+**EncryptionKey** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -53,6 +54,31 @@ SetBinaryValue sets BinaryValue field to given value.
 `func (o *EsmGetSecretOutput) HasBinaryValue() bool`
 
 HasBinaryValue returns a boolean if a field has been set.
+
+### GetEncryptionKey
+
+`func (o *EsmGetSecretOutput) GetEncryptionKey() string`
+
+GetEncryptionKey returns the EncryptionKey field if non-nil, zero value otherwise.
+
+### GetEncryptionKeyOk
+
+`func (o *EsmGetSecretOutput) GetEncryptionKeyOk() (*string, bool)`
+
+GetEncryptionKeyOk returns a tuple with the EncryptionKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncryptionKey
+
+`func (o *EsmGetSecretOutput) SetEncryptionKey(v string)`
+
+SetEncryptionKey sets EncryptionKey field to given value.
+
+### HasEncryptionKey
+
+`func (o *EsmGetSecretOutput) HasEncryptionKey() bool`
+
+HasEncryptionKey returns a boolean if a field has been set.
 
 ### GetId
 

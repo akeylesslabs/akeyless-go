@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Expiration** | Pointer to **time.Time** |  | [optional] 
+**KeyId** | Pointer to **string** |  | [optional] 
 **LastRetrieved** | Pointer to **time.Time** |  | [optional] 
 **Location** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -110,6 +111,31 @@ SetExpiration sets Expiration field to given value.
 `func (o *SecretInfo) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
+
+### GetKeyId
+
+`func (o *SecretInfo) GetKeyId() string`
+
+GetKeyId returns the KeyId field if non-nil, zero value otherwise.
+
+### GetKeyIdOk
+
+`func (o *SecretInfo) GetKeyIdOk() (*string, bool)`
+
+GetKeyIdOk returns a tuple with the KeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyId
+
+`func (o *SecretInfo) SetKeyId(v string)`
+
+SetKeyId sets KeyId field to given value.
+
+### HasKeyId
+
+`func (o *SecretInfo) HasKeyId() bool`
+
+HasKeyId returns a boolean if a field has been set.
 
 ### GetLastRetrieved
 

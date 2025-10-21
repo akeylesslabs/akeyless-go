@@ -24,6 +24,7 @@ type SecretInfo struct {
 	Created *time.Time `json:"created,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Expiration *time.Time `json:"expiration,omitempty"`
+	KeyId *string `json:"key_id,omitempty"`
 	LastRetrieved *time.Time `json:"last_retrieved,omitempty"`
 	Location interface{} `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -146,6 +147,38 @@ func (o *SecretInfo) HasExpiration() bool {
 // SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
 func (o *SecretInfo) SetExpiration(v time.Time) {
 	o.Expiration = &v
+}
+
+// GetKeyId returns the KeyId field value if set, zero value otherwise.
+func (o *SecretInfo) GetKeyId() string {
+	if o == nil || IsNil(o.KeyId) {
+		var ret string
+		return ret
+	}
+	return *o.KeyId
+}
+
+// GetKeyIdOk returns a tuple with the KeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetKeyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyId) {
+		return nil, false
+	}
+	return o.KeyId, true
+}
+
+// HasKeyId returns a boolean if a field has been set.
+func (o *SecretInfo) HasKeyId() bool {
+	if o != nil && !IsNil(o.KeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyId gets a reference to the given string and assigns it to the KeyId field.
+func (o *SecretInfo) SetKeyId(v string) {
+	o.KeyId = &v
 }
 
 // GetLastRetrieved returns the LastRetrieved field value if set, zero value otherwise.
@@ -455,6 +488,9 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
+	}
+	if !IsNil(o.KeyId) {
+		toSerialize["key_id"] = o.KeyId
 	}
 	if !IsNil(o.LastRetrieved) {
 		toSerialize["last_retrieved"] = o.LastRetrieved

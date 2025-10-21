@@ -40,6 +40,8 @@ type UscUpdate struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used)
+	UscEncryptionKey *string `json:"usc-encryption-key,omitempty"`
 	// Name of the Universal Secrets Connector item
 	UscName string `json:"usc-name"`
 	// Value of the universal secrets item, either text or base64 encoded binary
@@ -352,6 +354,38 @@ func (o *UscUpdate) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUscEncryptionKey returns the UscEncryptionKey field value if set, zero value otherwise.
+func (o *UscUpdate) GetUscEncryptionKey() string {
+	if o == nil || IsNil(o.UscEncryptionKey) {
+		var ret string
+		return ret
+	}
+	return *o.UscEncryptionKey
+}
+
+// GetUscEncryptionKeyOk returns a tuple with the UscEncryptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetUscEncryptionKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.UscEncryptionKey) {
+		return nil, false
+	}
+	return o.UscEncryptionKey, true
+}
+
+// HasUscEncryptionKey returns a boolean if a field has been set.
+func (o *UscUpdate) HasUscEncryptionKey() bool {
+	if o != nil && !IsNil(o.UscEncryptionKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscEncryptionKey gets a reference to the given string and assigns it to the UscEncryptionKey field.
+func (o *UscUpdate) SetUscEncryptionKey(v string) {
+	o.UscEncryptionKey = &v
+}
+
 // GetUscName returns the UscName field value
 func (o *UscUpdate) GetUscName() string {
 	if o == nil {
@@ -434,6 +468,9 @@ func (o UscUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UscEncryptionKey) {
+		toSerialize["usc-encryption-key"] = o.UscEncryptionKey
 	}
 	toSerialize["usc-name"] = o.UscName
 	toSerialize["value"] = o.Value

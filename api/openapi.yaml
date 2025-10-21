@@ -3798,6 +3798,33 @@ paths:
             field.
       tags:
       - v2
+  /dynamic-secret-create-openai:
+    post:
+      operationId: dynamicSecretCreateOpenAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dynamicSecretCreateOpenAI'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dynamicSecretCreateOutput'
+          description: dynamicSecretCreateOpenAIResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /dynamic-secret-create-oracle:
     post:
       operationId: dynamicSecretCreateOracleDb
@@ -4711,6 +4738,33 @@ paths:
             field.
       tags:
       - v2
+  /dynamic-secret-update-openai:
+    post:
+      operationId: dynamicSecretUpdateOpenAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dynamicSecretUpdateOpenAI'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dynamicSecretUpdateOutput'
+          description: dynamicSecretUpdateOpenAIResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /dynamic-secret-update-oracle:
     post:
       operationId: dynamicSecretUpdateOracleDb
@@ -5300,6 +5354,33 @@ paths:
             field.
       tags:
       - v2
+  /event-forwarder-create-teams:
+    post:
+      operationId: eventForwarderCreateTeams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/eventForwarderCreateTeams'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /event-forwarder-create-webhook:
     post:
       operationId: eventForwarderCreateWebhook
@@ -5452,6 +5533,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
           description: eventForwarderUpdateSlackResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /event-forwarder-update-teams:
+    post:
+      operationId: eventForwarderUpdateTeams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/eventForwarderUpdateTeams'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
+          description: eventForwarderUpdateTeamsResponse wraps response body.
         default:
           content:
             application/json:
@@ -16429,6 +16537,12 @@ components:
           schema:
             $ref: '#/components/schemas/dynamicSecretCreateOutput'
       description: dynamicSecretCreateMySqlResponse wraps response body.
+    dynamicSecretCreateOpenAIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/dynamicSecretCreateOutput'
+      description: dynamicSecretCreateOpenAIResponse wraps response body.
     dynamicSecretCreateOracleDbResponse:
       content:
         application/json:
@@ -16635,6 +16749,12 @@ components:
           schema:
             $ref: '#/components/schemas/dynamicSecretUpdateOutput'
       description: dynamicSecretUpdateMySqlResponse wraps response body.
+    dynamicSecretUpdateOpenAIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/dynamicSecretUpdateOutput'
+      description: dynamicSecretUpdateOpenAIResponse wraps response body.
     dynamicSecretUpdateOracleDbResponse:
       content:
         application/json:
@@ -16781,6 +16901,12 @@ components:
           schema:
             $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
       description: eventForwarderCreateSlackResponse wraps response body.
+    eventForwarderCreateTeamsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
+      description: ""
     eventForwarderCreateWebhookResponse:
       content:
         application/json:
@@ -16817,6 +16943,12 @@ components:
           schema:
             $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
       description: eventForwarderUpdateSlackResponse wraps response body.
+    eventForwarderUpdateTeamsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
+      description: eventForwarderUpdateTeamsResponse wraps response body.
     eventForwarderUpdateWebhookResponse:
       content:
         application/json:
@@ -24719,6 +24851,7 @@ components:
             key: attributes
           target_id: 3
         chef_server_username: chef_server_username
+        api_key_id: api_key_id
         k8s_client_cert_data: k8s_client_cert_data
         tags:
         - tags
@@ -24773,6 +24906,7 @@ components:
         mongodb_atlas_project_id: mongodb_atlas_project_id
         google_workspace_access_mode: google_workspace_access_mode
         payload: payload
+        project_id: project_id
         redshift_creation_statements: redshift_creation_statements
         enforce_replay_prevention: true
         use_gw_service_account: true
@@ -24787,6 +24921,7 @@ components:
         k8s_client_key_data: k8s_client_key_data
         azure_subscription_id: azure_subscription_id
         google_workspace_admin_name: google_workspace_admin_name
+        organization_id: organization_id
         gcp_service_account_key_id: gcp_service_account_key_id
         gitlab_project_name: gitlab_project_name
         gcp_key_algo: gcp_key_algo
@@ -24890,6 +25025,7 @@ components:
         mongodb_is_atlas: true
         eks_cluster_ca_certificate: eks_cluster_ca_certificate
         rotate_sync_url: rotate_sync_url
+        api_key: api_key
         chef_server_url: chef_server_url
         venafi_tpp_access_token: venafi_tpp_access_token
         aws_user_groups: aws_user_groups
@@ -24978,6 +25114,7 @@ components:
         grace_rotated_secret_key: grace_rotated_secret_key
         azure_app_object_id: azure_app_object_id
         ldap_bind_password: ldap_bind_password
+        openai_url: openai_url
         sf_key_algo: sf_key_algo
         azure_administrative_unit: azure_administrative_unit
         subject_dn: subject_dn
@@ -25055,6 +25192,12 @@ components:
         administrative_port:
           type: string
           x-go-name: AdministrativePort
+        api_key:
+          type: string
+          x-go-name: ApiKey
+        api_key_id:
+          type: string
+          x-go-name: ApiKeyID
         artifactory_admin_apikey:
           type: string
           x-go-name: ArtifactoryAdminApiKey
@@ -25646,6 +25789,9 @@ components:
         mysql_revocation_statements:
           type: string
           x-go-name: MysqlRevocationStatements
+        openai_url:
+          type: string
+          x-go-name: BaseURL
         oracle_creation_statements:
           type: string
           x-go-name: OracleDBCreationStatements
@@ -25654,6 +25800,9 @@ components:
           x-go-name: OracleDBRevocationStatements
         oracle_wallet_details:
           $ref: '#/components/schemas/WalletDetails'
+        organization_id:
+          type: string
+          x-go-name: OrganizationID
         password:
           type: string
           x-go-name: Password
@@ -25679,6 +25828,9 @@ components:
         privileged_user:
           type: string
           x-go-name: PrivilegedUser
+        project_id:
+          type: string
+          x-go-name: ProjectId
         rabbitmq_server_password:
           type: string
           x-go-name: RabbitmqServerPassword
@@ -26509,6 +26661,7 @@ components:
       example:
         metadata: ""
         name: name
+        encryption_key: encryption_key
         id: id
         value: value
         binary_value: true
@@ -26516,6 +26669,9 @@ components:
         binary_value:
           type: boolean
           x-go-name: BinaryValue
+        encryption_key:
+          type: string
+          x-go-name: EncryptionKey
         id:
           type: string
           x-go-name: Id
@@ -26533,31 +26689,33 @@ components:
       example:
         secrets_list:
         - secret_id: secret_id
+          key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
-          last_retrieved: 2000-01-23T04:56:07.000+00:00
-          name: name
           thumbprint: thumbprint
           description: description
-          expiration: 2000-01-23T04:56:07.000+00:00
-          location: ""
           type: type
           version: 0
-          status: true
           tags:
             key: tags
+          last_retrieved: 2000-01-23T04:56:07.000+00:00
+          name: name
+          expiration: 2000-01-23T04:56:07.000+00:00
+          location: ""
+          status: true
         - secret_id: secret_id
+          key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
-          last_retrieved: 2000-01-23T04:56:07.000+00:00
-          name: name
           thumbprint: thumbprint
           description: description
-          expiration: 2000-01-23T04:56:07.000+00:00
-          location: ""
           type: type
           version: 0
-          status: true
           tags:
             key: tags
+          last_retrieved: 2000-01-23T04:56:07.000+00:00
+          name: name
+          expiration: 2000-01-23T04:56:07.000+00:00
+          location: ""
+          status: true
       properties:
         secrets_list:
           items:
@@ -28031,8 +28189,8 @@ components:
           openai_target_details:
             api_key: api_key
             openai_url: openai_url
+            project_id: project_id
             organization_id: organization_id
-            model: model
             api_key_id: api_key_id
           mongo_db_target_details:
             mongodb_default_auth_db: mongodb_default_auth_db
@@ -37773,6 +37931,7 @@ components:
         gateway_cluster_id: 0
         override_url: override_url
         noti_forwarder_id: 1
+        teams_noti_forwarder_public_details: "{}"
         runner_type: runner_type
         noti_forwarder_type: noti_forwarder_type
         noti_forwarder_versions:
@@ -37912,6 +38071,9 @@ components:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         slack_noti_forwarder_public_details:
+          type: object
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        teams_noti_forwarder_public_details:
           type: object
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         timespan_in_seconds:
@@ -38359,8 +38521,8 @@ components:
       example:
         api_key: api_key
         openai_url: openai_url
+        project_id: project_id
         organization_id: organization_id
-        model: model
         api_key_id: api_key_id
       properties:
         api_key:
@@ -38369,15 +38531,15 @@ components:
         api_key_id:
           type: string
           x-go-name: ApiKeyID
-        model:
-          type: string
-          x-go-name: Model
         openai_url:
           type: string
           x-go-name: BaseURL
         organization_id:
           type: string
           x-go-name: OrganizationID
+        project_id:
+          type: string
+          x-go-name: ProjectId
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     PKICertificateIssueDetails:
@@ -40157,18 +40319,19 @@ components:
     SecretInfo:
       example:
         secret_id: secret_id
+        key_id: key_id
         created: 2000-01-23T04:56:07.000+00:00
-        last_retrieved: 2000-01-23T04:56:07.000+00:00
-        name: name
         thumbprint: thumbprint
         description: description
-        expiration: 2000-01-23T04:56:07.000+00:00
-        location: ""
         type: type
         version: 0
-        status: true
         tags:
           key: tags
+        last_retrieved: 2000-01-23T04:56:07.000+00:00
+        name: name
+        expiration: 2000-01-23T04:56:07.000+00:00
+        location: ""
+        status: true
       properties:
         created:
           format: date-time
@@ -40181,6 +40344,9 @@ components:
           format: date-time
           type: string
           x-go-name: Expiration
+        key_id:
+          type: string
+          x-go-name: KeyId
         last_retrieved:
           format: date-time
           type: string
@@ -41518,8 +41684,8 @@ components:
         openai_target_details:
           api_key: api_key
           openai_url: openai_url
+          project_id: project_id
           organization_id: organization_id
-          model: model
           api_key_id: api_key_id
         mongo_db_target_details:
           mongodb_default_auth_db: mongodb_default_auth_db
@@ -41746,6 +41912,9 @@ components:
         zerossl_target_details:
           $ref: '#/components/schemas/ZeroSSLTargetDetails'
       title: TargetTypeDetailsInput ...
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    TeamsNotiForwarderPublicDetails:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Tier:
@@ -42385,6 +42554,7 @@ components:
       example:
         metadata: ""
         name: name
+        encryption_key: encryption_key
         id: id
         value: value
         binary_value: true
@@ -42392,6 +42562,9 @@ components:
         binary_value:
           type: boolean
           x-go-name: BinaryValue
+        encryption_key:
+          type: string
+          x-go-name: EncryptionKey
         id:
           type: string
           x-go-name: Id
@@ -42409,31 +42582,33 @@ components:
       example:
         secrets_list:
         - secret_id: secret_id
+          key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
-          last_retrieved: 2000-01-23T04:56:07.000+00:00
-          name: name
           thumbprint: thumbprint
           description: description
-          expiration: 2000-01-23T04:56:07.000+00:00
-          location: ""
           type: type
           version: 0
-          status: true
           tags:
             key: tags
+          last_retrieved: 2000-01-23T04:56:07.000+00:00
+          name: name
+          expiration: 2000-01-23T04:56:07.000+00:00
+          location: ""
+          status: true
         - secret_id: secret_id
+          key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
-          last_retrieved: 2000-01-23T04:56:07.000+00:00
-          name: name
           thumbprint: thumbprint
           description: description
-          expiration: 2000-01-23T04:56:07.000+00:00
-          location: ""
           type: type
           version: 0
-          status: true
           tags:
             key: tags
+          last_retrieved: 2000-01-23T04:56:07.000+00:00
+          name: name
+          expiration: 2000-01-23T04:56:07.000+00:00
+          location: ""
+          status: true
       properties:
         secrets_list:
           items:
@@ -55730,6 +55905,67 @@ components:
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    dynamicSecretCreateOpenAI:
+      description: dynamicSecretCreateOpenAI is a command that creates OpenAI dynamic
+        secret
+      properties:
+        custom-username-template:
+          description: Customize how temporary usernames are generated using go template
+          type: string
+          x-go-name: CustomUsernameTemplate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Dynamic secret name
+          type: string
+          x-go-name: DSName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        project-id:
+          description: Project ID
+          type: string
+          x-go-name: OpenAIProjectID
+        tags:
+          description: Add tags attached to this object
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: Name of existing target to use in producer creation
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     dynamicSecretCreateOracleDb:
       description: dynamicSecretCreateOracleDb is a command that creates oracle db
         dynamic secret
@@ -55904,6 +56140,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -55958,6 +56195,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -55972,6 +56210,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -56075,6 +56314,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -56163,6 +56403,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -59664,6 +59905,71 @@ components:
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    dynamicSecretUpdateOpenAI:
+      description: dynamicSecretUpdateOpenAI is a command that updates OpenAI dynamic
+        secret
+      properties:
+        custom-username-template:
+          description: Customize how temporary usernames are generated using go template
+          type: string
+          x-go-name: CustomUsernameTemplate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Dynamic secret name
+          type: string
+          x-go-name: DSName
+        new-name:
+          description: Dynamic secret name
+          type: string
+          x-go-name: DsNewName
+        producer-encryption-key-name:
+          description: Dynamic producer encryption key
+          type: string
+          x-go-name: ProducerEncryptionKey
+        project-id:
+          description: Project ID
+          type: string
+          x-go-name: OpenAIProjectID
+        tags:
+          description: Add tags attached to this object
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: Name of existing target to use in producer creation
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        user-ttl:
+          default: 60m
+          description: User TTL
+          type: string
+          x-go-name: UserTtl
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     dynamicSecretUpdateOracleDb:
       description: dynamicSecretUpdateOracleDb is a command that updates oracle db
         dynamic secret
@@ -59842,6 +60148,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -59896,6 +60203,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -59910,6 +60218,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -60013,6 +60322,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -60101,6 +60411,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -61907,6 +62218,92 @@ components:
       - url
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    eventForwarderCreateTeams:
+      description: eventForwarderCreateTeams is a command that creates teams event
+        forwarder
+      properties:
+        auth-methods-event-source-locations:
+          description: Auth Method Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: AuthMethodsEventSources
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        event-types:
+          description: "List of event types to notify about [request-access, certificate-pending-expiration,\
+            \ certificate-expired, certificate-provisioning-success, certificate-provisioning-failure,\
+            \ auth-method-pending-expiration, auth-method-expired, next-automatic-rotation,\
+            \ rotated-secret-success, rotated-secret-failure, dynamic-secret-failure,\
+            \ multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved,\
+            \ usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting,\
+            \ usage-report, secret-sync]"
+          items:
+            type: string
+          type: array
+          x-go-name: EventTypes
+        every:
+          description: Rate of periodic runner repetition in hours
+          type: string
+          x-go-name: RunEvery
+        gateways-event-source-locations:
+          description: Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: GatewayEventSources
+        items-event-source-locations:
+          description: Items Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: ItemsEventSources
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the EventForwarder\
+            \ secret value (if empty, the account default protectionKey key will be\
+            \ used)"
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: EventForwarder name
+          type: string
+          x-go-name: EventForwarderName
+        runner-type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        targets-event-source-locations:
+          description: Targets Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: TargetsEventSources
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        url:
+          description: Teams Webhook URL
+          type: string
+          x-go-name: WebhookURL
+      required:
+      - gateways-event-source-locations
+      - name
+      - runner-type
+      - url
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     eventForwarderCreateUpdateOutput:
       example:
         event_forwarder_name: event_forwarder_name
@@ -62108,6 +62505,7 @@ components:
           gateway_cluster_id: 0
           override_url: override_url
           noti_forwarder_id: 1
+          teams_noti_forwarder_public_details: "{}"
           runner_type: runner_type
           noti_forwarder_type: noti_forwarder_type
           noti_forwarder_versions:
@@ -62481,6 +62879,98 @@ components:
           description: Slack Webhook URL
           type: string
           x-go-name: EndpointURL
+      required:
+      - gateways-event-source-locations
+      - name
+      - url
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    eventForwarderUpdateTeams:
+      description: eventForwarderUpdateTeams is a command that updates teams event
+        forwarder
+      properties:
+        auth-methods-event-source-locations:
+          description: Auth Method Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: AuthMethodsEventSources
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        enable:
+          default: "true"
+          description: "Enable/Disable Event Forwarder [true/false]"
+          type: string
+          x-go-name: Enable
+        event-types:
+          description: "List of event types to notify about [request-access, certificate-pending-expiration,\
+            \ certificate-expired, certificate-provisioning-success, certificate-provisioning-failure,\
+            \ auth-method-pending-expiration, auth-method-expired, next-automatic-rotation,\
+            \ rotated-secret-success, rotated-secret-failure, dynamic-secret-failure,\
+            \ multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved,\
+            \ usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting,\
+            \ usage-report, secret-sync]"
+          items:
+            type: string
+          type: array
+          x-go-name: EventTypes
+        gateways-event-source-locations:
+          description: Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: GatewayEventSources
+        items-event-source-locations:
+          description: Items Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: ItemsEventSources
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          description: "The name of a key that used to encrypt the EventForwarder\
+            \ secret value (if empty, the account default protectionKey key will be\
+            \ used)"
+          type: string
+          x-go-name: ProtectionKey
+        name:
+          description: EventForwarder name
+          type: string
+          x-go-name: EventForwarderName
+        new-name:
+          description: New EventForwarder name
+          type: string
+          x-go-name: NewName
+        targets-event-source-locations:
+          description: Targets Event sources
+          items:
+            type: string
+          type: array
+          x-go-name: TargetsEventSources
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        url:
+          description: Teams Webhook URL
+          type: string
+          x-go-name: WebhookURL
       required:
       - gateways-event-source-locations
       - name
@@ -63339,6 +63829,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -63393,6 +63884,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -63407,6 +63899,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -63510,6 +64003,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -63598,6 +64092,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -63868,6 +64363,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -63922,6 +64418,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -63936,6 +64433,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -64039,6 +64537,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -64127,6 +64626,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -64365,6 +64865,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -64419,6 +64920,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -64433,6 +64935,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -64536,6 +65039,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -64624,6 +65128,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -64818,6 +65323,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -64872,6 +65378,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -64886,6 +65393,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -64989,6 +65497,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -65077,6 +65586,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -65261,6 +65771,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -65315,6 +65826,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -65329,6 +65841,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -65432,6 +65945,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -65520,6 +66034,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -65712,6 +66227,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -65766,6 +66282,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -65780,6 +66297,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -65883,6 +66401,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -65971,6 +66490,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -66141,6 +66661,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -66195,6 +66716,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -66209,6 +66731,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -66312,6 +66835,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -66400,6 +66924,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -66616,6 +67141,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -66670,6 +67196,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -66684,6 +67211,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -66787,6 +67315,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -66875,6 +67404,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -67064,6 +67594,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -67118,6 +67649,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -67132,6 +67664,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -67235,6 +67768,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -67323,6 +67857,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -67515,6 +68050,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -67569,6 +68105,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -67583,6 +68120,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -67686,6 +68224,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -67774,6 +68313,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -67981,6 +68521,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -68035,6 +68576,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -68049,6 +68591,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -68152,6 +68695,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -68240,6 +68784,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -68472,6 +69017,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -68526,6 +69072,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -68540,6 +69087,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -68643,6 +69191,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -68731,6 +69280,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -68989,6 +69539,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -69043,6 +69594,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -69057,6 +69609,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -69160,6 +69713,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -69248,6 +69802,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -69480,6 +70035,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -69534,6 +70090,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -69548,6 +70105,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -69651,6 +70209,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -69739,6 +70298,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -69988,6 +70548,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -70042,6 +70603,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -70056,6 +70618,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -70159,6 +70722,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -70247,6 +70811,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -70492,6 +71057,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -70546,6 +71112,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -70560,6 +71127,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -70663,6 +71231,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -70751,6 +71320,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -71012,6 +71582,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -71066,6 +71637,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -71080,6 +71652,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -71183,6 +71756,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -71271,6 +71845,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -71498,6 +72073,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -71552,6 +72128,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -71566,6 +72143,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -71669,6 +72247,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -71757,6 +72336,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -72011,6 +72591,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -72065,6 +72646,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -72079,6 +72661,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -72182,6 +72765,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -72270,6 +72854,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -72507,6 +73092,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -72561,6 +73147,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -72575,6 +73162,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -72678,6 +73266,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -72766,6 +73355,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -72980,6 +73570,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -73034,6 +73625,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -73048,6 +73640,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -73151,6 +73744,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -73239,6 +73833,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -73488,6 +74083,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -73542,6 +74138,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -73556,6 +74153,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -73659,6 +74257,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -73747,6 +74346,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -73944,6 +74544,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -73998,6 +74599,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -74012,6 +74614,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -74115,6 +74718,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -74203,6 +74807,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -74408,6 +75013,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -74462,6 +75068,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -74476,6 +75083,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -74579,6 +75187,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -74667,6 +75276,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -74867,6 +75477,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -74921,6 +75532,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -74935,6 +75547,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -75038,6 +75651,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -75126,6 +75740,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -75360,6 +75975,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -75414,6 +76030,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -75428,6 +76045,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -75531,6 +76149,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -75619,6 +76238,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -78961,6 +79581,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -79015,6 +79636,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -79029,6 +79651,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -79132,6 +79755,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -79220,6 +79844,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -79494,6 +80119,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -79548,6 +80174,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -79562,6 +80189,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -79665,6 +80293,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -79753,6 +80382,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -79995,6 +80625,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -80049,6 +80680,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -80063,6 +80695,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -80166,6 +80799,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -80254,6 +80888,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -80452,6 +81087,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -80506,6 +81142,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -80520,6 +81157,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -80623,6 +81261,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -80711,6 +81350,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -80899,6 +81539,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -80953,6 +81594,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -80967,6 +81609,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -81070,6 +81713,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -81158,6 +81802,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -81354,6 +81999,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -81408,6 +82054,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -81422,6 +82069,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -81525,6 +82173,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -81613,6 +82262,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -81787,6 +82437,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -81841,6 +82492,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -81855,6 +82507,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -81958,6 +82611,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -82046,6 +82700,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -82266,6 +82921,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -82320,6 +82976,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -82334,6 +82991,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -82437,6 +83095,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -82525,6 +83184,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -82718,6 +83378,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -82772,6 +83433,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -82786,6 +83448,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -82889,6 +83552,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -82977,6 +83641,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -83173,6 +83838,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -83227,6 +83893,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -83241,6 +83908,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -83344,6 +84012,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -83432,6 +84101,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -83643,6 +84313,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -83697,6 +84368,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -83711,6 +84383,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -83814,6 +84487,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -83902,6 +84576,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -84132,6 +84807,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -84186,6 +84862,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -84200,6 +84877,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -84303,6 +84981,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -84391,6 +85070,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -84653,6 +85333,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -84707,6 +85388,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -84721,6 +85403,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -84824,6 +85507,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -84912,6 +85596,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -85148,6 +85833,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -85202,6 +85888,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -85216,6 +85903,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -85319,6 +86007,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -85407,6 +86096,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -85660,6 +86350,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -85714,6 +86405,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -85728,6 +86420,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -85831,6 +86524,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -85919,6 +86613,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -86168,6 +86863,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -86222,6 +86918,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -86236,6 +86933,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -86339,6 +87037,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -86427,6 +87126,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -86692,6 +87392,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -86746,6 +87447,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -86760,6 +87462,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -86863,6 +87566,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -86951,6 +87655,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -87182,6 +87887,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -87236,6 +87942,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -87250,6 +87957,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -87353,6 +88061,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -87441,6 +88150,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -87699,6 +88409,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -87753,6 +88464,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -87767,6 +88479,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -87870,6 +88583,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -87958,6 +88672,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -88199,6 +88914,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -88253,6 +88969,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -88267,6 +88984,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -88370,6 +89088,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -88458,6 +89177,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -88676,6 +89396,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -88730,6 +89451,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -88744,6 +89466,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -88847,6 +89570,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -88935,6 +89659,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -89188,6 +89913,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -89242,6 +89968,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -89256,6 +89983,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -89359,6 +90087,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -89447,6 +90176,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -89648,6 +90378,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -89702,6 +90433,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -89716,6 +90448,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -89819,6 +90552,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -89907,6 +90641,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -90116,6 +90851,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -90170,6 +90906,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -90184,6 +90921,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -90287,6 +91025,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -90375,6 +91114,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -90579,6 +91319,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -90633,6 +91374,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -90647,6 +91389,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -90750,6 +91493,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -90838,6 +91582,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -91076,6 +91821,7 @@ components:
               key: attributes
             target_id: 3
           chef_server_username: chef_server_username
+          api_key_id: api_key_id
           k8s_client_cert_data: k8s_client_cert_data
           tags:
           - tags
@@ -91130,6 +91876,7 @@ components:
           mongodb_atlas_project_id: mongodb_atlas_project_id
           google_workspace_access_mode: google_workspace_access_mode
           payload: payload
+          project_id: project_id
           redshift_creation_statements: redshift_creation_statements
           enforce_replay_prevention: true
           use_gw_service_account: true
@@ -91144,6 +91891,7 @@ components:
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
           google_workspace_admin_name: google_workspace_admin_name
+          organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
           gitlab_project_name: gitlab_project_name
           gcp_key_algo: gcp_key_algo
@@ -91247,6 +91995,7 @@ components:
           mongodb_is_atlas: true
           eks_cluster_ca_certificate: eks_cluster_ca_certificate
           rotate_sync_url: rotate_sync_url
+          api_key: api_key
           chef_server_url: chef_server_url
           venafi_tpp_access_token: venafi_tpp_access_token
           aws_user_groups: aws_user_groups
@@ -91335,6 +92084,7 @@ components:
           grace_rotated_secret_key: grace_rotated_secret_key
           azure_app_object_id: azure_app_object_id
           ldap_bind_password: ldap_bind_password
+          openai_url: openai_url
           sf_key_algo: sf_key_algo
           azure_administrative_unit: azure_administrative_unit
           subject_dn: subject_dn
@@ -91987,6 +92737,7 @@ components:
           gateway_cluster_id: 0
           override_url: override_url
           noti_forwarder_id: 1
+          teams_noti_forwarder_public_details: "{}"
           runner_type: runner_type
           noti_forwarder_type: noti_forwarder_type
           noti_forwarder_versions:
@@ -110791,6 +111542,11 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        usc-encryption-key:
+          description: "Optional, The name of the remote key that used to encrypt\
+            \ the secret value (if empty, the default key will be used)"
+          type: string
+          x-go-name: EncryptionKey
         usc-name:
           description: Name of the Universal Secrets Connector item
           type: string
@@ -110958,6 +111714,11 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        usc-encryption-key:
+          description: "Optional, The name of the remote key that used to encrypt\
+            \ the secret value (if empty, the default key will be used)"
+          type: string
+          x-go-name: EncryptionKey
         usc-name:
           description: Name of the Universal Secrets Connector item
           type: string

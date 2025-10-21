@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **AdminPwd** | Pointer to **string** |  | [optional] 
 **AdminRotationIntervalDays** | Pointer to **int64** |  | [optional] 
 **AdministrativePort** | Pointer to **string** |  | [optional] 
+**ApiKey** | Pointer to **string** |  | [optional] 
+**ApiKeyId** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminUsername** | Pointer to **string** |  | [optional] 
 **ArtifactoryBaseUrl** | Pointer to **string** |  | [optional] 
@@ -190,9 +192,11 @@ Name | Type | Description | Notes
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MysqlRevocationStatements** | Pointer to **string** |  | [optional] 
+**OpenaiUrl** | Pointer to **string** |  | [optional] 
 **OracleCreationStatements** | Pointer to **string** |  | [optional] 
 **OracleRevocationStatements** | Pointer to **string** |  | [optional] 
 **OracleWalletDetails** | Pointer to [**WalletDetails**](WalletDetails.md) |  | [optional] 
+**OrganizationId** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **PasswordLength** | Pointer to **int64** |  | [optional] 
 **PasswordPolicy** | Pointer to **string** |  | [optional] 
@@ -201,6 +205,7 @@ Name | Type | Description | Notes
 **PostgresCreationStatements** | Pointer to **string** |  | [optional] 
 **PostgresRevocationStatements** | Pointer to **string** |  | [optional] 
 **PrivilegedUser** | Pointer to **string** |  | [optional] 
+**ProjectId** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUri** | Pointer to **string** |  | [optional] 
 **RabbitmqServerUser** | Pointer to **string** |  | [optional] 
@@ -450,6 +455,56 @@ SetAdministrativePort sets AdministrativePort field to given value.
 `func (o *DSProducerDetails) HasAdministrativePort() bool`
 
 HasAdministrativePort returns a boolean if a field has been set.
+
+### GetApiKey
+
+`func (o *DSProducerDetails) GetApiKey() string`
+
+GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
+
+### GetApiKeyOk
+
+`func (o *DSProducerDetails) GetApiKeyOk() (*string, bool)`
+
+GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiKey
+
+`func (o *DSProducerDetails) SetApiKey(v string)`
+
+SetApiKey sets ApiKey field to given value.
+
+### HasApiKey
+
+`func (o *DSProducerDetails) HasApiKey() bool`
+
+HasApiKey returns a boolean if a field has been set.
+
+### GetApiKeyId
+
+`func (o *DSProducerDetails) GetApiKeyId() string`
+
+GetApiKeyId returns the ApiKeyId field if non-nil, zero value otherwise.
+
+### GetApiKeyIdOk
+
+`func (o *DSProducerDetails) GetApiKeyIdOk() (*string, bool)`
+
+GetApiKeyIdOk returns a tuple with the ApiKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApiKeyId
+
+`func (o *DSProducerDetails) SetApiKeyId(v string)`
+
+SetApiKeyId sets ApiKeyId field to given value.
+
+### HasApiKeyId
+
+`func (o *DSProducerDetails) HasApiKeyId() bool`
+
+HasApiKeyId returns a boolean if a field has been set.
 
 ### GetArtifactoryAdminApikey
 
@@ -4926,6 +4981,31 @@ SetMysqlRevocationStatements sets MysqlRevocationStatements field to given value
 
 HasMysqlRevocationStatements returns a boolean if a field has been set.
 
+### GetOpenaiUrl
+
+`func (o *DSProducerDetails) GetOpenaiUrl() string`
+
+GetOpenaiUrl returns the OpenaiUrl field if non-nil, zero value otherwise.
+
+### GetOpenaiUrlOk
+
+`func (o *DSProducerDetails) GetOpenaiUrlOk() (*string, bool)`
+
+GetOpenaiUrlOk returns a tuple with the OpenaiUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenaiUrl
+
+`func (o *DSProducerDetails) SetOpenaiUrl(v string)`
+
+SetOpenaiUrl sets OpenaiUrl field to given value.
+
+### HasOpenaiUrl
+
+`func (o *DSProducerDetails) HasOpenaiUrl() bool`
+
+HasOpenaiUrl returns a boolean if a field has been set.
+
 ### GetOracleCreationStatements
 
 `func (o *DSProducerDetails) GetOracleCreationStatements() string`
@@ -5000,6 +5080,31 @@ SetOracleWalletDetails sets OracleWalletDetails field to given value.
 `func (o *DSProducerDetails) HasOracleWalletDetails() bool`
 
 HasOracleWalletDetails returns a boolean if a field has been set.
+
+### GetOrganizationId
+
+`func (o *DSProducerDetails) GetOrganizationId() string`
+
+GetOrganizationId returns the OrganizationId field if non-nil, zero value otherwise.
+
+### GetOrganizationIdOk
+
+`func (o *DSProducerDetails) GetOrganizationIdOk() (*string, bool)`
+
+GetOrganizationIdOk returns a tuple with the OrganizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationId
+
+`func (o *DSProducerDetails) SetOrganizationId(v string)`
+
+SetOrganizationId sets OrganizationId field to given value.
+
+### HasOrganizationId
+
+`func (o *DSProducerDetails) HasOrganizationId() bool`
+
+HasOrganizationId returns a boolean if a field has been set.
 
 ### GetPassword
 
@@ -5200,6 +5305,31 @@ SetPrivilegedUser sets PrivilegedUser field to given value.
 `func (o *DSProducerDetails) HasPrivilegedUser() bool`
 
 HasPrivilegedUser returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *DSProducerDetails) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *DSProducerDetails) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *DSProducerDetails) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *DSProducerDetails) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
 
 ### GetRabbitmqServerPassword
 

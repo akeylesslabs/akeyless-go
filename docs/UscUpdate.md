@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UscEncryptionKey** | Pointer to **string** | Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used) | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
 **Value** | **string** | Value of the universal secrets item, either text or base64 encoded binary | 
 
@@ -254,6 +255,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *UscUpdate) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUscEncryptionKey
+
+`func (o *UscUpdate) GetUscEncryptionKey() string`
+
+GetUscEncryptionKey returns the UscEncryptionKey field if non-nil, zero value otherwise.
+
+### GetUscEncryptionKeyOk
+
+`func (o *UscUpdate) GetUscEncryptionKeyOk() (*string, bool)`
+
+GetUscEncryptionKeyOk returns a tuple with the UscEncryptionKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscEncryptionKey
+
+`func (o *UscUpdate) SetUscEncryptionKey(v string)`
+
+SetUscEncryptionKey sets UscEncryptionKey field to given value.
+
+### HasUscEncryptionKey
+
+`func (o *UscUpdate) HasUscEncryptionKey() bool`
+
+HasUscEncryptionKey returns a boolean if a field has been set.
 
 ### GetUscName
 

@@ -43,6 +43,7 @@ type NotiForwarder struct {
 	ProtectionKey *string `json:"protection_key,omitempty"`
 	RunnerType *string `json:"runner_type,omitempty"`
 	SlackNotiForwarderPublicDetails map[string]interface{} `json:"slack_noti_forwarder_public_details,omitempty"`
+	TeamsNotiForwarderPublicDetails map[string]interface{} `json:"teams_noti_forwarder_public_details,omitempty"`
 	TimespanInSeconds *int64 `json:"timespan_in_seconds,omitempty"`
 	ToEmails []EmailEntry `json:"to_emails,omitempty"`
 	UserEmail *string `json:"user_email,omitempty"`
@@ -741,6 +742,38 @@ func (o *NotiForwarder) SetSlackNotiForwarderPublicDetails(v map[string]interfac
 	o.SlackNotiForwarderPublicDetails = v
 }
 
+// GetTeamsNotiForwarderPublicDetails returns the TeamsNotiForwarderPublicDetails field value if set, zero value otherwise.
+func (o *NotiForwarder) GetTeamsNotiForwarderPublicDetails() map[string]interface{} {
+	if o == nil || IsNil(o.TeamsNotiForwarderPublicDetails) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.TeamsNotiForwarderPublicDetails
+}
+
+// GetTeamsNotiForwarderPublicDetailsOk returns a tuple with the TeamsNotiForwarderPublicDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotiForwarder) GetTeamsNotiForwarderPublicDetailsOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.TeamsNotiForwarderPublicDetails) {
+		return map[string]interface{}{}, false
+	}
+	return o.TeamsNotiForwarderPublicDetails, true
+}
+
+// HasTeamsNotiForwarderPublicDetails returns a boolean if a field has been set.
+func (o *NotiForwarder) HasTeamsNotiForwarderPublicDetails() bool {
+	if o != nil && !IsNil(o.TeamsNotiForwarderPublicDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamsNotiForwarderPublicDetails gets a reference to the given map[string]interface{} and assigns it to the TeamsNotiForwarderPublicDetails field.
+func (o *NotiForwarder) SetTeamsNotiForwarderPublicDetails(v map[string]interface{}) {
+	o.TeamsNotiForwarderPublicDetails = v
+}
+
 // GetTimespanInSeconds returns the TimespanInSeconds field value if set, zero value otherwise.
 func (o *NotiForwarder) GetTimespanInSeconds() int64 {
 	if o == nil || IsNil(o.TimespanInSeconds) {
@@ -1005,6 +1038,9 @@ func (o NotiForwarder) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SlackNotiForwarderPublicDetails) {
 		toSerialize["slack_noti_forwarder_public_details"] = o.SlackNotiForwarderPublicDetails
+	}
+	if !IsNil(o.TeamsNotiForwarderPublicDetails) {
+		toSerialize["teams_noti_forwarder_public_details"] = o.TeamsNotiForwarderPublicDetails
 	}
 	if !IsNil(o.TimespanInSeconds) {
 		toSerialize["timespan_in_seconds"] = o.TimespanInSeconds

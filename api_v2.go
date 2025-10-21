@@ -17526,6 +17526,130 @@ func (a *V2ApiService) DynamicSecretCreateMySqlExecute(r ApiDynamicSecretCreateM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDynamicSecretCreateOpenAIRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	dynamicSecretCreateOpenAI *DynamicSecretCreateOpenAI
+    body interface{}
+}
+
+func (r ApiDynamicSecretCreateOpenAIRequest) DynamicSecretCreateOpenAI(dynamicSecretCreateOpenAI DynamicSecretCreateOpenAI) ApiDynamicSecretCreateOpenAIRequest {
+	r.dynamicSecretCreateOpenAI = &dynamicSecretCreateOpenAI
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiDynamicSecretCreateOpenAIRequest) Body(body DynamicSecretCreateOpenAI) ApiDynamicSecretCreateOpenAIRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiDynamicSecretCreateOpenAIRequest) Execute() (*DynamicSecretCreateOutput, *http.Response, error) {
+	return r.ApiService.DynamicSecretCreateOpenAIExecute(r)
+}
+
+/*
+DynamicSecretCreateOpenAI Method for DynamicSecretCreateOpenAI
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDynamicSecretCreateOpenAIRequest
+*/
+func (a *V2ApiService) DynamicSecretCreateOpenAI(ctx context.Context) ApiDynamicSecretCreateOpenAIRequest {
+	return ApiDynamicSecretCreateOpenAIRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return DynamicSecretCreateOutput
+func (a *V2ApiService) DynamicSecretCreateOpenAIExecute(r ApiDynamicSecretCreateOpenAIRequest) (*DynamicSecretCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DynamicSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.DynamicSecretCreateOpenAI")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dynamic-secret-create-openai"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDynamicSecretCreateOracleDbRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -21717,6 +21841,130 @@ func (a *V2ApiService) DynamicSecretUpdateMySqlExecute(r ApiDynamicSecretUpdateM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDynamicSecretUpdateOpenAIRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	dynamicSecretUpdateOpenAI *DynamicSecretUpdateOpenAI
+    body interface{}
+}
+
+func (r ApiDynamicSecretUpdateOpenAIRequest) DynamicSecretUpdateOpenAI(dynamicSecretUpdateOpenAI DynamicSecretUpdateOpenAI) ApiDynamicSecretUpdateOpenAIRequest {
+	r.dynamicSecretUpdateOpenAI = &dynamicSecretUpdateOpenAI
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiDynamicSecretUpdateOpenAIRequest) Body(body DynamicSecretUpdateOpenAI) ApiDynamicSecretUpdateOpenAIRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiDynamicSecretUpdateOpenAIRequest) Execute() (*DynamicSecretUpdateOutput, *http.Response, error) {
+	return r.ApiService.DynamicSecretUpdateOpenAIExecute(r)
+}
+
+/*
+DynamicSecretUpdateOpenAI Method for DynamicSecretUpdateOpenAI
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDynamicSecretUpdateOpenAIRequest
+*/
+func (a *V2ApiService) DynamicSecretUpdateOpenAI(ctx context.Context) ApiDynamicSecretUpdateOpenAIRequest {
+	return ApiDynamicSecretUpdateOpenAIRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return DynamicSecretUpdateOutput
+func (a *V2ApiService) DynamicSecretUpdateOpenAIExecute(r ApiDynamicSecretUpdateOpenAIRequest) (*DynamicSecretUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DynamicSecretUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.DynamicSecretUpdateOpenAI")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dynamic-secret-update-openai"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDynamicSecretUpdateOracleDbRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -24445,6 +24693,130 @@ func (a *V2ApiService) EventForwarderCreateSlackExecute(r ApiEventForwarderCreat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEventForwarderCreateTeamsRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	eventForwarderCreateTeams *EventForwarderCreateTeams
+    body interface{}
+}
+
+func (r ApiEventForwarderCreateTeamsRequest) EventForwarderCreateTeams(eventForwarderCreateTeams EventForwarderCreateTeams) ApiEventForwarderCreateTeamsRequest {
+	r.eventForwarderCreateTeams = &eventForwarderCreateTeams
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiEventForwarderCreateTeamsRequest) Body(body EventForwarderCreateTeams) ApiEventForwarderCreateTeamsRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiEventForwarderCreateTeamsRequest) Execute() (*EventForwarderCreateUpdateOutput, *http.Response, error) {
+	return r.ApiService.EventForwarderCreateTeamsExecute(r)
+}
+
+/*
+EventForwarderCreateTeams Method for EventForwarderCreateTeams
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEventForwarderCreateTeamsRequest
+*/
+func (a *V2ApiService) EventForwarderCreateTeams(ctx context.Context) ApiEventForwarderCreateTeamsRequest {
+	return ApiEventForwarderCreateTeamsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return EventForwarderCreateUpdateOutput
+func (a *V2ApiService) EventForwarderCreateTeamsExecute(r ApiEventForwarderCreateTeamsRequest) (*EventForwarderCreateUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EventForwarderCreateUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.EventForwarderCreateTeams")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/event-forwarder-create-teams"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEventForwarderCreateWebhookRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -25117,6 +25489,130 @@ func (a *V2ApiService) EventForwarderUpdateSlackExecute(r ApiEventForwarderUpdat
 	}
 
 	localVarPath := localBasePath + "/event-forwarder-update-slack"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiEventForwarderUpdateTeamsRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	eventForwarderUpdateTeams *EventForwarderUpdateTeams
+    body interface{}
+}
+
+func (r ApiEventForwarderUpdateTeamsRequest) EventForwarderUpdateTeams(eventForwarderUpdateTeams EventForwarderUpdateTeams) ApiEventForwarderUpdateTeamsRequest {
+	r.eventForwarderUpdateTeams = &eventForwarderUpdateTeams
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiEventForwarderUpdateTeamsRequest) Body(body EventForwarderUpdateTeams) ApiEventForwarderUpdateTeamsRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiEventForwarderUpdateTeamsRequest) Execute() (*EventForwarderCreateUpdateOutput, *http.Response, error) {
+	return r.ApiService.EventForwarderUpdateTeamsExecute(r)
+}
+
+/*
+EventForwarderUpdateTeams Method for EventForwarderUpdateTeams
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEventForwarderUpdateTeamsRequest
+*/
+func (a *V2ApiService) EventForwarderUpdateTeams(ctx context.Context) ApiEventForwarderUpdateTeamsRequest {
+	return ApiEventForwarderUpdateTeamsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return EventForwarderCreateUpdateOutput
+func (a *V2ApiService) EventForwarderUpdateTeamsExecute(r ApiEventForwarderUpdateTeamsRequest) (*EventForwarderCreateUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EventForwarderCreateUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.EventForwarderUpdateTeams")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/event-forwarder-update-teams"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

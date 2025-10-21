@@ -21,6 +21,7 @@ var _ MappedNullable = &UscGetSecretOutput{}
 // UscGetSecretOutput struct for UscGetSecretOutput
 type UscGetSecretOutput struct {
 	BinaryValue *bool `json:"binary_value,omitempty"`
+	EncryptionKey *string `json:"encryption_key,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Metadata interface{} `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -74,6 +75,38 @@ func (o *UscGetSecretOutput) HasBinaryValue() bool {
 // SetBinaryValue gets a reference to the given bool and assigns it to the BinaryValue field.
 func (o *UscGetSecretOutput) SetBinaryValue(v bool) {
 	o.BinaryValue = &v
+}
+
+// GetEncryptionKey returns the EncryptionKey field value if set, zero value otherwise.
+func (o *UscGetSecretOutput) GetEncryptionKey() string {
+	if o == nil || IsNil(o.EncryptionKey) {
+		var ret string
+		return ret
+	}
+	return *o.EncryptionKey
+}
+
+// GetEncryptionKeyOk returns a tuple with the EncryptionKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGetSecretOutput) GetEncryptionKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.EncryptionKey) {
+		return nil, false
+	}
+	return o.EncryptionKey, true
+}
+
+// HasEncryptionKey returns a boolean if a field has been set.
+func (o *UscGetSecretOutput) HasEncryptionKey() bool {
+	if o != nil && !IsNil(o.EncryptionKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptionKey gets a reference to the given string and assigns it to the EncryptionKey field.
+func (o *UscGetSecretOutput) SetEncryptionKey(v string) {
+	o.EncryptionKey = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -217,6 +250,9 @@ func (o UscGetSecretOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BinaryValue) {
 		toSerialize["binary_value"] = o.BinaryValue
+	}
+	if !IsNil(o.EncryptionKey) {
+		toSerialize["encryption_key"] = o.EncryptionKey
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

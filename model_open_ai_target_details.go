@@ -22,9 +22,9 @@ var _ MappedNullable = &OpenAITargetDetails{}
 type OpenAITargetDetails struct {
 	ApiKey *string `json:"api_key,omitempty"`
 	ApiKeyId *string `json:"api_key_id,omitempty"`
-	Model *string `json:"model,omitempty"`
 	OpenaiUrl *string `json:"openai_url,omitempty"`
 	OrganizationId *string `json:"organization_id,omitempty"`
+	ProjectId *string `json:"project_id,omitempty"`
 }
 
 // NewOpenAITargetDetails instantiates a new OpenAITargetDetails object
@@ -108,38 +108,6 @@ func (o *OpenAITargetDetails) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
-func (o *OpenAITargetDetails) GetModel() string {
-	if o == nil || IsNil(o.Model) {
-		var ret string
-		return ret
-	}
-	return *o.Model
-}
-
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OpenAITargetDetails) GetModelOk() (*string, bool) {
-	if o == nil || IsNil(o.Model) {
-		return nil, false
-	}
-	return o.Model, true
-}
-
-// HasModel returns a boolean if a field has been set.
-func (o *OpenAITargetDetails) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given string and assigns it to the Model field.
-func (o *OpenAITargetDetails) SetModel(v string) {
-	o.Model = &v
-}
-
 // GetOpenaiUrl returns the OpenaiUrl field value if set, zero value otherwise.
 func (o *OpenAITargetDetails) GetOpenaiUrl() string {
 	if o == nil || IsNil(o.OpenaiUrl) {
@@ -204,6 +172,38 @@ func (o *OpenAITargetDetails) SetOrganizationId(v string) {
 	o.OrganizationId = &v
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *OpenAITargetDetails) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
 func (o OpenAITargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -220,14 +220,14 @@ func (o OpenAITargetDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApiKeyId) {
 		toSerialize["api_key_id"] = o.ApiKeyId
 	}
-	if !IsNil(o.Model) {
-		toSerialize["model"] = o.Model
-	}
 	if !IsNil(o.OpenaiUrl) {
 		toSerialize["openai_url"] = o.OpenaiUrl
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organization_id"] = o.OrganizationId
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
 	}
 	return toSerialize, nil
 }

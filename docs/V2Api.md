@@ -145,6 +145,7 @@ Method | HTTP request | Description
 [**DynamicSecretCreateMongoDb**](V2Api.md#DynamicSecretCreateMongoDb) | **Post** /dynamic-secret-create-mongodb | 
 [**DynamicSecretCreateMsSql**](V2Api.md#DynamicSecretCreateMsSql) | **Post** /dynamic-secret-create-mssql | 
 [**DynamicSecretCreateMySql**](V2Api.md#DynamicSecretCreateMySql) | **Post** /dynamic-secret-create-mysql | 
+[**DynamicSecretCreateOpenAI**](V2Api.md#DynamicSecretCreateOpenAI) | **Post** /dynamic-secret-create-openai | 
 [**DynamicSecretCreateOracleDb**](V2Api.md#DynamicSecretCreateOracleDb) | **Post** /dynamic-secret-create-oracle | 
 [**DynamicSecretCreatePing**](V2Api.md#DynamicSecretCreatePing) | **Post** /dynamic-secret-create-ping | 
 [**DynamicSecretCreatePostgreSql**](V2Api.md#DynamicSecretCreatePostgreSql) | **Post** /dynamic-secret-create-postgresql | 
@@ -179,6 +180,7 @@ Method | HTTP request | Description
 [**DynamicSecretUpdateMongoDb**](V2Api.md#DynamicSecretUpdateMongoDb) | **Post** /dynamic-secret-update-mongo | 
 [**DynamicSecretUpdateMsSql**](V2Api.md#DynamicSecretUpdateMsSql) | **Post** /dynamic-secret-update-mssql | 
 [**DynamicSecretUpdateMySql**](V2Api.md#DynamicSecretUpdateMySql) | **Post** /dynamic-secret-update-mysql | 
+[**DynamicSecretUpdateOpenAI**](V2Api.md#DynamicSecretUpdateOpenAI) | **Post** /dynamic-secret-update-openai | 
 [**DynamicSecretUpdateOracleDb**](V2Api.md#DynamicSecretUpdateOracleDb) | **Post** /dynamic-secret-update-oracle | 
 [**DynamicSecretUpdatePing**](V2Api.md#DynamicSecretUpdatePing) | **Post** /dynamic-secret-update-ping | 
 [**DynamicSecretUpdatePostgreSql**](V2Api.md#DynamicSecretUpdatePostgreSql) | **Post** /dynamic-secret-update-postgresql | 
@@ -201,12 +203,14 @@ Method | HTTP request | Description
 [**EventForwarderCreateEmail**](V2Api.md#EventForwarderCreateEmail) | **Post** /event-forwarder-create-email | 
 [**EventForwarderCreateServiceNow**](V2Api.md#EventForwarderCreateServiceNow) | **Post** /event-forwarder-create-servicenow | 
 [**EventForwarderCreateSlack**](V2Api.md#EventForwarderCreateSlack) | **Post** /event-forwarder-create-slack | 
+[**EventForwarderCreateTeams**](V2Api.md#EventForwarderCreateTeams) | **Post** /event-forwarder-create-teams | 
 [**EventForwarderCreateWebhook**](V2Api.md#EventForwarderCreateWebhook) | **Post** /event-forwarder-create-webhook | 
 [**EventForwarderDelete**](V2Api.md#EventForwarderDelete) | **Post** /event-forwarder-delete | 
 [**EventForwarderGet**](V2Api.md#EventForwarderGet) | **Post** /event-forwarder-get | 
 [**EventForwarderUpdateEmail**](V2Api.md#EventForwarderUpdateEmail) | **Post** /event-forwarder-update-email | 
 [**EventForwarderUpdateServiceNow**](V2Api.md#EventForwarderUpdateServiceNow) | **Post** /event-forwarder-update-servicenow | 
 [**EventForwarderUpdateSlack**](V2Api.md#EventForwarderUpdateSlack) | **Post** /event-forwarder-update-slack | 
+[**EventForwarderUpdateTeams**](V2Api.md#EventForwarderUpdateTeams) | **Post** /event-forwarder-update-teams | 
 [**EventForwarderUpdateWebhook**](V2Api.md#EventForwarderUpdateWebhook) | **Post** /event-forwarder-update-webhook | 
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
 [**GatewayCreateAllowedAccess**](V2Api.md#GatewayCreateAllowedAccess) | **Post** /gateway-create-allowed-access | 
@@ -9607,6 +9611,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DynamicSecretCreateOpenAI
+
+> DynamicSecretCreateOutput DynamicSecretCreateOpenAI(ctx).DynamicSecretCreateOpenAI(dynamicSecretCreateOpenAI).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	dynamicSecretCreateOpenAI := *openapiclient.NewDynamicSecretCreateOpenAI("Name_example") // DynamicSecretCreateOpenAI | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.DynamicSecretCreateOpenAI(context.Background()).DynamicSecretCreateOpenAI(dynamicSecretCreateOpenAI).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateOpenAI``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DynamicSecretCreateOpenAI`: DynamicSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateOpenAI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateOpenAIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dynamicSecretCreateOpenAI** | [**DynamicSecretCreateOpenAI**](DynamicSecretCreateOpenAI.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DynamicSecretCreateOracleDb
 
 > DynamicSecretCreateOutput DynamicSecretCreateOracleDb(ctx).DynamicSecretCreateOracleDb(dynamicSecretCreateOracleDb).Execute()
@@ -11779,6 +11847,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DynamicSecretUpdateOpenAI
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateOpenAI(ctx).DynamicSecretUpdateOpenAI(dynamicSecretUpdateOpenAI).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	dynamicSecretUpdateOpenAI := *openapiclient.NewDynamicSecretUpdateOpenAI("Name_example") // DynamicSecretUpdateOpenAI | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.DynamicSecretUpdateOpenAI(context.Background()).DynamicSecretUpdateOpenAI(dynamicSecretUpdateOpenAI).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateOpenAI``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DynamicSecretUpdateOpenAI`: DynamicSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateOpenAI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateOpenAIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dynamicSecretUpdateOpenAI** | [**DynamicSecretUpdateOpenAI**](DynamicSecretUpdateOpenAI.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DynamicSecretUpdateOracleDb
 
 > DynamicSecretUpdateOutput DynamicSecretUpdateOracleDb(ctx).DynamicSecretUpdateOracleDb(dynamicSecretUpdateOracleDb).Execute()
@@ -13187,6 +13319,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## EventForwarderCreateTeams
+
+> EventForwarderCreateUpdateOutput EventForwarderCreateTeams(ctx).EventForwarderCreateTeams(eventForwarderCreateTeams).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	eventForwarderCreateTeams := *openapiclient.NewEventForwarderCreateTeams([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "RunnerType_example", "Url_example") // EventForwarderCreateTeams | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.EventForwarderCreateTeams(context.Background()).EventForwarderCreateTeams(eventForwarderCreateTeams).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderCreateTeams``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EventForwarderCreateTeams`: EventForwarderCreateUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderCreateTeams`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderCreateTeamsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventForwarderCreateTeams** | [**EventForwarderCreateTeams**](EventForwarderCreateTeams.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EventForwarderCreateWebhook
 
 > EventForwarderCreateUpdateOutput EventForwarderCreateWebhook(ctx).EventForwarderCreateWebhook(eventForwarderCreateWebhook).Execute()
@@ -13552,6 +13748,70 @@ Other parameters are passed through a pointer to a apiEventForwarderUpdateSlackR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventForwarderUpdateSlack** | [**EventForwarderUpdateSlack**](EventForwarderUpdateSlack.md) |  | 
+
+### Return type
+
+[**EventForwarderCreateUpdateOutput**](EventForwarderCreateUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EventForwarderUpdateTeams
+
+> EventForwarderCreateUpdateOutput EventForwarderUpdateTeams(ctx).EventForwarderUpdateTeams(eventForwarderUpdateTeams).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	eventForwarderUpdateTeams := *openapiclient.NewEventForwarderUpdateTeams([]string{"GatewaysEventSourceLocations_example"}, "Name_example", "Url_example") // EventForwarderUpdateTeams | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.EventForwarderUpdateTeams(context.Background()).EventForwarderUpdateTeams(eventForwarderUpdateTeams).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.EventForwarderUpdateTeams``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EventForwarderUpdateTeams`: EventForwarderCreateUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.EventForwarderUpdateTeams`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEventForwarderUpdateTeamsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eventForwarderUpdateTeams** | [**EventForwarderUpdateTeams**](EventForwarderUpdateTeams.md) |  | 
 
 ### Return type
 

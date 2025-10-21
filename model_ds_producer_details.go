@@ -28,6 +28,8 @@ type DSProducerDetails struct {
 	AdminPwd *string `json:"admin_pwd,omitempty"`
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
 	AdministrativePort *string `json:"administrative_port,omitempty"`
+	ApiKey *string `json:"api_key,omitempty"`
+	ApiKeyId *string `json:"api_key_id,omitempty"`
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
 	ArtifactoryAdminUsername *string `json:"artifactory_admin_username,omitempty"`
 	ArtifactoryBaseUrl *string `json:"artifactory_base_url,omitempty"`
@@ -222,9 +224,11 @@ type DSProducerDetails struct {
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
 	MysqlRevocationStatements *string `json:"mysql_revocation_statements,omitempty"`
+	OpenaiUrl *string `json:"openai_url,omitempty"`
 	OracleCreationStatements *string `json:"oracle_creation_statements,omitempty"`
 	OracleRevocationStatements *string `json:"oracle_revocation_statements,omitempty"`
 	OracleWalletDetails *WalletDetails `json:"oracle_wallet_details,omitempty"`
+	OrganizationId *string `json:"organization_id,omitempty"`
 	Password *string `json:"password,omitempty"`
 	PasswordLength *int64 `json:"password_length,omitempty"`
 	PasswordPolicy *string `json:"password_policy,omitempty"`
@@ -233,6 +237,7 @@ type DSProducerDetails struct {
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
 	PostgresRevocationStatements *string `json:"postgres_revocation_statements,omitempty"`
 	PrivilegedUser *string `json:"privileged_user,omitempty"`
+	ProjectId *string `json:"project_id,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
 	RabbitmqServerUri *string `json:"rabbitmq_server_uri,omitempty"`
 	RabbitmqServerUser *string `json:"rabbitmq_server_user,omitempty"`
@@ -535,6 +540,70 @@ func (o *DSProducerDetails) HasAdministrativePort() bool {
 // SetAdministrativePort gets a reference to the given string and assigns it to the AdministrativePort field.
 func (o *DSProducerDetails) SetAdministrativePort(v string) {
 	o.AdministrativePort = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetApiKey() string {
+	if o == nil || IsNil(o.ApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKey
+}
+
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiKey) {
+		return nil, false
+	}
+	return o.ApiKey, true
+}
+
+// HasApiKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *DSProducerDetails) SetApiKey(v string) {
+	o.ApiKey = &v
+}
+
+// GetApiKeyId returns the ApiKeyId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetApiKeyId() string {
+	if o == nil || IsNil(o.ApiKeyId) {
+		var ret string
+		return ret
+	}
+	return *o.ApiKeyId
+}
+
+// GetApiKeyIdOk returns a tuple with the ApiKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetApiKeyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiKeyId) {
+		return nil, false
+	}
+	return o.ApiKeyId, true
+}
+
+// HasApiKeyId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasApiKeyId() bool {
+	if o != nil && !IsNil(o.ApiKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
+func (o *DSProducerDetails) SetApiKeyId(v string) {
+	o.ApiKeyId = &v
 }
 
 // GetArtifactoryAdminApikey returns the ArtifactoryAdminApikey field value if set, zero value otherwise.
@@ -6265,6 +6334,38 @@ func (o *DSProducerDetails) SetMysqlRevocationStatements(v string) {
 	o.MysqlRevocationStatements = &v
 }
 
+// GetOpenaiUrl returns the OpenaiUrl field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetOpenaiUrl() string {
+	if o == nil || IsNil(o.OpenaiUrl) {
+		var ret string
+		return ret
+	}
+	return *o.OpenaiUrl
+}
+
+// GetOpenaiUrlOk returns a tuple with the OpenaiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetOpenaiUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.OpenaiUrl) {
+		return nil, false
+	}
+	return o.OpenaiUrl, true
+}
+
+// HasOpenaiUrl returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasOpenaiUrl() bool {
+	if o != nil && !IsNil(o.OpenaiUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenaiUrl gets a reference to the given string and assigns it to the OpenaiUrl field.
+func (o *DSProducerDetails) SetOpenaiUrl(v string) {
+	o.OpenaiUrl = &v
+}
+
 // GetOracleCreationStatements returns the OracleCreationStatements field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetOracleCreationStatements() string {
 	if o == nil || IsNil(o.OracleCreationStatements) {
@@ -6359,6 +6460,38 @@ func (o *DSProducerDetails) HasOracleWalletDetails() bool {
 // SetOracleWalletDetails gets a reference to the given WalletDetails and assigns it to the OracleWalletDetails field.
 func (o *DSProducerDetails) SetOracleWalletDetails(v WalletDetails) {
 	o.OracleWalletDetails = &v
+}
+
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetOrganizationId() string {
+	if o == nil || IsNil(o.OrganizationId) {
+		var ret string
+		return ret
+	}
+	return *o.OrganizationId
+}
+
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetOrganizationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OrganizationId) {
+		return nil, false
+	}
+	return o.OrganizationId, true
+}
+
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasOrganizationId() bool {
+	if o != nil && !IsNil(o.OrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given string and assigns it to the OrganizationId field.
+func (o *DSProducerDetails) SetOrganizationId(v string) {
+	o.OrganizationId = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -6615,6 +6748,38 @@ func (o *DSProducerDetails) HasPrivilegedUser() bool {
 // SetPrivilegedUser gets a reference to the given string and assigns it to the PrivilegedUser field.
 func (o *DSProducerDetails) SetPrivilegedUser(v string) {
 	o.PrivilegedUser = &v
+}
+
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *DSProducerDetails) SetProjectId(v string) {
+	o.ProjectId = &v
 }
 
 // GetRabbitmqServerPassword returns the RabbitmqServerPassword field value if set, zero value otherwise.
@@ -8408,6 +8573,12 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdministrativePort) {
 		toSerialize["administrative_port"] = o.AdministrativePort
 	}
+	if !IsNil(o.ApiKey) {
+		toSerialize["api_key"] = o.ApiKey
+	}
+	if !IsNil(o.ApiKeyId) {
+		toSerialize["api_key_id"] = o.ApiKeyId
+	}
 	if !IsNil(o.ArtifactoryAdminApikey) {
 		toSerialize["artifactory_admin_apikey"] = o.ArtifactoryAdminApikey
 	}
@@ -8945,6 +9116,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MysqlRevocationStatements) {
 		toSerialize["mysql_revocation_statements"] = o.MysqlRevocationStatements
 	}
+	if !IsNil(o.OpenaiUrl) {
+		toSerialize["openai_url"] = o.OpenaiUrl
+	}
 	if !IsNil(o.OracleCreationStatements) {
 		toSerialize["oracle_creation_statements"] = o.OracleCreationStatements
 	}
@@ -8953,6 +9127,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OracleWalletDetails) {
 		toSerialize["oracle_wallet_details"] = o.OracleWalletDetails
+	}
+	if !IsNil(o.OrganizationId) {
+		toSerialize["organization_id"] = o.OrganizationId
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
@@ -8977,6 +9154,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PrivilegedUser) {
 		toSerialize["privileged_user"] = o.PrivilegedUser
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
 	}
 	if !IsNil(o.RabbitmqServerPassword) {
 		toSerialize["rabbitmq_server_password"] = o.RabbitmqServerPassword
