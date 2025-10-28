@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Admins** | Pointer to [**AdminsConfigPart**](AdminsConfigPart.md) |  | [optional] 
+**AiInsights** | Pointer to [**AiInsightsConfigPart**](AiInsightsConfigPart.md) |  | [optional] 
 **CaCertificates** | Pointer to [**CaCertificatesConfigPart**](CaCertificatesConfigPart.md) |  | [optional] 
 **Cache** | Pointer to [**CacheConfigPart**](CacheConfigPart.md) |  | [optional] 
 **Cf** | Pointer to [**CFConfigPart**](CFConfigPart.md) |  | [optional] 
@@ -66,6 +67,31 @@ SetAdmins sets Admins field to given value.
 `func (o *AkeylessGatewayConfig) HasAdmins() bool`
 
 HasAdmins returns a boolean if a field has been set.
+
+### GetAiInsights
+
+`func (o *AkeylessGatewayConfig) GetAiInsights() AiInsightsConfigPart`
+
+GetAiInsights returns the AiInsights field if non-nil, zero value otherwise.
+
+### GetAiInsightsOk
+
+`func (o *AkeylessGatewayConfig) GetAiInsightsOk() (*AiInsightsConfigPart, bool)`
+
+GetAiInsightsOk returns a tuple with the AiInsights field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiInsights
+
+`func (o *AkeylessGatewayConfig) SetAiInsights(v AiInsightsConfigPart)`
+
+SetAiInsights sets AiInsights field to given value.
+
+### HasAiInsights
+
+`func (o *AkeylessGatewayConfig) HasAiInsights() bool`
+
+HasAiInsights returns a boolean if a field has been set.
 
 ### GetCaCertificates
 

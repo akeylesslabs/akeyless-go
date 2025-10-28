@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
-**Model** | Pointer to **string** | Default model to use with Gemini | [optional] 
 **Name** | **string** | Target name | 
 **NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
 **NewName** | Pointer to **string** | New target name | [optional] 
@@ -211,31 +210,6 @@ SetMaxVersions sets MaxVersions field to given value.
 `func (o *TargetUpdateGemini) HasMaxVersions() bool`
 
 HasMaxVersions returns a boolean if a field has been set.
-
-### GetModel
-
-`func (o *TargetUpdateGemini) GetModel() string`
-
-GetModel returns the Model field if non-nil, zero value otherwise.
-
-### GetModelOk
-
-`func (o *TargetUpdateGemini) GetModelOk() (*string, bool)`
-
-GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModel
-
-`func (o *TargetUpdateGemini) SetModel(v string)`
-
-SetModel sets Model field to given value.
-
-### HasModel
-
-`func (o *TargetUpdateGemini) HasModel() bool`
-
-HasModel returns a boolean if a field has been set.
 
 ### GetName
 

@@ -169,6 +169,7 @@ type DSProducerDetails struct {
 	IsFixedUser *string `json:"is_fixed_user,omitempty"`
 	// relevant for CLIENT_TLS_CERTIFICATE client authentication type
 	Issuer *string `json:"issuer,omitempty"`
+	ItemCustomFieldsDetails []ItemCustomFieldsDetails `json:"item_custom_fields_details,omitempty"`
 	ItemTargetsAssoc []ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
 	Jwks *string `json:"jwks,omitempty"`
 	JwksUrl *string `json:"jwks_url,omitempty"`
@@ -4863,6 +4864,38 @@ func (o *DSProducerDetails) SetIssuer(v string) {
 	o.Issuer = &v
 }
 
+// GetItemCustomFieldsDetails returns the ItemCustomFieldsDetails field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetItemCustomFieldsDetails() []ItemCustomFieldsDetails {
+	if o == nil || IsNil(o.ItemCustomFieldsDetails) {
+		var ret []ItemCustomFieldsDetails
+		return ret
+	}
+	return o.ItemCustomFieldsDetails
+}
+
+// GetItemCustomFieldsDetailsOk returns a tuple with the ItemCustomFieldsDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetItemCustomFieldsDetailsOk() ([]ItemCustomFieldsDetails, bool) {
+	if o == nil || IsNil(o.ItemCustomFieldsDetails) {
+		return nil, false
+	}
+	return o.ItemCustomFieldsDetails, true
+}
+
+// HasItemCustomFieldsDetails returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasItemCustomFieldsDetails() bool {
+	if o != nil && !IsNil(o.ItemCustomFieldsDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFieldsDetails gets a reference to the given []ItemCustomFieldsDetails and assigns it to the ItemCustomFieldsDetails field.
+func (o *DSProducerDetails) SetItemCustomFieldsDetails(v []ItemCustomFieldsDetails) {
+	o.ItemCustomFieldsDetails = v
+}
+
 // GetItemTargetsAssoc returns the ItemTargetsAssoc field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetItemTargetsAssoc() []ItemTargetAssociation {
 	if o == nil || IsNil(o.ItemTargetsAssoc) {
@@ -9010,6 +9043,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Issuer) {
 		toSerialize["issuer"] = o.Issuer
+	}
+	if !IsNil(o.ItemCustomFieldsDetails) {
+		toSerialize["item_custom_fields_details"] = o.ItemCustomFieldsDetails
 	}
 	if !IsNil(o.ItemTargetsAssoc) {
 		toSerialize["item_targets_assoc"] = o.ItemTargetsAssoc

@@ -31,12 +31,12 @@ type GatewayUpdateProducerGcp struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Service account key algorithm, e.g. KEY_ALG_RSA_1024
 	GcpKeyAlgo *string `json:"gcp-key-algo,omitempty"`
-	// GCP Project ID override for dynamic secret operations (tmp service accounts)
-	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type=fixed)
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// Access token scopes list, e.g. scope1,scope2
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
@@ -252,38 +252,6 @@ func (o *GatewayUpdateProducerGcp) SetGcpKeyAlgo(v string) {
 	o.GcpKeyAlgo = &v
 }
 
-// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerGcp) GetGcpProjectId() string {
-	if o == nil || IsNil(o.GcpProjectId) {
-		var ret string
-		return ret
-	}
-	return *o.GcpProjectId
-}
-
-// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerGcp) GetGcpProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GcpProjectId) {
-		return nil, false
-	}
-	return o.GcpProjectId, true
-}
-
-// HasGcpProjectId returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerGcp) HasGcpProjectId() bool {
-	if o != nil && !IsNil(o.GcpProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
-func (o *GatewayUpdateProducerGcp) SetGcpProjectId(v string) {
-	o.GcpProjectId = &v
-}
-
 // GetGcpSaEmail returns the GcpSaEmail field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerGcp) GetGcpSaEmail() string {
 	if o == nil || IsNil(o.GcpSaEmail) {
@@ -346,6 +314,38 @@ func (o *GatewayUpdateProducerGcp) HasGcpTokenScopes() bool {
 // SetGcpTokenScopes gets a reference to the given string and assigns it to the GcpTokenScopes field.
 func (o *GatewayUpdateProducerGcp) SetGcpTokenScopes(v string) {
 	o.GcpTokenScopes = &v
+}
+
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGcp) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGcp) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGcp) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *GatewayUpdateProducerGcp) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -709,14 +709,14 @@ func (o GatewayUpdateProducerGcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpKeyAlgo) {
 		toSerialize["gcp-key-algo"] = o.GcpKeyAlgo
 	}
-	if !IsNil(o.GcpProjectId) {
-		toSerialize["gcp-project-id"] = o.GcpProjectId
-	}
 	if !IsNil(o.GcpSaEmail) {
 		toSerialize["gcp-sa-email"] = o.GcpSaEmail
 	}
 	if !IsNil(o.GcpTokenScopes) {
 		toSerialize["gcp-token-scopes"] = o.GcpTokenScopes
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

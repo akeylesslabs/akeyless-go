@@ -57,6 +57,8 @@ type CreateClassicKey struct {
 	GpgAlg *string `json:"gpg-alg,omitempty"`
 	// Specifies the hash algorithm used for the encryption key's operations, available options: [SHA256, SHA384, SHA512]
 	HashAlgorithm *string `json:"hash-algorithm,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Base64-encoded classic key value
@@ -676,6 +678,38 @@ func (o *CreateClassicKey) SetHashAlgorithm(v string) {
 	o.HashAlgorithm = &v
 }
 
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *CreateClassicKey) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateClassicKey) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *CreateClassicKey) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *CreateClassicKey) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *CreateClassicKey) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -1049,6 +1083,9 @@ func (o CreateClassicKey) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HashAlgorithm) {
 		toSerialize["hash-algorithm"] = o.HashAlgorithm
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

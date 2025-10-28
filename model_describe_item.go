@@ -32,6 +32,8 @@ type DescribeItem struct {
 	DisplayId *string `json:"display-id,omitempty"`
 	// Indicate if the item should return with clusters details (url, etc)
 	GatewayDetails *bool `json:"gateway-details,omitempty"`
+	// Include all item custom fields details
+	ItemCustomFieldsDetails *bool `json:"item-custom-fields-details,omitempty"`
 	// Item id of the item
 	ItemId *int64 `json:"item-id,omitempty"`
 	// Set output format to JSON
@@ -64,6 +66,8 @@ func NewDescribeItem(name string) *DescribeItem {
 	this.DerCertificateFormat = &derCertificateFormat
 	var gatewayDetails bool = false
 	this.GatewayDetails = &gatewayDetails
+	var itemCustomFieldsDetails bool = false
+	this.ItemCustomFieldsDetails = &itemCustomFieldsDetails
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -87,6 +91,8 @@ func NewDescribeItemWithDefaults() *DescribeItem {
 	this.DerCertificateFormat = &derCertificateFormat
 	var gatewayDetails bool = false
 	this.GatewayDetails = &gatewayDetails
+	var itemCustomFieldsDetails bool = false
+	this.ItemCustomFieldsDetails = &itemCustomFieldsDetails
 	var json bool = false
 	this.Json = &json
 	var servicesDetails bool = false
@@ -254,6 +260,38 @@ func (o *DescribeItem) HasGatewayDetails() bool {
 // SetGatewayDetails gets a reference to the given bool and assigns it to the GatewayDetails field.
 func (o *DescribeItem) SetGatewayDetails(v bool) {
 	o.GatewayDetails = &v
+}
+
+// GetItemCustomFieldsDetails returns the ItemCustomFieldsDetails field value if set, zero value otherwise.
+func (o *DescribeItem) GetItemCustomFieldsDetails() bool {
+	if o == nil || IsNil(o.ItemCustomFieldsDetails) {
+		var ret bool
+		return ret
+	}
+	return *o.ItemCustomFieldsDetails
+}
+
+// GetItemCustomFieldsDetailsOk returns a tuple with the ItemCustomFieldsDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DescribeItem) GetItemCustomFieldsDetailsOk() (*bool, bool) {
+	if o == nil || IsNil(o.ItemCustomFieldsDetails) {
+		return nil, false
+	}
+	return o.ItemCustomFieldsDetails, true
+}
+
+// HasItemCustomFieldsDetails returns a boolean if a field has been set.
+func (o *DescribeItem) HasItemCustomFieldsDetails() bool {
+	if o != nil && !IsNil(o.ItemCustomFieldsDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFieldsDetails gets a reference to the given bool and assigns it to the ItemCustomFieldsDetails field.
+func (o *DescribeItem) SetItemCustomFieldsDetails(v bool) {
+	o.ItemCustomFieldsDetails = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -496,6 +534,9 @@ func (o DescribeItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GatewayDetails) {
 		toSerialize["gateway-details"] = o.GatewayDetails
+	}
+	if !IsNil(o.ItemCustomFieldsDetails) {
+		toSerialize["item-custom-fields-details"] = o.ItemCustomFieldsDetails
 	}
 	if !IsNil(o.ItemId) {
 		toSerialize["item-id"] = o.ItemId

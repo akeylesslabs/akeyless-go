@@ -28,6 +28,8 @@ type DynamicSecretCreateMsSql struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// MSSQL Creation statements
@@ -212,6 +214,38 @@ func (o *DynamicSecretCreateMsSql) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DynamicSecretCreateMsSql) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *DynamicSecretCreateMsSql) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateMsSql) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *DynamicSecretCreateMsSql) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *DynamicSecretCreateMsSql) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -992,6 +1026,9 @@ func (o DynamicSecretCreateMsSql) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

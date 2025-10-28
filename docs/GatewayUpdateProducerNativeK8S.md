@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAllowedNamespaces** | Pointer to **string** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
 **K8sClusterCaCert** | Pointer to **string** | K8S cluster CA certificate | [optional] 
@@ -107,6 +108,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayUpdateProducerNativeK8S) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *GatewayUpdateProducerNativeK8S) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *GatewayUpdateProducerNativeK8S) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *GatewayUpdateProducerNativeK8S) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *GatewayUpdateProducerNativeK8S) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

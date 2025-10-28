@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **GenerateSelfSignedCertificate** | Pointer to **bool** | Whether to generate a self signed certificate with the key. If set, --certificate-ttl must be provided. | [optional] 
 **GpgAlg** | Pointer to **string** | gpg alg: Relevant only if GPG key type selected; options: [RSA1024, RSA2048, RSA3072, RSA4096, Ed25519] | [optional] 
 **HashAlgorithm** | Pointer to **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: [SHA256, SHA384, SHA512] | [optional] [default to "SHA256"]
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyData** | Pointer to **string** | Base64-encoded classic key value | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
@@ -496,6 +497,31 @@ SetHashAlgorithm sets HashAlgorithm field to given value.
 `func (o *CreateClassicKey) HasHashAlgorithm() bool`
 
 HasHashAlgorithm returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *CreateClassicKey) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *CreateClassicKey) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *CreateClassicKey) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *CreateClassicKey) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

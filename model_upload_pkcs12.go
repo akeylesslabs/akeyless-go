@@ -30,6 +30,8 @@ type UploadPKCS12 struct {
 	Description *string `json:"description,omitempty"`
 	// PKCS#12 input file (private key and certificate only)
 	In string `json:"in"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
@@ -196,6 +198,38 @@ func (o *UploadPKCS12) GetInOk() (*string, bool) {
 // SetIn sets field value
 func (o *UploadPKCS12) SetIn(v string) {
 	o.In = v
+}
+
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *UploadPKCS12) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UploadPKCS12) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *UploadPKCS12) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *UploadPKCS12) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -458,6 +492,9 @@ func (o UploadPKCS12) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["in"] = o.In
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

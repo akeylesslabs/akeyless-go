@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **HanadbPort** | Pointer to **string** | HanaDb Port | [optional] [default to "443"]
 **HanadbRevocationStatements** | Pointer to **string** | HanaDb Revocation statements | [optional] 
 **HanadbUsername** | Pointer to **string** | HanaDb Username | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
@@ -274,6 +275,31 @@ SetHanadbUsername sets HanadbUsername field to given value.
 `func (o *GatewayUpdateProducerHanaDb) HasHanadbUsername() bool`
 
 HasHanadbUsername returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *GatewayUpdateProducerHanaDb) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *GatewayUpdateProducerHanaDb) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *GatewayUpdateProducerHanaDb) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *GatewayUpdateProducerHanaDb) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

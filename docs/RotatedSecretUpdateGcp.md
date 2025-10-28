@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
 **GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | Pointer to **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -323,6 +324,31 @@ SetGraceRotationInterval sets GraceRotationInterval field to given value.
 `func (o *RotatedSecretUpdateGcp) HasGraceRotationInterval() bool`
 
 HasGraceRotationInterval returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *RotatedSecretUpdateGcp) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *RotatedSecretUpdateGcp) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *RotatedSecretUpdateGcp) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *RotatedSecretUpdateGcp) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

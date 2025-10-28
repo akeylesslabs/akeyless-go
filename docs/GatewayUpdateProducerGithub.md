@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **InstallationId** | Pointer to **int64** | GitHub application installation id | [optional] 
 **InstallationOrganization** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub organization name | [optional] 
 **InstallationRepository** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39; | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
@@ -215,6 +216,31 @@ SetInstallationRepository sets InstallationRepository field to given value.
 `func (o *GatewayUpdateProducerGithub) HasInstallationRepository() bool`
 
 HasInstallationRepository returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *GatewayUpdateProducerGithub) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *GatewayUpdateProducerGithub) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *GatewayUpdateProducerGithub) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *GatewayUpdateProducerGithub) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

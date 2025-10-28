@@ -21,6 +21,7 @@ var _ MappedNullable = &ConfigHash{}
 // ConfigHash struct for ConfigHash
 type ConfigHash struct {
 	Admins *string `json:"admins,omitempty"`
+	AiInsights *string `json:"ai_insights,omitempty"`
 	Cache *string `json:"cache,omitempty"`
 	CustomerFragements *string `json:"customer_fragements,omitempty"`
 	General *string `json:"general,omitempty"`
@@ -86,6 +87,38 @@ func (o *ConfigHash) HasAdmins() bool {
 // SetAdmins gets a reference to the given string and assigns it to the Admins field.
 func (o *ConfigHash) SetAdmins(v string) {
 	o.Admins = &v
+}
+
+// GetAiInsights returns the AiInsights field value if set, zero value otherwise.
+func (o *ConfigHash) GetAiInsights() string {
+	if o == nil || IsNil(o.AiInsights) {
+		var ret string
+		return ret
+	}
+	return *o.AiInsights
+}
+
+// GetAiInsightsOk returns a tuple with the AiInsights field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigHash) GetAiInsightsOk() (*string, bool) {
+	if o == nil || IsNil(o.AiInsights) {
+		return nil, false
+	}
+	return o.AiInsights, true
+}
+
+// HasAiInsights returns a boolean if a field has been set.
+func (o *ConfigHash) HasAiInsights() bool {
+	if o != nil && !IsNil(o.AiInsights) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiInsights gets a reference to the given string and assigns it to the AiInsights field.
+func (o *ConfigHash) SetAiInsights(v string) {
+	o.AiInsights = &v
 }
 
 // GetCache returns the Cache field value if set, zero value otherwise.
@@ -614,6 +647,9 @@ func (o ConfigHash) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Admins) {
 		toSerialize["admins"] = o.Admins
+	}
+	if !IsNil(o.AiInsights) {
+		toSerialize["ai_insights"] = o.AiInsights
 	}
 	if !IsNil(o.Cache) {
 		toSerialize["cache"] = o.Cache

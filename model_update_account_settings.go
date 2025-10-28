@@ -22,6 +22,8 @@ var _ MappedNullable = &UpdateAccountSettings{}
 type UpdateAccountSettings struct {
 	// Address
 	Address *string `json:"address,omitempty"`
+	// Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed.
+	AllowedEmailDomains []string `json:"allowed-email-domains,omitempty"`
 	// A default list of comma-separated CIDR block that are allowed to authenticate.
 	BoundIps []string `json:"bound-ips,omitempty"`
 	// City
@@ -44,6 +46,8 @@ type UpdateAccountSettings struct {
 	DynamicSecretMaxTtl *int64 `json:"dynamic-secret-max-ttl,omitempty"`
 	// Set a maximum ttl for dynamic secrets [true/false]
 	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
+	// Enable AI insights [true/false]
+	EnableAiInsights *string `json:"enable-ai-insights,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified. [true/false]
 	EnableDefaultCertificateExpirationEvent *string `json:"enable-default-certificate-expiration-event,omitempty"`
 	// Enable sharing items [true/false]
@@ -169,6 +173,38 @@ func (o *UpdateAccountSettings) HasAddress() bool {
 // SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *UpdateAccountSettings) SetAddress(v string) {
 	o.Address = &v
+}
+
+// GetAllowedEmailDomains returns the AllowedEmailDomains field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetAllowedEmailDomains() []string {
+	if o == nil || IsNil(o.AllowedEmailDomains) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedEmailDomains
+}
+
+// GetAllowedEmailDomainsOk returns a tuple with the AllowedEmailDomains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetAllowedEmailDomainsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedEmailDomains) {
+		return nil, false
+	}
+	return o.AllowedEmailDomains, true
+}
+
+// HasAllowedEmailDomains returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasAllowedEmailDomains() bool {
+	if o != nil && !IsNil(o.AllowedEmailDomains) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedEmailDomains gets a reference to the given []string and assigns it to the AllowedEmailDomains field.
+func (o *UpdateAccountSettings) SetAllowedEmailDomains(v []string) {
+	o.AllowedEmailDomains = v
 }
 
 // GetBoundIps returns the BoundIps field value if set, zero value otherwise.
@@ -521,6 +557,38 @@ func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool {
 // SetDynamicSecretMaxTtlEnable gets a reference to the given string and assigns it to the DynamicSecretMaxTtlEnable field.
 func (o *UpdateAccountSettings) SetDynamicSecretMaxTtlEnable(v string) {
 	o.DynamicSecretMaxTtlEnable = &v
+}
+
+// GetEnableAiInsights returns the EnableAiInsights field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetEnableAiInsights() string {
+	if o == nil || IsNil(o.EnableAiInsights) {
+		var ret string
+		return ret
+	}
+	return *o.EnableAiInsights
+}
+
+// GetEnableAiInsightsOk returns a tuple with the EnableAiInsights field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetEnableAiInsightsOk() (*string, bool) {
+	if o == nil || IsNil(o.EnableAiInsights) {
+		return nil, false
+	}
+	return o.EnableAiInsights, true
+}
+
+// HasEnableAiInsights returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasEnableAiInsights() bool {
+	if o != nil && !IsNil(o.EnableAiInsights) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiInsights gets a reference to the given string and assigns it to the EnableAiInsights field.
+func (o *UpdateAccountSettings) SetEnableAiInsights(v string) {
+	o.EnableAiInsights = &v
 }
 
 // GetEnableDefaultCertificateExpirationEvent returns the EnableDefaultCertificateExpirationEvent field value if set, zero value otherwise.
@@ -1624,6 +1692,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
+	if !IsNil(o.AllowedEmailDomains) {
+		toSerialize["allowed-email-domains"] = o.AllowedEmailDomains
+	}
 	if !IsNil(o.BoundIps) {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
@@ -1656,6 +1727,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DynamicSecretMaxTtlEnable) {
 		toSerialize["dynamic-secret-max-ttl-enable"] = o.DynamicSecretMaxTtlEnable
+	}
+	if !IsNil(o.EnableAiInsights) {
+		toSerialize["enable-ai-insights"] = o.EnableAiInsights
 	}
 	if !IsNil(o.EnableDefaultCertificateExpirationEvent) {
 		toSerialize["enable-default-certificate-expiration-event"] = o.EnableDefaultCertificateExpirationEvent

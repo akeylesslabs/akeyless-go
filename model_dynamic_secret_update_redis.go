@@ -32,6 +32,8 @@ type DynamicSecretUpdateRedis struct {
 	Description *string `json:"description,omitempty"`
 	// Redis Host
 	Host *string `json:"host,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
@@ -262,6 +264,38 @@ func (o *DynamicSecretUpdateRedis) HasHost() bool {
 // SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *DynamicSecretUpdateRedis) SetHost(v string) {
 	o.Host = &v
+}
+
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateRedis) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateRedis) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateRedis) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *DynamicSecretUpdateRedis) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -760,6 +794,9 @@ func (o DynamicSecretUpdateRedis) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

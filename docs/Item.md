@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **ItemAccessibility** | Pointer to **int64** |  | [optional] 
+**ItemCustomFieldsDetails** | Pointer to [**[]ItemCustomFieldsDetails**](ItemCustomFieldsDetails.md) |  | [optional] 
 **ItemGeneralInfo** | Pointer to [**ItemGeneralInfo**](ItemGeneralInfo.md) |  | [optional] 
 **ItemId** | Pointer to **int64** |  | [optional] 
 **ItemMetadata** | Pointer to **string** |  | [optional] 
@@ -515,6 +516,31 @@ SetItemAccessibility sets ItemAccessibility field to given value.
 `func (o *Item) HasItemAccessibility() bool`
 
 HasItemAccessibility returns a boolean if a field has been set.
+
+### GetItemCustomFieldsDetails
+
+`func (o *Item) GetItemCustomFieldsDetails() []ItemCustomFieldsDetails`
+
+GetItemCustomFieldsDetails returns the ItemCustomFieldsDetails field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsDetailsOk
+
+`func (o *Item) GetItemCustomFieldsDetailsOk() (*[]ItemCustomFieldsDetails, bool)`
+
+GetItemCustomFieldsDetailsOk returns a tuple with the ItemCustomFieldsDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFieldsDetails
+
+`func (o *Item) SetItemCustomFieldsDetails(v []ItemCustomFieldsDetails)`
+
+SetItemCustomFieldsDetails sets ItemCustomFieldsDetails field to given value.
+
+### HasItemCustomFieldsDetails
+
+`func (o *Item) HasItemCustomFieldsDetails() bool`
+
+HasItemCustomFieldsDetails returns a boolean if a field has been set.
 
 ### GetItemGeneralInfo
 

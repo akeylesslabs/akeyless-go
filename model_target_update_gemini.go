@@ -36,8 +36,6 @@ type TargetUpdateGemini struct {
 	Key *string `json:"key,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
-	// Default model to use with Gemini
-	Model *string `json:"model,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Deprecated - use description
@@ -310,38 +308,6 @@ func (o *TargetUpdateGemini) SetMaxVersions(v string) {
 	o.MaxVersions = &v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
-func (o *TargetUpdateGemini) GetModel() string {
-	if o == nil || IsNil(o.Model) {
-		var ret string
-		return ret
-	}
-	return *o.Model
-}
-
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetUpdateGemini) GetModelOk() (*string, bool) {
-	if o == nil || IsNil(o.Model) {
-		return nil, false
-	}
-	return o.Model, true
-}
-
-// HasModel returns a boolean if a field has been set.
-func (o *TargetUpdateGemini) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given string and assigns it to the Model field.
-func (o *TargetUpdateGemini) SetModel(v string) {
-	o.Model = &v
-}
-
 // GetName returns the Name field value
 func (o *TargetUpdateGemini) GetName() string {
 	if o == nil {
@@ -524,9 +490,6 @@ func (o TargetUpdateGemini) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
-	}
-	if !IsNil(o.Model) {
-		toSerialize["model"] = o.Model
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewComment) {

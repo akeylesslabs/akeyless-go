@@ -28,8 +28,8 @@ type CreateUSC struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the Universal Secrets Connector
 	Description *string `json:"description,omitempty"`
-	// GCP Project ID (Relevant only for GCP targets)
-	GcpProjectId *string `json:"gcp-project-id,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// K8s namespace (Relevant to Kubernetes targets)
@@ -175,36 +175,36 @@ func (o *CreateUSC) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
-func (o *CreateUSC) GetGcpProjectId() string {
-	if o == nil || IsNil(o.GcpProjectId) {
-		var ret string
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *CreateUSC) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
 		return ret
 	}
-	return *o.GcpProjectId
+	return *o.ItemCustomFields
 }
 
-// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateUSC) GetGcpProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GcpProjectId) {
+func (o *CreateUSC) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
 		return nil, false
 	}
-	return o.GcpProjectId, true
+	return o.ItemCustomFields, true
 }
 
-// HasGcpProjectId returns a boolean if a field has been set.
-func (o *CreateUSC) HasGcpProjectId() bool {
-	if o != nil && !IsNil(o.GcpProjectId) {
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *CreateUSC) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
 		return true
 	}
 
 	return false
 }
 
-// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
-func (o *CreateUSC) SetGcpProjectId(v string) {
-	o.GcpProjectId = &v
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *CreateUSC) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -498,8 +498,8 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.GcpProjectId) {
-		toSerialize["gcp-project-id"] = o.GcpProjectId
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

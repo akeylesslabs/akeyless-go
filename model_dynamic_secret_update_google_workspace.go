@@ -36,6 +36,8 @@ type DynamicSecretUpdateGoogleWorkspace struct {
 	// A group email, relevant only for group access-mode
 	GroupEmail *string `json:"group-email,omitempty"`
 	GroupRole *string `json:"group-role,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
@@ -353,6 +355,38 @@ func (o *DynamicSecretUpdateGoogleWorkspace) HasGroupRole() bool {
 // SetGroupRole gets a reference to the given string and assigns it to the GroupRole field.
 func (o *DynamicSecretUpdateGoogleWorkspace) SetGroupRole(v string) {
 	o.GroupRole = &v
+}
+
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateGoogleWorkspace) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateGoogleWorkspace) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateGoogleWorkspace) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *DynamicSecretUpdateGoogleWorkspace) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -888,6 +922,9 @@ func (o DynamicSecretUpdateGoogleWorkspace) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.GroupRole) {
 		toSerialize["group-role"] = o.GroupRole
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

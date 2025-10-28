@@ -21,6 +21,7 @@ var _ MappedNullable = &AkeylessGatewayConfig{}
 // AkeylessGatewayConfig struct for AkeylessGatewayConfig
 type AkeylessGatewayConfig struct {
 	Admins *AdminsConfigPart `json:"admins,omitempty"`
+	AiInsights *AiInsightsConfigPart `json:"ai_insights,omitempty"`
 	CaCertificates *CaCertificatesConfigPart `json:"ca_certificates,omitempty"`
 	Cache *CacheConfigPart `json:"cache,omitempty"`
 	Cf *CFConfigPart `json:"cf,omitempty"`
@@ -87,6 +88,38 @@ func (o *AkeylessGatewayConfig) HasAdmins() bool {
 // SetAdmins gets a reference to the given AdminsConfigPart and assigns it to the Admins field.
 func (o *AkeylessGatewayConfig) SetAdmins(v AdminsConfigPart) {
 	o.Admins = &v
+}
+
+// GetAiInsights returns the AiInsights field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetAiInsights() AiInsightsConfigPart {
+	if o == nil || IsNil(o.AiInsights) {
+		var ret AiInsightsConfigPart
+		return ret
+	}
+	return *o.AiInsights
+}
+
+// GetAiInsightsOk returns a tuple with the AiInsights field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetAiInsightsOk() (*AiInsightsConfigPart, bool) {
+	if o == nil || IsNil(o.AiInsights) {
+		return nil, false
+	}
+	return o.AiInsights, true
+}
+
+// HasAiInsights returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasAiInsights() bool {
+	if o != nil && !IsNil(o.AiInsights) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiInsights gets a reference to the given AiInsightsConfigPart and assigns it to the AiInsights field.
+func (o *AkeylessGatewayConfig) SetAiInsights(v AiInsightsConfigPart) {
+	o.AiInsights = &v
 }
 
 // GetCaCertificates returns the CaCertificates field value if set, zero value otherwise.
@@ -645,6 +678,9 @@ func (o AkeylessGatewayConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Admins) {
 		toSerialize["admins"] = o.Admins
+	}
+	if !IsNil(o.AiInsights) {
+		toSerialize["ai_insights"] = o.AiInsights
 	}
 	if !IsNil(o.CaCertificates) {
 		toSerialize["ca_certificates"] = o.CaCertificates

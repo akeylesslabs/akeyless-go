@@ -13,6 +13,13 @@ docs/AWSSecretsMigration.md
 docs/AWSTargetDetails.md
 docs/AccessOrGroupPermissionAssignment.md
 docs/AccessPermissionAssignment.md
+docs/AccountCustomFieldCreate.md
+docs/AccountCustomFieldCreateOutput.md
+docs/AccountCustomFieldDelete.md
+docs/AccountCustomFieldGet.md
+docs/AccountCustomFieldGetOutput.md
+docs/AccountCustomFieldList.md
+docs/AccountCustomFieldUpdate.md
 docs/AccountGeneralSettings.md
 docs/AccountObjectVersionSettingsOutput.md
 docs/AcmeAccount.md
@@ -20,6 +27,8 @@ docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
+docs/AiInsightsConfigPart.md
+docs/AiInsightsSetting.md
 docs/AkeylessGatewayConfig.md
 docs/AliasDetails.md
 docs/AliasDetailsOutput.md
@@ -656,6 +665,7 @@ docs/ImportPasswords.md
 docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
 docs/Item.md
+docs/ItemCustomFieldsDetails.md
 docs/ItemGeneralInfo.md
 docs/ItemSraStatus.md
 docs/ItemTargetAssociation.md
@@ -750,6 +760,7 @@ docs/NativeK8sTargetDetails.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
 docs/NullString.md
+docs/NullTime.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OCIAccessRules.md
@@ -1124,6 +1135,13 @@ go.mod
 go.sum
 model_access_or_group_permission_assignment.go
 model_access_permission_assignment.go
+model_account_custom_field_create.go
+model_account_custom_field_create_output.go
+model_account_custom_field_delete.go
+model_account_custom_field_get.go
+model_account_custom_field_get_output.go
+model_account_custom_field_list.go
+model_account_custom_field_update.go
 model_account_general_settings.go
 model_account_object_version_settings_output.go
 model_acme_account.go
@@ -1131,6 +1149,8 @@ model_active_directory_migration.go
 model_active_directory_payload.go
 model_add_gateway_allowed_access_id.go
 model_admins_config_part.go
+model_ai_insights_config_part.go
+model_ai_insights_setting.go
 model_akeyless_gateway_config.go
 model_alias_details.go
 model_alias_details_output.go
@@ -1773,6 +1793,7 @@ model_import_passwords.go
 model_import_passwords_output.go
 model_importer_info.go
 model_item.go
+model_item_custom_fields_details.go
 model_item_general_info.go
 model_item_sra_status.go
 model_item_target_association.go
@@ -1867,6 +1888,7 @@ model_native_k8s_target_details.go
 model_next_auto_rotation_event.go
 model_noti_forwarder.go
 model_null_string.go
+model_null_time.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
 model_object_version_settings_output.go

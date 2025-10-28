@@ -42,6 +42,8 @@ type RotatedSecretCreateAws struct {
 	GraceRotationHour *int32 `json:"grace-rotation-hour,omitempty"`
 	// The number of days to wait before deleting the old key (must be bigger than rotation-interval)
 	GraceRotationInterval *string `json:"grace-rotation-interval,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -438,6 +440,38 @@ func (o *RotatedSecretCreateAws) HasGraceRotationInterval() bool {
 // SetGraceRotationInterval gets a reference to the given string and assigns it to the GraceRotationInterval field.
 func (o *RotatedSecretCreateAws) SetGraceRotationInterval(v string) {
 	o.GraceRotationInterval = &v
+}
+
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAws) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAws) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAws) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *RotatedSecretCreateAws) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -1063,6 +1097,9 @@ func (o RotatedSecretCreateAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GraceRotationInterval) {
 		toSerialize["grace-rotation-interval"] = o.GraceRotationInterval
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

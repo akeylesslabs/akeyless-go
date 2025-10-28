@@ -68,6 +68,8 @@ type UpdatePKICertIssuer struct {
 	GwClusterUrl *string `json:"gw-cluster-url,omitempty"`
 	// If set, the basic constraints extension will be added to certificate
 	IsCa *bool `json:"is-ca,omitempty"`
+	// Additional custom fields to associate with the item
+	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// key-usage
@@ -887,6 +889,38 @@ func (o *UpdatePKICertIssuer) SetIsCa(v bool) {
 	o.IsCa = &v
 }
 
+// GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetItemCustomFields() map[string]string {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ItemCustomFields
+}
+
+// GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetItemCustomFieldsOk() (*map[string]string, bool) {
+	if o == nil || IsNil(o.ItemCustomFields) {
+		return nil, false
+	}
+	return o.ItemCustomFields, true
+}
+
+// HasItemCustomFields returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasItemCustomFields() bool {
+	if o != nil && !IsNil(o.ItemCustomFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFields gets a reference to the given map[string]string and assigns it to the ItemCustomFields field.
+func (o *UpdatePKICertIssuer) SetItemCustomFields(v map[string]string) {
+	o.ItemCustomFields = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -1653,6 +1687,9 @@ func (o UpdatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsCa) {
 		toSerialize["is-ca"] = o.IsCa
+	}
+	if !IsNil(o.ItemCustomFields) {
+		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

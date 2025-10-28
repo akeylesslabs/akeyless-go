@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedEmailDomains** | Pointer to **[]string** | AllowedEmailDomains limits email sharing to these domains. By default all domains are allowed. | [optional] 
 **DefaultShareLinkTtl** | Pointer to **int64** |  | [optional] 
 **Enable** | Pointer to **bool** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewSharingPolicyInfoWithDefaults instantiates a new SharingPolicyInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAllowedEmailDomains
+
+`func (o *SharingPolicyInfo) GetAllowedEmailDomains() []string`
+
+GetAllowedEmailDomains returns the AllowedEmailDomains field if non-nil, zero value otherwise.
+
+### GetAllowedEmailDomainsOk
+
+`func (o *SharingPolicyInfo) GetAllowedEmailDomainsOk() (*[]string, bool)`
+
+GetAllowedEmailDomainsOk returns a tuple with the AllowedEmailDomains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedEmailDomains
+
+`func (o *SharingPolicyInfo) SetAllowedEmailDomains(v []string)`
+
+SetAllowedEmailDomains sets AllowedEmailDomains field to given value.
+
+### HasAllowedEmailDomains
+
+`func (o *SharingPolicyInfo) HasAllowedEmailDomains() bool`
+
+HasAllowedEmailDomains returns a boolean if a field has been set.
 
 ### GetDefaultShareLinkTtl
 

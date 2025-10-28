@@ -146,6 +146,7 @@ Name | Type | Description | Notes
 **ImplementationType** | Pointer to **string** |  | [optional] 
 **IsFixedUser** | Pointer to **string** |  | [optional] 
 **Issuer** | Pointer to **string** | relevant for CLIENT_TLS_CERTIFICATE client authentication type | [optional] 
+**ItemCustomFieldsDetails** | Pointer to [**[]ItemCustomFieldsDetails**](ItemCustomFieldsDetails.md) |  | [optional] 
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **Jwks** | Pointer to **string** |  | [optional] 
 **JwksUrl** | Pointer to **string** |  | [optional] 
@@ -3831,6 +3832,31 @@ SetIssuer sets Issuer field to given value.
 `func (o *DSProducerDetails) HasIssuer() bool`
 
 HasIssuer returns a boolean if a field has been set.
+
+### GetItemCustomFieldsDetails
+
+`func (o *DSProducerDetails) GetItemCustomFieldsDetails() []ItemCustomFieldsDetails`
+
+GetItemCustomFieldsDetails returns the ItemCustomFieldsDetails field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsDetailsOk
+
+`func (o *DSProducerDetails) GetItemCustomFieldsDetailsOk() (*[]ItemCustomFieldsDetails, bool)`
+
+GetItemCustomFieldsDetailsOk returns a tuple with the ItemCustomFieldsDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFieldsDetails
+
+`func (o *DSProducerDetails) SetItemCustomFieldsDetails(v []ItemCustomFieldsDetails)`
+
+SetItemCustomFieldsDetails sets ItemCustomFieldsDetails field to given value.
+
+### HasItemCustomFieldsDetails
+
+`func (o *DSProducerDetails) HasItemCustomFieldsDetails() bool`
+
+HasItemCustomFieldsDetails returns a boolean if a field has been set.
 
 ### GetItemTargetsAssoc
 

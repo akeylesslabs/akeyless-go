@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **InstallationId** | Pointer to **int64** | GitHub application installation id | [optional] 
 **InstallationOrganization** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub organization name | [optional] 
 **InstallationRepository** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39; | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
@@ -240,6 +241,31 @@ SetInstallationRepository sets InstallationRepository field to given value.
 `func (o *DynamicSecretCreateGithub) HasInstallationRepository() bool`
 
 HasInstallationRepository returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *DynamicSecretCreateGithub) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *DynamicSecretCreateGithub) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *DynamicSecretCreateGithub) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *DynamicSecretCreateGithub) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

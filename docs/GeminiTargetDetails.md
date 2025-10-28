@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to **string** |  | [optional] 
 **GeminiUrl** | Pointer to **string** |  | [optional] 
-**Model** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetGeminiUrl sets GeminiUrl field to given value.
 `func (o *GeminiTargetDetails) HasGeminiUrl() bool`
 
 HasGeminiUrl returns a boolean if a field has been set.
-
-### GetModel
-
-`func (o *GeminiTargetDetails) GetModel() string`
-
-GetModel returns the Model field if non-nil, zero value otherwise.
-
-### GetModelOk
-
-`func (o *GeminiTargetDetails) GetModelOk() (*string, bool)`
-
-GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModel
-
-`func (o *GeminiTargetDetails) SetModel(v string)`
-
-SetModel sets Model field to given value.
-
-### HasModel
-
-`func (o *GeminiTargetDetails) HasModel() bool`
-
-HasModel returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,6 +4,11 @@ All URIs are relative to *https://api.akeyless.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AccountCustomFieldCreate**](V2Api.md#AccountCustomFieldCreate) | **Post** /account-custom-field-create | Create a new custom field.
+[**AccountCustomFieldDelete**](V2Api.md#AccountCustomFieldDelete) | **Post** /account-custom-field-delete | Delete a custom field.
+[**AccountCustomFieldGet**](V2Api.md#AccountCustomFieldGet) | **Post** /account-custom-field-get | Get an account custom field by ID.
+[**AccountCustomFieldList**](V2Api.md#AccountCustomFieldList) | **Post** /account-custom-field-list | List all account custom fields.
+[**AccountCustomFieldUpdate**](V2Api.md#AccountCustomFieldUpdate) | **Post** /account-custom-field-update | Update a custom field.
 [**AliasDetails**](V2Api.md#AliasDetails) | **Post** /alias-details | 
 [**AssocRoleAuthMethod**](V2Api.md#AssocRoleAuthMethod) | **Post** /assoc-role-am | 
 [**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
@@ -585,6 +590,328 @@ Method | HTTP request | Description
 [**VerifyPKICertWithClassicKey**](V2Api.md#VerifyPKICertWithClassicKey) | **Post** /verify-pki-cert-with-classic-key | 
 [**VerifyRsaSsaPss**](V2Api.md#VerifyRsaSsaPss) | **Post** /verify-rsassa-pss | 
 
+
+
+## AccountCustomFieldCreate
+
+> AccountCustomFieldCreateOutput AccountCustomFieldCreate(ctx).AccountCustomFieldCreate(accountCustomFieldCreate).Execute()
+
+Create a new custom field.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	accountCustomFieldCreate := *openapiclient.NewAccountCustomFieldCreate("Name_example", "Object_example", "ObjectType_example") // AccountCustomFieldCreate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AccountCustomFieldCreate(context.Background()).AccountCustomFieldCreate(accountCustomFieldCreate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AccountCustomFieldCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AccountCustomFieldCreate`: AccountCustomFieldCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AccountCustomFieldCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAccountCustomFieldCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountCustomFieldCreate** | [**AccountCustomFieldCreate**](AccountCustomFieldCreate.md) |  | 
+
+### Return type
+
+[**AccountCustomFieldCreateOutput**](AccountCustomFieldCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AccountCustomFieldDelete
+
+> map[string]interface{} AccountCustomFieldDelete(ctx).AccountCustomFieldDelete(accountCustomFieldDelete).Execute()
+
+Delete a custom field.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	accountCustomFieldDelete := *openapiclient.NewAccountCustomFieldDelete(int64(123)) // AccountCustomFieldDelete | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AccountCustomFieldDelete(context.Background()).AccountCustomFieldDelete(accountCustomFieldDelete).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AccountCustomFieldDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AccountCustomFieldDelete`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AccountCustomFieldDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAccountCustomFieldDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountCustomFieldDelete** | [**AccountCustomFieldDelete**](AccountCustomFieldDelete.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AccountCustomFieldGet
+
+> AccountCustomFieldGetOutput AccountCustomFieldGet(ctx).AccountCustomFieldGet(accountCustomFieldGet).Execute()
+
+Get an account custom field by ID.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	accountCustomFieldGet := *openapiclient.NewAccountCustomFieldGet(int64(123)) // AccountCustomFieldGet | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AccountCustomFieldGet(context.Background()).AccountCustomFieldGet(accountCustomFieldGet).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AccountCustomFieldGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AccountCustomFieldGet`: AccountCustomFieldGetOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AccountCustomFieldGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAccountCustomFieldGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountCustomFieldGet** | [**AccountCustomFieldGet**](AccountCustomFieldGet.md) |  | 
+
+### Return type
+
+[**AccountCustomFieldGetOutput**](AccountCustomFieldGetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AccountCustomFieldList
+
+> map[string]interface{} AccountCustomFieldList(ctx).AccountCustomFieldList(accountCustomFieldList).Execute()
+
+List all account custom fields.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	accountCustomFieldList := *openapiclient.NewAccountCustomFieldList() // AccountCustomFieldList | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AccountCustomFieldList(context.Background()).AccountCustomFieldList(accountCustomFieldList).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AccountCustomFieldList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AccountCustomFieldList`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AccountCustomFieldList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAccountCustomFieldListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountCustomFieldList** | [**AccountCustomFieldList**](AccountCustomFieldList.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AccountCustomFieldUpdate
+
+> map[string]interface{} AccountCustomFieldUpdate(ctx).AccountCustomFieldUpdate(accountCustomFieldUpdate).Execute()
+
+Update a custom field.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	accountCustomFieldUpdate := *openapiclient.NewAccountCustomFieldUpdate(int64(123)) // AccountCustomFieldUpdate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AccountCustomFieldUpdate(context.Background()).AccountCustomFieldUpdate(accountCustomFieldUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AccountCustomFieldUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AccountCustomFieldUpdate`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AccountCustomFieldUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAccountCustomFieldUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **accountCustomFieldUpdate** | [**AccountCustomFieldUpdate**](AccountCustomFieldUpdate.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## AliasDetails

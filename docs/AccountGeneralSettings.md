@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountDefaultKeyItemId** | Pointer to **int64** | AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key | [optional] 
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
+**AiInsights** | Pointer to [**AiInsightsSetting**](AiInsightsSetting.md) |  | [optional] 
 **AllowedClientsIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AllowedGatewaysIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AuthUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
@@ -94,6 +95,31 @@ SetAccountDefaultKeyName sets AccountDefaultKeyName field to given value.
 `func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool`
 
 HasAccountDefaultKeyName returns a boolean if a field has been set.
+
+### GetAiInsights
+
+`func (o *AccountGeneralSettings) GetAiInsights() AiInsightsSetting`
+
+GetAiInsights returns the AiInsights field if non-nil, zero value otherwise.
+
+### GetAiInsightsOk
+
+`func (o *AccountGeneralSettings) GetAiInsightsOk() (*AiInsightsSetting, bool)`
+
+GetAiInsightsOk returns a tuple with the AiInsights field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiInsights
+
+`func (o *AccountGeneralSettings) SetAiInsights(v AiInsightsSetting)`
+
+SetAiInsights sets AiInsights field to given value.
+
+### HasAiInsights
+
+`func (o *AccountGeneralSettings) HasAiInsights() bool`
+
+HasAiInsights returns a boolean if a field has been set.
 
 ### GetAllowedClientsIps
 

@@ -20,6 +20,8 @@ var _ MappedNullable = &SharingPolicyInfo{}
 
 // SharingPolicyInfo struct for SharingPolicyInfo
 type SharingPolicyInfo struct {
+	// AllowedEmailDomains limits email sharing to these domains. By default all domains are allowed.
+	AllowedEmailDomains []string `json:"allowed_email_domains,omitempty"`
 	DefaultShareLinkTtl *int64 `json:"default_share_link_ttl,omitempty"`
 	Enable *bool `json:"enable,omitempty"`
 }
@@ -39,6 +41,38 @@ func NewSharingPolicyInfo() *SharingPolicyInfo {
 func NewSharingPolicyInfoWithDefaults() *SharingPolicyInfo {
 	this := SharingPolicyInfo{}
 	return &this
+}
+
+// GetAllowedEmailDomains returns the AllowedEmailDomains field value if set, zero value otherwise.
+func (o *SharingPolicyInfo) GetAllowedEmailDomains() []string {
+	if o == nil || IsNil(o.AllowedEmailDomains) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedEmailDomains
+}
+
+// GetAllowedEmailDomainsOk returns a tuple with the AllowedEmailDomains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SharingPolicyInfo) GetAllowedEmailDomainsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedEmailDomains) {
+		return nil, false
+	}
+	return o.AllowedEmailDomains, true
+}
+
+// HasAllowedEmailDomains returns a boolean if a field has been set.
+func (o *SharingPolicyInfo) HasAllowedEmailDomains() bool {
+	if o != nil && !IsNil(o.AllowedEmailDomains) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedEmailDomains gets a reference to the given []string and assigns it to the AllowedEmailDomains field.
+func (o *SharingPolicyInfo) SetAllowedEmailDomains(v []string) {
+	o.AllowedEmailDomains = v
 }
 
 // GetDefaultShareLinkTtl returns the DefaultShareLinkTtl field value if set, zero value otherwise.
@@ -115,6 +149,9 @@ func (o SharingPolicyInfo) MarshalJSON() ([]byte, error) {
 
 func (o SharingPolicyInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowedEmailDomains) {
+		toSerialize["allowed_email_domains"] = o.AllowedEmailDomains
+	}
 	if !IsNil(o.DefaultShareLinkTtl) {
 		toSerialize["default_share_link_ttl"] = o.DefaultShareLinkTtl
 	}

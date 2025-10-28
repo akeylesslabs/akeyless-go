@@ -34,8 +34,6 @@ type TargetCreateGemini struct {
 	Key *string `json:"key,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
-	// Default model to use with Gemini
-	Model *string `json:"model,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -264,38 +262,6 @@ func (o *TargetCreateGemini) SetMaxVersions(v string) {
 	o.MaxVersions = &v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
-func (o *TargetCreateGemini) GetModel() string {
-	if o == nil || IsNil(o.Model) {
-		var ret string
-		return ret
-	}
-	return *o.Model
-}
-
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TargetCreateGemini) GetModelOk() (*string, bool) {
-	if o == nil || IsNil(o.Model) {
-		return nil, false
-	}
-	return o.Model, true
-}
-
-// HasModel returns a boolean if a field has been set.
-func (o *TargetCreateGemini) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given string and assigns it to the Model field.
-func (o *TargetCreateGemini) SetModel(v string) {
-	o.Model = &v
-}
-
 // GetName returns the Name field value
 func (o *TargetCreateGemini) GetName() string {
 	if o == nil {
@@ -411,9 +377,6 @@ func (o TargetCreateGemini) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
-	}
-	if !IsNil(o.Model) {
-		toSerialize["model"] = o.Model
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Token) {

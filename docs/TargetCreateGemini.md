@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
-**Model** | Pointer to **string** | Default model to use with Gemini | [optional] 
 **Name** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -183,31 +182,6 @@ SetMaxVersions sets MaxVersions field to given value.
 `func (o *TargetCreateGemini) HasMaxVersions() bool`
 
 HasMaxVersions returns a boolean if a field has been set.
-
-### GetModel
-
-`func (o *TargetCreateGemini) GetModel() string`
-
-GetModel returns the Model field if non-nil, zero value otherwise.
-
-### GetModelOk
-
-`func (o *TargetCreateGemini) GetModelOk() (*string, bool)`
-
-GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModel
-
-`func (o *TargetCreateGemini) SetModel(v string)`
-
-SetModel sets Model field to given value.
-
-### HasModel
-
-`func (o *TargetCreateGemini) HasModel() bool`
-
-HasModel returns a boolean if a field has been set.
 
 ### GetName
 

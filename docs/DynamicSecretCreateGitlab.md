@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **GitlabUrl** | Pointer to **string** | Gitlab base url | [optional] [default to "https://gitlab.com/"]
 **GroupName** | Pointer to **string** | Gitlab group name, required for access-type&#x3D;group | [optional] 
 **InstallationOrganization** | Pointer to **string** | Gitlab project name, required for access-type&#x3D;project | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
@@ -280,6 +281,31 @@ SetInstallationOrganization sets InstallationOrganization field to given value.
 `func (o *DynamicSecretCreateGitlab) HasInstallationOrganization() bool`
 
 HasInstallationOrganization returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *DynamicSecretCreateGitlab) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *DynamicSecretCreateGitlab) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *DynamicSecretCreateGitlab) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *DynamicSecretCreateGitlab) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

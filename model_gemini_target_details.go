@@ -22,7 +22,6 @@ var _ MappedNullable = &GeminiTargetDetails{}
 type GeminiTargetDetails struct {
 	ApiKey *string `json:"api_key,omitempty"`
 	GeminiUrl *string `json:"gemini_url,omitempty"`
-	Model *string `json:"model,omitempty"`
 }
 
 // NewGeminiTargetDetails instantiates a new GeminiTargetDetails object
@@ -106,38 +105,6 @@ func (o *GeminiTargetDetails) SetGeminiUrl(v string) {
 	o.GeminiUrl = &v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
-func (o *GeminiTargetDetails) GetModel() string {
-	if o == nil || IsNil(o.Model) {
-		var ret string
-		return ret
-	}
-	return *o.Model
-}
-
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GeminiTargetDetails) GetModelOk() (*string, bool) {
-	if o == nil || IsNil(o.Model) {
-		return nil, false
-	}
-	return o.Model, true
-}
-
-// HasModel returns a boolean if a field has been set.
-func (o *GeminiTargetDetails) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given string and assigns it to the Model field.
-func (o *GeminiTargetDetails) SetModel(v string) {
-	o.Model = &v
-}
-
 func (o GeminiTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,9 +120,6 @@ func (o GeminiTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GeminiUrl) {
 		toSerialize["gemini_url"] = o.GeminiUrl
-	}
-	if !IsNil(o.Model) {
-		toSerialize["model"] = o.Model
 	}
 	return toSerialize, nil
 }

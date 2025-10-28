@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME | [optional] 
 **IsCa** | Pointer to **bool** | If set, the basic constraints extension will be added to certificate | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyUsage** | Pointer to **string** | key-usage | [optional] [default to "DigitalSignature,KeyAgreement,KeyEncipherment"]
 **Locality** | Pointer to **string** | A comma-separated list of localities that will be set in the issued certificate | [optional] 
@@ -643,6 +644,31 @@ SetIsCa sets IsCa field to given value.
 `func (o *UpdatePKICertIssuer) HasIsCa() bool`
 
 HasIsCa returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *UpdatePKICertIssuer) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *UpdatePKICertIssuer) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *UpdatePKICertIssuer) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *UpdatePKICertIssuer) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

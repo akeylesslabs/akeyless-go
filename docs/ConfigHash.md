@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Admins** | Pointer to **string** |  | [optional] 
+**AiInsights** | Pointer to **string** |  | [optional] 
 **Cache** | Pointer to **string** |  | [optional] 
 **CustomerFragements** | Pointer to **string** |  | [optional] 
 **General** | Pointer to **string** |  | [optional] 
@@ -65,6 +66,31 @@ SetAdmins sets Admins field to given value.
 `func (o *ConfigHash) HasAdmins() bool`
 
 HasAdmins returns a boolean if a field has been set.
+
+### GetAiInsights
+
+`func (o *ConfigHash) GetAiInsights() string`
+
+GetAiInsights returns the AiInsights field if non-nil, zero value otherwise.
+
+### GetAiInsightsOk
+
+`func (o *ConfigHash) GetAiInsightsOk() (*string, bool)`
+
+GetAiInsightsOk returns a tuple with the AiInsights field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiInsights
+
+`func (o *ConfigHash) SetAiInsights(v string)`
+
+SetAiInsights sets AiInsights field to given value.
+
+### HasAiInsights
+
+`func (o *ConfigHash) HasAiInsights() bool`
+
+HasAiInsights returns a boolean if a field has been set.
 
 ### GetCache
 

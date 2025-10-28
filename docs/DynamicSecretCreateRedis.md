@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Host** | Pointer to **string** | Redis Host | [optional] [default to "127.0.0.1"]
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **Password** | Pointer to **string** | Redis Password | [optional] 
@@ -167,6 +168,31 @@ SetHost sets Host field to given value.
 `func (o *DynamicSecretCreateRedis) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *DynamicSecretCreateRedis) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *DynamicSecretCreateRedis) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *DynamicSecretCreateRedis) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *DynamicSecretCreateRedis) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -24,6 +24,7 @@ type AccountGeneralSettings struct {
 	AccountDefaultKeyItemId *int64 `json:"account_default_key_item_id,omitempty"`
 	// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
+	AiInsights *AiInsightsSetting `json:"ai_insights,omitempty"`
 	AllowedClientsIps *AllowedIpSettings `json:"allowed_clients_ips,omitempty"`
 	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
@@ -126,6 +127,38 @@ func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool {
 // SetAccountDefaultKeyName gets a reference to the given string and assigns it to the AccountDefaultKeyName field.
 func (o *AccountGeneralSettings) SetAccountDefaultKeyName(v string) {
 	o.AccountDefaultKeyName = &v
+}
+
+// GetAiInsights returns the AiInsights field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAiInsights() AiInsightsSetting {
+	if o == nil || IsNil(o.AiInsights) {
+		var ret AiInsightsSetting
+		return ret
+	}
+	return *o.AiInsights
+}
+
+// GetAiInsightsOk returns a tuple with the AiInsights field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAiInsightsOk() (*AiInsightsSetting, bool) {
+	if o == nil || IsNil(o.AiInsights) {
+		return nil, false
+	}
+	return o.AiInsights, true
+}
+
+// HasAiInsights returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAiInsights() bool {
+	if o != nil && !IsNil(o.AiInsights) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiInsights gets a reference to the given AiInsightsSetting and assigns it to the AiInsights field.
+func (o *AccountGeneralSettings) SetAiInsights(v AiInsightsSetting) {
+	o.AiInsights = &v
 }
 
 // GetAllowedClientsIps returns the AllowedClientsIps field value if set, zero value otherwise.
@@ -751,6 +784,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccountDefaultKeyName) {
 		toSerialize["account_default_key_name"] = o.AccountDefaultKeyName
+	}
+	if !IsNil(o.AiInsights) {
+		toSerialize["ai_insights"] = o.AiInsights
 	}
 	if !IsNil(o.AllowedClientsIps) {
 		toSerialize["allowed_clients_ips"] = o.AllowedClientsIps

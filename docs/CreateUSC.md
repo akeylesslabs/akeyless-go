@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AzureKvName** | Pointer to **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the Universal Secrets Connector | [optional] 
-**GcpProjectId** | Pointer to **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | Pointer to **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 
 **Name** | **string** | Universal Secrets Connector name | 
@@ -112,30 +112,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetGcpProjectId
+### GetItemCustomFields
 
-`func (o *CreateUSC) GetGcpProjectId() string`
+`func (o *CreateUSC) GetItemCustomFields() map[string]string`
 
-GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
 
-### GetGcpProjectIdOk
+### GetItemCustomFieldsOk
 
-`func (o *CreateUSC) GetGcpProjectIdOk() (*string, bool)`
+`func (o *CreateUSC) GetItemCustomFieldsOk() (*map[string]string, bool)`
 
-GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGcpProjectId
+### SetItemCustomFields
 
-`func (o *CreateUSC) SetGcpProjectId(v string)`
+`func (o *CreateUSC) SetItemCustomFields(v map[string]string)`
 
-SetGcpProjectId sets GcpProjectId field to given value.
+SetItemCustomFields sets ItemCustomFields field to given value.
 
-### HasGcpProjectId
+### HasItemCustomFields
 
-`func (o *CreateUSC) HasGcpProjectId() bool`
+`func (o *CreateUSC) HasItemCustomFields() bool`
 
-HasGcpProjectId returns a boolean if a field has been set.
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

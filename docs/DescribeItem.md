@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DerCertificateFormat** | Pointer to **bool** | The certificate will be displayed in DER format | [optional] [default to false]
 **DisplayId** | Pointer to **string** | The display id of the item | [optional] 
 **GatewayDetails** | Pointer to **bool** | Indicate if the item should return with clusters details (url, etc) | [optional] [default to false]
+**ItemCustomFieldsDetails** | Pointer to **bool** | Include all item custom fields details | [optional] [default to false]
 **ItemId** | Pointer to **int64** | Item id of the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Item name | 
@@ -160,6 +161,31 @@ SetGatewayDetails sets GatewayDetails field to given value.
 `func (o *DescribeItem) HasGatewayDetails() bool`
 
 HasGatewayDetails returns a boolean if a field has been set.
+
+### GetItemCustomFieldsDetails
+
+`func (o *DescribeItem) GetItemCustomFieldsDetails() bool`
+
+GetItemCustomFieldsDetails returns the ItemCustomFieldsDetails field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsDetailsOk
+
+`func (o *DescribeItem) GetItemCustomFieldsDetailsOk() (*bool, bool)`
+
+GetItemCustomFieldsDetailsOk returns a tuple with the ItemCustomFieldsDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFieldsDetails
+
+`func (o *DescribeItem) SetItemCustomFieldsDetails(v bool)`
+
+SetItemCustomFieldsDetails sets ItemCustomFieldsDetails field to given value.
+
+### HasItemCustomFieldsDetails
+
+`func (o *DescribeItem) HasItemCustomFieldsDetails() bool`
+
+HasItemCustomFieldsDetails returns a boolean if a field has been set.
 
 ### GetItemId
 

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | Address | [optional] 
+**AllowedEmailDomains** | Pointer to **[]string** | Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed. | [optional] 
 **BoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that are allowed to authenticate. | [optional] 
 **City** | Pointer to **string** | City | [optional] 
 **CompanyName** | Pointer to **string** | Company name | [optional] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **DpEnableClassicKeyProtection** | Pointer to **string** | Set to update protection with classic keys state [true/false] | [optional] 
 **DynamicSecretMaxTtl** | Pointer to **int64** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
+**EnableAiInsights** | Pointer to **string** | Enable AI insights [true/false] | [optional] 
 **EnableDefaultCertificateExpirationEvent** | Pointer to **string** | How many days before the expiration of the certificate would you like to be notified. [true/false] | [optional] 
 **EnableItemSharing** | Pointer to **string** | Enable sharing items [true/false] | [optional] 
 **EnablePasswordExpiration** | Pointer to **string** | Enable password expiration policy [true/false] | [optional] 
@@ -94,6 +96,31 @@ SetAddress sets Address field to given value.
 `func (o *UpdateAccountSettings) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetAllowedEmailDomains
+
+`func (o *UpdateAccountSettings) GetAllowedEmailDomains() []string`
+
+GetAllowedEmailDomains returns the AllowedEmailDomains field if non-nil, zero value otherwise.
+
+### GetAllowedEmailDomainsOk
+
+`func (o *UpdateAccountSettings) GetAllowedEmailDomainsOk() (*[]string, bool)`
+
+GetAllowedEmailDomainsOk returns a tuple with the AllowedEmailDomains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedEmailDomains
+
+`func (o *UpdateAccountSettings) SetAllowedEmailDomains(v []string)`
+
+SetAllowedEmailDomains sets AllowedEmailDomains field to given value.
+
+### HasAllowedEmailDomains
+
+`func (o *UpdateAccountSettings) HasAllowedEmailDomains() bool`
+
+HasAllowedEmailDomains returns a boolean if a field has been set.
 
 ### GetBoundIps
 
@@ -369,6 +396,31 @@ SetDynamicSecretMaxTtlEnable sets DynamicSecretMaxTtlEnable field to given value
 `func (o *UpdateAccountSettings) HasDynamicSecretMaxTtlEnable() bool`
 
 HasDynamicSecretMaxTtlEnable returns a boolean if a field has been set.
+
+### GetEnableAiInsights
+
+`func (o *UpdateAccountSettings) GetEnableAiInsights() string`
+
+GetEnableAiInsights returns the EnableAiInsights field if non-nil, zero value otherwise.
+
+### GetEnableAiInsightsOk
+
+`func (o *UpdateAccountSettings) GetEnableAiInsightsOk() (*string, bool)`
+
+GetEnableAiInsightsOk returns a tuple with the EnableAiInsights field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiInsights
+
+`func (o *UpdateAccountSettings) SetEnableAiInsights(v string)`
+
+SetEnableAiInsights sets EnableAiInsights field to given value.
+
+### HasEnableAiInsights
+
+`func (o *UpdateAccountSettings) HasEnableAiInsights() bool`
+
+HasEnableAiInsights returns a boolean if a field has been set.
 
 ### GetEnableDefaultCertificateExpirationEvent
 

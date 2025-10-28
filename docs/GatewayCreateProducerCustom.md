@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **Payload** | Pointer to **string** | Secret payload to be sent with each create/revoke webhook request | [optional] 
@@ -133,6 +134,31 @@ SetEnableAdminRotation sets EnableAdminRotation field to given value.
 `func (o *GatewayCreateProducerCustom) HasEnableAdminRotation() bool`
 
 HasEnableAdminRotation returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *GatewayCreateProducerCustom) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *GatewayCreateProducerCustom) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *GatewayCreateProducerCustom) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *GatewayCreateProducerCustom) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
 
 ### GetJson
 

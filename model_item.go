@@ -39,6 +39,7 @@ type Item struct {
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
 	ItemAccessibility *int64 `json:"item_accessibility,omitempty"`
+	ItemCustomFieldsDetails []ItemCustomFieldsDetails `json:"item_custom_fields_details,omitempty"`
 	ItemGeneralInfo *ItemGeneralInfo `json:"item_general_info,omitempty"`
 	ItemId *int64 `json:"item_id,omitempty"`
 	ItemMetadata *string `json:"item_metadata,omitempty"`
@@ -658,6 +659,38 @@ func (o *Item) HasItemAccessibility() bool {
 // SetItemAccessibility gets a reference to the given int64 and assigns it to the ItemAccessibility field.
 func (o *Item) SetItemAccessibility(v int64) {
 	o.ItemAccessibility = &v
+}
+
+// GetItemCustomFieldsDetails returns the ItemCustomFieldsDetails field value if set, zero value otherwise.
+func (o *Item) GetItemCustomFieldsDetails() []ItemCustomFieldsDetails {
+	if o == nil || IsNil(o.ItemCustomFieldsDetails) {
+		var ret []ItemCustomFieldsDetails
+		return ret
+	}
+	return o.ItemCustomFieldsDetails
+}
+
+// GetItemCustomFieldsDetailsOk returns a tuple with the ItemCustomFieldsDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetItemCustomFieldsDetailsOk() ([]ItemCustomFieldsDetails, bool) {
+	if o == nil || IsNil(o.ItemCustomFieldsDetails) {
+		return nil, false
+	}
+	return o.ItemCustomFieldsDetails, true
+}
+
+// HasItemCustomFieldsDetails returns a boolean if a field has been set.
+func (o *Item) HasItemCustomFieldsDetails() bool {
+	if o != nil && !IsNil(o.ItemCustomFieldsDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemCustomFieldsDetails gets a reference to the given []ItemCustomFieldsDetails and assigns it to the ItemCustomFieldsDetails field.
+func (o *Item) SetItemCustomFieldsDetails(v []ItemCustomFieldsDetails) {
+	o.ItemCustomFieldsDetails = v
 }
 
 // GetItemGeneralInfo returns the ItemGeneralInfo field value if set, zero value otherwise.
@@ -1491,6 +1524,9 @@ func (o Item) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ItemAccessibility) {
 		toSerialize["item_accessibility"] = o.ItemAccessibility
+	}
+	if !IsNil(o.ItemCustomFieldsDetails) {
+		toSerialize["item_custom_fields_details"] = o.ItemCustomFieldsDetails
 	}
 	if !IsNil(o.ItemGeneralInfo) {
 		toSerialize["item_general_info"] = o.ItemGeneralInfo
