@@ -31,6 +31,8 @@ type GatewayUpdateProducerGcp struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Service account key algorithm, e.g. KEY_ALG_RSA_1024
 	GcpKeyAlgo *string `json:"gcp-key-algo,omitempty"`
+	// GCP Project ID override for dynamic secret operations (tmp service accounts)
+	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type=fixed)
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// Access token scopes list, e.g. scope1,scope2
@@ -250,6 +252,38 @@ func (o *GatewayUpdateProducerGcp) HasGcpKeyAlgo() bool {
 // SetGcpKeyAlgo gets a reference to the given string and assigns it to the GcpKeyAlgo field.
 func (o *GatewayUpdateProducerGcp) SetGcpKeyAlgo(v string) {
 	o.GcpKeyAlgo = &v
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGcp) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGcp) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGcp) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *GatewayUpdateProducerGcp) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
 }
 
 // GetGcpSaEmail returns the GcpSaEmail field value if set, zero value otherwise.
@@ -708,6 +742,9 @@ func (o GatewayUpdateProducerGcp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpKeyAlgo) {
 		toSerialize["gcp-key-algo"] = o.GcpKeyAlgo
+	}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
 	if !IsNil(o.GcpSaEmail) {
 		toSerialize["gcp-sa-email"] = o.GcpSaEmail

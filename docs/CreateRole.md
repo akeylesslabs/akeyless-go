@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **EventCenterAccess** | Pointer to **string** | Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;own&#39; and &#39;all&#39; values are supported | [optional] 
 **EventForwardersAccess** | Pointer to **string** | Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported. | [optional] 
+**EventForwardersName** | Pointer to **[]string** | Allow this role to manage the following Event Forwarders. | [optional] 
 **GwAnalyticsAccess** | Pointer to **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Role name | 
@@ -213,6 +214,31 @@ SetEventForwardersAccess sets EventForwardersAccess field to given value.
 `func (o *CreateRole) HasEventForwardersAccess() bool`
 
 HasEventForwardersAccess returns a boolean if a field has been set.
+
+### GetEventForwardersName
+
+`func (o *CreateRole) GetEventForwardersName() []string`
+
+GetEventForwardersName returns the EventForwardersName field if non-nil, zero value otherwise.
+
+### GetEventForwardersNameOk
+
+`func (o *CreateRole) GetEventForwardersNameOk() (*[]string, bool)`
+
+GetEventForwardersNameOk returns a tuple with the EventForwardersName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventForwardersName
+
+`func (o *CreateRole) SetEventForwardersName(v []string)`
+
+SetEventForwardersName sets EventForwardersName field to given value.
+
+### HasEventForwardersName
+
+`func (o *CreateRole) HasEventForwardersName() bool`
+
+HasEventForwardersName returns a boolean if a field has been set.
 
 ### GetGwAnalyticsAccess
 

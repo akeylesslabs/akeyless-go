@@ -26,6 +26,8 @@ type DecryptWithClassicKey struct {
 	Ciphertext string `json:"ciphertext"`
 	// The name of the key to use in the encryption process
 	DisplayId string `json:"display-id"`
+	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
+	IgnoreCache *string `json:"ignore-cache,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -46,6 +48,8 @@ func NewDecryptWithClassicKey(ciphertext string, displayId string, version int32
 	this := DecryptWithClassicKey{}
 	this.Ciphertext = ciphertext
 	this.DisplayId = displayId
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
 	var json bool = false
 	this.Json = &json
 	this.Version = version
@@ -57,6 +61,8 @@ func NewDecryptWithClassicKey(ciphertext string, displayId string, version int32
 // but it doesn't guarantee that properties required by API are set
 func NewDecryptWithClassicKeyWithDefaults() *DecryptWithClassicKey {
 	this := DecryptWithClassicKey{}
+	var ignoreCache string = "false"
+	this.IgnoreCache = &ignoreCache
 	var json bool = false
 	this.Json = &json
 	return &this
@@ -108,6 +114,38 @@ func (o *DecryptWithClassicKey) GetDisplayIdOk() (*string, bool) {
 // SetDisplayId sets field value
 func (o *DecryptWithClassicKey) SetDisplayId(v string) {
 	o.DisplayId = v
+}
+
+// GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
+func (o *DecryptWithClassicKey) GetIgnoreCache() string {
+	if o == nil || IsNil(o.IgnoreCache) {
+		var ret string
+		return ret
+	}
+	return *o.IgnoreCache
+}
+
+// GetIgnoreCacheOk returns a tuple with the IgnoreCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DecryptWithClassicKey) GetIgnoreCacheOk() (*string, bool) {
+	if o == nil || IsNil(o.IgnoreCache) {
+		return nil, false
+	}
+	return o.IgnoreCache, true
+}
+
+// HasIgnoreCache returns a boolean if a field has been set.
+func (o *DecryptWithClassicKey) HasIgnoreCache() bool {
+	if o != nil && !IsNil(o.IgnoreCache) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreCache gets a reference to the given string and assigns it to the IgnoreCache field.
+func (o *DecryptWithClassicKey) SetIgnoreCache(v string) {
+	o.IgnoreCache = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -242,6 +280,9 @@ func (o DecryptWithClassicKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["ciphertext"] = o.Ciphertext
 	toSerialize["display-id"] = o.DisplayId
+	if !IsNil(o.IgnoreCache) {
+		toSerialize["ignore-cache"] = o.IgnoreCache
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

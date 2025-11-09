@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayId** | **string** | The name of the key to use in the encryption process | 
+**IgnoreCache** | Pointer to **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Plaintext** | **string** | Data to be encrypted | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -49,6 +50,31 @@ and a boolean to check if the value has been set.
 
 SetDisplayId sets DisplayId field to given value.
 
+
+### GetIgnoreCache
+
+`func (o *EncryptWithClassicKey) GetIgnoreCache() string`
+
+GetIgnoreCache returns the IgnoreCache field if non-nil, zero value otherwise.
+
+### GetIgnoreCacheOk
+
+`func (o *EncryptWithClassicKey) GetIgnoreCacheOk() (*string, bool)`
+
+GetIgnoreCacheOk returns a tuple with the IgnoreCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIgnoreCache
+
+`func (o *EncryptWithClassicKey) SetIgnoreCache(v string)`
+
+SetIgnoreCache sets IgnoreCache field to given value.
+
+### HasIgnoreCache
+
+`func (o *EncryptWithClassicKey) HasIgnoreCache() bool`
+
+HasIgnoreCache returns a boolean if a field has been set.
 
 ### GetJson
 

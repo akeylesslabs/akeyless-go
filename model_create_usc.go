@@ -28,6 +28,8 @@ type CreateUSC struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the Universal Secrets Connector
 	Description *string `json:"description,omitempty"`
+	// GCP Project ID (Relevant only for GCP targets)
+	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -173,6 +175,38 @@ func (o *CreateUSC) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateUSC) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *CreateUSC) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *CreateUSC) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *CreateUSC) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -497,6 +531,9 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields

@@ -5766,6 +5766,114 @@ paths:
             field.
       tags:
       - v2
+  /folder-create:
+    post:
+      operationId: folderCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderCreate'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderCreateOutput'
+          description: folderCreateResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /folder-delete:
+    post:
+      operationId: folderDelete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderDelete'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderDeleteOutput'
+          description: folderDeleteResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /folder-get:
+    post:
+      operationId: folderGet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderGet'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderGetOutput'
+          description: folderGetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /folder-update:
+    post:
+      operationId: folderUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderUpdate'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderUpdateOutput'
+          description: folderUpdateResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /gateway-create-allowed-access:
     post:
       operationId: gatewayCreateAllowedAccess
@@ -17127,6 +17235,30 @@ components:
           schema:
             $ref: '#/components/schemas/eventForwarderCreateUpdateOutput'
       description: eventForwarderUpdateWebhookResponse wraps response body.
+    folderCreateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderCreateOutput'
+      description: folderCreateResponse wraps response body.
+    folderDeleteResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderDeleteOutput'
+      description: folderDeleteResponse wraps response body.
+    folderGetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderGetOutput'
+      description: folderGetResponse wraps response body.
+    folderUpdateResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderUpdateOutput'
+      description: folderUpdateResponse wraps response body.
     gatewayCreateAllowedAccessResponse:
       content:
         application/json:
@@ -24422,6 +24554,7 @@ components:
         k8s-namespace: k8s-namespace
         azure-kv-name: azure-kv-name
         uid-token: uid-token
+        gcp-project-id: gcp-project-id
         tags:
         - tags
         - tags
@@ -24439,6 +24572,10 @@ components:
           description: Description of the External Secrets Manager
           type: string
           x-go-name: Description
+        gcp-project-id:
+          description: GCP Project ID (Relevant only for GCP targets)
+          type: string
+          x-go-name: GcpProjectId
         json:
           default: false
           description: Set output format to JSON
@@ -24962,6 +25099,7 @@ components:
         usc-prefix: usc-prefix
         azure-kv-name: azure-kv-name
         uid-token: uid-token
+        gcp-project-id: gcp-project-id
         tags:
         - tags
         - tags
@@ -24985,6 +25123,10 @@ components:
           description: Description of the Universal Secrets Connector
           type: string
           x-go-name: Description
+        gcp-project-id:
+          description: GCP Project ID (Relevant only for GCP targets)
+          type: string
+          x-go-name: GcpProjectId
         item-custom-fields:
           additionalProperties:
             type: string
@@ -27192,6 +27334,9 @@ components:
           x-go-name: KeyReference
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    FolderType:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     GCPAccessRules:
       example:
         bound_service_accounts:
@@ -28216,6 +28361,62 @@ components:
           x-go-name: PrivateKeyPem
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    GetFolderOutput:
+      description: GetFolderOutput is the result of the getFolder operation
+      example:
+        delete_protection: true
+        metadata: metadata
+        accessibility: 0
+        access_date: 2000-01-23T04:56:07.000+00:00
+        modification_date: 2000-01-23T04:56:07.000+00:00
+        creation_date: 2000-01-23T04:56:07.000+00:00
+        folder_name: folder_name
+        access_date_display: access_date_display
+        folder_id: 6
+        tags:
+        - tags
+        - tags
+      properties:
+        access_date:
+          format: date-time
+          type: string
+          x-go-name: AccessDate
+        access_date_display:
+          type: string
+          x-go-name: AccessDateDisplay
+        accessibility:
+          format: int64
+          title: ItemAccessibility defines types supported by AKEYLESS.
+          type: integer
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        creation_date:
+          format: date-time
+          type: string
+          x-go-name: CreationDate
+        delete_protection:
+          type: boolean
+          x-go-name: DeleteProtection
+        folder_id:
+          format: int64
+          type: integer
+          x-go-name: FolderID
+        folder_name:
+          type: string
+          x-go-name: FolderName
+        metadata:
+          type: string
+          x-go-name: Metadata
+        modification_date:
+          format: date-time
+          type: string
+          x-go-name: ModificationDate
+        tags:
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     GetGroupOutput:
       example:
         account_id: account_id
@@ -52088,6 +52289,12 @@ components:
             'none' and 'all' values are supported.
           type: string
           x-go-name: EventForwardersAccess
+        event-forwarders-name:
+          description: Allow this role to manage the following Event Forwarders.
+          items:
+            type: string
+          type: array
+          x-go-name: EventForwardersName
         gw-analytics-access:
           description: |-
             Allow this role to view gw analytics. Currently only 'none', 'own', 'all'
@@ -53620,6 +53827,12 @@ components:
           description: The name of the key to use in the encryption process
           type: string
           x-go-name: DisplayId
+        ignore-cache:
+          default: "false"
+          description: "Retrieve the Secret value without checking the Gateway's cache\
+            \ [true/false]. This flag is only relevant when using the RestAPI"
+          type: string
+          x-go-name: IgnoreCache
         json:
           default: false
           description: Set output format to JSON
@@ -55306,6 +55519,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -59448,6 +59666,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -62687,6 +62910,12 @@ components:
           description: The name of the key to use in the encryption process
           type: string
           x-go-name: DisplayId
+        ignore-cache:
+          default: "false"
+          description: "Retrieve the Secret value without checking the Gateway's cache\
+            \ [true/false]. This flag is only relevant when using the RestAPI"
+          type: string
+          x-go-name: IgnoreCache
         json:
           default: false
           description: Set output format to JSON
@@ -64126,6 +64355,208 @@ components:
       required:
       - gateways-event-source-locations
       - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderCreate:
+      description: folderCreate is a command that creates folder
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        tags:
+          description: Add tags attached to this object
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderCreateOutput:
+      example:
+        folder_id: 0
+      properties:
+        folder_id:
+          format: int64
+          type: integer
+          x-go-name: FolderID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderDelete:
+      description: folderDelete is a command that delete folder
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderDeleteOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderGet:
+      description: folderGet is a command that get folder
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderGetOutput:
+      example:
+        folder:
+          delete_protection: true
+          metadata: metadata
+          accessibility: 0
+          access_date: 2000-01-23T04:56:07.000+00:00
+          modification_date: 2000-01-23T04:56:07.000+00:00
+          creation_date: 2000-01-23T04:56:07.000+00:00
+          folder_name: folder_name
+          access_date_display: access_date_display
+          folder_id: 6
+          tags:
+          - tags
+          - tags
+      properties:
+        folder:
+          $ref: '#/components/schemas/GetFolderOutput'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderUpdate:
+      description: folderUpdate is a command that updates folder
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        add-tag:
+          description: List of the new tags that will be attached to this folder
+          items:
+            type: string
+          type: array
+          x-go-name: AddTags
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        rm-tag:
+          description: List of the existent tags that will be removed from this folder
+          items:
+            type: string
+          type: array
+          x-go-name: RemoveTags
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        type:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderUpdateOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     gatewayCreateAllowedAccess:
@@ -68637,6 +69068,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)
@@ -84865,6 +85301,11 @@ components:
           description: "Service account key algorithm, e.g. KEY_ALG_RSA_1024"
           type: string
           x-go-name: KeyAlgorithm
+        gcp-project-id:
+          description: GCP Project ID override for dynamic secret operations (tmp
+            service accounts)
+          type: string
+          x-go-name: GcpProjectId
         gcp-sa-email:
           description: The email of the fixed service acocunt to generate keys or
             tokens for. (revelant for service-account-type=fixed)

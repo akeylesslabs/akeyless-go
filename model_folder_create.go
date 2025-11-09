@@ -17,94 +17,92 @@ import (
 	"fmt"
 )
 
-// checks if the CreateESM type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateESM{}
+// checks if the FolderCreate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FolderCreate{}
 
-// CreateESM CreateESM is a command that creates an External Secrets Manager. [Deprecated: Use command create-usc]
-type CreateESM struct {
-	// Azure Key Vault name (Relevant only for Azure targets)
-	AzureKvName *string `json:"azure-kv-name,omitempty"`
+// FolderCreate folderCreate is a command that creates folder
+type FolderCreate struct {
+	// for personal password manager
+	Accessibility *string `json:"accessibility,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
-	// Description of the External Secrets Manager
+	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// GCP Project ID (Relevant only for GCP targets)
-	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// K8s namespace (Relevant to Kubernetes targets)
-	K8sNamespace *string `json:"k8s-namespace,omitempty"`
-	// External Secrets Manager name
+	// Folder name
 	Name string `json:"name"`
-	// List of the tags attached to this External Secrets Manager
+	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// Target External Secrets Manager to connect
-	TargetToAssociate string `json:"target-to-associate"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
 
-type _CreateESM CreateESM
+type _FolderCreate FolderCreate
 
-// NewCreateESM instantiates a new CreateESM object
+// NewFolderCreate instantiates a new FolderCreate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateESM(name string, targetToAssociate string) *CreateESM {
-	this := CreateESM{}
+func NewFolderCreate(name string) *FolderCreate {
+	this := FolderCreate{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var json bool = false
 	this.Json = &json
 	this.Name = name
-	this.TargetToAssociate = targetToAssociate
 	return &this
 }
 
-// NewCreateESMWithDefaults instantiates a new CreateESM object
+// NewFolderCreateWithDefaults instantiates a new FolderCreate object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateESMWithDefaults() *CreateESM {
-	this := CreateESM{}
+func NewFolderCreateWithDefaults() *FolderCreate {
+	this := FolderCreate{}
+	var accessibility string = "regular"
+	this.Accessibility = &accessibility
 	var json bool = false
 	this.Json = &json
 	return &this
 }
 
-// GetAzureKvName returns the AzureKvName field value if set, zero value otherwise.
-func (o *CreateESM) GetAzureKvName() string {
-	if o == nil || IsNil(o.AzureKvName) {
+// GetAccessibility returns the Accessibility field value if set, zero value otherwise.
+func (o *FolderCreate) GetAccessibility() string {
+	if o == nil || IsNil(o.Accessibility) {
 		var ret string
 		return ret
 	}
-	return *o.AzureKvName
+	return *o.Accessibility
 }
 
-// GetAzureKvNameOk returns a tuple with the AzureKvName field value if set, nil otherwise
+// GetAccessibilityOk returns a tuple with the Accessibility field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetAzureKvNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AzureKvName) {
+func (o *FolderCreate) GetAccessibilityOk() (*string, bool) {
+	if o == nil || IsNil(o.Accessibility) {
 		return nil, false
 	}
-	return o.AzureKvName, true
+	return o.Accessibility, true
 }
 
-// HasAzureKvName returns a boolean if a field has been set.
-func (o *CreateESM) HasAzureKvName() bool {
-	if o != nil && !IsNil(o.AzureKvName) {
+// HasAccessibility returns a boolean if a field has been set.
+func (o *FolderCreate) HasAccessibility() bool {
+	if o != nil && !IsNil(o.Accessibility) {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureKvName gets a reference to the given string and assigns it to the AzureKvName field.
-func (o *CreateESM) SetAzureKvName(v string) {
-	o.AzureKvName = &v
+// SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
+func (o *FolderCreate) SetAccessibility(v string) {
+	o.Accessibility = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
-func (o *CreateESM) GetDeleteProtection() string {
+func (o *FolderCreate) GetDeleteProtection() string {
 	if o == nil || IsNil(o.DeleteProtection) {
 		var ret string
 		return ret
@@ -114,7 +112,7 @@ func (o *CreateESM) GetDeleteProtection() string {
 
 // GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetDeleteProtectionOk() (*string, bool) {
+func (o *FolderCreate) GetDeleteProtectionOk() (*string, bool) {
 	if o == nil || IsNil(o.DeleteProtection) {
 		return nil, false
 	}
@@ -122,7 +120,7 @@ func (o *CreateESM) GetDeleteProtectionOk() (*string, bool) {
 }
 
 // HasDeleteProtection returns a boolean if a field has been set.
-func (o *CreateESM) HasDeleteProtection() bool {
+func (o *FolderCreate) HasDeleteProtection() bool {
 	if o != nil && !IsNil(o.DeleteProtection) {
 		return true
 	}
@@ -131,12 +129,12 @@ func (o *CreateESM) HasDeleteProtection() bool {
 }
 
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
-func (o *CreateESM) SetDeleteProtection(v string) {
+func (o *FolderCreate) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *CreateESM) GetDescription() string {
+func (o *FolderCreate) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -146,7 +144,7 @@ func (o *CreateESM) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetDescriptionOk() (*string, bool) {
+func (o *FolderCreate) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -154,7 +152,7 @@ func (o *CreateESM) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *CreateESM) HasDescription() bool {
+func (o *FolderCreate) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -163,44 +161,12 @@ func (o *CreateESM) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *CreateESM) SetDescription(v string) {
+func (o *FolderCreate) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
-func (o *CreateESM) GetGcpProjectId() string {
-	if o == nil || IsNil(o.GcpProjectId) {
-		var ret string
-		return ret
-	}
-	return *o.GcpProjectId
-}
-
-// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateESM) GetGcpProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GcpProjectId) {
-		return nil, false
-	}
-	return o.GcpProjectId, true
-}
-
-// HasGcpProjectId returns a boolean if a field has been set.
-func (o *CreateESM) HasGcpProjectId() bool {
-	if o != nil && !IsNil(o.GcpProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
-func (o *CreateESM) SetGcpProjectId(v string) {
-	o.GcpProjectId = &v
-}
-
 // GetJson returns the Json field value if set, zero value otherwise.
-func (o *CreateESM) GetJson() bool {
+func (o *FolderCreate) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
 		var ret bool
 		return ret
@@ -210,7 +176,7 @@ func (o *CreateESM) GetJson() bool {
 
 // GetJsonOk returns a tuple with the Json field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetJsonOk() (*bool, bool) {
+func (o *FolderCreate) GetJsonOk() (*bool, bool) {
 	if o == nil || IsNil(o.Json) {
 		return nil, false
 	}
@@ -218,7 +184,7 @@ func (o *CreateESM) GetJsonOk() (*bool, bool) {
 }
 
 // HasJson returns a boolean if a field has been set.
-func (o *CreateESM) HasJson() bool {
+func (o *FolderCreate) HasJson() bool {
 	if o != nil && !IsNil(o.Json) {
 		return true
 	}
@@ -227,44 +193,12 @@ func (o *CreateESM) HasJson() bool {
 }
 
 // SetJson gets a reference to the given bool and assigns it to the Json field.
-func (o *CreateESM) SetJson(v bool) {
+func (o *FolderCreate) SetJson(v bool) {
 	o.Json = &v
 }
 
-// GetK8sNamespace returns the K8sNamespace field value if set, zero value otherwise.
-func (o *CreateESM) GetK8sNamespace() string {
-	if o == nil || IsNil(o.K8sNamespace) {
-		var ret string
-		return ret
-	}
-	return *o.K8sNamespace
-}
-
-// GetK8sNamespaceOk returns a tuple with the K8sNamespace field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateESM) GetK8sNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.K8sNamespace) {
-		return nil, false
-	}
-	return o.K8sNamespace, true
-}
-
-// HasK8sNamespace returns a boolean if a field has been set.
-func (o *CreateESM) HasK8sNamespace() bool {
-	if o != nil && !IsNil(o.K8sNamespace) {
-		return true
-	}
-
-	return false
-}
-
-// SetK8sNamespace gets a reference to the given string and assigns it to the K8sNamespace field.
-func (o *CreateESM) SetK8sNamespace(v string) {
-	o.K8sNamespace = &v
-}
-
 // GetName returns the Name field value
-func (o *CreateESM) GetName() string {
+func (o *FolderCreate) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -275,7 +209,7 @@ func (o *CreateESM) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetNameOk() (*string, bool) {
+func (o *FolderCreate) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -283,12 +217,12 @@ func (o *CreateESM) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *CreateESM) SetName(v string) {
+func (o *FolderCreate) SetName(v string) {
 	o.Name = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *CreateESM) GetTags() []string {
+func (o *FolderCreate) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
 		var ret []string
 		return ret
@@ -298,7 +232,7 @@ func (o *CreateESM) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetTagsOk() ([]string, bool) {
+func (o *FolderCreate) GetTagsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -306,7 +240,7 @@ func (o *CreateESM) GetTagsOk() ([]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *CreateESM) HasTags() bool {
+func (o *FolderCreate) HasTags() bool {
 	if o != nil && !IsNil(o.Tags) {
 		return true
 	}
@@ -315,36 +249,12 @@ func (o *CreateESM) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *CreateESM) SetTags(v []string) {
+func (o *FolderCreate) SetTags(v []string) {
 	o.Tags = v
 }
 
-// GetTargetToAssociate returns the TargetToAssociate field value
-func (o *CreateESM) GetTargetToAssociate() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.TargetToAssociate
-}
-
-// GetTargetToAssociateOk returns a tuple with the TargetToAssociate field value
-// and a boolean to check if the value has been set.
-func (o *CreateESM) GetTargetToAssociateOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TargetToAssociate, true
-}
-
-// SetTargetToAssociate sets field value
-func (o *CreateESM) SetTargetToAssociate(v string) {
-	o.TargetToAssociate = v
-}
-
 // GetToken returns the Token field value if set, zero value otherwise.
-func (o *CreateESM) GetToken() string {
+func (o *FolderCreate) GetToken() string {
 	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
@@ -354,7 +264,7 @@ func (o *CreateESM) GetToken() string {
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetTokenOk() (*string, bool) {
+func (o *FolderCreate) GetTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
@@ -362,7 +272,7 @@ func (o *CreateESM) GetTokenOk() (*string, bool) {
 }
 
 // HasToken returns a boolean if a field has been set.
-func (o *CreateESM) HasToken() bool {
+func (o *FolderCreate) HasToken() bool {
 	if o != nil && !IsNil(o.Token) {
 		return true
 	}
@@ -371,12 +281,44 @@ func (o *CreateESM) HasToken() bool {
 }
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *CreateESM) SetToken(v string) {
+func (o *FolderCreate) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *FolderCreate) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FolderCreate) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *FolderCreate) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *FolderCreate) SetType(v string) {
+	o.Type = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
-func (o *CreateESM) GetUidToken() string {
+func (o *FolderCreate) GetUidToken() string {
 	if o == nil || IsNil(o.UidToken) {
 		var ret string
 		return ret
@@ -386,7 +328,7 @@ func (o *CreateESM) GetUidToken() string {
 
 // GetUidTokenOk returns a tuple with the UidToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateESM) GetUidTokenOk() (*string, bool) {
+func (o *FolderCreate) GetUidTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.UidToken) {
 		return nil, false
 	}
@@ -394,7 +336,7 @@ func (o *CreateESM) GetUidTokenOk() (*string, bool) {
 }
 
 // HasUidToken returns a boolean if a field has been set.
-func (o *CreateESM) HasUidToken() bool {
+func (o *FolderCreate) HasUidToken() bool {
 	if o != nil && !IsNil(o.UidToken) {
 		return true
 	}
@@ -403,11 +345,11 @@ func (o *CreateESM) HasUidToken() bool {
 }
 
 // SetUidToken gets a reference to the given string and assigns it to the UidToken field.
-func (o *CreateESM) SetUidToken(v string) {
+func (o *FolderCreate) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
-func (o CreateESM) MarshalJSON() ([]byte, error) {
+func (o FolderCreate) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -415,10 +357,10 @@ func (o CreateESM) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CreateESM) ToMap() (map[string]interface{}, error) {
+func (o FolderCreate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AzureKvName) {
-		toSerialize["azure-kv-name"] = o.AzureKvName
+	if !IsNil(o.Accessibility) {
+		toSerialize["accessibility"] = o.Accessibility
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
@@ -426,22 +368,18 @@ func (o CreateESM) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.GcpProjectId) {
-		toSerialize["gcp-project-id"] = o.GcpProjectId
-	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
-	}
-	if !IsNil(o.K8sNamespace) {
-		toSerialize["k8s-namespace"] = o.K8sNamespace
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
-	toSerialize["target-to-associate"] = o.TargetToAssociate
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
@@ -449,13 +387,12 @@ func (o CreateESM) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *CreateESM) UnmarshalJSON(data []byte) (err error) {
+func (o *FolderCreate) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"target-to-associate",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -472,53 +409,53 @@ func (o *CreateESM) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varCreateESM := _CreateESM{}
+	varFolderCreate := _FolderCreate{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateESM)
+	err = decoder.Decode(&varFolderCreate)
 
 	if err != nil {
 		return err
 	}
 
-	*o = CreateESM(varCreateESM)
+	*o = FolderCreate(varFolderCreate)
 
 	return err
 }
 
-type NullableCreateESM struct {
-	value *CreateESM
+type NullableFolderCreate struct {
+	value *FolderCreate
 	isSet bool
 }
 
-func (v NullableCreateESM) Get() *CreateESM {
+func (v NullableFolderCreate) Get() *FolderCreate {
 	return v.value
 }
 
-func (v *NullableCreateESM) Set(val *CreateESM) {
+func (v *NullableFolderCreate) Set(val *FolderCreate) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateESM) IsSet() bool {
+func (v NullableFolderCreate) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateESM) Unset() {
+func (v *NullableFolderCreate) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateESM(val *CreateESM) *NullableCreateESM {
-	return &NullableCreateESM{value: val, isSet: true}
+func NewNullableFolderCreate(val *FolderCreate) *NullableFolderCreate {
+	return &NullableFolderCreate{value: val, isSet: true}
 }
 
-func (v NullableCreateESM) MarshalJSON() ([]byte, error) {
+func (v NullableFolderCreate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateESM) UnmarshalJSON(src []byte) error {
+func (v *NullableFolderCreate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

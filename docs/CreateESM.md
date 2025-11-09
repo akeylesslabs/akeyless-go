@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AzureKvName** | Pointer to **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the External Secrets Manager | [optional] 
+**GcpProjectId** | Pointer to **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | Pointer to **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 
 **Name** | **string** | External Secrets Manager name | 
@@ -108,6 +109,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateESM) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetGcpProjectId
+
+`func (o *CreateESM) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *CreateESM) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *CreateESM) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *CreateESM) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetJson
 

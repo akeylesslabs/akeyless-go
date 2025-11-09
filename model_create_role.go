@@ -36,6 +36,8 @@ type CreateRole struct {
 	EventCenterAccess *string `json:"event-center-access,omitempty"`
 	// Allow this role to manage Event Forwarders. Currently only 'none' and 'all' values are supported.
 	EventForwardersAccess *string `json:"event-forwarders-access,omitempty"`
+	// Allow this role to manage the following Event Forwarders.
+	EventForwardersName []string `json:"event-forwarders-name,omitempty"`
 	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Set output format to JSON
@@ -300,6 +302,38 @@ func (o *CreateRole) HasEventForwardersAccess() bool {
 // SetEventForwardersAccess gets a reference to the given string and assigns it to the EventForwardersAccess field.
 func (o *CreateRole) SetEventForwardersAccess(v string) {
 	o.EventForwardersAccess = &v
+}
+
+// GetEventForwardersName returns the EventForwardersName field value if set, zero value otherwise.
+func (o *CreateRole) GetEventForwardersName() []string {
+	if o == nil || IsNil(o.EventForwardersName) {
+		var ret []string
+		return ret
+	}
+	return o.EventForwardersName
+}
+
+// GetEventForwardersNameOk returns a tuple with the EventForwardersName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetEventForwardersNameOk() ([]string, bool) {
+	if o == nil || IsNil(o.EventForwardersName) {
+		return nil, false
+	}
+	return o.EventForwardersName, true
+}
+
+// HasEventForwardersName returns a boolean if a field has been set.
+func (o *CreateRole) HasEventForwardersName() bool {
+	if o != nil && !IsNil(o.EventForwardersName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventForwardersName gets a reference to the given []string and assigns it to the EventForwardersName field.
+func (o *CreateRole) SetEventForwardersName(v []string) {
+	o.EventForwardersName = v
 }
 
 // GetGwAnalyticsAccess returns the GwAnalyticsAccess field value if set, zero value otherwise.
@@ -580,6 +614,9 @@ func (o CreateRole) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EventForwardersAccess) {
 		toSerialize["event-forwarders-access"] = o.EventForwardersAccess
+	}
+	if !IsNil(o.EventForwardersName) {
+		toSerialize["event-forwarders-name"] = o.EventForwardersName
 	}
 	if !IsNil(o.GwAnalyticsAccess) {
 		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess

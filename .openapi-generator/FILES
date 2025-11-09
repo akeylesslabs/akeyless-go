@@ -405,6 +405,12 @@ docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
 docs/Extension.md
 docs/ExternalKMSKeyId.md
+docs/FolderCreate.md
+docs/FolderCreateOutput.md
+docs/FolderDelete.md
+docs/FolderGet.md
+docs/FolderGetOutput.md
+docs/FolderUpdate.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
 docs/GCPSecretsMigration.md
@@ -616,6 +622,7 @@ docs/GetCertificateValueOutput.md
 docs/GetDynamicSecretValue.md
 docs/GetEventForwarder.md
 docs/GetEventForwarderOutput.md
+docs/GetFolderOutput.md
 docs/GetGroup.md
 docs/GetGroupOutput.md
 docs/GetKubeExecCreds.md
@@ -1533,6 +1540,12 @@ model_export_classic_key.go
 model_export_classic_key_output.go
 model_extension.go
 model_external_kms_key_id.go
+model_folder_create.go
+model_folder_create_output.go
+model_folder_delete.go
+model_folder_get.go
+model_folder_get_output.go
+model_folder_update.go
 model_gateway_create_allowed_access.go
 model_gateway_create_k8_s_auth_config.go
 model_gateway_create_k8_s_auth_config_output.go
@@ -1743,6 +1756,7 @@ model_get_certificate_value_output.go
 model_get_dynamic_secret_value.go
 model_get_event_forwarder.go
 model_get_event_forwarder_output.go
+model_get_folder_output.go
 model_get_group.go
 model_get_group_output.go
 model_get_kube_exec_creds.go
