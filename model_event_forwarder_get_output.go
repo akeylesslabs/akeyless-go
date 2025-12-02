@@ -21,6 +21,7 @@ var _ MappedNullable = &EventForwarderGetOutput{}
 // EventForwarderGetOutput struct for EventForwarderGetOutput
 type EventForwarderGetOutput struct {
 	EventForwarder *NotiForwarder `json:"event_forwarder,omitempty"`
+	EventForwarderDetails *NotiForwarderDetailsInput `json:"event_forwarder_details,omitempty"`
 }
 
 // NewEventForwarderGetOutput instantiates a new EventForwarderGetOutput object
@@ -72,6 +73,38 @@ func (o *EventForwarderGetOutput) SetEventForwarder(v NotiForwarder) {
 	o.EventForwarder = &v
 }
 
+// GetEventForwarderDetails returns the EventForwarderDetails field value if set, zero value otherwise.
+func (o *EventForwarderGetOutput) GetEventForwarderDetails() NotiForwarderDetailsInput {
+	if o == nil || IsNil(o.EventForwarderDetails) {
+		var ret NotiForwarderDetailsInput
+		return ret
+	}
+	return *o.EventForwarderDetails
+}
+
+// GetEventForwarderDetailsOk returns a tuple with the EventForwarderDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventForwarderGetOutput) GetEventForwarderDetailsOk() (*NotiForwarderDetailsInput, bool) {
+	if o == nil || IsNil(o.EventForwarderDetails) {
+		return nil, false
+	}
+	return o.EventForwarderDetails, true
+}
+
+// HasEventForwarderDetails returns a boolean if a field has been set.
+func (o *EventForwarderGetOutput) HasEventForwarderDetails() bool {
+	if o != nil && !IsNil(o.EventForwarderDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventForwarderDetails gets a reference to the given NotiForwarderDetailsInput and assigns it to the EventForwarderDetails field.
+func (o *EventForwarderGetOutput) SetEventForwarderDetails(v NotiForwarderDetailsInput) {
+	o.EventForwarderDetails = &v
+}
+
 func (o EventForwarderGetOutput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +117,9 @@ func (o EventForwarderGetOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.EventForwarder) {
 		toSerialize["event_forwarder"] = o.EventForwarder
+	}
+	if !IsNil(o.EventForwarderDetails) {
+		toSerialize["event_forwarder_details"] = o.EventForwarderDetails
 	}
 	return toSerialize, nil
 }

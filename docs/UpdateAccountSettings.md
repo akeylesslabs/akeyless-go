@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | Address | [optional] 
+**AllowedClientType** | Pointer to **[]string** |  | [optional] 
 **AllowedEmailDomains** | Pointer to **[]string** | Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed. | [optional] 
 **BoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that are allowed to authenticate. | [optional] 
 **City** | Pointer to **string** | City | [optional] 
@@ -32,6 +33,7 @@ Name | Type | Description | Notes
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
+**LockAllowedClientType** | Pointer to **string** |  | [optional] 
 **LockBoundIps** | Pointer to **string** | Lock bound-ips setting globally in the account. | [optional] 
 **LockDefaultKey** | Pointer to **string** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] 
 **LockGwBoundIps** | Pointer to **string** | Lock gw-bound-ips setting in the account. | [optional] 
@@ -96,6 +98,31 @@ SetAddress sets Address field to given value.
 `func (o *UpdateAccountSettings) HasAddress() bool`
 
 HasAddress returns a boolean if a field has been set.
+
+### GetAllowedClientType
+
+`func (o *UpdateAccountSettings) GetAllowedClientType() []string`
+
+GetAllowedClientType returns the AllowedClientType field if non-nil, zero value otherwise.
+
+### GetAllowedClientTypeOk
+
+`func (o *UpdateAccountSettings) GetAllowedClientTypeOk() (*[]string, bool)`
+
+GetAllowedClientTypeOk returns a tuple with the AllowedClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedClientType
+
+`func (o *UpdateAccountSettings) SetAllowedClientType(v []string)`
+
+SetAllowedClientType sets AllowedClientType field to given value.
+
+### HasAllowedClientType
+
+`func (o *UpdateAccountSettings) HasAllowedClientType() bool`
+
+HasAllowedClientType returns a boolean if a field has been set.
 
 ### GetAllowedEmailDomains
 
@@ -771,6 +798,31 @@ SetJwtTtlMin sets JwtTtlMin field to given value.
 `func (o *UpdateAccountSettings) HasJwtTtlMin() bool`
 
 HasJwtTtlMin returns a boolean if a field has been set.
+
+### GetLockAllowedClientType
+
+`func (o *UpdateAccountSettings) GetLockAllowedClientType() string`
+
+GetLockAllowedClientType returns the LockAllowedClientType field if non-nil, zero value otherwise.
+
+### GetLockAllowedClientTypeOk
+
+`func (o *UpdateAccountSettings) GetLockAllowedClientTypeOk() (*string, bool)`
+
+GetLockAllowedClientTypeOk returns a tuple with the LockAllowedClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockAllowedClientType
+
+`func (o *UpdateAccountSettings) SetLockAllowedClientType(v string)`
+
+SetLockAllowedClientType sets LockAllowedClientType field to given value.
+
+### HasLockAllowedClientType
+
+`func (o *UpdateAccountSettings) HasLockAllowedClientType() bool`
+
+HasLockAllowedClientType returns a boolean if a field has been set.
 
 ### GetLockBoundIps
 

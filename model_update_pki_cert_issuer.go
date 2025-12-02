@@ -48,8 +48,10 @@ type UpdatePKICertIssuer struct {
 	Country *string `json:"country,omitempty"`
 	// Set this to allow the issuer will expose a CRL endpoint in the Gateway
 	CreatePrivateCrl *bool `json:"create-private-crl,omitempty"`
+	CreatePrivateOcsp *bool `json:"create-private-ocsp,omitempty"`
 	// Set this to allow the cert issuer will expose a public CRL endpoint
 	CreatePublicCrl *bool `json:"create-public-crl,omitempty"`
+	CreatePublicOcsp *bool `json:"create-public-ocsp,omitempty"`
 	// Mark key usage as critical [true/false]
 	CriticalKeyUsage *string `json:"critical-key-usage,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -88,6 +90,7 @@ type UpdatePKICertIssuer struct {
 	NotEnforceHostnames *bool `json:"not-enforce-hostnames,omitempty"`
 	// If set, clients can request certificates without a CN
 	NotRequireCn *bool `json:"not-require-cn,omitempty"`
+	OcspTtl *string `json:"ocsp-ttl,omitempty"`
 	// A comma-separated list of organizational units (OU) that will be set in the issued certificate
 	OrganizationalUnits *string `json:"organizational-units,omitempty"`
 	// A comma-separated list of organizations (O) that will be set in the issued certificate
@@ -569,6 +572,38 @@ func (o *UpdatePKICertIssuer) SetCreatePrivateCrl(v bool) {
 	o.CreatePrivateCrl = &v
 }
 
+// GetCreatePrivateOcsp returns the CreatePrivateOcsp field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetCreatePrivateOcsp() bool {
+	if o == nil || IsNil(o.CreatePrivateOcsp) {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePrivateOcsp
+}
+
+// GetCreatePrivateOcspOk returns a tuple with the CreatePrivateOcsp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetCreatePrivateOcspOk() (*bool, bool) {
+	if o == nil || IsNil(o.CreatePrivateOcsp) {
+		return nil, false
+	}
+	return o.CreatePrivateOcsp, true
+}
+
+// HasCreatePrivateOcsp returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasCreatePrivateOcsp() bool {
+	if o != nil && !IsNil(o.CreatePrivateOcsp) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePrivateOcsp gets a reference to the given bool and assigns it to the CreatePrivateOcsp field.
+func (o *UpdatePKICertIssuer) SetCreatePrivateOcsp(v bool) {
+	o.CreatePrivateOcsp = &v
+}
+
 // GetCreatePublicCrl returns the CreatePublicCrl field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetCreatePublicCrl() bool {
 	if o == nil || IsNil(o.CreatePublicCrl) {
@@ -599,6 +634,38 @@ func (o *UpdatePKICertIssuer) HasCreatePublicCrl() bool {
 // SetCreatePublicCrl gets a reference to the given bool and assigns it to the CreatePublicCrl field.
 func (o *UpdatePKICertIssuer) SetCreatePublicCrl(v bool) {
 	o.CreatePublicCrl = &v
+}
+
+// GetCreatePublicOcsp returns the CreatePublicOcsp field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetCreatePublicOcsp() bool {
+	if o == nil || IsNil(o.CreatePublicOcsp) {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePublicOcsp
+}
+
+// GetCreatePublicOcspOk returns a tuple with the CreatePublicOcsp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetCreatePublicOcspOk() (*bool, bool) {
+	if o == nil || IsNil(o.CreatePublicOcsp) {
+		return nil, false
+	}
+	return o.CreatePublicOcsp, true
+}
+
+// HasCreatePublicOcsp returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasCreatePublicOcsp() bool {
+	if o != nil && !IsNil(o.CreatePublicOcsp) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePublicOcsp gets a reference to the given bool and assigns it to the CreatePublicOcsp field.
+func (o *UpdatePKICertIssuer) SetCreatePublicOcsp(v bool) {
+	o.CreatePublicOcsp = &v
 }
 
 // GetCriticalKeyUsage returns the CriticalKeyUsage field value if set, zero value otherwise.
@@ -1201,6 +1268,38 @@ func (o *UpdatePKICertIssuer) SetNotRequireCn(v bool) {
 	o.NotRequireCn = &v
 }
 
+// GetOcspTtl returns the OcspTtl field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetOcspTtl() string {
+	if o == nil || IsNil(o.OcspTtl) {
+		var ret string
+		return ret
+	}
+	return *o.OcspTtl
+}
+
+// GetOcspTtlOk returns a tuple with the OcspTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetOcspTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.OcspTtl) {
+		return nil, false
+	}
+	return o.OcspTtl, true
+}
+
+// HasOcspTtl returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasOcspTtl() bool {
+	if o != nil && !IsNil(o.OcspTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetOcspTtl gets a reference to the given string and assigns it to the OcspTtl field.
+func (o *UpdatePKICertIssuer) SetOcspTtl(v string) {
+	o.OcspTtl = &v
+}
+
 // GetOrganizationalUnits returns the OrganizationalUnits field value if set, zero value otherwise.
 func (o *UpdatePKICertIssuer) GetOrganizationalUnits() string {
 	if o == nil || IsNil(o.OrganizationalUnits) {
@@ -1658,8 +1757,14 @@ func (o UpdatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatePrivateCrl) {
 		toSerialize["create-private-crl"] = o.CreatePrivateCrl
 	}
+	if !IsNil(o.CreatePrivateOcsp) {
+		toSerialize["create-private-ocsp"] = o.CreatePrivateOcsp
+	}
 	if !IsNil(o.CreatePublicCrl) {
 		toSerialize["create-public-crl"] = o.CreatePublicCrl
+	}
+	if !IsNil(o.CreatePublicOcsp) {
+		toSerialize["create-public-ocsp"] = o.CreatePublicOcsp
 	}
 	if !IsNil(o.CriticalKeyUsage) {
 		toSerialize["critical-key-usage"] = o.CriticalKeyUsage
@@ -1715,6 +1820,9 @@ func (o UpdatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NotRequireCn) {
 		toSerialize["not-require-cn"] = o.NotRequireCn
+	}
+	if !IsNil(o.OcspTtl) {
+		toSerialize["ocsp-ttl"] = o.OcspTtl
 	}
 	if !IsNil(o.OrganizationalUnits) {
 		toSerialize["organizational-units"] = o.OrganizationalUnits

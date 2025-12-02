@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **MongodbName** | Pointer to **string** | MongoDB Name | [optional] 
 **MongodbPassword** | Pointer to **string** | MongoDB server password. You will prompted to provide a password if it will not appear in CLI parameters | [optional] 
 **MongodbRoles** | Pointer to **string** | MongoDB Roles | [optional] [default to "[]"]
+**MongodbScopes** | Pointer to **string** | MongoDB Scopes (Atlas only) | [optional] 
 **MongodbServerUri** | Pointer to **string** | MongoDB server URI | [optional] 
 **MongodbUriOptions** | Pointer to **string** | MongoDB server URI options | [optional] 
 **MongodbUsername** | Pointer to **string** | MongoDB server username | [optional] 
@@ -380,6 +381,31 @@ SetMongodbRoles sets MongodbRoles field to given value.
 `func (o *GatewayUpdateProducerMongo) HasMongodbRoles() bool`
 
 HasMongodbRoles returns a boolean if a field has been set.
+
+### GetMongodbScopes
+
+`func (o *GatewayUpdateProducerMongo) GetMongodbScopes() string`
+
+GetMongodbScopes returns the MongodbScopes field if non-nil, zero value otherwise.
+
+### GetMongodbScopesOk
+
+`func (o *GatewayUpdateProducerMongo) GetMongodbScopesOk() (*string, bool)`
+
+GetMongodbScopesOk returns a tuple with the MongodbScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbScopes
+
+`func (o *GatewayUpdateProducerMongo) SetMongodbScopes(v string)`
+
+SetMongodbScopes sets MongodbScopes field to given value.
+
+### HasMongodbScopes
+
+`func (o *GatewayUpdateProducerMongo) HasMongodbScopes() bool`
+
+HasMongodbScopes returns a boolean if a field has been set.
 
 ### GetMongodbServerUri
 

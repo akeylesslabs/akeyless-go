@@ -35,7 +35,11 @@ type PKICertificateIssueDetails struct {
 	CodeSigningFlag *bool `json:"code_signing_flag,omitempty"`
 	Country []string `json:"country,omitempty"`
 	CreatePrivateCrl *bool `json:"create_private_crl,omitempty"`
+	// CreatePrivateOcsp enables exposing an OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates.
+	CreatePrivateOcsp *bool `json:"create_private_ocsp,omitempty"`
 	CreatePublicCrl *bool `json:"create_public_crl,omitempty"`
+	// CreatePublicOcsp enables exposing a public OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates.
+	CreatePublicOcsp *bool `json:"create_public_ocsp,omitempty"`
 	// DestinationPath is the destination to save generated certificates
 	DestinationPath *string `json:"destination_path,omitempty"`
 	DisableWildcards *bool `json:"disable_wildcards,omitempty"`
@@ -54,6 +58,8 @@ type PKICertificateIssueDetails struct {
 	NonCriticalKeyUsage *bool `json:"non_critical_key_usage,omitempty"`
 	// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
 	NotBeforeDuration *int64 `json:"not_before_duration,omitempty"`
+	// OcspNextUpdate defines the desired NextUpdate window for OCSP responses. Value is in seconds; 0 means not set. Minimum enforced is 10 minutes.
+	OcspNextUpdate *int64 `json:"ocsp_next_update,omitempty"`
 	OrganizationList []string `json:"organization_list,omitempty"`
 	OrganizationUnitList []string `json:"organization_unit_list,omitempty"`
 	PkiIssuerType *string `json:"pki_issuer_type,omitempty"`
@@ -564,6 +570,38 @@ func (o *PKICertificateIssueDetails) SetCreatePrivateCrl(v bool) {
 	o.CreatePrivateCrl = &v
 }
 
+// GetCreatePrivateOcsp returns the CreatePrivateOcsp field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetCreatePrivateOcsp() bool {
+	if o == nil || IsNil(o.CreatePrivateOcsp) {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePrivateOcsp
+}
+
+// GetCreatePrivateOcspOk returns a tuple with the CreatePrivateOcsp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetCreatePrivateOcspOk() (*bool, bool) {
+	if o == nil || IsNil(o.CreatePrivateOcsp) {
+		return nil, false
+	}
+	return o.CreatePrivateOcsp, true
+}
+
+// HasCreatePrivateOcsp returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasCreatePrivateOcsp() bool {
+	if o != nil && !IsNil(o.CreatePrivateOcsp) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePrivateOcsp gets a reference to the given bool and assigns it to the CreatePrivateOcsp field.
+func (o *PKICertificateIssueDetails) SetCreatePrivateOcsp(v bool) {
+	o.CreatePrivateOcsp = &v
+}
+
 // GetCreatePublicCrl returns the CreatePublicCrl field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetCreatePublicCrl() bool {
 	if o == nil || IsNil(o.CreatePublicCrl) {
@@ -594,6 +632,38 @@ func (o *PKICertificateIssueDetails) HasCreatePublicCrl() bool {
 // SetCreatePublicCrl gets a reference to the given bool and assigns it to the CreatePublicCrl field.
 func (o *PKICertificateIssueDetails) SetCreatePublicCrl(v bool) {
 	o.CreatePublicCrl = &v
+}
+
+// GetCreatePublicOcsp returns the CreatePublicOcsp field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetCreatePublicOcsp() bool {
+	if o == nil || IsNil(o.CreatePublicOcsp) {
+		var ret bool
+		return ret
+	}
+	return *o.CreatePublicOcsp
+}
+
+// GetCreatePublicOcspOk returns a tuple with the CreatePublicOcsp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetCreatePublicOcspOk() (*bool, bool) {
+	if o == nil || IsNil(o.CreatePublicOcsp) {
+		return nil, false
+	}
+	return o.CreatePublicOcsp, true
+}
+
+// HasCreatePublicOcsp returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasCreatePublicOcsp() bool {
+	if o != nil && !IsNil(o.CreatePublicOcsp) {
+		return true
+	}
+
+	return false
+}
+
+// SetCreatePublicOcsp gets a reference to the given bool and assigns it to the CreatePublicOcsp field.
+func (o *PKICertificateIssueDetails) SetCreatePublicOcsp(v bool) {
+	o.CreatePublicOcsp = &v
 }
 
 // GetDestinationPath returns the DestinationPath field value if set, zero value otherwise.
@@ -1044,6 +1114,38 @@ func (o *PKICertificateIssueDetails) SetNotBeforeDuration(v int64) {
 	o.NotBeforeDuration = &v
 }
 
+// GetOcspNextUpdate returns the OcspNextUpdate field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetOcspNextUpdate() int64 {
+	if o == nil || IsNil(o.OcspNextUpdate) {
+		var ret int64
+		return ret
+	}
+	return *o.OcspNextUpdate
+}
+
+// GetOcspNextUpdateOk returns a tuple with the OcspNextUpdate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetOcspNextUpdateOk() (*int64, bool) {
+	if o == nil || IsNil(o.OcspNextUpdate) {
+		return nil, false
+	}
+	return o.OcspNextUpdate, true
+}
+
+// HasOcspNextUpdate returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasOcspNextUpdate() bool {
+	if o != nil && !IsNil(o.OcspNextUpdate) {
+		return true
+	}
+
+	return false
+}
+
+// SetOcspNextUpdate gets a reference to the given int64 and assigns it to the OcspNextUpdate field.
+func (o *PKICertificateIssueDetails) SetOcspNextUpdate(v int64) {
+	o.OcspNextUpdate = &v
+}
+
 // GetOrganizationList returns the OrganizationList field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetOrganizationList() []string {
 	if o == nil || IsNil(o.OrganizationList) {
@@ -1419,8 +1521,14 @@ func (o PKICertificateIssueDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CreatePrivateCrl) {
 		toSerialize["create_private_crl"] = o.CreatePrivateCrl
 	}
+	if !IsNil(o.CreatePrivateOcsp) {
+		toSerialize["create_private_ocsp"] = o.CreatePrivateOcsp
+	}
 	if !IsNil(o.CreatePublicCrl) {
 		toSerialize["create_public_crl"] = o.CreatePublicCrl
+	}
+	if !IsNil(o.CreatePublicOcsp) {
+		toSerialize["create_public_ocsp"] = o.CreatePublicOcsp
 	}
 	if !IsNil(o.DestinationPath) {
 		toSerialize["destination_path"] = o.DestinationPath
@@ -1463,6 +1571,9 @@ func (o PKICertificateIssueDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NotBeforeDuration) {
 		toSerialize["not_before_duration"] = o.NotBeforeDuration
+	}
+	if !IsNil(o.OcspNextUpdate) {
+		toSerialize["ocsp_next_update"] = o.OcspNextUpdate
 	}
 	if !IsNil(o.OrganizationList) {
 		toSerialize["organization_list"] = o.OrganizationList

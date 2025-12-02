@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedClientType** | Pointer to **[]string** |  | [optional] 
 **Audience** | Pointer to **string** | Deprecated (Deprecated) The audience in the JWT | [optional] [default to "https://management.azure.com/"]
 **AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundGroupId** | Pointer to **[]string** | A list of group ids that the access is restricted to | [optional] 
@@ -76,6 +77,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *AuthMethodUpdateAzureAD) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAllowedClientType
+
+`func (o *AuthMethodUpdateAzureAD) GetAllowedClientType() []string`
+
+GetAllowedClientType returns the AllowedClientType field if non-nil, zero value otherwise.
+
+### GetAllowedClientTypeOk
+
+`func (o *AuthMethodUpdateAzureAD) GetAllowedClientTypeOk() (*[]string, bool)`
+
+GetAllowedClientTypeOk returns a tuple with the AllowedClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedClientType
+
+`func (o *AuthMethodUpdateAzureAD) SetAllowedClientType(v []string)`
+
+SetAllowedClientType sets AllowedClientType field to given value.
+
+### HasAllowedClientType
+
+`func (o *AuthMethodUpdateAzureAD) HasAllowedClientType() bool`
+
+HasAllowedClientType returns a boolean if a field has been set.
 
 ### GetAudience
 

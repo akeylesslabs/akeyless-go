@@ -17,7 +17,9 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
 **CreatePrivateCrl** | Pointer to **bool** | Set this to allow the issuer will expose a CRL endpoint in the Gateway | [optional] 
+**CreatePrivateOcsp** | Pointer to **bool** |  | [optional] 
 **CreatePublicCrl** | Pointer to **bool** | Set this to allow the cert issuer will expose a public CRL endpoint | [optional] 
+**CreatePublicOcsp** | Pointer to **bool** |  | [optional] 
 **CriticalKeyUsage** | Pointer to **string** | Mark key usage as critical [true/false] | [optional] [default to "true"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
@@ -36,6 +38,7 @@ Name | Type | Description | Notes
 **Name** | **string** | PKI certificate issuer name | 
 **NotEnforceHostnames** | Pointer to **bool** | If set, any names are allowed for CN and SANs in the certificate and not only a valid host name | [optional] 
 **NotRequireCn** | Pointer to **bool** | If set, clients can request certificates without a CN | [optional] 
+**OcspTtl** | Pointer to **string** |  | [optional] 
 **OrganizationalUnits** | Pointer to **string** | A comma-separated list of organizational units (OU) that will be set in the issued certificate | [optional] 
 **Organizations** | Pointer to **string** | A comma-separated list of organizations (O) that will be set in the issued certificate | [optional] 
 **PostalCode** | Pointer to **string** | A comma-separated list of postal codes that will be set in the issued certificate | [optional] 
@@ -394,6 +397,31 @@ SetCreatePrivateCrl sets CreatePrivateCrl field to given value.
 
 HasCreatePrivateCrl returns a boolean if a field has been set.
 
+### GetCreatePrivateOcsp
+
+`func (o *CreatePKICertIssuer) GetCreatePrivateOcsp() bool`
+
+GetCreatePrivateOcsp returns the CreatePrivateOcsp field if non-nil, zero value otherwise.
+
+### GetCreatePrivateOcspOk
+
+`func (o *CreatePKICertIssuer) GetCreatePrivateOcspOk() (*bool, bool)`
+
+GetCreatePrivateOcspOk returns a tuple with the CreatePrivateOcsp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePrivateOcsp
+
+`func (o *CreatePKICertIssuer) SetCreatePrivateOcsp(v bool)`
+
+SetCreatePrivateOcsp sets CreatePrivateOcsp field to given value.
+
+### HasCreatePrivateOcsp
+
+`func (o *CreatePKICertIssuer) HasCreatePrivateOcsp() bool`
+
+HasCreatePrivateOcsp returns a boolean if a field has been set.
+
 ### GetCreatePublicCrl
 
 `func (o *CreatePKICertIssuer) GetCreatePublicCrl() bool`
@@ -418,6 +446,31 @@ SetCreatePublicCrl sets CreatePublicCrl field to given value.
 `func (o *CreatePKICertIssuer) HasCreatePublicCrl() bool`
 
 HasCreatePublicCrl returns a boolean if a field has been set.
+
+### GetCreatePublicOcsp
+
+`func (o *CreatePKICertIssuer) GetCreatePublicOcsp() bool`
+
+GetCreatePublicOcsp returns the CreatePublicOcsp field if non-nil, zero value otherwise.
+
+### GetCreatePublicOcspOk
+
+`func (o *CreatePKICertIssuer) GetCreatePublicOcspOk() (*bool, bool)`
+
+GetCreatePublicOcspOk returns a tuple with the CreatePublicOcsp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePublicOcsp
+
+`func (o *CreatePKICertIssuer) SetCreatePublicOcsp(v bool)`
+
+SetCreatePublicOcsp sets CreatePublicOcsp field to given value.
+
+### HasCreatePublicOcsp
+
+`func (o *CreatePKICertIssuer) HasCreatePublicOcsp() bool`
+
+HasCreatePublicOcsp returns a boolean if a field has been set.
 
 ### GetCriticalKeyUsage
 
@@ -863,6 +916,31 @@ SetNotRequireCn sets NotRequireCn field to given value.
 `func (o *CreatePKICertIssuer) HasNotRequireCn() bool`
 
 HasNotRequireCn returns a boolean if a field has been set.
+
+### GetOcspTtl
+
+`func (o *CreatePKICertIssuer) GetOcspTtl() string`
+
+GetOcspTtl returns the OcspTtl field if non-nil, zero value otherwise.
+
+### GetOcspTtlOk
+
+`func (o *CreatePKICertIssuer) GetOcspTtlOk() (*string, bool)`
+
+GetOcspTtlOk returns a tuple with the OcspTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOcspTtl
+
+`func (o *CreatePKICertIssuer) SetOcspTtl(v string)`
+
+SetOcspTtl sets OcspTtl field to given value.
+
+### HasOcspTtl
+
+`func (o *CreatePKICertIssuer) HasOcspTtl() bool`
+
+HasOcspTtl returns a boolean if a field has been set.
 
 ### GetOrganizationalUnits
 

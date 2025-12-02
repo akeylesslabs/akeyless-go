@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Args** | Pointer to **[]string** | Optional arguments as key&#x3D;value pairs or JSON strings, e.g - \\\&quot;--args&#x3D;csr&#x3D;base64_encoded_csr --args&#x3D;common_name&#x3D;bar\\\&quot; or args&#x3D;&#39;{\\\&quot;csr\\\&quot;:\\\&quot;base64_encoded_csr\\\&quot;}. It is possible to combine both formats.&#39; | [optional] 
+**Dbname** | Pointer to **string** | DBName: Optional override DB name (works only if DS allows it. only relevant for MSSQL) | [optional] 
 **Host** | Pointer to **string** | Host | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
@@ -56,6 +57,31 @@ SetArgs sets Args field to given value.
 `func (o *DynamicSecretGetValue) HasArgs() bool`
 
 HasArgs returns a boolean if a field has been set.
+
+### GetDbname
+
+`func (o *DynamicSecretGetValue) GetDbname() string`
+
+GetDbname returns the Dbname field if non-nil, zero value otherwise.
+
+### GetDbnameOk
+
+`func (o *DynamicSecretGetValue) GetDbnameOk() (*string, bool)`
+
+GetDbnameOk returns a tuple with the Dbname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbname
+
+`func (o *DynamicSecretGetValue) SetDbname(v string)`
+
+SetDbname sets Dbname field to given value.
+
+### HasDbname
+
+`func (o *DynamicSecretGetValue) HasDbname() bool`
+
+HasDbname returns a boolean if a field has been set.
 
 ### GetHost
 

@@ -35,6 +35,7 @@ docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
 docs/AllowedAccess.md
 docs/AllowedAccessOld.md
+docs/AllowedClientType.md
 docs/AllowedIpSettings.md
 docs/ArtifactoryTargetDetails.md
 docs/AssocRoleAuthMethod.md
@@ -766,6 +767,7 @@ docs/Name.md
 docs/NativeK8sTargetDetails.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
+docs/NotiForwarderDetailsInput.md
 docs/NullString.md
 docs/NullTime.md
 docs/OAuth2AccessRules.md
@@ -901,6 +903,7 @@ docs/SignPKICertOutput.md
 docs/SignPKICertWithClassicKey.md
 docs/SignRsaSsaPss.md
 docs/SignRsaSsaPssOutput.md
+docs/SlackNotiForwarderDetails.md
 docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
 docs/SraDesktopAppConf.md
@@ -983,6 +986,7 @@ docs/TargetUpdateSsh.md
 docs/TargetUpdateWeb.md
 docs/TargetUpdateWindows.md
 docs/TargetUpdateZeroSSL.md
+docs/TeamsNotiForwarderDetails.md
 docs/TmpUserData.md
 docs/Tokenize.md
 docs/TokenizeOutput.md
@@ -1133,6 +1137,7 @@ docs/WebBastionGuacamole.md
 docs/WebBastionRdpRecord.md
 docs/WebHookNotiForwarderPublicDetails.md
 docs/WebTargetDetails.md
+docs/WebhookNotiForwarderDetails.md
 docs/WindowsService.md
 docs/WindowsServiceAttributes.md
 docs/WindowsTargetDetails.md
@@ -1164,6 +1169,7 @@ model_alias_details_output.go
 model_all_analytics_data.go
 model_allowed_access.go
 model_allowed_access_old.go
+model_allowed_client_type.go
 model_allowed_ip_settings.go
 model_api_key_access_rules.go
 model_artifactory_target_details.go
@@ -1901,6 +1907,7 @@ model_name.go
 model_native_k8s_target_details.go
 model_next_auto_rotation_event.go
 model_noti_forwarder.go
+model_noti_forwarder_details_input.go
 model_null_string.go
 model_null_time.go
 model_o_auth2_access_rules.go
@@ -2034,6 +2041,7 @@ model_sign_pki_cert_output.go
 model_sign_pki_cert_with_classic_key.go
 model_sign_rsa_ssa_pss.go
 model_sign_rsa_ssa_pss_output.go
+model_slack_noti_forwarder_details.go
 model_sm_info.go
 model_splunk_log_forwarding_config.go
 model_sra_desktop_app_conf.go
@@ -2118,6 +2126,7 @@ model_target_update_ssh.go
 model_target_update_web.go
 model_target_update_windows_.go
 model_target_update_zero_ssl.go
+model_teams_noti_forwarder_details.go
 model_tmp_user_data.go
 model_tokenize.go
 model_tokenize_output.go
@@ -2267,6 +2276,7 @@ model_web_bastion_guacamole.go
 model_web_bastion_rdp_record.go
 model_web_hook_noti_forwarder_public_details.go
 model_web_target_details.go
+model_webhook_noti_forwarder_details.go
 model_windows_service.go
 model_windows_service_attributes.go
 model_windows_target_details.go

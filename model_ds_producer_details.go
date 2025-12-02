@@ -115,9 +115,12 @@ type DSProducerDetails struct {
 	ExternallyProvidedUser *string `json:"externally_provided_user,omitempty"`
 	FailureMessage *string `json:"failure_message,omitempty"`
 	FixedUserOnly *string `json:"fixed_user_only,omitempty"`
+	GcpAccessType *string `json:"gcp_access_type,omitempty"`
+	GcpFixedUserClaimKeyname *string `json:"gcp_fixed_user_claim_keyname,omitempty"`
 	GcpKeyAlgo *string `json:"gcp_key_algo,omitempty"`
 	GcpProjectId *string `json:"gcp_project_id,omitempty"`
 	GcpRoleBindings *map[string][]string `json:"gcp_role_bindings,omitempty"`
+	GcpRoleNames *string `json:"gcp_role_names,omitempty"`
 	// GCPServiceAccountEmail overrides the deprecated field from the target
 	GcpServiceAccountEmail *string `json:"gcp_service_account_email,omitempty"`
 	GcpServiceAccountKey *string `json:"gcp_service_account_key,omitempty"`
@@ -218,10 +221,13 @@ type DSProducerDetails struct {
 	MongodbPassword *string `json:"mongodb_password,omitempty"`
 	// common fields
 	MongodbRoles *string `json:"mongodb_roles,omitempty"`
+	MongodbScopes *string `json:"mongodb_scopes,omitempty"`
 	// mongodb fields
 	MongodbUriConnection *string `json:"mongodb_uri_connection,omitempty"`
 	MongodbUriOptions *string `json:"mongodb_uri_options,omitempty"`
 	MongodbUsername *string `json:"mongodb_username,omitempty"`
+	// Comma-separated list of allowed DB names for runtime selection when fetching the secret value. Empty string => use target DB name only (no override allowed) \"*\" => any DB name is allowed One or more names => user must select one of the provided names
+	MssqlAllowedDbNames *string `json:"mssql_allowed_db_names,omitempty"`
 	MssqlCreationStatements *string `json:"mssql_creation_statements,omitempty"`
 	MssqlRevocationStatements *string `json:"mssql_revocation_statements,omitempty"`
 	MysqlCreationStatements *string `json:"mysql_creation_statements,omitempty"`
@@ -3200,6 +3206,70 @@ func (o *DSProducerDetails) SetFixedUserOnly(v string) {
 	o.FixedUserOnly = &v
 }
 
+// GetGcpAccessType returns the GcpAccessType field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpAccessType() string {
+	if o == nil || IsNil(o.GcpAccessType) {
+		var ret string
+		return ret
+	}
+	return *o.GcpAccessType
+}
+
+// GetGcpAccessTypeOk returns a tuple with the GcpAccessType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpAccessTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpAccessType) {
+		return nil, false
+	}
+	return o.GcpAccessType, true
+}
+
+// HasGcpAccessType returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpAccessType() bool {
+	if o != nil && !IsNil(o.GcpAccessType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpAccessType gets a reference to the given string and assigns it to the GcpAccessType field.
+func (o *DSProducerDetails) SetGcpAccessType(v string) {
+	o.GcpAccessType = &v
+}
+
+// GetGcpFixedUserClaimKeyname returns the GcpFixedUserClaimKeyname field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpFixedUserClaimKeyname() string {
+	if o == nil || IsNil(o.GcpFixedUserClaimKeyname) {
+		var ret string
+		return ret
+	}
+	return *o.GcpFixedUserClaimKeyname
+}
+
+// GetGcpFixedUserClaimKeynameOk returns a tuple with the GcpFixedUserClaimKeyname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpFixedUserClaimKeynameOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpFixedUserClaimKeyname) {
+		return nil, false
+	}
+	return o.GcpFixedUserClaimKeyname, true
+}
+
+// HasGcpFixedUserClaimKeyname returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpFixedUserClaimKeyname() bool {
+	if o != nil && !IsNil(o.GcpFixedUserClaimKeyname) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpFixedUserClaimKeyname gets a reference to the given string and assigns it to the GcpFixedUserClaimKeyname field.
+func (o *DSProducerDetails) SetGcpFixedUserClaimKeyname(v string) {
+	o.GcpFixedUserClaimKeyname = &v
+}
+
 // GetGcpKeyAlgo returns the GcpKeyAlgo field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetGcpKeyAlgo() string {
 	if o == nil || IsNil(o.GcpKeyAlgo) {
@@ -3294,6 +3364,38 @@ func (o *DSProducerDetails) HasGcpRoleBindings() bool {
 // SetGcpRoleBindings gets a reference to the given map[string][]string and assigns it to the GcpRoleBindings field.
 func (o *DSProducerDetails) SetGcpRoleBindings(v map[string][]string) {
 	o.GcpRoleBindings = &v
+}
+
+// GetGcpRoleNames returns the GcpRoleNames field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetGcpRoleNames() string {
+	if o == nil || IsNil(o.GcpRoleNames) {
+		var ret string
+		return ret
+	}
+	return *o.GcpRoleNames
+}
+
+// GetGcpRoleNamesOk returns a tuple with the GcpRoleNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetGcpRoleNamesOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpRoleNames) {
+		return nil, false
+	}
+	return o.GcpRoleNames, true
+}
+
+// HasGcpRoleNames returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasGcpRoleNames() bool {
+	if o != nil && !IsNil(o.GcpRoleNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpRoleNames gets a reference to the given string and assigns it to the GcpRoleNames field.
+func (o *DSProducerDetails) SetGcpRoleNames(v string) {
+	o.GcpRoleNames = &v
 }
 
 // GetGcpServiceAccountEmail returns the GcpServiceAccountEmail field value if set, zero value otherwise.
@@ -6176,6 +6278,38 @@ func (o *DSProducerDetails) SetMongodbRoles(v string) {
 	o.MongodbRoles = &v
 }
 
+// GetMongodbScopes returns the MongodbScopes field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMongodbScopes() string {
+	if o == nil || IsNil(o.MongodbScopes) {
+		var ret string
+		return ret
+	}
+	return *o.MongodbScopes
+}
+
+// GetMongodbScopesOk returns a tuple with the MongodbScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMongodbScopesOk() (*string, bool) {
+	if o == nil || IsNil(o.MongodbScopes) {
+		return nil, false
+	}
+	return o.MongodbScopes, true
+}
+
+// HasMongodbScopes returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMongodbScopes() bool {
+	if o != nil && !IsNil(o.MongodbScopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbScopes gets a reference to the given string and assigns it to the MongodbScopes field.
+func (o *DSProducerDetails) SetMongodbScopes(v string) {
+	o.MongodbScopes = &v
+}
+
 // GetMongodbUriConnection returns the MongodbUriConnection field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetMongodbUriConnection() string {
 	if o == nil || IsNil(o.MongodbUriConnection) {
@@ -6270,6 +6404,38 @@ func (o *DSProducerDetails) HasMongodbUsername() bool {
 // SetMongodbUsername gets a reference to the given string and assigns it to the MongodbUsername field.
 func (o *DSProducerDetails) SetMongodbUsername(v string) {
 	o.MongodbUsername = &v
+}
+
+// GetMssqlAllowedDbNames returns the MssqlAllowedDbNames field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetMssqlAllowedDbNames() string {
+	if o == nil || IsNil(o.MssqlAllowedDbNames) {
+		var ret string
+		return ret
+	}
+	return *o.MssqlAllowedDbNames
+}
+
+// GetMssqlAllowedDbNamesOk returns a tuple with the MssqlAllowedDbNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetMssqlAllowedDbNamesOk() (*string, bool) {
+	if o == nil || IsNil(o.MssqlAllowedDbNames) {
+		return nil, false
+	}
+	return o.MssqlAllowedDbNames, true
+}
+
+// HasMssqlAllowedDbNames returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasMssqlAllowedDbNames() bool {
+	if o != nil && !IsNil(o.MssqlAllowedDbNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetMssqlAllowedDbNames gets a reference to the given string and assigns it to the MssqlAllowedDbNames field.
+func (o *DSProducerDetails) SetMssqlAllowedDbNames(v string) {
+	o.MssqlAllowedDbNames = &v
 }
 
 // GetMssqlCreationStatements returns the MssqlCreationStatements field value if set, zero value otherwise.
@@ -8888,6 +9054,12 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FixedUserOnly) {
 		toSerialize["fixed_user_only"] = o.FixedUserOnly
 	}
+	if !IsNil(o.GcpAccessType) {
+		toSerialize["gcp_access_type"] = o.GcpAccessType
+	}
+	if !IsNil(o.GcpFixedUserClaimKeyname) {
+		toSerialize["gcp_fixed_user_claim_keyname"] = o.GcpFixedUserClaimKeyname
+	}
 	if !IsNil(o.GcpKeyAlgo) {
 		toSerialize["gcp_key_algo"] = o.GcpKeyAlgo
 	}
@@ -8896,6 +9068,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpRoleBindings) {
 		toSerialize["gcp_role_bindings"] = o.GcpRoleBindings
+	}
+	if !IsNil(o.GcpRoleNames) {
+		toSerialize["gcp_role_names"] = o.GcpRoleNames
 	}
 	if !IsNil(o.GcpServiceAccountEmail) {
 		toSerialize["gcp_service_account_email"] = o.GcpServiceAccountEmail
@@ -9167,6 +9342,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MongodbRoles) {
 		toSerialize["mongodb_roles"] = o.MongodbRoles
 	}
+	if !IsNil(o.MongodbScopes) {
+		toSerialize["mongodb_scopes"] = o.MongodbScopes
+	}
 	if !IsNil(o.MongodbUriConnection) {
 		toSerialize["mongodb_uri_connection"] = o.MongodbUriConnection
 	}
@@ -9175,6 +9353,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MongodbUsername) {
 		toSerialize["mongodb_username"] = o.MongodbUsername
+	}
+	if !IsNil(o.MssqlAllowedDbNames) {
+		toSerialize["mssql_allowed_db_names"] = o.MssqlAllowedDbNames
 	}
 	if !IsNil(o.MssqlCreationStatements) {
 		toSerialize["mssql_creation_statements"] = o.MssqlCreationStatements

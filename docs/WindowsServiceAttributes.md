@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ConnectionType** | Pointer to **string** |  | [optional] 
+**IisAppPool** | Pointer to **bool** | IISAppPool marks this entry as an IIS Application Pool rather than a Windows Service | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
+**SkipRestart** | Pointer to **bool** | SkipRestart allows skipping recycle/start of the IIS App Pool after credential update | [optional] 
 **UseTls** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -52,6 +54,31 @@ SetConnectionType sets ConnectionType field to given value.
 
 HasConnectionType returns a boolean if a field has been set.
 
+### GetIisAppPool
+
+`func (o *WindowsServiceAttributes) GetIisAppPool() bool`
+
+GetIisAppPool returns the IisAppPool field if non-nil, zero value otherwise.
+
+### GetIisAppPoolOk
+
+`func (o *WindowsServiceAttributes) GetIisAppPoolOk() (*bool, bool)`
+
+GetIisAppPoolOk returns a tuple with the IisAppPool field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisAppPool
+
+`func (o *WindowsServiceAttributes) SetIisAppPool(v bool)`
+
+SetIisAppPool sets IisAppPool field to given value.
+
+### HasIisAppPool
+
+`func (o *WindowsServiceAttributes) HasIisAppPool() bool`
+
+HasIisAppPool returns a boolean if a field has been set.
+
 ### GetPort
 
 `func (o *WindowsServiceAttributes) GetPort() string`
@@ -76,6 +103,31 @@ SetPort sets Port field to given value.
 `func (o *WindowsServiceAttributes) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
+
+### GetSkipRestart
+
+`func (o *WindowsServiceAttributes) GetSkipRestart() bool`
+
+GetSkipRestart returns the SkipRestart field if non-nil, zero value otherwise.
+
+### GetSkipRestartOk
+
+`func (o *WindowsServiceAttributes) GetSkipRestartOk() (*bool, bool)`
+
+GetSkipRestartOk returns a tuple with the SkipRestart field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipRestart
+
+`func (o *WindowsServiceAttributes) SetSkipRestart(v bool)`
+
+SetSkipRestart sets SkipRestart field to given value.
+
+### HasSkipRestart
+
+`func (o *WindowsServiceAttributes) HasSkipRestart() bool`
+
+HasSkipRestart returns a boolean if a field has been set.
 
 ### GetUseTls
 

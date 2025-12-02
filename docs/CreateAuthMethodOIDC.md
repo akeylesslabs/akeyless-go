@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedClientType** | Pointer to **[]string** |  | [optional] 
 **AllowedRedirectUri** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
 **Audience** | Pointer to **string** | Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application | [optional] 
 **AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
@@ -71,6 +72,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *CreateAuthMethodOIDC) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAllowedClientType
+
+`func (o *CreateAuthMethodOIDC) GetAllowedClientType() []string`
+
+GetAllowedClientType returns the AllowedClientType field if non-nil, zero value otherwise.
+
+### GetAllowedClientTypeOk
+
+`func (o *CreateAuthMethodOIDC) GetAllowedClientTypeOk() (*[]string, bool)`
+
+GetAllowedClientTypeOk returns a tuple with the AllowedClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedClientType
+
+`func (o *CreateAuthMethodOIDC) SetAllowedClientType(v []string)`
+
+SetAllowedClientType sets AllowedClientType field to given value.
+
+### HasAllowedClientType
+
+`func (o *CreateAuthMethodOIDC) HasAllowedClientType() bool`
+
+HasAllowedClientType returns a boolean if a field has been set.
 
 ### GetAllowedRedirectUri
 

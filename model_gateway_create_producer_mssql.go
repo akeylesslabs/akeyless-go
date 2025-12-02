@@ -30,6 +30,8 @@ type GatewayCreateProducerMSSQL struct {
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// CSV of allowed DB names for runtime selection when getting the secret value. Empty => use target DB only; \"*\" => any DB allowed; One or more names => user must choose from this list
+	MssqlAllowedDbNames *string `json:"mssql-allowed-db-names,omitempty"`
 	// MSSQL Creation statements
 	MssqlCreateStatements *string `json:"mssql-create-statements,omitempty"`
 	// MSSQL Name
@@ -244,6 +246,38 @@ func (o *GatewayCreateProducerMSSQL) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *GatewayCreateProducerMSSQL) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetMssqlAllowedDbNames returns the MssqlAllowedDbNames field value if set, zero value otherwise.
+func (o *GatewayCreateProducerMSSQL) GetMssqlAllowedDbNames() string {
+	if o == nil || IsNil(o.MssqlAllowedDbNames) {
+		var ret string
+		return ret
+	}
+	return *o.MssqlAllowedDbNames
+}
+
+// GetMssqlAllowedDbNamesOk returns a tuple with the MssqlAllowedDbNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerMSSQL) GetMssqlAllowedDbNamesOk() (*string, bool) {
+	if o == nil || IsNil(o.MssqlAllowedDbNames) {
+		return nil, false
+	}
+	return o.MssqlAllowedDbNames, true
+}
+
+// HasMssqlAllowedDbNames returns a boolean if a field has been set.
+func (o *GatewayCreateProducerMSSQL) HasMssqlAllowedDbNames() bool {
+	if o != nil && !IsNil(o.MssqlAllowedDbNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetMssqlAllowedDbNames gets a reference to the given string and assigns it to the MssqlAllowedDbNames field.
+func (o *GatewayCreateProducerMSSQL) SetMssqlAllowedDbNames(v string) {
+	o.MssqlAllowedDbNames = &v
 }
 
 // GetMssqlCreateStatements returns the MssqlCreateStatements field value if set, zero value otherwise.
@@ -995,6 +1029,9 @@ func (o GatewayCreateProducerMSSQL) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.MssqlAllowedDbNames) {
+		toSerialize["mssql-allowed-db-names"] = o.MssqlAllowedDbNames
 	}
 	if !IsNil(o.MssqlCreateStatements) {
 		toSerialize["mssql-create-statements"] = o.MssqlCreateStatements

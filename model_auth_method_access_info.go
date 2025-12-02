@@ -23,6 +23,7 @@ type AuthMethodAccessInfo struct {
 	AccessExpires *int64 `json:"access_expires,omitempty"`
 	// for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself
 	AccessIdAlias *string `json:"access_id_alias,omitempty"`
+	AllowedClientType []string `json:"allowed_client_type,omitempty"`
 	ApiKeyAccessRules *APIKeyAccessRules `json:"api_key_access_rules,omitempty"`
 	AuditLogsClaims []string `json:"audit_logs_claims,omitempty"`
 	AwsIamAccessRules *AWSIAMAccessRules `json:"aws_iam_access_rules,omitempty"`
@@ -129,6 +130,38 @@ func (o *AuthMethodAccessInfo) HasAccessIdAlias() bool {
 // SetAccessIdAlias gets a reference to the given string and assigns it to the AccessIdAlias field.
 func (o *AuthMethodAccessInfo) SetAccessIdAlias(v string) {
 	o.AccessIdAlias = &v
+}
+
+// GetAllowedClientType returns the AllowedClientType field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetAllowedClientType() []string {
+	if o == nil || IsNil(o.AllowedClientType) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedClientType
+}
+
+// GetAllowedClientTypeOk returns a tuple with the AllowedClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetAllowedClientTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedClientType) {
+		return nil, false
+	}
+	return o.AllowedClientType, true
+}
+
+// HasAllowedClientType returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasAllowedClientType() bool {
+	if o != nil && !IsNil(o.AllowedClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientType gets a reference to the given []string and assigns it to the AllowedClientType field.
+func (o *AuthMethodAccessInfo) SetAllowedClientType(v []string) {
+	o.AllowedClientType = v
 }
 
 // GetApiKeyAccessRules returns the ApiKeyAccessRules field value if set, zero value otherwise.
@@ -882,6 +915,9 @@ func (o AuthMethodAccessInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccessIdAlias) {
 		toSerialize["access_id_alias"] = o.AccessIdAlias
+	}
+	if !IsNil(o.AllowedClientType) {
+		toSerialize["allowed_client_type"] = o.AllowedClientType
 	}
 	if !IsNil(o.ApiKeyAccessRules) {
 		toSerialize["api_key_access_rules"] = o.ApiKeyAccessRules

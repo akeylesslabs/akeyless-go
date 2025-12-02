@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ServiceAccountKeyDecoded** | Pointer to **string** |  | [optional] 
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
+**AdDiscoverIisApp** | Pointer to **string** | Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **AdDiscoverServices** | Pointer to **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **AdDiscoveryTypes** | Pointer to **[]string** | Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration) | [optional] 
 **AdDomainName** | Pointer to **string** | Active Directory Domain Name (Relevant only for Active Directory migration) | [optional] 
@@ -158,6 +159,31 @@ SetAdComputerBaseDn sets AdComputerBaseDn field to given value.
 `func (o *GatewayUpdateMigration) HasAdComputerBaseDn() bool`
 
 HasAdComputerBaseDn returns a boolean if a field has been set.
+
+### GetAdDiscoverIisApp
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverIisApp() string`
+
+GetAdDiscoverIisApp returns the AdDiscoverIisApp field if non-nil, zero value otherwise.
+
+### GetAdDiscoverIisAppOk
+
+`func (o *GatewayUpdateMigration) GetAdDiscoverIisAppOk() (*string, bool)`
+
+GetAdDiscoverIisAppOk returns a tuple with the AdDiscoverIisApp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdDiscoverIisApp
+
+`func (o *GatewayUpdateMigration) SetAdDiscoverIisApp(v string)`
+
+SetAdDiscoverIisApp sets AdDiscoverIisApp field to given value.
+
+### HasAdDiscoverIisApp
+
+`func (o *GatewayUpdateMigration) HasAdDiscoverIisApp() bool`
+
+HasAdDiscoverIisApp returns a boolean if a field has been set.
 
 ### GetAdDiscoverServices
 

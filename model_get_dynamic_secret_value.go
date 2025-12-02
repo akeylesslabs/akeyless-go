@@ -24,6 +24,8 @@ var _ MappedNullable = &GetDynamicSecretValue{}
 type GetDynamicSecretValue struct {
 	// Optional arguments as key=value pairs or JSON strings, e.g - \\\"--args=csr=base64_encoded_csr --args=common_name=bar\\\" or args='{\\\"csr\\\":\\\"base64_encoded_csr\\\"}. It is possible to combine both formats.'
 	Args []string `json:"args,omitempty"`
+	// DBName: Optional override DB name (works only if DS allows it. only relevant for MSSQL)
+	Dbname *string `json:"dbname,omitempty"`
 	// Host
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
@@ -98,6 +100,38 @@ func (o *GetDynamicSecretValue) HasArgs() bool {
 // SetArgs gets a reference to the given []string and assigns it to the Args field.
 func (o *GetDynamicSecretValue) SetArgs(v []string) {
 	o.Args = v
+}
+
+// GetDbname returns the Dbname field value if set, zero value otherwise.
+func (o *GetDynamicSecretValue) GetDbname() string {
+	if o == nil || IsNil(o.Dbname) {
+		var ret string
+		return ret
+	}
+	return *o.Dbname
+}
+
+// GetDbnameOk returns a tuple with the Dbname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetDynamicSecretValue) GetDbnameOk() (*string, bool) {
+	if o == nil || IsNil(o.Dbname) {
+		return nil, false
+	}
+	return o.Dbname, true
+}
+
+// HasDbname returns a boolean if a field has been set.
+func (o *GetDynamicSecretValue) HasDbname() bool {
+	if o != nil && !IsNil(o.Dbname) {
+		return true
+	}
+
+	return false
+}
+
+// SetDbname gets a reference to the given string and assigns it to the Dbname field.
+func (o *GetDynamicSecretValue) SetDbname(v string) {
+	o.Dbname = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -328,6 +362,9 @@ func (o GetDynamicSecretValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Args) {
 		toSerialize["args"] = o.Args
+	}
+	if !IsNil(o.Dbname) {
+		toSerialize["dbname"] = o.Dbname
 	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host

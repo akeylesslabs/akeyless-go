@@ -47,6 +47,8 @@ type DynamicSecretCreateGoogleWorkspace struct {
 	// Name of the admin role to assign to the user, relevant only for role access-mode
 	RoleName *string `json:"role-name,omitempty"`
 	RoleScope *string `json:"role-scope,omitempty"`
+	// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
+	SecureAccessDelay *int64 `json:"secure-access-delay,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Destination URL to inject secrets
@@ -539,6 +541,38 @@ func (o *DynamicSecretCreateGoogleWorkspace) SetRoleScope(v string) {
 	o.RoleScope = &v
 }
 
+// GetSecureAccessDelay returns the SecureAccessDelay field value if set, zero value otherwise.
+func (o *DynamicSecretCreateGoogleWorkspace) GetSecureAccessDelay() int64 {
+	if o == nil || IsNil(o.SecureAccessDelay) {
+		var ret int64
+		return ret
+	}
+	return *o.SecureAccessDelay
+}
+
+// GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateGoogleWorkspace) GetSecureAccessDelayOk() (*int64, bool) {
+	if o == nil || IsNil(o.SecureAccessDelay) {
+		return nil, false
+	}
+	return o.SecureAccessDelay, true
+}
+
+// HasSecureAccessDelay returns a boolean if a field has been set.
+func (o *DynamicSecretCreateGoogleWorkspace) HasSecureAccessDelay() bool {
+	if o != nil && !IsNil(o.SecureAccessDelay) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDelay gets a reference to the given int64 and assigns it to the SecureAccessDelay field.
+func (o *DynamicSecretCreateGoogleWorkspace) SetSecureAccessDelay(v int64) {
+	o.SecureAccessDelay = &v
+}
+
 // GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
 func (o *DynamicSecretCreateGoogleWorkspace) GetSecureAccessEnable() string {
 	if o == nil || IsNil(o.SecureAccessEnable) {
@@ -904,6 +938,9 @@ func (o DynamicSecretCreateGoogleWorkspace) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.RoleScope) {
 		toSerialize["role-scope"] = o.RoleScope
+	}
+	if !IsNil(o.SecureAccessDelay) {
+		toSerialize["secure-access-delay"] = o.SecureAccessDelay
 	}
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable

@@ -94,9 +94,12 @@ Name | Type | Description | Notes
 **ExternallyProvidedUser** | Pointer to **string** |  | [optional] 
 **FailureMessage** | Pointer to **string** |  | [optional] 
 **FixedUserOnly** | Pointer to **string** |  | [optional] 
+**GcpAccessType** | Pointer to **string** |  | [optional] 
+**GcpFixedUserClaimKeyname** | Pointer to **string** |  | [optional] 
 **GcpKeyAlgo** | Pointer to **string** |  | [optional] 
 **GcpProjectId** | Pointer to **string** |  | [optional] 
 **GcpRoleBindings** | Pointer to **map[string][]string** |  | [optional] 
+**GcpRoleNames** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | GCPServiceAccountEmail overrides the deprecated field from the target | [optional] 
 **GcpServiceAccountKey** | Pointer to **string** |  | [optional] 
 **GcpServiceAccountKeyBase64** | Pointer to **string** |  | [optional] 
@@ -187,9 +190,11 @@ Name | Type | Description | Notes
 **MongodbIsAtlas** | Pointer to **bool** |  | [optional] 
 **MongodbPassword** | Pointer to **string** |  | [optional] 
 **MongodbRoles** | Pointer to **string** | common fields | [optional] 
+**MongodbScopes** | Pointer to **string** |  | [optional] 
 **MongodbUriConnection** | Pointer to **string** | mongodb fields | [optional] 
 **MongodbUriOptions** | Pointer to **string** |  | [optional] 
 **MongodbUsername** | Pointer to **string** |  | [optional] 
+**MssqlAllowedDbNames** | Pointer to **string** | Comma-separated list of allowed DB names for runtime selection when fetching the secret value. Empty string &#x3D;&gt; use target DB name only (no override allowed) \&quot;*\&quot; &#x3D;&gt; any DB name is allowed One or more names &#x3D;&gt; user must select one of the provided names | [optional] 
 **MssqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
@@ -2533,6 +2538,56 @@ SetFixedUserOnly sets FixedUserOnly field to given value.
 
 HasFixedUserOnly returns a boolean if a field has been set.
 
+### GetGcpAccessType
+
+`func (o *DSProducerDetails) GetGcpAccessType() string`
+
+GetGcpAccessType returns the GcpAccessType field if non-nil, zero value otherwise.
+
+### GetGcpAccessTypeOk
+
+`func (o *DSProducerDetails) GetGcpAccessTypeOk() (*string, bool)`
+
+GetGcpAccessTypeOk returns a tuple with the GcpAccessType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpAccessType
+
+`func (o *DSProducerDetails) SetGcpAccessType(v string)`
+
+SetGcpAccessType sets GcpAccessType field to given value.
+
+### HasGcpAccessType
+
+`func (o *DSProducerDetails) HasGcpAccessType() bool`
+
+HasGcpAccessType returns a boolean if a field has been set.
+
+### GetGcpFixedUserClaimKeyname
+
+`func (o *DSProducerDetails) GetGcpFixedUserClaimKeyname() string`
+
+GetGcpFixedUserClaimKeyname returns the GcpFixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetGcpFixedUserClaimKeynameOk
+
+`func (o *DSProducerDetails) GetGcpFixedUserClaimKeynameOk() (*string, bool)`
+
+GetGcpFixedUserClaimKeynameOk returns a tuple with the GcpFixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpFixedUserClaimKeyname
+
+`func (o *DSProducerDetails) SetGcpFixedUserClaimKeyname(v string)`
+
+SetGcpFixedUserClaimKeyname sets GcpFixedUserClaimKeyname field to given value.
+
+### HasGcpFixedUserClaimKeyname
+
+`func (o *DSProducerDetails) HasGcpFixedUserClaimKeyname() bool`
+
+HasGcpFixedUserClaimKeyname returns a boolean if a field has been set.
+
 ### GetGcpKeyAlgo
 
 `func (o *DSProducerDetails) GetGcpKeyAlgo() string`
@@ -2607,6 +2662,31 @@ SetGcpRoleBindings sets GcpRoleBindings field to given value.
 `func (o *DSProducerDetails) HasGcpRoleBindings() bool`
 
 HasGcpRoleBindings returns a boolean if a field has been set.
+
+### GetGcpRoleNames
+
+`func (o *DSProducerDetails) GetGcpRoleNames() string`
+
+GetGcpRoleNames returns the GcpRoleNames field if non-nil, zero value otherwise.
+
+### GetGcpRoleNamesOk
+
+`func (o *DSProducerDetails) GetGcpRoleNamesOk() (*string, bool)`
+
+GetGcpRoleNamesOk returns a tuple with the GcpRoleNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpRoleNames
+
+`func (o *DSProducerDetails) SetGcpRoleNames(v string)`
+
+SetGcpRoleNames sets GcpRoleNames field to given value.
+
+### HasGcpRoleNames
+
+`func (o *DSProducerDetails) HasGcpRoleNames() bool`
+
+HasGcpRoleNames returns a boolean if a field has been set.
 
 ### GetGcpServiceAccountEmail
 
@@ -4858,6 +4938,31 @@ SetMongodbRoles sets MongodbRoles field to given value.
 
 HasMongodbRoles returns a boolean if a field has been set.
 
+### GetMongodbScopes
+
+`func (o *DSProducerDetails) GetMongodbScopes() string`
+
+GetMongodbScopes returns the MongodbScopes field if non-nil, zero value otherwise.
+
+### GetMongodbScopesOk
+
+`func (o *DSProducerDetails) GetMongodbScopesOk() (*string, bool)`
+
+GetMongodbScopesOk returns a tuple with the MongodbScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMongodbScopes
+
+`func (o *DSProducerDetails) SetMongodbScopes(v string)`
+
+SetMongodbScopes sets MongodbScopes field to given value.
+
+### HasMongodbScopes
+
+`func (o *DSProducerDetails) HasMongodbScopes() bool`
+
+HasMongodbScopes returns a boolean if a field has been set.
+
 ### GetMongodbUriConnection
 
 `func (o *DSProducerDetails) GetMongodbUriConnection() string`
@@ -4932,6 +5037,31 @@ SetMongodbUsername sets MongodbUsername field to given value.
 `func (o *DSProducerDetails) HasMongodbUsername() bool`
 
 HasMongodbUsername returns a boolean if a field has been set.
+
+### GetMssqlAllowedDbNames
+
+`func (o *DSProducerDetails) GetMssqlAllowedDbNames() string`
+
+GetMssqlAllowedDbNames returns the MssqlAllowedDbNames field if non-nil, zero value otherwise.
+
+### GetMssqlAllowedDbNamesOk
+
+`func (o *DSProducerDetails) GetMssqlAllowedDbNamesOk() (*string, bool)`
+
+GetMssqlAllowedDbNamesOk returns a tuple with the MssqlAllowedDbNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMssqlAllowedDbNames
+
+`func (o *DSProducerDetails) SetMssqlAllowedDbNames(v string)`
+
+SetMssqlAllowedDbNames sets MssqlAllowedDbNames field to given value.
+
+### HasMssqlAllowedDbNames
+
+`func (o *DSProducerDetails) HasMssqlAllowedDbNames() bool`
+
+HasMssqlAllowedDbNames returns a boolean if a field has been set.
 
 ### GetMssqlCreationStatements
 

@@ -24,6 +24,7 @@ var _ MappedNullable = &UpdateAuthMethodOIDC{}
 type UpdateAuthMethodOIDC struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri []string `json:"allowed-redirect-uri,omitempty"`
 	// Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider's Application
@@ -135,6 +136,38 @@ func (o *UpdateAuthMethodOIDC) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *UpdateAuthMethodOIDC) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAllowedClientType returns the AllowedClientType field value if set, zero value otherwise.
+func (o *UpdateAuthMethodOIDC) GetAllowedClientType() []string {
+	if o == nil || IsNil(o.AllowedClientType) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedClientType
+}
+
+// GetAllowedClientTypeOk returns a tuple with the AllowedClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAuthMethodOIDC) GetAllowedClientTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedClientType) {
+		return nil, false
+	}
+	return o.AllowedClientType, true
+}
+
+// HasAllowedClientType returns a boolean if a field has been set.
+func (o *UpdateAuthMethodOIDC) HasAllowedClientType() bool {
+	if o != nil && !IsNil(o.AllowedClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientType gets a reference to the given []string and assigns it to the AllowedClientType field.
+func (o *UpdateAuthMethodOIDC) SetAllowedClientType(v []string) {
+	o.AllowedClientType = v
 }
 
 // GetAllowedRedirectUri returns the AllowedRedirectUri field value if set, zero value otherwise.
@@ -869,6 +902,9 @@ func (o UpdateAuthMethodOIDC) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AccessExpires) {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if !IsNil(o.AllowedClientType) {
+		toSerialize["allowed-client-type"] = o.AllowedClientType
 	}
 	if !IsNil(o.AllowedRedirectUri) {
 		toSerialize["allowed-redirect-uri"] = o.AllowedRedirectUri

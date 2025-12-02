@@ -36,12 +36,16 @@ type RotatedSecretCreateSsh struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Private key file contents encoded using base64
+	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
+	// The path to the public key that will be rotated on the server
+	PublicKeyRemotePath *string `json:"public-key-remote-path,omitempty"`
 	// Rotate the value of the secret after SRA session ends [true/false]
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// rotated-username password (relevant only for rotator-type=password)
@@ -354,6 +358,38 @@ func (o *RotatedSecretCreateSsh) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetKeyDataBase64 returns the KeyDataBase64 field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetKeyDataBase64() string {
+	if o == nil || IsNil(o.KeyDataBase64) {
+		var ret string
+		return ret
+	}
+	return *o.KeyDataBase64
+}
+
+// GetKeyDataBase64Ok returns a tuple with the KeyDataBase64 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetKeyDataBase64Ok() (*string, bool) {
+	if o == nil || IsNil(o.KeyDataBase64) {
+		return nil, false
+	}
+	return o.KeyDataBase64, true
+}
+
+// HasKeyDataBase64 returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasKeyDataBase64() bool {
+	if o != nil && !IsNil(o.KeyDataBase64) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyDataBase64 gets a reference to the given string and assigns it to the KeyDataBase64 field.
+func (o *RotatedSecretCreateSsh) SetKeyDataBase64(v string) {
+	o.KeyDataBase64 = &v
+}
+
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
 func (o *RotatedSecretCreateSsh) GetMaxVersions() string {
 	if o == nil || IsNil(o.MaxVersions) {
@@ -440,6 +476,38 @@ func (o *RotatedSecretCreateSsh) HasPasswordLength() bool {
 // SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
 func (o *RotatedSecretCreateSsh) SetPasswordLength(v string) {
 	o.PasswordLength = &v
+}
+
+// GetPublicKeyRemotePath returns the PublicKeyRemotePath field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetPublicKeyRemotePath() string {
+	if o == nil || IsNil(o.PublicKeyRemotePath) {
+		var ret string
+		return ret
+	}
+	return *o.PublicKeyRemotePath
+}
+
+// GetPublicKeyRemotePathOk returns a tuple with the PublicKeyRemotePath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetPublicKeyRemotePathOk() (*string, bool) {
+	if o == nil || IsNil(o.PublicKeyRemotePath) {
+		return nil, false
+	}
+	return o.PublicKeyRemotePath, true
+}
+
+// HasPublicKeyRemotePath returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasPublicKeyRemotePath() bool {
+	if o != nil && !IsNil(o.PublicKeyRemotePath) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKeyRemotePath gets a reference to the given string and assigns it to the PublicKeyRemotePath field.
+func (o *RotatedSecretCreateSsh) SetPublicKeyRemotePath(v string) {
+	o.PublicKeyRemotePath = &v
 }
 
 // GetRotateAfterDisconnect returns the RotateAfterDisconnect field value if set, zero value otherwise.
@@ -1161,12 +1229,18 @@ func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.KeyDataBase64) {
+		toSerialize["key-data-base64"] = o.KeyDataBase64
+	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
+	}
+	if !IsNil(o.PublicKeyRemotePath) {
+		toSerialize["public-key-remote-path"] = o.PublicKeyRemotePath
 	}
 	if !IsNil(o.RotateAfterDisconnect) {
 		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect

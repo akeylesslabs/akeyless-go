@@ -9257,7 +9257,7 @@ import (
 )
 
 func main() {
-	dynamicSecretCreateGcp := *openapiclient.NewDynamicSecretCreateGcp("Name_example", "ServiceAccountType_example") // DynamicSecretCreateGcp | 
+	dynamicSecretCreateGcp := *openapiclient.NewDynamicSecretCreateGcp("Name_example") // DynamicSecretCreateGcp | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -11493,7 +11493,7 @@ import (
 )
 
 func main() {
-	dynamicSecretUpdateGcp := *openapiclient.NewDynamicSecretUpdateGcp("Name_example", "ServiceAccountType_example") // DynamicSecretUpdateGcp | 
+	dynamicSecretUpdateGcp := *openapiclient.NewDynamicSecretUpdateGcp("Name_example") // DynamicSecretUpdateGcp | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -15269,7 +15269,7 @@ import (
 )
 
 func main() {
-	gatewayCreateProducerGcp := *openapiclient.NewGatewayCreateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayCreateProducerGcp | 
+	gatewayCreateProducerGcp := *openapiclient.NewGatewayCreateProducerGcp("Name_example") // GatewayCreateProducerGcp | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -19747,7 +19747,7 @@ import (
 )
 
 func main() {
-	gatewayUpdateProducerGcp := *openapiclient.NewGatewayUpdateProducerGcp("Name_example", "ServiceAccountType_example") // GatewayUpdateProducerGcp | 
+	gatewayUpdateProducerGcp := *openapiclient.NewGatewayUpdateProducerGcp("Name_example") // GatewayUpdateProducerGcp | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

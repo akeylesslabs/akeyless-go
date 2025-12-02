@@ -25,6 +25,7 @@ type AccountGeneralSettings struct {
 	// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
 	AiInsights *AiInsightsSetting `json:"ai_insights,omitempty"`
+	AllowedClientTypes *AllowedClientType `json:"allowed_client_types,omitempty"`
 	AllowedClientsIps *AllowedIpSettings `json:"allowed_clients_ips,omitempty"`
 	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
@@ -159,6 +160,38 @@ func (o *AccountGeneralSettings) HasAiInsights() bool {
 // SetAiInsights gets a reference to the given AiInsightsSetting and assigns it to the AiInsights field.
 func (o *AccountGeneralSettings) SetAiInsights(v AiInsightsSetting) {
 	o.AiInsights = &v
+}
+
+// GetAllowedClientTypes returns the AllowedClientTypes field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAllowedClientTypes() AllowedClientType {
+	if o == nil || IsNil(o.AllowedClientTypes) {
+		var ret AllowedClientType
+		return ret
+	}
+	return *o.AllowedClientTypes
+}
+
+// GetAllowedClientTypesOk returns a tuple with the AllowedClientTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAllowedClientTypesOk() (*AllowedClientType, bool) {
+	if o == nil || IsNil(o.AllowedClientTypes) {
+		return nil, false
+	}
+	return o.AllowedClientTypes, true
+}
+
+// HasAllowedClientTypes returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAllowedClientTypes() bool {
+	if o != nil && !IsNil(o.AllowedClientTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientTypes gets a reference to the given AllowedClientType and assigns it to the AllowedClientTypes field.
+func (o *AccountGeneralSettings) SetAllowedClientTypes(v AllowedClientType) {
+	o.AllowedClientTypes = &v
 }
 
 // GetAllowedClientsIps returns the AllowedClientsIps field value if set, zero value otherwise.
@@ -787,6 +820,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiInsights) {
 		toSerialize["ai_insights"] = o.AiInsights
+	}
+	if !IsNil(o.AllowedClientTypes) {
+		toSerialize["allowed_client_types"] = o.AllowedClientTypes
 	}
 	if !IsNil(o.AllowedClientsIps) {
 		toSerialize["allowed_clients_ips"] = o.AllowedClientsIps

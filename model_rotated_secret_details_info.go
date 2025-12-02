@@ -26,11 +26,13 @@ type RotatedSecretDetailsInfo struct {
 	GraceRotationHour *int32 `json:"grace_rotation_hour,omitempty"`
 	GraceRotationInterval *int32 `json:"grace_rotation_interval,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
+	IisAppsDetails []WindowsService `json:"iis_apps_details,omitempty"`
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
 	ManagedByAkeyless *bool `json:"managed_by_akeyless,omitempty"`
 	MaxVersions *int64 `json:"max_versions,omitempty"`
 	NextAutoRotateType *string `json:"next_auto_rotate_type,omitempty"`
 	NumberOfVersionsToSave *int32 `json:"number_of_versions_to_save,omitempty"`
+	PublicKeyRemotePath *string `json:"public_key_remote_path,omitempty"`
 	RotationHour *int32 `json:"rotation_hour,omitempty"`
 	RotationIntervalMin *bool `json:"rotation_interval_min,omitempty"`
 	RotationStatement *string `json:"rotation_statement,omitempty"`
@@ -252,6 +254,38 @@ func (o *RotatedSecretDetailsInfo) SetGwClusterId(v int64) {
 	o.GwClusterId = &v
 }
 
+// GetIisAppsDetails returns the IisAppsDetails field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetIisAppsDetails() []WindowsService {
+	if o == nil || IsNil(o.IisAppsDetails) {
+		var ret []WindowsService
+		return ret
+	}
+	return o.IisAppsDetails
+}
+
+// GetIisAppsDetailsOk returns a tuple with the IisAppsDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetIisAppsDetailsOk() ([]WindowsService, bool) {
+	if o == nil || IsNil(o.IisAppsDetails) {
+		return nil, false
+	}
+	return o.IisAppsDetails, true
+}
+
+// HasIisAppsDetails returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasIisAppsDetails() bool {
+	if o != nil && !IsNil(o.IisAppsDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisAppsDetails gets a reference to the given []WindowsService and assigns it to the IisAppsDetails field.
+func (o *RotatedSecretDetailsInfo) SetIisAppsDetails(v []WindowsService) {
+	o.IisAppsDetails = v
+}
+
 // GetLastRotationError returns the LastRotationError field value if set, zero value otherwise.
 func (o *RotatedSecretDetailsInfo) GetLastRotationError() string {
 	if o == nil || IsNil(o.LastRotationError) {
@@ -410,6 +444,38 @@ func (o *RotatedSecretDetailsInfo) HasNumberOfVersionsToSave() bool {
 // SetNumberOfVersionsToSave gets a reference to the given int32 and assigns it to the NumberOfVersionsToSave field.
 func (o *RotatedSecretDetailsInfo) SetNumberOfVersionsToSave(v int32) {
 	o.NumberOfVersionsToSave = &v
+}
+
+// GetPublicKeyRemotePath returns the PublicKeyRemotePath field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetPublicKeyRemotePath() string {
+	if o == nil || IsNil(o.PublicKeyRemotePath) {
+		var ret string
+		return ret
+	}
+	return *o.PublicKeyRemotePath
+}
+
+// GetPublicKeyRemotePathOk returns a tuple with the PublicKeyRemotePath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetPublicKeyRemotePathOk() (*string, bool) {
+	if o == nil || IsNil(o.PublicKeyRemotePath) {
+		return nil, false
+	}
+	return o.PublicKeyRemotePath, true
+}
+
+// HasPublicKeyRemotePath returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasPublicKeyRemotePath() bool {
+	if o != nil && !IsNil(o.PublicKeyRemotePath) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKeyRemotePath gets a reference to the given string and assigns it to the PublicKeyRemotePath field.
+func (o *RotatedSecretDetailsInfo) SetPublicKeyRemotePath(v string) {
+	o.PublicKeyRemotePath = &v
 }
 
 // GetRotationHour returns the RotationHour field value if set, zero value otherwise.
@@ -728,6 +794,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GwClusterId) {
 		toSerialize["gw_cluster_id"] = o.GwClusterId
 	}
+	if !IsNil(o.IisAppsDetails) {
+		toSerialize["iis_apps_details"] = o.IisAppsDetails
+	}
 	if !IsNil(o.LastRotationError) {
 		toSerialize["last_rotation_error"] = o.LastRotationError
 	}
@@ -742,6 +811,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NumberOfVersionsToSave) {
 		toSerialize["number_of_versions_to_save"] = o.NumberOfVersionsToSave
+	}
+	if !IsNil(o.PublicKeyRemotePath) {
+		toSerialize["public_key_remote_path"] = o.PublicKeyRemotePath
 	}
 	if !IsNil(o.RotationHour) {
 		toSerialize["rotation_hour"] = o.RotationHour

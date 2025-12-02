@@ -26,6 +26,8 @@ type RotatedSecretDeleteSync struct {
 	Json *bool `json:"json,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
+	// Remote Secret Name to disambiguate when multiple syncs exist under the same USC
+	RemoteSecretName *string `json:"remote-secret-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -113,6 +115,38 @@ func (o *RotatedSecretDeleteSync) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RotatedSecretDeleteSync) SetName(v string) {
 	o.Name = v
+}
+
+// GetRemoteSecretName returns the RemoteSecretName field value if set, zero value otherwise.
+func (o *RotatedSecretDeleteSync) GetRemoteSecretName() string {
+	if o == nil || IsNil(o.RemoteSecretName) {
+		var ret string
+		return ret
+	}
+	return *o.RemoteSecretName
+}
+
+// GetRemoteSecretNameOk returns a tuple with the RemoteSecretName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDeleteSync) GetRemoteSecretNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RemoteSecretName) {
+		return nil, false
+	}
+	return o.RemoteSecretName, true
+}
+
+// HasRemoteSecretName returns a boolean if a field has been set.
+func (o *RotatedSecretDeleteSync) HasRemoteSecretName() bool {
+	if o != nil && !IsNil(o.RemoteSecretName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteSecretName gets a reference to the given string and assigns it to the RemoteSecretName field.
+func (o *RotatedSecretDeleteSync) SetRemoteSecretName(v string) {
+	o.RemoteSecretName = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -217,6 +251,9 @@ func (o RotatedSecretDeleteSync) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.RemoteSecretName) {
+		toSerialize["remote-secret-name"] = o.RemoteSecretName
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
+**RemoteSecretName** | Pointer to **string** | Remote Secret Name to disambiguate when multiple syncs exist under the same USC | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Universal Secret Connector name | 
@@ -73,6 +74,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRemoteSecretName
+
+`func (o *RotatedSecretDeleteSync) GetRemoteSecretName() string`
+
+GetRemoteSecretName returns the RemoteSecretName field if non-nil, zero value otherwise.
+
+### GetRemoteSecretNameOk
+
+`func (o *RotatedSecretDeleteSync) GetRemoteSecretNameOk() (*string, bool)`
+
+GetRemoteSecretNameOk returns a tuple with the RemoteSecretName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRemoteSecretName
+
+`func (o *RotatedSecretDeleteSync) SetRemoteSecretName(v string)`
+
+SetRemoteSecretName sets RemoteSecretName field to given value.
+
+### HasRemoteSecretName
+
+`func (o *RotatedSecretDeleteSync) HasRemoteSecretName() bool`
+
+HasRemoteSecretName returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -27,6 +27,8 @@ type GatewayUpdateMigration struct {
 	AdAutoRotate *string `json:"ad-auto-rotate,omitempty"`
 	// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
 	AdComputerBaseDn *string `json:"ad-computer-base-dn,omitempty"`
+	// Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
+	AdDiscoverIisApp *string `json:"ad-discover-iis-app,omitempty"`
 	// Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
 	AdDiscoverServices *string `json:"ad-discover-services,omitempty"`
 	// Set migration discovery types (domain-users, computers, local-users). (Relevant only for Active Directory migration)
@@ -151,6 +153,8 @@ type _GatewayUpdateMigration GatewayUpdateMigration
 // will change when the set of required properties is changed
 func NewGatewayUpdateMigration(siTargetName string, siUsersPathTemplate string, targetLocation string) *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
+	var adDiscoverIisApp string = "false"
+	this.AdDiscoverIisApp = &adDiscoverIisApp
 	var adDiscoverServices string = "false"
 	this.AdDiscoverServices = &adDiscoverServices
 	var adSshPort string = "22"
@@ -182,6 +186,8 @@ func NewGatewayUpdateMigration(siTargetName string, siUsersPathTemplate string, 
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateMigrationWithDefaults() *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
+	var adDiscoverIisApp string = "false"
+	this.AdDiscoverIisApp = &adDiscoverIisApp
 	var adDiscoverServices string = "false"
 	this.AdDiscoverServices = &adDiscoverServices
 	var adSshPort string = "22"
@@ -299,6 +305,38 @@ func (o *GatewayUpdateMigration) HasAdComputerBaseDn() bool {
 // SetAdComputerBaseDn gets a reference to the given string and assigns it to the AdComputerBaseDn field.
 func (o *GatewayUpdateMigration) SetAdComputerBaseDn(v string) {
 	o.AdComputerBaseDn = &v
+}
+
+// GetAdDiscoverIisApp returns the AdDiscoverIisApp field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetAdDiscoverIisApp() string {
+	if o == nil || IsNil(o.AdDiscoverIisApp) {
+		var ret string
+		return ret
+	}
+	return *o.AdDiscoverIisApp
+}
+
+// GetAdDiscoverIisAppOk returns a tuple with the AdDiscoverIisApp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetAdDiscoverIisAppOk() (*string, bool) {
+	if o == nil || IsNil(o.AdDiscoverIisApp) {
+		return nil, false
+	}
+	return o.AdDiscoverIisApp, true
+}
+
+// HasAdDiscoverIisApp returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasAdDiscoverIisApp() bool {
+	if o != nil && !IsNil(o.AdDiscoverIisApp) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdDiscoverIisApp gets a reference to the given string and assigns it to the AdDiscoverIisApp field.
+func (o *GatewayUpdateMigration) SetAdDiscoverIisApp(v string) {
+	o.AdDiscoverIisApp = &v
 }
 
 // GetAdDiscoverServices returns the AdDiscoverServices field value if set, zero value otherwise.
@@ -2119,6 +2157,9 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdComputerBaseDn) {
 		toSerialize["ad-computer-base-dn"] = o.AdComputerBaseDn
+	}
+	if !IsNil(o.AdDiscoverIisApp) {
+		toSerialize["ad-discover-iis-app"] = o.AdDiscoverIisApp
 	}
 	if !IsNil(o.AdDiscoverServices) {
 		toSerialize["ad-discover-services"] = o.AdDiscoverServices

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** |  | [optional] 
 **AccessIdAlias** | Pointer to **string** | for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself | [optional] 
+**AllowedClientType** | Pointer to **[]string** |  | [optional] 
 **ApiKeyAccessRules** | Pointer to [**APIKeyAccessRules**](APIKeyAccessRules.md) |  | [optional] 
 **AuditLogsClaims** | Pointer to **[]string** |  | [optional] 
 **AwsIamAccessRules** | Pointer to [**AWSIAMAccessRules**](AWSIAMAccessRules.md) |  | [optional] 
@@ -98,6 +99,31 @@ SetAccessIdAlias sets AccessIdAlias field to given value.
 `func (o *AuthMethodAccessInfo) HasAccessIdAlias() bool`
 
 HasAccessIdAlias returns a boolean if a field has been set.
+
+### GetAllowedClientType
+
+`func (o *AuthMethodAccessInfo) GetAllowedClientType() []string`
+
+GetAllowedClientType returns the AllowedClientType field if non-nil, zero value otherwise.
+
+### GetAllowedClientTypeOk
+
+`func (o *AuthMethodAccessInfo) GetAllowedClientTypeOk() (*[]string, bool)`
+
+GetAllowedClientTypeOk returns a tuple with the AllowedClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedClientType
+
+`func (o *AuthMethodAccessInfo) SetAllowedClientType(v []string)`
+
+SetAllowedClientType sets AllowedClientType field to given value.
+
+### HasAllowedClientType
+
+`func (o *AuthMethodAccessInfo) HasAllowedClientType() bool`
+
+HasAllowedClientType returns a boolean if a field has been set.
 
 ### GetApiKeyAccessRules
 

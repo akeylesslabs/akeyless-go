@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **AutoRotateIntervalInDays** | Pointer to **int32** |  | [optional] 
 **AutoRotateRotationHour** | Pointer to **int32** |  | [optional] 
 **ComputerBaseDn** | Pointer to **string** |  | [optional] 
+**DiscoverIisApps** | Pointer to **bool** |  | [optional] 
 **DiscoverLocalUsers** | Pointer to **bool** | Deprecated | [optional] 
 **DiscoverServices** | Pointer to **bool** |  | [optional] 
 **DiscoveryTypes** | Pointer to **[]string** |  | [optional] 
@@ -170,6 +171,31 @@ SetComputerBaseDn sets ComputerBaseDn field to given value.
 `func (o *ActiveDirectoryPayload) HasComputerBaseDn() bool`
 
 HasComputerBaseDn returns a boolean if a field has been set.
+
+### GetDiscoverIisApps
+
+`func (o *ActiveDirectoryPayload) GetDiscoverIisApps() bool`
+
+GetDiscoverIisApps returns the DiscoverIisApps field if non-nil, zero value otherwise.
+
+### GetDiscoverIisAppsOk
+
+`func (o *ActiveDirectoryPayload) GetDiscoverIisAppsOk() (*bool, bool)`
+
+GetDiscoverIisAppsOk returns a tuple with the DiscoverIisApps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiscoverIisApps
+
+`func (o *ActiveDirectoryPayload) SetDiscoverIisApps(v bool)`
+
+SetDiscoverIisApps sets DiscoverIisApps field to given value.
+
+### HasDiscoverIisApps
+
+`func (o *ActiveDirectoryPayload) HasDiscoverIisApps() bool`
+
+HasDiscoverIisApps returns a boolean if a field has been set.
 
 ### GetDiscoverLocalUsers
 

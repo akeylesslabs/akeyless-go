@@ -21,7 +21,11 @@ var _ MappedNullable = &WindowsServiceAttributes{}
 // WindowsServiceAttributes struct for WindowsServiceAttributes
 type WindowsServiceAttributes struct {
 	ConnectionType *string `json:"connection_type,omitempty"`
+	// IISAppPool marks this entry as an IIS Application Pool rather than a Windows Service
+	IisAppPool *bool `json:"iis_app_pool,omitempty"`
 	Port *string `json:"port,omitempty"`
+	// SkipRestart allows skipping recycle/start of the IIS App Pool after credential update
+	SkipRestart *bool `json:"skip_restart,omitempty"`
 	UseTls *bool `json:"use_tls,omitempty"`
 }
 
@@ -74,6 +78,38 @@ func (o *WindowsServiceAttributes) SetConnectionType(v string) {
 	o.ConnectionType = &v
 }
 
+// GetIisAppPool returns the IisAppPool field value if set, zero value otherwise.
+func (o *WindowsServiceAttributes) GetIisAppPool() bool {
+	if o == nil || IsNil(o.IisAppPool) {
+		var ret bool
+		return ret
+	}
+	return *o.IisAppPool
+}
+
+// GetIisAppPoolOk returns a tuple with the IisAppPool field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WindowsServiceAttributes) GetIisAppPoolOk() (*bool, bool) {
+	if o == nil || IsNil(o.IisAppPool) {
+		return nil, false
+	}
+	return o.IisAppPool, true
+}
+
+// HasIisAppPool returns a boolean if a field has been set.
+func (o *WindowsServiceAttributes) HasIisAppPool() bool {
+	if o != nil && !IsNil(o.IisAppPool) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisAppPool gets a reference to the given bool and assigns it to the IisAppPool field.
+func (o *WindowsServiceAttributes) SetIisAppPool(v bool) {
+	o.IisAppPool = &v
+}
+
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *WindowsServiceAttributes) GetPort() string {
 	if o == nil || IsNil(o.Port) {
@@ -104,6 +140,38 @@ func (o *WindowsServiceAttributes) HasPort() bool {
 // SetPort gets a reference to the given string and assigns it to the Port field.
 func (o *WindowsServiceAttributes) SetPort(v string) {
 	o.Port = &v
+}
+
+// GetSkipRestart returns the SkipRestart field value if set, zero value otherwise.
+func (o *WindowsServiceAttributes) GetSkipRestart() bool {
+	if o == nil || IsNil(o.SkipRestart) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipRestart
+}
+
+// GetSkipRestartOk returns a tuple with the SkipRestart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WindowsServiceAttributes) GetSkipRestartOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipRestart) {
+		return nil, false
+	}
+	return o.SkipRestart, true
+}
+
+// HasSkipRestart returns a boolean if a field has been set.
+func (o *WindowsServiceAttributes) HasSkipRestart() bool {
+	if o != nil && !IsNil(o.SkipRestart) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipRestart gets a reference to the given bool and assigns it to the SkipRestart field.
+func (o *WindowsServiceAttributes) SetSkipRestart(v bool) {
+	o.SkipRestart = &v
 }
 
 // GetUseTls returns the UseTls field value if set, zero value otherwise.
@@ -151,8 +219,14 @@ func (o WindowsServiceAttributes) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConnectionType) {
 		toSerialize["connection_type"] = o.ConnectionType
 	}
+	if !IsNil(o.IisAppPool) {
+		toSerialize["iis_app_pool"] = o.IisAppPool
+	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.SkipRestart) {
+		toSerialize["skip_restart"] = o.SkipRestart
 	}
 	if !IsNil(o.UseTls) {
 		toSerialize["use_tls"] = o.UseTls

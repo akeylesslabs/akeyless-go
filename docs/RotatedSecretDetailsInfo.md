@@ -10,11 +10,13 @@ Name | Type | Description | Notes
 **GraceRotationHour** | Pointer to **int32** |  | [optional] 
 **GraceRotationInterval** | Pointer to **int32** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
+**IisAppsDetails** | Pointer to [**[]WindowsService**](WindowsService.md) |  | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
 **ManagedByAkeyless** | Pointer to **bool** |  | [optional] 
 **MaxVersions** | Pointer to **int64** |  | [optional] 
 **NextAutoRotateType** | Pointer to **string** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
+**PublicKeyRemotePath** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationIntervalMin** | Pointer to **bool** |  | [optional] 
 **RotationStatement** | Pointer to **string** |  | [optional] 
@@ -194,6 +196,31 @@ SetGwClusterId sets GwClusterId field to given value.
 
 HasGwClusterId returns a boolean if a field has been set.
 
+### GetIisAppsDetails
+
+`func (o *RotatedSecretDetailsInfo) GetIisAppsDetails() []WindowsService`
+
+GetIisAppsDetails returns the IisAppsDetails field if non-nil, zero value otherwise.
+
+### GetIisAppsDetailsOk
+
+`func (o *RotatedSecretDetailsInfo) GetIisAppsDetailsOk() (*[]WindowsService, bool)`
+
+GetIisAppsDetailsOk returns a tuple with the IisAppsDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisAppsDetails
+
+`func (o *RotatedSecretDetailsInfo) SetIisAppsDetails(v []WindowsService)`
+
+SetIisAppsDetails sets IisAppsDetails field to given value.
+
+### HasIisAppsDetails
+
+`func (o *RotatedSecretDetailsInfo) HasIisAppsDetails() bool`
+
+HasIisAppsDetails returns a boolean if a field has been set.
+
 ### GetLastRotationError
 
 `func (o *RotatedSecretDetailsInfo) GetLastRotationError() string`
@@ -318,6 +345,31 @@ SetNumberOfVersionsToSave sets NumberOfVersionsToSave field to given value.
 `func (o *RotatedSecretDetailsInfo) HasNumberOfVersionsToSave() bool`
 
 HasNumberOfVersionsToSave returns a boolean if a field has been set.
+
+### GetPublicKeyRemotePath
+
+`func (o *RotatedSecretDetailsInfo) GetPublicKeyRemotePath() string`
+
+GetPublicKeyRemotePath returns the PublicKeyRemotePath field if non-nil, zero value otherwise.
+
+### GetPublicKeyRemotePathOk
+
+`func (o *RotatedSecretDetailsInfo) GetPublicKeyRemotePathOk() (*string, bool)`
+
+GetPublicKeyRemotePathOk returns a tuple with the PublicKeyRemotePath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKeyRemotePath
+
+`func (o *RotatedSecretDetailsInfo) SetPublicKeyRemotePath(v string)`
+
+SetPublicKeyRemotePath sets PublicKeyRemotePath field to given value.
+
+### HasPublicKeyRemotePath
+
+`func (o *RotatedSecretDetailsInfo) HasPublicKeyRemotePath() bool`
+
+HasPublicKeyRemotePath returns a boolean if a field has been set.
 
 ### GetRotationHour
 

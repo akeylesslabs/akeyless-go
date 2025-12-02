@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**MssqlAllowedDbNames** | Pointer to **string** | CSV of allowed DB names for runtime selection when getting the secret value. Empty &#x3D;&gt; use target DB only; \&quot;*\&quot; &#x3D;&gt; any DB allowed; One or more names &#x3D;&gt; user must choose from this list | [optional] 
 **MssqlCreateStatements** | Pointer to **string** | MSSQL Creation statements | [optional] 
 **MssqlDbname** | Pointer to **string** | MSSQL Name | [optional] 
 **MssqlHost** | Pointer to **string** | MSSQL Host | [optional] [default to "127.0.0.1"]
@@ -151,6 +152,31 @@ SetJson sets Json field to given value.
 `func (o *GatewayUpdateProducerMSSQL) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetMssqlAllowedDbNames
+
+`func (o *GatewayUpdateProducerMSSQL) GetMssqlAllowedDbNames() string`
+
+GetMssqlAllowedDbNames returns the MssqlAllowedDbNames field if non-nil, zero value otherwise.
+
+### GetMssqlAllowedDbNamesOk
+
+`func (o *GatewayUpdateProducerMSSQL) GetMssqlAllowedDbNamesOk() (*string, bool)`
+
+GetMssqlAllowedDbNamesOk returns a tuple with the MssqlAllowedDbNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMssqlAllowedDbNames
+
+`func (o *GatewayUpdateProducerMSSQL) SetMssqlAllowedDbNames(v string)`
+
+SetMssqlAllowedDbNames sets MssqlAllowedDbNames field to given value.
+
+### HasMssqlAllowedDbNames
+
+`func (o *GatewayUpdateProducerMSSQL) HasMssqlAllowedDbNames() bool`
+
+HasMssqlAllowedDbNames returns a boolean if a field has been set.
 
 ### GetMssqlCreateStatements
 

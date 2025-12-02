@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessExpires** | Pointer to **int64** | Access expiration date in Unix timestamp (select 0 for access without expiry date) | [optional] [default to 0]
+**AllowedClientType** | Pointer to **[]string** |  | [optional] 
 **Audience** | Pointer to **string** | The audience in the JWT | [optional] 
 **AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundClientIds** | Pointer to **[]string** | The clients ids that the access is restricted to | [optional] 
@@ -73,6 +74,31 @@ SetAccessExpires sets AccessExpires field to given value.
 `func (o *AuthMethodUpdateOauth2) HasAccessExpires() bool`
 
 HasAccessExpires returns a boolean if a field has been set.
+
+### GetAllowedClientType
+
+`func (o *AuthMethodUpdateOauth2) GetAllowedClientType() []string`
+
+GetAllowedClientType returns the AllowedClientType field if non-nil, zero value otherwise.
+
+### GetAllowedClientTypeOk
+
+`func (o *AuthMethodUpdateOauth2) GetAllowedClientTypeOk() (*[]string, bool)`
+
+GetAllowedClientTypeOk returns a tuple with the AllowedClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedClientType
+
+`func (o *AuthMethodUpdateOauth2) SetAllowedClientType(v []string)`
+
+SetAllowedClientType sets AllowedClientType field to given value.
+
+### HasAllowedClientType
+
+`func (o *AuthMethodUpdateOauth2) HasAllowedClientType() bool`
+
+HasAllowedClientType returns a boolean if a field has been set.
 
 ### GetAudience
 

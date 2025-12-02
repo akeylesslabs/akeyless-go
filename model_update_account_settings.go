@@ -22,6 +22,7 @@ var _ MappedNullable = &UpdateAccountSettings{}
 type UpdateAccountSettings struct {
 	// Address
 	Address *string `json:"address,omitempty"`
+	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed.
 	AllowedEmailDomains []string `json:"allowed-email-domains,omitempty"`
 	// A default list of comma-separated CIDR block that are allowed to authenticate.
@@ -76,6 +77,7 @@ type UpdateAccountSettings struct {
 	JwtTtlMax *int64 `json:"jwt-ttl-max,omitempty"`
 	// Minimum ttl
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
+	LockAllowedClientType *string `json:"lock-allowed-client-type,omitempty"`
 	// Lock bound-ips setting globally in the account.
 	LockBoundIps *string `json:"lock-bound-ips,omitempty"`
 	// Lock the account's default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false]
@@ -173,6 +175,38 @@ func (o *UpdateAccountSettings) HasAddress() bool {
 // SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *UpdateAccountSettings) SetAddress(v string) {
 	o.Address = &v
+}
+
+// GetAllowedClientType returns the AllowedClientType field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetAllowedClientType() []string {
+	if o == nil || IsNil(o.AllowedClientType) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedClientType
+}
+
+// GetAllowedClientTypeOk returns a tuple with the AllowedClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetAllowedClientTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedClientType) {
+		return nil, false
+	}
+	return o.AllowedClientType, true
+}
+
+// HasAllowedClientType returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasAllowedClientType() bool {
+	if o != nil && !IsNil(o.AllowedClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientType gets a reference to the given []string and assigns it to the AllowedClientType field.
+func (o *UpdateAccountSettings) SetAllowedClientType(v []string) {
+	o.AllowedClientType = v
 }
 
 // GetAllowedEmailDomains returns the AllowedEmailDomains field value if set, zero value otherwise.
@@ -1039,6 +1073,38 @@ func (o *UpdateAccountSettings) SetJwtTtlMin(v int64) {
 	o.JwtTtlMin = &v
 }
 
+// GetLockAllowedClientType returns the LockAllowedClientType field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetLockAllowedClientType() string {
+	if o == nil || IsNil(o.LockAllowedClientType) {
+		var ret string
+		return ret
+	}
+	return *o.LockAllowedClientType
+}
+
+// GetLockAllowedClientTypeOk returns a tuple with the LockAllowedClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetLockAllowedClientTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.LockAllowedClientType) {
+		return nil, false
+	}
+	return o.LockAllowedClientType, true
+}
+
+// HasLockAllowedClientType returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasLockAllowedClientType() bool {
+	if o != nil && !IsNil(o.LockAllowedClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockAllowedClientType gets a reference to the given string and assigns it to the LockAllowedClientType field.
+func (o *UpdateAccountSettings) SetLockAllowedClientType(v string) {
+	o.LockAllowedClientType = &v
+}
+
 // GetLockBoundIps returns the LockBoundIps field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetLockBoundIps() string {
 	if o == nil || IsNil(o.LockBoundIps) {
@@ -1692,6 +1758,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Address) {
 		toSerialize["address"] = o.Address
 	}
+	if !IsNil(o.AllowedClientType) {
+		toSerialize["allowed-client-type"] = o.AllowedClientType
+	}
 	if !IsNil(o.AllowedEmailDomains) {
 		toSerialize["allowed-email-domains"] = o.AllowedEmailDomains
 	}
@@ -1772,6 +1841,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.JwtTtlMin) {
 		toSerialize["jwt-ttl-min"] = o.JwtTtlMin
+	}
+	if !IsNil(o.LockAllowedClientType) {
+		toSerialize["lock-allowed-client-type"] = o.LockAllowedClientType
 	}
 	if !IsNil(o.LockBoundIps) {
 		toSerialize["lock-bound-ips"] = o.LockBoundIps

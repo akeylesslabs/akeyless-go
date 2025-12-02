@@ -25,6 +25,7 @@ type ActiveDirectoryPayload struct {
 	AutoRotateIntervalInDays *int32 `json:"auto_rotate_interval_in_days,omitempty"`
 	AutoRotateRotationHour *int32 `json:"auto_rotate_rotation_hour,omitempty"`
 	ComputerBaseDn *string `json:"computer_base_dn,omitempty"`
+	DiscoverIisApps *bool `json:"discover_iis_apps,omitempty"`
 	// Deprecated
 	DiscoverLocalUsers *bool `json:"discover_local_users,omitempty"`
 	DiscoverServices *bool `json:"discover_services,omitempty"`
@@ -220,6 +221,38 @@ func (o *ActiveDirectoryPayload) HasComputerBaseDn() bool {
 // SetComputerBaseDn gets a reference to the given string and assigns it to the ComputerBaseDn field.
 func (o *ActiveDirectoryPayload) SetComputerBaseDn(v string) {
 	o.ComputerBaseDn = &v
+}
+
+// GetDiscoverIisApps returns the DiscoverIisApps field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetDiscoverIisApps() bool {
+	if o == nil || IsNil(o.DiscoverIisApps) {
+		var ret bool
+		return ret
+	}
+	return *o.DiscoverIisApps
+}
+
+// GetDiscoverIisAppsOk returns a tuple with the DiscoverIisApps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetDiscoverIisAppsOk() (*bool, bool) {
+	if o == nil || IsNil(o.DiscoverIisApps) {
+		return nil, false
+	}
+	return o.DiscoverIisApps, true
+}
+
+// HasDiscoverIisApps returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasDiscoverIisApps() bool {
+	if o != nil && !IsNil(o.DiscoverIisApps) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiscoverIisApps gets a reference to the given bool and assigns it to the DiscoverIisApps field.
+func (o *ActiveDirectoryPayload) SetDiscoverIisApps(v bool) {
+	o.DiscoverIisApps = &v
 }
 
 // GetDiscoverLocalUsers returns the DiscoverLocalUsers field value if set, zero value otherwise.
@@ -790,6 +823,9 @@ func (o ActiveDirectoryPayload) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ComputerBaseDn) {
 		toSerialize["computer_base_dn"] = o.ComputerBaseDn
+	}
+	if !IsNil(o.DiscoverIisApps) {
+		toSerialize["discover_iis_apps"] = o.DiscoverIisApps
 	}
 	if !IsNil(o.DiscoverLocalUsers) {
 		toSerialize["discover_local_users"] = o.DiscoverLocalUsers

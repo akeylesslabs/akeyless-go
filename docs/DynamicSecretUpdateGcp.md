@@ -4,22 +4,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessType** | Pointer to **string** |  | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when --access-type&#x3D;external) | [optional] [default to "ext_email"]
 **GcpCredType** | Pointer to **string** |  | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
-**GcpKeyAlgo** | Pointer to **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 | [optional] 
-**GcpProjectId** | Pointer to **string** | GCP Project ID override for dynamic secret operations (tmp service accounts) | [optional] 
-**GcpSaEmail** | Pointer to **string** | The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type&#x3D;fixed) | [optional] 
-**GcpTokenScopes** | Pointer to **string** | Access token scopes list, e.g. scope1,scope2 | [optional] 
+**GcpKeyAlgo** | Pointer to **string** | Service account key algorithm, e.g. KEY_ALG_RSA_1024 (Relevant only when --access-type&#x3D;sa and --gcp-cred-type&#x3D;key) | [optional] 
+**GcpProjectId** | Pointer to **string** | GCP Project ID override for dynamic secret operations | [optional] 
+**GcpSaEmail** | Pointer to **string** | The email of the fixed service account to generate keys or tokens for (Relevant only when --access-type&#x3D;sa and --service-account-type&#x3D;fixed) | [optional] 
+**GcpTokenScopes** | Pointer to **string** | Access token scopes list, e.g. scope1,scope2 (Relevant only when --access-type&#x3D;sa; required when --gcp-cred-type&#x3D;token) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**RoleBinding** | Pointer to **string** | Role binding definitions in json format | [optional] 
-**ServiceAccountType** | **string** | The type of the gcp dynamic secret. Options[fixed, dynamic] | [default to "fixed"]
+**RoleBinding** | Pointer to **string** | Role binding definitions in JSON format (Relevant only when --access-type&#x3D;sa and --service-account-type&#x3D;dynamic) | [optional] 
+**RoleNames** | Pointer to **string** | Comma-separated list of GCP roles to assign to the user (Relevant only when --access-type&#x3D;external) | [optional] 
+**SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
+**SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**ServiceAccountType** | Pointer to **string** | The type of the GCP service account. Options [fixed, dynamic] (Relevant only when --access-type&#x3D;sa) | [optional] [default to "fixed"]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -30,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewDynamicSecretUpdateGcp
 
-`func NewDynamicSecretUpdateGcp(name string, serviceAccountType string, ) *DynamicSecretUpdateGcp`
+`func NewDynamicSecretUpdateGcp(name string, ) *DynamicSecretUpdateGcp`
 
 NewDynamicSecretUpdateGcp instantiates a new DynamicSecretUpdateGcp object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +52,31 @@ will change when the set of required properties is changed
 NewDynamicSecretUpdateGcpWithDefaults instantiates a new DynamicSecretUpdateGcp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessType
+
+`func (o *DynamicSecretUpdateGcp) GetAccessType() string`
+
+GetAccessType returns the AccessType field if non-nil, zero value otherwise.
+
+### GetAccessTypeOk
+
+`func (o *DynamicSecretUpdateGcp) GetAccessTypeOk() (*string, bool)`
+
+GetAccessTypeOk returns a tuple with the AccessType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessType
+
+`func (o *DynamicSecretUpdateGcp) SetAccessType(v string)`
+
+SetAccessType sets AccessType field to given value.
+
+### HasAccessType
+
+`func (o *DynamicSecretUpdateGcp) HasAccessType() bool`
+
+HasAccessType returns a boolean if a field has been set.
 
 ### GetCustomUsernameTemplate
 
@@ -119,6 +152,31 @@ SetDescription sets Description field to given value.
 `func (o *DynamicSecretUpdateGcp) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateGcp) GetFixedUserClaimKeyname() string`
+
+GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field if non-nil, zero value otherwise.
+
+### GetFixedUserClaimKeynameOk
+
+`func (o *DynamicSecretUpdateGcp) GetFixedUserClaimKeynameOk() (*string, bool)`
+
+GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateGcp) SetFixedUserClaimKeyname(v string)`
+
+SetFixedUserClaimKeyname sets FixedUserClaimKeyname field to given value.
+
+### HasFixedUserClaimKeyname
+
+`func (o *DynamicSecretUpdateGcp) HasFixedUserClaimKeyname() bool`
+
+HasFixedUserClaimKeyname returns a boolean if a field has been set.
 
 ### GetGcpCredType
 
@@ -415,6 +473,156 @@ SetRoleBinding sets RoleBinding field to given value.
 
 HasRoleBinding returns a boolean if a field has been set.
 
+### GetRoleNames
+
+`func (o *DynamicSecretUpdateGcp) GetRoleNames() string`
+
+GetRoleNames returns the RoleNames field if non-nil, zero value otherwise.
+
+### GetRoleNamesOk
+
+`func (o *DynamicSecretUpdateGcp) GetRoleNamesOk() (*string, bool)`
+
+GetRoleNamesOk returns a tuple with the RoleNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleNames
+
+`func (o *DynamicSecretUpdateGcp) SetRoleNames(v string)`
+
+SetRoleNames sets RoleNames field to given value.
+
+### HasRoleNames
+
+`func (o *DynamicSecretUpdateGcp) HasRoleNames() bool`
+
+HasRoleNames returns a boolean if a field has been set.
+
+### GetSecureAccessDelay
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessDelay() int64`
+
+GetSecureAccessDelay returns the SecureAccessDelay field if non-nil, zero value otherwise.
+
+### GetSecureAccessDelayOk
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessDelayOk() (*int64, bool)`
+
+GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessDelay
+
+`func (o *DynamicSecretUpdateGcp) SetSecureAccessDelay(v int64)`
+
+SetSecureAccessDelay sets SecureAccessDelay field to given value.
+
+### HasSecureAccessDelay
+
+`func (o *DynamicSecretUpdateGcp) HasSecureAccessDelay() bool`
+
+HasSecureAccessDelay returns a boolean if a field has been set.
+
+### GetSecureAccessEnable
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessEnable() string`
+
+GetSecureAccessEnable returns the SecureAccessEnable field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnableOk
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessEnableOk() (*string, bool)`
+
+GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnable
+
+`func (o *DynamicSecretUpdateGcp) SetSecureAccessEnable(v string)`
+
+SetSecureAccessEnable sets SecureAccessEnable field to given value.
+
+### HasSecureAccessEnable
+
+`func (o *DynamicSecretUpdateGcp) HasSecureAccessEnable() bool`
+
+HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessUrl
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessUrl() string`
+
+GetSecureAccessUrl returns the SecureAccessUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessUrlOk
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessUrlOk() (*string, bool)`
+
+GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUrl
+
+`func (o *DynamicSecretUpdateGcp) SetSecureAccessUrl(v string)`
+
+SetSecureAccessUrl sets SecureAccessUrl field to given value.
+
+### HasSecureAccessUrl
+
+`func (o *DynamicSecretUpdateGcp) HasSecureAccessUrl() bool`
+
+HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *DynamicSecretUpdateGcp) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *DynamicSecretUpdateGcp) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetSecureAccessWebProxy
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *DynamicSecretUpdateGcp) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *DynamicSecretUpdateGcp) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *DynamicSecretUpdateGcp) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
+
 ### GetServiceAccountType
 
 `func (o *DynamicSecretUpdateGcp) GetServiceAccountType() string`
@@ -434,6 +642,11 @@ and a boolean to check if the value has been set.
 
 SetServiceAccountType sets ServiceAccountType field to given value.
 
+### HasServiceAccountType
+
+`func (o *DynamicSecretUpdateGcp) HasServiceAccountType() bool`
+
+HasServiceAccountType returns a boolean if a field has been set.
 
 ### GetTags
 

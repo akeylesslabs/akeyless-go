@@ -19,7 +19,9 @@ Name | Type | Description | Notes
 **CodeSigningFlag** | Pointer to **bool** |  | [optional] 
 **Country** | Pointer to **[]string** |  | [optional] 
 **CreatePrivateCrl** | Pointer to **bool** |  | [optional] 
+**CreatePrivateOcsp** | Pointer to **bool** | CreatePrivateOcsp enables exposing an OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates. | [optional] 
 **CreatePublicCrl** | Pointer to **bool** |  | [optional] 
+**CreatePublicOcsp** | Pointer to **bool** | CreatePublicOcsp enables exposing a public OCSP endpoint on the Gateway and embedding its URL in the AIA extension of issued certificates. | [optional] 
 **DestinationPath** | Pointer to **string** | DestinationPath is the destination to save generated certificates | [optional] 
 **DisableWildcards** | Pointer to **bool** |  | [optional] 
 **EnforceHostnames** | Pointer to **bool** |  | [optional] 
@@ -34,6 +36,7 @@ Name | Type | Description | Notes
 **MaxPathLen** | Pointer to **int64** |  | [optional] 
 **NonCriticalKeyUsage** | Pointer to **bool** |  | [optional] 
 **NotBeforeDuration** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
+**OcspNextUpdate** | Pointer to **int64** | OcspNextUpdate defines the desired NextUpdate window for OCSP responses. Value is in seconds; 0 means not set. Minimum enforced is 10 minutes. | [optional] 
 **OrganizationList** | Pointer to **[]string** |  | [optional] 
 **OrganizationUnitList** | Pointer to **[]string** |  | [optional] 
 **PkiIssuerType** | Pointer to **string** |  | [optional] 
@@ -439,6 +442,31 @@ SetCreatePrivateCrl sets CreatePrivateCrl field to given value.
 
 HasCreatePrivateCrl returns a boolean if a field has been set.
 
+### GetCreatePrivateOcsp
+
+`func (o *PKICertificateIssueDetails) GetCreatePrivateOcsp() bool`
+
+GetCreatePrivateOcsp returns the CreatePrivateOcsp field if non-nil, zero value otherwise.
+
+### GetCreatePrivateOcspOk
+
+`func (o *PKICertificateIssueDetails) GetCreatePrivateOcspOk() (*bool, bool)`
+
+GetCreatePrivateOcspOk returns a tuple with the CreatePrivateOcsp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePrivateOcsp
+
+`func (o *PKICertificateIssueDetails) SetCreatePrivateOcsp(v bool)`
+
+SetCreatePrivateOcsp sets CreatePrivateOcsp field to given value.
+
+### HasCreatePrivateOcsp
+
+`func (o *PKICertificateIssueDetails) HasCreatePrivateOcsp() bool`
+
+HasCreatePrivateOcsp returns a boolean if a field has been set.
+
 ### GetCreatePublicCrl
 
 `func (o *PKICertificateIssueDetails) GetCreatePublicCrl() bool`
@@ -463,6 +491,31 @@ SetCreatePublicCrl sets CreatePublicCrl field to given value.
 `func (o *PKICertificateIssueDetails) HasCreatePublicCrl() bool`
 
 HasCreatePublicCrl returns a boolean if a field has been set.
+
+### GetCreatePublicOcsp
+
+`func (o *PKICertificateIssueDetails) GetCreatePublicOcsp() bool`
+
+GetCreatePublicOcsp returns the CreatePublicOcsp field if non-nil, zero value otherwise.
+
+### GetCreatePublicOcspOk
+
+`func (o *PKICertificateIssueDetails) GetCreatePublicOcspOk() (*bool, bool)`
+
+GetCreatePublicOcspOk returns a tuple with the CreatePublicOcsp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatePublicOcsp
+
+`func (o *PKICertificateIssueDetails) SetCreatePublicOcsp(v bool)`
+
+SetCreatePublicOcsp sets CreatePublicOcsp field to given value.
+
+### HasCreatePublicOcsp
+
+`func (o *PKICertificateIssueDetails) HasCreatePublicOcsp() bool`
+
+HasCreatePublicOcsp returns a boolean if a field has been set.
 
 ### GetDestinationPath
 
@@ -813,6 +866,31 @@ SetNotBeforeDuration sets NotBeforeDuration field to given value.
 `func (o *PKICertificateIssueDetails) HasNotBeforeDuration() bool`
 
 HasNotBeforeDuration returns a boolean if a field has been set.
+
+### GetOcspNextUpdate
+
+`func (o *PKICertificateIssueDetails) GetOcspNextUpdate() int64`
+
+GetOcspNextUpdate returns the OcspNextUpdate field if non-nil, zero value otherwise.
+
+### GetOcspNextUpdateOk
+
+`func (o *PKICertificateIssueDetails) GetOcspNextUpdateOk() (*int64, bool)`
+
+GetOcspNextUpdateOk returns a tuple with the OcspNextUpdate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOcspNextUpdate
+
+`func (o *PKICertificateIssueDetails) SetOcspNextUpdate(v int64)`
+
+SetOcspNextUpdate sets OcspNextUpdate field to given value.
+
+### HasOcspNextUpdate
+
+`func (o *PKICertificateIssueDetails) HasOcspNextUpdate() bool`
+
+HasOcspNextUpdate returns a boolean if a field has been set.
 
 ### GetOrganizationList
 

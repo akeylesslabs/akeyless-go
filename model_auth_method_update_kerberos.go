@@ -24,6 +24,7 @@ var _ MappedNullable = &AuthMethodUpdateKerberos{}
 type AuthMethodUpdateKerberos struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
 	AuditLogsClaims []string `json:"audit-logs-claims,omitempty"`
 	BindDn *string `json:"bind-dn,omitempty"`
@@ -133,6 +134,38 @@ func (o *AuthMethodUpdateKerberos) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *AuthMethodUpdateKerberos) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAllowedClientType returns the AllowedClientType field value if set, zero value otherwise.
+func (o *AuthMethodUpdateKerberos) GetAllowedClientType() []string {
+	if o == nil || IsNil(o.AllowedClientType) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedClientType
+}
+
+// GetAllowedClientTypeOk returns a tuple with the AllowedClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodUpdateKerberos) GetAllowedClientTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedClientType) {
+		return nil, false
+	}
+	return o.AllowedClientType, true
+}
+
+// HasAllowedClientType returns a boolean if a field has been set.
+func (o *AuthMethodUpdateKerberos) HasAllowedClientType() bool {
+	if o != nil && !IsNil(o.AllowedClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientType gets a reference to the given []string and assigns it to the AllowedClientType field.
+func (o *AuthMethodUpdateKerberos) SetAllowedClientType(v []string) {
+	o.AllowedClientType = v
 }
 
 // GetAuditLogsClaims returns the AuditLogsClaims field value if set, zero value otherwise.
@@ -1099,6 +1132,9 @@ func (o AuthMethodUpdateKerberos) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AccessExpires) {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if !IsNil(o.AllowedClientType) {
+		toSerialize["allowed-client-type"] = o.AllowedClientType
 	}
 	if !IsNil(o.AuditLogsClaims) {
 		toSerialize["audit-logs-claims"] = o.AuditLogsClaims

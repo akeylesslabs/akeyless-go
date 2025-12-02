@@ -50,6 +50,8 @@ type DynamicSecretUpdateMongoDb struct {
 	MongodbPassword *string `json:"mongodb-password,omitempty"`
 	// MongoDB Roles
 	MongodbRoles *string `json:"mongodb-roles,omitempty"`
+	// MongoDB Scopes (Atlas only)
+	MongodbScopes *string `json:"mongodb-scopes,omitempty"`
 	// MongoDB server URI
 	MongodbServerUri *string `json:"mongodb-server-uri,omitempty"`
 	// MongoDB server URI options
@@ -572,6 +574,38 @@ func (o *DynamicSecretUpdateMongoDb) HasMongodbRoles() bool {
 // SetMongodbRoles gets a reference to the given string and assigns it to the MongodbRoles field.
 func (o *DynamicSecretUpdateMongoDb) SetMongodbRoles(v string) {
 	o.MongodbRoles = &v
+}
+
+// GetMongodbScopes returns the MongodbScopes field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateMongoDb) GetMongodbScopes() string {
+	if o == nil || IsNil(o.MongodbScopes) {
+		var ret string
+		return ret
+	}
+	return *o.MongodbScopes
+}
+
+// GetMongodbScopesOk returns a tuple with the MongodbScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateMongoDb) GetMongodbScopesOk() (*string, bool) {
+	if o == nil || IsNil(o.MongodbScopes) {
+		return nil, false
+	}
+	return o.MongodbScopes, true
+}
+
+// HasMongodbScopes returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateMongoDb) HasMongodbScopes() bool {
+	if o != nil && !IsNil(o.MongodbScopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetMongodbScopes gets a reference to the given string and assigns it to the MongodbScopes field.
+func (o *DynamicSecretUpdateMongoDb) SetMongodbScopes(v string) {
+	o.MongodbScopes = &v
 }
 
 // GetMongodbServerUri returns the MongodbServerUri field value if set, zero value otherwise.
@@ -1225,6 +1259,9 @@ func (o DynamicSecretUpdateMongoDb) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MongodbRoles) {
 		toSerialize["mongodb-roles"] = o.MongodbRoles
+	}
+	if !IsNil(o.MongodbScopes) {
+		toSerialize["mongodb-scopes"] = o.MongodbScopes
 	}
 	if !IsNil(o.MongodbServerUri) {
 		toSerialize["mongodb-server-uri"] = o.MongodbServerUri

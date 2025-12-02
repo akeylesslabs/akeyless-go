@@ -13,10 +13,12 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**KeyDataBase64** | Pointer to **string** | Private key file contents encoded using base64 | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
+**PublicKeyRemotePath** | Pointer to **string** | The path to the public key that will be rotated on the server | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -283,6 +285,31 @@ SetKey sets Key field to given value.
 
 HasKey returns a boolean if a field has been set.
 
+### GetKeyDataBase64
+
+`func (o *RotatedSecretUpdateSsh) GetKeyDataBase64() string`
+
+GetKeyDataBase64 returns the KeyDataBase64 field if non-nil, zero value otherwise.
+
+### GetKeyDataBase64Ok
+
+`func (o *RotatedSecretUpdateSsh) GetKeyDataBase64Ok() (*string, bool)`
+
+GetKeyDataBase64Ok returns a tuple with the KeyDataBase64 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyDataBase64
+
+`func (o *RotatedSecretUpdateSsh) SetKeyDataBase64(v string)`
+
+SetKeyDataBase64 sets KeyDataBase64 field to given value.
+
+### HasKeyDataBase64
+
+`func (o *RotatedSecretUpdateSsh) HasKeyDataBase64() bool`
+
+HasKeyDataBase64 returns a boolean if a field has been set.
+
 ### GetMaxVersions
 
 `func (o *RotatedSecretUpdateSsh) GetMaxVersions() string`
@@ -377,6 +404,31 @@ SetPasswordLength sets PasswordLength field to given value.
 `func (o *RotatedSecretUpdateSsh) HasPasswordLength() bool`
 
 HasPasswordLength returns a boolean if a field has been set.
+
+### GetPublicKeyRemotePath
+
+`func (o *RotatedSecretUpdateSsh) GetPublicKeyRemotePath() string`
+
+GetPublicKeyRemotePath returns the PublicKeyRemotePath field if non-nil, zero value otherwise.
+
+### GetPublicKeyRemotePathOk
+
+`func (o *RotatedSecretUpdateSsh) GetPublicKeyRemotePathOk() (*string, bool)`
+
+GetPublicKeyRemotePathOk returns a tuple with the PublicKeyRemotePath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKeyRemotePath
+
+`func (o *RotatedSecretUpdateSsh) SetPublicKeyRemotePath(v string)`
+
+SetPublicKeyRemotePath sets PublicKeyRemotePath field to given value.
+
+### HasPublicKeyRemotePath
+
+`func (o *RotatedSecretUpdateSsh) HasPublicKeyRemotePath() bool`
+
+HasPublicKeyRemotePath returns a boolean if a field has been set.
 
 ### GetRmTag
 

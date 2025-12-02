@@ -24,6 +24,7 @@ var _ MappedNullable = &CreateAuthMethodSAML{}
 type CreateAuthMethodSAML struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri []string `json:"allowed-redirect-uri,omitempty"`
 	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
@@ -125,6 +126,38 @@ func (o *CreateAuthMethodSAML) HasAccessExpires() bool {
 // SetAccessExpires gets a reference to the given int64 and assigns it to the AccessExpires field.
 func (o *CreateAuthMethodSAML) SetAccessExpires(v int64) {
 	o.AccessExpires = &v
+}
+
+// GetAllowedClientType returns the AllowedClientType field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetAllowedClientType() []string {
+	if o == nil || IsNil(o.AllowedClientType) {
+		var ret []string
+		return ret
+	}
+	return o.AllowedClientType
+}
+
+// GetAllowedClientTypeOk returns a tuple with the AllowedClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetAllowedClientTypeOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedClientType) {
+		return nil, false
+	}
+	return o.AllowedClientType, true
+}
+
+// HasAllowedClientType returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasAllowedClientType() bool {
+	if o != nil && !IsNil(o.AllowedClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedClientType gets a reference to the given []string and assigns it to the AllowedClientType field.
+func (o *CreateAuthMethodSAML) SetAllowedClientType(v []string) {
+	o.AllowedClientType = v
 }
 
 // GetAllowedRedirectUri returns the AllowedRedirectUri field value if set, zero value otherwise.
@@ -699,6 +732,9 @@ func (o CreateAuthMethodSAML) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AccessExpires) {
 		toSerialize["access-expires"] = o.AccessExpires
+	}
+	if !IsNil(o.AllowedClientType) {
+		toSerialize["allowed-client-type"] = o.AllowedClientType
 	}
 	if !IsNil(o.AllowedRedirectUri) {
 		toSerialize["allowed-redirect-uri"] = o.AllowedRedirectUri

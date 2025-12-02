@@ -22,20 +22,23 @@ var _ MappedNullable = &GatewayCreateProducerGcp{}
 
 // GatewayCreateProducerGcp gatewayCreateProducerGcp is a command that creates a GCP producer [Deprecated: Use dynamic-secret-create-gcp command]
 type GatewayCreateProducerGcp struct {
+	AccessType *string `json:"access-type,omitempty"`
 	// Customize how temporary usernames are generated using go template
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// For externally provided users, denotes the key-name of IdP claim to extract the username from (Relevant only when --access-type=external)
+	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
 	GcpCredType *string `json:"gcp-cred-type,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
-	// Service account key algorithm, e.g. KEY_ALG_RSA_1024
+	// Service account key algorithm, e.g. KEY_ALG_RSA_1024 (Relevant only when --access-type=sa and --gcp-cred-type=key)
 	GcpKeyAlgo *string `json:"gcp-key-algo,omitempty"`
-	// GCP Project ID override for dynamic secret operations (tmp service accounts)
+	// GCP Project ID override for dynamic secret operations
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
-	// The email of the fixed service acocunt to generate keys or tokens for. (revelant for service-account-type=fixed)
+	// The email of the fixed service account to generate keys or tokens for (Relevant only when --access-type=sa and --service-account-type=fixed)
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
-	// Access token scopes list, e.g. scope1,scope2
+	// Access token scopes list, e.g. scope1,scope2 (Relevant only when --access-type=sa; required when --gcp-cred-type=token)
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
@@ -45,10 +48,22 @@ type GatewayCreateProducerGcp struct {
 	Name string `json:"name"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// Role binding definitions in json format
+	// Role binding definitions in JSON format (Relevant only when --access-type=sa and --service-account-type=dynamic)
 	RoleBinding *string `json:"role-binding,omitempty"`
-	// The type of the gcp dynamic secret. Options[fixed, dynamic]
-	ServiceAccountType string `json:"service-account-type"`
+	// Comma-separated list of GCP roles to assign to the user (Relevant only when --access-type=external)
+	RoleNames *string `json:"role-names,omitempty"`
+	// The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds
+	SecureAccessDelay *int64 `json:"secure-access-delay,omitempty"`
+	// Enable/Disable secure remote access [true/false]
+	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Destination URL to inject secrets
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Secure browser via Akeyless's Secure Remote Access (SRA)
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// The type of the GCP service account. Options [fixed, dynamic] (Relevant only when --access-type=sa)
+	ServiceAccountType *string `json:"service-account-type,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -67,12 +82,19 @@ type _GatewayCreateProducerGcp GatewayCreateProducerGcp
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateProducerGcp(name string, serviceAccountType string) *GatewayCreateProducerGcp {
+func NewGatewayCreateProducerGcp(name string) *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
+	var fixedUserClaimKeyname string = "ext_email"
+	this.FixedUserClaimKeyname = &fixedUserClaimKeyname
 	var json bool = false
 	this.Json = &json
 	this.Name = name
-	this.ServiceAccountType = serviceAccountType
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
+	var serviceAccountType string = "fixed"
+	this.ServiceAccountType = &serviceAccountType
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
@@ -83,13 +105,51 @@ func NewGatewayCreateProducerGcp(name string, serviceAccountType string) *Gatewa
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayCreateProducerGcpWithDefaults() *GatewayCreateProducerGcp {
 	this := GatewayCreateProducerGcp{}
+	var fixedUserClaimKeyname string = "ext_email"
+	this.FixedUserClaimKeyname = &fixedUserClaimKeyname
 	var json bool = false
 	this.Json = &json
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var serviceAccountType string = "fixed"
-	this.ServiceAccountType = serviceAccountType
+	this.ServiceAccountType = &serviceAccountType
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAccessType returns the AccessType field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetAccessType() string {
+	if o == nil || IsNil(o.AccessType) {
+		var ret string
+		return ret
+	}
+	return *o.AccessType
+}
+
+// GetAccessTypeOk returns a tuple with the AccessType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetAccessTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessType) {
+		return nil, false
+	}
+	return o.AccessType, true
+}
+
+// HasAccessType returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasAccessType() bool {
+	if o != nil && !IsNil(o.AccessType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessType gets a reference to the given string and assigns it to the AccessType field.
+func (o *GatewayCreateProducerGcp) SetAccessType(v string) {
+	o.AccessType = &v
 }
 
 // GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
@@ -154,6 +214,38 @@ func (o *GatewayCreateProducerGcp) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayCreateProducerGcp) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetFixedUserClaimKeyname() string {
+	if o == nil || IsNil(o.FixedUserClaimKeyname) {
+		var ret string
+		return ret
+	}
+	return *o.FixedUserClaimKeyname
+}
+
+// GetFixedUserClaimKeynameOk returns a tuple with the FixedUserClaimKeyname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetFixedUserClaimKeynameOk() (*string, bool) {
+	if o == nil || IsNil(o.FixedUserClaimKeyname) {
+		return nil, false
+	}
+	return o.FixedUserClaimKeyname, true
+}
+
+// HasFixedUserClaimKeyname returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasFixedUserClaimKeyname() bool {
+	if o != nil && !IsNil(o.FixedUserClaimKeyname) {
+		return true
+	}
+
+	return false
+}
+
+// SetFixedUserClaimKeyname gets a reference to the given string and assigns it to the FixedUserClaimKeyname field.
+func (o *GatewayCreateProducerGcp) SetFixedUserClaimKeyname(v string) {
+	o.FixedUserClaimKeyname = &v
 }
 
 // GetGcpCredType returns the GcpCredType field value if set, zero value otherwise.
@@ -500,28 +592,228 @@ func (o *GatewayCreateProducerGcp) SetRoleBinding(v string) {
 	o.RoleBinding = &v
 }
 
-// GetServiceAccountType returns the ServiceAccountType field value
-func (o *GatewayCreateProducerGcp) GetServiceAccountType() string {
-	if o == nil {
+// GetRoleNames returns the RoleNames field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetRoleNames() string {
+	if o == nil || IsNil(o.RoleNames) {
 		var ret string
 		return ret
 	}
-
-	return o.ServiceAccountType
+	return *o.RoleNames
 }
 
-// GetServiceAccountTypeOk returns a tuple with the ServiceAccountType field value
+// GetRoleNamesOk returns a tuple with the RoleNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerGcp) GetServiceAccountTypeOk() (*string, bool) {
-	if o == nil {
+func (o *GatewayCreateProducerGcp) GetRoleNamesOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleNames) {
 		return nil, false
 	}
-	return &o.ServiceAccountType, true
+	return o.RoleNames, true
 }
 
-// SetServiceAccountType sets field value
+// HasRoleNames returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasRoleNames() bool {
+	if o != nil && !IsNil(o.RoleNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleNames gets a reference to the given string and assigns it to the RoleNames field.
+func (o *GatewayCreateProducerGcp) SetRoleNames(v string) {
+	o.RoleNames = &v
+}
+
+// GetSecureAccessDelay returns the SecureAccessDelay field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetSecureAccessDelay() int64 {
+	if o == nil || IsNil(o.SecureAccessDelay) {
+		var ret int64
+		return ret
+	}
+	return *o.SecureAccessDelay
+}
+
+// GetSecureAccessDelayOk returns a tuple with the SecureAccessDelay field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetSecureAccessDelayOk() (*int64, bool) {
+	if o == nil || IsNil(o.SecureAccessDelay) {
+		return nil, false
+	}
+	return o.SecureAccessDelay, true
+}
+
+// HasSecureAccessDelay returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasSecureAccessDelay() bool {
+	if o != nil && !IsNil(o.SecureAccessDelay) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessDelay gets a reference to the given int64 and assigns it to the SecureAccessDelay field.
+func (o *GatewayCreateProducerGcp) SetSecureAccessDelay(v int64) {
+	o.SecureAccessDelay = &v
+}
+
+// GetSecureAccessEnable returns the SecureAccessEnable field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetSecureAccessEnable() string {
+	if o == nil || IsNil(o.SecureAccessEnable) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessEnable
+}
+
+// GetSecureAccessEnableOk returns a tuple with the SecureAccessEnable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetSecureAccessEnableOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessEnable) {
+		return nil, false
+	}
+	return o.SecureAccessEnable, true
+}
+
+// HasSecureAccessEnable returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasSecureAccessEnable() bool {
+	if o != nil && !IsNil(o.SecureAccessEnable) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnable gets a reference to the given string and assigns it to the SecureAccessEnable field.
+func (o *GatewayCreateProducerGcp) SetSecureAccessEnable(v string) {
+	o.SecureAccessEnable = &v
+}
+
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetSecureAccessUrl() string {
+	if o == nil || IsNil(o.SecureAccessUrl) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessUrl) {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasSecureAccessUrl() bool {
+	if o != nil && !IsNil(o.SecureAccessUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *GatewayCreateProducerGcp) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetSecureAccessWebBrowsing() bool {
+	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasSecureAccessWebBrowsing() bool {
+	if o != nil && !IsNil(o.SecureAccessWebBrowsing) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *GatewayCreateProducerGcp) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetSecureAccessWebProxy() bool {
+	if o == nil || IsNil(o.SecureAccessWebProxy) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessWebProxy) {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasSecureAccessWebProxy() bool {
+	if o != nil && !IsNil(o.SecureAccessWebProxy) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *GatewayCreateProducerGcp) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
+}
+
+// GetServiceAccountType returns the ServiceAccountType field value if set, zero value otherwise.
+func (o *GatewayCreateProducerGcp) GetServiceAccountType() string {
+	if o == nil || IsNil(o.ServiceAccountType) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceAccountType
+}
+
+// GetServiceAccountTypeOk returns a tuple with the ServiceAccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerGcp) GetServiceAccountTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceAccountType) {
+		return nil, false
+	}
+	return o.ServiceAccountType, true
+}
+
+// HasServiceAccountType returns a boolean if a field has been set.
+func (o *GatewayCreateProducerGcp) HasServiceAccountType() bool {
+	if o != nil && !IsNil(o.ServiceAccountType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceAccountType gets a reference to the given string and assigns it to the ServiceAccountType field.
 func (o *GatewayCreateProducerGcp) SetServiceAccountType(v string) {
-	o.ServiceAccountType = v
+	o.ServiceAccountType = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -694,11 +986,17 @@ func (o GatewayCreateProducerGcp) MarshalJSON() ([]byte, error) {
 
 func (o GatewayCreateProducerGcp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessType) {
+		toSerialize["access-type"] = o.AccessType
+	}
 	if !IsNil(o.CustomUsernameTemplate) {
 		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if !IsNil(o.FixedUserClaimKeyname) {
+		toSerialize["fixed-user-claim-keyname"] = o.FixedUserClaimKeyname
 	}
 	if !IsNil(o.GcpCredType) {
 		toSerialize["gcp-cred-type"] = o.GcpCredType
@@ -731,7 +1029,27 @@ func (o GatewayCreateProducerGcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleBinding) {
 		toSerialize["role-binding"] = o.RoleBinding
 	}
-	toSerialize["service-account-type"] = o.ServiceAccountType
+	if !IsNil(o.RoleNames) {
+		toSerialize["role-names"] = o.RoleNames
+	}
+	if !IsNil(o.SecureAccessDelay) {
+		toSerialize["secure-access-delay"] = o.SecureAccessDelay
+	}
+	if !IsNil(o.SecureAccessEnable) {
+		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if !IsNil(o.SecureAccessUrl) {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if !IsNil(o.SecureAccessWebBrowsing) {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if !IsNil(o.SecureAccessWebProxy) {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.ServiceAccountType) {
+		toSerialize["service-account-type"] = o.ServiceAccountType
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
@@ -756,7 +1074,6 @@ func (o *GatewayCreateProducerGcp) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"service-account-type",
 	}
 
 	allProperties := make(map[string]interface{})
