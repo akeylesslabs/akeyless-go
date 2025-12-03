@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AllowedSshUrl** | Pointer to **string** | Specify a valid SSH-URL to tunnel to SSH session | [optional] [default to "use-existing"]
 **AllowedUrls** | Pointer to **string** | List of valid URLs to redirect from the Portal back to the remote access server (in a comma-delimited list) | [optional] [default to "use-existing"]
+**DefaultSessionTtlMinutes** | Pointer to **string** | Default session TTL in minutes | [optional] [default to "use-existing"]
 **HideSessionRecording** | Pointer to **string** | Specifies whether to show/hide if the session is currently recorded [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Kexalgs** | Pointer to **string** | Decide which algorithm will be used as part of the SSH initial hand-shake process | [optional] [default to "use-existing"]
@@ -34,6 +36,31 @@ NewGatewayUpdateRemoteAccessWithDefaults instantiates a new GatewayUpdateRemoteA
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAllowedSshUrl
+
+`func (o *GatewayUpdateRemoteAccess) GetAllowedSshUrl() string`
+
+GetAllowedSshUrl returns the AllowedSshUrl field if non-nil, zero value otherwise.
+
+### GetAllowedSshUrlOk
+
+`func (o *GatewayUpdateRemoteAccess) GetAllowedSshUrlOk() (*string, bool)`
+
+GetAllowedSshUrlOk returns a tuple with the AllowedSshUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedSshUrl
+
+`func (o *GatewayUpdateRemoteAccess) SetAllowedSshUrl(v string)`
+
+SetAllowedSshUrl sets AllowedSshUrl field to given value.
+
+### HasAllowedSshUrl
+
+`func (o *GatewayUpdateRemoteAccess) HasAllowedSshUrl() bool`
+
+HasAllowedSshUrl returns a boolean if a field has been set.
+
 ### GetAllowedUrls
 
 `func (o *GatewayUpdateRemoteAccess) GetAllowedUrls() string`
@@ -58,6 +85,31 @@ SetAllowedUrls sets AllowedUrls field to given value.
 `func (o *GatewayUpdateRemoteAccess) HasAllowedUrls() bool`
 
 HasAllowedUrls returns a boolean if a field has been set.
+
+### GetDefaultSessionTtlMinutes
+
+`func (o *GatewayUpdateRemoteAccess) GetDefaultSessionTtlMinutes() string`
+
+GetDefaultSessionTtlMinutes returns the DefaultSessionTtlMinutes field if non-nil, zero value otherwise.
+
+### GetDefaultSessionTtlMinutesOk
+
+`func (o *GatewayUpdateRemoteAccess) GetDefaultSessionTtlMinutesOk() (*string, bool)`
+
+GetDefaultSessionTtlMinutesOk returns a tuple with the DefaultSessionTtlMinutes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultSessionTtlMinutes
+
+`func (o *GatewayUpdateRemoteAccess) SetDefaultSessionTtlMinutes(v string)`
+
+SetDefaultSessionTtlMinutes sets DefaultSessionTtlMinutes field to given value.
+
+### HasDefaultSessionTtlMinutes
+
+`func (o *GatewayUpdateRemoteAccess) HasDefaultSessionTtlMinutes() bool`
+
+HasDefaultSessionTtlMinutes returns a boolean if a field has been set.
 
 ### GetHideSessionRecording
 

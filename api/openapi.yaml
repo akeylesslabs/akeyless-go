@@ -22532,6 +22532,8 @@ components:
           allowed_bastion_urls:
           - allowed_bastion_urls
           - allowed_bastion_urls
+          allowed_ssh_url: allowed_ssh_url
+          default_session_ttl_minutes: 1
           ssh_username_sub_claim: ssh_username_sub_claim
           legacy_signing_alg: true
           rdp_username_sub_claim: rdp_username_sub_claim
@@ -22637,6 +22639,8 @@ components:
         allowed_bastion_urls:
         - allowed_bastion_urls
         - allowed_bastion_urls
+        allowed_ssh_url: allowed_ssh_url
+        default_session_ttl_minutes: 1
         ssh_username_sub_claim: ssh_username_sub_claim
         legacy_signing_alg: true
         rdp_username_sub_claim: rdp_username_sub_claim
@@ -22646,6 +22650,13 @@ components:
             type: string
           type: array
           x-go-name: AllowedBastionUrls
+        allowed_ssh_url:
+          type: string
+          x-go-name: AllowedSSHURL
+        default_session_ttl_minutes:
+          format: int64
+          type: integer
+          x-go-name: DefaultSessionTTLMinutes
         legacy_signing_alg:
           type: boolean
           x-go-name: LegacySigningAlg
@@ -22654,7 +22665,7 @@ components:
           x-go-name: RdpUsernameSubClaim
         ssh_username_sub_claim:
           type: string
-          x-go-name: SshUsernameSubClaim
+          x-go-name: SSHUsernameSubClaim
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     BastionListEntry:
@@ -95664,12 +95675,22 @@ components:
       description: gatewayUpdateRemoteAccess is a command that update remote access
         config
       properties:
+        allowed-ssh-url:
+          default: use-existing
+          description: Specify a valid SSH-URL to tunnel to SSH session
+          type: string
+          x-go-name: AllowedSSHURL
         allowed-urls:
           default: use-existing
           description: List of valid URLs to redirect from the Portal back to the
             remote access server (in a comma-delimited list)
           type: string
           x-go-name: AllowedBastionUrls
+        default-session-ttl-minutes:
+          default: use-existing
+          description: Default session TTL in minutes
+          type: string
+          x-go-name: DefaultSessionTTLMinutes
         hide-session-recording:
           description: "Specifies whether to show/hide if the session is currently\
             \ recorded [true/false]"

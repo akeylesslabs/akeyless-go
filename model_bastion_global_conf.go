@@ -21,6 +21,8 @@ var _ MappedNullable = &BastionGlobalConf{}
 // BastionGlobalConf struct for BastionGlobalConf
 type BastionGlobalConf struct {
 	AllowedBastionUrls []string `json:"allowed_bastion_urls,omitempty"`
+	AllowedSshUrl *string `json:"allowed_ssh_url,omitempty"`
+	DefaultSessionTtlMinutes *int64 `json:"default_session_ttl_minutes,omitempty"`
 	LegacySigningAlg *bool `json:"legacy_signing_alg,omitempty"`
 	RdpUsernameSubClaim *string `json:"rdp_username_sub_claim,omitempty"`
 	SshUsernameSubClaim *string `json:"ssh_username_sub_claim,omitempty"`
@@ -73,6 +75,70 @@ func (o *BastionGlobalConf) HasAllowedBastionUrls() bool {
 // SetAllowedBastionUrls gets a reference to the given []string and assigns it to the AllowedBastionUrls field.
 func (o *BastionGlobalConf) SetAllowedBastionUrls(v []string) {
 	o.AllowedBastionUrls = v
+}
+
+// GetAllowedSshUrl returns the AllowedSshUrl field value if set, zero value otherwise.
+func (o *BastionGlobalConf) GetAllowedSshUrl() string {
+	if o == nil || IsNil(o.AllowedSshUrl) {
+		var ret string
+		return ret
+	}
+	return *o.AllowedSshUrl
+}
+
+// GetAllowedSshUrlOk returns a tuple with the AllowedSshUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionGlobalConf) GetAllowedSshUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.AllowedSshUrl) {
+		return nil, false
+	}
+	return o.AllowedSshUrl, true
+}
+
+// HasAllowedSshUrl returns a boolean if a field has been set.
+func (o *BastionGlobalConf) HasAllowedSshUrl() bool {
+	if o != nil && !IsNil(o.AllowedSshUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedSshUrl gets a reference to the given string and assigns it to the AllowedSshUrl field.
+func (o *BastionGlobalConf) SetAllowedSshUrl(v string) {
+	o.AllowedSshUrl = &v
+}
+
+// GetDefaultSessionTtlMinutes returns the DefaultSessionTtlMinutes field value if set, zero value otherwise.
+func (o *BastionGlobalConf) GetDefaultSessionTtlMinutes() int64 {
+	if o == nil || IsNil(o.DefaultSessionTtlMinutes) {
+		var ret int64
+		return ret
+	}
+	return *o.DefaultSessionTtlMinutes
+}
+
+// GetDefaultSessionTtlMinutesOk returns a tuple with the DefaultSessionTtlMinutes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BastionGlobalConf) GetDefaultSessionTtlMinutesOk() (*int64, bool) {
+	if o == nil || IsNil(o.DefaultSessionTtlMinutes) {
+		return nil, false
+	}
+	return o.DefaultSessionTtlMinutes, true
+}
+
+// HasDefaultSessionTtlMinutes returns a boolean if a field has been set.
+func (o *BastionGlobalConf) HasDefaultSessionTtlMinutes() bool {
+	if o != nil && !IsNil(o.DefaultSessionTtlMinutes) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultSessionTtlMinutes gets a reference to the given int64 and assigns it to the DefaultSessionTtlMinutes field.
+func (o *BastionGlobalConf) SetDefaultSessionTtlMinutes(v int64) {
+	o.DefaultSessionTtlMinutes = &v
 }
 
 // GetLegacySigningAlg returns the LegacySigningAlg field value if set, zero value otherwise.
@@ -183,6 +249,12 @@ func (o BastionGlobalConf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AllowedBastionUrls) {
 		toSerialize["allowed_bastion_urls"] = o.AllowedBastionUrls
+	}
+	if !IsNil(o.AllowedSshUrl) {
+		toSerialize["allowed_ssh_url"] = o.AllowedSshUrl
+	}
+	if !IsNil(o.DefaultSessionTtlMinutes) {
+		toSerialize["default_session_ttl_minutes"] = o.DefaultSessionTtlMinutes
 	}
 	if !IsNil(o.LegacySigningAlg) {
 		toSerialize["legacy_signing_alg"] = o.LegacySigningAlg

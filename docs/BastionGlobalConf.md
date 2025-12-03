@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedBastionUrls** | Pointer to **[]string** |  | [optional] 
+**AllowedSshUrl** | Pointer to **string** |  | [optional] 
+**DefaultSessionTtlMinutes** | Pointer to **int64** |  | [optional] 
 **LegacySigningAlg** | Pointer to **bool** |  | [optional] 
 **RdpUsernameSubClaim** | Pointer to **string** |  | [optional] 
 **SshUsernameSubClaim** | Pointer to **string** |  | [optional] 
@@ -52,6 +54,56 @@ SetAllowedBastionUrls sets AllowedBastionUrls field to given value.
 `func (o *BastionGlobalConf) HasAllowedBastionUrls() bool`
 
 HasAllowedBastionUrls returns a boolean if a field has been set.
+
+### GetAllowedSshUrl
+
+`func (o *BastionGlobalConf) GetAllowedSshUrl() string`
+
+GetAllowedSshUrl returns the AllowedSshUrl field if non-nil, zero value otherwise.
+
+### GetAllowedSshUrlOk
+
+`func (o *BastionGlobalConf) GetAllowedSshUrlOk() (*string, bool)`
+
+GetAllowedSshUrlOk returns a tuple with the AllowedSshUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedSshUrl
+
+`func (o *BastionGlobalConf) SetAllowedSshUrl(v string)`
+
+SetAllowedSshUrl sets AllowedSshUrl field to given value.
+
+### HasAllowedSshUrl
+
+`func (o *BastionGlobalConf) HasAllowedSshUrl() bool`
+
+HasAllowedSshUrl returns a boolean if a field has been set.
+
+### GetDefaultSessionTtlMinutes
+
+`func (o *BastionGlobalConf) GetDefaultSessionTtlMinutes() int64`
+
+GetDefaultSessionTtlMinutes returns the DefaultSessionTtlMinutes field if non-nil, zero value otherwise.
+
+### GetDefaultSessionTtlMinutesOk
+
+`func (o *BastionGlobalConf) GetDefaultSessionTtlMinutesOk() (*int64, bool)`
+
+GetDefaultSessionTtlMinutesOk returns a tuple with the DefaultSessionTtlMinutes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultSessionTtlMinutes
+
+`func (o *BastionGlobalConf) SetDefaultSessionTtlMinutes(v int64)`
+
+SetDefaultSessionTtlMinutes sets DefaultSessionTtlMinutes field to given value.
+
+### HasDefaultSessionTtlMinutes
+
+`func (o *BastionGlobalConf) HasDefaultSessionTtlMinutes() bool`
+
+HasDefaultSessionTtlMinutes returns a boolean if a field has been set.
 
 ### GetLegacySigningAlg
 

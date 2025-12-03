@@ -20,8 +20,12 @@ var _ MappedNullable = &GatewayUpdateRemoteAccess{}
 
 // GatewayUpdateRemoteAccess gatewayUpdateRemoteAccess is a command that update remote access config
 type GatewayUpdateRemoteAccess struct {
+	// Specify a valid SSH-URL to tunnel to SSH session
+	AllowedSshUrl *string `json:"allowed-ssh-url,omitempty"`
 	// List of valid URLs to redirect from the Portal back to the remote access server (in a comma-delimited list)
 	AllowedUrls *string `json:"allowed-urls,omitempty"`
+	// Default session TTL in minutes
+	DefaultSessionTtlMinutes *string `json:"default-session-ttl-minutes,omitempty"`
 	// Specifies whether to show/hide if the session is currently recorded [true/false]
 	HideSessionRecording *string `json:"hide-session-recording,omitempty"`
 	// Set output format to JSON
@@ -48,8 +52,12 @@ type GatewayUpdateRemoteAccess struct {
 // will change when the set of required properties is changed
 func NewGatewayUpdateRemoteAccess() *GatewayUpdateRemoteAccess {
 	this := GatewayUpdateRemoteAccess{}
+	var allowedSshUrl string = "use-existing"
+	this.AllowedSshUrl = &allowedSshUrl
 	var allowedUrls string = "use-existing"
 	this.AllowedUrls = &allowedUrls
+	var defaultSessionTtlMinutes string = "use-existing"
+	this.DefaultSessionTtlMinutes = &defaultSessionTtlMinutes
 	var json bool = false
 	this.Json = &json
 	var kexalgs string = "use-existing"
@@ -68,8 +76,12 @@ func NewGatewayUpdateRemoteAccess() *GatewayUpdateRemoteAccess {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateRemoteAccessWithDefaults() *GatewayUpdateRemoteAccess {
 	this := GatewayUpdateRemoteAccess{}
+	var allowedSshUrl string = "use-existing"
+	this.AllowedSshUrl = &allowedSshUrl
 	var allowedUrls string = "use-existing"
 	this.AllowedUrls = &allowedUrls
+	var defaultSessionTtlMinutes string = "use-existing"
+	this.DefaultSessionTtlMinutes = &defaultSessionTtlMinutes
 	var json bool = false
 	this.Json = &json
 	var kexalgs string = "use-existing"
@@ -81,6 +93,38 @@ func NewGatewayUpdateRemoteAccessWithDefaults() *GatewayUpdateRemoteAccess {
 	var sshTargetConfiguration string = "use-existing"
 	this.SshTargetConfiguration = &sshTargetConfiguration
 	return &this
+}
+
+// GetAllowedSshUrl returns the AllowedSshUrl field value if set, zero value otherwise.
+func (o *GatewayUpdateRemoteAccess) GetAllowedSshUrl() string {
+	if o == nil || IsNil(o.AllowedSshUrl) {
+		var ret string
+		return ret
+	}
+	return *o.AllowedSshUrl
+}
+
+// GetAllowedSshUrlOk returns a tuple with the AllowedSshUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateRemoteAccess) GetAllowedSshUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.AllowedSshUrl) {
+		return nil, false
+	}
+	return o.AllowedSshUrl, true
+}
+
+// HasAllowedSshUrl returns a boolean if a field has been set.
+func (o *GatewayUpdateRemoteAccess) HasAllowedSshUrl() bool {
+	if o != nil && !IsNil(o.AllowedSshUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedSshUrl gets a reference to the given string and assigns it to the AllowedSshUrl field.
+func (o *GatewayUpdateRemoteAccess) SetAllowedSshUrl(v string) {
+	o.AllowedSshUrl = &v
 }
 
 // GetAllowedUrls returns the AllowedUrls field value if set, zero value otherwise.
@@ -113,6 +157,38 @@ func (o *GatewayUpdateRemoteAccess) HasAllowedUrls() bool {
 // SetAllowedUrls gets a reference to the given string and assigns it to the AllowedUrls field.
 func (o *GatewayUpdateRemoteAccess) SetAllowedUrls(v string) {
 	o.AllowedUrls = &v
+}
+
+// GetDefaultSessionTtlMinutes returns the DefaultSessionTtlMinutes field value if set, zero value otherwise.
+func (o *GatewayUpdateRemoteAccess) GetDefaultSessionTtlMinutes() string {
+	if o == nil || IsNil(o.DefaultSessionTtlMinutes) {
+		var ret string
+		return ret
+	}
+	return *o.DefaultSessionTtlMinutes
+}
+
+// GetDefaultSessionTtlMinutesOk returns a tuple with the DefaultSessionTtlMinutes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateRemoteAccess) GetDefaultSessionTtlMinutesOk() (*string, bool) {
+	if o == nil || IsNil(o.DefaultSessionTtlMinutes) {
+		return nil, false
+	}
+	return o.DefaultSessionTtlMinutes, true
+}
+
+// HasDefaultSessionTtlMinutes returns a boolean if a field has been set.
+func (o *GatewayUpdateRemoteAccess) HasDefaultSessionTtlMinutes() bool {
+	if o != nil && !IsNil(o.DefaultSessionTtlMinutes) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultSessionTtlMinutes gets a reference to the given string and assigns it to the DefaultSessionTtlMinutes field.
+func (o *GatewayUpdateRemoteAccess) SetDefaultSessionTtlMinutes(v string) {
+	o.DefaultSessionTtlMinutes = &v
 }
 
 // GetHideSessionRecording returns the HideSessionRecording field value if set, zero value otherwise.
@@ -413,8 +489,14 @@ func (o GatewayUpdateRemoteAccess) MarshalJSON() ([]byte, error) {
 
 func (o GatewayUpdateRemoteAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AllowedSshUrl) {
+		toSerialize["allowed-ssh-url"] = o.AllowedSshUrl
+	}
 	if !IsNil(o.AllowedUrls) {
 		toSerialize["allowed-urls"] = o.AllowedUrls
+	}
+	if !IsNil(o.DefaultSessionTtlMinutes) {
+		toSerialize["default-session-ttl-minutes"] = o.DefaultSessionTtlMinutes
 	}
 	if !IsNil(o.HideSessionRecording) {
 		toSerialize["hide-session-recording"] = o.HideSessionRecording
