@@ -24,6 +24,7 @@ var _ MappedNullable = &AuthMethodUpdateOIDC{}
 type AuthMethodUpdateOIDC struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]
 	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Allowed redirect URIs after the authentication
 	AllowedRedirectUri []string `json:"allowed-redirect-uri,omitempty"`

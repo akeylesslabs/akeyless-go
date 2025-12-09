@@ -24,6 +24,7 @@ var _ MappedNullable = &AuthMethodUpdateOCI{}
 type AuthMethodUpdateOCI struct {
 	// Access expiration date in Unix timestamp (select 0 for access without expiry date)
 	AccessExpires *int64 `json:"access-expires,omitempty"`
+	// limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]
 	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"
 	AuditLogsClaims []string `json:"audit-logs-claims,omitempty"`

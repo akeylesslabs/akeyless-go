@@ -48,9 +48,11 @@ type CreatePKICertIssuer struct {
 	Country *string `json:"country,omitempty"`
 	// Set this to allow the issuer will expose a CRL endpoint in the Gateway
 	CreatePrivateCrl *bool `json:"create-private-crl,omitempty"`
+	// Set this to enable an OCSP endpoint in the Gateway and include its URL in AIA
 	CreatePrivateOcsp *bool `json:"create-private-ocsp,omitempty"`
 	// Set this to allow the cert issuer will expose a public CRL endpoint
 	CreatePublicCrl *bool `json:"create-public-crl,omitempty"`
+	// Set this to enable a public OCSP endpoint and include its URL in AIA (served by UAM and includes account id)
 	CreatePublicOcsp *bool `json:"create-public-ocsp,omitempty"`
 	// Mark key usage as critical [true/false]
 	CriticalKeyUsage *string `json:"critical-key-usage,omitempty"`
@@ -88,6 +90,7 @@ type CreatePKICertIssuer struct {
 	NotEnforceHostnames *bool `json:"not-enforce-hostnames,omitempty"`
 	// If set, clients can request certificates without a CN
 	NotRequireCn *bool `json:"not-require-cn,omitempty"`
+	// OCSP NextUpdate window for OCSP responses (min 10m). Supports s,m,h,d suffix.
 	OcspTtl *string `json:"ocsp-ttl,omitempty"`
 	// A comma-separated list of organizational units (OU) that will be set in the issued certificate
 	OrganizationalUnits *string `json:"organizational-units,omitempty"`

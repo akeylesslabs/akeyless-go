@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Address** | Pointer to **string** | Address | [optional] 
-**AllowedClientType** | Pointer to **[]string** |  | [optional] 
+**AllowedClientType** | Pointer to **[]string** | A default list of client types that are allowed to authenticate [cli,ui,gateway-admin,sdk,mobile,extension]. | [optional] 
 **AllowedEmailDomains** | Pointer to **[]string** | Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed. | [optional] 
 **BoundIps** | Pointer to **[]string** | A default list of comma-separated CIDR block that are allowed to authenticate. | [optional] 
 **City** | Pointer to **string** | City | [optional] 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **JwtTtlDefault** | Pointer to **int64** | Default ttl | [optional] 
 **JwtTtlMax** | Pointer to **int64** | Maximum ttl | [optional] 
 **JwtTtlMin** | Pointer to **int64** | Minimum ttl | [optional] 
-**LockAllowedClientType** | Pointer to **string** |  | [optional] 
+**LockAllowedClientType** | Pointer to **string** | Lock allowed-client-type setting in the account [true/false]. | [optional] 
 **LockBoundIps** | Pointer to **string** | Lock bound-ips setting globally in the account. | [optional] 
 **LockDefaultKey** | Pointer to **string** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] 
 **LockGwBoundIps** | Pointer to **string** | Lock gw-bound-ips setting in the account. | [optional] 

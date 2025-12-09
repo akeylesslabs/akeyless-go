@@ -22,6 +22,7 @@ var _ MappedNullable = &UpdateAccountSettings{}
 type UpdateAccountSettings struct {
 	// Address
 	Address *string `json:"address,omitempty"`
+	// A default list of client types that are allowed to authenticate [cli,ui,gateway-admin,sdk,mobile,extension].
 	AllowedClientType []string `json:"allowed-client-type,omitempty"`
 	// Limits email sharing to the specified domains. Relevant only when item sharing is enabled. By default, all domains are allowed.
 	AllowedEmailDomains []string `json:"allowed-email-domains,omitempty"`
@@ -77,6 +78,7 @@ type UpdateAccountSettings struct {
 	JwtTtlMax *int64 `json:"jwt-ttl-max,omitempty"`
 	// Minimum ttl
 	JwtTtlMin *int64 `json:"jwt-ttl-min,omitempty"`
+	// Lock allowed-client-type setting in the account [true/false].
 	LockAllowedClientType *string `json:"lock-allowed-client-type,omitempty"`
 	// Lock bound-ips setting globally in the account.
 	LockBoundIps *string `json:"lock-bound-ips,omitempty"`
