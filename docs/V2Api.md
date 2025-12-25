@@ -411,6 +411,7 @@ Method | HTTP request | Description
 [**RotatedSecretCreateMongodb**](V2Api.md#RotatedSecretCreateMongodb) | **Post** /rotated-secret-create-mongodb | 
 [**RotatedSecretCreateMssql**](V2Api.md#RotatedSecretCreateMssql) | **Post** /rotated-secret-create-mssql | 
 [**RotatedSecretCreateMysql**](V2Api.md#RotatedSecretCreateMysql) | **Post** /rotated-secret-create-mysql | 
+[**RotatedSecretCreateOpenAI**](V2Api.md#RotatedSecretCreateOpenAI) | **Post** /rotated-secret-create-openai | 
 [**RotatedSecretCreateOracledb**](V2Api.md#RotatedSecretCreateOracledb) | **Post** /rotated-secret-create-oracledb | 
 [**RotatedSecretCreatePostgresql**](V2Api.md#RotatedSecretCreatePostgresql) | **Post** /rotated-secret-create-postgresql | 
 [**RotatedSecretCreateRedis**](V2Api.md#RotatedSecretCreateRedis) | **Post** /rotated-secret-create-redis | 
@@ -434,6 +435,7 @@ Method | HTTP request | Description
 [**RotatedSecretUpdateMongodb**](V2Api.md#RotatedSecretUpdateMongodb) | **Post** /rotated-secret-update-mongodb | 
 [**RotatedSecretUpdateMssql**](V2Api.md#RotatedSecretUpdateMssql) | **Post** /rotated-secret-update-mssql | 
 [**RotatedSecretUpdateMysql**](V2Api.md#RotatedSecretUpdateMysql) | **Post** /rotated-secret-update-mysql | 
+[**RotatedSecretUpdateOpenAI**](V2Api.md#RotatedSecretUpdateOpenAI) | **Post** /rotated-secret-update-openai | 
 [**RotatedSecretUpdateOracledb**](V2Api.md#RotatedSecretUpdateOracledb) | **Post** /rotated-secret-update-oracledb | 
 [**RotatedSecretUpdatePostgresql**](V2Api.md#RotatedSecretUpdatePostgresql) | **Post** /rotated-secret-update-postgresql | 
 [**RotatedSecretUpdateRedis**](V2Api.md#RotatedSecretUpdateRedis) | **Post** /rotated-secret-update-redis | 
@@ -26621,6 +26623,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretCreateOpenAI
+
+> RotatedSecretCreateOutput RotatedSecretCreateOpenAI(ctx).RotatedSecretCreateOpenAI(rotatedSecretCreateOpenAI).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateOpenAI := *openapiclient.NewRotatedSecretCreateOpenAI("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateOpenAI | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateOpenAI(context.Background()).RotatedSecretCreateOpenAI(rotatedSecretCreateOpenAI).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateOpenAI``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateOpenAI`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateOpenAI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateOpenAIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateOpenAI** | [**RotatedSecretCreateOpenAI**](RotatedSecretCreateOpenAI.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretCreateOracledb
 
 > RotatedSecretCreateOutput RotatedSecretCreateOracledb(ctx).RotatedSecretCreateOracledb(rotatedSecretCreateOracledb).Execute()
@@ -28074,6 +28140,70 @@ Other parameters are passed through a pointer to a apiRotatedSecretUpdateMysqlRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rotatedSecretUpdateMysql** | [**RotatedSecretUpdateMysql**](RotatedSecretUpdateMysql.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateOpenAI
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateOpenAI(ctx).RotatedSecretUpdateOpenAI(rotatedSecretUpdateOpenAI).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretUpdateOpenAI := *openapiclient.NewRotatedSecretUpdateOpenAI("Name_example") // RotatedSecretUpdateOpenAI | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretUpdateOpenAI(context.Background()).RotatedSecretUpdateOpenAI(rotatedSecretUpdateOpenAI).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateOpenAI``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretUpdateOpenAI`: RotatedSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateOpenAI`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateOpenAIRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretUpdateOpenAI** | [**RotatedSecretUpdateOpenAI**](RotatedSecretUpdateOpenAI.md) |  | 
 
 ### Return type
 

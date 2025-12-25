@@ -68,7 +68,7 @@ type RotatedSecretUpdateSsh struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// Custom rotation command
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
-	// The rotator type. options: [target/password]
+	// The rotator type. options: [target/password/key]
 	RotatorType string `json:"rotator-type"`
 	// Rotate same password for each host from the Linked Target (relevant only for Linked Target)
 	SamePassword *string `json:"same-password,omitempty"`

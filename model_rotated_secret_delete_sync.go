@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretDeleteSync{}
 
 // RotatedSecretDeleteSync struct for RotatedSecretDeleteSync
 type RotatedSecretDeleteSync struct {
+	// Delete the secret from the remote target USC as well
+	DeleteFromUsc *bool `json:"delete-from-usc,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Rotated secret name
@@ -44,6 +46,8 @@ type _RotatedSecretDeleteSync RotatedSecretDeleteSync
 // will change when the set of required properties is changed
 func NewRotatedSecretDeleteSync(name string, uscName string) *RotatedSecretDeleteSync {
 	this := RotatedSecretDeleteSync{}
+	var deleteFromUsc bool = false
+	this.DeleteFromUsc = &deleteFromUsc
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -56,9 +60,43 @@ func NewRotatedSecretDeleteSync(name string, uscName string) *RotatedSecretDelet
 // but it doesn't guarantee that properties required by API are set
 func NewRotatedSecretDeleteSyncWithDefaults() *RotatedSecretDeleteSync {
 	this := RotatedSecretDeleteSync{}
+	var deleteFromUsc bool = false
+	this.DeleteFromUsc = &deleteFromUsc
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetDeleteFromUsc returns the DeleteFromUsc field value if set, zero value otherwise.
+func (o *RotatedSecretDeleteSync) GetDeleteFromUsc() bool {
+	if o == nil || IsNil(o.DeleteFromUsc) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteFromUsc
+}
+
+// GetDeleteFromUscOk returns a tuple with the DeleteFromUsc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDeleteSync) GetDeleteFromUscOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteFromUsc) {
+		return nil, false
+	}
+	return o.DeleteFromUsc, true
+}
+
+// HasDeleteFromUsc returns a boolean if a field has been set.
+func (o *RotatedSecretDeleteSync) HasDeleteFromUsc() bool {
+	if o != nil && !IsNil(o.DeleteFromUsc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteFromUsc gets a reference to the given bool and assigns it to the DeleteFromUsc field.
+func (o *RotatedSecretDeleteSync) SetDeleteFromUsc(v bool) {
+	o.DeleteFromUsc = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -247,6 +285,9 @@ func (o RotatedSecretDeleteSync) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretDeleteSync) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeleteFromUsc) {
+		toSerialize["delete-from-usc"] = o.DeleteFromUsc
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

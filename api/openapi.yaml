@@ -10948,6 +10948,33 @@ paths:
             field.
       tags:
       - v2
+  /rotated-secret-create-openai:
+    post:
+      operationId: rotatedSecretCreateOpenAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotatedSecretCreateOpenAI'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretCreateOutput'
+          description: rotatedSecretCreateOpenAIResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /rotated-secret-create-oracledb:
     post:
       operationId: rotatedSecretCreateOracledb
@@ -11560,6 +11587,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/rotatedSecretUpdateOutput'
           description: rotatedSecretUpdateMysqlResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /rotated-secret-update-openai:
+    post:
+      operationId: rotatedSecretUpdateOpenAI
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotatedSecretUpdateOpenAI'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretUpdateOutput'
+          description: rotatedSecretUpdateOpenAIResponse wraps response body.
         default:
           content:
             application/json:
@@ -18276,6 +18330,12 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretCreateOutput'
       description: rotatedSecretCreateMysqlResponse wraps response body.
+    rotatedSecretCreateOpenAIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretCreateOutput'
+      description: rotatedSecretCreateOpenAIResponse wraps response body.
     rotatedSecretCreateOracledbResponse:
       content:
         application/json:
@@ -18415,6 +18475,12 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretUpdateOutput'
       description: rotatedSecretUpdateMysqlResponse wraps response body.
+    rotatedSecretUpdateOpenAIResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretUpdateOutput'
+      description: rotatedSecretUpdateOpenAIResponse wraps response body.
     rotatedSecretUpdateOracledbResponse:
       content:
         application/json:
@@ -19679,6 +19745,7 @@ components:
           enable_time: 2000-01-23T04:56:07.000+00:00
           interval_by_days: 6
         hide_personal_folder: true
+        allow_auto_fill: true
         allowed_clients_ips:
           cidr_whitelist: cidr_whitelist
           lock: true
@@ -19748,6 +19815,9 @@ components:
           x-go-name: AccountDefaultKeyName
         ai_insights:
           $ref: '#/components/schemas/AiInsightsSetting'
+        allow_auto_fill:
+          type: boolean
+          x-go-name: AllowAutoFill
         allowed_client_types:
           $ref: '#/components/schemas/AllowedClientType'
         allowed_clients_ips:
@@ -28334,6 +28404,7 @@ components:
             enable_time: 2000-01-23T04:56:07.000+00:00
             interval_by_days: 6
           hide_personal_folder: true
+          allow_auto_fill: true
           allowed_clients_ips:
             cidr_whitelist: cidr_whitelist
             lock: true
@@ -29619,9 +29690,11 @@ components:
         - assoc_id: assoc_id
           item_id: 1
           item_type: item_type
+          delete_remote: true
           attributes:
             secret_id: secret_id
             secret_name: secret_name
+            delete_remote: true
             namespace: namespace
             jq_secret_filter: jq_secret_filter
             last_error: last_error
@@ -29629,9 +29702,11 @@ components:
         - assoc_id: assoc_id
           item_id: 1
           item_type: item_type
+          delete_remote: true
           attributes:
             secret_id: secret_id
             secret_name: secret_name
+            delete_remote: true
             namespace: namespace
             jq_secret_filter: jq_secret_filter
             last_error: last_error
@@ -31472,9 +31547,11 @@ components:
         assoc_id: assoc_id
         item_id: 1
         item_type: item_type
+        delete_remote: true
         attributes:
           secret_id: secret_id
           secret_name: secret_name
+          delete_remote: true
           namespace: namespace
           jq_secret_filter: jq_secret_filter
           last_error: last_error
@@ -31485,6 +31562,9 @@ components:
           x-go-name: AssociationID
         attributes:
           $ref: '#/components/schemas/UscSyncInfo'
+        delete_remote:
+          type: boolean
+          x-go-name: DeleteRemote
         item_id:
           format: int64
           type: integer
@@ -33792,9 +33872,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -33802,9 +33884,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -34707,9 +34791,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -34717,9 +34803,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -35648,9 +35736,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -35658,9 +35748,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -36563,9 +36655,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -36573,9 +36667,11 @@ components:
           - assoc_id: assoc_id
             item_id: 1
             item_type: item_type
+            delete_remote: true
             attributes:
               secret_id: secret_id
               secret_name: secret_name
+              delete_remote: true
               namespace: namespace
               jq_secret_filter: jq_secret_filter
               last_error: last_error
@@ -43677,10 +43773,14 @@ components:
       example:
         secret_id: secret_id
         secret_name: secret_name
+        delete_remote: true
         namespace: namespace
         jq_secret_filter: jq_secret_filter
         last_error: last_error
       properties:
+        delete_remote:
+          type: boolean
+          x-go-name: DeleteRemote
         jq_secret_filter:
           type: string
           x-go-name: JqSecretFilter
@@ -98169,6 +98269,11 @@ components:
             \ only first 1000 items"
           type: string
           x-go-name: AutoPagination
+        current-folder:
+          default: false
+          description: List only items in the current folder (excludes subfolders)
+          type: boolean
+          x-go-name: CurrentFolder
         filter:
           description: Filter by item name or part of it
           type: string
@@ -100330,6 +100435,113 @@ components:
       title: rotatedSecretCreateMysql is a command that creates a rotated secret.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretCreateOpenAI:
+      description: |-
+        rotatedSecretCreateOpenAI is a command that creates a rotated secret for an
+        OpenAI target by rotating the admin API key configured on the target.
+      properties:
+        api-key:
+          description: Admin API key value to rotate (relevant only for rotator-type=api-key)
+          type: string
+          x-go-name: ApiKey
+        api-key-id:
+          description: Admin API key ID to rotate (relevant only for rotator-type=api-key)
+          type: string
+          x-go-name: ApiKeyID
+        authentication-credentials:
+          default: use-user-creds
+          description: The credentials to connect with use-user-creds/use-target-creds
+          type: string
+          x-go-name: RotatorCredsType
+        auto-rotate:
+          description: "Whether to automatically rotate every --rotation-interval\
+            \ days, or disable existing automatic rotation [true/false]"
+          type: string
+          x-go-name: AutoRotate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        item-custom-fields:
+          additionalProperties:
+            type: string
+          description: Additional custom fields to associate with the item
+          type: object
+          x-go-name: ItemCustomFields
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the secret value (if\
+            \ empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Rotated secret name
+          type: string
+          x-go-name: SecretName
+        password-length:
+          description: The length of the password to be generated
+          type: string
+          x-go-name: PasswordLengthInput
+        rotation-event-in:
+          description: How many days before the rotation of the item would you like
+            to be notified
+          items:
+            type: string
+          type: array
+          x-go-name: RotationEventsInDays
+        rotation-hour:
+          description: The Hour of the rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: RotationHour
+        rotation-interval:
+          description: The number of days to wait between every automatic key rotation
+            (1-365)
+          type: string
+          x-go-name: RotationInterval
+        rotator-type:
+          description: "The rotator type. options: [target/api-key]"
+          type: string
+          x-go-name: RotatorType
+        tags:
+          description: Add tags attached to this object
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      - rotator-type
+      - target-name
+      title: OpenAI
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretCreateOracledb:
       properties:
         authentication-credentials:
@@ -101065,7 +101277,7 @@ components:
           type: string
           x-go-name: RotatorCustomCmd
         rotator-type:
-          description: "The rotator type. options: [target/password]"
+          description: "The rotator type. options: [target/password/key]"
           type: string
           x-go-name: RotatorType
         same-password:
@@ -101327,6 +101539,11 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretDeleteSync:
       properties:
+        delete-from-usc:
+          default: false
+          description: Delete the secret from the remote target USC as well
+          type: boolean
+          x-go-name: DeleteRemote
         json:
           default: false
           description: Set output format to JSON
@@ -101423,6 +101640,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretSync:
       properties:
+        DeleteRemote:
+          description: Delete the secret from remote secret manager (for association
+            create/update)
+          type: boolean
         filter-secret-value:
           description: JQ expression to filter or transform the secret value
           type: string
@@ -103099,6 +103320,118 @@ components:
       title: rotatedSecretUpdateMysql is a command that updates a rotated secret.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretUpdateOpenAI:
+      description: rotatedSecretUpdateOpenAI is a command that updates an OpenAI rotated
+        secret.
+      properties:
+        add-tag:
+          description: List of the new tags that will be attached to this item
+          items:
+            type: string
+          type: array
+          x-go-name: AddTags
+        api-key:
+          description: Admin API key value to update (relevant only for rotator-type=api-key)
+          type: string
+          x-go-name: ApiKey
+        api-key-id:
+          description: Admin API key ID to update (relevant only for rotator-type=api-key)
+          type: string
+          x-go-name: ApiKeyID
+        authentication-credentials:
+          default: use-user-creds
+          description: The credentials to connect with use-user-creds/use-target-creds
+          type: string
+          x-go-name: RotatorCredsType
+        auto-rotate:
+          description: "Whether to automatically rotate every --rotation-interval\
+            \ days, or disable existing automatic rotation [true/false]"
+          type: string
+          x-go-name: AutoRotate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          default: default_metadata
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        item-custom-fields:
+          additionalProperties:
+            type: string
+          description: Additional custom fields to associate with the item
+          type: object
+          x-go-name: ItemCustomFields
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          description: "The name of a key that used to encrypt the secret value (if\
+            \ empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Rotated secret name
+          type: string
+          x-go-name: SecretName
+        new-name:
+          description: New item name
+          type: string
+          x-go-name: NewName
+        password-length:
+          description: The length of the password to be generated
+          type: string
+          x-go-name: PasswordLengthInput
+        rm-tag:
+          description: List of the existent tags that will be removed from this item
+          items:
+            type: string
+          type: array
+          x-go-name: RemoveTags
+        rotation-event-in:
+          description: How many days before the rotation of the item would you like
+            to be notified
+          items:
+            type: string
+          type: array
+          x-go-name: RotationEventsInDays
+        rotation-hour:
+          description: The Hour of the rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: RotationHour
+        rotation-interval:
+          description: The number of days to wait between every automatic key rotation
+            (1-365)
+          type: string
+          x-go-name: RotationInterval
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      title: OpenAI
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretUpdateOracledb:
       properties:
         add-tag:
@@ -103886,7 +104219,7 @@ components:
           type: string
           x-go-name: RotatorCustomCmd
         rotator-type:
-          description: "The rotator type. options: [target/password]"
+          description: "The rotator type. options: [target/password/key]"
           type: string
           x-go-name: RotatorType
         same-password:
@@ -104850,6 +105183,11 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     staticSecretDeleteSync:
       properties:
+        delete-from-usc:
+          default: false
+          description: Delete the secret from the remote target USC as well
+          type: boolean
+          x-go-name: DeleteRemote
         json:
           default: false
           description: Set output format to JSON
@@ -104885,6 +105223,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     staticSecretSync:
       properties:
+        DeleteRemote:
+          description: Delete the secret from remote secret manager (for association
+            create/update)
+          type: boolean
         filter-secret-value:
           description: JQ expression to filter or transform the secret value
           type: string

@@ -22,6 +22,8 @@ var _ MappedNullable = &StaticSecretDeleteSync{}
 
 // StaticSecretDeleteSync struct for StaticSecretDeleteSync
 type StaticSecretDeleteSync struct {
+	// Delete the secret from the remote target USC as well
+	DeleteFromUsc *bool `json:"delete-from-usc,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Static secret name
@@ -44,6 +46,8 @@ type _StaticSecretDeleteSync StaticSecretDeleteSync
 // will change when the set of required properties is changed
 func NewStaticSecretDeleteSync(name string, uscName string) *StaticSecretDeleteSync {
 	this := StaticSecretDeleteSync{}
+	var deleteFromUsc bool = false
+	this.DeleteFromUsc = &deleteFromUsc
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -56,9 +60,43 @@ func NewStaticSecretDeleteSync(name string, uscName string) *StaticSecretDeleteS
 // but it doesn't guarantee that properties required by API are set
 func NewStaticSecretDeleteSyncWithDefaults() *StaticSecretDeleteSync {
 	this := StaticSecretDeleteSync{}
+	var deleteFromUsc bool = false
+	this.DeleteFromUsc = &deleteFromUsc
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetDeleteFromUsc returns the DeleteFromUsc field value if set, zero value otherwise.
+func (o *StaticSecretDeleteSync) GetDeleteFromUsc() bool {
+	if o == nil || IsNil(o.DeleteFromUsc) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteFromUsc
+}
+
+// GetDeleteFromUscOk returns a tuple with the DeleteFromUsc field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretDeleteSync) GetDeleteFromUscOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteFromUsc) {
+		return nil, false
+	}
+	return o.DeleteFromUsc, true
+}
+
+// HasDeleteFromUsc returns a boolean if a field has been set.
+func (o *StaticSecretDeleteSync) HasDeleteFromUsc() bool {
+	if o != nil && !IsNil(o.DeleteFromUsc) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteFromUsc gets a reference to the given bool and assigns it to the DeleteFromUsc field.
+func (o *StaticSecretDeleteSync) SetDeleteFromUsc(v bool) {
+	o.DeleteFromUsc = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -247,6 +285,9 @@ func (o StaticSecretDeleteSync) MarshalJSON() ([]byte, error) {
 
 func (o StaticSecretDeleteSync) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeleteFromUsc) {
+		toSerialize["delete-from-usc"] = o.DeleteFromUsc
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

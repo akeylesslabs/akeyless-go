@@ -832,6 +832,7 @@ docs/RotatedSecretCreateLdap.md
 docs/RotatedSecretCreateMongodb.md
 docs/RotatedSecretCreateMssql.md
 docs/RotatedSecretCreateMysql.md
+docs/RotatedSecretCreateOpenAI.md
 docs/RotatedSecretCreateOracledb.md
 docs/RotatedSecretCreateOutput.md
 docs/RotatedSecretCreatePostgresql.md
@@ -859,6 +860,7 @@ docs/RotatedSecretUpdateLdap.md
 docs/RotatedSecretUpdateMongodb.md
 docs/RotatedSecretUpdateMssql.md
 docs/RotatedSecretUpdateMysql.md
+docs/RotatedSecretUpdateOpenAI.md
 docs/RotatedSecretUpdateOracledb.md
 docs/RotatedSecretUpdateOutput.md
 docs/RotatedSecretUpdatePostgresql.md
@@ -1972,6 +1974,7 @@ model_rotated_secret_create_ldap.go
 model_rotated_secret_create_mongodb.go
 model_rotated_secret_create_mssql.go
 model_rotated_secret_create_mysql.go
+model_rotated_secret_create_open_ai.go
 model_rotated_secret_create_oracledb.go
 model_rotated_secret_create_output.go
 model_rotated_secret_create_postgresql.go
@@ -1999,6 +2002,7 @@ model_rotated_secret_update_ldap.go
 model_rotated_secret_update_mongodb.go
 model_rotated_secret_update_mssql.go
 model_rotated_secret_update_mysql.go
+model_rotated_secret_update_open_ai.go
 model_rotated_secret_update_oracledb.go
 model_rotated_secret_update_output.go
 model_rotated_secret_update_postgresql.go

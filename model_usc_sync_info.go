@@ -20,6 +20,7 @@ var _ MappedNullable = &UscSyncInfo{}
 
 // UscSyncInfo struct for UscSyncInfo
 type UscSyncInfo struct {
+	DeleteRemote *bool `json:"delete_remote,omitempty"`
 	JqSecretFilter *string `json:"jq_secret_filter,omitempty"`
 	LastError *string `json:"last_error,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
@@ -42,6 +43,38 @@ func NewUscSyncInfo() *UscSyncInfo {
 func NewUscSyncInfoWithDefaults() *UscSyncInfo {
 	this := UscSyncInfo{}
 	return &this
+}
+
+// GetDeleteRemote returns the DeleteRemote field value if set, zero value otherwise.
+func (o *UscSyncInfo) GetDeleteRemote() bool {
+	if o == nil || IsNil(o.DeleteRemote) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteRemote
+}
+
+// GetDeleteRemoteOk returns a tuple with the DeleteRemote field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscSyncInfo) GetDeleteRemoteOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteRemote) {
+		return nil, false
+	}
+	return o.DeleteRemote, true
+}
+
+// HasDeleteRemote returns a boolean if a field has been set.
+func (o *UscSyncInfo) HasDeleteRemote() bool {
+	if o != nil && !IsNil(o.DeleteRemote) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteRemote gets a reference to the given bool and assigns it to the DeleteRemote field.
+func (o *UscSyncInfo) SetDeleteRemote(v bool) {
+	o.DeleteRemote = &v
 }
 
 // GetJqSecretFilter returns the JqSecretFilter field value if set, zero value otherwise.
@@ -214,6 +247,9 @@ func (o UscSyncInfo) MarshalJSON() ([]byte, error) {
 
 func (o UscSyncInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeleteRemote) {
+		toSerialize["delete_remote"] = o.DeleteRemote
+	}
 	if !IsNil(o.JqSecretFilter) {
 		toSerialize["jq_secret_filter"] = o.JqSecretFilter
 	}

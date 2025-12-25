@@ -26,6 +26,8 @@ type ListItems struct {
 	AdvancedFilter *string `json:"advanced-filter,omitempty"`
 	// Retrieve all items using pagination, when disabled retrieving only first 1000 items
 	AutoPagination *string `json:"auto-pagination,omitempty"`
+	// List only items in the current folder (excludes subfolders)
+	CurrentFolder *bool `json:"current-folder,omitempty"`
 	// Filter by item name or part of it
 	Filter *string `json:"filter,omitempty"`
 	// Set output format to JSON
@@ -61,6 +63,8 @@ func NewListItems() *ListItems {
 	this.Accessibility = &accessibility
 	var autoPagination string = "enabled"
 	this.AutoPagination = &autoPagination
+	var currentFolder bool = false
+	this.CurrentFolder = &currentFolder
 	var json bool = false
 	this.Json = &json
 	var sraOnly bool = false
@@ -77,6 +81,8 @@ func NewListItemsWithDefaults() *ListItems {
 	this.Accessibility = &accessibility
 	var autoPagination string = "enabled"
 	this.AutoPagination = &autoPagination
+	var currentFolder bool = false
+	this.CurrentFolder = &currentFolder
 	var json bool = false
 	this.Json = &json
 	var sraOnly bool = false
@@ -178,6 +184,38 @@ func (o *ListItems) HasAutoPagination() bool {
 // SetAutoPagination gets a reference to the given string and assigns it to the AutoPagination field.
 func (o *ListItems) SetAutoPagination(v string) {
 	o.AutoPagination = &v
+}
+
+// GetCurrentFolder returns the CurrentFolder field value if set, zero value otherwise.
+func (o *ListItems) GetCurrentFolder() bool {
+	if o == nil || IsNil(o.CurrentFolder) {
+		var ret bool
+		return ret
+	}
+	return *o.CurrentFolder
+}
+
+// GetCurrentFolderOk returns a tuple with the CurrentFolder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetCurrentFolderOk() (*bool, bool) {
+	if o == nil || IsNil(o.CurrentFolder) {
+		return nil, false
+	}
+	return o.CurrentFolder, true
+}
+
+// HasCurrentFolder returns a boolean if a field has been set.
+func (o *ListItems) HasCurrentFolder() bool {
+	if o != nil && !IsNil(o.CurrentFolder) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentFolder gets a reference to the given bool and assigns it to the CurrentFolder field.
+func (o *ListItems) SetCurrentFolder(v bool) {
+	o.CurrentFolder = &v
 }
 
 // GetFilter returns the Filter field value if set, zero value otherwise.
@@ -582,6 +620,9 @@ func (o ListItems) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoPagination) {
 		toSerialize["auto-pagination"] = o.AutoPagination
+	}
+	if !IsNil(o.CurrentFolder) {
+		toSerialize["current-folder"] = o.CurrentFolder
 	}
 	if !IsNil(o.Filter) {
 		toSerialize["filter"] = o.Filter

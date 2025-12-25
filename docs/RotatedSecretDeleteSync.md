@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteFromUsc** | Pointer to **bool** | Delete the secret from the remote target USC as well | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **RemoteSecretName** | Pointer to **string** | Remote Secret Name to disambiguate when multiple syncs exist under the same USC | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewRotatedSecretDeleteSyncWithDefaults instantiates a new RotatedSecretDeleteSync object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteFromUsc
+
+`func (o *RotatedSecretDeleteSync) GetDeleteFromUsc() bool`
+
+GetDeleteFromUsc returns the DeleteFromUsc field if non-nil, zero value otherwise.
+
+### GetDeleteFromUscOk
+
+`func (o *RotatedSecretDeleteSync) GetDeleteFromUscOk() (*bool, bool)`
+
+GetDeleteFromUscOk returns a tuple with the DeleteFromUsc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteFromUsc
+
+`func (o *RotatedSecretDeleteSync) SetDeleteFromUsc(v bool)`
+
+SetDeleteFromUsc sets DeleteFromUsc field to given value.
+
+### HasDeleteFromUsc
+
+`func (o *RotatedSecretDeleteSync) HasDeleteFromUsc() bool`
+
+HasDeleteFromUsc returns a boolean if a field has been set.
 
 ### GetJson
 

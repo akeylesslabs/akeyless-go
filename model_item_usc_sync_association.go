@@ -22,6 +22,7 @@ var _ MappedNullable = &ItemUSCSyncAssociation{}
 type ItemUSCSyncAssociation struct {
 	AssocId *string `json:"assoc_id,omitempty"`
 	Attributes *UscSyncInfo `json:"attributes,omitempty"`
+	DeleteRemote *bool `json:"delete_remote,omitempty"`
 	ItemId *int64 `json:"item_id,omitempty"`
 	ItemName *string `json:"item_name,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
@@ -106,6 +107,38 @@ func (o *ItemUSCSyncAssociation) HasAttributes() bool {
 // SetAttributes gets a reference to the given UscSyncInfo and assigns it to the Attributes field.
 func (o *ItemUSCSyncAssociation) SetAttributes(v UscSyncInfo) {
 	o.Attributes = &v
+}
+
+// GetDeleteRemote returns the DeleteRemote field value if set, zero value otherwise.
+func (o *ItemUSCSyncAssociation) GetDeleteRemote() bool {
+	if o == nil || IsNil(o.DeleteRemote) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteRemote
+}
+
+// GetDeleteRemoteOk returns a tuple with the DeleteRemote field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemUSCSyncAssociation) GetDeleteRemoteOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteRemote) {
+		return nil, false
+	}
+	return o.DeleteRemote, true
+}
+
+// HasDeleteRemote returns a boolean if a field has been set.
+func (o *ItemUSCSyncAssociation) HasDeleteRemote() bool {
+	if o != nil && !IsNil(o.DeleteRemote) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteRemote gets a reference to the given bool and assigns it to the DeleteRemote field.
+func (o *ItemUSCSyncAssociation) SetDeleteRemote(v bool) {
+	o.DeleteRemote = &v
 }
 
 // GetItemId returns the ItemId field value if set, zero value otherwise.
@@ -219,6 +252,9 @@ func (o ItemUSCSyncAssociation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes
+	}
+	if !IsNil(o.DeleteRemote) {
+		toSerialize["delete_remote"] = o.DeleteRemote
 	}
 	if !IsNil(o.ItemId) {
 		toSerialize["item_id"] = o.ItemId

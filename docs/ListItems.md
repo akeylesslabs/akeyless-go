@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **AdvancedFilter** | Pointer to **string** | Filter by item name/username/website or part of it | [optional] 
 **AutoPagination** | Pointer to **string** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional] [default to "enabled"]
+**CurrentFolder** | Pointer to **bool** | List only items in the current folder (excludes subfolders) | [optional] [default to false]
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **MinimalView** | Pointer to **bool** | Show only basic information of the items | [optional] 
@@ -113,6 +114,31 @@ SetAutoPagination sets AutoPagination field to given value.
 `func (o *ListItems) HasAutoPagination() bool`
 
 HasAutoPagination returns a boolean if a field has been set.
+
+### GetCurrentFolder
+
+`func (o *ListItems) GetCurrentFolder() bool`
+
+GetCurrentFolder returns the CurrentFolder field if non-nil, zero value otherwise.
+
+### GetCurrentFolderOk
+
+`func (o *ListItems) GetCurrentFolderOk() (*bool, bool)`
+
+GetCurrentFolderOk returns a tuple with the CurrentFolder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentFolder
+
+`func (o *ListItems) SetCurrentFolder(v bool)`
+
+SetCurrentFolder sets CurrentFolder field to given value.
+
+### HasCurrentFolder
+
+`func (o *ListItems) HasCurrentFolder() bool`
+
+HasCurrentFolder returns a boolean if a field has been set.
 
 ### GetFilter
 

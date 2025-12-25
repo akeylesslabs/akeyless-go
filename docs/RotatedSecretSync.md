@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteRemote** | Pointer to **bool** | Delete the secret from remote secret manager (for association create/update) | [optional] 
 **FilterSecretValue** | Pointer to **string** | JQ expression to filter or transform the secret value | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewRotatedSecretSyncWithDefaults instantiates a new RotatedSecretSync object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteRemote
+
+`func (o *RotatedSecretSync) GetDeleteRemote() bool`
+
+GetDeleteRemote returns the DeleteRemote field if non-nil, zero value otherwise.
+
+### GetDeleteRemoteOk
+
+`func (o *RotatedSecretSync) GetDeleteRemoteOk() (*bool, bool)`
+
+GetDeleteRemoteOk returns a tuple with the DeleteRemote field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteRemote
+
+`func (o *RotatedSecretSync) SetDeleteRemote(v bool)`
+
+SetDeleteRemote sets DeleteRemote field to given value.
+
+### HasDeleteRemote
+
+`func (o *RotatedSecretSync) HasDeleteRemote() bool`
+
+HasDeleteRemote returns a boolean if a field has been set.
 
 ### GetFilterSecretValue
 

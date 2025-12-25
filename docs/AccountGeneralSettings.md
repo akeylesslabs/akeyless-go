@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AccountDefaultKeyItemId** | Pointer to **int64** | AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key | [optional] 
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
 **AiInsights** | Pointer to [**AiInsightsSetting**](AiInsightsSetting.md) |  | [optional] 
+**AllowAutoFill** | Pointer to **bool** |  | [optional] 
 **AllowedClientTypes** | Pointer to [**AllowedClientType**](AllowedClientType.md) |  | [optional] 
 **AllowedClientsIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AllowedGatewaysIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
@@ -121,6 +122,31 @@ SetAiInsights sets AiInsights field to given value.
 `func (o *AccountGeneralSettings) HasAiInsights() bool`
 
 HasAiInsights returns a boolean if a field has been set.
+
+### GetAllowAutoFill
+
+`func (o *AccountGeneralSettings) GetAllowAutoFill() bool`
+
+GetAllowAutoFill returns the AllowAutoFill field if non-nil, zero value otherwise.
+
+### GetAllowAutoFillOk
+
+`func (o *AccountGeneralSettings) GetAllowAutoFillOk() (*bool, bool)`
+
+GetAllowAutoFillOk returns a tuple with the AllowAutoFill field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowAutoFill
+
+`func (o *AccountGeneralSettings) SetAllowAutoFill(v bool)`
+
+SetAllowAutoFill sets AllowAutoFill field to given value.
+
+### HasAllowAutoFill
+
+`func (o *AccountGeneralSettings) HasAllowAutoFill() bool`
+
+HasAllowAutoFill returns a boolean if a field has been set.
 
 ### GetAllowedClientTypes
 

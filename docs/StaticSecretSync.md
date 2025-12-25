@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteRemote** | Pointer to **bool** | Delete the secret from remote secret manager (for association create/update) | [optional] 
 **FilterSecretValue** | Pointer to **string** | JQ expression to filter or transform the secret value | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Static secret name | 
@@ -31,6 +32,31 @@ will change when the set of required properties is changed
 NewStaticSecretSyncWithDefaults instantiates a new StaticSecretSync object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteRemote
+
+`func (o *StaticSecretSync) GetDeleteRemote() bool`
+
+GetDeleteRemote returns the DeleteRemote field if non-nil, zero value otherwise.
+
+### GetDeleteRemoteOk
+
+`func (o *StaticSecretSync) GetDeleteRemoteOk() (*bool, bool)`
+
+GetDeleteRemoteOk returns a tuple with the DeleteRemote field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteRemote
+
+`func (o *StaticSecretSync) SetDeleteRemote(v bool)`
+
+SetDeleteRemote sets DeleteRemote field to given value.
+
+### HasDeleteRemote
+
+`func (o *StaticSecretSync) HasDeleteRemote() bool`
+
+HasDeleteRemote returns a boolean if a field has been set.
 
 ### GetFilterSecretValue
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteRemote** | Pointer to **bool** |  | [optional] 
 **JqSecretFilter** | Pointer to **string** |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewUscSyncInfoWithDefaults instantiates a new UscSyncInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteRemote
+
+`func (o *UscSyncInfo) GetDeleteRemote() bool`
+
+GetDeleteRemote returns the DeleteRemote field if non-nil, zero value otherwise.
+
+### GetDeleteRemoteOk
+
+`func (o *UscSyncInfo) GetDeleteRemoteOk() (*bool, bool)`
+
+GetDeleteRemoteOk returns a tuple with the DeleteRemote field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteRemote
+
+`func (o *UscSyncInfo) SetDeleteRemote(v bool)`
+
+SetDeleteRemote sets DeleteRemote field to given value.
+
+### HasDeleteRemote
+
+`func (o *UscSyncInfo) HasDeleteRemote() bool`
+
+HasDeleteRemote returns a boolean if a field has been set.
 
 ### GetJqSecretFilter
 

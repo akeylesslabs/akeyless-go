@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretSync{}
 
 // RotatedSecretSync struct for RotatedSecretSync
 type RotatedSecretSync struct {
+	// Delete the secret from remote secret manager (for association create/update)
+	DeleteRemote *bool `json:"DeleteRemote,omitempty"`
 	// JQ expression to filter or transform the secret value
 	FilterSecretValue *string `json:"filter-secret-value,omitempty"`
 	// Set output format to JSON
@@ -62,6 +64,38 @@ func NewRotatedSecretSyncWithDefaults() *RotatedSecretSync {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetDeleteRemote returns the DeleteRemote field value if set, zero value otherwise.
+func (o *RotatedSecretSync) GetDeleteRemote() bool {
+	if o == nil || IsNil(o.DeleteRemote) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteRemote
+}
+
+// GetDeleteRemoteOk returns a tuple with the DeleteRemote field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretSync) GetDeleteRemoteOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteRemote) {
+		return nil, false
+	}
+	return o.DeleteRemote, true
+}
+
+// HasDeleteRemote returns a boolean if a field has been set.
+func (o *RotatedSecretSync) HasDeleteRemote() bool {
+	if o != nil && !IsNil(o.DeleteRemote) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteRemote gets a reference to the given bool and assigns it to the DeleteRemote field.
+func (o *RotatedSecretSync) SetDeleteRemote(v bool) {
+	o.DeleteRemote = &v
 }
 
 // GetFilterSecretValue returns the FilterSecretValue field value if set, zero value otherwise.
@@ -322,6 +356,9 @@ func (o RotatedSecretSync) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretSync) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeleteRemote) {
+		toSerialize["DeleteRemote"] = o.DeleteRemote
+	}
 	if !IsNil(o.FilterSecretValue) {
 		toSerialize["filter-secret-value"] = o.FilterSecretValue
 	}

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteFromUsc** | Pointer to **bool** | Delete the secret from the remote target USC as well | [optional] [default to false]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Static secret name | 
 **RemoteSecretName** | Pointer to **string** | Remote Secret Name to disambiguate when multiple syncs exist under the same USC | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewStaticSecretDeleteSyncWithDefaults instantiates a new StaticSecretDeleteSync object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteFromUsc
+
+`func (o *StaticSecretDeleteSync) GetDeleteFromUsc() bool`
+
+GetDeleteFromUsc returns the DeleteFromUsc field if non-nil, zero value otherwise.
+
+### GetDeleteFromUscOk
+
+`func (o *StaticSecretDeleteSync) GetDeleteFromUscOk() (*bool, bool)`
+
+GetDeleteFromUscOk returns a tuple with the DeleteFromUsc field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteFromUsc
+
+`func (o *StaticSecretDeleteSync) SetDeleteFromUsc(v bool)`
+
+SetDeleteFromUsc sets DeleteFromUsc field to given value.
+
+### HasDeleteFromUsc
+
+`func (o *StaticSecretDeleteSync) HasDeleteFromUsc() bool`
+
+HasDeleteFromUsc returns a boolean if a field has been set.
 
 ### GetJson
 

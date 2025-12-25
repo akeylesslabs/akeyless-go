@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssocId** | Pointer to **string** |  | [optional] 
 **Attributes** | Pointer to [**UscSyncInfo**](UscSyncInfo.md) |  | [optional] 
+**DeleteRemote** | Pointer to **bool** |  | [optional] 
 **ItemId** | Pointer to **int64** |  | [optional] 
 **ItemName** | Pointer to **string** |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
@@ -78,6 +79,31 @@ SetAttributes sets Attributes field to given value.
 `func (o *ItemUSCSyncAssociation) HasAttributes() bool`
 
 HasAttributes returns a boolean if a field has been set.
+
+### GetDeleteRemote
+
+`func (o *ItemUSCSyncAssociation) GetDeleteRemote() bool`
+
+GetDeleteRemote returns the DeleteRemote field if non-nil, zero value otherwise.
+
+### GetDeleteRemoteOk
+
+`func (o *ItemUSCSyncAssociation) GetDeleteRemoteOk() (*bool, bool)`
+
+GetDeleteRemoteOk returns a tuple with the DeleteRemote field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteRemote
+
+`func (o *ItemUSCSyncAssociation) SetDeleteRemote(v bool)`
+
+SetDeleteRemote sets DeleteRemote field to given value.
+
+### HasDeleteRemote
+
+`func (o *ItemUSCSyncAssociation) HasDeleteRemote() bool`
+
+HasDeleteRemote returns a boolean if a field has been set.
 
 ### GetItemId
 

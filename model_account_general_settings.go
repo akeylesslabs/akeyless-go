@@ -25,6 +25,7 @@ type AccountGeneralSettings struct {
 	// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
 	AiInsights *AiInsightsSetting `json:"ai_insights,omitempty"`
+	AllowAutoFill *bool `json:"allow_auto_fill,omitempty"`
 	AllowedClientTypes *AllowedClientType `json:"allowed_client_types,omitempty"`
 	AllowedClientsIps *AllowedIpSettings `json:"allowed_clients_ips,omitempty"`
 	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
@@ -160,6 +161,38 @@ func (o *AccountGeneralSettings) HasAiInsights() bool {
 // SetAiInsights gets a reference to the given AiInsightsSetting and assigns it to the AiInsights field.
 func (o *AccountGeneralSettings) SetAiInsights(v AiInsightsSetting) {
 	o.AiInsights = &v
+}
+
+// GetAllowAutoFill returns the AllowAutoFill field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAllowAutoFill() bool {
+	if o == nil || IsNil(o.AllowAutoFill) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowAutoFill
+}
+
+// GetAllowAutoFillOk returns a tuple with the AllowAutoFill field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAllowAutoFillOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowAutoFill) {
+		return nil, false
+	}
+	return o.AllowAutoFill, true
+}
+
+// HasAllowAutoFill returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAllowAutoFill() bool {
+	if o != nil && !IsNil(o.AllowAutoFill) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowAutoFill gets a reference to the given bool and assigns it to the AllowAutoFill field.
+func (o *AccountGeneralSettings) SetAllowAutoFill(v bool) {
+	o.AllowAutoFill = &v
 }
 
 // GetAllowedClientTypes returns the AllowedClientTypes field value if set, zero value otherwise.
@@ -820,6 +853,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiInsights) {
 		toSerialize["ai_insights"] = o.AiInsights
+	}
+	if !IsNil(o.AllowAutoFill) {
+		toSerialize["allow_auto_fill"] = o.AllowAutoFill
 	}
 	if !IsNil(o.AllowedClientTypes) {
 		toSerialize["allowed_client_types"] = o.AllowedClientTypes

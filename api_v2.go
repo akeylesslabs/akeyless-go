@@ -50366,6 +50366,130 @@ func (a *V2ApiService) RotatedSecretCreateMysqlExecute(r ApiRotatedSecretCreateM
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRotatedSecretCreateOpenAIRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretCreateOpenAI *RotatedSecretCreateOpenAI
+    body interface{}
+}
+
+func (r ApiRotatedSecretCreateOpenAIRequest) RotatedSecretCreateOpenAI(rotatedSecretCreateOpenAI RotatedSecretCreateOpenAI) ApiRotatedSecretCreateOpenAIRequest {
+	r.rotatedSecretCreateOpenAI = &rotatedSecretCreateOpenAI
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretCreateOpenAIRequest) Body(body RotatedSecretCreateOpenAI) ApiRotatedSecretCreateOpenAIRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretCreateOpenAIRequest) Execute() (*RotatedSecretCreateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretCreateOpenAIExecute(r)
+}
+
+/*
+RotatedSecretCreateOpenAI Method for RotatedSecretCreateOpenAI
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretCreateOpenAIRequest
+*/
+func (a *V2ApiService) RotatedSecretCreateOpenAI(ctx context.Context) ApiRotatedSecretCreateOpenAIRequest {
+	return ApiRotatedSecretCreateOpenAIRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretCreateOutput
+func (a *V2ApiService) RotatedSecretCreateOpenAIExecute(r ApiRotatedSecretCreateOpenAIRequest) (*RotatedSecretCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretCreateOpenAI")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-create-openai"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRotatedSecretCreateOracledbRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -53146,6 +53270,130 @@ func (a *V2ApiService) RotatedSecretUpdateMysqlExecute(r ApiRotatedSecretUpdateM
 	}
 
 	localVarPath := localBasePath + "/rotated-secret-update-mysql"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRotatedSecretUpdateOpenAIRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretUpdateOpenAI *RotatedSecretUpdateOpenAI
+    body interface{}
+}
+
+func (r ApiRotatedSecretUpdateOpenAIRequest) RotatedSecretUpdateOpenAI(rotatedSecretUpdateOpenAI RotatedSecretUpdateOpenAI) ApiRotatedSecretUpdateOpenAIRequest {
+	r.rotatedSecretUpdateOpenAI = &rotatedSecretUpdateOpenAI
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretUpdateOpenAIRequest) Body(body RotatedSecretUpdateOpenAI) ApiRotatedSecretUpdateOpenAIRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretUpdateOpenAIRequest) Execute() (*RotatedSecretUpdateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretUpdateOpenAIExecute(r)
+}
+
+/*
+RotatedSecretUpdateOpenAI Method for RotatedSecretUpdateOpenAI
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretUpdateOpenAIRequest
+*/
+func (a *V2ApiService) RotatedSecretUpdateOpenAI(ctx context.Context) ApiRotatedSecretUpdateOpenAIRequest {
+	return ApiRotatedSecretUpdateOpenAIRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretUpdateOutput
+func (a *V2ApiService) RotatedSecretUpdateOpenAIExecute(r ApiRotatedSecretUpdateOpenAIRequest) (*RotatedSecretUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretUpdateOpenAI")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-update-openai"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

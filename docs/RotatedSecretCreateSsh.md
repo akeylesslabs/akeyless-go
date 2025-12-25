@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorCustomCmd** | Pointer to **string** | Custom rotation command | [optional] 
-**RotatorType** | **string** | The rotator type. options: [target/password] | 
+**RotatorType** | **string** | The rotator type. options: [target/password/key] | 
 **SamePassword** | Pointer to **string** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users | [optional] [default to false]
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
