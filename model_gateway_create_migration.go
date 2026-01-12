@@ -83,6 +83,8 @@ type GatewayCreateMigration struct {
 	AzureSecret *string `json:"azure-secret,omitempty"`
 	// Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
@@ -93,6 +95,8 @@ type GatewayCreateMigration struct {
 	HashiToken *string `json:"hashi-token,omitempty"`
 	// HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)
 	HashiUrl *string `json:"hashi-url,omitempty"`
+	// A comma separated list of IPs, CIDR ranges, or DNS names to scan
+	Hosts string `json:"hosts"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method)
@@ -115,6 +119,8 @@ type GatewayCreateMigration struct {
 	K8sUsername *string `json:"k8s-username,omitempty"`
 	// Migration name
 	Name string `json:"name"`
+	// A comma separated list of port ranges Examples: \"80,443\" or \"80,443,8080-8090\" or \"443\"
+	PortRanges *string `json:"port-ranges,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration)
@@ -137,7 +143,7 @@ type GatewayCreateMigration struct {
 	TargetLocation string `json:"target-location"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory)
+	// Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate)
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -149,7 +155,7 @@ type _GatewayCreateMigration GatewayCreateMigration
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayCreateMigration(name string, siTargetName string, siUsersPathTemplate string, targetLocation string) *GatewayCreateMigration {
+func NewGatewayCreateMigration(hosts string, name string, siTargetName string, siUsersPathTemplate string, targetLocation string) *GatewayCreateMigration {
 	this := GatewayCreateMigration{}
 	var adDiscoverIisApp string = "false"
 	this.AdDiscoverIisApp = &adDiscoverIisApp
@@ -169,9 +175,12 @@ func NewGatewayCreateMigration(name string, siTargetName string, siUsersPathTemp
 	this.AwsRegion = &awsRegion
 	var hashiJson string = "true"
 	this.HashiJson = &hashiJson
+	this.Hosts = hosts
 	var json bool = false
 	this.Json = &json
 	this.Name = name
+	var portRanges string = "443"
+	this.PortRanges = &portRanges
 	var siSraEnableRdp string = "false"
 	this.SiSraEnableRdp = &siSraEnableRdp
 	this.SiTargetName = siTargetName
@@ -205,6 +214,8 @@ func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	this.HashiJson = &hashiJson
 	var json bool = false
 	this.Json = &json
+	var portRanges string = "443"
+	this.PortRanges = &portRanges
 	var siSraEnableRdp string = "false"
 	this.SiSraEnableRdp = &siSraEnableRdp
 	return &this
@@ -1202,6 +1213,38 @@ func (o *GatewayCreateMigration) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
 }
 
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetExpirationEventIn() []string {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		var ret []string
+		return ret
+	}
+	return o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetExpirationEventInOk() ([]string, bool) {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasExpirationEventIn() bool {
+	if o != nil && !IsNil(o.ExpirationEventIn) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *GatewayCreateMigration) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = v
+}
+
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetGcpKey() string {
 	if o == nil || IsNil(o.GcpKey) {
@@ -1360,6 +1403,30 @@ func (o *GatewayCreateMigration) HasHashiUrl() bool {
 // SetHashiUrl gets a reference to the given string and assigns it to the HashiUrl field.
 func (o *GatewayCreateMigration) SetHashiUrl(v string) {
 	o.HashiUrl = &v
+}
+
+// GetHosts returns the Hosts field value
+func (o *GatewayCreateMigration) GetHosts() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Hosts
+}
+
+// GetHostsOk returns a tuple with the Hosts field value
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetHostsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Hosts, true
+}
+
+// SetHosts sets field value
+func (o *GatewayCreateMigration) SetHosts(v string) {
+	o.Hosts = v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -1704,6 +1771,38 @@ func (o *GatewayCreateMigration) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateMigration) SetName(v string) {
 	o.Name = v
+}
+
+// GetPortRanges returns the PortRanges field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetPortRanges() string {
+	if o == nil || IsNil(o.PortRanges) {
+		var ret string
+		return ret
+	}
+	return *o.PortRanges
+}
+
+// GetPortRangesOk returns a tuple with the PortRanges field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetPortRangesOk() (*string, bool) {
+	if o == nil || IsNil(o.PortRanges) {
+		return nil, false
+	}
+	return o.PortRanges, true
+}
+
+// HasPortRanges returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasPortRanges() bool {
+	if o != nil && !IsNil(o.PortRanges) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortRanges gets a reference to the given string and assigns it to the PortRanges field.
+func (o *GatewayCreateMigration) SetPortRanges(v string) {
+	o.PortRanges = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -2201,6 +2300,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureTenantId) {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
+	if !IsNil(o.ExpirationEventIn) {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
 	if !IsNil(o.GcpKey) {
 		toSerialize["gcp-key"] = o.GcpKey
 	}
@@ -2216,6 +2318,7 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HashiUrl) {
 		toSerialize["hashi-url"] = o.HashiUrl
 	}
+	toSerialize["hosts"] = o.Hosts
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
@@ -2247,6 +2350,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 		toSerialize["k8s-username"] = o.K8sUsername
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PortRanges) {
+		toSerialize["port-ranges"] = o.PortRanges
+	}
 	if !IsNil(o.ProtectionKey) {
 		toSerialize["protection-key"] = o.ProtectionKey
 	}
@@ -2288,6 +2394,7 @@ func (o *GatewayCreateMigration) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"hosts",
 		"name",
 		"si-target-name",
 		"si-users-path-template",

@@ -24,17 +24,17 @@ var _ MappedNullable = &UpdateRole{}
 type UpdateRole struct {
 	// Allow this role to view analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
-	// Allow this role to view audit logs. Currently only 'none', 'own' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
+	// Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Allow this role to view Event Center. Currently only 'none', 'own' and 'all' values are supported
+	// Allow this role to view Event Center. Currently only 'none', 'scoped' and 'all' values are supported
 	EventCenterAccess *string `json:"event-center-access,omitempty"`
 	// Allow this role to manage Event Forwarders. Currently only 'none' and 'all' values are supported.
 	EventForwarderAccess *string `json:"event-forwarder-access,omitempty"`
-	// Allow this role to view gw analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
+	// Allow this role to view gw analytics. Currently only 'none', 'scoped', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -44,9 +44,9 @@ type UpdateRole struct {
 	NewComment *string `json:"new-comment,omitempty"`
 	// New Role name
 	NewName *string `json:"new-name,omitempty"`
-	// Allow this role to view Reverse RBAC. Supported values: 'own', 'all'.
+	// Allow this role to view Reverse RBAC. Supported values: 'scoped', 'all'.
 	ReverseRbacAccess *string `json:"reverse-rbac-access,omitempty"`
-	// Allow this role to view SRA Clusters. Currently only 'none', 'own', 'all' values are supported.
+	// Allow this role to view SRA Clusters. Currently only 'none', 'scoped', 'all' values are supported.
 	SraReportsAccess *string `json:"sra-reports-access,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

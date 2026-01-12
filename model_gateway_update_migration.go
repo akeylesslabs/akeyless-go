@@ -83,6 +83,8 @@ type GatewayUpdateMigration struct {
 	AzureSecret *string `json:"azure-secret,omitempty"`
 	// Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
@@ -93,6 +95,8 @@ type GatewayUpdateMigration struct {
 	HashiToken *string `json:"hashi-token,omitempty"`
 	// HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration)
 	HashiUrl *string `json:"hashi-url,omitempty"`
+	// A comma separated list of IPs, CIDR ranges, or DNS names to scan
+	Hosts string `json:"hosts"`
 	// Migration ID (Can be retrieved with gateway-list-migration command)
 	Id *string `json:"id,omitempty"`
 	// Set output format to JSON
@@ -119,6 +123,8 @@ type GatewayUpdateMigration struct {
 	Name *string `json:"name,omitempty"`
 	// New migration name
 	NewName *string `json:"new-name,omitempty"`
+	// A comma separated list of port ranges Examples: \"80,443\" or \"80,443,8080-8090\" or \"443\"
+	PortRanges *string `json:"port-ranges,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration)
@@ -151,7 +157,7 @@ type _GatewayUpdateMigration GatewayUpdateMigration
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGatewayUpdateMigration(siTargetName string, siUsersPathTemplate string, targetLocation string) *GatewayUpdateMigration {
+func NewGatewayUpdateMigration(hosts string, siTargetName string, siUsersPathTemplate string, targetLocation string) *GatewayUpdateMigration {
 	this := GatewayUpdateMigration{}
 	var adDiscoverIisApp string = "false"
 	this.AdDiscoverIisApp = &adDiscoverIisApp
@@ -171,8 +177,11 @@ func NewGatewayUpdateMigration(siTargetName string, siUsersPathTemplate string, 
 	this.AwsRegion = &awsRegion
 	var hashiJson string = "true"
 	this.HashiJson = &hashiJson
+	this.Hosts = hosts
 	var json bool = false
 	this.Json = &json
+	var portRanges string = "443"
+	this.PortRanges = &portRanges
 	var siSraEnableRdp string = "false"
 	this.SiSraEnableRdp = &siSraEnableRdp
 	this.SiTargetName = siTargetName
@@ -206,6 +215,8 @@ func NewGatewayUpdateMigrationWithDefaults() *GatewayUpdateMigration {
 	this.HashiJson = &hashiJson
 	var json bool = false
 	this.Json = &json
+	var portRanges string = "443"
+	this.PortRanges = &portRanges
 	var siSraEnableRdp string = "false"
 	this.SiSraEnableRdp = &siSraEnableRdp
 	return &this
@@ -1203,6 +1214,38 @@ func (o *GatewayUpdateMigration) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
 }
 
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetExpirationEventIn() []string {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		var ret []string
+		return ret
+	}
+	return o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetExpirationEventInOk() ([]string, bool) {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasExpirationEventIn() bool {
+	if o != nil && !IsNil(o.ExpirationEventIn) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *GatewayUpdateMigration) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = v
+}
+
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetGcpKey() string {
 	if o == nil || IsNil(o.GcpKey) {
@@ -1361,6 +1404,30 @@ func (o *GatewayUpdateMigration) HasHashiUrl() bool {
 // SetHashiUrl gets a reference to the given string and assigns it to the HashiUrl field.
 func (o *GatewayUpdateMigration) SetHashiUrl(v string) {
 	o.HashiUrl = &v
+}
+
+// GetHosts returns the Hosts field value
+func (o *GatewayUpdateMigration) GetHosts() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Hosts
+}
+
+// GetHostsOk returns a tuple with the Hosts field value
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetHostsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Hosts, true
+}
+
+// SetHosts sets field value
+func (o *GatewayUpdateMigration) SetHosts(v string) {
+	o.Hosts = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -1777,6 +1844,38 @@ func (o *GatewayUpdateMigration) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateMigration) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetPortRanges returns the PortRanges field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetPortRanges() string {
+	if o == nil || IsNil(o.PortRanges) {
+		var ret string
+		return ret
+	}
+	return *o.PortRanges
+}
+
+// GetPortRangesOk returns a tuple with the PortRanges field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetPortRangesOk() (*string, bool) {
+	if o == nil || IsNil(o.PortRanges) {
+		return nil, false
+	}
+	return o.PortRanges, true
+}
+
+// HasPortRanges returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasPortRanges() bool {
+	if o != nil && !IsNil(o.PortRanges) {
+		return true
+	}
+
+	return false
+}
+
+// SetPortRanges gets a reference to the given string and assigns it to the PortRanges field.
+func (o *GatewayUpdateMigration) SetPortRanges(v string) {
+	o.PortRanges = &v
 }
 
 // GetProtectionKey returns the ProtectionKey field value if set, zero value otherwise.
@@ -2242,6 +2341,9 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureTenantId) {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
+	if !IsNil(o.ExpirationEventIn) {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
 	if !IsNil(o.GcpKey) {
 		toSerialize["gcp-key"] = o.GcpKey
 	}
@@ -2257,6 +2359,7 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HashiUrl) {
 		toSerialize["hashi-url"] = o.HashiUrl
 	}
+	toSerialize["hosts"] = o.Hosts
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
@@ -2296,6 +2399,9 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
 	}
+	if !IsNil(o.PortRanges) {
+		toSerialize["port-ranges"] = o.PortRanges
+	}
 	if !IsNil(o.ProtectionKey) {
 		toSerialize["protection-key"] = o.ProtectionKey
 	}
@@ -2334,6 +2440,7 @@ func (o *GatewayUpdateMigration) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"hosts",
 		"si-target-name",
 		"si-users-path-template",
 		"target-location",

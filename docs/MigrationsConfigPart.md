@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ActiveDirectoryMigrations** | Pointer to [**[]ActiveDirectoryMigration**](ActiveDirectoryMigration.md) |  | [optional] 
 **AwsSecretsMigrations** | Pointer to [**[]AWSSecretsMigration**](AWSSecretsMigration.md) |  | [optional] 
 **AzureKvMigrations** | Pointer to [**[]AzureKeyVaultMigration**](AzureKeyVaultMigration.md) |  | [optional] 
+**CertificateMigrations** | Pointer to [**[]CertificateMigration**](CertificateMigration.md) |  | [optional] 
 **GcpSecretsMigrations** | Pointer to [**[]GCPSecretsMigration**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | Pointer to [**[]HashiMigration**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | Pointer to [**[]K8SMigration**](K8SMigration.md) |  | [optional] 
@@ -107,6 +108,31 @@ SetAzureKvMigrations sets AzureKvMigrations field to given value.
 `func (o *MigrationsConfigPart) HasAzureKvMigrations() bool`
 
 HasAzureKvMigrations returns a boolean if a field has been set.
+
+### GetCertificateMigrations
+
+`func (o *MigrationsConfigPart) GetCertificateMigrations() []CertificateMigration`
+
+GetCertificateMigrations returns the CertificateMigrations field if non-nil, zero value otherwise.
+
+### GetCertificateMigrationsOk
+
+`func (o *MigrationsConfigPart) GetCertificateMigrationsOk() (*[]CertificateMigration, bool)`
+
+GetCertificateMigrationsOk returns a tuple with the CertificateMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateMigrations
+
+`func (o *MigrationsConfigPart) SetCertificateMigrations(v []CertificateMigration)`
+
+SetCertificateMigrations sets CertificateMigrations field to given value.
+
+### HasCertificateMigrations
+
+`func (o *MigrationsConfigPart) HasCertificateMigrations() bool`
+
+HasCertificateMigrations returns a boolean if a field has been set.
 
 ### GetGcpSecretsMigrations
 

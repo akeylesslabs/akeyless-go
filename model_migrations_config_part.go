@@ -23,6 +23,7 @@ type MigrationsConfigPart struct {
 	ActiveDirectoryMigrations []ActiveDirectoryMigration `json:"active_directory_migrations,omitempty"`
 	AwsSecretsMigrations []AWSSecretsMigration `json:"aws_secrets_migrations,omitempty"`
 	AzureKvMigrations []AzureKeyVaultMigration `json:"azure_kv_migrations,omitempty"`
+	CertificateMigrations []CertificateMigration `json:"certificate_migrations,omitempty"`
 	GcpSecretsMigrations []GCPSecretsMigration `json:"gcp_secrets_migrations,omitempty"`
 	HashiMigrations []HashiMigration `json:"hashi_migrations,omitempty"`
 	K8sMigrations []K8SMigration `json:"k8s_migrations,omitempty"`
@@ -142,6 +143,38 @@ func (o *MigrationsConfigPart) HasAzureKvMigrations() bool {
 // SetAzureKvMigrations gets a reference to the given []AzureKeyVaultMigration and assigns it to the AzureKvMigrations field.
 func (o *MigrationsConfigPart) SetAzureKvMigrations(v []AzureKeyVaultMigration) {
 	o.AzureKvMigrations = v
+}
+
+// GetCertificateMigrations returns the CertificateMigrations field value if set, zero value otherwise.
+func (o *MigrationsConfigPart) GetCertificateMigrations() []CertificateMigration {
+	if o == nil || IsNil(o.CertificateMigrations) {
+		var ret []CertificateMigration
+		return ret
+	}
+	return o.CertificateMigrations
+}
+
+// GetCertificateMigrationsOk returns a tuple with the CertificateMigrations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationsConfigPart) GetCertificateMigrationsOk() ([]CertificateMigration, bool) {
+	if o == nil || IsNil(o.CertificateMigrations) {
+		return nil, false
+	}
+	return o.CertificateMigrations, true
+}
+
+// HasCertificateMigrations returns a boolean if a field has been set.
+func (o *MigrationsConfigPart) HasCertificateMigrations() bool {
+	if o != nil && !IsNil(o.CertificateMigrations) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateMigrations gets a reference to the given []CertificateMigration and assigns it to the CertificateMigrations field.
+func (o *MigrationsConfigPart) SetCertificateMigrations(v []CertificateMigration) {
+	o.CertificateMigrations = v
 }
 
 // GetGcpSecretsMigrations returns the GcpSecretsMigrations field value if set, zero value otherwise.
@@ -354,6 +387,9 @@ func (o MigrationsConfigPart) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureKvMigrations) {
 		toSerialize["azure_kv_migrations"] = o.AzureKvMigrations
+	}
+	if !IsNil(o.CertificateMigrations) {
+		toSerialize["certificate_migrations"] = o.CertificateMigrations
 	}
 	if !IsNil(o.GcpSecretsMigrations) {
 		toSerialize["gcp_secrets_migrations"] = o.GcpSecretsMigrations

@@ -45,6 +45,7 @@ Method | HTTP request | Description
 [**AuthMethodUpdateSAML**](V2Api.md#AuthMethodUpdateSAML) | **Post** /auth-method-update-saml | 
 [**AuthMethodUpdateUniversalIdentity**](V2Api.md#AuthMethodUpdateUniversalIdentity) | **Post** /auth-method-update-universal-identity | 
 [**CalcPasswordSecurityInfo**](V2Api.md#CalcPasswordSecurityInfo) | **Post** /calc-password-security-info | 
+[**CertificateDiscovery**](V2Api.md#CertificateDiscovery) | **Post** /certificate-discovery | 
 [**ChangeAdminAccountPassword**](V2Api.md#ChangeAdminAccountPassword) | **Post** /change-admin-account-password | 
 [**Configure**](V2Api.md#Configure) | **Post** /configure | 
 [**Connect**](V2Api.md#Connect) | **Post** /connect | 
@@ -3209,6 +3210,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PasswordSecurityInfo**](PasswordSecurityInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CertificateDiscovery
+
+> CertificateDiscoveryOutput CertificateDiscovery(ctx).CertificateDiscovery(certificateDiscovery).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	certificateDiscovery := *openapiclient.NewCertificateDiscovery("Hosts_example", "TargetLocation_example") // CertificateDiscovery | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.CertificateDiscovery(context.Background()).CertificateDiscovery(certificateDiscovery).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CertificateDiscovery``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CertificateDiscovery`: CertificateDiscoveryOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.CertificateDiscovery`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCertificateDiscoveryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **certificateDiscovery** | [**CertificateDiscovery**](CertificateDiscovery.md) |  | 
+
+### Return type
+
+[**CertificateDiscoveryOutput**](CertificateDiscoveryOutput.md)
 
 ### Authorization
 
@@ -14695,7 +14760,7 @@ import (
 )
 
 func main() {
-	gatewayCreateMigration := *openapiclient.NewGatewayCreateMigration("Name_example", "SiTargetName_example", "SiUsersPathTemplate_example", "TargetLocation_example") // GatewayCreateMigration | 
+	gatewayCreateMigration := *openapiclient.NewGatewayCreateMigration("Hosts_example", "Name_example", "SiTargetName_example", "SiUsersPathTemplate_example", "TargetLocation_example") // GatewayCreateMigration | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -19173,7 +19238,7 @@ import (
 )
 
 func main() {
-	gatewayUpdateMigration := *openapiclient.NewGatewayUpdateMigration("SiTargetName_example", "SiUsersPathTemplate_example", "TargetLocation_example") // GatewayUpdateMigration | 
+	gatewayUpdateMigration := *openapiclient.NewGatewayUpdateMigration("Hosts_example", "SiTargetName_example", "SiUsersPathTemplate_example", "TargetLocation_example") // GatewayUpdateMigration | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

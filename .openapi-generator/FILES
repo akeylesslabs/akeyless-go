@@ -105,10 +105,15 @@ docs/CalcPasswordSecurityInfo.md
 docs/CertAccessRules.md
 docs/CertificateAnalyticAggregation.md
 docs/CertificateChainInfo.md
+docs/CertificateDiscovery.md
+docs/CertificateDiscoveryOutput.md
 docs/CertificateExpirationEvent.md
 docs/CertificateExpirationEventsSettings.md
 docs/CertificateInfo.md
 docs/CertificateIssueInfo.md
+docs/CertificateMigration.md
+docs/CertificatePayload.md
+docs/CertificateScanTarget.md
 docs/CertificateStore.md
 docs/CertificateTemplateInfo.md
 docs/CertificateVersionInfo.md
@@ -879,6 +884,7 @@ docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
+docs/ScanResults.md
 docs/SecretInfo.md
 docs/SecretSyncOutput.md
 docs/SectigoTargetDetails.md
@@ -953,6 +959,7 @@ docs/TargetCreateWeb.md
 docs/TargetCreateWindows.md
 docs/TargetCreateZeroSSL.md
 docs/TargetDelete.md
+docs/TargetError.md
 docs/TargetGet.md
 docs/TargetGetDetails.md
 docs/TargetItemAssociation.md
@@ -1246,10 +1253,15 @@ model_calc_password_security_info.go
 model_cert_access_rules.go
 model_certificate_analytic_aggregation.go
 model_certificate_chain_info.go
+model_certificate_discovery.go
+model_certificate_discovery_output.go
 model_certificate_expiration_event.go
 model_certificate_expiration_events_settings.go
 model_certificate_info.go
 model_certificate_issue_info.go
+model_certificate_migration.go
+model_certificate_payload.go
+model_certificate_scan_target.go
 model_certificate_store.go
 model_certificate_template_info.go
 model_certificate_version_info.go
@@ -2019,6 +2031,7 @@ model_rules.go
 model_salesforce_target_details.go
 model_saml_access_rules.go
 model_saml_attribute.go
+model_scan_results.go
 model_secret_info.go
 model_secret_sync_output.go
 model_sectigo_target_details.go
@@ -2095,6 +2108,7 @@ model_target_create_web.go
 model_target_create_windows_.go
 model_target_create_zero_ssl.go
 model_target_delete.go
+model_target_error.go
 model_target_get.go
 model_target_get_details.go
 model_target_item_association.go

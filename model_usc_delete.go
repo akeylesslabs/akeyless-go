@@ -22,6 +22,8 @@ var _ MappedNullable = &UscDelete{}
 
 // UscDelete uscDelete is a command that deletes a secret from a Universal Secrets Connector
 type UscDelete struct {
+	// Force delete objects that are soft deleted by default (relavent only for Azure target)
+	ForceDelete *bool `json:"force-delete,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The namespace (relevant for Hashi vault target)
@@ -59,6 +61,38 @@ func NewUscDeleteWithDefaults() *UscDelete {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetForceDelete returns the ForceDelete field value if set, zero value otherwise.
+func (o *UscDelete) GetForceDelete() bool {
+	if o == nil || IsNil(o.ForceDelete) {
+		var ret bool
+		return ret
+	}
+	return *o.ForceDelete
+}
+
+// GetForceDeleteOk returns a tuple with the ForceDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscDelete) GetForceDeleteOk() (*bool, bool) {
+	if o == nil || IsNil(o.ForceDelete) {
+		return nil, false
+	}
+	return o.ForceDelete, true
+}
+
+// HasForceDelete returns a boolean if a field has been set.
+func (o *UscDelete) HasForceDelete() bool {
+	if o != nil && !IsNil(o.ForceDelete) {
+		return true
+	}
+
+	return false
+}
+
+// SetForceDelete gets a reference to the given bool and assigns it to the ForceDelete field.
+func (o *UscDelete) SetForceDelete(v bool) {
+	o.ForceDelete = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -247,6 +281,9 @@ func (o UscDelete) MarshalJSON() ([]byte, error) {
 
 func (o UscDelete) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ForceDelete) {
+		toSerialize["force-delete"] = o.ForceDelete
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

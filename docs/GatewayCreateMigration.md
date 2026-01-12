@@ -35,11 +35,13 @@ Name | Type | Description | Notes
 **AzureKvName** | Pointer to **string** | Azure Key Vault Name (relevant only for Azure Key Vault migration) | [optional] 
 **AzureSecret** | Pointer to **string** | Azure Key Vault secret (relevant only for Azure Key Vault migration) | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] | [optional] [default to "true"]
 **HashiNs** | Pointer to **[]string** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiToken** | Pointer to **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiUrl** | Pointer to **string** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] 
+**Hosts** | **string** | A comma separated list of IPs, CIDR ranges, or DNS names to scan | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sCaCertificate** | Pointer to **[]int32** | For Certificate Authentication method K8s Cluster CA certificate (relevant only for K8s migration with Certificate Authentication method) | [optional] 
 **K8sClientCertificate** | Pointer to **[]int32** | K8s Client certificate with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Certificate Authentication method) | [optional] 
@@ -51,6 +53,7 @@ Name | Type | Description | Notes
 **K8sUrl** | Pointer to **string** | K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration) | [optional] 
 **K8sUsername** | Pointer to **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | **string** | Migration name | 
+**PortRanges** | Pointer to **string** | A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot; | [optional] [default to "443"]
 **ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
 **SiAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] 
 **SiRotationHour** | Pointer to **int32** | The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration) | [optional] 
@@ -62,14 +65,14 @@ Name | Type | Description | Notes
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory) | [optional] 
+**Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
 
 ### NewGatewayCreateMigration
 
-`func NewGatewayCreateMigration(name string, siTargetName string, siUsersPathTemplate string, targetLocation string, ) *GatewayCreateMigration`
+`func NewGatewayCreateMigration(hosts string, name string, siTargetName string, siUsersPathTemplate string, targetLocation string, ) *GatewayCreateMigration`
 
 NewGatewayCreateMigration instantiates a new GatewayCreateMigration object
 This constructor will assign default values to properties that have it defined,
@@ -859,6 +862,31 @@ SetAzureTenantId sets AzureTenantId field to given value.
 
 HasAzureTenantId returns a boolean if a field has been set.
 
+### GetExpirationEventIn
+
+`func (o *GatewayCreateMigration) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *GatewayCreateMigration) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *GatewayCreateMigration) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *GatewayCreateMigration) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
+
 ### GetGcpKey
 
 `func (o *GatewayCreateMigration) GetGcpKey() string`
@@ -983,6 +1011,26 @@ SetHashiUrl sets HashiUrl field to given value.
 `func (o *GatewayCreateMigration) HasHashiUrl() bool`
 
 HasHashiUrl returns a boolean if a field has been set.
+
+### GetHosts
+
+`func (o *GatewayCreateMigration) GetHosts() string`
+
+GetHosts returns the Hosts field if non-nil, zero value otherwise.
+
+### GetHostsOk
+
+`func (o *GatewayCreateMigration) GetHostsOk() (*string, bool)`
+
+GetHostsOk returns a tuple with the Hosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHosts
+
+`func (o *GatewayCreateMigration) SetHosts(v string)`
+
+SetHosts sets Hosts field to given value.
+
 
 ### GetJson
 
@@ -1253,6 +1301,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPortRanges
+
+`func (o *GatewayCreateMigration) GetPortRanges() string`
+
+GetPortRanges returns the PortRanges field if non-nil, zero value otherwise.
+
+### GetPortRangesOk
+
+`func (o *GatewayCreateMigration) GetPortRangesOk() (*string, bool)`
+
+GetPortRangesOk returns a tuple with the PortRanges field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPortRanges
+
+`func (o *GatewayCreateMigration) SetPortRanges(v string)`
+
+SetPortRanges sets PortRanges field to given value.
+
+### HasPortRanges
+
+`func (o *GatewayCreateMigration) HasPortRanges() bool`
+
+HasPortRanges returns a boolean if a field has been set.
 
 ### GetProtectionKey
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ForceDelete** | Pointer to **bool** | Force delete objects that are soft deleted by default (relavent only for Azure target) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete | 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewUscDeleteWithDefaults instantiates a new UscDelete object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetForceDelete
+
+`func (o *UscDelete) GetForceDelete() bool`
+
+GetForceDelete returns the ForceDelete field if non-nil, zero value otherwise.
+
+### GetForceDeleteOk
+
+`func (o *UscDelete) GetForceDeleteOk() (*bool, bool)`
+
+GetForceDeleteOk returns a tuple with the ForceDelete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceDelete
+
+`func (o *UscDelete) SetForceDelete(v bool)`
+
+SetForceDelete sets ForceDelete field to given value.
+
+### HasForceDelete
+
+`func (o *UscDelete) HasForceDelete() bool`
+
+HasForceDelete returns a boolean if a field has been set.
 
 ### GetJson
 
