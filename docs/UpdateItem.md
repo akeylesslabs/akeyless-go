@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
+**GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only. | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -298,6 +299,31 @@ SetExpirationEventIn sets ExpirationEventIn field to given value.
 `func (o *UpdateItem) HasExpirationEventIn() bool`
 
 HasExpirationEventIn returns a boolean if a field has been set.
+
+### GetGcpSmRegions
+
+`func (o *UpdateItem) GetGcpSmRegions() string`
+
+GetGcpSmRegions returns the GcpSmRegions field if non-nil, zero value otherwise.
+
+### GetGcpSmRegionsOk
+
+`func (o *UpdateItem) GetGcpSmRegionsOk() (*string, bool)`
+
+GetGcpSmRegionsOk returns a tuple with the GcpSmRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpSmRegions
+
+`func (o *UpdateItem) SetGcpSmRegions(v string)`
+
+SetGcpSmRegions sets GcpSmRegions field to given value.
+
+### HasGcpSmRegions
+
+`func (o *UpdateItem) HasGcpSmRegions() bool`
+
+HasGcpSmRegions returns a boolean if a field has been set.
 
 ### GetHostProvider
 

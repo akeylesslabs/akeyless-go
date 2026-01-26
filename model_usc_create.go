@@ -33,6 +33,8 @@ type UscCreate struct {
 	ObjectType *string `json:"object-type,omitempty"`
 	// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
 	PfxPassword *string `json:"pfx-password,omitempty"`
+	// Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default).
+	Region *string `json:"region,omitempty"`
 	// Name for the new universal secrets
 	SecretName string `json:"secret-name"`
 	// Tags for the universal secrets
@@ -267,6 +269,38 @@ func (o *UscCreate) SetPfxPassword(v string) {
 	o.PfxPassword = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *UscCreate) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *UscCreate) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *UscCreate) SetRegion(v string) {
+	o.Region = &v
+}
+
 // GetSecretName returns the SecretName field value
 func (o *UscCreate) GetSecretName() string {
 	if o == nil {
@@ -494,6 +528,9 @@ func (o UscCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PfxPassword) {
 		toSerialize["pfx-password"] = o.PfxPassword
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	toSerialize["secret-name"] = o.SecretName
 	if !IsNil(o.Tags) {

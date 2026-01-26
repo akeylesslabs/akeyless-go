@@ -38,6 +38,8 @@ type UpdateItem struct {
 	Description *string `json:"description,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
+	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only.
+	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`
 	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Additional custom fields to associate with the item
@@ -455,6 +457,38 @@ func (o *UpdateItem) HasExpirationEventIn() bool {
 // SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
 func (o *UpdateItem) SetExpirationEventIn(v []string) {
 	o.ExpirationEventIn = v
+}
+
+// GetGcpSmRegions returns the GcpSmRegions field value if set, zero value otherwise.
+func (o *UpdateItem) GetGcpSmRegions() string {
+	if o == nil || IsNil(o.GcpSmRegions) {
+		var ret string
+		return ret
+	}
+	return *o.GcpSmRegions
+}
+
+// GetGcpSmRegionsOk returns a tuple with the GcpSmRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetGcpSmRegionsOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpSmRegions) {
+		return nil, false
+	}
+	return o.GcpSmRegions, true
+}
+
+// HasGcpSmRegions returns a boolean if a field has been set.
+func (o *UpdateItem) HasGcpSmRegions() bool {
+	if o != nil && !IsNil(o.GcpSmRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpSmRegions gets a reference to the given string and assigns it to the GcpSmRegions field.
+func (o *UpdateItem) SetGcpSmRegions(v string) {
+	o.GcpSmRegions = &v
 }
 
 // GetHostProvider returns the HostProvider field value if set, zero value otherwise.
@@ -1797,6 +1831,9 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
+	}
+	if !IsNil(o.GcpSmRegions) {
+		toSerialize["gcp-sm-regions"] = o.GcpSmRegions
 	}
 	if !IsNil(o.HostProvider) {
 		toSerialize["host-provider"] = o.HostProvider

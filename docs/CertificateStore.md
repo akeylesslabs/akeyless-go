@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CertificatePem** | Pointer to **string** |  | [optional] 
 **CommonName** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
+**ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetExpirationDate sets ExpirationDate field to given value.
 `func (o *CertificateStore) HasExpirationDate() bool`
 
 HasExpirationDate returns a boolean if a field has been set.
+
+### GetExpirationEvents
+
+`func (o *CertificateStore) GetExpirationEvents() []CertificateExpirationEvent`
+
+GetExpirationEvents returns the ExpirationEvents field if non-nil, zero value otherwise.
+
+### GetExpirationEventsOk
+
+`func (o *CertificateStore) GetExpirationEventsOk() (*[]CertificateExpirationEvent, bool)`
+
+GetExpirationEventsOk returns a tuple with the ExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEvents
+
+`func (o *CertificateStore) SetExpirationEvents(v []CertificateExpirationEvent)`
+
+SetExpirationEvents sets ExpirationEvents field to given value.
+
+### HasExpirationEvents
+
+`func (o *CertificateStore) HasExpirationEvents() bool`
+
+HasExpirationEvents returns a boolean if a field has been set.
 
 ### GetName
 

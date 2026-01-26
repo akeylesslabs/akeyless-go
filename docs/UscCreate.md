@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 **PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
+**Region** | Pointer to **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -186,6 +187,31 @@ SetPfxPassword sets PfxPassword field to given value.
 `func (o *UscCreate) HasPfxPassword() bool`
 
 HasPfxPassword returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *UscCreate) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *UscCreate) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *UscCreate) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *UscCreate) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetSecretName
 

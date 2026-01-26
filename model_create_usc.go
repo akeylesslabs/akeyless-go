@@ -30,6 +30,8 @@ type CreateUSC struct {
 	Description *string `json:"description,omitempty"`
 	// GCP Project ID (Relevant only for GCP targets)
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
+	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type=regional-secrets.
+	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -207,6 +209,38 @@ func (o *CreateUSC) HasGcpProjectId() bool {
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CreateUSC) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
+}
+
+// GetGcpSmRegions returns the GcpSmRegions field value if set, zero value otherwise.
+func (o *CreateUSC) GetGcpSmRegions() string {
+	if o == nil || IsNil(o.GcpSmRegions) {
+		var ret string
+		return ret
+	}
+	return *o.GcpSmRegions
+}
+
+// GetGcpSmRegionsOk returns a tuple with the GcpSmRegions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetGcpSmRegionsOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpSmRegions) {
+		return nil, false
+	}
+	return o.GcpSmRegions, true
+}
+
+// HasGcpSmRegions returns a boolean if a field has been set.
+func (o *CreateUSC) HasGcpSmRegions() bool {
+	if o != nil && !IsNil(o.GcpSmRegions) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpSmRegions gets a reference to the given string and assigns it to the GcpSmRegions field.
+func (o *CreateUSC) SetGcpSmRegions(v string) {
+	o.GcpSmRegions = &v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -534,6 +568,9 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GcpProjectId) {
 		toSerialize["gcp-project-id"] = o.GcpProjectId
+	}
+	if !IsNil(o.GcpSmRegions) {
+		toSerialize["gcp-sm-regions"] = o.GcpSmRegions
 	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields

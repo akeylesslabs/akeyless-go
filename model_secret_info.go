@@ -28,6 +28,7 @@ type SecretInfo struct {
 	LastRetrieved *time.Time `json:"last_retrieved,omitempty"`
 	Location interface{} `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Region *string `json:"region,omitempty"`
 	SecretId *string `json:"secret_id,omitempty"`
 	Status *bool `json:"status,omitempty"`
 	Tags *map[string]string `json:"tags,omitempty"`
@@ -278,6 +279,38 @@ func (o *SecretInfo) SetName(v string) {
 	o.Name = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *SecretInfo) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *SecretInfo) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *SecretInfo) SetRegion(v string) {
+	o.Region = &v
+}
+
 // GetSecretId returns the SecretId field value if set, zero value otherwise.
 func (o *SecretInfo) GetSecretId() string {
 	if o == nil || IsNil(o.SecretId) {
@@ -500,6 +533,9 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	if !IsNil(o.SecretId) {
 		toSerialize["secret_id"] = o.SecretId

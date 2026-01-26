@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayUpdateTlsCert{}
 type GatewayUpdateTlsCert struct {
 	// TLS Certificate (base64 encoded)
 	CertData *string `json:"cert-data,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// TLS Private Key (base64 encoded)
@@ -83,6 +85,38 @@ func (o *GatewayUpdateTlsCert) HasCertData() bool {
 // SetCertData gets a reference to the given string and assigns it to the CertData field.
 func (o *GatewayUpdateTlsCert) SetCertData(v string) {
 	o.CertData = &v
+}
+
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *GatewayUpdateTlsCert) GetExpirationEventIn() []string {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		var ret []string
+		return ret
+	}
+	return o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateTlsCert) GetExpirationEventInOk() ([]string, bool) {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *GatewayUpdateTlsCert) HasExpirationEventIn() bool {
+	if o != nil && !IsNil(o.ExpirationEventIn) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *GatewayUpdateTlsCert) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -225,6 +259,9 @@ func (o GatewayUpdateTlsCert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CertData) {
 		toSerialize["cert-data"] = o.CertData
+	}
+	if !IsNil(o.ExpirationEventIn) {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

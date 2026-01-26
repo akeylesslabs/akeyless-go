@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the Universal Secrets Connector | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
+**GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets. | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | Pointer to **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 
@@ -137,6 +138,31 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *CreateUSC) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### GetGcpSmRegions
+
+`func (o *CreateUSC) GetGcpSmRegions() string`
+
+GetGcpSmRegions returns the GcpSmRegions field if non-nil, zero value otherwise.
+
+### GetGcpSmRegionsOk
+
+`func (o *CreateUSC) GetGcpSmRegionsOk() (*string, bool)`
+
+GetGcpSmRegionsOk returns a tuple with the GcpSmRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpSmRegions
+
+`func (o *CreateUSC) SetGcpSmRegions(v string)`
+
+SetGcpSmRegions sets GcpSmRegions field to given value.
+
+### HasGcpSmRegions
+
+`func (o *CreateUSC) HasGcpSmRegions() bool`
+
+HasGcpSmRegions returns a boolean if a field has been set.
 
 ### GetItemCustomFields
 

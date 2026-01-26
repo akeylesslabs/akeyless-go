@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the GeneralConfigPart type satisfies the MappedNullable interface at compile time
@@ -34,6 +35,9 @@ type GeneralConfigPart struct {
 	NotifyOnStatusChange *bool `json:"notify_on_status_change,omitempty"`
 	TcpPort *string `json:"tcp_port,omitempty"`
 	TlsCert *string `json:"tls_cert,omitempty"`
+	TlsCertCommonName *string `json:"tls_cert_common_name,omitempty"`
+	TlsCertExpirationDate *time.Time `json:"tls_cert_expiration_date,omitempty"`
+	TlsCertExpirationEvents []CertificateExpirationEvent `json:"tls_cert_expiration_events,omitempty"`
 	TlsKey *string `json:"tls_key,omitempty"`
 }
 
@@ -470,6 +474,102 @@ func (o *GeneralConfigPart) SetTlsCert(v string) {
 	o.TlsCert = &v
 }
 
+// GetTlsCertCommonName returns the TlsCertCommonName field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetTlsCertCommonName() string {
+	if o == nil || IsNil(o.TlsCertCommonName) {
+		var ret string
+		return ret
+	}
+	return *o.TlsCertCommonName
+}
+
+// GetTlsCertCommonNameOk returns a tuple with the TlsCertCommonName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetTlsCertCommonNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TlsCertCommonName) {
+		return nil, false
+	}
+	return o.TlsCertCommonName, true
+}
+
+// HasTlsCertCommonName returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasTlsCertCommonName() bool {
+	if o != nil && !IsNil(o.TlsCertCommonName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCertCommonName gets a reference to the given string and assigns it to the TlsCertCommonName field.
+func (o *GeneralConfigPart) SetTlsCertCommonName(v string) {
+	o.TlsCertCommonName = &v
+}
+
+// GetTlsCertExpirationDate returns the TlsCertExpirationDate field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetTlsCertExpirationDate() time.Time {
+	if o == nil || IsNil(o.TlsCertExpirationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.TlsCertExpirationDate
+}
+
+// GetTlsCertExpirationDateOk returns a tuple with the TlsCertExpirationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetTlsCertExpirationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.TlsCertExpirationDate) {
+		return nil, false
+	}
+	return o.TlsCertExpirationDate, true
+}
+
+// HasTlsCertExpirationDate returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasTlsCertExpirationDate() bool {
+	if o != nil && !IsNil(o.TlsCertExpirationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCertExpirationDate gets a reference to the given time.Time and assigns it to the TlsCertExpirationDate field.
+func (o *GeneralConfigPart) SetTlsCertExpirationDate(v time.Time) {
+	o.TlsCertExpirationDate = &v
+}
+
+// GetTlsCertExpirationEvents returns the TlsCertExpirationEvents field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetTlsCertExpirationEvents() []CertificateExpirationEvent {
+	if o == nil || IsNil(o.TlsCertExpirationEvents) {
+		var ret []CertificateExpirationEvent
+		return ret
+	}
+	return o.TlsCertExpirationEvents
+}
+
+// GetTlsCertExpirationEventsOk returns a tuple with the TlsCertExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetTlsCertExpirationEventsOk() ([]CertificateExpirationEvent, bool) {
+	if o == nil || IsNil(o.TlsCertExpirationEvents) {
+		return nil, false
+	}
+	return o.TlsCertExpirationEvents, true
+}
+
+// HasTlsCertExpirationEvents returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasTlsCertExpirationEvents() bool {
+	if o != nil && !IsNil(o.TlsCertExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsCertExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the TlsCertExpirationEvents field.
+func (o *GeneralConfigPart) SetTlsCertExpirationEvents(v []CertificateExpirationEvent) {
+	o.TlsCertExpirationEvents = v
+}
+
 // GetTlsKey returns the TlsKey field value if set, zero value otherwise.
 func (o *GeneralConfigPart) GetTlsKey() string {
 	if o == nil || IsNil(o.TlsKey) {
@@ -550,6 +650,15 @@ func (o GeneralConfigPart) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TlsCert) {
 		toSerialize["tls_cert"] = o.TlsCert
+	}
+	if !IsNil(o.TlsCertCommonName) {
+		toSerialize["tls_cert_common_name"] = o.TlsCertCommonName
+	}
+	if !IsNil(o.TlsCertExpirationDate) {
+		toSerialize["tls_cert_expiration_date"] = o.TlsCertExpirationDate
+	}
+	if !IsNil(o.TlsCertExpirationEvents) {
+		toSerialize["tls_cert_expiration_events"] = o.TlsCertExpirationEvents
 	}
 	if !IsNil(o.TlsKey) {
 		toSerialize["tls_key"] = o.TlsKey

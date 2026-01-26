@@ -24,6 +24,7 @@ type CertificateStore struct {
 	CertificatePem *string `json:"certificate_pem,omitempty"`
 	CommonName *string `json:"common_name,omitempty"`
 	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
+	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -140,6 +141,38 @@ func (o *CertificateStore) SetExpirationDate(v time.Time) {
 	o.ExpirationDate = &v
 }
 
+// GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
+func (o *CertificateStore) GetExpirationEvents() []CertificateExpirationEvent {
+	if o == nil || IsNil(o.ExpirationEvents) {
+		var ret []CertificateExpirationEvent
+		return ret
+	}
+	return o.ExpirationEvents
+}
+
+// GetExpirationEventsOk returns a tuple with the ExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateStore) GetExpirationEventsOk() ([]CertificateExpirationEvent, bool) {
+	if o == nil || IsNil(o.ExpirationEvents) {
+		return nil, false
+	}
+	return o.ExpirationEvents, true
+}
+
+// HasExpirationEvents returns a boolean if a field has been set.
+func (o *CertificateStore) HasExpirationEvents() bool {
+	if o != nil && !IsNil(o.ExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the ExpirationEvents field.
+func (o *CertificateStore) SetExpirationEvents(v []CertificateExpirationEvent) {
+	o.ExpirationEvents = v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CertificateStore) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -190,6 +223,9 @@ func (o CertificateStore) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExpirationDate) {
 		toSerialize["expiration_date"] = o.ExpirationDate
+	}
+	if !IsNil(o.ExpirationEvents) {
+		toSerialize["expiration_events"] = o.ExpirationEvents
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

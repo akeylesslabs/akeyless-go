@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertData** | Pointer to **string** | TLS Certificate (base64 encoded) | [optional] 
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyData** | Pointer to **string** | TLS Private Key (base64 encoded) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -53,6 +54,31 @@ SetCertData sets CertData field to given value.
 `func (o *GatewayUpdateTlsCert) HasCertData() bool`
 
 HasCertData returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *GatewayUpdateTlsCert) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *GatewayUpdateTlsCert) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *GatewayUpdateTlsCert) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *GatewayUpdateTlsCert) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
 
 ### GetJson
 
