@@ -38,6 +38,7 @@ type TargetTypeDetailsInput struct {
 	GodaddyTargetDetails *GodaddyTargetDetails `json:"godaddy_target_details,omitempty"`
 	HashiVaultTargetDetails *HashiVaultTargetDetails `json:"hashi_vault_target_details,omitempty"`
 	LdapTargetDetails *LdapTargetDetails `json:"ldap_target_details,omitempty"`
+	LetsencryptTargetDetails *LetsEncryptTargetDetails `json:"letsencrypt_target_details,omitempty"`
 	LinkedTargetDetails *LinkedTargetDetails `json:"linked_target_details,omitempty"`
 	MongoDbTargetDetails *MongoDBTargetDetails `json:"mongo_db_target_details,omitempty"`
 	NativeK8sTargetDetails *NativeK8sTargetDetails `json:"native_k8s_target_details,omitempty"`
@@ -46,6 +47,7 @@ type TargetTypeDetailsInput struct {
 	RabbitMqTargetDetails *RabbitMQTargetDetails `json:"rabbit_mq_target_details,omitempty"`
 	SalesforceTargetDetails *SalesforceTargetDetails `json:"salesforce_target_details,omitempty"`
 	SectigoTargetDetails *SectigoTargetDetails `json:"sectigo_target_details,omitempty"`
+	SplunkTargetDetails *SplunkTargetDetails `json:"splunk_target_details,omitempty"`
 	SshTargetDetails *SSHTargetDetails `json:"ssh_target_details,omitempty"`
 	VenafiTargetDetails *VenafiTargetDetails `json:"venafi_target_details,omitempty"`
 	WebTargetDetails *WebTargetDetails `json:"web_target_details,omitempty"`
@@ -646,6 +648,38 @@ func (o *TargetTypeDetailsInput) SetLdapTargetDetails(v LdapTargetDetails) {
 	o.LdapTargetDetails = &v
 }
 
+// GetLetsencryptTargetDetails returns the LetsencryptTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetLetsencryptTargetDetails() LetsEncryptTargetDetails {
+	if o == nil || IsNil(o.LetsencryptTargetDetails) {
+		var ret LetsEncryptTargetDetails
+		return ret
+	}
+	return *o.LetsencryptTargetDetails
+}
+
+// GetLetsencryptTargetDetailsOk returns a tuple with the LetsencryptTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetLetsencryptTargetDetailsOk() (*LetsEncryptTargetDetails, bool) {
+	if o == nil || IsNil(o.LetsencryptTargetDetails) {
+		return nil, false
+	}
+	return o.LetsencryptTargetDetails, true
+}
+
+// HasLetsencryptTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasLetsencryptTargetDetails() bool {
+	if o != nil && !IsNil(o.LetsencryptTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetLetsencryptTargetDetails gets a reference to the given LetsEncryptTargetDetails and assigns it to the LetsencryptTargetDetails field.
+func (o *TargetTypeDetailsInput) SetLetsencryptTargetDetails(v LetsEncryptTargetDetails) {
+	o.LetsencryptTargetDetails = &v
+}
+
 // GetLinkedTargetDetails returns the LinkedTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetLinkedTargetDetails() LinkedTargetDetails {
 	if o == nil || IsNil(o.LinkedTargetDetails) {
@@ -902,6 +936,38 @@ func (o *TargetTypeDetailsInput) SetSectigoTargetDetails(v SectigoTargetDetails)
 	o.SectigoTargetDetails = &v
 }
 
+// GetSplunkTargetDetails returns the SplunkTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetSplunkTargetDetails() SplunkTargetDetails {
+	if o == nil || IsNil(o.SplunkTargetDetails) {
+		var ret SplunkTargetDetails
+		return ret
+	}
+	return *o.SplunkTargetDetails
+}
+
+// GetSplunkTargetDetailsOk returns a tuple with the SplunkTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetSplunkTargetDetailsOk() (*SplunkTargetDetails, bool) {
+	if o == nil || IsNil(o.SplunkTargetDetails) {
+		return nil, false
+	}
+	return o.SplunkTargetDetails, true
+}
+
+// HasSplunkTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasSplunkTargetDetails() bool {
+	if o != nil && !IsNil(o.SplunkTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplunkTargetDetails gets a reference to the given SplunkTargetDetails and assigns it to the SplunkTargetDetails field.
+func (o *TargetTypeDetailsInput) SetSplunkTargetDetails(v SplunkTargetDetails) {
+	o.SplunkTargetDetails = &v
+}
+
 // GetSshTargetDetails returns the SshTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetSshTargetDetails() SSHTargetDetails {
 	if o == nil || IsNil(o.SshTargetDetails) {
@@ -1126,6 +1192,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LdapTargetDetails) {
 		toSerialize["ldap_target_details"] = o.LdapTargetDetails
 	}
+	if !IsNil(o.LetsencryptTargetDetails) {
+		toSerialize["letsencrypt_target_details"] = o.LetsencryptTargetDetails
+	}
 	if !IsNil(o.LinkedTargetDetails) {
 		toSerialize["linked_target_details"] = o.LinkedTargetDetails
 	}
@@ -1149,6 +1218,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SectigoTargetDetails) {
 		toSerialize["sectigo_target_details"] = o.SectigoTargetDetails
+	}
+	if !IsNil(o.SplunkTargetDetails) {
+		toSerialize["splunk_target_details"] = o.SplunkTargetDetails
 	}
 	if !IsNil(o.SshTargetDetails) {
 		toSerialize["ssh_target_details"] = o.SshTargetDetails

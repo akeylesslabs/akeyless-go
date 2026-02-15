@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **GodaddyTargetDetails** | Pointer to [**GodaddyTargetDetails**](GodaddyTargetDetails.md) |  | [optional] 
 **HashiVaultTargetDetails** | Pointer to [**HashiVaultTargetDetails**](HashiVaultTargetDetails.md) |  | [optional] 
 **LdapTargetDetails** | Pointer to [**LdapTargetDetails**](LdapTargetDetails.md) |  | [optional] 
+**LetsencryptTargetDetails** | Pointer to [**LetsEncryptTargetDetails**](LetsEncryptTargetDetails.md) |  | [optional] 
 **LinkedTargetDetails** | Pointer to [**LinkedTargetDetails**](LinkedTargetDetails.md) |  | [optional] 
 **MongoDbTargetDetails** | Pointer to [**MongoDBTargetDetails**](MongoDBTargetDetails.md) |  | [optional] 
 **NativeK8sTargetDetails** | Pointer to [**NativeK8sTargetDetails**](NativeK8sTargetDetails.md) |  | [optional] 
@@ -30,6 +31,7 @@ Name | Type | Description | Notes
 **RabbitMqTargetDetails** | Pointer to [**RabbitMQTargetDetails**](RabbitMQTargetDetails.md) |  | [optional] 
 **SalesforceTargetDetails** | Pointer to [**SalesforceTargetDetails**](SalesforceTargetDetails.md) |  | [optional] 
 **SectigoTargetDetails** | Pointer to [**SectigoTargetDetails**](SectigoTargetDetails.md) |  | [optional] 
+**SplunkTargetDetails** | Pointer to [**SplunkTargetDetails**](SplunkTargetDetails.md) |  | [optional] 
 **SshTargetDetails** | Pointer to [**SSHTargetDetails**](SSHTargetDetails.md) |  | [optional] 
 **VenafiTargetDetails** | Pointer to [**VenafiTargetDetails**](VenafiTargetDetails.md) |  | [optional] 
 **WebTargetDetails** | Pointer to [**WebTargetDetails**](WebTargetDetails.md) |  | [optional] 
@@ -505,6 +507,31 @@ SetLdapTargetDetails sets LdapTargetDetails field to given value.
 
 HasLdapTargetDetails returns a boolean if a field has been set.
 
+### GetLetsencryptTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetLetsencryptTargetDetails() LetsEncryptTargetDetails`
+
+GetLetsencryptTargetDetails returns the LetsencryptTargetDetails field if non-nil, zero value otherwise.
+
+### GetLetsencryptTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetLetsencryptTargetDetailsOk() (*LetsEncryptTargetDetails, bool)`
+
+GetLetsencryptTargetDetailsOk returns a tuple with the LetsencryptTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLetsencryptTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetLetsencryptTargetDetails(v LetsEncryptTargetDetails)`
+
+SetLetsencryptTargetDetails sets LetsencryptTargetDetails field to given value.
+
+### HasLetsencryptTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasLetsencryptTargetDetails() bool`
+
+HasLetsencryptTargetDetails returns a boolean if a field has been set.
+
 ### GetLinkedTargetDetails
 
 `func (o *TargetTypeDetailsInput) GetLinkedTargetDetails() LinkedTargetDetails`
@@ -704,6 +731,31 @@ SetSectigoTargetDetails sets SectigoTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasSectigoTargetDetails() bool`
 
 HasSectigoTargetDetails returns a boolean if a field has been set.
+
+### GetSplunkTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetSplunkTargetDetails() SplunkTargetDetails`
+
+GetSplunkTargetDetails returns the SplunkTargetDetails field if non-nil, zero value otherwise.
+
+### GetSplunkTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetSplunkTargetDetailsOk() (*SplunkTargetDetails, bool)`
+
+GetSplunkTargetDetailsOk returns a tuple with the SplunkTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplunkTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetSplunkTargetDetails(v SplunkTargetDetails)`
+
+SetSplunkTargetDetails sets SplunkTargetDetails field to given value.
+
+### HasSplunkTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasSplunkTargetDetails() bool`
+
+HasSplunkTargetDetails returns a boolean if a field has been set.
 
 ### GetSshTargetDetails
 

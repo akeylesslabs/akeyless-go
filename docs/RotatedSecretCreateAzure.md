@@ -12,9 +12,10 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **ExplicitlySetSa** | Pointer to **string** | If set, explicitly provide the storage account details [true/false] | [optional] [default to "false"]
-**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotation** | Pointer to **string** | Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false] | [optional] 
 **GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | Pointer to **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
+**GraceRotationTiming** | Pointer to **string** | When to create the new version relative to the rotation date [after/before] | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -36,7 +37,7 @@ Name | Type | Description | Notes
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
-**TargetName** | **string** | Target name | 
+**TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Username** | Pointer to **string** | The user principal name to rotate his password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -334,6 +335,31 @@ SetGraceRotationInterval sets GraceRotationInterval field to given value.
 `func (o *RotatedSecretCreateAzure) HasGraceRotationInterval() bool`
 
 HasGraceRotationInterval returns a boolean if a field has been set.
+
+### GetGraceRotationTiming
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationTiming() string`
+
+GetGraceRotationTiming returns the GraceRotationTiming field if non-nil, zero value otherwise.
+
+### GetGraceRotationTimingOk
+
+`func (o *RotatedSecretCreateAzure) GetGraceRotationTimingOk() (*string, bool)`
+
+GetGraceRotationTimingOk returns a tuple with the GraceRotationTiming field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationTiming
+
+`func (o *RotatedSecretCreateAzure) SetGraceRotationTiming(v string)`
+
+SetGraceRotationTiming sets GraceRotationTiming field to given value.
+
+### HasGraceRotationTiming
+
+`func (o *RotatedSecretCreateAzure) HasGraceRotationTiming() bool`
+
+HasGraceRotationTiming returns a boolean if a field has been set.
 
 ### GetItemCustomFields
 

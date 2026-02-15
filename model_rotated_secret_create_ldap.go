@@ -81,7 +81,7 @@ type RotatedSecretCreateLdap struct {
 	Tags []string `json:"tags,omitempty"`
 	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
-	// Target name
+	// The target name to associate
 	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

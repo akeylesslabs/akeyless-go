@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **GraceRotation** | Pointer to **bool** |  | [optional] 
 **GraceRotationHour** | Pointer to **int32** |  | [optional] 
 **GraceRotationInterval** | Pointer to **int32** |  | [optional] 
+**GraceRotationTiming** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **IisAppsDetails** | Pointer to [**[]WindowsService**](WindowsService.md) |  | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
@@ -170,6 +171,31 @@ SetGraceRotationInterval sets GraceRotationInterval field to given value.
 `func (o *RotatedSecretDetailsInfo) HasGraceRotationInterval() bool`
 
 HasGraceRotationInterval returns a boolean if a field has been set.
+
+### GetGraceRotationTiming
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationTiming() string`
+
+GetGraceRotationTiming returns the GraceRotationTiming field if non-nil, zero value otherwise.
+
+### GetGraceRotationTimingOk
+
+`func (o *RotatedSecretDetailsInfo) GetGraceRotationTimingOk() (*string, bool)`
+
+GetGraceRotationTimingOk returns a tuple with the GraceRotationTiming field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationTiming
+
+`func (o *RotatedSecretDetailsInfo) SetGraceRotationTiming(v string)`
+
+SetGraceRotationTiming sets GraceRotationTiming field to given value.
+
+### HasGraceRotationTiming
+
+`func (o *RotatedSecretDetailsInfo) HasGraceRotationTiming() bool`
+
+HasGraceRotationTiming returns a boolean if a field has been set.
 
 ### GetGwClusterId
 

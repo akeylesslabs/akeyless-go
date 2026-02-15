@@ -10362,6 +10362,141 @@ paths:
             field.
       tags:
       - v2
+  /policy-create-keys:
+    post:
+      operationId: policyCreateKeys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/policyCreateKeys'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/policiesCreateOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /policy-delete:
+    post:
+      operationId: policiesDelete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/policiesDelete'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/policiesDeleteOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /policy-get:
+    post:
+      operationId: policiesGet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/policiesGet'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/policiesGetOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /policy-list:
+    post:
+      operationId: policiesList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/policiesList'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/policiesListOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /policy-update-keys:
+    post:
+      operationId: policyUpdateKeys
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/policyUpdateKeys'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/policiesUpdateOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /provision-certificate:
     post:
       operationId: provisionCertificate
@@ -11137,6 +11272,33 @@ paths:
             field.
       tags:
       - v2
+  /rotated-secret-create-splunk:
+    post:
+      operationId: rotatedSecretCreateSplunk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotatedSecretCreateSplunk'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretCreateOutput'
+          description: rotatedSecretCreateSplunkResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /rotated-secret-create-ssh:
     post:
       operationId: rotatedSecretCreateSsh
@@ -11776,6 +11938,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/rotatedSecretUpdateOutput'
           description: rotatedSecretUpdateSnowflakeResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /rotated-secret-update-splunk:
+    post:
+      operationId: rotatedSecretUpdateSplunk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotatedSecretUpdateSplunk'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretUpdateOutput'
+          description: rotatedSecretUpdateSplunkResponse wraps response body.
         default:
           content:
             application/json:
@@ -12650,6 +12839,33 @@ paths:
             field.
       tags:
       - v2
+  /target-create-lets-encrypt:
+    post:
+      operationId: targetCreateLetsEncrypt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetCreateLetsEncrypt'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetCreateOutput'
+          description: targetCreateLetsEncryptResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /target-create-linked:
     post:
       operationId: targetCreateLinked
@@ -12802,6 +13018,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/targetCreateOutput'
           description: targetCreateSectigoResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /target-create-splunk:
+    post:
+      operationId: targetCreateSplunk
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetCreateSplunk'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetCreateOutput'
+          description: targetCreateSplunkResponse wraps response body.
         default:
           content:
             application/json:
@@ -13477,6 +13720,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/targetUpdateOutput'
           description: targetUpdateLdapResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /target-update-lets-encrypt:
+    post:
+      operationId: targetUpdateLetsEncrypt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/targetUpdateLetsEncrypt'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/targetUpdateOutput'
+          description: targetUpdateLetsEncryptResponse wraps response body.
         default:
           content:
             application/json:
@@ -18220,6 +18490,36 @@ components:
           schema:
             $ref: '#/components/schemas/moveObjectsOutput'
       description: moveObjectsResponse wraps response body.
+    policiesDeleteResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/policiesDeleteOutput'
+      description: ""
+    policiesGetResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/policiesGetOutput'
+      description: ""
+    policiesListResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/policiesListOutput'
+      description: ""
+    policyCreateKeysResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/policiesCreateOutput'
+      description: ""
+    policyUpdateKeysResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/policiesUpdateOutput'
+      description: ""
     provisionCertificateResponse:
       content:
         application/json:
@@ -18399,6 +18699,12 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretCreateOutput'
       description: rotatedSecretCreateSnowflakeResponse wraps response body.
+    rotatedSecretCreateSplunkResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretCreateOutput'
+      description: rotatedSecretCreateSplunkResponse wraps response body.
     rotatedSecretCreateSshResponse:
       content:
         application/json:
@@ -18544,6 +18850,12 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretUpdateOutput'
       description: rotatedSecretUpdateSnowflakeResponse wraps response body.
+    rotatedSecretUpdateSplunkResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretUpdateOutput'
+      description: rotatedSecretUpdateSplunkResponse wraps response body.
     rotatedSecretUpdateSshResponse:
       content:
         application/json:
@@ -18736,6 +19048,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetCreateOutput'
       description: targetCreateLdapResponse wraps response body.
+    targetCreateLetsEncryptResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetCreateOutput'
+      description: targetCreateLetsEncryptResponse wraps response body.
     targetCreateLinkedResponse:
       content:
         application/json:
@@ -18772,6 +19090,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetCreateOutput'
       description: targetCreateSectigoResponse wraps response body.
+    targetCreateSplunkResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetCreateOutput'
+      description: targetCreateSplunkResponse wraps response body.
     targetCreateSshResponse:
       content:
         application/json:
@@ -18922,6 +19246,12 @@ components:
           schema:
             $ref: '#/components/schemas/targetUpdateOutput'
       description: targetUpdateLdapResponse wraps response body.
+    targetUpdateLetsEncryptResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/targetUpdateOutput'
+      description: targetUpdateLetsEncryptResponse wraps response body.
     targetUpdateLinkedResponse:
       content:
         application/json:
@@ -19433,6 +19763,14 @@ components:
             $ref: '#/components/schemas/verifyRsaSsaPssOutput'
       description: verifyRsaSsaPssResponse wraps response body.
   schemas:
+    ACMEChallengeType:
+      description: ACMEChallengeType defines ACME challenge type for Let's Encrypt
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    ACMEEnvironment:
+      description: ACMEEnvironment defines Let's Encrypt ACME directory environment
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     APIKeyAccessRules:
       example:
         modification_date: 2000-01-23T04:56:07.000+00:00
@@ -20686,6 +21024,8 @@ components:
               new_name: new_name
               status: status
             payload:
+              use_gw_cloud_identity: true
+              project_id: project_id
               gcp_credentials_json: gcp_credentials_json
           - general:
               prefix: prefix
@@ -20697,6 +21037,8 @@ components:
               new_name: new_name
               status: status
             payload:
+              use_gw_cloud_identity: true
+              project_id: project_id
               gcp_credentials_json: gcp_credentials_json
         ca_certificates:
           certificate_store:
@@ -27896,11 +28238,19 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/producer/config
     GCPPayload:
       example:
+        use_gw_cloud_identity: true
+        project_id: project_id
         gcp_credentials_json: gcp_credentials_json
       properties:
         gcp_credentials_json:
           type: string
           x-go-name: Key
+        project_id:
+          type: string
+          x-go-name: ProjectId
+        use_gw_cloud_identity:
+          type: boolean
+          x-go-name: UseGwCloudIdentity
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     GCPSecretsMigration:
@@ -27915,6 +28265,8 @@ components:
           new_name: new_name
           status: status
         payload:
+          use_gw_cloud_identity: true
+          project_id: project_id
           gcp_credentials_json: gcp_credentials_json
       properties:
         general:
@@ -29273,8 +29625,8 @@ components:
             url: url
           salesforce_target_details:
             app_private_key:
-            - 5
-            - 5
+            - 2
+            - 2
             password: password
             tenant_url: tenant_url
             ca_cert_name: ca_cert_name
@@ -29284,8 +29636,8 @@ components:
             client_secret: client_secret
             client_id: client_id
             ca_cert_data:
-            - 2
-            - 2
+            - 7
+            - 7
           ping_target_details:
             user_password: user_password
             privileged_user: privileged_user
@@ -29308,6 +29660,23 @@ components:
             gitlab_url: gitlab_url
             gitlab_certificate: gitlab_certificate
             gitlab_access_token: gitlab_access_token
+          splunk_target_details:
+            use_tls: true
+            audience: audience
+            password: password
+            splunk_payload:
+              audience: audience
+              token_id: token_id
+              validity_period_days: 4
+              token_owner: token_owner
+              expiration_date: expiration_date
+              hec_token_name: hec_token_name
+              token: token
+            auth_mode: auth_mode
+            token_owner: token_owner
+            splunk_url: splunk_url
+            token: token
+            username: username
           dockerhub_target_details:
             password: password
             user_name: user_name
@@ -29363,9 +29732,21 @@ components:
             validation_email: validation_email
             imap_user: imap_user
             imap_password: imap_password
-            timeout: 2
+            timeout: 7
           custom_target_details:
             payload: payload
+          letsencrypt_target_details:
+            hosted_zone: hosted_zone
+            challenge_type: challenge_type
+            acme_environment: acme_environment
+            resource_group: resource_group
+            dns_target_name: dns_target_name
+            gcp_project: gcp_project
+            account_url: account_url
+            dns_target_type: dns_target_type
+            account_key_pem: account_key_pem
+            email: email
+            timeout: 5
           godaddy_target_details:
             imap_port: imap_port
             imap_fqdn: imap_fqdn
@@ -29379,10 +29760,10 @@ components:
           sectigo_target_details:
             password: password
             customer_uri: customer_uri
-            certificate_profile_id: 7
-            org_id: 9
+            certificate_profile_id: 9
+            org_id: 3
             external_requester: external_requester
-            timeout: 3
+            timeout: 2
             username: username
         target:
           target_items_assoc:
@@ -29667,6 +30048,9 @@ components:
           x-go-name: ServiceAccountKey
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    GraceRotationTiming:
+      type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Group:
       example:
         account_id: account_id
@@ -30366,6 +30750,7 @@ components:
                 use_tls: true
                 connection_type: connection_type
                 port: port
+            grace_rotation_timing: grace_rotation_timing
             grace_rotation_hour: 6
             rotator_creds_type: rotator_creds_type
             gw_cluster_id: 6
@@ -31221,6 +31606,7 @@ components:
               use_tls: true
               connection_type: connection_type
               port: port
+          grace_rotation_timing: grace_rotation_timing
           grace_rotation_hour: 6
           rotator_creds_type: rotator_creds_type
           gw_cluster_id: 6
@@ -33318,6 +33704,90 @@ components:
           x-go-name: OpenLeadership
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    LetsEncryptTargetDetails:
+      description: LetsEncryptTargetDetails defines configuration for Let's Encrypt
+        ACME target
+      example:
+        hosted_zone: hosted_zone
+        challenge_type: challenge_type
+        acme_environment: acme_environment
+        resource_group: resource_group
+        dns_target_name: dns_target_name
+        gcp_project: gcp_project
+        account_url: account_url
+        dns_target_type: dns_target_type
+        account_key_pem: account_key_pem
+        email: email
+        timeout: 5
+      properties:
+        account_key_pem:
+          description: |-
+            ACME Account Private Key (PEM-encoded)
+            Supports ECDSA (P-256, P-384, P-521), RSA (2048+), and Ed25519
+            Auto-generated as ECDSA P-256 on first certificate issuance if not provided
+            Stored encrypted, required for certificate operations and revocation
+          type: string
+          x-go-name: AccountKeyPEM
+        account_url:
+          description: |-
+            ACME Account URL (returned after registration with Let's Encrypt)
+            Used to retrieve existing account instead of re-registering
+          type: string
+          x-go-name: AccountURL
+        acme_environment:
+          description: ACMEEnvironment defines Let's Encrypt ACME directory environment
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        challenge_type:
+          description: ACMEChallengeType defines ACME challenge type for Let's Encrypt
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        dns_target_name:
+          description: |-
+            Name of DNS target (transient field - not stored in DB)
+            Used by CLI to pass DNS target name to SDK for creating target_object_assoc
+            Retrieved from target_object_assoc when reading target
+            Required when ChallengeType is "dns"
+          type: string
+          x-go-name: DNSTargetName
+        dns_target_type:
+          title: TargetType ..
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        email:
+          description: |-
+            Email address for ACME account registration
+            Required
+          type: string
+          x-go-name: Email
+        gcp_project:
+          description: |-
+            GCP Cloud DNS: Project ID
+            Optional - can be derived from service account
+          type: string
+          x-go-name: GCPProject
+        hosted_zone:
+          description: |-
+            AWS Route53: Hosted zone ID
+            Required when DNSTargetType is AWS
+          type: string
+          x-go-name: HostedZone
+        resource_group:
+          description: |-
+            Azure DNS: Resource group name
+            Required when DNSTargetType is Azure
+          type: string
+          x-go-name: ResourceGroup
+        timeout:
+          description: |-
+            A Duration represents the elapsed time between two instants
+            as an int64 nanosecond count. The representation limits the
+            largest representable duration to approximately 290 years.
+          format: int64
+          type: integer
+          x-go-package: time
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     LinkedDetails:
       example:
         hosts:
@@ -34548,6 +35018,7 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_timing: grace_rotation_timing
               grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
               gw_cluster_id: 6
@@ -35467,6 +35938,7 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_timing: grace_rotation_timing
               grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
               gw_cluster_id: 6
@@ -36412,6 +36884,7 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_timing: grace_rotation_timing
               grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
               gw_cluster_id: 6
@@ -37331,6 +37804,7 @@ components:
                   use_tls: true
                   connection_type: connection_type
                   port: port
+              grace_rotation_timing: grace_rotation_timing
               grace_rotation_hour: 6
               rotator_creds_type: rotator_creds_type
               gw_cluster_id: 6
@@ -39012,6 +39486,8 @@ components:
             new_name: new_name
             status: status
           payload:
+            use_gw_cloud_identity: true
+            project_id: project_id
             gcp_credentials_json: gcp_credentials_json
         - general:
             prefix: prefix
@@ -39023,6 +39499,8 @@ components:
             new_name: new_name
             status: status
           payload:
+            use_gw_cloud_identity: true
+            project_id: project_id
             gcp_credentials_json: gcp_credentials_json
       properties:
         active_directory_migrations:
@@ -41286,6 +41764,7 @@ components:
             use_tls: true
             connection_type: connection_type
             port: port
+        grace_rotation_timing: grace_rotation_timing
         grace_rotation_hour: 6
         rotator_creds_type: rotator_creds_type
         gw_cluster_id: 6
@@ -41332,6 +41811,9 @@ components:
           format: int32
           type: integer
           x-go-name: GraceRotationInterval
+        grace_rotation_timing:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         gw_cluster_id:
           format: int64
           type: integer
@@ -41731,8 +42213,8 @@ components:
       description: SalesforceTargetDetails
       example:
         app_private_key:
-        - 5
-        - 5
+        - 2
+        - 2
         password: password
         tenant_url: tenant_url
         ca_cert_name: ca_cert_name
@@ -41742,8 +42224,8 @@ components:
         client_secret: client_secret
         client_id: client_id
         ca_cert_data:
-        - 2
-        - 2
+        - 7
+        - 7
       properties:
         app_private_key:
           description: |-
@@ -41926,10 +42408,10 @@ components:
       example:
         password: password
         customer_uri: customer_uri
-        certificate_profile_id: 7
-        org_id: 9
+        certificate_profile_id: 9
+        org_id: 3
         external_requester: external_requester
-        timeout: 3
+        timeout: 2
         username: username
       properties:
         certificate_profile_id:
@@ -42438,6 +42920,98 @@ components:
           x-go-name: SplunkUrl
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    SplunkPayload:
+      example:
+        audience: audience
+        token_id: token_id
+        validity_period_days: 4
+        token_owner: token_owner
+        expiration_date: expiration_date
+        hec_token_name: hec_token_name
+        token: token
+      properties:
+        audience:
+          type: string
+          x-go-name: Audience
+        expiration_date:
+          type: string
+          x-go-name: ExpirationDate
+        hec_token_name:
+          type: string
+          x-go-name: HecTokenName
+        token:
+          type: string
+          x-go-name: Token
+        token_id:
+          type: string
+          x-go-name: TokenID
+        token_owner:
+          type: string
+          x-go-name: TokenOwner
+        validity_period_days:
+          format: int64
+          type: integer
+          x-go-name: ValidityPeriodDays
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SplunkTargetDetails:
+      description: SplunkTargetDetails defines details related to connecting to a
+        Splunk server
+      example:
+        use_tls: true
+        audience: audience
+        password: password
+        splunk_payload:
+          audience: audience
+          token_id: token_id
+          validity_period_days: 4
+          token_owner: token_owner
+          expiration_date: expiration_date
+          hec_token_name: hec_token_name
+          token: token
+        auth_mode: auth_mode
+        token_owner: token_owner
+        splunk_url: splunk_url
+        token: token
+        username: username
+      properties:
+        audience:
+          description: Token audience
+          type: string
+          x-go-name: Audience
+        auth_mode:
+          description: "Authentication mode: \"username\" or \"token\""
+          type: string
+          x-go-name: AuthMode
+        password:
+          type: string
+          x-go-name: Password
+        splunk_payload:
+          $ref: '#/components/schemas/SplunkPayload'
+        splunk_url:
+          description: Splunk server URL
+          type: string
+          x-go-name: SplunkURL
+        token:
+          description: Token is used when AuthMode == "token"
+          type: string
+          x-go-name: Token
+        token_owner:
+          description: "Token owner (the Splunk user who owns the token, required\
+            \ for token rotation)"
+          type: string
+          x-go-name: TokenOwner
+        use_tls:
+          description: Use TLS certificate verification when connecting to the Splunk
+            management API.
+          type: boolean
+          x-go-name: UseTLS
+        username:
+          description: Username & Password are used when AuthMode == "username"
+          type: string
+          x-go-name: Username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SraClientType:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -43299,8 +43873,8 @@ components:
           url: url
         salesforce_target_details:
           app_private_key:
-          - 5
-          - 5
+          - 2
+          - 2
           password: password
           tenant_url: tenant_url
           ca_cert_name: ca_cert_name
@@ -43310,8 +43884,8 @@ components:
           client_secret: client_secret
           client_id: client_id
           ca_cert_data:
-          - 2
-          - 2
+          - 7
+          - 7
         ping_target_details:
           user_password: user_password
           privileged_user: privileged_user
@@ -43334,6 +43908,23 @@ components:
           gitlab_url: gitlab_url
           gitlab_certificate: gitlab_certificate
           gitlab_access_token: gitlab_access_token
+        splunk_target_details:
+          use_tls: true
+          audience: audience
+          password: password
+          splunk_payload:
+            audience: audience
+            token_id: token_id
+            validity_period_days: 4
+            token_owner: token_owner
+            expiration_date: expiration_date
+            hec_token_name: hec_token_name
+            token: token
+          auth_mode: auth_mode
+          token_owner: token_owner
+          splunk_url: splunk_url
+          token: token
+          username: username
         dockerhub_target_details:
           password: password
           user_name: user_name
@@ -43389,9 +43980,21 @@ components:
           validation_email: validation_email
           imap_user: imap_user
           imap_password: imap_password
-          timeout: 2
+          timeout: 7
         custom_target_details:
           payload: payload
+        letsencrypt_target_details:
+          hosted_zone: hosted_zone
+          challenge_type: challenge_type
+          acme_environment: acme_environment
+          resource_group: resource_group
+          dns_target_name: dns_target_name
+          gcp_project: gcp_project
+          account_url: account_url
+          dns_target_type: dns_target_type
+          account_key_pem: account_key_pem
+          email: email
+          timeout: 5
         godaddy_target_details:
           imap_port: imap_port
           imap_fqdn: imap_fqdn
@@ -43405,10 +44008,10 @@ components:
         sectigo_target_details:
           password: password
           customer_uri: customer_uri
-          certificate_profile_id: 7
-          org_id: 9
+          certificate_profile_id: 9
+          org_id: 3
           external_requester: external_requester
-          timeout: 3
+          timeout: 2
           username: username
       properties:
         artifactory_target_details:
@@ -43447,6 +44050,8 @@ components:
           $ref: '#/components/schemas/HashiVaultTargetDetails'
         ldap_target_details:
           $ref: '#/components/schemas/LdapTargetDetails'
+        letsencrypt_target_details:
+          $ref: '#/components/schemas/LetsEncryptTargetDetails'
         linked_target_details:
           $ref: '#/components/schemas/LinkedTargetDetails'
         mongo_db_target_details:
@@ -43463,6 +44068,8 @@ components:
           $ref: '#/components/schemas/SalesforceTargetDetails'
         sectigo_target_details:
           $ref: '#/components/schemas/SectigoTargetDetails'
+        splunk_target_details:
+          $ref: '#/components/schemas/SplunkTargetDetails'
         ssh_target_details:
           $ref: '#/components/schemas/SSHTargetDetails'
         venafi_target_details:
@@ -44626,7 +45233,7 @@ components:
         validation_email: validation_email
         imap_user: imap_user
         imap_password: imap_password
-        timeout: 2
+        timeout: 7
       properties:
         api_key:
           type: string
@@ -66372,6 +66979,10 @@ components:
             \ only for GCP migration)"
           type: string
           x-go-name: ServiceAccountKey
+        gcp-project-id:
+          description: GCP Project ID (cross-project override)
+          type: string
+          x-go-name: GcpProjectId
         hashi-json:
           default: "true"
           description: "Import secret key as json value or independent secrets (relevant\
@@ -66550,6 +67161,10 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          description: Use the GW's Cloud IAM
+          type: boolean
+          x-go-name: GCPUseDefaultIdentity
       required:
       - hosts
       - name
@@ -80857,6 +81472,8 @@ components:
               new_name: new_name
               status: status
             payload:
+              use_gw_cloud_identity: true
+              project_id: project_id
               gcp_credentials_json: gcp_credentials_json
           - general:
               prefix: prefix
@@ -80868,6 +81485,8 @@ components:
               new_name: new_name
               status: status
             payload:
+              use_gw_cloud_identity: true
+              project_id: project_id
               gcp_credentials_json: gcp_credentials_json
       properties:
         body:
@@ -81259,6 +81878,8 @@ components:
               new_name: new_name
               status: status
             payload:
+              use_gw_cloud_identity: true
+              project_id: project_id
               gcp_credentials_json: gcp_credentials_json
           - general:
               prefix: prefix
@@ -81270,6 +81891,8 @@ components:
               new_name: new_name
               status: status
             payload:
+              use_gw_cloud_identity: true
+              project_id: project_id
               gcp_credentials_json: gcp_credentials_json
       properties:
         body:
@@ -82865,6 +83488,10 @@ components:
             \ only for GCP migration)"
           type: string
           x-go-name: ServiceAccountKey
+        gcp-project-id:
+          description: GCP Project ID (cross-project override)
+          type: string
+          x-go-name: GcpProjectId
         hashi-json:
           default: "true"
           description: "Import secret key as json value or independent secrets (relevant\
@@ -83048,6 +83675,10 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-gw-cloud-identity:
+          description: Use the GW's Cloud IAM
+          type: boolean
+          x-go-name: GCPUseDefaultIdentity
       required:
       - hosts
       - si-target-name
@@ -99100,6 +99731,353 @@ components:
     moveObjectsOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesCreateOutput:
+      example:
+        id: id
+      properties:
+        id:
+          type: string
+          x-go-name: ID
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesDelete:
+      properties:
+        id:
+          description: Policy id
+          type: string
+          x-go-name: PolicyID
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - id
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesDeleteOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesGet:
+      properties:
+        id:
+          description: Policy id
+          type: string
+          x-go-name: PolicyID
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - id
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesGetOutput:
+      example:
+        policy:
+          max_rotation_interval_days: 0
+          path: path
+          account_id: account_id
+          allowed_key_names:
+          - allowed_key_names
+          - allowed_key_names
+          allowed_key_types:
+          - null
+          - null
+          object_types:
+          - object_types
+          - object_types
+          allowed_algorithms:
+          - allowed_algorithms
+          - allowed_algorithms
+          id: id
+          type: type
+      properties:
+        policy:
+          $ref: '#/components/schemas/policyOutput'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesList:
+      properties:
+        aggregate:
+          description: Aggregate missing configurations from parent policies (requires
+            --paths)
+          type: boolean
+          x-go-name: Aggregate
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        object-type:
+          description: Optional object types filter (items or targets)
+          items:
+            type: string
+          type: array
+          x-go-name: ObjectTypes
+        paths:
+          description: Filter by exact policy paths
+          items:
+            type: string
+          type: array
+          x-go-name: Paths
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        types:
+          description: Filter by policy types
+          items:
+            type: string
+          type: array
+          x-go-name: Types
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesListOutput:
+      example:
+        policies:
+        - max_rotation_interval_days: 0
+          path: path
+          account_id: account_id
+          allowed_key_names:
+          - allowed_key_names
+          - allowed_key_names
+          allowed_key_types:
+          - null
+          - null
+          object_types:
+          - object_types
+          - object_types
+          allowed_algorithms:
+          - allowed_algorithms
+          - allowed_algorithms
+          id: id
+          type: type
+        - max_rotation_interval_days: 0
+          path: path
+          account_id: account_id
+          allowed_key_names:
+          - allowed_key_names
+          - allowed_key_names
+          allowed_key_types:
+          - null
+          - null
+          object_types:
+          - object_types
+          - object_types
+          allowed_algorithms:
+          - allowed_algorithms
+          - allowed_algorithms
+          id: id
+          type: type
+      properties:
+        policies:
+          items:
+            $ref: '#/components/schemas/policyOutput'
+          type: array
+          x-go-name: Policies
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policiesUpdateOutput:
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policyCreateKeys:
+      properties:
+        allowed-algorithms:
+          description: "Specify allowed key algorithms (e.g., [RSA2048,AES128GCM])"
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedAlgorithms
+        allowed-key-names:
+          description: "Specify allowed protection key names. To enforce using the\
+            \ account's default protection key, use 'default-account-key'"
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedKeyNames
+        allowed-key-types:
+          description: "Specify allowed key protection types (dfc, classic-key)"
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedKeyTypes
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        max-rotation-interval-days:
+          description: Set the maximum rotation interval for automatic key rotation.
+          format: int32
+          type: integer
+          x-go-name: MaxRotationIntervalDays
+        object-types:
+          description: "The object types this policy will apply to (items, targets).\
+            \ If not provided, defaults to [items, targets]."
+          items:
+            type: string
+          type: array
+          x-go-name: ObjectTypes
+        path:
+          description: The path the policy refers to
+          type: string
+          x-go-name: Path
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - path
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policyOutput:
+      description: it exposes object_types and intentionally hides enforce_on_items/enforce_on_targets.
+      example:
+        max_rotation_interval_days: 0
+        path: path
+        account_id: account_id
+        allowed_key_names:
+        - allowed_key_names
+        - allowed_key_names
+        allowed_key_types:
+        - null
+        - null
+        object_types:
+        - object_types
+        - object_types
+        allowed_algorithms:
+        - allowed_algorithms
+        - allowed_algorithms
+        id: id
+        type: type
+      properties:
+        account_id:
+          type: string
+          x-go-name: AccountID
+        allowed_algorithms:
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedAlgorithms
+        allowed_key_names:
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedKeyNames
+        allowed_key_types:
+          items:
+            $ref: '#/components/schemas/KeyType'
+          type: array
+          x-go-name: AllowedKeyTypes
+        id:
+          type: string
+          x-go-name: ID
+        max_rotation_interval_days:
+          format: int32
+          type: integer
+          x-go-name: MaxRotationIntervalDays
+        object_types:
+          items:
+            type: string
+          type: array
+          x-go-name: ObjectTypes
+        path:
+          type: string
+          x-go-name: Path
+        type:
+          type: string
+          x-go-name: Type
+      title: 'policyOutput is a CLI output view that matches create/update input fields:'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    policyUpdateKeys:
+      properties:
+        allowed-algorithms:
+          description: "Specify allowed key algorithms (e.g., [RSA2048,AES128GCM])"
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedAlgorithms
+        allowed-key-names:
+          description: "Specify allowed protection key names. To enforce using the\
+            \ account's default protection key, use 'default-account-key'"
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedKeyNames
+        allowed-key-types:
+          description: "Specify allowed key protection types (dfc, classic-key)"
+          items:
+            type: string
+          type: array
+          x-go-name: AllowedKeyTypes
+        id:
+          description: Policy id
+          type: string
+          x-go-name: PolicyID
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        max-rotation-interval-days:
+          description: Set the maximum rotation interval for automatic key rotation.
+          format: int32
+          type: integer
+          x-go-name: MaxRotationIntervalDays
+        object-types:
+          description: "The object type this policy will apply to (items, targets)"
+          items:
+            type: string
+          type: array
+          x-go-name: ObjectTypes
+        path:
+          description: The path the policy refers to
+          type: string
+          x-go-name: Path
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - id
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     provisionCertificate:
       description: provisionCertificate is a command that provisions a certificate
         content to a target
@@ -99497,8 +100475,10 @@ components:
           type: string
           x-go-name: Description
         grace-rotation:
-          description: "Create a new access key without deleting the old key from\
-            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          description: "Enable graceful rotation (keep both versions temporarily).\
+            \ When enabled, a new secret version is created while the previous version\
+            \ is kept for the grace period, so both versions exist for a limited time.\
+            \ [true/false]"
           type: string
           x-go-name: GraceRotation
         grace-rotation-hour:
@@ -99511,6 +100491,11 @@ components:
             be bigger than rotation-interval)
           type: string
           x-go-name: GraceRotationInterval
+        grace-rotation-timing:
+          description: "When to create the new version relative to the rotation date\
+            \ [after/before]"
+          type: string
+          x-go-name: GraceRotationTiming
         item-custom-fields:
           additionalProperties:
             type: string
@@ -99594,7 +100579,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -99652,8 +100637,10 @@ components:
           type: string
           x-go-name: ProvideAccountDetails
         grace-rotation:
-          description: "Create a new access key without deleting the old key from\
-            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          description: "Enable graceful rotation (keep both versions temporarily).\
+            \ When enabled, a new secret version is created while the previous version\
+            \ is kept for the grace period, so both versions exist for a limited time.\
+            \ [true/false]"
           type: string
           x-go-name: GraceRotation
         grace-rotation-hour:
@@ -99666,6 +100653,11 @@ components:
             be bigger than rotation-interval)
           type: string
           x-go-name: GraceRotationInterval
+        grace-rotation-timing:
+          description: "When to create the new version relative to the rotation date\
+            \ [after/before]"
+          type: string
+          x-go-name: GraceRotationTiming
         item-custom-fields:
           additionalProperties:
             type: string
@@ -99768,7 +100760,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -99880,7 +100872,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100042,7 +101034,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         timeout-sec:
@@ -100156,7 +101148,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100207,8 +101199,10 @@ components:
           type: string
           x-go-name: GcpServiceAccountKeyId
         grace-rotation:
-          description: "Create a new access key without deleting the old key from\
-            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          description: "Enable graceful rotation (keep both versions temporarily).\
+            \ When enabled, a new secret version is created while the previous version\
+            \ is kept for the grace period, so both versions exist for a limited time.\
+            \ [true/false]"
           type: string
           x-go-name: GraceRotation
         grace-rotation-hour:
@@ -100221,6 +101215,11 @@ components:
             be bigger than rotation-interval)
           type: string
           x-go-name: GraceRotationInterval
+        grace-rotation-timing:
+          description: "When to create the new version relative to the rotation date\
+            \ [after/before]"
+          type: string
+          x-go-name: GraceRotationTiming
         item-custom-fields:
           additionalProperties:
             type: string
@@ -100278,7 +101277,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100385,7 +101384,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100558,7 +101557,7 @@ components:
           type: array
           x-go-name: TargetNames
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100709,7 +101708,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100855,7 +101854,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -100997,7 +101996,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101104,7 +102103,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101237,7 +102236,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101392,7 +102391,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101499,7 +102498,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101627,7 +102626,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101744,7 +102743,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -101761,6 +102760,147 @@ components:
       - rotator-type
       - target-name
       title: rotatedSecretCreateSnowflake is a command that creates a rotated secret.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretCreateSplunk:
+      description: |-
+        rotatedSecretCreateSplunk is a command that creates a rotated secret for a
+        Splunk target. Currently we support target-rotator behavior (rotate
+        credentials on the target itself).
+      properties:
+        audience:
+          description: Token audience for Splunk token creation (required for rotator-type=token)
+          type: string
+          x-go-name: Audience
+        authentication-credentials:
+          default: use-user-creds
+          description: The credentials to connect with use-user-creds/use-target-creds
+          type: string
+          x-go-name: RotatorCredsType
+        auto-rotate:
+          description: "Whether to automatically rotate every --rotation-interval\
+            \ days, or disable existing automatic rotation [true/false]"
+          type: string
+          x-go-name: AutoRotate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        expiration-date:
+          description: Token expiration date in YYYY-MM-DD format (required for rotator-type=token
+            when manual rotation is selected and no existing token is provided). Time
+            will be set to 00:00 UTC.
+          type: string
+          x-go-name: ExpirationDate
+        hec-token:
+          description: "Current Splunk HEC token value to store (relevant only for\
+            \ rotator-type=hec-token). If not provided, a new HEC input will be created\
+            \ in Splunk."
+          type: string
+          x-go-name: HecToken
+        hec-token-name:
+          description: Splunk HEC input name to manage  (required for rotator-type=hec-token)
+          type: string
+          x-go-name: HecTokenName
+        item-custom-fields:
+          additionalProperties:
+            type: string
+          description: Additional custom fields to associate with the item
+          type: object
+          x-go-name: ItemCustomFields
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the secret value (if\
+            \ empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Rotated secret name
+          type: string
+          x-go-name: SecretName
+        password-length:
+          description: The length of the password to be generated
+          type: string
+          x-go-name: PasswordLengthInput
+        rotated-password:
+          description: rotated-username password (relevant only for rotator-type=password)
+          type: string
+          x-go-name: RotatedPassword
+        rotated-username:
+          description: "username to be rotated, if selected use-self-creds at rotator-creds-type,\
+            \ this username will try to rotate it's own password, if use-target-creds\
+            \ is selected, target credentials will be use to rotate the rotated-password\
+            \ (relevant only for rotator-type=password)"
+          type: string
+          x-go-name: RotatedUser
+        rotation-event-in:
+          description: How many days before the rotation of the item would you like
+            to be notified
+          items:
+            type: string
+          type: array
+          x-go-name: RotationEventsInDays
+        rotation-hour:
+          description: The Hour of the rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: RotationHour
+        rotation-interval:
+          description: The number of days to wait between every automatic key rotation
+            (1-365)
+          type: string
+          x-go-name: RotationInterval
+        rotator-type:
+          description: "The rotator type. options: [target/password/token/hec-token]"
+          type: string
+          x-go-name: RotatorType
+        splunk-token:
+          description: "Current Splunk authentication token to store (relevant only\
+            \ for rotator-type=token). If not provided, a new token will be created\
+            \ in Splunk."
+          type: string
+          x-go-name: SplunkToken
+        tags:
+          description: Add tags attached to this object
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: The target name to associate
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        token-owner:
+          description: Splunk token owner username (relevant only for rotator-type=token)
+          type: string
+          x-go-name: TokenOwner
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      - rotator-type
+      - target-name
+      title: Splunk
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretCreateSsh:
@@ -101916,7 +103056,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -102067,7 +103207,7 @@ components:
           type: array
           x-go-name: Tags
         target-name:
-          description: Target name
+          description: The target name to associate
           type: string
           x-go-name: TargetName
         token:
@@ -102309,8 +103449,10 @@ components:
           type: string
           x-go-name: Description
         grace-rotation:
-          description: "Create a new access key without deleting the old key from\
-            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          description: "Enable graceful rotation (keep both versions temporarily).\
+            \ When enabled, a new secret version is created while the previous version\
+            \ is kept for the grace period, so both versions exist for a limited time.\
+            \ [true/false]"
           type: string
           x-go-name: GraceRotation
         grace-rotation-hour:
@@ -102323,6 +103465,11 @@ components:
             be bigger than rotation-interval)
           type: string
           x-go-name: GraceRotationInterval
+        grace-rotation-timing:
+          description: "When to create the new version relative to the rotation date\
+            \ [after/before]"
+          type: string
+          x-go-name: GraceRotationTiming
         item-custom-fields:
           additionalProperties:
             type: string
@@ -102470,8 +103617,10 @@ components:
           type: string
           x-go-name: ProvideAccountDetails
         grace-rotation:
-          description: "Create a new access key without deleting the old key from\
-            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          description: "Enable graceful rotation (keep both versions temporarily).\
+            \ When enabled, a new secret version is created while the previous version\
+            \ is kept for the grace period, so both versions exist for a limited time.\
+            \ [true/false]"
           type: string
           x-go-name: GraceRotation
         grace-rotation-hour:
@@ -102484,6 +103633,11 @@ components:
             be bigger than rotation-interval)
           type: string
           x-go-name: GraceRotationInterval
+        grace-rotation-timing:
+          description: "When to create the new version relative to the rotation date\
+            \ [after/before]"
+          type: string
+          x-go-name: GraceRotationTiming
         item-custom-fields:
           additionalProperties:
             type: string
@@ -103058,8 +104212,10 @@ components:
           type: string
           x-go-name: GcpServiceAccountKeyId
         grace-rotation:
-          description: "Create a new access key without deleting the old key from\
-            \ AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]"
+          description: "Enable graceful rotation (keep both versions temporarily).\
+            \ When enabled, a new secret version is created while the previous version\
+            \ is kept for the grace period, so both versions exist for a limited time.\
+            \ [true/false]"
           type: string
           x-go-name: GraceRotation
         grace-rotation-hour:
@@ -103072,6 +104228,11 @@ components:
             be bigger than rotation-interval)
           type: string
           x-go-name: GraceRotationInterval
+        grace-rotation-timing:
+          description: "When to create the new version relative to the rotation date\
+            \ [after/before]"
+          type: string
+          x-go-name: GraceRotationTiming
         item-custom-fields:
           additionalProperties:
             type: string
@@ -104681,6 +105842,138 @@ components:
       required:
       - name
       title: rotatedSecretUpdateSnowflake is a command that updates a rotated secret.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretUpdateSplunk:
+      description: |-
+        rotatedSecretUpdateSplunk is a command that updates a rotated secret for a
+        Splunk target. It reuses the rotator type chosen at create time.
+      properties:
+        add-tag:
+          description: List of the new tags that will be attached to this item
+          items:
+            type: string
+          type: array
+          x-go-name: AddTags
+        audience:
+          description: Token audience for Splunk token creation (relevant only for
+            rotator-type=token)
+          type: string
+          x-go-name: Audience
+        authentication-credentials:
+          default: use-user-creds
+          description: The credentials to connect with use-user-creds/use-target-creds
+          type: string
+          x-go-name: RotatorCredsType
+        auto-rotate:
+          description: "Whether to automatically rotate every --rotation-interval\
+            \ days, or disable existing automatic rotation [true/false]"
+          type: string
+          x-go-name: AutoRotate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          default: default_metadata
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        expiration-date:
+          description: Token expiration date in YYYY-MM-DD format (relevant only for
+            rotator-type=token when manual rotation is selected). Time will be set
+            to 00:00 UTC.
+          type: string
+          x-go-name: ExpirationDate
+        hec-token:
+          description: "For rotator-type=hec-token, optionally set/replace the stored\
+            \ HEC token value."
+          type: string
+          x-go-name: HecToken
+        item-custom-fields:
+          additionalProperties:
+            type: string
+          description: Additional custom fields to associate with the item
+          type: object
+          x-go-name: ItemCustomFields
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          description: "The name of a key that used to encrypt the secret value (if\
+            \ empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Rotated secret name
+          type: string
+          x-go-name: SecretName
+        new-name:
+          description: New item name
+          type: string
+          x-go-name: NewName
+        password-length:
+          description: The length of the password to be generated
+          type: string
+          x-go-name: PasswordLengthInput
+        rm-tag:
+          description: List of the existent tags that will be removed from this item
+          items:
+            type: string
+          type: array
+          x-go-name: RemoveTags
+        rotation-event-in:
+          description: How many days before the rotation of the item would you like
+            to be notified
+          items:
+            type: string
+          type: array
+          x-go-name: RotationEventsInDays
+        rotation-hour:
+          description: The Hour of the rotation in UTC
+          format: int32
+          type: integer
+          x-go-name: RotationHour
+        rotation-interval:
+          description: The number of days to wait between every automatic key rotation
+            (1-365)
+          type: string
+          x-go-name: RotationInterval
+        splunk-token:
+          description: "For rotator-type=token, optionally set/replace the stored\
+            \ Splunk authentication token value."
+          type: string
+          x-go-name: SplunkToken
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        token-owner:
+          description: |-
+            For rotator-type=token, specify the Splunk username that the new token should be issued for.
+            (Splunk 10 requires name=<token-owner> when creating auth tokens.)
+          type: string
+          x-go-name: TokenOwner
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      title: Splunk
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretUpdateSsh:
@@ -107020,6 +108313,82 @@ components:
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetCreateLetsEncrypt:
+      description: targetCreateLetsEncrypt is a command that creates a new Let's Encrypt
+        target
+      properties:
+        acme-challenge:
+          default: http
+          type: string
+          x-go-name: ChallengeType
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        dns-target-creds:
+          description: "Name of existing cloud target for DNS credentials. Required\
+            \ when acme-challenge=dns. Supported: AWS, Azure, GCP targets"
+          type: string
+          x-go-name: DNSTargetName
+        email:
+          description: Email address for ACME account registration
+          type: string
+          x-go-name: Email
+        gcp-project:
+          description: "GCP Cloud DNS: Project ID. Optional - can be derived from\
+            \ service account"
+          type: string
+          x-go-name: GCPProject
+        hosted-zone:
+          description: AWS Route53 hosted zone ID. Required when dns-target-creds
+            points to AWS target
+          type: string
+          x-go-name: HostedZone
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        lets-encrypt-url:
+          default: production
+          type: string
+          x-go-name: Environment
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        resource-group:
+          description: Azure resource group name. Required when dns-target-creds points
+            to Azure target
+          type: string
+          x-go-name: ResourceGroup
+        timeout:
+          default: 5m
+          type: string
+          x-go-name: Timeout
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateLinked:
       properties:
         description:
@@ -107411,6 +108780,75 @@ components:
       - organization-id
       - password
       - username
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetCreateSplunk:
+      description: targetCreateSplunk is a command that creates a new splunk target
+      properties:
+        audience:
+          description: Splunk token audience (required when using token authentication
+            for rotation)
+          type: string
+          x-go-name: Audience
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        password:
+          description: Splunk Password (used when authenticating with username/password)
+          type: string
+          x-go-name: Password
+        token:
+          description: Splunk Token (used when authenticating with token)
+          type: string
+          x-go-name: Token
+        token-owner:
+          description: Splunk Token Owner (required when using token authentication
+            for rotation)
+          type: string
+          x-go-name: TokenOwner
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        url:
+          description: Splunk server URL
+          type: string
+          x-go-name: SplunkURL
+        use-tls:
+          default: true
+          description: Use TLS certificate verification when connecting to the Splunk
+            management API
+          type: boolean
+          x-go-name: UseTLS
+        username:
+          description: Splunk Username (used when authenticating with username/password)
+          type: string
+          x-go-name: Username
+      required:
+      - name
+      - url
+      title: Splunk
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateSsh:
@@ -109150,6 +110588,91 @@ components:
       - bind-dn
       - bind-dn-password
       - ldap-url
+      - name
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    targetUpdateLetsEncrypt:
+      description: targetUpdateLetsEncrypt is a command that updates an existing Let's
+        Encrypt target
+      properties:
+        acme-challenge:
+          default: http
+          type: string
+          x-go-name: ChallengeType
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        dns-target-creds:
+          description: "Name of existing cloud target for DNS credentials. Required\
+            \ when acme-challenge=dns. Supported: AWS, Azure, GCP targets"
+          type: string
+          x-go-name: DNSTargetName
+        email:
+          description: Email address for ACME account registration
+          type: string
+          x-go-name: Email
+        gcp-project:
+          description: "GCP Cloud DNS: Project ID. Optional - can be derived from\
+            \ service account"
+          type: string
+          x-go-name: GCPProject
+        hosted-zone:
+          description: AWS Route53 hosted zone ID. Required when dns-target-creds
+            points to AWS target
+          type: string
+          x-go-name: HostedZone
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          description: "The name of a key that used to encrypt the target secret value\
+            \ (if empty, the account default protectionKey key will be used)"
+          type: string
+          x-go-name: ProtectionKey
+        lets-encrypt-url:
+          default: production
+          type: string
+          x-go-name: Environment
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Target name
+          type: string
+          x-go-name: TargetName
+        new-name:
+          description: New target name
+          type: string
+          x-go-name: NewTargetName
+        resource-group:
+          description: Azure resource group name. Required when dns-target-creds points
+            to Azure target
+          type: string
+          x-go-name: ResourceGroup
+        timeout:
+          default: 5m
+          type: string
+          x-go-name: Timeout
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
       - name
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands

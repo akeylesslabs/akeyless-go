@@ -11,9 +11,10 @@ Name | Type | Description | Notes
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GcpServiceAccountEmail** | Pointer to **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | Pointer to **string** | The key id of the gcp service account to rotate | [optional] 
-**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotation** | Pointer to **string** | Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false] | [optional] 
 **GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | Pointer to **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
+**GraceRotationTiming** | Pointer to **string** | When to create the new version relative to the rotation date [after/before] | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/service-account-rotator] | 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
-**TargetName** | **string** | Target name | 
+**TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -297,6 +298,31 @@ SetGraceRotationInterval sets GraceRotationInterval field to given value.
 `func (o *RotatedSecretCreateGcp) HasGraceRotationInterval() bool`
 
 HasGraceRotationInterval returns a boolean if a field has been set.
+
+### GetGraceRotationTiming
+
+`func (o *RotatedSecretCreateGcp) GetGraceRotationTiming() string`
+
+GetGraceRotationTiming returns the GraceRotationTiming field if non-nil, zero value otherwise.
+
+### GetGraceRotationTimingOk
+
+`func (o *RotatedSecretCreateGcp) GetGraceRotationTimingOk() (*string, bool)`
+
+GetGraceRotationTimingOk returns a tuple with the GraceRotationTiming field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationTiming
+
+`func (o *RotatedSecretCreateGcp) SetGraceRotationTiming(v string)`
+
+SetGraceRotationTiming sets GraceRotationTiming field to given value.
+
+### HasGraceRotationTiming
+
+`func (o *RotatedSecretCreateGcp) HasGraceRotationTiming() bool`
+
+HasGraceRotationTiming returns a boolean if a field has been set.
 
 ### GetItemCustomFields
 

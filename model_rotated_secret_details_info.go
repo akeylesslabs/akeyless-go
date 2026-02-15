@@ -25,6 +25,7 @@ type RotatedSecretDetailsInfo struct {
 	GraceRotation *bool `json:"grace_rotation,omitempty"`
 	GraceRotationHour *int32 `json:"grace_rotation_hour,omitempty"`
 	GraceRotationInterval *int32 `json:"grace_rotation_interval,omitempty"`
+	GraceRotationTiming *string `json:"grace_rotation_timing,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	IisAppsDetails []WindowsService `json:"iis_apps_details,omitempty"`
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
@@ -220,6 +221,38 @@ func (o *RotatedSecretDetailsInfo) HasGraceRotationInterval() bool {
 // SetGraceRotationInterval gets a reference to the given int32 and assigns it to the GraceRotationInterval field.
 func (o *RotatedSecretDetailsInfo) SetGraceRotationInterval(v int32) {
 	o.GraceRotationInterval = &v
+}
+
+// GetGraceRotationTiming returns the GraceRotationTiming field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationTiming() string {
+	if o == nil || IsNil(o.GraceRotationTiming) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotationTiming
+}
+
+// GetGraceRotationTimingOk returns a tuple with the GraceRotationTiming field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetGraceRotationTimingOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotationTiming) {
+		return nil, false
+	}
+	return o.GraceRotationTiming, true
+}
+
+// HasGraceRotationTiming returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasGraceRotationTiming() bool {
+	if o != nil && !IsNil(o.GraceRotationTiming) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationTiming gets a reference to the given string and assigns it to the GraceRotationTiming field.
+func (o *RotatedSecretDetailsInfo) SetGraceRotationTiming(v string) {
+	o.GraceRotationTiming = &v
 }
 
 // GetGwClusterId returns the GwClusterId field value if set, zero value otherwise.
@@ -790,6 +823,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GraceRotationInterval) {
 		toSerialize["grace_rotation_interval"] = o.GraceRotationInterval
+	}
+	if !IsNil(o.GraceRotationTiming) {
+		toSerialize["grace_rotation_timing"] = o.GraceRotationTiming
 	}
 	if !IsNil(o.GwClusterId) {
 		toSerialize["gw_cluster_id"] = o.GwClusterId

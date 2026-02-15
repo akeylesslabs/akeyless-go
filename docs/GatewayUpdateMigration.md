@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **AzureTenantId** | Pointer to **string** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
+**GcpProjectId** | Pointer to **string** | GCP Project ID (cross-project override) | [optional] 
 **HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] | [optional] [default to "true"]
 **HashiNs** | Pointer to **[]string** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiToken** | Pointer to **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
@@ -68,6 +69,7 @@ Name | Type | Description | Notes
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseGwCloudIdentity** | Pointer to **bool** | Use the GW&#39;s Cloud IAM | [optional] 
 
 ## Methods
 
@@ -913,6 +915,31 @@ SetGcpKey sets GcpKey field to given value.
 
 HasGcpKey returns a boolean if a field has been set.
 
+### GetGcpProjectId
+
+`func (o *GatewayUpdateMigration) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *GatewayUpdateMigration) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *GatewayUpdateMigration) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *GatewayUpdateMigration) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
+
 ### GetHashiJson
 
 `func (o *GatewayUpdateMigration) GetHashiJson() string`
@@ -1667,6 +1694,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *GatewayUpdateMigration) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseGwCloudIdentity
+
+`func (o *GatewayUpdateMigration) GetUseGwCloudIdentity() bool`
+
+GetUseGwCloudIdentity returns the UseGwCloudIdentity field if non-nil, zero value otherwise.
+
+### GetUseGwCloudIdentityOk
+
+`func (o *GatewayUpdateMigration) GetUseGwCloudIdentityOk() (*bool, bool)`
+
+GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseGwCloudIdentity
+
+`func (o *GatewayUpdateMigration) SetUseGwCloudIdentity(v bool)`
+
+SetUseGwCloudIdentity sets UseGwCloudIdentity field to given value.
+
+### HasUseGwCloudIdentity
+
+`func (o *GatewayUpdateMigration) HasUseGwCloudIdentity() bool`
+
+HasUseGwCloudIdentity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -21,6 +21,8 @@ var _ MappedNullable = &GCPPayload{}
 // GCPPayload struct for GCPPayload
 type GCPPayload struct {
 	GcpCredentialsJson *string `json:"gcp_credentials_json,omitempty"`
+	ProjectId *string `json:"project_id,omitempty"`
+	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 }
 
 // NewGCPPayload instantiates a new GCPPayload object
@@ -72,6 +74,70 @@ func (o *GCPPayload) SetGcpCredentialsJson(v string) {
 	o.GcpCredentialsJson = &v
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *GCPPayload) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GCPPayload) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *GCPPayload) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *GCPPayload) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *GCPPayload) GetUseGwCloudIdentity() bool {
+	if o == nil || IsNil(o.UseGwCloudIdentity) {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GCPPayload) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseGwCloudIdentity) {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *GCPPayload) HasUseGwCloudIdentity() bool {
+	if o != nil && !IsNil(o.UseGwCloudIdentity) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *GCPPayload) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
+}
+
 func (o GCPPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +150,12 @@ func (o GCPPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GcpCredentialsJson) {
 		toSerialize["gcp_credentials_json"] = o.GcpCredentialsJson
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.UseGwCloudIdentity) {
+		toSerialize["use_gw_cloud_identity"] = o.UseGwCloudIdentity
 	}
 	return toSerialize, nil
 }

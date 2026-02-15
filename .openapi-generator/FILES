@@ -735,6 +735,7 @@ docs/LastStatusInfo.md
 docs/LdapConfigPart.md
 docs/LdapTargetDetails.md
 docs/LeadershipConfigPart.md
+docs/LetsEncryptTargetDetails.md
 docs/LinkedDetails.md
 docs/LinkedTargetDetails.md
 docs/ListAcmeAccounts.md
@@ -794,6 +795,15 @@ docs/PasswordScoreSetting.md
 docs/PasswordSecurityInfo.md
 docs/PathRule.md
 docs/PingTargetDetails.md
+docs/PoliciesCreateOutput.md
+docs/PoliciesDelete.md
+docs/PoliciesGet.md
+docs/PoliciesGetOutput.md
+docs/PoliciesList.md
+docs/PoliciesListOutput.md
+docs/PolicyCreateKeys.md
+docs/PolicyOutput.md
+docs/PolicyUpdateKeys.md
 docs/Producer.md
 docs/ProducersConfigPart.md
 docs/ProvisionCertificate.md
@@ -844,6 +854,7 @@ docs/RotatedSecretCreatePostgresql.md
 docs/RotatedSecretCreateRedis.md
 docs/RotatedSecretCreateRedshift.md
 docs/RotatedSecretCreateSnowflake.md
+docs/RotatedSecretCreateSplunk.md
 docs/RotatedSecretCreateSsh.md
 docs/RotatedSecretCreateWindows.md
 docs/RotatedSecretDelete.md
@@ -872,6 +883,7 @@ docs/RotatedSecretUpdatePostgresql.md
 docs/RotatedSecretUpdateRedis.md
 docs/RotatedSecretUpdateRedshift.md
 docs/RotatedSecretUpdateSnowflake.md
+docs/RotatedSecretUpdateSplunk.md
 docs/RotatedSecretUpdateSsh.md
 docs/RotatedSecretUpdateWindows.md
 docs/RotationSecretMaxInterval.md
@@ -914,6 +926,8 @@ docs/SignRsaSsaPssOutput.md
 docs/SlackNotiForwarderDetails.md
 docs/SmInfo.md
 docs/SplunkLogForwardingConfig.md
+docs/SplunkPayload.md
+docs/SplunkTargetDetails.md
 docs/SraDesktopAppConf.md
 docs/SraInfo.md
 docs/SraSessionEntryOut.md
@@ -947,6 +961,7 @@ docs/TargetCreateGodaddy.md
 docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
 docs/TargetCreateLdap.md
+docs/TargetCreateLetsEncrypt.md
 docs/TargetCreateLinked.md
 docs/TargetCreateOpenAI.md
 docs/TargetCreateOutput.md
@@ -954,6 +969,7 @@ docs/TargetCreatePing.md
 docs/TargetCreateRabbitMq.md
 docs/TargetCreateSalesforce.md
 docs/TargetCreateSectigo.md
+docs/TargetCreateSplunk.md
 docs/TargetCreateSsh.md
 docs/TargetCreateWeb.md
 docs/TargetCreateWindows.md
@@ -984,6 +1000,7 @@ docs/TargetUpdateGodaddy.md
 docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
 docs/TargetUpdateLdap.md
+docs/TargetUpdateLetsEncrypt.md
 docs/TargetUpdateLinked.md
 docs/TargetUpdateOpenAI.md
 docs/TargetUpdateOutput.md
@@ -1884,6 +1901,7 @@ model_ldap_access_rules.go
 model_ldap_config_part.go
 model_ldap_target_details.go
 model_leadership_config_part.go
+model_lets_encrypt_target_details.go
 model_linked_details.go
 model_linked_target_details.go
 model_list_acme_accounts.go
@@ -1943,6 +1961,15 @@ model_password_security_info.go
 model_path_rule.go
 model_ping_target_details.go
 model_pki_certificate_issue_details.go
+model_policies_create_output.go
+model_policies_delete.go
+model_policies_get.go
+model_policies_get_output.go
+model_policies_list.go
+model_policies_list_output.go
+model_policy_create_keys.go
+model_policy_output.go
+model_policy_update_keys.go
 model_producer.go
 model_producers_config_part.go
 model_provision_certificate.go
@@ -1993,6 +2020,7 @@ model_rotated_secret_create_postgresql.go
 model_rotated_secret_create_redis.go
 model_rotated_secret_create_redshift.go
 model_rotated_secret_create_snowflake.go
+model_rotated_secret_create_splunk.go
 model_rotated_secret_create_ssh.go
 model_rotated_secret_create_windows_.go
 model_rotated_secret_delete.go
@@ -2021,6 +2049,7 @@ model_rotated_secret_update_postgresql.go
 model_rotated_secret_update_redis.go
 model_rotated_secret_update_redshift.go
 model_rotated_secret_update_snowflake.go
+model_rotated_secret_update_splunk.go
 model_rotated_secret_update_ssh.go
 model_rotated_secret_update_windows_.go
 model_rotation_secret_max_interval.go
@@ -2061,6 +2090,8 @@ model_sign_rsa_ssa_pss_output.go
 model_slack_noti_forwarder_details.go
 model_sm_info.go
 model_splunk_log_forwarding_config.go
+model_splunk_payload.go
+model_splunk_target_details.go
 model_sra_desktop_app_conf.go
 model_sra_info.go
 model_sra_session_entry_out.go
@@ -2096,6 +2127,7 @@ model_target_create_godaddy.go
 model_target_create_hashi_vault.go
 model_target_create_k8s.go
 model_target_create_ldap.go
+model_target_create_lets_encrypt.go
 model_target_create_linked.go
 model_target_create_open_ai.go
 model_target_create_output.go
@@ -2103,6 +2135,7 @@ model_target_create_ping.go
 model_target_create_rabbit_mq.go
 model_target_create_salesforce.go
 model_target_create_sectigo.go
+model_target_create_splunk.go
 model_target_create_ssh.go
 model_target_create_web.go
 model_target_create_windows_.go
@@ -2133,6 +2166,7 @@ model_target_update_godaddy.go
 model_target_update_hashi_vault.go
 model_target_update_k8s.go
 model_target_update_ldap.go
+model_target_update_lets_encrypt.go
 model_target_update_linked.go
 model_target_update_open_ai.go
 model_target_update_output.go

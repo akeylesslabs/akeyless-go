@@ -80,7 +80,7 @@ type RotatedSecretCreateCustom struct {
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// Target name
+	// The target name to associate
 	TargetName string `json:"target-name"`
 	// Maximum allowed time in seconds for the custom rotator to return the results
 	TimeoutSec *int64 `json:"timeout-sec,omitempty"`

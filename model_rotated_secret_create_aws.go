@@ -36,12 +36,14 @@ type RotatedSecretCreateAws struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false]
+	// Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false]
 	GraceRotation *string `json:"grace-rotation,omitempty"`
 	// The Hour of the grace rotation in UTC
 	GraceRotationHour *int32 `json:"grace-rotation-hour,omitempty"`
 	// The number of days to wait before deleting the old key (must be bigger than rotation-interval)
 	GraceRotationInterval *string `json:"grace-rotation-interval,omitempty"`
+	// When to create the new version relative to the rotation date [after/before]
+	GraceRotationTiming *string `json:"grace-rotation-timing,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -76,7 +78,7 @@ type RotatedSecretCreateAws struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// Target name
+	// The target name to associate
 	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
@@ -440,6 +442,38 @@ func (o *RotatedSecretCreateAws) HasGraceRotationInterval() bool {
 // SetGraceRotationInterval gets a reference to the given string and assigns it to the GraceRotationInterval field.
 func (o *RotatedSecretCreateAws) SetGraceRotationInterval(v string) {
 	o.GraceRotationInterval = &v
+}
+
+// GetGraceRotationTiming returns the GraceRotationTiming field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAws) GetGraceRotationTiming() string {
+	if o == nil || IsNil(o.GraceRotationTiming) {
+		var ret string
+		return ret
+	}
+	return *o.GraceRotationTiming
+}
+
+// GetGraceRotationTimingOk returns a tuple with the GraceRotationTiming field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAws) GetGraceRotationTimingOk() (*string, bool) {
+	if o == nil || IsNil(o.GraceRotationTiming) {
+		return nil, false
+	}
+	return o.GraceRotationTiming, true
+}
+
+// HasGraceRotationTiming returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAws) HasGraceRotationTiming() bool {
+	if o != nil && !IsNil(o.GraceRotationTiming) {
+		return true
+	}
+
+	return false
+}
+
+// SetGraceRotationTiming gets a reference to the given string and assigns it to the GraceRotationTiming field.
+func (o *RotatedSecretCreateAws) SetGraceRotationTiming(v string) {
+	o.GraceRotationTiming = &v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -1097,6 +1131,9 @@ func (o RotatedSecretCreateAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GraceRotationInterval) {
 		toSerialize["grace-rotation-interval"] = o.GraceRotationInterval
+	}
+	if !IsNil(o.GraceRotationTiming) {
+		toSerialize["grace-rotation-timing"] = o.GraceRotationTiming
 	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields

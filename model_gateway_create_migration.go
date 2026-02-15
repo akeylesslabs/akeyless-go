@@ -87,6 +87,8 @@ type GatewayCreateMigration struct {
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
 	GcpKey *string `json:"gcp-key,omitempty"`
+	// GCP Project ID (cross-project override)
+	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
 	HashiJson *string `json:"hashi-json,omitempty"`
 	// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
@@ -147,6 +149,8 @@ type GatewayCreateMigration struct {
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the GW's Cloud IAM
+	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
 }
 
 type _GatewayCreateMigration GatewayCreateMigration
@@ -1277,6 +1281,38 @@ func (o *GatewayCreateMigration) SetGcpKey(v string) {
 	o.GcpKey = &v
 }
 
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *GatewayCreateMigration) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
+}
+
 // GetHashiJson returns the HashiJson field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetHashiJson() string {
 	if o == nil || IsNil(o.HashiJson) {
@@ -2197,6 +2233,38 @@ func (o *GatewayCreateMigration) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetUseGwCloudIdentity() bool {
+	if o == nil || IsNil(o.UseGwCloudIdentity) {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseGwCloudIdentity) {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasUseGwCloudIdentity() bool {
+	if o != nil && !IsNil(o.UseGwCloudIdentity) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *GatewayCreateMigration) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
+}
+
 func (o GatewayCreateMigration) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -2306,6 +2374,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpKey) {
 		toSerialize["gcp-key"] = o.GcpKey
 	}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp-project-id"] = o.GcpProjectId
+	}
 	if !IsNil(o.HashiJson) {
 		toSerialize["hashi-json"] = o.HashiJson
 	}
@@ -2385,6 +2456,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UseGwCloudIdentity) {
+		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
 	}
 	return toSerialize, nil
 }

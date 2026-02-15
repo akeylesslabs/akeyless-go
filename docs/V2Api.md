@@ -388,6 +388,11 @@ Method | HTTP request | Description
 [**ListSharedItems**](V2Api.md#ListSharedItems) | **Post** /list-shared-items | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
+[**PoliciesDelete**](V2Api.md#PoliciesDelete) | **Post** /policy-delete | 
+[**PoliciesGet**](V2Api.md#PoliciesGet) | **Post** /policy-get | 
+[**PoliciesList**](V2Api.md#PoliciesList) | **Post** /policy-list | 
+[**PolicyCreateKeys**](V2Api.md#PolicyCreateKeys) | **Post** /policy-create-keys | 
+[**PolicyUpdateKeys**](V2Api.md#PolicyUpdateKeys) | **Post** /policy-update-keys | 
 [**ProvisionCertificate**](V2Api.md#ProvisionCertificate) | **Post** /provision-certificate | 
 [**RawCreds**](V2Api.md#RawCreds) | **Post** /raw-creds | 
 [**RefreshKey**](V2Api.md#RefreshKey) | **Post** /refresh-key | 
@@ -418,6 +423,7 @@ Method | HTTP request | Description
 [**RotatedSecretCreateRedis**](V2Api.md#RotatedSecretCreateRedis) | **Post** /rotated-secret-create-redis | 
 [**RotatedSecretCreateRedshift**](V2Api.md#RotatedSecretCreateRedshift) | **Post** /rotated-secret-create-redshift | 
 [**RotatedSecretCreateSnowflake**](V2Api.md#RotatedSecretCreateSnowflake) | **Post** /rotated-secret-create-snowflake | 
+[**RotatedSecretCreateSplunk**](V2Api.md#RotatedSecretCreateSplunk) | **Post** /rotated-secret-create-splunk | 
 [**RotatedSecretCreateSsh**](V2Api.md#RotatedSecretCreateSsh) | **Post** /rotated-secret-create-ssh | 
 [**RotatedSecretCreateWindows**](V2Api.md#RotatedSecretCreateWindows) | **Post** /rotated-secret-create-windows | 
 [**RotatedSecretDelete**](V2Api.md#RotatedSecretDelete) | **Post** /rotated-secret-delete | 
@@ -442,6 +448,7 @@ Method | HTTP request | Description
 [**RotatedSecretUpdateRedis**](V2Api.md#RotatedSecretUpdateRedis) | **Post** /rotated-secret-update-redis | 
 [**RotatedSecretUpdateRedshift**](V2Api.md#RotatedSecretUpdateRedshift) | **Post** /rotated-secret-update-redshift | 
 [**RotatedSecretUpdateSnowflake**](V2Api.md#RotatedSecretUpdateSnowflake) | **Post** /rotated-secret-update-snowflake | 
+[**RotatedSecretUpdateSplunk**](V2Api.md#RotatedSecretUpdateSplunk) | **Post** /rotated-secret-update-splunk | 
 [**RotatedSecretUpdateSsh**](V2Api.md#RotatedSecretUpdateSsh) | **Post** /rotated-secret-update-ssh | 
 [**RotatedSecretUpdateWindows**](V2Api.md#RotatedSecretUpdateWindows) | **Post** /rotated-secret-update-windows | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
@@ -474,12 +481,14 @@ Method | HTTP request | Description
 [**TargetCreateHashiVault**](V2Api.md#TargetCreateHashiVault) | **Post** /target-create-hashi-vault | 
 [**TargetCreateK8s**](V2Api.md#TargetCreateK8s) | **Post** /target-create-k8s | 
 [**TargetCreateLdap**](V2Api.md#TargetCreateLdap) | **Post** /target-create-ldap | 
+[**TargetCreateLetsEncrypt**](V2Api.md#TargetCreateLetsEncrypt) | **Post** /target-create-lets-encrypt | 
 [**TargetCreateLinked**](V2Api.md#TargetCreateLinked) | **Post** /target-create-linked | 
 [**TargetCreateOpenAI**](V2Api.md#TargetCreateOpenAI) | **Post** /target-create-openai | 
 [**TargetCreatePing**](V2Api.md#TargetCreatePing) | **Post** /target-create-ping | 
 [**TargetCreateRabbitMq**](V2Api.md#TargetCreateRabbitMq) | **Post** /target-create-rabbitmq | 
 [**TargetCreateSalesforce**](V2Api.md#TargetCreateSalesforce) | **Post** /target-create-salesforce | 
 [**TargetCreateSectigo**](V2Api.md#TargetCreateSectigo) | **Post** /target-create-sectigo | 
+[**TargetCreateSplunk**](V2Api.md#TargetCreateSplunk) | **Post** /target-create-splunk | 
 [**TargetCreateSsh**](V2Api.md#TargetCreateSsh) | **Post** /target-create-ssh | 
 [**TargetCreateWeb**](V2Api.md#TargetCreateWeb) | **Post** /target-create-web | 
 [**TargetCreateWindows**](V2Api.md#TargetCreateWindows) | **Post** /target-create-windows | 
@@ -505,6 +514,7 @@ Method | HTTP request | Description
 [**TargetUpdateHashiVault**](V2Api.md#TargetUpdateHashiVault) | **Post** /target-update-hashi-vault | 
 [**TargetUpdateK8s**](V2Api.md#TargetUpdateK8s) | **Post** /target-update-k8s | 
 [**TargetUpdateLdap**](V2Api.md#TargetUpdateLdap) | **Post** /target-update-ldap | 
+[**TargetUpdateLetsEncrypt**](V2Api.md#TargetUpdateLetsEncrypt) | **Post** /target-update-lets-encrypt | 
 [**TargetUpdateLinked**](V2Api.md#TargetUpdateLinked) | **Post** /target-update-linked | 
 [**TargetUpdateOpenAI**](V2Api.md#TargetUpdateOpenAI) | **Post** /target-update-openai | 
 [**TargetUpdatePing**](V2Api.md#TargetUpdatePing) | **Post** /target-update-ping | 
@@ -25157,6 +25167,326 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## PoliciesDelete
+
+> map[string]interface{} PoliciesDelete(ctx).PoliciesDelete(policiesDelete).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	policiesDelete := *openapiclient.NewPoliciesDelete("Id_example") // PoliciesDelete | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.PoliciesDelete(context.Background()).PoliciesDelete(policiesDelete).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.PoliciesDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PoliciesDelete`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.PoliciesDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **policiesDelete** | [**PoliciesDelete**](PoliciesDelete.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesGet
+
+> PoliciesGetOutput PoliciesGet(ctx).PoliciesGet(policiesGet).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	policiesGet := *openapiclient.NewPoliciesGet("Id_example") // PoliciesGet | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.PoliciesGet(context.Background()).PoliciesGet(policiesGet).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.PoliciesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PoliciesGet`: PoliciesGetOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.PoliciesGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **policiesGet** | [**PoliciesGet**](PoliciesGet.md) |  | 
+
+### Return type
+
+[**PoliciesGetOutput**](PoliciesGetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PoliciesList
+
+> PoliciesListOutput PoliciesList(ctx).PoliciesList(policiesList).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	policiesList := *openapiclient.NewPoliciesList() // PoliciesList | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.PoliciesList(context.Background()).PoliciesList(policiesList).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.PoliciesList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PoliciesList`: PoliciesListOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.PoliciesList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPoliciesListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **policiesList** | [**PoliciesList**](PoliciesList.md) |  | 
+
+### Return type
+
+[**PoliciesListOutput**](PoliciesListOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PolicyCreateKeys
+
+> PoliciesCreateOutput PolicyCreateKeys(ctx).PolicyCreateKeys(policyCreateKeys).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	policyCreateKeys := *openapiclient.NewPolicyCreateKeys("Path_example") // PolicyCreateKeys | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.PolicyCreateKeys(context.Background()).PolicyCreateKeys(policyCreateKeys).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.PolicyCreateKeys``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PolicyCreateKeys`: PoliciesCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.PolicyCreateKeys`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPolicyCreateKeysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **policyCreateKeys** | [**PolicyCreateKeys**](PolicyCreateKeys.md) |  | 
+
+### Return type
+
+[**PoliciesCreateOutput**](PoliciesCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PolicyUpdateKeys
+
+> map[string]interface{} PolicyUpdateKeys(ctx).PolicyUpdateKeys(policyUpdateKeys).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	policyUpdateKeys := *openapiclient.NewPolicyUpdateKeys("Id_example") // PolicyUpdateKeys | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.PolicyUpdateKeys(context.Background()).PolicyUpdateKeys(policyUpdateKeys).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.PolicyUpdateKeys``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PolicyUpdateKeys`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.PolicyUpdateKeys`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPolicyUpdateKeysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **policyUpdateKeys** | [**PolicyUpdateKeys**](PolicyUpdateKeys.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ProvisionCertificate
 
 > ProvisionCertificateOutput ProvisionCertificate(ctx).ProvisionCertificate(provisionCertificate).Execute()
@@ -27072,6 +27402,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretCreateSplunk
+
+> RotatedSecretCreateOutput RotatedSecretCreateSplunk(ctx).RotatedSecretCreateSplunk(rotatedSecretCreateSplunk).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateSplunk := *openapiclient.NewRotatedSecretCreateSplunk("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateSplunk | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateSplunk(context.Background()).RotatedSecretCreateSplunk(rotatedSecretCreateSplunk).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateSplunk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateSplunk`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateSplunk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateSplunkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateSplunk** | [**RotatedSecretCreateSplunk**](RotatedSecretCreateSplunk.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretCreateSsh
 
 > RotatedSecretCreateOutput RotatedSecretCreateSsh(ctx).RotatedSecretCreateSsh(rotatedSecretCreateSsh).Execute()
@@ -28589,6 +28983,70 @@ Other parameters are passed through a pointer to a apiRotatedSecretUpdateSnowfla
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rotatedSecretUpdateSnowflake** | [**RotatedSecretUpdateSnowflake**](RotatedSecretUpdateSnowflake.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateSplunk
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateSplunk(ctx).RotatedSecretUpdateSplunk(rotatedSecretUpdateSplunk).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretUpdateSplunk := *openapiclient.NewRotatedSecretUpdateSplunk("Name_example") // RotatedSecretUpdateSplunk | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretUpdateSplunk(context.Background()).RotatedSecretUpdateSplunk(rotatedSecretUpdateSplunk).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateSplunk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretUpdateSplunk`: RotatedSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateSplunk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateSplunkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretUpdateSplunk** | [**RotatedSecretUpdateSplunk**](RotatedSecretUpdateSplunk.md) |  | 
 
 ### Return type
 
@@ -30656,6 +31114,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateLetsEncrypt
+
+> TargetCreateOutput TargetCreateLetsEncrypt(ctx).TargetCreateLetsEncrypt(targetCreateLetsEncrypt).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateLetsEncrypt := *openapiclient.NewTargetCreateLetsEncrypt("Name_example") // TargetCreateLetsEncrypt | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateLetsEncrypt(context.Background()).TargetCreateLetsEncrypt(targetCreateLetsEncrypt).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateLetsEncrypt``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateLetsEncrypt`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateLetsEncrypt`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateLetsEncryptRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateLetsEncrypt** | [**TargetCreateLetsEncrypt**](TargetCreateLetsEncrypt.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateLinked
 
 > TargetCreateOutput TargetCreateLinked(ctx).TargetCreateLinked(targetCreateLinked).Execute()
@@ -31021,6 +31543,70 @@ Other parameters are passed through a pointer to a apiTargetCreateSectigoRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateSectigo** | [**TargetCreateSectigo**](TargetCreateSectigo.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateSplunk
+
+> TargetCreateOutput TargetCreateSplunk(ctx).TargetCreateSplunk(targetCreateSplunk).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateSplunk := *openapiclient.NewTargetCreateSplunk("Name_example", "Url_example") // TargetCreateSplunk | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateSplunk(context.Background()).TargetCreateSplunk(targetCreateSplunk).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateSplunk``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateSplunk`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateSplunk`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateSplunkRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateSplunk** | [**TargetCreateSplunk**](TargetCreateSplunk.md) |  | 
 
 ### Return type
 
@@ -32621,6 +33207,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateLdapRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateLdap** | [**TargetUpdateLdap**](TargetUpdateLdap.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateLetsEncrypt
+
+> TargetUpdateOutput TargetUpdateLetsEncrypt(ctx).TargetUpdateLetsEncrypt(targetUpdateLetsEncrypt).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateLetsEncrypt := *openapiclient.NewTargetUpdateLetsEncrypt("Name_example") // TargetUpdateLetsEncrypt | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateLetsEncrypt(context.Background()).TargetUpdateLetsEncrypt(targetUpdateLetsEncrypt).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateLetsEncrypt``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateLetsEncrypt`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateLetsEncrypt`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateLetsEncryptRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateLetsEncrypt** | [**TargetUpdateLetsEncrypt**](TargetUpdateLetsEncrypt.md) |  | 
 
 ### Return type
 

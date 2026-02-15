@@ -12,9 +12,10 @@ Name | Type | Description | Notes
 **AwsRegion** | Pointer to **string** | Aws Region | [optional] [default to "us-east-2"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
-**GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS/Azure/GCP for backup (relevant only for AWS/Azure/GCP) [true/false] | [optional] 
+**GraceRotation** | Pointer to **string** | Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false] | [optional] 
 **GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
 **GraceRotationInterval** | Pointer to **string** | The number of days to wait before deleting the old key (must be bigger than rotation-interval) | [optional] 
+**GraceRotationTiming** | Pointer to **string** | When to create the new version relative to the rotation date [after/before] | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -329,6 +330,31 @@ SetGraceRotationInterval sets GraceRotationInterval field to given value.
 `func (o *RotatedSecretUpdateAws) HasGraceRotationInterval() bool`
 
 HasGraceRotationInterval returns a boolean if a field has been set.
+
+### GetGraceRotationTiming
+
+`func (o *RotatedSecretUpdateAws) GetGraceRotationTiming() string`
+
+GetGraceRotationTiming returns the GraceRotationTiming field if non-nil, zero value otherwise.
+
+### GetGraceRotationTimingOk
+
+`func (o *RotatedSecretUpdateAws) GetGraceRotationTimingOk() (*string, bool)`
+
+GetGraceRotationTimingOk returns a tuple with the GraceRotationTiming field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGraceRotationTiming
+
+`func (o *RotatedSecretUpdateAws) SetGraceRotationTiming(v string)`
+
+SetGraceRotationTiming sets GraceRotationTiming field to given value.
+
+### HasGraceRotationTiming
+
+`func (o *RotatedSecretUpdateAws) HasGraceRotationTiming() bool`
+
+HasGraceRotationTiming returns a boolean if a field has been set.
 
 ### GetItemCustomFields
 

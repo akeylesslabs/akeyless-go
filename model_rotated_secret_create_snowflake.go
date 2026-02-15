@@ -60,7 +60,7 @@ type RotatedSecretCreateSnowflake struct {
 	RotatorType string `json:"rotator-type"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// Target name
+	// The target name to associate
 	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
