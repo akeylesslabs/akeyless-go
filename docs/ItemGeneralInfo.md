@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **DynamicSecretProducerDetails** | Pointer to [**DynamicSecretProducerInfo**](DynamicSecretProducerInfo.md) |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **ImporterInfo** | Pointer to [**ImporterInfo**](ImporterInfo.md) |  | [optional] 
+**IssuerOverviewInfo** | Pointer to [**IssuerOverviewInfo**](IssuerOverviewInfo.md) |  | [optional] 
 **NextRotationEvents** | Pointer to [**[]NextAutoRotationEvent**](NextAutoRotationEvent.md) |  | [optional] 
 **OidcClientInfo** | Pointer to [**OidcClientInfo**](OidcClientInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
@@ -290,6 +291,31 @@ SetImporterInfo sets ImporterInfo field to given value.
 `func (o *ItemGeneralInfo) HasImporterInfo() bool`
 
 HasImporterInfo returns a boolean if a field has been set.
+
+### GetIssuerOverviewInfo
+
+`func (o *ItemGeneralInfo) GetIssuerOverviewInfo() IssuerOverviewInfo`
+
+GetIssuerOverviewInfo returns the IssuerOverviewInfo field if non-nil, zero value otherwise.
+
+### GetIssuerOverviewInfoOk
+
+`func (o *ItemGeneralInfo) GetIssuerOverviewInfoOk() (*IssuerOverviewInfo, bool)`
+
+GetIssuerOverviewInfoOk returns a tuple with the IssuerOverviewInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuerOverviewInfo
+
+`func (o *ItemGeneralInfo) SetIssuerOverviewInfo(v IssuerOverviewInfo)`
+
+SetIssuerOverviewInfo sets IssuerOverviewInfo field to given value.
+
+### HasIssuerOverviewInfo
+
+`func (o *ItemGeneralInfo) HasIssuerOverviewInfo() bool`
+
+HasIssuerOverviewInfo returns a boolean if a field has been set.
 
 ### GetNextRotationEvents
 

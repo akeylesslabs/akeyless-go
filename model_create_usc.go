@@ -28,10 +28,14 @@ type CreateUSC struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the Universal Secrets Connector
 	Description *string `json:"description,omitempty"`
+	// The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope=repository-environment)
+	EnvironmentNames *string `json:"environment-names,omitempty"`
 	// GCP Project ID (Relevant only for GCP targets)
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type=regional-secrets.
 	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`
+	// The scope where secrets will be created, available options: [repository, organization, repository-environment]
+	GithubScope *string `json:"github-scope,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -40,6 +44,11 @@ type CreateUSC struct {
 	K8sNamespace *string `json:"k8s-namespace,omitempty"`
 	// Universal Secrets Connector name
 	Name string `json:"name"`
+	// The organization name to create the secret in (only relevant for: github-scope=organization)
+	OrganizationName *string `json:"organization-name,omitempty"`
+	RepositoryAccess *string `json:"repository-access,omitempty"`
+	// The repository names, comma-separated (only relevant for: github-scope=repository)
+	RepositoryNames *string `json:"repository-names,omitempty"`
 	// List of the tags attached to this Universal Secrets Connector
 	Tags []string `json:"tags,omitempty"`
 	// Target Universal Secrets Connector to connect
@@ -62,9 +71,13 @@ type _CreateUSC CreateUSC
 // will change when the set of required properties is changed
 func NewCreateUSC(name string, targetToAssociate string) *CreateUSC {
 	this := CreateUSC{}
+	var githubScope string = "repository"
+	this.GithubScope = &githubScope
 	var json bool = false
 	this.Json = &json
 	this.Name = name
+	var repositoryAccess string = "public"
+	this.RepositoryAccess = &repositoryAccess
 	this.TargetToAssociate = targetToAssociate
 	var usePrefixAsFilter string = "false"
 	this.UsePrefixAsFilter = &usePrefixAsFilter
@@ -76,8 +89,12 @@ func NewCreateUSC(name string, targetToAssociate string) *CreateUSC {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateUSCWithDefaults() *CreateUSC {
 	this := CreateUSC{}
+	var githubScope string = "repository"
+	this.GithubScope = &githubScope
 	var json bool = false
 	this.Json = &json
+	var repositoryAccess string = "public"
+	this.RepositoryAccess = &repositoryAccess
 	var usePrefixAsFilter string = "false"
 	this.UsePrefixAsFilter = &usePrefixAsFilter
 	return &this
@@ -179,6 +196,38 @@ func (o *CreateUSC) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEnvironmentNames returns the EnvironmentNames field value if set, zero value otherwise.
+func (o *CreateUSC) GetEnvironmentNames() string {
+	if o == nil || IsNil(o.EnvironmentNames) {
+		var ret string
+		return ret
+	}
+	return *o.EnvironmentNames
+}
+
+// GetEnvironmentNamesOk returns a tuple with the EnvironmentNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetEnvironmentNamesOk() (*string, bool) {
+	if o == nil || IsNil(o.EnvironmentNames) {
+		return nil, false
+	}
+	return o.EnvironmentNames, true
+}
+
+// HasEnvironmentNames returns a boolean if a field has been set.
+func (o *CreateUSC) HasEnvironmentNames() bool {
+	if o != nil && !IsNil(o.EnvironmentNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironmentNames gets a reference to the given string and assigns it to the EnvironmentNames field.
+func (o *CreateUSC) SetEnvironmentNames(v string) {
+	o.EnvironmentNames = &v
+}
+
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
 func (o *CreateUSC) GetGcpProjectId() string {
 	if o == nil || IsNil(o.GcpProjectId) {
@@ -241,6 +290,38 @@ func (o *CreateUSC) HasGcpSmRegions() bool {
 // SetGcpSmRegions gets a reference to the given string and assigns it to the GcpSmRegions field.
 func (o *CreateUSC) SetGcpSmRegions(v string) {
 	o.GcpSmRegions = &v
+}
+
+// GetGithubScope returns the GithubScope field value if set, zero value otherwise.
+func (o *CreateUSC) GetGithubScope() string {
+	if o == nil || IsNil(o.GithubScope) {
+		var ret string
+		return ret
+	}
+	return *o.GithubScope
+}
+
+// GetGithubScopeOk returns a tuple with the GithubScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetGithubScopeOk() (*string, bool) {
+	if o == nil || IsNil(o.GithubScope) {
+		return nil, false
+	}
+	return o.GithubScope, true
+}
+
+// HasGithubScope returns a boolean if a field has been set.
+func (o *CreateUSC) HasGithubScope() bool {
+	if o != nil && !IsNil(o.GithubScope) {
+		return true
+	}
+
+	return false
+}
+
+// SetGithubScope gets a reference to the given string and assigns it to the GithubScope field.
+func (o *CreateUSC) SetGithubScope(v string) {
+	o.GithubScope = &v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -361,6 +442,102 @@ func (o *CreateUSC) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateUSC) SetName(v string) {
 	o.Name = v
+}
+
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+func (o *CreateUSC) GetOrganizationName() string {
+	if o == nil || IsNil(o.OrganizationName) {
+		var ret string
+		return ret
+	}
+	return *o.OrganizationName
+}
+
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetOrganizationNameOk() (*string, bool) {
+	if o == nil || IsNil(o.OrganizationName) {
+		return nil, false
+	}
+	return o.OrganizationName, true
+}
+
+// HasOrganizationName returns a boolean if a field has been set.
+func (o *CreateUSC) HasOrganizationName() bool {
+	if o != nil && !IsNil(o.OrganizationName) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+func (o *CreateUSC) SetOrganizationName(v string) {
+	o.OrganizationName = &v
+}
+
+// GetRepositoryAccess returns the RepositoryAccess field value if set, zero value otherwise.
+func (o *CreateUSC) GetRepositoryAccess() string {
+	if o == nil || IsNil(o.RepositoryAccess) {
+		var ret string
+		return ret
+	}
+	return *o.RepositoryAccess
+}
+
+// GetRepositoryAccessOk returns a tuple with the RepositoryAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetRepositoryAccessOk() (*string, bool) {
+	if o == nil || IsNil(o.RepositoryAccess) {
+		return nil, false
+	}
+	return o.RepositoryAccess, true
+}
+
+// HasRepositoryAccess returns a boolean if a field has been set.
+func (o *CreateUSC) HasRepositoryAccess() bool {
+	if o != nil && !IsNil(o.RepositoryAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositoryAccess gets a reference to the given string and assigns it to the RepositoryAccess field.
+func (o *CreateUSC) SetRepositoryAccess(v string) {
+	o.RepositoryAccess = &v
+}
+
+// GetRepositoryNames returns the RepositoryNames field value if set, zero value otherwise.
+func (o *CreateUSC) GetRepositoryNames() string {
+	if o == nil || IsNil(o.RepositoryNames) {
+		var ret string
+		return ret
+	}
+	return *o.RepositoryNames
+}
+
+// GetRepositoryNamesOk returns a tuple with the RepositoryNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetRepositoryNamesOk() (*string, bool) {
+	if o == nil || IsNil(o.RepositoryNames) {
+		return nil, false
+	}
+	return o.RepositoryNames, true
+}
+
+// HasRepositoryNames returns a boolean if a field has been set.
+func (o *CreateUSC) HasRepositoryNames() bool {
+	if o != nil && !IsNil(o.RepositoryNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositoryNames gets a reference to the given string and assigns it to the RepositoryNames field.
+func (o *CreateUSC) SetRepositoryNames(v string) {
+	o.RepositoryNames = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -566,11 +743,17 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.EnvironmentNames) {
+		toSerialize["environment-names"] = o.EnvironmentNames
+	}
 	if !IsNil(o.GcpProjectId) {
 		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
 	if !IsNil(o.GcpSmRegions) {
 		toSerialize["gcp-sm-regions"] = o.GcpSmRegions
+	}
+	if !IsNil(o.GithubScope) {
+		toSerialize["github-scope"] = o.GithubScope
 	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
@@ -582,6 +765,15 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 		toSerialize["k8s-namespace"] = o.K8sNamespace
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organization-name"] = o.OrganizationName
+	}
+	if !IsNil(o.RepositoryAccess) {
+		toSerialize["repository-access"] = o.RepositoryAccess
+	}
+	if !IsNil(o.RepositoryNames) {
+		toSerialize["repository-names"] = o.RepositoryNames
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}

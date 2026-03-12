@@ -598,7 +598,9 @@ Method | HTTP request | Description
 [**UscGet**](V2Api.md#UscGet) | **Post** /usc-get | 
 [**UscList**](V2Api.md#UscList) | **Post** /usc-list | 
 [**UscUpdate**](V2Api.md#UscUpdate) | **Post** /usc-update | 
+[**ValidateCertificateChallenge**](V2Api.md#ValidateCertificateChallenge) | **Post** /validate-certificate-challenge | 
 [**ValidateToken**](V2Api.md#ValidateToken) | **Post** /validate-token | 
+[**VaultAddress**](V2Api.md#VaultAddress) | **Post** /vault-address | 
 [**VerifyDataWithClassicKey**](V2Api.md#VerifyDataWithClassicKey) | **Post** /verify-data-with-classic-key | 
 [**VerifyEcDsa**](V2Api.md#VerifyEcDsa) | **Post** /verify-ecdsa | 
 [**VerifyGPG**](V2Api.md#VerifyGPG) | **Post** /verify-gpg | 
@@ -38602,6 +38604,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ValidateCertificateChallenge
+
+> ValidateCertificateChallengeOutput ValidateCertificateChallenge(ctx).ValidateCertificateChallenge(validateCertificateChallenge).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	validateCertificateChallenge := *openapiclient.NewValidateCertificateChallenge() // ValidateCertificateChallenge | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.ValidateCertificateChallenge(context.Background()).ValidateCertificateChallenge(validateCertificateChallenge).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ValidateCertificateChallenge``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ValidateCertificateChallenge`: ValidateCertificateChallengeOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.ValidateCertificateChallenge`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidateCertificateChallengeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **validateCertificateChallenge** | [**ValidateCertificateChallenge**](ValidateCertificateChallenge.md) |  | 
+
+### Return type
+
+[**ValidateCertificateChallengeOutput**](ValidateCertificateChallengeOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ValidateToken
 
 > ValidateTokenOutput ValidateToken(ctx).ValidateToken(validateToken).Execute()
@@ -38651,6 +38717,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ValidateTokenOutput**](ValidateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## VaultAddress
+
+> VaultAddressOutput VaultAddress(ctx).VaultAddress(vaultAddress).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	vaultAddress := *openapiclient.NewVaultAddress() // VaultAddress | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.VaultAddress(context.Background()).VaultAddress(vaultAddress).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.VaultAddress``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `VaultAddress`: VaultAddressOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.VaultAddress`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVaultAddressRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **vaultAddress** | [**VaultAddress**](VaultAddress.md) |  | 
+
+### Return type
+
+[**VaultAddressOutput**](VaultAddressOutput.md)
 
 ### Authorization
 

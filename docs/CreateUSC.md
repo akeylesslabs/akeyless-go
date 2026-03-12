@@ -7,12 +7,17 @@ Name | Type | Description | Notes
 **AzureKvName** | Pointer to **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the Universal Secrets Connector | [optional] 
+**EnvironmentNames** | Pointer to **string** | The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment) | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
 **GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets. | [optional] 
+**GithubScope** | Pointer to **string** | The scope where secrets will be created, available options: [repository, organization, repository-environment] | [optional] [default to "repository"]
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sNamespace** | Pointer to **string** | K8s namespace (Relevant to Kubernetes targets) | [optional] 
 **Name** | **string** | Universal Secrets Connector name | 
+**OrganizationName** | Pointer to **string** | The organization name to create the secret in (only relevant for: github-scope&#x3D;organization) | [optional] 
+**RepositoryAccess** | Pointer to **string** |  | [optional] [default to "public"]
+**RepositoryNames** | Pointer to **string** | The repository names, comma-separated (only relevant for: github-scope&#x3D;repository) | [optional] 
 **Tags** | Pointer to **[]string** | List of the tags attached to this Universal Secrets Connector | [optional] 
 **TargetToAssociate** | **string** | Target Universal Secrets Connector to connect | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -114,6 +119,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEnvironmentNames
+
+`func (o *CreateUSC) GetEnvironmentNames() string`
+
+GetEnvironmentNames returns the EnvironmentNames field if non-nil, zero value otherwise.
+
+### GetEnvironmentNamesOk
+
+`func (o *CreateUSC) GetEnvironmentNamesOk() (*string, bool)`
+
+GetEnvironmentNamesOk returns a tuple with the EnvironmentNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentNames
+
+`func (o *CreateUSC) SetEnvironmentNames(v string)`
+
+SetEnvironmentNames sets EnvironmentNames field to given value.
+
+### HasEnvironmentNames
+
+`func (o *CreateUSC) HasEnvironmentNames() bool`
+
+HasEnvironmentNames returns a boolean if a field has been set.
+
 ### GetGcpProjectId
 
 `func (o *CreateUSC) GetGcpProjectId() string`
@@ -163,6 +193,31 @@ SetGcpSmRegions sets GcpSmRegions field to given value.
 `func (o *CreateUSC) HasGcpSmRegions() bool`
 
 HasGcpSmRegions returns a boolean if a field has been set.
+
+### GetGithubScope
+
+`func (o *CreateUSC) GetGithubScope() string`
+
+GetGithubScope returns the GithubScope field if non-nil, zero value otherwise.
+
+### GetGithubScopeOk
+
+`func (o *CreateUSC) GetGithubScopeOk() (*string, bool)`
+
+GetGithubScopeOk returns a tuple with the GithubScope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithubScope
+
+`func (o *CreateUSC) SetGithubScope(v string)`
+
+SetGithubScope sets GithubScope field to given value.
+
+### HasGithubScope
+
+`func (o *CreateUSC) HasGithubScope() bool`
+
+HasGithubScope returns a boolean if a field has been set.
 
 ### GetItemCustomFields
 
@@ -258,6 +313,81 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOrganizationName
+
+`func (o *CreateUSC) GetOrganizationName() string`
+
+GetOrganizationName returns the OrganizationName field if non-nil, zero value otherwise.
+
+### GetOrganizationNameOk
+
+`func (o *CreateUSC) GetOrganizationNameOk() (*string, bool)`
+
+GetOrganizationNameOk returns a tuple with the OrganizationName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationName
+
+`func (o *CreateUSC) SetOrganizationName(v string)`
+
+SetOrganizationName sets OrganizationName field to given value.
+
+### HasOrganizationName
+
+`func (o *CreateUSC) HasOrganizationName() bool`
+
+HasOrganizationName returns a boolean if a field has been set.
+
+### GetRepositoryAccess
+
+`func (o *CreateUSC) GetRepositoryAccess() string`
+
+GetRepositoryAccess returns the RepositoryAccess field if non-nil, zero value otherwise.
+
+### GetRepositoryAccessOk
+
+`func (o *CreateUSC) GetRepositoryAccessOk() (*string, bool)`
+
+GetRepositoryAccessOk returns a tuple with the RepositoryAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRepositoryAccess
+
+`func (o *CreateUSC) SetRepositoryAccess(v string)`
+
+SetRepositoryAccess sets RepositoryAccess field to given value.
+
+### HasRepositoryAccess
+
+`func (o *CreateUSC) HasRepositoryAccess() bool`
+
+HasRepositoryAccess returns a boolean if a field has been set.
+
+### GetRepositoryNames
+
+`func (o *CreateUSC) GetRepositoryNames() string`
+
+GetRepositoryNames returns the RepositoryNames field if non-nil, zero value otherwise.
+
+### GetRepositoryNamesOk
+
+`func (o *CreateUSC) GetRepositoryNamesOk() (*string, bool)`
+
+GetRepositoryNamesOk returns a tuple with the RepositoryNames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRepositoryNames
+
+`func (o *CreateUSC) SetRepositoryNames(v string)`
+
+SetRepositoryNames sets RepositoryNames field to given value.
+
+### HasRepositoryNames
+
+`func (o *CreateUSC) HasRepositoryNames() bool`
+
+HasRepositoryNames returns a boolean if a field has been set.
 
 ### GetTags
 

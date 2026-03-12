@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] 
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
+**AzureCloud** | Pointer to **string** | Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. | [optional] [default to "AzureCloud"]
 **CertChallenge** | Pointer to **string** | Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert) | [optional] 
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
 **CloudId** | Pointer to **string** | The cloud identity (relevant only for access-type&#x3D;azure_ad,aws_iam,gcp) | [optional] 
@@ -204,6 +205,31 @@ SetAdminPassword sets AdminPassword field to given value.
 `func (o *Auth) HasAdminPassword() bool`
 
 HasAdminPassword returns a boolean if a field has been set.
+
+### GetAzureCloud
+
+`func (o *Auth) GetAzureCloud() string`
+
+GetAzureCloud returns the AzureCloud field if non-nil, zero value otherwise.
+
+### GetAzureCloudOk
+
+`func (o *Auth) GetAzureCloudOk() (*string, bool)`
+
+GetAzureCloudOk returns a tuple with the AzureCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureCloud
+
+`func (o *Auth) SetAzureCloud(v string)`
+
+SetAzureCloud sets AzureCloud field to given value.
+
+### HasAzureCloud
+
+`func (o *Auth) HasAzureCloud() bool`
+
+HasAzureCloud returns a boolean if a field has been set.
 
 ### GetCertChallenge
 

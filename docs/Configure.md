@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
 **AzureAdObjectId** | Pointer to **string** | Azure Active Directory ObjectId (relevant only for access-type&#x3D;azure_ad) | [optional] 
+**AzureCloud** | Pointer to **string** | Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. | [optional] [default to "AzureCloud"]
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert in Curl Context) | [optional] 
 **CertIssuerName** | Pointer to **string** | Certificate Issuer Name | [optional] 
 **CertUsername** | Pointer to **string** | The username to sign in the SSH certificate (use a comma-separated list for more than one username) | [optional] 
@@ -222,6 +223,31 @@ SetAzureAdObjectId sets AzureAdObjectId field to given value.
 `func (o *Configure) HasAzureAdObjectId() bool`
 
 HasAzureAdObjectId returns a boolean if a field has been set.
+
+### GetAzureCloud
+
+`func (o *Configure) GetAzureCloud() string`
+
+GetAzureCloud returns the AzureCloud field if non-nil, zero value otherwise.
+
+### GetAzureCloudOk
+
+`func (o *Configure) GetAzureCloudOk() (*string, bool)`
+
+GetAzureCloudOk returns a tuple with the AzureCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureCloud
+
+`func (o *Configure) SetAzureCloud(v string)`
+
+SetAzureCloud sets AzureCloud field to given value.
+
+### HasAzureCloud
+
+`func (o *Configure) HasAzureCloud() bool`
+
+HasAzureCloud returns a boolean if a field has been set.
 
 ### GetCertData
 

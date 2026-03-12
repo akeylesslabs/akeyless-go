@@ -36,6 +36,8 @@ type CertAccessRules struct {
 	BoundUriSans []string `json:"bound_uri_sans,omitempty"`
 	// Base64 encdoed PEM certificate
 	Certificate *string `json:"certificate,omitempty"`
+	// RequireCrlDp indicates whether CRL distribution points are required on the leaf client certificate, and whether CRL validation must be enforced during authentication.
+	RequireCrlDp *bool `json:"require_crl_dp,omitempty"`
 	// A list of revoked cert ids
 	RevokedCertIds []string `json:"revoked_cert_ids,omitempty"`
 	// A unique identifier to distinguish different users
@@ -315,6 +317,38 @@ func (o *CertAccessRules) SetCertificate(v string) {
 	o.Certificate = &v
 }
 
+// GetRequireCrlDp returns the RequireCrlDp field value if set, zero value otherwise.
+func (o *CertAccessRules) GetRequireCrlDp() bool {
+	if o == nil || IsNil(o.RequireCrlDp) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireCrlDp
+}
+
+// GetRequireCrlDpOk returns a tuple with the RequireCrlDp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertAccessRules) GetRequireCrlDpOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireCrlDp) {
+		return nil, false
+	}
+	return o.RequireCrlDp, true
+}
+
+// HasRequireCrlDp returns a boolean if a field has been set.
+func (o *CertAccessRules) HasRequireCrlDp() bool {
+	if o != nil && !IsNil(o.RequireCrlDp) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireCrlDp gets a reference to the given bool and assigns it to the RequireCrlDp field.
+func (o *CertAccessRules) SetRequireCrlDp(v bool) {
+	o.RequireCrlDp = &v
+}
+
 // GetRevokedCertIds returns the RevokedCertIds field value if set, zero value otherwise.
 func (o *CertAccessRules) GetRevokedCertIds() []string {
 	if o == nil || IsNil(o.RevokedCertIds) {
@@ -412,6 +446,9 @@ func (o CertAccessRules) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate
+	}
+	if !IsNil(o.RequireCrlDp) {
+		toSerialize["require_crl_dp"] = o.RequireCrlDp
 	}
 	if !IsNil(o.RevokedCertIds) {
 		toSerialize["revoked_cert_ids"] = o.RevokedCertIds

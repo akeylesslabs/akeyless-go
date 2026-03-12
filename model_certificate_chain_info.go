@@ -32,6 +32,8 @@ type CertificateChainInfo struct {
 	CertificatePem *string `json:"certificate_pem,omitempty"`
 	CertificateStatus *string `json:"certificate_status,omitempty"`
 	CommonName *string `json:"common_name,omitempty"`
+	// CSRPEM contains the PEM-encoded CSR for pending certificates (HTTP-01 challenge)
+	CsrPem *string `json:"csr_pem,omitempty"`
 	ErrorMessage *string `json:"error_message,omitempty"`
 	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
@@ -410,6 +412,38 @@ func (o *CertificateChainInfo) SetCommonName(v string) {
 	o.CommonName = &v
 }
 
+// GetCsrPem returns the CsrPem field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetCsrPem() string {
+	if o == nil || IsNil(o.CsrPem) {
+		var ret string
+		return ret
+	}
+	return *o.CsrPem
+}
+
+// GetCsrPemOk returns a tuple with the CsrPem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetCsrPemOk() (*string, bool) {
+	if o == nil || IsNil(o.CsrPem) {
+		return nil, false
+	}
+	return o.CsrPem, true
+}
+
+// HasCsrPem returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasCsrPem() bool {
+	if o != nil && !IsNil(o.CsrPem) {
+		return true
+	}
+
+	return false
+}
+
+// SetCsrPem gets a reference to the given string and assigns it to the CsrPem field.
+func (o *CertificateChainInfo) SetCsrPem(v string) {
+	o.CsrPem = &v
+}
+
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
 func (o *CertificateChainInfo) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -676,6 +710,9 @@ func (o CertificateChainInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CommonName) {
 		toSerialize["common_name"] = o.CommonName
+	}
+	if !IsNil(o.CsrPem) {
+		toSerialize["csr_pem"] = o.CsrPem
 	}
 	if !IsNil(o.ErrorMessage) {
 		toSerialize["error_message"] = o.ErrorMessage

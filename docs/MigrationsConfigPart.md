@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsSecretsMigrations** | Pointer to [**[]AWSSecretsMigration**](AWSSecretsMigration.md) |  | [optional] 
 **AzureKvMigrations** | Pointer to [**[]AzureKeyVaultMigration**](AzureKeyVaultMigration.md) |  | [optional] 
 **CertificateMigrations** | Pointer to [**[]CertificateMigration**](CertificateMigration.md) |  | [optional] 
+**ConjurMigrations** | Pointer to [**[]ConjurMigration**](ConjurMigration.md) |  | [optional] 
 **GcpSecretsMigrations** | Pointer to [**[]GCPSecretsMigration**](GCPSecretsMigration.md) |  | [optional] 
 **HashiMigrations** | Pointer to [**[]HashiMigration**](HashiMigration.md) |  | [optional] 
 **K8sMigrations** | Pointer to [**[]K8SMigration**](K8SMigration.md) |  | [optional] 
@@ -133,6 +134,31 @@ SetCertificateMigrations sets CertificateMigrations field to given value.
 `func (o *MigrationsConfigPart) HasCertificateMigrations() bool`
 
 HasCertificateMigrations returns a boolean if a field has been set.
+
+### GetConjurMigrations
+
+`func (o *MigrationsConfigPart) GetConjurMigrations() []ConjurMigration`
+
+GetConjurMigrations returns the ConjurMigrations field if non-nil, zero value otherwise.
+
+### GetConjurMigrationsOk
+
+`func (o *MigrationsConfigPart) GetConjurMigrationsOk() (*[]ConjurMigration, bool)`
+
+GetConjurMigrationsOk returns a tuple with the ConjurMigrations field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConjurMigrations
+
+`func (o *MigrationsConfigPart) SetConjurMigrations(v []ConjurMigration)`
+
+SetConjurMigrations sets ConjurMigrations field to given value.
+
+### HasConjurMigrations
+
+`func (o *MigrationsConfigPart) HasConjurMigrations() bool`
+
+HasConjurMigrations returns a boolean if a field has been set.
 
 ### GetGcpSecretsMigrations
 

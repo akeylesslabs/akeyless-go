@@ -30,6 +30,7 @@ type ItemGeneralInfo struct {
 	DynamicSecretProducerDetails *DynamicSecretProducerInfo `json:"dynamic_secret_producer_details,omitempty"`
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	ImporterInfo *ImporterInfo `json:"importer_info,omitempty"`
+	IssuerOverviewInfo *IssuerOverviewInfo `json:"issuer_overview_info,omitempty"`
 	NextRotationEvents []NextAutoRotationEvent `json:"next_rotation_events,omitempty"`
 	OidcClientInfo *OidcClientInfo `json:"oidc_client_info,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
@@ -376,6 +377,38 @@ func (o *ItemGeneralInfo) SetImporterInfo(v ImporterInfo) {
 	o.ImporterInfo = &v
 }
 
+// GetIssuerOverviewInfo returns the IssuerOverviewInfo field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetIssuerOverviewInfo() IssuerOverviewInfo {
+	if o == nil || IsNil(o.IssuerOverviewInfo) {
+		var ret IssuerOverviewInfo
+		return ret
+	}
+	return *o.IssuerOverviewInfo
+}
+
+// GetIssuerOverviewInfoOk returns a tuple with the IssuerOverviewInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetIssuerOverviewInfoOk() (*IssuerOverviewInfo, bool) {
+	if o == nil || IsNil(o.IssuerOverviewInfo) {
+		return nil, false
+	}
+	return o.IssuerOverviewInfo, true
+}
+
+// HasIssuerOverviewInfo returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasIssuerOverviewInfo() bool {
+	if o != nil && !IsNil(o.IssuerOverviewInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuerOverviewInfo gets a reference to the given IssuerOverviewInfo and assigns it to the IssuerOverviewInfo field.
+func (o *ItemGeneralInfo) SetIssuerOverviewInfo(v IssuerOverviewInfo) {
+	o.IssuerOverviewInfo = &v
+}
+
 // GetNextRotationEvents returns the NextRotationEvents field value if set, zero value otherwise.
 func (o *ItemGeneralInfo) GetNextRotationEvents() []NextAutoRotationEvent {
 	if o == nil || IsNil(o.NextRotationEvents) {
@@ -639,6 +672,9 @@ func (o ItemGeneralInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ImporterInfo) {
 		toSerialize["importer_info"] = o.ImporterInfo
+	}
+	if !IsNil(o.IssuerOverviewInfo) {
+		toSerialize["issuer_overview_info"] = o.IssuerOverviewInfo
 	}
 	if !IsNil(o.NextRotationEvents) {
 		toSerialize["next_rotation_events"] = o.NextRotationEvents

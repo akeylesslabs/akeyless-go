@@ -16021,6 +16021,33 @@ paths:
             field.
       tags:
       - v2
+  /validate-certificate-challenge:
+    post:
+      operationId: ValidateCertificateChallenge
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateCertificateChallenge'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidateCertificateChallengeOutput'
+          description: validateCertificateChallengeResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /validate-token:
     post:
       operationId: validateToken
@@ -16046,6 +16073,33 @@ paths:
           description: |-
             errorResponse wraps any error to return it as a JSON object with one "error"
             field.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /vault-address:
+    post:
+      operationId: vaultAddress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/vaultAddress'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/vaultAddressOutput'
+          description: vaultAddressResponse wraps response body.
         default:
           content:
             application/json:
@@ -19714,12 +19768,24 @@ components:
           schema:
             $ref: '#/components/schemas/UscUpdateSecretOutput'
       description: uscUpdateResponse wraps response body.
+    validateCertificateChallengeResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidateCertificateChallengeOutput'
+      description: validateCertificateChallengeResponse wraps response body.
     validateTokenResponse:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidateTokenOutput'
       description: validateTokenResponse wraps response body.
+    vaultAddressResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/vaultAddressOutput'
+      description: vaultAddressResponse wraps response body.
     verifyDataWithClassicKeyResponse:
       content:
         application/json:
@@ -20108,13 +20174,9 @@ components:
         allowed_gateways_ips:
           cidr_whitelist: cidr_whitelist
           lock: true
-        default_home_page:
-          route: route
-        protect_items_by_default: true
-        item_usage_event:
-          enable: true
-          enable_time: 2000-01-23T04:56:07.000+00:00
-          interval_by_days: 6
+        default_auth_method:
+          default_auth_method_type: default_auth_method_type
+          default_access_id: default_access_id
         hide_personal_folder: true
         allow_auto_fill: true
         allowed_clients_ips:
@@ -20122,6 +20184,26 @@ components:
           lock: true
         invalid_characters: invalid_characters
         auth_usage_event:
+          enable: true
+          enable_time: 2000-01-23T04:56:07.000+00:00
+          interval_by_days: 6
+        hide_static_password: true
+        lock_default_key: true
+        account_default_key_name: account_default_key_name
+        allowed_client_types:
+          lock: true
+          client_types:
+          - client_types
+          - client_types
+        password_expiration_info:
+          days_until_expire: 2
+          days_before_notification: 5
+          enable: true
+          days_before_expire: 5
+        default_home_page:
+          route: route
+        protect_items_by_default: true
+        item_usage_event:
           enable: true
           enable_time: 2000-01-23T04:56:07.000+00:00
           interval_by_days: 6
@@ -20142,20 +20224,12 @@ components:
           enable: true
         data_protection_section:
           enable_classic_key_protection: true
-        hide_static_password: true
         password_score:
           enabled: true
-        lock_default_key: true
-        account_default_key_name: account_default_key_name
         ai_insights:
           enable: true
         enable_request_for_access: true
         account_default_key_item_id: 0
-        allowed_client_types:
-          lock: true
-          client_types:
-          - client_types
-          - client_types
         certificate_expiration_events:
           enable: true
           expirations_list:
@@ -20164,11 +20238,6 @@ components:
         dynamic_secret_max_ttl:
           enable: true
           max_ttl_by_minutes: 1
-        password_expiration_info:
-          days_until_expire: 2
-          days_before_notification: 5
-          enable: true
-          days_before_expire: 5
       properties:
         account_default_key_item_id:
           description: AccountDefaultKeyItemID is the item ID of the DFC key item
@@ -20201,6 +20270,8 @@ components:
           $ref: '#/components/schemas/CertificateExpirationEventsSettings'
         data_protection_section:
           $ref: '#/components/schemas/DataProtectionSection'
+        default_auth_method:
+          $ref: '#/components/schemas/DefaultAuthMethodSettings'
         default_home_page:
           $ref: '#/components/schemas/DefaultHomePage'
         dynamic_secret_max_ttl:
@@ -20302,27 +20373,32 @@ components:
           status: status
         payload:
           auto_rotate: true
+          winrm_port: winrm_port
+          active_directory_target_id: 7
+          discover_services: true
+          local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+          discover_iis_apps: true
+          ai_certificate_discovery: true
+          target_format: target_format
+          domain_name: domain_name
+          enable_rdp_sra: true
+          user_base_dn: user_base_dn
+          computer_base_dn: computer_base_dn
+          domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+          certificates_expiration_events:
+          - seconds_before: 1
+          - seconds_before: 1
           ssh_port: ssh_port
           discover_local_users: true
           discovery_types:
           - null
           - null
-          winrm_port: winrm_port
+          certificates_path_template: certificates_path_template
           auto_rotate_interval_in_days: 1
-          active_directory_target_id: 7
-          discover_services: true
           winrm_over_http: true
-          local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
           targets_type: targets_type
-          discover_iis_apps: true
-          target_format: target_format
           auto_rotate_rotation_hour: 1
-          domain_name: domain_name
-          enable_rdp_sra: true
           domain_server_targets_path_template: domain_server_targets_path_template
-          user_base_dn: user_base_dn
-          computer_base_dn: computer_base_dn
-          domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
           local_users_ignore_list:
             key: true
           os_filter: os_filter
@@ -20339,27 +20415,32 @@ components:
     ActiveDirectoryPayload:
       example:
         auto_rotate: true
+        winrm_port: winrm_port
+        active_directory_target_id: 7
+        discover_services: true
+        local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+        discover_iis_apps: true
+        ai_certificate_discovery: true
+        target_format: target_format
+        domain_name: domain_name
+        enable_rdp_sra: true
+        user_base_dn: user_base_dn
+        computer_base_dn: computer_base_dn
+        domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+        certificates_expiration_events:
+        - seconds_before: 1
+        - seconds_before: 1
         ssh_port: ssh_port
         discover_local_users: true
         discovery_types:
         - null
         - null
-        winrm_port: winrm_port
+        certificates_path_template: certificates_path_template
         auto_rotate_interval_in_days: 1
-        active_directory_target_id: 7
-        discover_services: true
         winrm_over_http: true
-        local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
         targets_type: targets_type
-        discover_iis_apps: true
-        target_format: target_format
         auto_rotate_rotation_hour: 1
-        domain_name: domain_name
-        enable_rdp_sra: true
         domain_server_targets_path_template: domain_server_targets_path_template
-        user_base_dn: user_base_dn
-        computer_base_dn: computer_base_dn
-        domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
         local_users_ignore_list:
           key: true
         os_filter: os_filter
@@ -20371,6 +20452,9 @@ components:
           format: int64
           type: integer
           x-go-name: ActiveDirectoryTargetID
+        ai_certificate_discovery:
+          type: boolean
+          x-go-name: UseAI
         auto_rotate:
           type: boolean
           x-go-name: AutoRotate
@@ -20382,6 +20466,14 @@ components:
           format: int32
           type: integer
           x-go-name: AutoRotateRotationHour
+        certificates_expiration_events:
+          items:
+            $ref: '#/components/schemas/CertificateExpirationEvent'
+          type: array
+          x-go-name: CertificatesExpirationEvents
+        certificates_path_template:
+          type: string
+          x-go-name: CertificatesPathTemplate
         computer_base_dn:
           type: string
           x-go-name: ComputerBaseDN
@@ -20749,6 +20841,35 @@ components:
               client: client
               secret: secret
               tenant: tenant
+          conjur_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              conjur_api_key: conjur_api_key
+              conjur_url: conjur_url
+              conjur_username: conjur_username
+              conjur_account: conjur_account
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              conjur_api_key: conjur_api_key
+              conjur_url: conjur_url
+              conjur_username: conjur_username
+              conjur_account: conjur_account
           k8s_migrations:
           - general:
               prefix: prefix
@@ -20948,27 +21069,32 @@ components:
               status: status
             payload:
               auto_rotate: true
+              winrm_port: winrm_port
+              active_directory_target_id: 7
+              discover_services: true
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              discover_iis_apps: true
+              ai_certificate_discovery: true
+              target_format: target_format
+              domain_name: domain_name
+              enable_rdp_sra: true
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              certificates_expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
               ssh_port: ssh_port
               discover_local_users: true
               discovery_types:
               - null
               - null
-              winrm_port: winrm_port
+              certificates_path_template: certificates_path_template
               auto_rotate_interval_in_days: 1
-              active_directory_target_id: 7
-              discover_services: true
               winrm_over_http: true
-              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
               targets_type: targets_type
-              discover_iis_apps: true
-              target_format: target_format
               auto_rotate_rotation_hour: 1
-              domain_name: domain_name
-              enable_rdp_sra: true
               domain_server_targets_path_template: domain_server_targets_path_template
-              user_base_dn: user_base_dn
-              computer_base_dn: computer_base_dn
-              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
               local_users_ignore_list:
                 key: true
               os_filter: os_filter
@@ -20986,27 +21112,32 @@ components:
               status: status
             payload:
               auto_rotate: true
+              winrm_port: winrm_port
+              active_directory_target_id: 7
+              discover_services: true
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              discover_iis_apps: true
+              ai_certificate_discovery: true
+              target_format: target_format
+              domain_name: domain_name
+              enable_rdp_sra: true
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              certificates_expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
               ssh_port: ssh_port
               discover_local_users: true
               discovery_types:
               - null
               - null
-              winrm_port: winrm_port
+              certificates_path_template: certificates_path_template
               auto_rotate_interval_in_days: 1
-              active_directory_target_id: 7
-              discover_services: true
               winrm_over_http: true
-              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
               targets_type: targets_type
-              discover_iis_apps: true
-              target_format: target_format
               auto_rotate_rotation_hour: 1
-              domain_name: domain_name
-              enable_rdp_sra: true
               domain_server_targets_path_template: domain_server_targets_path_template
-              user_base_dn: user_base_dn
-              computer_base_dn: computer_base_dn
-              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
               local_users_ignore_list:
                 key: true
               os_filter: os_filter
@@ -21583,6 +21714,7 @@ components:
         cert-challenge: cert-challenge
         cloud-id: cloud-id
         admin-email: admin-email
+        azure-cloud: AzureCloud
         key-data: key-data
         uid-token: uid-token
         k8s-auth-config-name: k8s-auth-config-name
@@ -21637,6 +21769,12 @@ components:
           description: Password (relevant only for access-type=password)
           type: string
           x-go-name: AdminPass
+        azure-cloud:
+          default: AzureCloud
+          description: "Azure cloud environment to use. Values: AzureCloud (default),\
+            \ AzureUSGovernment, AzureChinaCloud."
+          type: string
+          x-go-name: AzureCloud
         cert-challenge:
           description: Certificate challenge encoded in base64. (relevant only for
             access-type=cert)
@@ -21919,6 +22057,7 @@ components:
             bound_subscription_ids:
             - bound_subscription_ids
             - bound_subscription_ids
+            azure_cloud: azure_cloud
             issuer: issuer
             bound_resource_types:
             - bound_resource_types
@@ -22053,6 +22192,7 @@ components:
             - bound_common_names
             - bound_common_names
             unique_identifier: unique_identifier
+            require_crl_dp: true
             allowed_cors:
             - allowed_cors
             - allowed_cors
@@ -22229,6 +22369,7 @@ components:
           bound_subscription_ids:
           - bound_subscription_ids
           - bound_subscription_ids
+          azure_cloud: azure_cloud
           issuer: issuer
           bound_resource_types:
           - bound_resource_types
@@ -22363,6 +22504,7 @@ components:
           - bound_common_names
           - bound_common_names
           unique_identifier: unique_identifier
+          require_crl_dp: true
           allowed_cors:
           - allowed_cors
           - allowed_cors
@@ -22766,6 +22908,7 @@ components:
         bound_subscription_ids:
         - bound_subscription_ids
         - bound_subscription_ids
+        azure_cloud: azure_cloud
         issuer: issuer
         bound_resource_types:
         - bound_resource_types
@@ -22783,6 +22926,11 @@ components:
           description: The audience in the JWT.
           type: string
           x-go-name: Audience
+        azure_cloud:
+          description: "Azure cloud environment [AzureCloud/AzureUSGovernment/AzureChinaCloud].\
+            \ For create/update, cloud is inferred from jwks_uri."
+          type: string
+          x-go-name: AzureCloud
         bound_group_ids:
           description: The list of group ids that login is restricted to.
           items:
@@ -22962,6 +23110,7 @@ components:
         expiration_date: 2000-01-23T04:56:07.000+00:00
         azure_username: azure_username
         azure_client_secret: azure_client_secret
+        azure_cloud: azure_cloud
         azure_client_id: azure_client_id
         azure_tenant_id: azure_tenant_id
       properties:
@@ -22971,6 +23120,9 @@ components:
         azure_client_secret:
           type: string
           x-go-name: AzureClientSecret
+        azure_cloud:
+          type: string
+          x-go-name: AzureCloud
         azure_resource_group_name:
           type: string
           x-go-name: AzureResourceGroupName
@@ -23449,6 +23601,7 @@ components:
         - bound_common_names
         - bound_common_names
         unique_identifier: unique_identifier
+        require_crl_dp: true
         allowed_cors:
         - allowed_cors
         - allowed_cors
@@ -23525,6 +23678,12 @@ components:
           description: Base64 encdoed PEM certificate
           type: string
           x-go-name: Certificate
+        require_crl_dp:
+          description: |-
+            RequireCrlDp indicates whether CRL distribution points are required on the leaf client certificate,
+            and whether CRL validation must be enforced during authentication.
+          type: boolean
+          x-go-name: RequireCrlDp
         revoked_cert_ids:
           description: A list of revoked cert ids
           items:
@@ -23573,6 +23732,7 @@ components:
         expiration_events:
         - seconds_before: 1
         - seconds_before: 1
+        csr_pem: csr_pem
         certificate_pem: certificate_pem
         not_before: 2000-01-23T04:56:07.000+00:00
         renew_before_expiration_in_days: 6
@@ -23833,6 +23993,11 @@ components:
         common_name:
           type: string
           x-go-name: CommonName
+        csr_pem:
+          description: CSRPEM contains the PEM-encoded CSR for pending certificates
+            (HTTP-01 challenge)
+          type: string
+          x-go-name: CSRPEM
         error_message:
           type: string
           x-go-name: ErrorMessage
@@ -24948,6 +25113,50 @@ components:
           x-go-name: UIdentity
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    ConjurMigration:
+      example:
+        general:
+          prefix: prefix
+          name: name
+          id: id
+          type: type
+          protection_key: protection_key
+          last_migration: last_migration
+          new_name: new_name
+          status: status
+        payload:
+          conjur_api_key: conjur_api_key
+          conjur_url: conjur_url
+          conjur_username: conjur_username
+          conjur_account: conjur_account
+      properties:
+        general:
+          $ref: '#/components/schemas/MigrationGeneral'
+        payload:
+          $ref: '#/components/schemas/ConjurPayload'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    ConjurPayload:
+      example:
+        conjur_api_key: conjur_api_key
+        conjur_url: conjur_url
+        conjur_username: conjur_username
+        conjur_account: conjur_account
+      properties:
+        conjur_account:
+          type: string
+          x-go-name: ConjurAccount
+        conjur_api_key:
+          type: string
+          x-go-name: ConjurApiKey
+        conjur_url:
+          type: string
+          x-go-name: ConjurURL
+        conjur_username:
+          type: string
+          x-go-name: ConjurUsername
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     Connect:
       description: Connect is a command that performs secure remote access
       example:
@@ -25870,6 +26079,7 @@ components:
         use-prefix-as-filter: "false"
         description: description
         usc-prefix: usc-prefix
+        repository-names: repository-names
         azure-kv-name: azure-kv-name
         uid-token: uid-token
         gcp-project-id: gcp-project-id
@@ -25878,11 +26088,15 @@ components:
         - tags
         token: token
         delete_protection: delete_protection
+        repository-access: public
         item-custom-fields:
           key: item-custom-fields
         name: name
         json: false
         k8s-namespace: k8s-namespace
+        environment-names: environment-names
+        github-scope: repository
+        organization-name: organization-name
       properties:
         azure-kv-name:
           description: Azure Key Vault name (Relevant only for Azure targets)
@@ -25896,6 +26110,11 @@ components:
           description: Description of the Universal Secrets Connector
           type: string
           x-go-name: Description
+        environment-names:
+          description: "The environments in repo-name/environment-name format, comma-separated\
+            \ (only relevant for: github-scope=repository-environment)"
+          type: string
+          x-go-name: GithubEnvironmentsNames
         gcp-project-id:
           description: GCP Project ID (Relevant only for GCP targets)
           type: string
@@ -25906,6 +26125,12 @@ components:
             Required when listing with object-type=regional-secrets.
           type: string
           x-go-name: GcpSmRegions
+        github-scope:
+          default: repository
+          description: "The scope where secrets will be created, available options:\
+            \ [repository, organization, repository-environment]"
+          type: string
+          x-go-name: GithubScope
         item-custom-fields:
           additionalProperties:
             type: string
@@ -25925,6 +26150,20 @@ components:
           description: Universal Secrets Connector name
           type: string
           x-go-name: ESMName
+        organization-name:
+          description: "The organization name to create the secret in (only relevant\
+            \ for: github-scope=organization)"
+          type: string
+          x-go-name: GithubOrganizationName
+        repository-access:
+          default: public
+          type: string
+          x-go-name: GithubRepositoryAccess
+        repository-names:
+          description: "The repository names, comma-separated (only relevant for:\
+            \ github-scope=repository)"
+          type: string
+          x-go-name: GithubRepositoriesNames
         tags:
           description: List of the tags attached to this Universal Secrets Connector
           items:
@@ -26303,6 +26542,7 @@ components:
         db_isolation_level: db_isolation_level
         ssl_connection_mode: true
         mongodb_roles: mongodb_roles
+        azure_cloud: azure_cloud
         mongodb_db_name: mongodb_db_name
         oracle_wallet_details:
           sso_data_base64: sso_data_base64
@@ -26515,6 +26755,9 @@ components:
         azure_client_secret:
           type: string
           x-go-name: AzureClientSecret
+        azure_cloud:
+          type: string
+          x-go-name: AzureCloud
         azure_fixed_user_name_sub_claim_key:
           type: string
           x-go-name: AzureFixedUserNameSubClaimKey
@@ -27438,6 +27681,20 @@ components:
     DeactivateAcmeAccountOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    DefaultAuthMethodSettings:
+      example:
+        default_auth_method_type: default_auth_method_type
+        default_access_id: default_access_id
+      properties:
+        default_access_id:
+          type: string
+          x-go-name: DefaultAccessID
+        default_auth_method_type:
+          title: Access rules type.
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     DefaultConfigPart:
       example:
         saml_access_id: saml_access_id
@@ -27965,6 +28222,13 @@ components:
       example:
         secrets_list:
         - secret_id: secret_id
+          github:
+            repository_access: repository_access
+            selected_repositories: selected_repositories
+            scope: scope
+            organization_name: organization_name
+            repository: repository
+            environment_name: environment_name
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
           thumbprint: thumbprint
@@ -27980,6 +28244,13 @@ components:
           region: region
           status: true
         - secret_id: secret_id
+          github:
+            repository_access: repository_access
+            selected_repositories: selected_repositories
+            scope: scope
+            organization_name: organization_name
+            repository: repository
+            environment_name: environment_name
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
           thumbprint: thumbprint
@@ -29070,13 +29341,9 @@ components:
           allowed_gateways_ips:
             cidr_whitelist: cidr_whitelist
             lock: true
-          default_home_page:
-            route: route
-          protect_items_by_default: true
-          item_usage_event:
-            enable: true
-            enable_time: 2000-01-23T04:56:07.000+00:00
-            interval_by_days: 6
+          default_auth_method:
+            default_auth_method_type: default_auth_method_type
+            default_access_id: default_access_id
           hide_personal_folder: true
           allow_auto_fill: true
           allowed_clients_ips:
@@ -29084,6 +29351,26 @@ components:
             lock: true
           invalid_characters: invalid_characters
           auth_usage_event:
+            enable: true
+            enable_time: 2000-01-23T04:56:07.000+00:00
+            interval_by_days: 6
+          hide_static_password: true
+          lock_default_key: true
+          account_default_key_name: account_default_key_name
+          allowed_client_types:
+            lock: true
+            client_types:
+            - client_types
+            - client_types
+          password_expiration_info:
+            days_until_expire: 2
+            days_before_notification: 5
+            enable: true
+            days_before_expire: 5
+          default_home_page:
+            route: route
+          protect_items_by_default: true
+          item_usage_event:
             enable: true
             enable_time: 2000-01-23T04:56:07.000+00:00
             interval_by_days: 6
@@ -29104,20 +29391,12 @@ components:
             enable: true
           data_protection_section:
             enable_classic_key_protection: true
-          hide_static_password: true
           password_score:
             enabled: true
-          lock_default_key: true
-          account_default_key_name: account_default_key_name
           ai_insights:
             enable: true
           enable_request_for_access: true
           account_default_key_item_id: 0
-          allowed_client_types:
-            lock: true
-            client_types:
-            - client_types
-            - client_types
           certificate_expiration_events:
             enable: true
             expirations_list:
@@ -29126,11 +29405,6 @@ components:
           dynamic_secret_max_ttl:
             enable: true
             max_ttl_by_minutes: 1
-          password_expiration_info:
-            days_until_expire: 2
-            days_before_notification: 5
-            enable: true
-            days_before_expire: 5
         secret_management:
           tier: tier
           sla: sla
@@ -29700,6 +29974,7 @@ components:
             expiration_date: 2000-01-23T04:56:07.000+00:00
             azure_username: azure_username
             azure_client_secret: azure_client_secret
+            azure_cloud: azure_cloud
             azure_client_id: azure_client_id
             azure_tenant_id: azure_tenant_id
           db_target_details:
@@ -29863,6 +30138,35 @@ components:
           x-go-name: Status
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    GithubMetadata:
+      example:
+        repository_access: repository_access
+        selected_repositories: selected_repositories
+        scope: scope
+        organization_name: organization_name
+        repository: repository
+        environment_name: environment_name
+      properties:
+        environment_name:
+          type: string
+          x-go-name: EnvironmentName
+        organization_name:
+          type: string
+          x-go-name: OrganizationName
+        repository:
+          type: string
+          x-go-name: Repository
+        repository_access:
+          type: string
+          x-go-name: RepositoryAccess
+        scope:
+          type: string
+          x-go-name: Scope
+        selected_repositories:
+          type: string
+          x-go-name: SelectedRepositories
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
     GithubTargetDetails:
       example:
         github_base_url: github_base_url
@@ -30207,6 +30511,32 @@ components:
           x-go-name: StatusDescription
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    HTTPChallengeInfo:
+      description: HTTPChallengeInfo contains HTTP-01 challenge details for user display
+      example:
+        file_content: file_content
+        file_path: file_path
+        instructions: instructions
+        key_auth: key_auth
+        token: token
+      properties:
+        file_content:
+          type: string
+          x-go-name: FileContent
+        file_path:
+          type: string
+          x-go-name: FilePath
+        instructions:
+          type: string
+          x-go-name: Instructions
+        key_auth:
+          type: string
+          x-go-name: KeyAuth
+        token:
+          type: string
+          x-go-name: Token
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     HashAlgorithm:
       title: HashAlgorithm is a type that represents a single hash algorithm.
       type: string
@@ -30388,6 +30718,25 @@ components:
           format: int64
           type: integer
           x-go-name: Version
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    IssuerOverviewInfo:
+      example:
+        certificate_authority_mode: certificate_authority_mode
+        key_type: key_type
+        expiration_date: 2000-01-23T04:56:07.000+00:00
+      properties:
+        certificate_authority_mode:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        expiration_date:
+          format: date-time
+          type: string
+          x-go-name: ExpirationDate
+        key_type:
+          type: string
+          x-go-name: KeyType
+      title: IssuerOverviewInfo holds PKI cert issuer fields needed for UI table rendering.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     Item:
@@ -30848,6 +31197,7 @@ components:
             expiration_events:
             - seconds_before: 1
             - seconds_before: 1
+            csr_pem: csr_pem
             certificate_pem: certificate_pem
             not_before: 2000-01-23T04:56:07.000+00:00
             renew_before_expiration_in_days: 6
@@ -31131,6 +31481,10 @@ components:
             last_error: last_error
             credential_id: credential_id
             username: username
+          issuer_overview_info:
+            certificate_authority_mode: certificate_authority_mode
+            key_type: key_type
+            expiration_date: 2000-01-23T04:56:07.000+00:00
           password_policy:
             use_numbers: true
             use_capital_letters: true
@@ -31704,6 +32058,7 @@ components:
           expiration_events:
           - seconds_before: 1
           - seconds_before: 1
+          csr_pem: csr_pem
           certificate_pem: certificate_pem
           not_before: 2000-01-23T04:56:07.000+00:00
           renew_before_expiration_in_days: 6
@@ -31987,6 +32342,10 @@ components:
           last_error: last_error
           credential_id: credential_id
           username: username
+        issuer_overview_info:
+          certificate_authority_mode: certificate_authority_mode
+          key_type: key_type
+          expiration_date: 2000-01-23T04:56:07.000+00:00
         password_policy:
           use_numbers: true
           use_capital_letters: true
@@ -32145,6 +32504,8 @@ components:
           x-go-name: KeyExpirationEvents
         importer_info:
           $ref: '#/components/schemas/ImporterInfo'
+        issuer_overview_info:
+          $ref: '#/components/schemas/IssuerOverviewInfo'
         next_rotation_events:
           items:
             $ref: '#/components/schemas/NextAutoRotationEvent'
@@ -33986,6 +34347,7 @@ components:
               bound_subscription_ids:
               - bound_subscription_ids
               - bound_subscription_ids
+              azure_cloud: azure_cloud
               issuer: issuer
               bound_resource_types:
               - bound_resource_types
@@ -34120,6 +34482,7 @@ components:
               - bound_common_names
               - bound_common_names
               unique_identifier: unique_identifier
+              require_crl_dp: true
               allowed_cors:
               - allowed_cors
               - allowed_cors
@@ -34360,6 +34723,7 @@ components:
               bound_subscription_ids:
               - bound_subscription_ids
               - bound_subscription_ids
+              azure_cloud: azure_cloud
               issuer: issuer
               bound_resource_types:
               - bound_resource_types
@@ -34494,6 +34858,7 @@ components:
               - bound_common_names
               - bound_common_names
               unique_identifier: unique_identifier
+              require_crl_dp: true
               allowed_cors:
               - allowed_cors
               - allowed_cors
@@ -35116,6 +35481,7 @@ components:
               expiration_events:
               - seconds_before: 1
               - seconds_before: 1
+              csr_pem: csr_pem
               certificate_pem: certificate_pem
               not_before: 2000-01-23T04:56:07.000+00:00
               renew_before_expiration_in_days: 6
@@ -35399,6 +35765,10 @@ components:
               last_error: last_error
               credential_id: credential_id
               username: username
+            issuer_overview_info:
+              certificate_authority_mode: certificate_authority_mode
+              key_type: key_type
+              expiration_date: 2000-01-23T04:56:07.000+00:00
             password_policy:
               use_numbers: true
               use_capital_letters: true
@@ -36036,6 +36406,7 @@ components:
               expiration_events:
               - seconds_before: 1
               - seconds_before: 1
+              csr_pem: csr_pem
               certificate_pem: certificate_pem
               not_before: 2000-01-23T04:56:07.000+00:00
               renew_before_expiration_in_days: 6
@@ -36319,6 +36690,10 @@ components:
               last_error: last_error
               credential_id: credential_id
               username: username
+            issuer_overview_info:
+              certificate_authority_mode: certificate_authority_mode
+              key_type: key_type
+              expiration_date: 2000-01-23T04:56:07.000+00:00
             password_policy:
               use_numbers: true
               use_capital_letters: true
@@ -36982,6 +37357,7 @@ components:
               expiration_events:
               - seconds_before: 1
               - seconds_before: 1
+              csr_pem: csr_pem
               certificate_pem: certificate_pem
               not_before: 2000-01-23T04:56:07.000+00:00
               renew_before_expiration_in_days: 6
@@ -37265,6 +37641,10 @@ components:
               last_error: last_error
               credential_id: credential_id
               username: username
+            issuer_overview_info:
+              certificate_authority_mode: certificate_authority_mode
+              key_type: key_type
+              expiration_date: 2000-01-23T04:56:07.000+00:00
             password_policy:
               use_numbers: true
               use_capital_letters: true
@@ -37902,6 +38282,7 @@ components:
               expiration_events:
               - seconds_before: 1
               - seconds_before: 1
+              csr_pem: csr_pem
               certificate_pem: certificate_pem
               not_before: 2000-01-23T04:56:07.000+00:00
               renew_before_expiration_in_days: 6
@@ -38185,6 +38566,10 @@ components:
               last_error: last_error
               credential_id: credential_id
               username: username
+            issuer_overview_info:
+              certificate_authority_mode: certificate_authority_mode
+              key_type: key_type
+              expiration_date: 2000-01-23T04:56:07.000+00:00
             password_policy:
               use_numbers: true
               use_capital_letters: true
@@ -39019,6 +39404,12 @@ components:
           skipped: 1
         start_time: start_time
         migration_type_name: migration_type_name
+        certificates:
+          total: 5
+          failed: 0
+          migrated: 6
+          updated: 5
+          skipped: 1
         migration_id: migration_id
         last_status_message: last_status_message
         duration_time: duration_time
@@ -39026,6 +39417,8 @@ components:
         migration_name: migration_name
         computers: 0
       properties:
+        certificates:
+          $ref: '#/components/schemas/MigrationItems'
         computers:
           format: int64
           type: integer
@@ -39211,6 +39604,35 @@ components:
             client: client
             secret: secret
             tenant: tenant
+        conjur_migrations:
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            type: type
+            protection_key: protection_key
+            last_migration: last_migration
+            new_name: new_name
+            status: status
+          payload:
+            conjur_api_key: conjur_api_key
+            conjur_url: conjur_url
+            conjur_username: conjur_username
+            conjur_account: conjur_account
+        - general:
+            prefix: prefix
+            name: name
+            id: id
+            type: type
+            protection_key: protection_key
+            last_migration: last_migration
+            new_name: new_name
+            status: status
+          payload:
+            conjur_api_key: conjur_api_key
+            conjur_url: conjur_url
+            conjur_username: conjur_username
+            conjur_account: conjur_account
         k8s_migrations:
         - general:
             prefix: prefix
@@ -39410,27 +39832,32 @@ components:
             status: status
           payload:
             auto_rotate: true
+            winrm_port: winrm_port
+            active_directory_target_id: 7
+            discover_services: true
+            local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+            discover_iis_apps: true
+            ai_certificate_discovery: true
+            target_format: target_format
+            domain_name: domain_name
+            enable_rdp_sra: true
+            user_base_dn: user_base_dn
+            computer_base_dn: computer_base_dn
+            domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+            certificates_expiration_events:
+            - seconds_before: 1
+            - seconds_before: 1
             ssh_port: ssh_port
             discover_local_users: true
             discovery_types:
             - null
             - null
-            winrm_port: winrm_port
+            certificates_path_template: certificates_path_template
             auto_rotate_interval_in_days: 1
-            active_directory_target_id: 7
-            discover_services: true
             winrm_over_http: true
-            local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
             targets_type: targets_type
-            discover_iis_apps: true
-            target_format: target_format
             auto_rotate_rotation_hour: 1
-            domain_name: domain_name
-            enable_rdp_sra: true
             domain_server_targets_path_template: domain_server_targets_path_template
-            user_base_dn: user_base_dn
-            computer_base_dn: computer_base_dn
-            domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
             local_users_ignore_list:
               key: true
             os_filter: os_filter
@@ -39448,27 +39875,32 @@ components:
             status: status
           payload:
             auto_rotate: true
+            winrm_port: winrm_port
+            active_directory_target_id: 7
+            discover_services: true
+            local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+            discover_iis_apps: true
+            ai_certificate_discovery: true
+            target_format: target_format
+            domain_name: domain_name
+            enable_rdp_sra: true
+            user_base_dn: user_base_dn
+            computer_base_dn: computer_base_dn
+            domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+            certificates_expiration_events:
+            - seconds_before: 1
+            - seconds_before: 1
             ssh_port: ssh_port
             discover_local_users: true
             discovery_types:
             - null
             - null
-            winrm_port: winrm_port
+            certificates_path_template: certificates_path_template
             auto_rotate_interval_in_days: 1
-            active_directory_target_id: 7
-            discover_services: true
             winrm_over_http: true
-            local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
             targets_type: targets_type
-            discover_iis_apps: true
-            target_format: target_format
             auto_rotate_rotation_hour: 1
-            domain_name: domain_name
-            enable_rdp_sra: true
             domain_server_targets_path_template: domain_server_targets_path_template
-            user_base_dn: user_base_dn
-            computer_base_dn: computer_base_dn
-            domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
             local_users_ignore_list:
               key: true
             os_filter: os_filter
@@ -39523,6 +39955,11 @@ components:
             $ref: '#/components/schemas/CertificateMigration'
           type: array
           x-go-name: CertificateMigrations
+        conjur_migrations:
+          items:
+            $ref: '#/components/schemas/ConjurMigration'
+          type: array
+          x-go-name: ConjurMigrations
         gcp_secrets_migrations:
           items:
             $ref: '#/components/schemas/GCPSecretsMigration'
@@ -42322,6 +42759,13 @@ components:
     SecretInfo:
       example:
         secret_id: secret_id
+        github:
+          repository_access: repository_access
+          selected_repositories: selected_repositories
+          scope: scope
+          organization_name: organization_name
+          repository: repository
+          environment_name: environment_name
         key_id: key_id
         created: 2000-01-23T04:56:07.000+00:00
         thumbprint: thumbprint
@@ -42348,6 +42792,8 @@ components:
           format: date-time
           type: string
           x-go-name: Expiration
+        github:
+          $ref: '#/components/schemas/GithubMetadata'
         key_id:
           type: string
           x-go-name: KeyId
@@ -43948,6 +44394,7 @@ components:
           expiration_date: 2000-01-23T04:56:07.000+00:00
           azure_username: azure_username
           azure_client_secret: azure_client_secret
+          azure_cloud: azure_cloud
           azure_client_id: azure_client_id
           azure_tenant_id: azure_tenant_id
         db_target_details:
@@ -44786,6 +45233,13 @@ components:
       example:
         secrets_list:
         - secret_id: secret_id
+          github:
+            repository_access: repository_access
+            selected_repositories: selected_repositories
+            scope: scope
+            organization_name: organization_name
+            repository: repository
+            environment_name: environment_name
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
           thumbprint: thumbprint
@@ -44801,6 +45255,13 @@ components:
           region: region
           status: true
         - secret_id: secret_id
+          github:
+            repository_access: repository_access
+            selected_repositories: selected_repositories
+            scope: scope
+            organization_name: organization_name
+            repository: repository
+            environment_name: environment_name
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
           thumbprint: thumbprint
@@ -44869,6 +45330,78 @@ components:
           x-go-name: VersionId
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    ValidateCertificateChallenge:
+      description: ValidateCertificateChallenge validates HTTP-01 challenge and finalizes
+        certificate issuance (Phase 2)
+      example:
+        name: name
+        json: false
+        cert-display-id: cert-display-id
+        timeout: 0
+        uid-token: uid-token
+        Result:
+          cert: cert
+          cert_item_id: 0
+          cert_display_id: cert_display_id
+          status: status
+        token: token
+      properties:
+        Result:
+          $ref: '#/components/schemas/ValidateCertificateChallengeOutput'
+        cert-display-id:
+          description: Certificate display ID from Phase 1
+          type: string
+          x-go-name: CertDisplayID
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Certificate name (alternative to cert-display-id)
+          type: string
+          x-go-name: CertName
+        timeout:
+          default: 120
+          description: Validation timeout in seconds
+          format: int64
+          type: integer
+          x-go-name: Timeout
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    ValidateCertificateChallengeOutput:
+      description: ValidateCertificateChallengeOutput defines output for HTTP-01 challenge
+        validation
+      example:
+        cert: cert
+        cert_item_id: 0
+        cert_display_id: cert_display_id
+        status: status
+      properties:
+        cert:
+          type: string
+          x-go-name: CertBytes
+        cert_display_id:
+          type: string
+          x-go-name: CertDisplayID
+        cert_item_id:
+          format: int64
+          type: integer
+          x-go-name: CertItemID
+        status:
+          type: string
+          x-go-name: Status
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     ValidateTokenOutput:
       example:
         reason: reason
@@ -46223,6 +46756,11 @@ components:
             type: string
           type: array
           x-go-name: ProductTypes
+        require-crl-dp:
+          description: Require certificate CRL distribution points (CDP) and enforce
+            CRL validation during authentication.
+          type: boolean
+          x-go-name: RequireCrlDp
         revoked-cert-ids:
           description: A list of revoked cert ids
           items:
@@ -48250,6 +48788,11 @@ components:
             type: string
           type: array
           x-go-name: ProductTypes
+        require-crl-dp:
+          description: Require certificate CRL distribution points (CDP) and enforce
+            CRL validation during authentication.
+          type: boolean
+          x-go-name: RequireCrlDp
         revoked-cert-ids:
           description: A list of revoked cert ids
           items:
@@ -49741,6 +50284,12 @@ components:
           description: Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
           type: string
           x-go-name: AzureAdObjectIDV2
+        azure-cloud:
+          default: AzureCloud
+          description: "Azure cloud environment to use. Values: AzureCloud (default),\
+            \ AzureUSGovernment, AzureChinaCloud."
+          type: string
+          x-go-name: AzureCloud
         cert-data:
           description: Certificate data encoded in base64. Used if file was not provided.
             (relevant only for access-type=cert in Curl Context)
@@ -50575,6 +51124,11 @@ components:
             type: string
           type: array
           x-go-name: ProductTypes
+        require-crl-dp:
+          description: Require certificate CRL distribution points (CDP) and enforce
+            CRL validation during authentication.
+          type: boolean
+          x-go-name: RequireCrlDp
         revoked-cert-ids:
           description: A list of revoked cert ids
           items:
@@ -52031,6 +52585,12 @@ components:
       description: "createAzureTarget is a command that creates a new target. [Deprecated:\
         \ Use target-create-azure command]"
       properties:
+        azure-cloud:
+          default: AzureCloud
+          description: "Azure cloud environment to use. Values: AzureCloud (default),\
+            \ AzureUSGovernment, AzureChinaCloud."
+          type: string
+          x-go-name: AzureCloud
         client-id:
           description: Azure client/application id
           type: string
@@ -52082,7 +52642,7 @@ components:
         subscription-id:
           description: Azure Subscription Id
           type: string
-          x-go-name: AzureSubscriptionId
+          x-go-name: AzureSubscriptionID
         tenant-id:
           description: Azure tenant id
           type: string
@@ -59269,6 +59829,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -63534,6 +64095,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -66800,6 +67362,20 @@ components:
             \ migration)"
           type: string
           x-go-name: AdAutoRotateV2
+        ad-cert-expiration-event-in:
+          description: How many days before the expiration of discovered certificates
+            would you like to be notified (Relevant only for Active Directory migration
+            with certificate discovery enabled)
+          items:
+            type: string
+          type: array
+          x-go-name: AdCertificatesExpirationEventsInDays
+        ad-certificates-path-template:
+          description: "Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}}\
+            \ (Relevant only for Active Directory migration with certificate discovery\
+            \ enabled)"
+          type: string
+          x-go-name: AdCertificatesPathTemplate
         ad-computer-base-dn:
           description: "Distinguished Name of Computer objects (servers) to search\
             \ in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only\
@@ -66931,6 +67507,11 @@ components:
             Deprecated: use AdDiscoverTypes
           type: string
           x-go-name: AdDiscoverLocalUsersDeprecated
+        ai-certificate-discovery:
+          description: Enable AI-assisted certificate discovery (only when AI Insight
+            is enabled on the Gateway)
+          type: string
+          x-go-name: AdUseAI
         aws-key:
           description: AWS Secret Access Key (relevant only for AWS migration)
           type: string
@@ -66965,6 +67546,28 @@ components:
             Vault migration)
           type: string
           x-go-name: AzureTenant
+        conjur-account:
+          description: Conjur account name set on your Conjur server (relevant only
+            for Conjur migration).
+          type: string
+          x-go-name: ConjurAccount
+        conjur-api-key:
+          description: Conjur API Key for the specified user (relevant only for Conjur
+            migration).
+          type: string
+          x-go-name: ConjurApiKey
+        conjur-url:
+          description: |-
+            Conjur server base URL (relevant only for Conjur migration).
+            If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate,
+            make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path.
+          type: string
+          x-go-name: ConjurURL
+        conjur-username:
+          description: Conjur username used to authenticate (relevant only for Conjur
+            migration).
+          type: string
+          x-go-name: ConjurUsername
         expiration-event-in:
           description: How many days before the expiration of the certificate would
             you like to be notified.
@@ -67153,7 +67756,7 @@ components:
           type: string
           x-go-name: Profile
         type:
-          description: Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate)
+          description: Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate)
           type: string
           x-go-name: MigrationType
         uid-token:
@@ -67524,6 +68127,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -68081,6 +68685,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -68606,6 +69211,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -69087,6 +69693,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -69558,6 +70165,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -70037,6 +70645,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -70494,6 +71103,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -70997,6 +71607,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -71518,6 +72129,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -71997,6 +72609,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -72491,6 +73104,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -73010,6 +73624,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -73555,6 +74170,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -74080,6 +74696,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -74620,6 +75237,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -75152,6 +75770,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -75700,6 +76319,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -76214,6 +76834,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -76755,6 +77376,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -77279,6 +77901,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -77780,6 +78403,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -78316,6 +78940,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -78800,6 +79425,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -79292,6 +79918,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -79779,6 +80406,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -80300,6 +80928,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -81197,6 +81826,35 @@ components:
               client: client
               secret: secret
               tenant: tenant
+          conjur_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              conjur_api_key: conjur_api_key
+              conjur_url: conjur_url
+              conjur_username: conjur_username
+              conjur_account: conjur_account
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              conjur_api_key: conjur_api_key
+              conjur_url: conjur_url
+              conjur_username: conjur_username
+              conjur_account: conjur_account
           k8s_migrations:
           - general:
               prefix: prefix
@@ -81396,27 +82054,32 @@ components:
               status: status
             payload:
               auto_rotate: true
+              winrm_port: winrm_port
+              active_directory_target_id: 7
+              discover_services: true
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              discover_iis_apps: true
+              ai_certificate_discovery: true
+              target_format: target_format
+              domain_name: domain_name
+              enable_rdp_sra: true
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              certificates_expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
               ssh_port: ssh_port
               discover_local_users: true
               discovery_types:
               - null
               - null
-              winrm_port: winrm_port
+              certificates_path_template: certificates_path_template
               auto_rotate_interval_in_days: 1
-              active_directory_target_id: 7
-              discover_services: true
               winrm_over_http: true
-              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
               targets_type: targets_type
-              discover_iis_apps: true
-              target_format: target_format
               auto_rotate_rotation_hour: 1
-              domain_name: domain_name
-              enable_rdp_sra: true
               domain_server_targets_path_template: domain_server_targets_path_template
-              user_base_dn: user_base_dn
-              computer_base_dn: computer_base_dn
-              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
               local_users_ignore_list:
                 key: true
               os_filter: os_filter
@@ -81434,27 +82097,32 @@ components:
               status: status
             payload:
               auto_rotate: true
+              winrm_port: winrm_port
+              active_directory_target_id: 7
+              discover_services: true
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              discover_iis_apps: true
+              ai_certificate_discovery: true
+              target_format: target_format
+              domain_name: domain_name
+              enable_rdp_sra: true
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              certificates_expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
               ssh_port: ssh_port
               discover_local_users: true
               discovery_types:
               - null
               - null
-              winrm_port: winrm_port
+              certificates_path_template: certificates_path_template
               auto_rotate_interval_in_days: 1
-              active_directory_target_id: 7
-              discover_services: true
               winrm_over_http: true
-              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
               targets_type: targets_type
-              discover_iis_apps: true
-              target_format: target_format
               auto_rotate_rotation_hour: 1
-              domain_name: domain_name
-              enable_rdp_sra: true
               domain_server_targets_path_template: domain_server_targets_path_template
-              user_base_dn: user_base_dn
-              computer_base_dn: computer_base_dn
-              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
               local_users_ignore_list:
                 key: true
               os_filter: os_filter
@@ -81603,6 +82271,35 @@ components:
               client: client
               secret: secret
               tenant: tenant
+          conjur_migrations:
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              conjur_api_key: conjur_api_key
+              conjur_url: conjur_url
+              conjur_username: conjur_username
+              conjur_account: conjur_account
+          - general:
+              prefix: prefix
+              name: name
+              id: id
+              type: type
+              protection_key: protection_key
+              last_migration: last_migration
+              new_name: new_name
+              status: status
+            payload:
+              conjur_api_key: conjur_api_key
+              conjur_url: conjur_url
+              conjur_username: conjur_username
+              conjur_account: conjur_account
           k8s_migrations:
           - general:
               prefix: prefix
@@ -81802,27 +82499,32 @@ components:
               status: status
             payload:
               auto_rotate: true
+              winrm_port: winrm_port
+              active_directory_target_id: 7
+              discover_services: true
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              discover_iis_apps: true
+              ai_certificate_discovery: true
+              target_format: target_format
+              domain_name: domain_name
+              enable_rdp_sra: true
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              certificates_expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
               ssh_port: ssh_port
               discover_local_users: true
               discovery_types:
               - null
               - null
-              winrm_port: winrm_port
+              certificates_path_template: certificates_path_template
               auto_rotate_interval_in_days: 1
-              active_directory_target_id: 7
-              discover_services: true
               winrm_over_http: true
-              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
               targets_type: targets_type
-              discover_iis_apps: true
-              target_format: target_format
               auto_rotate_rotation_hour: 1
-              domain_name: domain_name
-              enable_rdp_sra: true
               domain_server_targets_path_template: domain_server_targets_path_template
-              user_base_dn: user_base_dn
-              computer_base_dn: computer_base_dn
-              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
               local_users_ignore_list:
                 key: true
               os_filter: os_filter
@@ -81840,27 +82542,32 @@ components:
               status: status
             payload:
               auto_rotate: true
+              winrm_port: winrm_port
+              active_directory_target_id: 7
+              discover_services: true
+              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
+              discover_iis_apps: true
+              ai_certificate_discovery: true
+              target_format: target_format
+              domain_name: domain_name
+              enable_rdp_sra: true
+              user_base_dn: user_base_dn
+              computer_base_dn: computer_base_dn
+              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
+              certificates_expiration_events:
+              - seconds_before: 1
+              - seconds_before: 1
               ssh_port: ssh_port
               discover_local_users: true
               discovery_types:
               - null
               - null
-              winrm_port: winrm_port
+              certificates_path_template: certificates_path_template
               auto_rotate_interval_in_days: 1
-              active_directory_target_id: 7
-              discover_services: true
               winrm_over_http: true
-              local_users_rotated_secrets_path_template: local_users_rotated_secrets_path_template
               targets_type: targets_type
-              discover_iis_apps: true
-              target_format: target_format
               auto_rotate_rotation_hour: 1
-              domain_name: domain_name
-              enable_rdp_sra: true
               domain_server_targets_path_template: domain_server_targets_path_template
-              user_base_dn: user_base_dn
-              computer_base_dn: computer_base_dn
-              domain_users_rotated_secrets_path_template: domain_users_rotated_secrets_path_template
               local_users_ignore_list:
                 key: true
               os_filter: os_filter
@@ -83309,6 +84016,20 @@ components:
             \ migration)"
           type: string
           x-go-name: AdAutoRotateV2
+        ad-cert-expiration-event-in:
+          description: How many days before the expiration of discovered certificates
+            would you like to be notified (Relevant only for Active Directory migration
+            with certificate discovery enabled)
+          items:
+            type: string
+          type: array
+          x-go-name: AdCertificatesExpirationEventsInDays
+        ad-certificates-path-template:
+          description: "Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}}\
+            \ (Relevant only for Active Directory migration with certificate discovery\
+            \ enabled)"
+          type: string
+          x-go-name: AdCertificatesPathTemplate
         ad-computer-base-dn:
           description: "Distinguished Name of Computer objects (servers) to search\
             \ in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only\
@@ -83440,6 +84161,11 @@ components:
             Deprecated: use AdDiscoverTypes
           type: string
           x-go-name: AdDiscoverLocalUsersDeprecated
+        ai-certificate-discovery:
+          description: Enable AI-assisted certificate discovery (only when AI Insight
+            is enabled on the Gateway)
+          type: string
+          x-go-name: AdUseAI
         aws-key:
           description: AWS Secret Access Key (relevant only for AWS migration)
           type: string
@@ -83474,6 +84200,28 @@ components:
             Vault migration)
           type: string
           x-go-name: AzureTenant
+        conjur-account:
+          description: Conjur account name set on your Conjur server (relevant only
+            for Conjur migration).
+          type: string
+          x-go-name: ConjurAccount
+        conjur-api-key:
+          description: Conjur API Key for the specified user (relevant only for Conjur
+            migration).
+          type: string
+          x-go-name: ConjurApiKey
+        conjur-url:
+          description: |-
+            Conjur server base URL (relevant only for Conjur migration).
+            If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate,
+            make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path.
+          type: string
+          x-go-name: ConjurURL
+        conjur-username:
+          description: Conjur username used to authenticate (relevant only for Conjur
+            migration).
+          type: string
+          x-go-name: ConjurUsername
         expiration-event-in:
           description: How many days before the expiration of the certificate would
             you like to be notified.
@@ -84050,6 +84798,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -84611,6 +85360,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -85140,6 +85890,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -85625,6 +86376,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -86100,6 +86852,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -86583,6 +87336,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -87044,6 +87798,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -87551,6 +88306,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -88076,6 +88832,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -88559,6 +89316,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -89057,6 +89815,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -89574,6 +90333,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -90123,6 +90883,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -90652,6 +91413,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -91196,6 +91958,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -91732,6 +92495,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -92284,6 +93048,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -92802,6 +93567,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -93347,6 +94113,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -93875,6 +94642,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -94380,6 +95148,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -94920,6 +95689,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -95408,6 +96178,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -95904,6 +96675,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -96395,6 +97167,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -96920,6 +97693,7 @@ components:
           db_isolation_level: db_isolation_level
           ssl_connection_mode: true
           mongodb_roles: mongodb_roles
+          azure_cloud: azure_cloud
           mongodb_db_name: mongodb_db_name
           oracle_wallet_details:
             sso_data_base64: sso_data_base64
@@ -97895,6 +98669,12 @@ components:
         path: path
         parent_cert: parent_cert
         data: data
+        http_challenge_info:
+          file_content: file_content
+          file_path: file_path
+          instructions: instructions
+          key_auth: key_auth
+          token: token
         reading_token: reading_token
         cert_item_id: 0
         cert_display_id: cert_display_id
@@ -97909,6 +98689,8 @@ components:
         data:
           type: string
           x-go-name: Data
+        http_challenge_info:
+          $ref: '#/components/schemas/HTTPChallengeInfo'
         parent_cert:
           type: string
           x-go-name: ParentCert
@@ -107272,6 +108054,12 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateAzure:
       properties:
+        azure-cloud:
+          default: AzureCloud
+          description: "Azure cloud environment to use. Values: AzureCloud (default),\
+            \ AzureUSGovernment, AzureChinaCloud."
+          type: string
+          x-go-name: AzureCloud
         client-id:
           description: Azure client/application id
           type: string
@@ -107319,7 +108107,7 @@ components:
         subscription-id:
           description: Azure Subscription Id
           type: string
-          x-go-name: AzureSubscriptionId
+          x-go-name: AzureSubscriptionID
         tenant-id:
           description: Azure tenant id
           type: string
@@ -109408,6 +110196,12 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateAzure:
       properties:
+        azure-cloud:
+          default: AzureCloud
+          description: "Azure cloud environment to use. Values: AzureCloud (default),\
+            \ AzureUSGovernment, AzureChinaCloud."
+          type: string
+          x-go-name: AzureCloud
         client-id:
           description: Azure client/application id
           type: string
@@ -109464,7 +110258,7 @@ components:
         subscription-id:
           description: Azure Subscription Id
           type: string
-          x-go-name: AzureSubscriptionId
+          x-go-name: AzureSubscriptionID
         tenant-id:
           description: Azure tenant id
           type: string
@@ -112866,6 +113660,11 @@ components:
             type: string
           type: array
           x-go-name: ProductTypes
+        require-crl-dp:
+          description: Require certificate CRL distribution points (CDP) and enforce
+            CRL validation during authentication.
+          type: boolean
+          x-go-name: RequireCrlDp
         revoked-cert-ids:
           description: A list of revoked cert ids
           items:
@@ -114045,6 +114844,12 @@ components:
       description: "updateAzureTarget is a command that updates an existing target.\
         \ [Deprecated: Use target-update-azure command]"
       properties:
+        azure-cloud:
+          default: AzureCloud
+          description: "Azure cloud environment to use. Values: AzureCloud (default),\
+            \ AzureUSGovernment, AzureChinaCloud."
+          type: string
+          x-go-name: AzureCloud
         client-id:
           description: Azure client/application id
           type: string
@@ -114105,7 +114910,7 @@ components:
         subscription-id:
           description: Azure Subscription Id
           type: string
-          x-go-name: AzureSubscriptionId
+          x-go-name: AzureSubscriptionID
         tenant-id:
           description: Azure tenant id
           type: string
@@ -118159,6 +118964,34 @@ components:
           description: Token
           type: string
           x-go-name: Token
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    vaultAddress:
+      properties:
+        access-id:
+          description: The access-id used to resolve the tenant URLs
+          type: string
+          x-go-name: AccessId
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+      title: vaultAddress resolves tenant-specific vault and API gateway URLs for
+        a given access-id.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    vaultAddressOutput:
+      example:
+        vault_url: vault_url
+        api_gw_url: api_gw_url
+      properties:
+        api_gw_url:
+          type: string
+          x-go-name: ApiGwUrl
+        vault_url:
+          type: string
+          x-go-name: VaultUrl
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     verifyDataWithClassicKey:

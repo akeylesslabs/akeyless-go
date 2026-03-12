@@ -22,6 +22,8 @@ var _ MappedNullable = &TargetCreateAzure{}
 
 // TargetCreateAzure struct for TargetCreateAzure
 type TargetCreateAzure struct {
+	// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
+	AzureCloud *string `json:"azure-cloud,omitempty"`
 	// Azure client/application id
 	ClientId *string `json:"client-id,omitempty"`
 	// Azure client secret
@@ -62,6 +64,8 @@ type _TargetCreateAzure TargetCreateAzure
 // will change when the set of required properties is changed
 func NewTargetCreateAzure(name string) *TargetCreateAzure {
 	this := TargetCreateAzure{}
+	var azureCloud string = "AzureCloud"
+	this.AzureCloud = &azureCloud
 	var connectionType string = "credentials"
 	this.ConnectionType = &connectionType
 	var json bool = false
@@ -75,11 +79,45 @@ func NewTargetCreateAzure(name string) *TargetCreateAzure {
 // but it doesn't guarantee that properties required by API are set
 func NewTargetCreateAzureWithDefaults() *TargetCreateAzure {
 	this := TargetCreateAzure{}
+	var azureCloud string = "AzureCloud"
+	this.AzureCloud = &azureCloud
 	var connectionType string = "credentials"
 	this.ConnectionType = &connectionType
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAzureCloud returns the AzureCloud field value if set, zero value otherwise.
+func (o *TargetCreateAzure) GetAzureCloud() string {
+	if o == nil || IsNil(o.AzureCloud) {
+		var ret string
+		return ret
+	}
+	return *o.AzureCloud
+}
+
+// GetAzureCloudOk returns a tuple with the AzureCloud field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateAzure) GetAzureCloudOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureCloud) {
+		return nil, false
+	}
+	return o.AzureCloud, true
+}
+
+// HasAzureCloud returns a boolean if a field has been set.
+func (o *TargetCreateAzure) HasAzureCloud() bool {
+	if o != nil && !IsNil(o.AzureCloud) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureCloud gets a reference to the given string and assigns it to the AzureCloud field.
+func (o *TargetCreateAzure) SetAzureCloud(v string) {
+	o.AzureCloud = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
@@ -564,6 +602,9 @@ func (o TargetCreateAzure) MarshalJSON() ([]byte, error) {
 
 func (o TargetCreateAzure) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AzureCloud) {
+		toSerialize["azure-cloud"] = o.AzureCloud
+	}
 	if !IsNil(o.ClientId) {
 		toSerialize["client-id"] = o.ClientId
 	}

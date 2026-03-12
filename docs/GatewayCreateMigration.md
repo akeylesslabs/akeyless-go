@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServiceAccountKeyDecoded** | Pointer to **string** |  | [optional] 
 **AdAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration) | [optional] 
+**AdCertExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of discovered certificates would you like to be notified (Relevant only for Active Directory migration with certificate discovery enabled) | [optional] 
+**AdCertificatesPathTemplate** | Pointer to **string** | Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}} (Relevant only for Active Directory migration with certificate discovery enabled) | [optional] 
 **AdComputerBaseDn** | Pointer to **string** | Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN&#x3D;Computers,DC&#x3D;example,DC&#x3D;com (Relevant only for Active Directory migration) | [optional] 
 **AdDiscoverIisApp** | Pointer to **string** | Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **AdDiscoverServices** | Pointer to **string** | Enable/Disable discovery of Windows services from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration) | [optional] [default to "false"]
@@ -28,6 +30,7 @@ Name | Type | Description | Notes
 **AdWinrmOverHttp** | Pointer to **string** | Use WinRM over HTTP, by default runs over HTTPS | [optional] [default to "false"]
 **AdWinrmPort** | Pointer to **string** | Set the WinRM Port for further connection to the domain servers. Default is 5986 (Relevant only for Active Directory migration) | [optional] [default to "5986"]
 **AdDiscoverLocalUsers** | Pointer to **string** | Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes | [optional] 
+**AiCertificateDiscovery** | Pointer to **string** | Enable AI-assisted certificate discovery (only when AI Insight is enabled on the Gateway) | [optional] 
 **AwsKey** | Pointer to **string** | AWS Secret Access Key (relevant only for AWS migration) | [optional] 
 **AwsKeyId** | Pointer to **string** | AWS Access Key ID with sufficient permissions to get all secrets, e.g. &#39;arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]&#39; (relevant only for AWS migration) | [optional] 
 **AwsRegion** | Pointer to **string** | AWS region of the required Secrets Manager (relevant only for AWS migration) | [optional] [default to "us-east-2"]
@@ -35,6 +38,10 @@ Name | Type | Description | Notes
 **AzureKvName** | Pointer to **string** | Azure Key Vault Name (relevant only for Azure Key Vault migration) | [optional] 
 **AzureSecret** | Pointer to **string** | Azure Key Vault secret (relevant only for Azure Key Vault migration) | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration) | [optional] 
+**ConjurAccount** | Pointer to **string** | Conjur account name set on your Conjur server (relevant only for Conjur migration). | [optional] 
+**ConjurApiKey** | Pointer to **string** | Conjur API Key for the specified user (relevant only for Conjur migration). | [optional] 
+**ConjurUrl** | Pointer to **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
+**ConjurUsername** | Pointer to **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (cross-project override) | [optional] 
@@ -66,7 +73,7 @@ Name | Type | Description | Notes
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate) | [optional] 
+**Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** | Use the GW&#39;s Cloud IAM | [optional] 
 
@@ -138,6 +145,56 @@ SetAdAutoRotate sets AdAutoRotate field to given value.
 `func (o *GatewayCreateMigration) HasAdAutoRotate() bool`
 
 HasAdAutoRotate returns a boolean if a field has been set.
+
+### GetAdCertExpirationEventIn
+
+`func (o *GatewayCreateMigration) GetAdCertExpirationEventIn() []string`
+
+GetAdCertExpirationEventIn returns the AdCertExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetAdCertExpirationEventInOk
+
+`func (o *GatewayCreateMigration) GetAdCertExpirationEventInOk() (*[]string, bool)`
+
+GetAdCertExpirationEventInOk returns a tuple with the AdCertExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdCertExpirationEventIn
+
+`func (o *GatewayCreateMigration) SetAdCertExpirationEventIn(v []string)`
+
+SetAdCertExpirationEventIn sets AdCertExpirationEventIn field to given value.
+
+### HasAdCertExpirationEventIn
+
+`func (o *GatewayCreateMigration) HasAdCertExpirationEventIn() bool`
+
+HasAdCertExpirationEventIn returns a boolean if a field has been set.
+
+### GetAdCertificatesPathTemplate
+
+`func (o *GatewayCreateMigration) GetAdCertificatesPathTemplate() string`
+
+GetAdCertificatesPathTemplate returns the AdCertificatesPathTemplate field if non-nil, zero value otherwise.
+
+### GetAdCertificatesPathTemplateOk
+
+`func (o *GatewayCreateMigration) GetAdCertificatesPathTemplateOk() (*string, bool)`
+
+GetAdCertificatesPathTemplateOk returns a tuple with the AdCertificatesPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAdCertificatesPathTemplate
+
+`func (o *GatewayCreateMigration) SetAdCertificatesPathTemplate(v string)`
+
+SetAdCertificatesPathTemplate sets AdCertificatesPathTemplate field to given value.
+
+### HasAdCertificatesPathTemplate
+
+`func (o *GatewayCreateMigration) HasAdCertificatesPathTemplate() bool`
+
+HasAdCertificatesPathTemplate returns a boolean if a field has been set.
 
 ### GetAdComputerBaseDn
 
@@ -689,6 +746,31 @@ SetAdDiscoverLocalUsers sets AdDiscoverLocalUsers field to given value.
 
 HasAdDiscoverLocalUsers returns a boolean if a field has been set.
 
+### GetAiCertificateDiscovery
+
+`func (o *GatewayCreateMigration) GetAiCertificateDiscovery() string`
+
+GetAiCertificateDiscovery returns the AiCertificateDiscovery field if non-nil, zero value otherwise.
+
+### GetAiCertificateDiscoveryOk
+
+`func (o *GatewayCreateMigration) GetAiCertificateDiscoveryOk() (*string, bool)`
+
+GetAiCertificateDiscoveryOk returns a tuple with the AiCertificateDiscovery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiCertificateDiscovery
+
+`func (o *GatewayCreateMigration) SetAiCertificateDiscovery(v string)`
+
+SetAiCertificateDiscovery sets AiCertificateDiscovery field to given value.
+
+### HasAiCertificateDiscovery
+
+`func (o *GatewayCreateMigration) HasAiCertificateDiscovery() bool`
+
+HasAiCertificateDiscovery returns a boolean if a field has been set.
+
 ### GetAwsKey
 
 `func (o *GatewayCreateMigration) GetAwsKey() string`
@@ -863,6 +945,106 @@ SetAzureTenantId sets AzureTenantId field to given value.
 `func (o *GatewayCreateMigration) HasAzureTenantId() bool`
 
 HasAzureTenantId returns a boolean if a field has been set.
+
+### GetConjurAccount
+
+`func (o *GatewayCreateMigration) GetConjurAccount() string`
+
+GetConjurAccount returns the ConjurAccount field if non-nil, zero value otherwise.
+
+### GetConjurAccountOk
+
+`func (o *GatewayCreateMigration) GetConjurAccountOk() (*string, bool)`
+
+GetConjurAccountOk returns a tuple with the ConjurAccount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConjurAccount
+
+`func (o *GatewayCreateMigration) SetConjurAccount(v string)`
+
+SetConjurAccount sets ConjurAccount field to given value.
+
+### HasConjurAccount
+
+`func (o *GatewayCreateMigration) HasConjurAccount() bool`
+
+HasConjurAccount returns a boolean if a field has been set.
+
+### GetConjurApiKey
+
+`func (o *GatewayCreateMigration) GetConjurApiKey() string`
+
+GetConjurApiKey returns the ConjurApiKey field if non-nil, zero value otherwise.
+
+### GetConjurApiKeyOk
+
+`func (o *GatewayCreateMigration) GetConjurApiKeyOk() (*string, bool)`
+
+GetConjurApiKeyOk returns a tuple with the ConjurApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConjurApiKey
+
+`func (o *GatewayCreateMigration) SetConjurApiKey(v string)`
+
+SetConjurApiKey sets ConjurApiKey field to given value.
+
+### HasConjurApiKey
+
+`func (o *GatewayCreateMigration) HasConjurApiKey() bool`
+
+HasConjurApiKey returns a boolean if a field has been set.
+
+### GetConjurUrl
+
+`func (o *GatewayCreateMigration) GetConjurUrl() string`
+
+GetConjurUrl returns the ConjurUrl field if non-nil, zero value otherwise.
+
+### GetConjurUrlOk
+
+`func (o *GatewayCreateMigration) GetConjurUrlOk() (*string, bool)`
+
+GetConjurUrlOk returns a tuple with the ConjurUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConjurUrl
+
+`func (o *GatewayCreateMigration) SetConjurUrl(v string)`
+
+SetConjurUrl sets ConjurUrl field to given value.
+
+### HasConjurUrl
+
+`func (o *GatewayCreateMigration) HasConjurUrl() bool`
+
+HasConjurUrl returns a boolean if a field has been set.
+
+### GetConjurUsername
+
+`func (o *GatewayCreateMigration) GetConjurUsername() string`
+
+GetConjurUsername returns the ConjurUsername field if non-nil, zero value otherwise.
+
+### GetConjurUsernameOk
+
+`func (o *GatewayCreateMigration) GetConjurUsernameOk() (*string, bool)`
+
+GetConjurUsernameOk returns a tuple with the ConjurUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConjurUsername
+
+`func (o *GatewayCreateMigration) SetConjurUsername(v string)`
+
+SetConjurUsername sets ConjurUsername field to given value.
+
+### HasConjurUsername
+
+`func (o *GatewayCreateMigration) HasConjurUsername() bool`
+
+HasConjurUsername returns a boolean if a field has been set.
 
 ### GetExpirationEventIn
 

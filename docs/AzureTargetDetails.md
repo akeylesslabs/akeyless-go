@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AzureClientId** | Pointer to **string** |  | [optional] 
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
+**AzureCloud** | Pointer to **string** |  | [optional] 
 **AzureResourceGroupName** | Pointer to **string** |  | [optional] 
 **AzureResourceName** | Pointer to **string** |  | [optional] 
 **AzureSubscriptionId** | Pointer to **string** |  | [optional] 
@@ -84,6 +85,31 @@ SetAzureClientSecret sets AzureClientSecret field to given value.
 `func (o *AzureTargetDetails) HasAzureClientSecret() bool`
 
 HasAzureClientSecret returns a boolean if a field has been set.
+
+### GetAzureCloud
+
+`func (o *AzureTargetDetails) GetAzureCloud() string`
+
+GetAzureCloud returns the AzureCloud field if non-nil, zero value otherwise.
+
+### GetAzureCloudOk
+
+`func (o *AzureTargetDetails) GetAzureCloudOk() (*string, bool)`
+
+GetAzureCloudOk returns a tuple with the AzureCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureCloud
+
+`func (o *AzureTargetDetails) SetAzureCloud(v string)`
+
+SetAzureCloud sets AzureCloud field to given value.
+
+### HasAzureCloud
+
+`func (o *AzureTargetDetails) HasAzureCloud() bool`
+
+HasAzureCloud returns a boolean if a field has been set.
 
 ### GetAzureResourceGroupName
 

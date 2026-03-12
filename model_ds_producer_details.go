@@ -53,6 +53,7 @@ type DSProducerDetails struct {
 	AzureAppObjectId *string `json:"azure_app_object_id,omitempty"`
 	AzureClientId *string `json:"azure_client_id,omitempty"`
 	AzureClientSecret *string `json:"azure_client_secret,omitempty"`
+	AzureCloud *string `json:"azure_cloud,omitempty"`
 	AzureFixedUserNameSubClaimKey *string `json:"azure_fixed_user_name_sub_claim_key,omitempty"`
 	AzureFixedUserOnly *bool `json:"azure_fixed_user_only,omitempty"`
 	AzureResourceGroupName *string `json:"azure_resource_group_name,omitempty"`
@@ -1348,6 +1349,38 @@ func (o *DSProducerDetails) HasAzureClientSecret() bool {
 // SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *DSProducerDetails) SetAzureClientSecret(v string) {
 	o.AzureClientSecret = &v
+}
+
+// GetAzureCloud returns the AzureCloud field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAzureCloud() string {
+	if o == nil || IsNil(o.AzureCloud) {
+		var ret string
+		return ret
+	}
+	return *o.AzureCloud
+}
+
+// GetAzureCloudOk returns a tuple with the AzureCloud field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAzureCloudOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureCloud) {
+		return nil, false
+	}
+	return o.AzureCloud, true
+}
+
+// HasAzureCloud returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAzureCloud() bool {
+	if o != nil && !IsNil(o.AzureCloud) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureCloud gets a reference to the given string and assigns it to the AzureCloud field.
+func (o *DSProducerDetails) SetAzureCloud(v string) {
+	o.AzureCloud = &v
 }
 
 // GetAzureFixedUserNameSubClaimKey returns the AzureFixedUserNameSubClaimKey field value if set, zero value otherwise.
@@ -8879,6 +8912,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureClientSecret) {
 		toSerialize["azure_client_secret"] = o.AzureClientSecret
+	}
+	if !IsNil(o.AzureCloud) {
+		toSerialize["azure_cloud"] = o.AzureCloud
 	}
 	if !IsNil(o.AzureFixedUserNameSubClaimKey) {
 		toSerialize["azure_fixed_user_name_sub_claim_key"] = o.AzureFixedUserNameSubClaimKey

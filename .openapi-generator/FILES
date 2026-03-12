@@ -130,6 +130,8 @@ docs/ConfigChange.md
 docs/ConfigHash.md
 docs/Configure.md
 docs/ConfigureOutput.md
+docs/ConjurMigration.md
+docs/ConjurPayload.md
 docs/Connect.md
 docs/CreateAWSTarget.md
 docs/CreateAWSTargetOutput.md
@@ -262,6 +264,7 @@ docs/DecryptPKCS1.md
 docs/DecryptPKCS1Output.md
 docs/DecryptWithClassicKey.md
 docs/DecryptWithClassicKeyOutput.md
+docs/DefaultAuthMethodSettings.md
 docs/DefaultConfigPart.md
 docs/DefaultHomePage.md
 docs/DeleteAuthMethod.md
@@ -649,6 +652,7 @@ docs/GetTarget.md
 docs/GetTargetDetails.md
 docs/GetTargetDetailsOutput.md
 docs/GetUserEventStatusOutput.md
+docs/GithubMetadata.md
 docs/GithubTargetDetails.md
 docs/GitlabTargetDetails.md
 docs/GlobalSignAtlasTargetDetails.md
@@ -668,6 +672,7 @@ docs/GwUpdateRemoteAccessSessionLogsSplunk.md
 docs/GwUpdateRemoteAccessSessionLogsStdout.md
 docs/GwUpdateRemoteAccessSessionLogsSumologic.md
 docs/GwUpdateRemoteAccessSessionLogsSyslog.md
+docs/HTTPChallengeInfo.md
 docs/HashiMigration.md
 docs/HashiPayload.md
 docs/HashiVaultTargetDetails.md
@@ -677,6 +682,7 @@ docs/HuaweiAccessRules.md
 docs/ImportPasswords.md
 docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
+docs/IssuerOverviewInfo.md
 docs/Item.md
 docs/ItemCustomFieldsDetails.md
 docs/ItemGeneralInfo.md
@@ -1144,8 +1150,12 @@ docs/UscSyncInfo.md
 docs/UscUpdate.md
 docs/UscUpdateSecretOutput.md
 docs/V2Api.md
+docs/ValidateCertificateChallenge.md
+docs/ValidateCertificateChallengeOutput.md
 docs/ValidateToken.md
 docs/ValidateTokenOutput.md
+docs/VaultAddress.md
+docs/VaultAddressOutput.md
 docs/VaultlessTokenizerInfo.md
 docs/VenafiTargetDetails.md
 docs/VerifyDataWithClassicKey.md
@@ -1296,6 +1306,8 @@ model_config_change.go
 model_config_hash.go
 model_configure.go
 model_configure_output.go
+model_conjur_migration.go
+model_conjur_payload.go
 model_connect.go
 model_create_artifactory_target.go
 model_create_artifactory_target_output.go
@@ -1427,6 +1439,7 @@ model_decrypt_pkcs1.go
 model_decrypt_pkcs1_output.go
 model_decrypt_with_classic_key.go
 model_decrypt_with_classic_key_output.go
+model_default_auth_method_settings.go
 model_default_config_part.go
 model_default_home_page.go
 model_delete_auth_method.go
@@ -1814,6 +1827,7 @@ model_get_target.go
 model_get_target_details.go
 model_get_target_details_output.go
 model_get_user_event_status_output.go
+model_github_metadata.go
 model_github_target_details.go
 model_gitlab_target_details.go
 model_gke_target_details.go
@@ -1839,10 +1853,12 @@ model_hashi_payload.go
 model_hashi_vault_target_details.go
 model_hmac.go
 model_hmac_output.go
+model_http_challenge_info.go
 model_huawei_access_rules.go
 model_import_passwords.go
 model_import_passwords_output.go
 model_importer_info.go
+model_issuer_overview_info.go
 model_item.go
 model_item_custom_fields_details.go
 model_item_general_info.go
@@ -2309,8 +2325,12 @@ model_usc_list_secrets_output.go
 model_usc_sync_info.go
 model_usc_update.go
 model_usc_update_secret_output.go
+model_validate_certificate_challenge.go
+model_validate_certificate_challenge_output.go
 model_validate_token.go
 model_validate_token_output.go
+model_vault_address.go
+model_vault_address_output.go
 model_vaultless_tokenizer_info.go
 model_venafi_target_details.go
 model_verify_data_with_classic_key.go

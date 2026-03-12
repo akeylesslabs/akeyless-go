@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AzureCloud** | Pointer to **string** | Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. | [optional] [default to "AzureCloud"]
 **ClientId** | Pointer to **string** | Azure client/application id | [optional] 
 **ClientSecret** | Pointer to **string** | Azure client secret | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
@@ -42,6 +43,31 @@ will change when the set of required properties is changed
 NewUpdateAzureTargetWithDefaults instantiates a new UpdateAzureTarget object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAzureCloud
+
+`func (o *UpdateAzureTarget) GetAzureCloud() string`
+
+GetAzureCloud returns the AzureCloud field if non-nil, zero value otherwise.
+
+### GetAzureCloudOk
+
+`func (o *UpdateAzureTarget) GetAzureCloudOk() (*string, bool)`
+
+GetAzureCloudOk returns a tuple with the AzureCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureCloud
+
+`func (o *UpdateAzureTarget) SetAzureCloud(v string)`
+
+SetAzureCloud sets AzureCloud field to given value.
+
+### HasAzureCloud
+
+`func (o *UpdateAzureTarget) HasAzureCloud() bool`
+
+HasAzureCloud returns a boolean if a field has been set.
 
 ### GetClientId
 

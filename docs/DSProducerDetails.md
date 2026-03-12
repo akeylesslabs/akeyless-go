@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **AzureAppObjectId** | Pointer to **string** |  | [optional] 
 **AzureClientId** | Pointer to **string** |  | [optional] 
 **AzureClientSecret** | Pointer to **string** |  | [optional] 
+**AzureCloud** | Pointer to **string** |  | [optional] 
 **AzureFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
 **AzureFixedUserOnly** | Pointer to **bool** |  | [optional] 
 **AzureResourceGroupName** | Pointer to **string** |  | [optional] 
@@ -1087,6 +1088,31 @@ SetAzureClientSecret sets AzureClientSecret field to given value.
 `func (o *DSProducerDetails) HasAzureClientSecret() bool`
 
 HasAzureClientSecret returns a boolean if a field has been set.
+
+### GetAzureCloud
+
+`func (o *DSProducerDetails) GetAzureCloud() string`
+
+GetAzureCloud returns the AzureCloud field if non-nil, zero value otherwise.
+
+### GetAzureCloudOk
+
+`func (o *DSProducerDetails) GetAzureCloudOk() (*string, bool)`
+
+GetAzureCloudOk returns a tuple with the AzureCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureCloud
+
+`func (o *DSProducerDetails) SetAzureCloud(v string)`
+
+SetAzureCloud sets AzureCloud field to given value.
+
+### HasAzureCloud
+
+`func (o *DSProducerDetails) HasAzureCloud() bool`
+
+HasAzureCloud returns a boolean if a field has been set.
 
 ### GetAzureFixedUserNameSubClaimKey
 

@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **AuthUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **CertificateExpirationEvents** | Pointer to [**CertificateExpirationEventsSettings**](CertificateExpirationEventsSettings.md) |  | [optional] 
 **DataProtectionSection** | Pointer to [**DataProtectionSection**](DataProtectionSection.md) |  | [optional] 
+**DefaultAuthMethod** | Pointer to [**DefaultAuthMethodSettings**](DefaultAuthMethodSettings.md) |  | [optional] 
 **DefaultHomePage** | Pointer to [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
@@ -297,6 +298,31 @@ SetDataProtectionSection sets DataProtectionSection field to given value.
 `func (o *AccountGeneralSettings) HasDataProtectionSection() bool`
 
 HasDataProtectionSection returns a boolean if a field has been set.
+
+### GetDefaultAuthMethod
+
+`func (o *AccountGeneralSettings) GetDefaultAuthMethod() DefaultAuthMethodSettings`
+
+GetDefaultAuthMethod returns the DefaultAuthMethod field if non-nil, zero value otherwise.
+
+### GetDefaultAuthMethodOk
+
+`func (o *AccountGeneralSettings) GetDefaultAuthMethodOk() (*DefaultAuthMethodSettings, bool)`
+
+GetDefaultAuthMethodOk returns a tuple with the DefaultAuthMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultAuthMethod
+
+`func (o *AccountGeneralSettings) SetDefaultAuthMethod(v DefaultAuthMethodSettings)`
+
+SetDefaultAuthMethod sets DefaultAuthMethod field to given value.
+
+### HasDefaultAuthMethod
+
+`func (o *AccountGeneralSettings) HasDefaultAuthMethod() bool`
+
+HasDefaultAuthMethod returns a boolean if a field has been set.
 
 ### GetDefaultHomePage
 

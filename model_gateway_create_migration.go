@@ -25,6 +25,10 @@ type GatewayCreateMigration struct {
 	ServiceAccountKeyDecoded *string `json:"ServiceAccountKeyDecoded,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --ad-rotation-interval and --ad-rotation-hour parameters (Relevant only for Active Directory migration)
 	AdAutoRotate *string `json:"ad-auto-rotate,omitempty"`
+	// How many days before the expiration of discovered certificates would you like to be notified (Relevant only for Active Directory migration with certificate discovery enabled)
+	AdCertExpirationEventIn []string `json:"ad-cert-expiration-event-in,omitempty"`
+	// Path location template for migrating certificates e.g.: /Certificates/{{COMMON_NAME}} (Relevant only for Active Directory migration with certificate discovery enabled)
+	AdCertificatesPathTemplate *string `json:"ad-certificates-path-template,omitempty"`
 	// Distinguished Name of Computer objects (servers) to search in Active Directory e.g.: CN=Computers,DC=example,DC=com (Relevant only for Active Directory migration)
 	AdComputerBaseDn *string `json:"ad-computer-base-dn,omitempty"`
 	// Enable/Disable discovery of IIS application from each domain server as part of the SSH/Windows Rotated Secrets. Default is false. (Relevant only for Active Directory migration)
@@ -69,6 +73,8 @@ type GatewayCreateMigration struct {
 	AdWinrmPort *string `json:"ad-winrm-port,omitempty"`
 	// Enable/Disable discovery of local users from each domain server and migrate them as SSH/Windows Rotated Secrets. Default is false: only domain users will be migrated. Discovery of local users might require further installation of SSH on the servers, based on the supplied computer base DN. This will be implemented automatically as part of the migration process (Relevant only for Active Directory migration) Deprecated: use AdDiscoverTypes
 	AdDiscoverLocalUsers *string `json:"ad_discover_local_users,omitempty"`
+	// Enable AI-assisted certificate discovery (only when AI Insight is enabled on the Gateway)
+	AiCertificateDiscovery *string `json:"ai-certificate-discovery,omitempty"`
 	// AWS Secret Access Key (relevant only for AWS migration)
 	AwsKey *string `json:"aws-key,omitempty"`
 	// AWS Access Key ID with sufficient permissions to get all secrets, e.g. 'arn:aws:secretsmanager:[Region]:[AccountId]:secret:[/path/to/secrets/_*]' (relevant only for AWS migration)
@@ -83,6 +89,14 @@ type GatewayCreateMigration struct {
 	AzureSecret *string `json:"azure-secret,omitempty"`
 	// Azure Key Vault Access tenant ID (relevant only for Azure Key Vault migration)
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// Conjur account name set on your Conjur server (relevant only for Conjur migration).
+	ConjurAccount *string `json:"conjur-account,omitempty"`
+	// Conjur API Key for the specified user (relevant only for Conjur migration).
+	ConjurApiKey *string `json:"conjur-api-key,omitempty"`
+	// Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path.
+	ConjurUrl *string `json:"conjur-url,omitempty"`
+	// Conjur username used to authenticate (relevant only for Conjur migration).
+	ConjurUsername *string `json:"conjur-username,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
@@ -145,7 +159,7 @@ type GatewayCreateMigration struct {
 	TargetLocation string `json:"target-location"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Migration type (hashi/aws/gcp/k8s/azure_kv/active_directory/server_inventory/certificate)
+	// Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate)
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
@@ -287,6 +301,70 @@ func (o *GatewayCreateMigration) HasAdAutoRotate() bool {
 // SetAdAutoRotate gets a reference to the given string and assigns it to the AdAutoRotate field.
 func (o *GatewayCreateMigration) SetAdAutoRotate(v string) {
 	o.AdAutoRotate = &v
+}
+
+// GetAdCertExpirationEventIn returns the AdCertExpirationEventIn field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdCertExpirationEventIn() []string {
+	if o == nil || IsNil(o.AdCertExpirationEventIn) {
+		var ret []string
+		return ret
+	}
+	return o.AdCertExpirationEventIn
+}
+
+// GetAdCertExpirationEventInOk returns a tuple with the AdCertExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdCertExpirationEventInOk() ([]string, bool) {
+	if o == nil || IsNil(o.AdCertExpirationEventIn) {
+		return nil, false
+	}
+	return o.AdCertExpirationEventIn, true
+}
+
+// HasAdCertExpirationEventIn returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdCertExpirationEventIn() bool {
+	if o != nil && !IsNil(o.AdCertExpirationEventIn) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdCertExpirationEventIn gets a reference to the given []string and assigns it to the AdCertExpirationEventIn field.
+func (o *GatewayCreateMigration) SetAdCertExpirationEventIn(v []string) {
+	o.AdCertExpirationEventIn = v
+}
+
+// GetAdCertificatesPathTemplate returns the AdCertificatesPathTemplate field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAdCertificatesPathTemplate() string {
+	if o == nil || IsNil(o.AdCertificatesPathTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.AdCertificatesPathTemplate
+}
+
+// GetAdCertificatesPathTemplateOk returns a tuple with the AdCertificatesPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAdCertificatesPathTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.AdCertificatesPathTemplate) {
+		return nil, false
+	}
+	return o.AdCertificatesPathTemplate, true
+}
+
+// HasAdCertificatesPathTemplate returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAdCertificatesPathTemplate() bool {
+	if o != nil && !IsNil(o.AdCertificatesPathTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetAdCertificatesPathTemplate gets a reference to the given string and assigns it to the AdCertificatesPathTemplate field.
+func (o *GatewayCreateMigration) SetAdCertificatesPathTemplate(v string) {
+	o.AdCertificatesPathTemplate = &v
 }
 
 // GetAdComputerBaseDn returns the AdComputerBaseDn field value if set, zero value otherwise.
@@ -993,6 +1071,38 @@ func (o *GatewayCreateMigration) SetAdDiscoverLocalUsers(v string) {
 	o.AdDiscoverLocalUsers = &v
 }
 
+// GetAiCertificateDiscovery returns the AiCertificateDiscovery field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetAiCertificateDiscovery() string {
+	if o == nil || IsNil(o.AiCertificateDiscovery) {
+		var ret string
+		return ret
+	}
+	return *o.AiCertificateDiscovery
+}
+
+// GetAiCertificateDiscoveryOk returns a tuple with the AiCertificateDiscovery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetAiCertificateDiscoveryOk() (*string, bool) {
+	if o == nil || IsNil(o.AiCertificateDiscovery) {
+		return nil, false
+	}
+	return o.AiCertificateDiscovery, true
+}
+
+// HasAiCertificateDiscovery returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasAiCertificateDiscovery() bool {
+	if o != nil && !IsNil(o.AiCertificateDiscovery) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiCertificateDiscovery gets a reference to the given string and assigns it to the AiCertificateDiscovery field.
+func (o *GatewayCreateMigration) SetAiCertificateDiscovery(v string) {
+	o.AiCertificateDiscovery = &v
+}
+
 // GetAwsKey returns the AwsKey field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetAwsKey() string {
 	if o == nil || IsNil(o.AwsKey) {
@@ -1215,6 +1325,134 @@ func (o *GatewayCreateMigration) HasAzureTenantId() bool {
 // SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *GatewayCreateMigration) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
+}
+
+// GetConjurAccount returns the ConjurAccount field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetConjurAccount() string {
+	if o == nil || IsNil(o.ConjurAccount) {
+		var ret string
+		return ret
+	}
+	return *o.ConjurAccount
+}
+
+// GetConjurAccountOk returns a tuple with the ConjurAccount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetConjurAccountOk() (*string, bool) {
+	if o == nil || IsNil(o.ConjurAccount) {
+		return nil, false
+	}
+	return o.ConjurAccount, true
+}
+
+// HasConjurAccount returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasConjurAccount() bool {
+	if o != nil && !IsNil(o.ConjurAccount) {
+		return true
+	}
+
+	return false
+}
+
+// SetConjurAccount gets a reference to the given string and assigns it to the ConjurAccount field.
+func (o *GatewayCreateMigration) SetConjurAccount(v string) {
+	o.ConjurAccount = &v
+}
+
+// GetConjurApiKey returns the ConjurApiKey field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetConjurApiKey() string {
+	if o == nil || IsNil(o.ConjurApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.ConjurApiKey
+}
+
+// GetConjurApiKeyOk returns a tuple with the ConjurApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetConjurApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ConjurApiKey) {
+		return nil, false
+	}
+	return o.ConjurApiKey, true
+}
+
+// HasConjurApiKey returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasConjurApiKey() bool {
+	if o != nil && !IsNil(o.ConjurApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetConjurApiKey gets a reference to the given string and assigns it to the ConjurApiKey field.
+func (o *GatewayCreateMigration) SetConjurApiKey(v string) {
+	o.ConjurApiKey = &v
+}
+
+// GetConjurUrl returns the ConjurUrl field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetConjurUrl() string {
+	if o == nil || IsNil(o.ConjurUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ConjurUrl
+}
+
+// GetConjurUrlOk returns a tuple with the ConjurUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetConjurUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ConjurUrl) {
+		return nil, false
+	}
+	return o.ConjurUrl, true
+}
+
+// HasConjurUrl returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasConjurUrl() bool {
+	if o != nil && !IsNil(o.ConjurUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetConjurUrl gets a reference to the given string and assigns it to the ConjurUrl field.
+func (o *GatewayCreateMigration) SetConjurUrl(v string) {
+	o.ConjurUrl = &v
+}
+
+// GetConjurUsername returns the ConjurUsername field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetConjurUsername() string {
+	if o == nil || IsNil(o.ConjurUsername) {
+		var ret string
+		return ret
+	}
+	return *o.ConjurUsername
+}
+
+// GetConjurUsernameOk returns a tuple with the ConjurUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetConjurUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.ConjurUsername) {
+		return nil, false
+	}
+	return o.ConjurUsername, true
+}
+
+// HasConjurUsername returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasConjurUsername() bool {
+	if o != nil && !IsNil(o.ConjurUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetConjurUsername gets a reference to the given string and assigns it to the ConjurUsername field.
+func (o *GatewayCreateMigration) SetConjurUsername(v string) {
+	o.ConjurUsername = &v
 }
 
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
@@ -2281,6 +2519,12 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdAutoRotate) {
 		toSerialize["ad-auto-rotate"] = o.AdAutoRotate
 	}
+	if !IsNil(o.AdCertExpirationEventIn) {
+		toSerialize["ad-cert-expiration-event-in"] = o.AdCertExpirationEventIn
+	}
+	if !IsNil(o.AdCertificatesPathTemplate) {
+		toSerialize["ad-certificates-path-template"] = o.AdCertificatesPathTemplate
+	}
 	if !IsNil(o.AdComputerBaseDn) {
 		toSerialize["ad-computer-base-dn"] = o.AdComputerBaseDn
 	}
@@ -2347,6 +2591,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdDiscoverLocalUsers) {
 		toSerialize["ad_discover_local_users"] = o.AdDiscoverLocalUsers
 	}
+	if !IsNil(o.AiCertificateDiscovery) {
+		toSerialize["ai-certificate-discovery"] = o.AiCertificateDiscovery
+	}
 	if !IsNil(o.AwsKey) {
 		toSerialize["aws-key"] = o.AwsKey
 	}
@@ -2367,6 +2614,18 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureTenantId) {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
+	}
+	if !IsNil(o.ConjurAccount) {
+		toSerialize["conjur-account"] = o.ConjurAccount
+	}
+	if !IsNil(o.ConjurApiKey) {
+		toSerialize["conjur-api-key"] = o.ConjurApiKey
+	}
+	if !IsNil(o.ConjurUrl) {
+		toSerialize["conjur-url"] = o.ConjurUrl
+	}
+	if !IsNil(o.ConjurUsername) {
+		toSerialize["conjur-username"] = o.ConjurUsername
 	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn

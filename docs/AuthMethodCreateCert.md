@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
+**RequireCrlDp** | Pointer to **bool** | Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication. | [optional] 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -568,6 +569,31 @@ SetProductType sets ProductType field to given value.
 `func (o *AuthMethodCreateCert) HasProductType() bool`
 
 HasProductType returns a boolean if a field has been set.
+
+### GetRequireCrlDp
+
+`func (o *AuthMethodCreateCert) GetRequireCrlDp() bool`
+
+GetRequireCrlDp returns the RequireCrlDp field if non-nil, zero value otherwise.
+
+### GetRequireCrlDpOk
+
+`func (o *AuthMethodCreateCert) GetRequireCrlDpOk() (*bool, bool)`
+
+GetRequireCrlDpOk returns a tuple with the RequireCrlDp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireCrlDp
+
+`func (o *AuthMethodCreateCert) SetRequireCrlDp(v bool)`
+
+SetRequireCrlDp sets RequireCrlDp field to given value.
+
+### HasRequireCrlDp
+
+`func (o *AuthMethodCreateCert) HasRequireCrlDp() bool`
+
+HasRequireCrlDp returns a boolean if a field has been set.
 
 ### GetRevokedCertIds
 

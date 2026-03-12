@@ -34,6 +34,8 @@ type Configure struct {
 	AdminPassword *string `json:"admin-password,omitempty"`
 	// Azure Active Directory ObjectId (relevant only for access-type=azure_ad)
 	AzureAdObjectId *string `json:"azure-ad-object-id,omitempty"`
+	// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
+	AzureCloud *string `json:"azure-cloud,omitempty"`
 	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert in Curl Context)
 	CertData *string `json:"cert-data,omitempty"`
 	// Certificate Issuer Name
@@ -78,6 +80,8 @@ func NewConfigure() *Configure {
 	this := Configure{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var azureCloud string = "AzureCloud"
+	this.AzureCloud = &azureCloud
 	var gcpAudience string = "akeyless.io"
 	this.GcpAudience = &gcpAudience
 	var json bool = false
@@ -94,6 +98,8 @@ func NewConfigureWithDefaults() *Configure {
 	this := Configure{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var azureCloud string = "AzureCloud"
+	this.AzureCloud = &azureCloud
 	var gcpAudience string = "akeyless.io"
 	this.GcpAudience = &gcpAudience
 	var json bool = false
@@ -325,6 +331,38 @@ func (o *Configure) HasAzureAdObjectId() bool {
 // SetAzureAdObjectId gets a reference to the given string and assigns it to the AzureAdObjectId field.
 func (o *Configure) SetAzureAdObjectId(v string) {
 	o.AzureAdObjectId = &v
+}
+
+// GetAzureCloud returns the AzureCloud field value if set, zero value otherwise.
+func (o *Configure) GetAzureCloud() string {
+	if o == nil || IsNil(o.AzureCloud) {
+		var ret string
+		return ret
+	}
+	return *o.AzureCloud
+}
+
+// GetAzureCloudOk returns a tuple with the AzureCloud field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Configure) GetAzureCloudOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureCloud) {
+		return nil, false
+	}
+	return o.AzureCloud, true
+}
+
+// HasAzureCloud returns a boolean if a field has been set.
+func (o *Configure) HasAzureCloud() bool {
+	if o != nil && !IsNil(o.AzureCloud) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureCloud gets a reference to the given string and assigns it to the AzureCloud field.
+func (o *Configure) SetAzureCloud(v string) {
+	o.AzureCloud = &v
 }
 
 // GetCertData returns the CertData field value if set, zero value otherwise.
@@ -901,6 +939,9 @@ func (o Configure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureAdObjectId) {
 		toSerialize["azure-ad-object-id"] = o.AzureAdObjectId
+	}
+	if !IsNil(o.AzureCloud) {
+		toSerialize["azure-cloud"] = o.AzureCloud
 	}
 	if !IsNil(o.CertData) {
 		toSerialize["cert-data"] = o.CertData

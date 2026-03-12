@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Created** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Expiration** | Pointer to **time.Time** |  | [optional] 
+**Github** | Pointer to [**GithubMetadata**](GithubMetadata.md) |  | [optional] 
 **KeyId** | Pointer to **string** |  | [optional] 
 **LastRetrieved** | Pointer to **time.Time** |  | [optional] 
 **Location** | Pointer to **interface{}** |  | [optional] 
@@ -112,6 +113,31 @@ SetExpiration sets Expiration field to given value.
 `func (o *SecretInfo) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
+
+### GetGithub
+
+`func (o *SecretInfo) GetGithub() GithubMetadata`
+
+GetGithub returns the Github field if non-nil, zero value otherwise.
+
+### GetGithubOk
+
+`func (o *SecretInfo) GetGithubOk() (*GithubMetadata, bool)`
+
+GetGithubOk returns a tuple with the Github field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGithub
+
+`func (o *SecretInfo) SetGithub(v GithubMetadata)`
+
+SetGithub sets Github field to given value.
+
+### HasGithub
+
+`func (o *SecretInfo) HasGithub() bool`
+
+HasGithub returns a boolean if a field has been set.
 
 ### GetKeyId
 

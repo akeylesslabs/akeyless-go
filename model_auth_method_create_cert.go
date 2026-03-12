@@ -64,6 +64,8 @@ type AuthMethodCreateCert struct {
 	Name string `json:"name"`
 	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
 	ProductType []string `json:"product-type,omitempty"`
+	// Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication.
+	RequireCrlDp *bool `json:"require-crl-dp,omitempty"`
 	// A list of revoked cert ids
 	RevokedCertIds []string `json:"revoked-cert-ids,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -771,6 +773,38 @@ func (o *AuthMethodCreateCert) SetProductType(v []string) {
 	o.ProductType = v
 }
 
+// GetRequireCrlDp returns the RequireCrlDp field value if set, zero value otherwise.
+func (o *AuthMethodCreateCert) GetRequireCrlDp() bool {
+	if o == nil || IsNil(o.RequireCrlDp) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireCrlDp
+}
+
+// GetRequireCrlDpOk returns a tuple with the RequireCrlDp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateCert) GetRequireCrlDpOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireCrlDp) {
+		return nil, false
+	}
+	return o.RequireCrlDp, true
+}
+
+// HasRequireCrlDp returns a boolean if a field has been set.
+func (o *AuthMethodCreateCert) HasRequireCrlDp() bool {
+	if o != nil && !IsNil(o.RequireCrlDp) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireCrlDp gets a reference to the given bool and assigns it to the RequireCrlDp field.
+func (o *AuthMethodCreateCert) SetRequireCrlDp(v bool) {
+	o.RequireCrlDp = &v
+}
+
 // GetRevokedCertIds returns the RevokedCertIds field value if set, zero value otherwise.
 func (o *AuthMethodCreateCert) GetRevokedCertIds() []string {
 	if o == nil || IsNil(o.RevokedCertIds) {
@@ -961,6 +995,9 @@ func (o AuthMethodCreateCert) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.ProductType) {
 		toSerialize["product-type"] = o.ProductType
+	}
+	if !IsNil(o.RequireCrlDp) {
+		toSerialize["require-crl-dp"] = o.RequireCrlDp
 	}
 	if !IsNil(o.RevokedCertIds) {
 		toSerialize["revoked-cert-ids"] = o.RevokedCertIds

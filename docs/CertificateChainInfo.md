@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **CertificatePem** | Pointer to **string** |  | [optional] 
 **CertificateStatus** | Pointer to **string** |  | [optional] 
 **CommonName** | Pointer to **string** |  | [optional] 
+**CsrPem** | Pointer to **string** | CSRPEM contains the PEM-encoded CSR for pending certificates (HTTP-01 challenge) | [optional] 
 **ErrorMessage** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
@@ -316,6 +317,31 @@ SetCommonName sets CommonName field to given value.
 `func (o *CertificateChainInfo) HasCommonName() bool`
 
 HasCommonName returns a boolean if a field has been set.
+
+### GetCsrPem
+
+`func (o *CertificateChainInfo) GetCsrPem() string`
+
+GetCsrPem returns the CsrPem field if non-nil, zero value otherwise.
+
+### GetCsrPemOk
+
+`func (o *CertificateChainInfo) GetCsrPemOk() (*string, bool)`
+
+GetCsrPemOk returns a tuple with the CsrPem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCsrPem
+
+`func (o *CertificateChainInfo) SetCsrPem(v string)`
+
+SetCsrPem sets CsrPem field to given value.
+
+### HasCsrPem
+
+`func (o *CertificateChainInfo) HasCsrPem() bool`
+
+HasCsrPem returns a boolean if a field has been set.
 
 ### GetErrorMessage
 

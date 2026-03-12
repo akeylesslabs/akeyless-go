@@ -32,6 +32,8 @@ type Auth struct {
 	AdminEmail *string `json:"admin-email,omitempty"`
 	// Password (relevant only for access-type=password)
 	AdminPassword *string `json:"admin-password,omitempty"`
+	// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
+	AzureCloud *string `json:"azure-cloud,omitempty"`
 	// Certificate challenge encoded in base64. (relevant only for access-type=cert)
 	CertChallenge *string `json:"cert-challenge,omitempty"`
 	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert)
@@ -90,6 +92,8 @@ func NewAuth() *Auth {
 	this := Auth{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var azureCloud string = "AzureCloud"
+	this.AzureCloud = &azureCloud
 	var gcpAudience string = "akeyless.io"
 	this.GcpAudience = &gcpAudience
 	var json bool = false
@@ -106,6 +110,8 @@ func NewAuthWithDefaults() *Auth {
 	this := Auth{}
 	var accessType string = "access_key"
 	this.AccessType = &accessType
+	var azureCloud string = "AzureCloud"
+	this.AzureCloud = &azureCloud
 	var gcpAudience string = "akeyless.io"
 	this.GcpAudience = &gcpAudience
 	var json bool = false
@@ -305,6 +311,38 @@ func (o *Auth) HasAdminPassword() bool {
 // SetAdminPassword gets a reference to the given string and assigns it to the AdminPassword field.
 func (o *Auth) SetAdminPassword(v string) {
 	o.AdminPassword = &v
+}
+
+// GetAzureCloud returns the AzureCloud field value if set, zero value otherwise.
+func (o *Auth) GetAzureCloud() string {
+	if o == nil || IsNil(o.AzureCloud) {
+		var ret string
+		return ret
+	}
+	return *o.AzureCloud
+}
+
+// GetAzureCloudOk returns a tuple with the AzureCloud field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetAzureCloudOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureCloud) {
+		return nil, false
+	}
+	return o.AzureCloud, true
+}
+
+// HasAzureCloud returns a boolean if a field has been set.
+func (o *Auth) HasAzureCloud() bool {
+	if o != nil && !IsNil(o.AzureCloud) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureCloud gets a reference to the given string and assigns it to the AzureCloud field.
+func (o *Auth) SetAzureCloud(v string) {
+	o.AzureCloud = &v
 }
 
 // GetCertChallenge returns the CertChallenge field value if set, zero value otherwise.
@@ -1134,6 +1172,9 @@ func (o Auth) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdminPassword) {
 		toSerialize["admin-password"] = o.AdminPassword
+	}
+	if !IsNil(o.AzureCloud) {
+		toSerialize["azure-cloud"] = o.AzureCloud
 	}
 	if !IsNil(o.CertChallenge) {
 		toSerialize["cert-challenge"] = o.CertChallenge

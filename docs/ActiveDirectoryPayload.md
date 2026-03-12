@@ -5,9 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActiveDirectoryTargetId** | Pointer to **int64** |  | [optional] 
+**AiCertificateDiscovery** | Pointer to **bool** |  | [optional] 
 **AutoRotate** | Pointer to **bool** |  | [optional] 
 **AutoRotateIntervalInDays** | Pointer to **int32** |  | [optional] 
 **AutoRotateRotationHour** | Pointer to **int32** |  | [optional] 
+**CertificatesExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
+**CertificatesPathTemplate** | Pointer to **string** |  | [optional] 
 **ComputerBaseDn** | Pointer to **string** |  | [optional] 
 **DiscoverIisApps** | Pointer to **bool** |  | [optional] 
 **DiscoverLocalUsers** | Pointer to **bool** | Deprecated | [optional] 
@@ -71,6 +74,31 @@ SetActiveDirectoryTargetId sets ActiveDirectoryTargetId field to given value.
 `func (o *ActiveDirectoryPayload) HasActiveDirectoryTargetId() bool`
 
 HasActiveDirectoryTargetId returns a boolean if a field has been set.
+
+### GetAiCertificateDiscovery
+
+`func (o *ActiveDirectoryPayload) GetAiCertificateDiscovery() bool`
+
+GetAiCertificateDiscovery returns the AiCertificateDiscovery field if non-nil, zero value otherwise.
+
+### GetAiCertificateDiscoveryOk
+
+`func (o *ActiveDirectoryPayload) GetAiCertificateDiscoveryOk() (*bool, bool)`
+
+GetAiCertificateDiscoveryOk returns a tuple with the AiCertificateDiscovery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiCertificateDiscovery
+
+`func (o *ActiveDirectoryPayload) SetAiCertificateDiscovery(v bool)`
+
+SetAiCertificateDiscovery sets AiCertificateDiscovery field to given value.
+
+### HasAiCertificateDiscovery
+
+`func (o *ActiveDirectoryPayload) HasAiCertificateDiscovery() bool`
+
+HasAiCertificateDiscovery returns a boolean if a field has been set.
 
 ### GetAutoRotate
 
@@ -146,6 +174,56 @@ SetAutoRotateRotationHour sets AutoRotateRotationHour field to given value.
 `func (o *ActiveDirectoryPayload) HasAutoRotateRotationHour() bool`
 
 HasAutoRotateRotationHour returns a boolean if a field has been set.
+
+### GetCertificatesExpirationEvents
+
+`func (o *ActiveDirectoryPayload) GetCertificatesExpirationEvents() []CertificateExpirationEvent`
+
+GetCertificatesExpirationEvents returns the CertificatesExpirationEvents field if non-nil, zero value otherwise.
+
+### GetCertificatesExpirationEventsOk
+
+`func (o *ActiveDirectoryPayload) GetCertificatesExpirationEventsOk() (*[]CertificateExpirationEvent, bool)`
+
+GetCertificatesExpirationEventsOk returns a tuple with the CertificatesExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificatesExpirationEvents
+
+`func (o *ActiveDirectoryPayload) SetCertificatesExpirationEvents(v []CertificateExpirationEvent)`
+
+SetCertificatesExpirationEvents sets CertificatesExpirationEvents field to given value.
+
+### HasCertificatesExpirationEvents
+
+`func (o *ActiveDirectoryPayload) HasCertificatesExpirationEvents() bool`
+
+HasCertificatesExpirationEvents returns a boolean if a field has been set.
+
+### GetCertificatesPathTemplate
+
+`func (o *ActiveDirectoryPayload) GetCertificatesPathTemplate() string`
+
+GetCertificatesPathTemplate returns the CertificatesPathTemplate field if non-nil, zero value otherwise.
+
+### GetCertificatesPathTemplateOk
+
+`func (o *ActiveDirectoryPayload) GetCertificatesPathTemplateOk() (*string, bool)`
+
+GetCertificatesPathTemplateOk returns a tuple with the CertificatesPathTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificatesPathTemplate
+
+`func (o *ActiveDirectoryPayload) SetCertificatesPathTemplate(v string)`
+
+SetCertificatesPathTemplate sets CertificatesPathTemplate field to given value.
+
+### HasCertificatesPathTemplate
+
+`func (o *ActiveDirectoryPayload) HasCertificatesPathTemplate() bool`
+
+HasCertificatesPathTemplate returns a boolean if a field has been set.
 
 ### GetComputerBaseDn
 

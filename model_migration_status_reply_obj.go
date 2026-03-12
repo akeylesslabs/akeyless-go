@@ -20,6 +20,7 @@ var _ MappedNullable = &MigrationStatusReplyObj{}
 
 // MigrationStatusReplyObj struct for MigrationStatusReplyObj
 type MigrationStatusReplyObj struct {
+	Certificates *MigrationItems `json:"certificates,omitempty"`
 	Computers *int64 `json:"computers,omitempty"`
 	DurationTime *string `json:"duration_time,omitempty"`
 	Error *string `json:"error,omitempty"`
@@ -52,6 +53,38 @@ func NewMigrationStatusReplyObj() *MigrationStatusReplyObj {
 func NewMigrationStatusReplyObjWithDefaults() *MigrationStatusReplyObj {
 	this := MigrationStatusReplyObj{}
 	return &this
+}
+
+// GetCertificates returns the Certificates field value if set, zero value otherwise.
+func (o *MigrationStatusReplyObj) GetCertificates() MigrationItems {
+	if o == nil || IsNil(o.Certificates) {
+		var ret MigrationItems
+		return ret
+	}
+	return *o.Certificates
+}
+
+// GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationStatusReplyObj) GetCertificatesOk() (*MigrationItems, bool) {
+	if o == nil || IsNil(o.Certificates) {
+		return nil, false
+	}
+	return o.Certificates, true
+}
+
+// HasCertificates returns a boolean if a field has been set.
+func (o *MigrationStatusReplyObj) HasCertificates() bool {
+	if o != nil && !IsNil(o.Certificates) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificates gets a reference to the given MigrationItems and assigns it to the Certificates field.
+func (o *MigrationStatusReplyObj) SetCertificates(v MigrationItems) {
+	o.Certificates = &v
 }
 
 // GetComputers returns the Computers field value if set, zero value otherwise.
@@ -544,6 +577,9 @@ func (o MigrationStatusReplyObj) MarshalJSON() ([]byte, error) {
 
 func (o MigrationStatusReplyObj) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Certificates) {
+		toSerialize["certificates"] = o.Certificates
+	}
 	if !IsNil(o.Computers) {
 		toSerialize["computers"] = o.Computers
 	}

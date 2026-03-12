@@ -24,6 +24,7 @@ type SecretInfo struct {
 	Created *time.Time `json:"created,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Expiration *time.Time `json:"expiration,omitempty"`
+	Github *GithubMetadata `json:"github,omitempty"`
 	KeyId *string `json:"key_id,omitempty"`
 	LastRetrieved *time.Time `json:"last_retrieved,omitempty"`
 	Location interface{} `json:"location,omitempty"`
@@ -148,6 +149,38 @@ func (o *SecretInfo) HasExpiration() bool {
 // SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
 func (o *SecretInfo) SetExpiration(v time.Time) {
 	o.Expiration = &v
+}
+
+// GetGithub returns the Github field value if set, zero value otherwise.
+func (o *SecretInfo) GetGithub() GithubMetadata {
+	if o == nil || IsNil(o.Github) {
+		var ret GithubMetadata
+		return ret
+	}
+	return *o.Github
+}
+
+// GetGithubOk returns a tuple with the Github field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetGithubOk() (*GithubMetadata, bool) {
+	if o == nil || IsNil(o.Github) {
+		return nil, false
+	}
+	return o.Github, true
+}
+
+// HasGithub returns a boolean if a field has been set.
+func (o *SecretInfo) HasGithub() bool {
+	if o != nil && !IsNil(o.Github) {
+		return true
+	}
+
+	return false
+}
+
+// SetGithub gets a reference to the given GithubMetadata and assigns it to the Github field.
+func (o *SecretInfo) SetGithub(v GithubMetadata) {
+	o.Github = &v
 }
 
 // GetKeyId returns the KeyId field value if set, zero value otherwise.
@@ -521,6 +554,9 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Expiration) {
 		toSerialize["expiration"] = o.Expiration
+	}
+	if !IsNil(o.Github) {
+		toSerialize["github"] = o.Github
 	}
 	if !IsNil(o.KeyId) {
 		toSerialize["key_id"] = o.KeyId

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdEndpoint** | Pointer to **string** | The audience in the JWT. | [optional] 
+**AzureCloud** | Pointer to **string** | Azure cloud environment [AzureCloud/AzureUSGovernment/AzureChinaCloud]. For create/update, cloud is inferred from jwks_uri. | [optional] 
 **BoundGroupIds** | Pointer to **[]string** | The list of group ids that login is restricted to. | [optional] 
 **BoundResourceGroups** | Pointer to **[]string** | The list of resource groups that login is restricted to. | [optional] 
 **BoundResourceIds** | Pointer to **[]string** | The list of full resource ids that the login is restricted to. | [optional] 
@@ -61,6 +62,31 @@ SetAdEndpoint sets AdEndpoint field to given value.
 `func (o *AzureADAccessRules) HasAdEndpoint() bool`
 
 HasAdEndpoint returns a boolean if a field has been set.
+
+### GetAzureCloud
+
+`func (o *AzureADAccessRules) GetAzureCloud() string`
+
+GetAzureCloud returns the AzureCloud field if non-nil, zero value otherwise.
+
+### GetAzureCloudOk
+
+`func (o *AzureADAccessRules) GetAzureCloudOk() (*string, bool)`
+
+GetAzureCloudOk returns a tuple with the AzureCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureCloud
+
+`func (o *AzureADAccessRules) SetAzureCloud(v string)`
+
+SetAzureCloud sets AzureCloud field to given value.
+
+### HasAzureCloud
+
+`func (o *AzureADAccessRules) HasAzureCloud() bool`
+
+HasAzureCloud returns a boolean if a field has been set.
 
 ### GetBoundGroupIds
 

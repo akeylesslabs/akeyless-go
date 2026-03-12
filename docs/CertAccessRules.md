@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **BoundOrganizationalUnits** | Pointer to **[]string** | A list of Organizational Units names. At least one must exist in the OU field. | [optional] 
 **BoundUriSans** | Pointer to **[]string** | A list of URIs. At least one must exist in the SANs. Supports globbing. | [optional] 
 **Certificate** | Pointer to **string** | Base64 encdoed PEM certificate | [optional] 
+**RequireCrlDp** | Pointer to **bool** | RequireCrlDp indicates whether CRL distribution points are required on the leaf client certificate, and whether CRL validation must be enforced during authentication. | [optional] 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
 
@@ -233,6 +234,31 @@ SetCertificate sets Certificate field to given value.
 `func (o *CertAccessRules) HasCertificate() bool`
 
 HasCertificate returns a boolean if a field has been set.
+
+### GetRequireCrlDp
+
+`func (o *CertAccessRules) GetRequireCrlDp() bool`
+
+GetRequireCrlDp returns the RequireCrlDp field if non-nil, zero value otherwise.
+
+### GetRequireCrlDpOk
+
+`func (o *CertAccessRules) GetRequireCrlDpOk() (*bool, bool)`
+
+GetRequireCrlDpOk returns a tuple with the RequireCrlDp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireCrlDp
+
+`func (o *CertAccessRules) SetRequireCrlDp(v bool)`
+
+SetRequireCrlDp sets RequireCrlDp field to given value.
+
+### HasRequireCrlDp
+
+`func (o *CertAccessRules) HasRequireCrlDp() bool`
+
+HasRequireCrlDp returns a boolean if a field has been set.
 
 ### GetRevokedCertIds
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Certificates** | Pointer to [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **Computers** | Pointer to **int64** |  | [optional] 
 **DurationTime** | Pointer to **string** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
@@ -38,6 +39,31 @@ will change when the set of required properties is changed
 NewMigrationStatusReplyObjWithDefaults instantiates a new MigrationStatusReplyObj object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertificates
+
+`func (o *MigrationStatusReplyObj) GetCertificates() MigrationItems`
+
+GetCertificates returns the Certificates field if non-nil, zero value otherwise.
+
+### GetCertificatesOk
+
+`func (o *MigrationStatusReplyObj) GetCertificatesOk() (*MigrationItems, bool)`
+
+GetCertificatesOk returns a tuple with the Certificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificates
+
+`func (o *MigrationStatusReplyObj) SetCertificates(v MigrationItems)`
+
+SetCertificates sets Certificates field to given value.
+
+### HasCertificates
+
+`func (o *MigrationStatusReplyObj) HasCertificates() bool`
+
+HasCertificates returns a boolean if a field has been set.
 
 ### GetComputers
 

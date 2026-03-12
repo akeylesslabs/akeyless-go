@@ -21,9 +21,12 @@ var _ MappedNullable = &ActiveDirectoryPayload{}
 // ActiveDirectoryPayload struct for ActiveDirectoryPayload
 type ActiveDirectoryPayload struct {
 	ActiveDirectoryTargetId *int64 `json:"active_directory_target_id,omitempty"`
+	AiCertificateDiscovery *bool `json:"ai_certificate_discovery,omitempty"`
 	AutoRotate *bool `json:"auto_rotate,omitempty"`
 	AutoRotateIntervalInDays *int32 `json:"auto_rotate_interval_in_days,omitempty"`
 	AutoRotateRotationHour *int32 `json:"auto_rotate_rotation_hour,omitempty"`
+	CertificatesExpirationEvents []CertificateExpirationEvent `json:"certificates_expiration_events,omitempty"`
+	CertificatesPathTemplate *string `json:"certificates_path_template,omitempty"`
 	ComputerBaseDn *string `json:"computer_base_dn,omitempty"`
 	DiscoverIisApps *bool `json:"discover_iis_apps,omitempty"`
 	// Deprecated
@@ -93,6 +96,38 @@ func (o *ActiveDirectoryPayload) HasActiveDirectoryTargetId() bool {
 // SetActiveDirectoryTargetId gets a reference to the given int64 and assigns it to the ActiveDirectoryTargetId field.
 func (o *ActiveDirectoryPayload) SetActiveDirectoryTargetId(v int64) {
 	o.ActiveDirectoryTargetId = &v
+}
+
+// GetAiCertificateDiscovery returns the AiCertificateDiscovery field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetAiCertificateDiscovery() bool {
+	if o == nil || IsNil(o.AiCertificateDiscovery) {
+		var ret bool
+		return ret
+	}
+	return *o.AiCertificateDiscovery
+}
+
+// GetAiCertificateDiscoveryOk returns a tuple with the AiCertificateDiscovery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetAiCertificateDiscoveryOk() (*bool, bool) {
+	if o == nil || IsNil(o.AiCertificateDiscovery) {
+		return nil, false
+	}
+	return o.AiCertificateDiscovery, true
+}
+
+// HasAiCertificateDiscovery returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasAiCertificateDiscovery() bool {
+	if o != nil && !IsNil(o.AiCertificateDiscovery) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiCertificateDiscovery gets a reference to the given bool and assigns it to the AiCertificateDiscovery field.
+func (o *ActiveDirectoryPayload) SetAiCertificateDiscovery(v bool) {
+	o.AiCertificateDiscovery = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -189,6 +224,70 @@ func (o *ActiveDirectoryPayload) HasAutoRotateRotationHour() bool {
 // SetAutoRotateRotationHour gets a reference to the given int32 and assigns it to the AutoRotateRotationHour field.
 func (o *ActiveDirectoryPayload) SetAutoRotateRotationHour(v int32) {
 	o.AutoRotateRotationHour = &v
+}
+
+// GetCertificatesExpirationEvents returns the CertificatesExpirationEvents field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetCertificatesExpirationEvents() []CertificateExpirationEvent {
+	if o == nil || IsNil(o.CertificatesExpirationEvents) {
+		var ret []CertificateExpirationEvent
+		return ret
+	}
+	return o.CertificatesExpirationEvents
+}
+
+// GetCertificatesExpirationEventsOk returns a tuple with the CertificatesExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetCertificatesExpirationEventsOk() ([]CertificateExpirationEvent, bool) {
+	if o == nil || IsNil(o.CertificatesExpirationEvents) {
+		return nil, false
+	}
+	return o.CertificatesExpirationEvents, true
+}
+
+// HasCertificatesExpirationEvents returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasCertificatesExpirationEvents() bool {
+	if o != nil && !IsNil(o.CertificatesExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificatesExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the CertificatesExpirationEvents field.
+func (o *ActiveDirectoryPayload) SetCertificatesExpirationEvents(v []CertificateExpirationEvent) {
+	o.CertificatesExpirationEvents = v
+}
+
+// GetCertificatesPathTemplate returns the CertificatesPathTemplate field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetCertificatesPathTemplate() string {
+	if o == nil || IsNil(o.CertificatesPathTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.CertificatesPathTemplate
+}
+
+// GetCertificatesPathTemplateOk returns a tuple with the CertificatesPathTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetCertificatesPathTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.CertificatesPathTemplate) {
+		return nil, false
+	}
+	return o.CertificatesPathTemplate, true
+}
+
+// HasCertificatesPathTemplate returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasCertificatesPathTemplate() bool {
+	if o != nil && !IsNil(o.CertificatesPathTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificatesPathTemplate gets a reference to the given string and assigns it to the CertificatesPathTemplate field.
+func (o *ActiveDirectoryPayload) SetCertificatesPathTemplate(v string) {
+	o.CertificatesPathTemplate = &v
 }
 
 // GetComputerBaseDn returns the ComputerBaseDn field value if set, zero value otherwise.
@@ -812,6 +911,9 @@ func (o ActiveDirectoryPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ActiveDirectoryTargetId) {
 		toSerialize["active_directory_target_id"] = o.ActiveDirectoryTargetId
 	}
+	if !IsNil(o.AiCertificateDiscovery) {
+		toSerialize["ai_certificate_discovery"] = o.AiCertificateDiscovery
+	}
 	if !IsNil(o.AutoRotate) {
 		toSerialize["auto_rotate"] = o.AutoRotate
 	}
@@ -820,6 +922,12 @@ func (o ActiveDirectoryPayload) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoRotateRotationHour) {
 		toSerialize["auto_rotate_rotation_hour"] = o.AutoRotateRotationHour
+	}
+	if !IsNil(o.CertificatesExpirationEvents) {
+		toSerialize["certificates_expiration_events"] = o.CertificatesExpirationEvents
+	}
+	if !IsNil(o.CertificatesPathTemplate) {
+		toSerialize["certificates_path_template"] = o.CertificatesPathTemplate
 	}
 	if !IsNil(o.ComputerBaseDn) {
 		toSerialize["computer_base_dn"] = o.ComputerBaseDn

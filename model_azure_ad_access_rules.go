@@ -22,6 +22,8 @@ var _ MappedNullable = &AzureADAccessRules{}
 type AzureADAccessRules struct {
 	// The audience in the JWT.
 	AdEndpoint *string `json:"ad_endpoint,omitempty"`
+	// Azure cloud environment [AzureCloud/AzureUSGovernment/AzureChinaCloud]. For create/update, cloud is inferred from jwks_uri.
+	AzureCloud *string `json:"azure_cloud,omitempty"`
 	// The list of group ids that login is restricted to.
 	BoundGroupIds []string `json:"bound_group_ids,omitempty"`
 	// The list of resource groups that login is restricted to.
@@ -95,6 +97,38 @@ func (o *AzureADAccessRules) HasAdEndpoint() bool {
 // SetAdEndpoint gets a reference to the given string and assigns it to the AdEndpoint field.
 func (o *AzureADAccessRules) SetAdEndpoint(v string) {
 	o.AdEndpoint = &v
+}
+
+// GetAzureCloud returns the AzureCloud field value if set, zero value otherwise.
+func (o *AzureADAccessRules) GetAzureCloud() string {
+	if o == nil || IsNil(o.AzureCloud) {
+		var ret string
+		return ret
+	}
+	return *o.AzureCloud
+}
+
+// GetAzureCloudOk returns a tuple with the AzureCloud field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureADAccessRules) GetAzureCloudOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureCloud) {
+		return nil, false
+	}
+	return o.AzureCloud, true
+}
+
+// HasAzureCloud returns a boolean if a field has been set.
+func (o *AzureADAccessRules) HasAzureCloud() bool {
+	if o != nil && !IsNil(o.AzureCloud) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureCloud gets a reference to the given string and assigns it to the AzureCloud field.
+func (o *AzureADAccessRules) SetAzureCloud(v string) {
+	o.AzureCloud = &v
 }
 
 // GetBoundGroupIds returns the BoundGroupIds field value if set, zero value otherwise.
@@ -493,6 +527,9 @@ func (o AzureADAccessRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AdEndpoint) {
 		toSerialize["ad_endpoint"] = o.AdEndpoint
+	}
+	if !IsNil(o.AzureCloud) {
+		toSerialize["azure_cloud"] = o.AzureCloud
 	}
 	if !IsNil(o.BoundGroupIds) {
 		toSerialize["bound_group_ids"] = o.BoundGroupIds

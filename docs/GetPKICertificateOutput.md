@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CertDisplayId** | Pointer to **string** |  | [optional] 
 **CertItemId** | Pointer to **int64** |  | [optional] 
 **Data** | Pointer to **string** |  | [optional] 
+**HttpChallengeInfo** | Pointer to [**HTTPChallengeInfo**](HTTPChallengeInfo.md) |  | [optional] 
 **ParentCert** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **ReadingToken** | Pointer to **string** |  | [optional] 
@@ -104,6 +105,31 @@ SetData sets Data field to given value.
 `func (o *GetPKICertificateOutput) HasData() bool`
 
 HasData returns a boolean if a field has been set.
+
+### GetHttpChallengeInfo
+
+`func (o *GetPKICertificateOutput) GetHttpChallengeInfo() HTTPChallengeInfo`
+
+GetHttpChallengeInfo returns the HttpChallengeInfo field if non-nil, zero value otherwise.
+
+### GetHttpChallengeInfoOk
+
+`func (o *GetPKICertificateOutput) GetHttpChallengeInfoOk() (*HTTPChallengeInfo, bool)`
+
+GetHttpChallengeInfoOk returns a tuple with the HttpChallengeInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHttpChallengeInfo
+
+`func (o *GetPKICertificateOutput) SetHttpChallengeInfo(v HTTPChallengeInfo)`
+
+SetHttpChallengeInfo sets HttpChallengeInfo field to given value.
+
+### HasHttpChallengeInfo
+
+`func (o *GetPKICertificateOutput) HasHttpChallengeInfo() bool`
+
+HasHttpChallengeInfo returns a boolean if a field has been set.
 
 ### GetParentCert
 

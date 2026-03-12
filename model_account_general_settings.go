@@ -32,6 +32,7 @@ type AccountGeneralSettings struct {
 	AuthUsageEvent *UsageEventSetting `json:"auth_usage_event,omitempty"`
 	CertificateExpirationEvents *CertificateExpirationEventsSettings `json:"certificate_expiration_events,omitempty"`
 	DataProtectionSection *DataProtectionSection `json:"data_protection_section,omitempty"`
+	DefaultAuthMethod *DefaultAuthMethodSettings `json:"default_auth_method,omitempty"`
 	DefaultHomePage *DefaultHomePage `json:"default_home_page,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
@@ -385,6 +386,38 @@ func (o *AccountGeneralSettings) HasDataProtectionSection() bool {
 // SetDataProtectionSection gets a reference to the given DataProtectionSection and assigns it to the DataProtectionSection field.
 func (o *AccountGeneralSettings) SetDataProtectionSection(v DataProtectionSection) {
 	o.DataProtectionSection = &v
+}
+
+// GetDefaultAuthMethod returns the DefaultAuthMethod field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetDefaultAuthMethod() DefaultAuthMethodSettings {
+	if o == nil || IsNil(o.DefaultAuthMethod) {
+		var ret DefaultAuthMethodSettings
+		return ret
+	}
+	return *o.DefaultAuthMethod
+}
+
+// GetDefaultAuthMethodOk returns a tuple with the DefaultAuthMethod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetDefaultAuthMethodOk() (*DefaultAuthMethodSettings, bool) {
+	if o == nil || IsNil(o.DefaultAuthMethod) {
+		return nil, false
+	}
+	return o.DefaultAuthMethod, true
+}
+
+// HasDefaultAuthMethod returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasDefaultAuthMethod() bool {
+	if o != nil && !IsNil(o.DefaultAuthMethod) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultAuthMethod gets a reference to the given DefaultAuthMethodSettings and assigns it to the DefaultAuthMethod field.
+func (o *AccountGeneralSettings) SetDefaultAuthMethod(v DefaultAuthMethodSettings) {
+	o.DefaultAuthMethod = &v
 }
 
 // GetDefaultHomePage returns the DefaultHomePage field value if set, zero value otherwise.
@@ -874,6 +907,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DataProtectionSection) {
 		toSerialize["data_protection_section"] = o.DataProtectionSection
+	}
+	if !IsNil(o.DefaultAuthMethod) {
+		toSerialize["default_auth_method"] = o.DefaultAuthMethod
 	}
 	if !IsNil(o.DefaultHomePage) {
 		toSerialize["default_home_page"] = o.DefaultHomePage
