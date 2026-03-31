@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **MigrationTypeName** | Pointer to **string** |  | [optional] 
 **RotatedSecrets** | Pointer to [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **StartTime** | Pointer to **string** |  | [optional] 
+**Sync** | Pointer to [**SyncCounters**](SyncCounters.md) |  | [optional] 
 **Targets** | Pointer to [**MigrationItems**](MigrationItems.md) |  | [optional] 
 
 ## Methods
@@ -414,6 +415,31 @@ SetStartTime sets StartTime field to given value.
 `func (o *MigrationStatusReplyObj) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
+
+### GetSync
+
+`func (o *MigrationStatusReplyObj) GetSync() SyncCounters`
+
+GetSync returns the Sync field if non-nil, zero value otherwise.
+
+### GetSyncOk
+
+`func (o *MigrationStatusReplyObj) GetSyncOk() (*SyncCounters, bool)`
+
+GetSyncOk returns a tuple with the Sync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSync
+
+`func (o *MigrationStatusReplyObj) SetSync(v SyncCounters)`
+
+SetSync sets Sync field to given value.
+
+### HasSync
+
+`func (o *MigrationStatusReplyObj) HasSync() bool`
+
+HasSync returns a boolean if a field has been set.
 
 ### GetTargets
 

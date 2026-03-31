@@ -40,6 +40,8 @@ type CreateSecret struct {
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Lock this secret for read/update while an SRA session is active
+	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Deprecated - use description
@@ -418,6 +420,38 @@ func (o *CreateSecret) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *CreateSecret) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *CreateSecret) GetLockDuringSraSession() string {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret string
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetLockDuringSraSessionOk() (*string, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *CreateSecret) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
+func (o *CreateSecret) SetLockDuringSraSession(v string) {
+	o.LockDuringSraSession = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -1176,6 +1210,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions

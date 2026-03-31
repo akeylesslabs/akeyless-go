@@ -37,6 +37,7 @@ type UscCreate struct {
 	Region *string `json:"region,omitempty"`
 	// Name for the new universal secrets
 	SecretName string `json:"secret-name"`
+	SelectedRepositories *string `json:"selected-repositories,omitempty"`
 	// Tags for the universal secrets
 	Tags *map[string]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -325,6 +326,38 @@ func (o *UscCreate) SetSecretName(v string) {
 	o.SecretName = v
 }
 
+// GetSelectedRepositories returns the SelectedRepositories field value if set, zero value otherwise.
+func (o *UscCreate) GetSelectedRepositories() string {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedRepositories
+}
+
+// GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetSelectedRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		return nil, false
+	}
+	return o.SelectedRepositories, true
+}
+
+// HasSelectedRepositories returns a boolean if a field has been set.
+func (o *UscCreate) HasSelectedRepositories() bool {
+	if o != nil && !IsNil(o.SelectedRepositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedRepositories gets a reference to the given string and assigns it to the SelectedRepositories field.
+func (o *UscCreate) SetSelectedRepositories(v string) {
+	o.SelectedRepositories = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *UscCreate) GetTags() map[string]string {
 	if o == nil || IsNil(o.Tags) {
@@ -533,6 +566,9 @@ func (o UscCreate) ToMap() (map[string]interface{}, error) {
 		toSerialize["region"] = o.Region
 	}
 	toSerialize["secret-name"] = o.SecretName
+	if !IsNil(o.SelectedRepositories) {
+		toSerialize["selected-repositories"] = o.SelectedRepositories
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}

@@ -55,6 +55,7 @@ type Item struct {
 	LastRotationDate *time.Time `json:"last_rotation_date,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	LinkedDetails *LinkedDetails `json:"linked_details,omitempty"`
+	LockingInfo *LockingInfo `json:"locking_info,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	NextRotationDate *time.Time `json:"next_rotation_date,omitempty"`
 	ProtectionKeyName *string `json:"protection_key_name,omitempty"`
@@ -1141,6 +1142,38 @@ func (o *Item) SetLinkedDetails(v LinkedDetails) {
 	o.LinkedDetails = &v
 }
 
+// GetLockingInfo returns the LockingInfo field value if set, zero value otherwise.
+func (o *Item) GetLockingInfo() LockingInfo {
+	if o == nil || IsNil(o.LockingInfo) {
+		var ret LockingInfo
+		return ret
+	}
+	return *o.LockingInfo
+}
+
+// GetLockingInfoOk returns a tuple with the LockingInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetLockingInfoOk() (*LockingInfo, bool) {
+	if o == nil || IsNil(o.LockingInfo) {
+		return nil, false
+	}
+	return o.LockingInfo, true
+}
+
+// HasLockingInfo returns a boolean if a field has been set.
+func (o *Item) HasLockingInfo() bool {
+	if o != nil && !IsNil(o.LockingInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockingInfo gets a reference to the given LockingInfo and assigns it to the LockingInfo field.
+func (o *Item) SetLockingInfo(v LockingInfo) {
+	o.LockingInfo = &v
+}
+
 // GetModificationDate returns the ModificationDate field value if set, zero value otherwise.
 func (o *Item) GetModificationDate() time.Time {
 	if o == nil || IsNil(o.ModificationDate) {
@@ -1569,6 +1602,9 @@ func (o Item) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LinkedDetails) {
 		toSerialize["linked_details"] = o.LinkedDetails
+	}
+	if !IsNil(o.LockingInfo) {
+		toSerialize["locking_info"] = o.LockingInfo
 	}
 	if !IsNil(o.ModificationDate) {
 		toSerialize["modification_date"] = o.ModificationDate

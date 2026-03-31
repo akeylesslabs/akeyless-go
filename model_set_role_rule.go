@@ -30,7 +30,7 @@ type SetRoleRule struct {
 	Path string `json:"path"`
 	// The role name to be updated
 	RoleName string `json:"role-name"`
-	// item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule or sra-reports-rule, sra-rule
+	// item-rule, target-rule, role-rule, auth-method-rule, search-rule, reports-rule, gw-reports-rule, sra-reports-rule, sra-rule, ara-rule
 	RuleType *string `json:"rule-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

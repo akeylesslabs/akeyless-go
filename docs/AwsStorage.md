@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccessKeySecret** | Pointer to **string** |  | [optional] 
 **AuthType** | Pointer to **string** |  | [optional] 
 **Bucket** | Pointer to **string** |  | [optional] 
+**EndpointUrl** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 
@@ -129,6 +130,31 @@ SetBucket sets Bucket field to given value.
 `func (o *AwsStorage) HasBucket() bool`
 
 HasBucket returns a boolean if a field has been set.
+
+### GetEndpointUrl
+
+`func (o *AwsStorage) GetEndpointUrl() string`
+
+GetEndpointUrl returns the EndpointUrl field if non-nil, zero value otherwise.
+
+### GetEndpointUrlOk
+
+`func (o *AwsStorage) GetEndpointUrlOk() (*string, bool)`
+
+GetEndpointUrlOk returns a tuple with the EndpointUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpointUrl
+
+`func (o *AwsStorage) SetEndpointUrl(v string)`
+
+SetEndpointUrl sets EndpointUrl field to given value.
+
+### HasEndpointUrl
+
+`func (o *AwsStorage) HasEndpointUrl() bool`
+
+HasEndpointUrl returns a boolean if a field has been set.
 
 ### GetPrefix
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AkeylessUrl** | Pointer to **string** | AkeylessUrl is here for BC only. Gator will still return it if it exists in the configuration, but new clients (&gt;&#x3D;2.34.0) will ignore it and override it with what exists in their local file. It will no longer be sent to Gator for update, so new clusters will only have the default value saved in the DB. | [optional] 
 **ApiTokenTtl** | Pointer to **string** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
+**EnableJsonBodyLimit** | Pointer to **bool** |  | [optional] 
 **EnableSniProxy** | Pointer to **bool** |  | [optional] 
 **EnableTls** | Pointer to **bool** |  | [optional] 
 **EnableTlsConfigure** | Pointer to **bool** |  | [optional] 
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 **EnableTlsHvp** | Pointer to **bool** |  | [optional] 
 **GwClusterUrl** | Pointer to **string** |  | [optional] 
 **HvpRouteVersion** | Pointer to **int64** |  | [optional] 
+**JsonBodyLimitMb** | Pointer to **int64** |  | [optional] 
 **NotifyOnStatusChange** | Pointer to **bool** |  | [optional] 
 **TcpPort** | Pointer to **string** |  | [optional] 
 **TlsCert** | Pointer to **string** |  | [optional] 
@@ -115,6 +117,31 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *GeneralConfigPart) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
+
+### GetEnableJsonBodyLimit
+
+`func (o *GeneralConfigPart) GetEnableJsonBodyLimit() bool`
+
+GetEnableJsonBodyLimit returns the EnableJsonBodyLimit field if non-nil, zero value otherwise.
+
+### GetEnableJsonBodyLimitOk
+
+`func (o *GeneralConfigPart) GetEnableJsonBodyLimitOk() (*bool, bool)`
+
+GetEnableJsonBodyLimitOk returns a tuple with the EnableJsonBodyLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableJsonBodyLimit
+
+`func (o *GeneralConfigPart) SetEnableJsonBodyLimit(v bool)`
+
+SetEnableJsonBodyLimit sets EnableJsonBodyLimit field to given value.
+
+### HasEnableJsonBodyLimit
+
+`func (o *GeneralConfigPart) HasEnableJsonBodyLimit() bool`
+
+HasEnableJsonBodyLimit returns a boolean if a field has been set.
 
 ### GetEnableSniProxy
 
@@ -290,6 +317,31 @@ SetHvpRouteVersion sets HvpRouteVersion field to given value.
 `func (o *GeneralConfigPart) HasHvpRouteVersion() bool`
 
 HasHvpRouteVersion returns a boolean if a field has been set.
+
+### GetJsonBodyLimitMb
+
+`func (o *GeneralConfigPart) GetJsonBodyLimitMb() int64`
+
+GetJsonBodyLimitMb returns the JsonBodyLimitMb field if non-nil, zero value otherwise.
+
+### GetJsonBodyLimitMbOk
+
+`func (o *GeneralConfigPart) GetJsonBodyLimitMbOk() (*int64, bool)`
+
+GetJsonBodyLimitMbOk returns a tuple with the JsonBodyLimitMb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsonBodyLimitMb
+
+`func (o *GeneralConfigPart) SetJsonBodyLimitMb(v int64)`
+
+SetJsonBodyLimitMb sets JsonBodyLimitMb field to given value.
+
+### HasJsonBodyLimitMb
+
+`func (o *GeneralConfigPart) HasJsonBodyLimitMb() bool`
+
+HasJsonBodyLimitMb returns a boolean if a field has been set.
 
 ### GetNotifyOnStatusChange
 

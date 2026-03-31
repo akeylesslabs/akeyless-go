@@ -97,6 +97,8 @@ type GatewayCreateMigration struct {
 	ConjurUrl *string `json:"conjur-url,omitempty"`
 	// Conjur username used to authenticate (relevant only for Conjur migration).
 	ConjurUsername *string `json:"conjur-username,omitempty"`
+	// Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration)
+	DeleteRemote *bool `json:"delete-remote,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
@@ -163,6 +165,8 @@ type GatewayCreateMigration struct {
 	Type *string `json:"type,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Universal Secret Connector name
+	UscName *string `json:"usc-name,omitempty"`
 	// Use the GW's Cloud IAM
 	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
 }
@@ -1455,6 +1459,38 @@ func (o *GatewayCreateMigration) SetConjurUsername(v string) {
 	o.ConjurUsername = &v
 }
 
+// GetDeleteRemote returns the DeleteRemote field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetDeleteRemote() bool {
+	if o == nil || IsNil(o.DeleteRemote) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteRemote
+}
+
+// GetDeleteRemoteOk returns a tuple with the DeleteRemote field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetDeleteRemoteOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteRemote) {
+		return nil, false
+	}
+	return o.DeleteRemote, true
+}
+
+// HasDeleteRemote returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasDeleteRemote() bool {
+	if o != nil && !IsNil(o.DeleteRemote) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteRemote gets a reference to the given bool and assigns it to the DeleteRemote field.
+func (o *GatewayCreateMigration) SetDeleteRemote(v bool) {
+	o.DeleteRemote = &v
+}
+
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetExpirationEventIn() []string {
 	if o == nil || IsNil(o.ExpirationEventIn) {
@@ -2471,6 +2507,38 @@ func (o *GatewayCreateMigration) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUscName returns the UscName field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetUscName() string {
+	if o == nil || IsNil(o.UscName) {
+		var ret string
+		return ret
+	}
+	return *o.UscName
+}
+
+// GetUscNameOk returns a tuple with the UscName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetUscNameOk() (*string, bool) {
+	if o == nil || IsNil(o.UscName) {
+		return nil, false
+	}
+	return o.UscName, true
+}
+
+// HasUscName returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasUscName() bool {
+	if o != nil && !IsNil(o.UscName) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscName gets a reference to the given string and assigns it to the UscName field.
+func (o *GatewayCreateMigration) SetUscName(v string) {
+	o.UscName = &v
+}
+
 // GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetUseGwCloudIdentity() bool {
 	if o == nil || IsNil(o.UseGwCloudIdentity) {
@@ -2627,6 +2695,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConjurUsername) {
 		toSerialize["conjur-username"] = o.ConjurUsername
 	}
+	if !IsNil(o.DeleteRemote) {
+		toSerialize["delete-remote"] = o.DeleteRemote
+	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
 	}
@@ -2715,6 +2786,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UscName) {
+		toSerialize["usc-name"] = o.UscName
 	}
 	if !IsNil(o.UseGwCloudIdentity) {
 		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity

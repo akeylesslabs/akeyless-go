@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Azure** | Pointer to [**AzureStorage**](AzureStorage.md) |  | [optional] 
 **Compress** | Pointer to **bool** |  | [optional] 
 **EncryptionKey** | Pointer to **string** |  | [optional] 
+**Netapp** | Pointer to [**NetappStorage**](NetappStorage.md) |  | [optional] 
 **RecordingQuality** | Pointer to **string** |  | [optional] 
 **StorageType** | Pointer to **string** |  | [optional] 
 
@@ -129,6 +130,31 @@ SetEncryptionKey sets EncryptionKey field to given value.
 `func (o *WebBastionRdpRecord) HasEncryptionKey() bool`
 
 HasEncryptionKey returns a boolean if a field has been set.
+
+### GetNetapp
+
+`func (o *WebBastionRdpRecord) GetNetapp() NetappStorage`
+
+GetNetapp returns the Netapp field if non-nil, zero value otherwise.
+
+### GetNetappOk
+
+`func (o *WebBastionRdpRecord) GetNetappOk() (*NetappStorage, bool)`
+
+GetNetappOk returns a tuple with the Netapp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetapp
+
+`func (o *WebBastionRdpRecord) SetNetapp(v NetappStorage)`
+
+SetNetapp sets Netapp field to given value.
+
+### HasNetapp
+
+`func (o *WebBastionRdpRecord) HasNetapp() bool`
+
+HasNetapp returns a boolean if a field has been set.
 
 ### GetRecordingQuality
 

@@ -387,6 +387,8 @@ Method | HTTP request | Description
 [**ListSRASessions**](V2Api.md#ListSRASessions) | **Post** /list-sra-sessions | 
 [**ListSharedItems**](V2Api.md#ListSharedItems) | **Post** /list-shared-items | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
+[**LockItem**](V2Api.md#LockItem) | **Post** /lock-item | 
+[**LockTarget**](V2Api.md#LockTarget) | **Post** /lock-target | 
 [**MoveObjects**](V2Api.md#MoveObjects) | **Post** /move-objects | 
 [**PoliciesDelete**](V2Api.md#PoliciesDelete) | **Post** /policy-delete | 
 [**PoliciesGet**](V2Api.md#PoliciesGet) | **Post** /policy-get | 
@@ -468,6 +470,7 @@ Method | HTTP request | Description
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
 [**TargetCreateAzure**](V2Api.md#TargetCreateAzure) | **Post** /target-create-azure | 
 [**TargetCreateDB**](V2Api.md#TargetCreateDB) | **Post** /target-create-db | 
+[**TargetCreateDigiCert**](V2Api.md#TargetCreateDigiCert) | **Post** /target-create-digicert | 
 [**TargetCreateDockerhub**](V2Api.md#TargetCreateDockerhub) | **Post** /target-create-dockerhub | 
 [**TargetCreateEks**](V2Api.md#TargetCreateEks) | **Post** /target-create-eks | 
 [**TargetCreateGcp**](V2Api.md#TargetCreateGcp) | **Post** /target-create-gcp | 
@@ -478,6 +481,7 @@ Method | HTTP request | Description
 [**TargetCreateGlobalSign**](V2Api.md#TargetCreateGlobalSign) | **Post** /target-create-globalsign | 
 [**TargetCreateGlobalSignAtlas**](V2Api.md#TargetCreateGlobalSignAtlas) | **Post** /target-create-globalsign-atlas | 
 [**TargetCreateGodaddy**](V2Api.md#TargetCreateGodaddy) | **Post** /target-create-godaddy | 
+[**TargetCreateGoogleTrust**](V2Api.md#TargetCreateGoogleTrust) | **Post** /target-create-google-trust | 
 [**TargetCreateHashiVault**](V2Api.md#TargetCreateHashiVault) | **Post** /target-create-hashi-vault | 
 [**TargetCreateK8s**](V2Api.md#TargetCreateK8s) | **Post** /target-create-k8s | 
 [**TargetCreateLdap**](V2Api.md#TargetCreateLdap) | **Post** /target-create-ldap | 
@@ -501,6 +505,7 @@ Method | HTTP request | Description
 [**TargetUpdateAws**](V2Api.md#TargetUpdateAws) | **Post** /target-update-aws | 
 [**TargetUpdateAzure**](V2Api.md#TargetUpdateAzure) | **Post** /target-update-azure | 
 [**TargetUpdateDB**](V2Api.md#TargetUpdateDB) | **Post** /target-update-db | 
+[**TargetUpdateDigiCert**](V2Api.md#TargetUpdateDigiCert) | **Post** /target-update-digicert | 
 [**TargetUpdateDockerhub**](V2Api.md#TargetUpdateDockerhub) | **Post** /target-update-dockerhub | 
 [**TargetUpdateEks**](V2Api.md#TargetUpdateEks) | **Post** /target-update-eks | 
 [**TargetUpdateGcp**](V2Api.md#TargetUpdateGcp) | **Post** /target-update-gcp | 
@@ -511,6 +516,7 @@ Method | HTTP request | Description
 [**TargetUpdateGlobalSign**](V2Api.md#TargetUpdateGlobalSign) | **Post** /target-update-globalsign | 
 [**TargetUpdateGlobalSignAtlas**](V2Api.md#TargetUpdateGlobalSignAtlas) | **Post** /target-update-globalsign-atlas | 
 [**TargetUpdateGodaddy**](V2Api.md#TargetUpdateGodaddy) | **Post** /target-update-godaddy | 
+[**TargetUpdateGoogleTrust**](V2Api.md#TargetUpdateGoogleTrust) | **Post** /target-update-google-trust | 
 [**TargetUpdateHashiVault**](V2Api.md#TargetUpdateHashiVault) | **Post** /target-update-hashi-vault | 
 [**TargetUpdateK8s**](V2Api.md#TargetUpdateK8s) | **Post** /target-update-k8s | 
 [**TargetUpdateLdap**](V2Api.md#TargetUpdateLdap) | **Post** /target-update-ldap | 
@@ -532,6 +538,8 @@ Method | HTTP request | Description
 [**UidListChildren**](V2Api.md#UidListChildren) | **Post** /uid-list-children | 
 [**UidRevokeToken**](V2Api.md#UidRevokeToken) | **Post** /uid-revoke-token | 
 [**UidRotateToken**](V2Api.md#UidRotateToken) | **Post** /uid-rotate-token | 
+[**UnlockItem**](V2Api.md#UnlockItem) | **Post** /unlock-item | 
+[**UnlockTarget**](V2Api.md#UnlockTarget) | **Post** /unlock-target | 
 [**UnwrapToken**](V2Api.md#UnwrapToken) | **Post** /unwrap-token | 
 [**UpdateAWSTarget**](V2Api.md#UpdateAWSTarget) | **Post** /update-aws-target | 
 [**UpdateAWSTargetDetails**](V2Api.md#UpdateAWSTargetDetails) | **Post** /update-aws-target-details | 
@@ -25105,6 +25113,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## LockItem
+
+> map[string]interface{} LockItem(ctx).LockItem(lockItem).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	lockItem := *openapiclient.NewLockItem("Name_example") // LockItem | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.LockItem(context.Background()).LockItem(lockItem).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.LockItem``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LockItem`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.LockItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLockItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lockItem** | [**LockItem**](LockItem.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## LockTarget
+
+> map[string]interface{} LockTarget(ctx).LockTarget(lockTarget).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	lockTarget := *openapiclient.NewLockTarget("Name_example") // LockTarget | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.LockTarget(context.Background()).LockTarget(lockTarget).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.LockTarget``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LockTarget`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.LockTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLockTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lockTarget** | [**LockTarget**](LockTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## MoveObjects
 
 > map[string]interface{} MoveObjects(ctx).MoveObjects(moveObjects).Execute()
@@ -30284,6 +30420,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateDigiCert
+
+> TargetCreateOutput TargetCreateDigiCert(ctx).TargetCreateDigiCert(targetCreateDigiCert).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateDigiCert := *openapiclient.NewTargetCreateDigiCert("Email_example", "Name_example") // TargetCreateDigiCert | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateDigiCert(context.Background()).TargetCreateDigiCert(targetCreateDigiCert).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateDigiCert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateDigiCert`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateDigiCert`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateDigiCertRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateDigiCert** | [**TargetCreateDigiCert**](TargetCreateDigiCert.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateDockerhub
 
 > TargetCreateOutput TargetCreateDockerhub(ctx).TargetCreateDockerhub(targetCreateDockerhub).Execute()
@@ -30924,6 +31124,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateGoogleTrust
+
+> TargetCreateOutput TargetCreateGoogleTrust(ctx).TargetCreateGoogleTrust(targetCreateGoogleTrust).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateGoogleTrust := *openapiclient.NewTargetCreateGoogleTrust("Email_example", "Name_example") // TargetCreateGoogleTrust | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateGoogleTrust(context.Background()).TargetCreateGoogleTrust(targetCreateGoogleTrust).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateGoogleTrust``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateGoogleTrust`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateGoogleTrust`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateGoogleTrustRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateGoogleTrust** | [**TargetCreateGoogleTrust**](TargetCreateGoogleTrust.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateHashiVault
 
 > TargetCreateOutput TargetCreateHashiVault(ctx).TargetCreateHashiVault(targetCreateHashiVault).Execute()
@@ -31135,7 +31399,7 @@ import (
 )
 
 func main() {
-	targetCreateLetsEncrypt := *openapiclient.NewTargetCreateLetsEncrypt("Name_example") // TargetCreateLetsEncrypt | 
+	targetCreateLetsEncrypt := *openapiclient.NewTargetCreateLetsEncrypt("Email_example", "Name_example") // TargetCreateLetsEncrypt | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -32396,6 +32660,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateDigiCert
+
+> TargetUpdateOutput TargetUpdateDigiCert(ctx).TargetUpdateDigiCert(targetUpdateDigiCert).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateDigiCert := *openapiclient.NewTargetUpdateDigiCert("Email_example", "Name_example") // TargetUpdateDigiCert | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateDigiCert(context.Background()).TargetUpdateDigiCert(targetUpdateDigiCert).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateDigiCert``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateDigiCert`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateDigiCert`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateDigiCertRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateDigiCert** | [**TargetUpdateDigiCert**](TargetUpdateDigiCert.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateDockerhub
 
 > TargetUpdateOutput TargetUpdateDockerhub(ctx).TargetUpdateDockerhub(targetUpdateDockerhub).Execute()
@@ -33036,6 +33364,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateGoogleTrust
+
+> TargetUpdateOutput TargetUpdateGoogleTrust(ctx).TargetUpdateGoogleTrust(targetUpdateGoogleTrust).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateGoogleTrust := *openapiclient.NewTargetUpdateGoogleTrust("Email_example", "Name_example") // TargetUpdateGoogleTrust | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateGoogleTrust(context.Background()).TargetUpdateGoogleTrust(targetUpdateGoogleTrust).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateGoogleTrust``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateGoogleTrust`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateGoogleTrust`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateGoogleTrustRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateGoogleTrust** | [**TargetUpdateGoogleTrust**](TargetUpdateGoogleTrust.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateHashiVault
 
 > TargetUpdateOutput TargetUpdateHashiVault(ctx).TargetUpdateHashiVault(targetUpdateHashiVault).Execute()
@@ -33247,7 +33639,7 @@ import (
 )
 
 func main() {
-	targetUpdateLetsEncrypt := *openapiclient.NewTargetUpdateLetsEncrypt("Name_example") // TargetUpdateLetsEncrypt | 
+	targetUpdateLetsEncrypt := *openapiclient.NewTargetUpdateLetsEncrypt("Email_example", "Name_example") // TargetUpdateLetsEncrypt | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -34365,6 +34757,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**UidRotateTokenOutput**](UidRotateTokenOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UnlockItem
+
+> map[string]interface{} UnlockItem(ctx).UnlockItem(unlockItem).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	unlockItem := *openapiclient.NewUnlockItem("Name_example") // UnlockItem | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.UnlockItem(context.Background()).UnlockItem(unlockItem).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UnlockItem``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UnlockItem`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.UnlockItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUnlockItemRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **unlockItem** | [**UnlockItem**](UnlockItem.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UnlockTarget
+
+> map[string]interface{} UnlockTarget(ctx).UnlockTarget(unlockTarget).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	unlockTarget := *openapiclient.NewUnlockTarget("Name_example") // UnlockTarget | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.UnlockTarget(context.Background()).UnlockTarget(unlockTarget).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UnlockTarget``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UnlockTarget`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.UnlockTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUnlockTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **unlockTarget** | [**UnlockTarget**](UnlockTarget.md) |  | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 

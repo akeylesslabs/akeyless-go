@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
+**LockingInfo** | Pointer to [**LockingInfo**](LockingInfo.md) |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **ParentTargetName** | Pointer to **string** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
@@ -268,6 +269,31 @@ SetLastVersion sets LastVersion field to given value.
 `func (o *Target) HasLastVersion() bool`
 
 HasLastVersion returns a boolean if a field has been set.
+
+### GetLockingInfo
+
+`func (o *Target) GetLockingInfo() LockingInfo`
+
+GetLockingInfo returns the LockingInfo field if non-nil, zero value otherwise.
+
+### GetLockingInfoOk
+
+`func (o *Target) GetLockingInfoOk() (*LockingInfo, bool)`
+
+GetLockingInfoOk returns a tuple with the LockingInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockingInfo
+
+`func (o *Target) SetLockingInfo(v LockingInfo)`
+
+SetLockingInfo sets LockingInfo field to given value.
+
+### HasLockingInfo
+
+`func (o *Target) HasLockingInfo() bool`
+
+HasLockingInfo returns a boolean if a field has been set.
 
 ### GetModificationDate
 

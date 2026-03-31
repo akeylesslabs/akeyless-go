@@ -25,6 +25,7 @@ type AwsStorage struct {
 	AccessKeySecret *string `json:"access_key_secret,omitempty"`
 	AuthType *string `json:"auth_type,omitempty"`
 	Bucket *string `json:"bucket,omitempty"`
+	EndpointUrl *string `json:"endpoint_url,omitempty"`
 	Prefix *string `json:"prefix,omitempty"`
 	Region *string `json:"region,omitempty"`
 }
@@ -174,6 +175,38 @@ func (o *AwsStorage) SetBucket(v string) {
 	o.Bucket = &v
 }
 
+// GetEndpointUrl returns the EndpointUrl field value if set, zero value otherwise.
+func (o *AwsStorage) GetEndpointUrl() string {
+	if o == nil || IsNil(o.EndpointUrl) {
+		var ret string
+		return ret
+	}
+	return *o.EndpointUrl
+}
+
+// GetEndpointUrlOk returns a tuple with the EndpointUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsStorage) GetEndpointUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.EndpointUrl) {
+		return nil, false
+	}
+	return o.EndpointUrl, true
+}
+
+// HasEndpointUrl returns a boolean if a field has been set.
+func (o *AwsStorage) HasEndpointUrl() bool {
+	if o != nil && !IsNil(o.EndpointUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointUrl gets a reference to the given string and assigns it to the EndpointUrl field.
+func (o *AwsStorage) SetEndpointUrl(v string) {
+	o.EndpointUrl = &v
+}
+
 // GetPrefix returns the Prefix field value if set, zero value otherwise.
 func (o *AwsStorage) GetPrefix() string {
 	if o == nil || IsNil(o.Prefix) {
@@ -259,6 +292,9 @@ func (o AwsStorage) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Bucket) {
 		toSerialize["bucket"] = o.Bucket
+	}
+	if !IsNil(o.EndpointUrl) {
+		toSerialize["endpoint_url"] = o.EndpointUrl
 	}
 	if !IsNil(o.Prefix) {
 		toSerialize["prefix"] = o.Prefix

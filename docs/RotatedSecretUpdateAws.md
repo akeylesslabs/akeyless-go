@@ -20,12 +20,13 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
-**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotateAfterDisconnect** | Pointer to **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC | [optional] 
 **RotationInterval** | Pointer to **string** | The number of days to wait between every automatic key rotation (1-365) | [optional] 
@@ -455,6 +456,31 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretUpdateAws) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetLockDuringSraSession
+
+`func (o *RotatedSecretUpdateAws) GetLockDuringSraSession() string`
+
+GetLockDuringSraSession returns the LockDuringSraSession field if non-nil, zero value otherwise.
+
+### GetLockDuringSraSessionOk
+
+`func (o *RotatedSecretUpdateAws) GetLockDuringSraSessionOk() (*string, bool)`
+
+GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockDuringSraSession
+
+`func (o *RotatedSecretUpdateAws) SetLockDuringSraSession(v string)`
+
+SetLockDuringSraSession sets LockDuringSraSession field to given value.
+
+### HasLockDuringSraSession
+
+`func (o *RotatedSecretUpdateAws) HasLockDuringSraSession() bool`
+
+HasLockDuringSraSession returns a boolean if a field has been set.
 
 ### GetMaxVersions
 

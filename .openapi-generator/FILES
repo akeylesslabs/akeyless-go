@@ -299,6 +299,7 @@ docs/DescribeSubClaimsOutput.md
 docs/DesktopAppConf.md
 docs/Detokenize.md
 docs/DetokenizeOutput.md
+docs/DigiCertTargetDetails.md
 docs/DockerhubTargetDetails.md
 docs/DynamicSecretCreateArtifactory.md
 docs/DynamicSecretCreateAws.md
@@ -659,6 +660,7 @@ docs/GlobalSignAtlasTargetDetails.md
 docs/GlobalSignGCCTargetDetails.md
 docs/GodaddyTargetDetails.md
 docs/GoogleChronicleForwardingConfig.md
+docs/GoogleTrustTargetDetails.md
 docs/Group.md
 docs/GwClusterIdentity.md
 docs/GwUpdateRemoteAccessSessionLogsAwsS3.md
@@ -686,6 +688,7 @@ docs/IssuerOverviewInfo.md
 docs/Item.md
 docs/ItemCustomFieldsDetails.md
 docs/ItemGeneralInfo.md
+docs/ItemLockingSetting.md
 docs/ItemSraStatus.md
 docs/ItemTargetAssociation.md
 docs/ItemUSCSyncAssociation.md
@@ -762,6 +765,9 @@ docs/ListSharedItems.md
 docs/ListSraSessionsOutput.md
 docs/ListTargets.md
 docs/ListTargetsOutput.md
+docs/LockItem.md
+docs/LockTarget.md
+docs/LockingInfo.md
 docs/LogForwardingConfigPart.md
 docs/LogstashLogForwardingConfig.md
 docs/LogzIoLogForwardingConfig.md
@@ -777,6 +783,7 @@ docs/MongoDBTargetDetails.md
 docs/MoveObjects.md
 docs/Name.md
 docs/NativeK8sTargetDetails.md
+docs/NetappStorage.md
 docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
 docs/NotiForwarderDetailsInput.md
@@ -946,6 +953,7 @@ docs/StaticSecretDeleteSyncOutput.md
 docs/StaticSecretDetailsInfo.md
 docs/StaticSecretSync.md
 docs/SumologicLogForwardingConfig.md
+docs/SyncCounters.md
 docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
@@ -954,6 +962,7 @@ docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
 docs/TargetCreateAzure.md
 docs/TargetCreateDB.md
+docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
 docs/TargetCreateEks.md
 docs/TargetCreateGcp.md
@@ -964,6 +973,7 @@ docs/TargetCreateGke.md
 docs/TargetCreateGlobalSign.md
 docs/TargetCreateGlobalSignAtlas.md
 docs/TargetCreateGodaddy.md
+docs/TargetCreateGoogleTrust.md
 docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
 docs/TargetCreateLdap.md
@@ -993,6 +1003,7 @@ docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
 docs/TargetUpdateAzure.md
 docs/TargetUpdateDB.md
+docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
 docs/TargetUpdateEks.md
 docs/TargetUpdateGcp.md
@@ -1003,6 +1014,7 @@ docs/TargetUpdateGke.md
 docs/TargetUpdateGlobalSign.md
 docs/TargetUpdateGlobalSignAtlas.md
 docs/TargetUpdateGodaddy.md
+docs/TargetUpdateGoogleTrust.md
 docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
 docs/TargetUpdateLdap.md
@@ -1035,6 +1047,8 @@ docs/UidRotateTokenOutput.md
 docs/Unconfigure.md
 docs/UniversalIdentityAccessRules.md
 docs/UniversalIdentityDetails.md
+docs/UnlockItem.md
+docs/UnlockTarget.md
 docs/UnwrapToken.md
 docs/UnwrapTokenOutput.md
 docs/Update.md
@@ -1474,6 +1488,7 @@ model_describe_sub_claims_output.go
 model_desktop_app_conf.go
 model_detokenize.go
 model_detokenize_output.go
+model_digi_cert_target_details.go
 model_dockerhub_target_details.go
 model_ds_producer_details.go
 model_dynamic_secret_create_artifactory.go
@@ -1835,6 +1850,7 @@ model_global_sign_atlas_target_details.go
 model_global_sign_gcc_target_details.go
 model_godaddy_target_details.go
 model_google_chronicle_forwarding_config.go
+model_google_trust_target_details.go
 model_group.go
 model_gw_cluster_identity.go
 model_gw_update_remote_access_session_logs_aws_s3.go
@@ -1862,6 +1878,7 @@ model_issuer_overview_info.go
 model_item.go
 model_item_custom_fields_details.go
 model_item_general_info.go
+model_item_locking_setting.go
 model_item_sra_status.go
 model_item_target_association.go
 model_item_usc_sync_association.go
@@ -1938,6 +1955,9 @@ model_list_sra_sessions.go
 model_list_sra_sessions_output.go
 model_list_targets.go
 model_list_targets_output.go
+model_lock_item.go
+model_lock_target.go
+model_locking_info.go
 model_log_forwarding_config_part.go
 model_logstash_log_forwarding_config.go
 model_logz_io_log_forwarding_config.go
@@ -1953,6 +1973,7 @@ model_mongo_db_target_details.go
 model_move_objects.go
 model_name.go
 model_native_k8s_target_details.go
+model_netapp_storage.go
 model_next_auto_rotation_event.go
 model_noti_forwarder.go
 model_noti_forwarder_details_input.go
@@ -2122,6 +2143,7 @@ model_static_secret_delete_sync_output.go
 model_static_secret_details_info.go
 model_static_secret_sync.go
 model_sumologic_log_forwarding_config.go
+model_sync_counters.go
 model_syslog_log_forwarding_config.go
 model_system_access_credentials_reply_obj.go
 model_system_access_creds_settings.go
@@ -2130,6 +2152,7 @@ model_target_create_artifactory.go
 model_target_create_aws.go
 model_target_create_azure.go
 model_target_create_db.go
+model_target_create_digi_cert.go
 model_target_create_dockerhub.go
 model_target_create_eks.go
 model_target_create_gcp.go
@@ -2140,6 +2163,7 @@ model_target_create_gke.go
 model_target_create_global_sign.go
 model_target_create_global_sign_atlas.go
 model_target_create_godaddy.go
+model_target_create_google_trust.go
 model_target_create_hashi_vault.go
 model_target_create_k8s.go
 model_target_create_ldap.go
@@ -2169,6 +2193,7 @@ model_target_update_artifactory.go
 model_target_update_aws.go
 model_target_update_azure.go
 model_target_update_db.go
+model_target_update_digi_cert.go
 model_target_update_dockerhub.go
 model_target_update_eks.go
 model_target_update_gcp.go
@@ -2179,6 +2204,7 @@ model_target_update_gke.go
 model_target_update_global_sign.go
 model_target_update_global_sign_atlas.go
 model_target_update_godaddy.go
+model_target_update_google_trust.go
 model_target_update_hashi_vault.go
 model_target_update_k8s.go
 model_target_update_ldap.go
@@ -2211,6 +2237,8 @@ model_uid_token_details.go
 model_unconfigure.go
 model_universal_identity_access_rules.go
 model_universal_identity_details.go
+model_unlock_item.go
+model_unlock_target.go
 model_unwrap_token.go
 model_unwrap_token_output.go
 model_update.go

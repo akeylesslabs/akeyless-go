@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **ConjurApiKey** | Pointer to **string** | Conjur API Key for the specified user (relevant only for Conjur migration). | [optional] 
 **ConjurUrl** | Pointer to **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
 **ConjurUsername** | Pointer to **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
+**DeleteRemote** | Pointer to **bool** | Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration) | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (cross-project override) | [optional] 
@@ -75,6 +76,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UscName** | Pointer to **string** | Universal Secret Connector name | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** | Use the GW&#39;s Cloud IAM | [optional] 
 
 ## Methods
@@ -1046,6 +1048,31 @@ SetConjurUsername sets ConjurUsername field to given value.
 
 HasConjurUsername returns a boolean if a field has been set.
 
+### GetDeleteRemote
+
+`func (o *GatewayCreateMigration) GetDeleteRemote() bool`
+
+GetDeleteRemote returns the DeleteRemote field if non-nil, zero value otherwise.
+
+### GetDeleteRemoteOk
+
+`func (o *GatewayCreateMigration) GetDeleteRemoteOk() (*bool, bool)`
+
+GetDeleteRemoteOk returns a tuple with the DeleteRemote field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteRemote
+
+`func (o *GatewayCreateMigration) SetDeleteRemote(v bool)`
+
+SetDeleteRemote sets DeleteRemote field to given value.
+
+### HasDeleteRemote
+
+`func (o *GatewayCreateMigration) HasDeleteRemote() bool`
+
+HasDeleteRemote returns a boolean if a field has been set.
+
 ### GetExpirationEventIn
 
 `func (o *GatewayCreateMigration) GetExpirationEventIn() []string`
@@ -1845,6 +1872,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *GatewayCreateMigration) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUscName
+
+`func (o *GatewayCreateMigration) GetUscName() string`
+
+GetUscName returns the UscName field if non-nil, zero value otherwise.
+
+### GetUscNameOk
+
+`func (o *GatewayCreateMigration) GetUscNameOk() (*string, bool)`
+
+GetUscNameOk returns a tuple with the UscName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscName
+
+`func (o *GatewayCreateMigration) SetUscName(v string)`
+
+SetUscName sets UscName field to given value.
+
+### HasUscName
+
+`func (o *GatewayCreateMigration) HasUscName() bool`
+
+HasUscName returns a boolean if a field has been set.
 
 ### GetUseGwCloudIdentity
 

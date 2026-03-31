@@ -20,10 +20,12 @@ var _ MappedNullable = &HashiPayload{}
 
 // HashiPayload struct for HashiPayload
 type HashiPayload struct {
+	DeleteSyncOnDeletion *bool `json:"delete_sync_on_deletion,omitempty"`
 	ImportAsJson *bool `json:"import_as_json,omitempty"`
 	Namespaces []string `json:"namespaces,omitempty"`
 	Token *string `json:"token,omitempty"`
 	Url *string `json:"url,omitempty"`
+	UscName *string `json:"usc_name,omitempty"`
 }
 
 // NewHashiPayload instantiates a new HashiPayload object
@@ -41,6 +43,38 @@ func NewHashiPayload() *HashiPayload {
 func NewHashiPayloadWithDefaults() *HashiPayload {
 	this := HashiPayload{}
 	return &this
+}
+
+// GetDeleteSyncOnDeletion returns the DeleteSyncOnDeletion field value if set, zero value otherwise.
+func (o *HashiPayload) GetDeleteSyncOnDeletion() bool {
+	if o == nil || IsNil(o.DeleteSyncOnDeletion) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteSyncOnDeletion
+}
+
+// GetDeleteSyncOnDeletionOk returns a tuple with the DeleteSyncOnDeletion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HashiPayload) GetDeleteSyncOnDeletionOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteSyncOnDeletion) {
+		return nil, false
+	}
+	return o.DeleteSyncOnDeletion, true
+}
+
+// HasDeleteSyncOnDeletion returns a boolean if a field has been set.
+func (o *HashiPayload) HasDeleteSyncOnDeletion() bool {
+	if o != nil && !IsNil(o.DeleteSyncOnDeletion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteSyncOnDeletion gets a reference to the given bool and assigns it to the DeleteSyncOnDeletion field.
+func (o *HashiPayload) SetDeleteSyncOnDeletion(v bool) {
+	o.DeleteSyncOnDeletion = &v
 }
 
 // GetImportAsJson returns the ImportAsJson field value if set, zero value otherwise.
@@ -171,6 +205,38 @@ func (o *HashiPayload) SetUrl(v string) {
 	o.Url = &v
 }
 
+// GetUscName returns the UscName field value if set, zero value otherwise.
+func (o *HashiPayload) GetUscName() string {
+	if o == nil || IsNil(o.UscName) {
+		var ret string
+		return ret
+	}
+	return *o.UscName
+}
+
+// GetUscNameOk returns a tuple with the UscName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HashiPayload) GetUscNameOk() (*string, bool) {
+	if o == nil || IsNil(o.UscName) {
+		return nil, false
+	}
+	return o.UscName, true
+}
+
+// HasUscName returns a boolean if a field has been set.
+func (o *HashiPayload) HasUscName() bool {
+	if o != nil && !IsNil(o.UscName) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscName gets a reference to the given string and assigns it to the UscName field.
+func (o *HashiPayload) SetUscName(v string) {
+	o.UscName = &v
+}
+
 func (o HashiPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -181,6 +247,9 @@ func (o HashiPayload) MarshalJSON() ([]byte, error) {
 
 func (o HashiPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeleteSyncOnDeletion) {
+		toSerialize["delete_sync_on_deletion"] = o.DeleteSyncOnDeletion
+	}
 	if !IsNil(o.ImportAsJson) {
 		toSerialize["import_as_json"] = o.ImportAsJson
 	}
@@ -192,6 +261,9 @@ func (o HashiPayload) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Url) {
 		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.UscName) {
+		toSerialize["usc_name"] = o.UscName
 	}
 	return toSerialize, nil
 }

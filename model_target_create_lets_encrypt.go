@@ -28,7 +28,7 @@ type TargetCreateLetsEncrypt struct {
 	// Name of existing cloud target for DNS credentials. Required when acme-challenge=dns. Supported: AWS, Azure, GCP targets
 	DnsTargetCreds *string `json:"dns-target-creds,omitempty"`
 	// Email address for ACME account registration
-	Email *string `json:"email,omitempty"`
+	Email string `json:"email"`
 	// GCP Cloud DNS: Project ID. Optional - can be derived from service account
 	GcpProject *string `json:"gcp-project,omitempty"`
 	// AWS Route53 hosted zone ID. Required when dns-target-creds points to AWS target
@@ -57,10 +57,11 @@ type _TargetCreateLetsEncrypt TargetCreateLetsEncrypt
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTargetCreateLetsEncrypt(name string) *TargetCreateLetsEncrypt {
+func NewTargetCreateLetsEncrypt(email string, name string) *TargetCreateLetsEncrypt {
 	this := TargetCreateLetsEncrypt{}
 	var acmeChallenge string = "http"
 	this.AcmeChallenge = &acmeChallenge
+	this.Email = email
 	var json bool = false
 	this.Json = &json
 	var letsEncryptUrl string = "production"
@@ -183,36 +184,28 @@ func (o *TargetCreateLetsEncrypt) SetDnsTargetCreds(v string) {
 	o.DnsTargetCreds = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value
 func (o *TargetCreateLetsEncrypt) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Email
+
+	return o.Email
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 func (o *TargetCreateLetsEncrypt) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return &o.Email, true
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *TargetCreateLetsEncrypt) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail sets field value
 func (o *TargetCreateLetsEncrypt) SetEmail(v string) {
-	o.Email = &v
+	o.Email = v
 }
 
 // GetGcpProject returns the GcpProject field value if set, zero value otherwise.
@@ -578,9 +571,7 @@ func (o TargetCreateLetsEncrypt) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DnsTargetCreds) {
 		toSerialize["dns-target-creds"] = o.DnsTargetCreds
 	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
-	}
+	toSerialize["email"] = o.Email
 	if !IsNil(o.GcpProject) {
 		toSerialize["gcp-project"] = o.GcpProject
 	}
@@ -620,6 +611,7 @@ func (o *TargetCreateLetsEncrypt) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"email",
 		"name",
 	}
 

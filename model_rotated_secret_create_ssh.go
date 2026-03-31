@@ -38,6 +38,8 @@ type RotatedSecretCreateSsh struct {
 	Key *string `json:"key,omitempty"`
 	// Private key file contents encoded using base64
 	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
+	// Lock this secret for read/update while an SRA session is active
+	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
@@ -46,7 +48,7 @@ type RotatedSecretCreateSsh struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// The path to the public key that will be rotated on the server
 	PublicKeyRemotePath *string `json:"public-key-remote-path,omitempty"`
-	// Rotate the value of the secret after SRA session ends [true/false]
+	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// rotated-username password (relevant only for rotator-type=password)
 	RotatedPassword *string `json:"rotated-password,omitempty"`
@@ -105,8 +107,6 @@ func NewRotatedSecretCreateSsh(name string, rotatorType string, targetName strin
 	var json bool = false
 	this.Json = &json
 	this.Name = name
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	this.RotatorType = rotatorType
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
@@ -125,8 +125,6 @@ func NewRotatedSecretCreateSshWithDefaults() *RotatedSecretCreateSsh {
 	this.AuthenticationCredentials = &authenticationCredentials
 	var json bool = false
 	this.Json = &json
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessAllowExternalUser bool = false
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessTargetType string = "false"
@@ -388,6 +386,38 @@ func (o *RotatedSecretCreateSsh) HasKeyDataBase64() bool {
 // SetKeyDataBase64 gets a reference to the given string and assigns it to the KeyDataBase64 field.
 func (o *RotatedSecretCreateSsh) SetKeyDataBase64(v string) {
 	o.KeyDataBase64 = &v
+}
+
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetLockDuringSraSession() string {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret string
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetLockDuringSraSessionOk() (*string, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
+func (o *RotatedSecretCreateSsh) SetLockDuringSraSession(v string) {
+	o.LockDuringSraSession = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -1231,6 +1261,9 @@ func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.KeyDataBase64) {
 		toSerialize["key-data-base64"] = o.KeyDataBase64
+	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions

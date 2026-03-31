@@ -21,6 +21,7 @@ var _ MappedNullable = &EsmListSecretsOutput{}
 // EsmListSecretsOutput struct for EsmListSecretsOutput
 type EsmListSecretsOutput struct {
 	SecretsList []SecretInfo `json:"secrets_list,omitempty"`
+	Warnings []string `json:"warnings,omitempty"`
 }
 
 // NewEsmListSecretsOutput instantiates a new EsmListSecretsOutput object
@@ -72,6 +73,38 @@ func (o *EsmListSecretsOutput) SetSecretsList(v []SecretInfo) {
 	o.SecretsList = v
 }
 
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *EsmListSecretsOutput) GetWarnings() []string {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []string
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EsmListSecretsOutput) GetWarningsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *EsmListSecretsOutput) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []string and assigns it to the Warnings field.
+func (o *EsmListSecretsOutput) SetWarnings(v []string) {
+	o.Warnings = v
+}
+
 func (o EsmListSecretsOutput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +117,9 @@ func (o EsmListSecretsOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.SecretsList) {
 		toSerialize["secrets_list"] = o.SecretsList
+	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
 	}
 	return toSerialize, nil
 }

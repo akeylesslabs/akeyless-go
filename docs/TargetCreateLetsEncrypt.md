@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AcmeChallenge** | Pointer to **string** |  | [optional] [default to "http"]
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP targets | [optional] 
-**Email** | Pointer to **string** | Email address for ACME account registration | [optional] 
+**Email** | **string** | Email address for ACME account registration | 
 **GcpProject** | Pointer to **string** | GCP Cloud DNS: Project ID. Optional - can be derived from service account | [optional] 
 **HostedZone** | Pointer to **string** | AWS Route53 hosted zone ID. Required when dns-target-creds points to AWS target | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewTargetCreateLetsEncrypt
 
-`func NewTargetCreateLetsEncrypt(name string, ) *TargetCreateLetsEncrypt`
+`func NewTargetCreateLetsEncrypt(email string, name string, ) *TargetCreateLetsEncrypt`
 
 NewTargetCreateLetsEncrypt instantiates a new TargetCreateLetsEncrypt object
 This constructor will assign default values to properties that have it defined,
@@ -133,11 +133,6 @@ and a boolean to check if the value has been set.
 
 SetEmail sets Email field to given value.
 
-### HasEmail
-
-`func (o *TargetCreateLetsEncrypt) HasEmail() bool`
-
-HasEmail returns a boolean if a field has been set.
 
 ### GetGcpProject
 

@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **ForceDelete** | Pointer to **bool** | Force delete objects that are soft deleted by default (relavent only for Azure target) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete | 
+**SelectedRepositories** | Pointer to **string** | GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
@@ -106,6 +108,31 @@ SetNamespace sets Namespace field to given value.
 
 HasNamespace returns a boolean if a field has been set.
 
+### GetObjectType
+
+`func (o *UscDelete) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *UscDelete) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *UscDelete) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *UscDelete) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
+
 ### GetSecretId
 
 `func (o *UscDelete) GetSecretId() string`
@@ -125,6 +152,31 @@ and a boolean to check if the value has been set.
 
 SetSecretId sets SecretId field to given value.
 
+
+### GetSelectedRepositories
+
+`func (o *UscDelete) GetSelectedRepositories() string`
+
+GetSelectedRepositories returns the SelectedRepositories field if non-nil, zero value otherwise.
+
+### GetSelectedRepositoriesOk
+
+`func (o *UscDelete) GetSelectedRepositoriesOk() (*string, bool)`
+
+GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedRepositories
+
+`func (o *UscDelete) SetSelectedRepositories(v string)`
+
+SetSelectedRepositories sets SelectedRepositories field to given value.
+
+### HasSelectedRepositories
+
+`func (o *UscDelete) HasSelectedRepositories() bool`
+
+HasSelectedRepositories returns a boolean if a field has been set.
 
 ### GetToken
 

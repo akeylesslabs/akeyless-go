@@ -20,8 +20,10 @@ var _ MappedNullable = &UniversalIdentityAccessRules{}
 
 // UniversalIdentityAccessRules struct for UniversalIdentityAccessRules
 type UniversalIdentityAccessRules struct {
+	ChildTtlLimit *int32 `json:"child_ttl_limit,omitempty"`
 	DenyInheritance *bool `json:"deny_inheritance,omitempty"`
 	DenyRotate *bool `json:"deny_rotate,omitempty"`
+	TreeLength *int32 `json:"tree_length,omitempty"`
 	Ttl *int32 `json:"ttl,omitempty"`
 }
 
@@ -40,6 +42,38 @@ func NewUniversalIdentityAccessRules() *UniversalIdentityAccessRules {
 func NewUniversalIdentityAccessRulesWithDefaults() *UniversalIdentityAccessRules {
 	this := UniversalIdentityAccessRules{}
 	return &this
+}
+
+// GetChildTtlLimit returns the ChildTtlLimit field value if set, zero value otherwise.
+func (o *UniversalIdentityAccessRules) GetChildTtlLimit() int32 {
+	if o == nil || IsNil(o.ChildTtlLimit) {
+		var ret int32
+		return ret
+	}
+	return *o.ChildTtlLimit
+}
+
+// GetChildTtlLimitOk returns a tuple with the ChildTtlLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UniversalIdentityAccessRules) GetChildTtlLimitOk() (*int32, bool) {
+	if o == nil || IsNil(o.ChildTtlLimit) {
+		return nil, false
+	}
+	return o.ChildTtlLimit, true
+}
+
+// HasChildTtlLimit returns a boolean if a field has been set.
+func (o *UniversalIdentityAccessRules) HasChildTtlLimit() bool {
+	if o != nil && !IsNil(o.ChildTtlLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetChildTtlLimit gets a reference to the given int32 and assigns it to the ChildTtlLimit field.
+func (o *UniversalIdentityAccessRules) SetChildTtlLimit(v int32) {
+	o.ChildTtlLimit = &v
 }
 
 // GetDenyInheritance returns the DenyInheritance field value if set, zero value otherwise.
@@ -106,6 +140,38 @@ func (o *UniversalIdentityAccessRules) SetDenyRotate(v bool) {
 	o.DenyRotate = &v
 }
 
+// GetTreeLength returns the TreeLength field value if set, zero value otherwise.
+func (o *UniversalIdentityAccessRules) GetTreeLength() int32 {
+	if o == nil || IsNil(o.TreeLength) {
+		var ret int32
+		return ret
+	}
+	return *o.TreeLength
+}
+
+// GetTreeLengthOk returns a tuple with the TreeLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UniversalIdentityAccessRules) GetTreeLengthOk() (*int32, bool) {
+	if o == nil || IsNil(o.TreeLength) {
+		return nil, false
+	}
+	return o.TreeLength, true
+}
+
+// HasTreeLength returns a boolean if a field has been set.
+func (o *UniversalIdentityAccessRules) HasTreeLength() bool {
+	if o != nil && !IsNil(o.TreeLength) {
+		return true
+	}
+
+	return false
+}
+
+// SetTreeLength gets a reference to the given int32 and assigns it to the TreeLength field.
+func (o *UniversalIdentityAccessRules) SetTreeLength(v int32) {
+	o.TreeLength = &v
+}
+
 // GetTtl returns the Ttl field value if set, zero value otherwise.
 func (o *UniversalIdentityAccessRules) GetTtl() int32 {
 	if o == nil || IsNil(o.Ttl) {
@@ -148,11 +214,17 @@ func (o UniversalIdentityAccessRules) MarshalJSON() ([]byte, error) {
 
 func (o UniversalIdentityAccessRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ChildTtlLimit) {
+		toSerialize["child_ttl_limit"] = o.ChildTtlLimit
+	}
 	if !IsNil(o.DenyInheritance) {
 		toSerialize["deny_inheritance"] = o.DenyInheritance
 	}
 	if !IsNil(o.DenyRotate) {
 		toSerialize["deny_rotate"] = o.DenyRotate
+	}
+	if !IsNil(o.TreeLength) {
+		toSerialize["tree_length"] = o.TreeLength
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl

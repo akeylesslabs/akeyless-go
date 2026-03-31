@@ -26,6 +26,8 @@ type GatewayUpdateRemoteAccessRdpRecordings struct {
 	AwsStorageBucketName *string `json:"aws-storage-bucket-name,omitempty"`
 	// The folder name in S3 bucket. For more information refer to https://docs.aws.amazon.com/s3/
 	AwsStorageBucketPrefix *string `json:"aws-storage-bucket-prefix,omitempty"`
+	// Custom AWS endpoint URL for S3-compatible storage (e.g. a private AWS endpoint)
+	AwsStorageEndpointUrl *string `json:"aws-storage-endpoint-url,omitempty"`
 	// The region where the storage is located
 	AwsStorageRegion *string `json:"aws-storage-region,omitempty"`
 	// AWS secret access key. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
@@ -173,6 +175,38 @@ func (o *GatewayUpdateRemoteAccessRdpRecordings) HasAwsStorageBucketPrefix() boo
 // SetAwsStorageBucketPrefix gets a reference to the given string and assigns it to the AwsStorageBucketPrefix field.
 func (o *GatewayUpdateRemoteAccessRdpRecordings) SetAwsStorageBucketPrefix(v string) {
 	o.AwsStorageBucketPrefix = &v
+}
+
+// GetAwsStorageEndpointUrl returns the AwsStorageEndpointUrl field value if set, zero value otherwise.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetAwsStorageEndpointUrl() string {
+	if o == nil || IsNil(o.AwsStorageEndpointUrl) {
+		var ret string
+		return ret
+	}
+	return *o.AwsStorageEndpointUrl
+}
+
+// GetAwsStorageEndpointUrlOk returns a tuple with the AwsStorageEndpointUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) GetAwsStorageEndpointUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsStorageEndpointUrl) {
+		return nil, false
+	}
+	return o.AwsStorageEndpointUrl, true
+}
+
+// HasAwsStorageEndpointUrl returns a boolean if a field has been set.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) HasAwsStorageEndpointUrl() bool {
+	if o != nil && !IsNil(o.AwsStorageEndpointUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsStorageEndpointUrl gets a reference to the given string and assigns it to the AwsStorageEndpointUrl field.
+func (o *GatewayUpdateRemoteAccessRdpRecordings) SetAwsStorageEndpointUrl(v string) {
+	o.AwsStorageEndpointUrl = &v
 }
 
 // GetAwsStorageRegion returns the AwsStorageRegion field value if set, zero value otherwise.
@@ -673,6 +707,9 @@ func (o GatewayUpdateRemoteAccessRdpRecordings) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.AwsStorageBucketPrefix) {
 		toSerialize["aws-storage-bucket-prefix"] = o.AwsStorageBucketPrefix
+	}
+	if !IsNil(o.AwsStorageEndpointUrl) {
+		toSerialize["aws-storage-endpoint-url"] = o.AwsStorageEndpointUrl
 	}
 	if !IsNil(o.AwsStorageRegion) {
 		toSerialize["aws-storage-region"] = o.AwsStorageRegion

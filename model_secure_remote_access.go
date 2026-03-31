@@ -44,11 +44,13 @@ type SecureRemoteAccess struct {
 	IsDesktopApp *bool `json:"is_desktop_app,omitempty"`
 	IsWeb *bool `json:"is_web,omitempty"`
 	Isolated *bool `json:"isolated,omitempty"`
+	LockDuringSraSession *bool `json:"lock_during_sra_session,omitempty"`
 	Native *bool `json:"native,omitempty"`
 	RdGatewayServer *string `json:"rd_gateway_server,omitempty"`
 	RdpUser *string `json:"rdp_user,omitempty"`
 	Region *string `json:"region,omitempty"`
 	RotateAfterDisconnect *bool `json:"rotate_after_disconnect,omitempty"`
+	RotateAfterDisconnectDelayMins *int64 `json:"rotate_after_disconnect_delay_mins,omitempty"`
 	Schema *string `json:"schema,omitempty"`
 	SshPassword *bool `json:"ssh_password,omitempty"`
 	SshPrivateKey *bool `json:"ssh_private_key,omitempty"`
@@ -846,6 +848,38 @@ func (o *SecureRemoteAccess) SetIsolated(v bool) {
 	o.Isolated = &v
 }
 
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetLockDuringSraSession() bool {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret bool
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetLockDuringSraSessionOk() (*bool, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given bool and assigns it to the LockDuringSraSession field.
+func (o *SecureRemoteAccess) SetLockDuringSraSession(v bool) {
+	o.LockDuringSraSession = &v
+}
+
 // GetNative returns the Native field value if set, zero value otherwise.
 func (o *SecureRemoteAccess) GetNative() bool {
 	if o == nil || IsNil(o.Native) {
@@ -1004,6 +1038,38 @@ func (o *SecureRemoteAccess) HasRotateAfterDisconnect() bool {
 // SetRotateAfterDisconnect gets a reference to the given bool and assigns it to the RotateAfterDisconnect field.
 func (o *SecureRemoteAccess) SetRotateAfterDisconnect(v bool) {
 	o.RotateAfterDisconnect = &v
+}
+
+// GetRotateAfterDisconnectDelayMins returns the RotateAfterDisconnectDelayMins field value if set, zero value otherwise.
+func (o *SecureRemoteAccess) GetRotateAfterDisconnectDelayMins() int64 {
+	if o == nil || IsNil(o.RotateAfterDisconnectDelayMins) {
+		var ret int64
+		return ret
+	}
+	return *o.RotateAfterDisconnectDelayMins
+}
+
+// GetRotateAfterDisconnectDelayMinsOk returns a tuple with the RotateAfterDisconnectDelayMins field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecureRemoteAccess) GetRotateAfterDisconnectDelayMinsOk() (*int64, bool) {
+	if o == nil || IsNil(o.RotateAfterDisconnectDelayMins) {
+		return nil, false
+	}
+	return o.RotateAfterDisconnectDelayMins, true
+}
+
+// HasRotateAfterDisconnectDelayMins returns a boolean if a field has been set.
+func (o *SecureRemoteAccess) HasRotateAfterDisconnectDelayMins() bool {
+	if o != nil && !IsNil(o.RotateAfterDisconnectDelayMins) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateAfterDisconnectDelayMins gets a reference to the given int64 and assigns it to the RotateAfterDisconnectDelayMins field.
+func (o *SecureRemoteAccess) SetRotateAfterDisconnectDelayMins(v int64) {
+	o.RotateAfterDisconnectDelayMins = &v
 }
 
 // GetSchema returns the Schema field value if set, zero value otherwise.
@@ -1408,6 +1474,9 @@ func (o SecureRemoteAccess) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Isolated) {
 		toSerialize["isolated"] = o.Isolated
 	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock_during_sra_session"] = o.LockDuringSraSession
+	}
 	if !IsNil(o.Native) {
 		toSerialize["native"] = o.Native
 	}
@@ -1422,6 +1491,9 @@ func (o SecureRemoteAccess) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RotateAfterDisconnect) {
 		toSerialize["rotate_after_disconnect"] = o.RotateAfterDisconnect
+	}
+	if !IsNil(o.RotateAfterDisconnectDelayMins) {
+		toSerialize["rotate_after_disconnect_delay_mins"] = o.RotateAfterDisconnectDelayMins
 	}
 	if !IsNil(o.Schema) {
 		toSerialize["schema"] = o.Schema

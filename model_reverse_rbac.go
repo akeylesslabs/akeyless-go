@@ -28,7 +28,7 @@ type ReverseRBAC struct {
 	Path string `json:"path"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Type of object (item, am, role)
+	// Type of object (item, am, role, target, sra, ara)
 	Type string `json:"type"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`

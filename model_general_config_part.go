@@ -25,6 +25,7 @@ type GeneralConfigPart struct {
 	AkeylessUrl *string `json:"akeyless_url,omitempty"`
 	ApiTokenTtl *string `json:"api_token_ttl,omitempty"`
 	DisplayName *string `json:"display_name,omitempty"`
+	EnableJsonBodyLimit *bool `json:"enable_json_body_limit,omitempty"`
 	EnableSniProxy *bool `json:"enable_sni_proxy,omitempty"`
 	EnableTls *bool `json:"enable_tls,omitempty"`
 	EnableTlsConfigure *bool `json:"enable_tls_configure,omitempty"`
@@ -32,6 +33,7 @@ type GeneralConfigPart struct {
 	EnableTlsHvp *bool `json:"enable_tls_hvp,omitempty"`
 	GwClusterUrl *string `json:"gw_cluster_url,omitempty"`
 	HvpRouteVersion *int64 `json:"hvp_route_version,omitempty"`
+	JsonBodyLimitMb *int64 `json:"json_body_limit_mb,omitempty"`
 	NotifyOnStatusChange *bool `json:"notify_on_status_change,omitempty"`
 	TcpPort *string `json:"tcp_port,omitempty"`
 	TlsCert *string `json:"tls_cert,omitempty"`
@@ -152,6 +154,38 @@ func (o *GeneralConfigPart) HasDisplayName() bool {
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *GeneralConfigPart) SetDisplayName(v string) {
 	o.DisplayName = &v
+}
+
+// GetEnableJsonBodyLimit returns the EnableJsonBodyLimit field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetEnableJsonBodyLimit() bool {
+	if o == nil || IsNil(o.EnableJsonBodyLimit) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableJsonBodyLimit
+}
+
+// GetEnableJsonBodyLimitOk returns a tuple with the EnableJsonBodyLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetEnableJsonBodyLimitOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableJsonBodyLimit) {
+		return nil, false
+	}
+	return o.EnableJsonBodyLimit, true
+}
+
+// HasEnableJsonBodyLimit returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasEnableJsonBodyLimit() bool {
+	if o != nil && !IsNil(o.EnableJsonBodyLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableJsonBodyLimit gets a reference to the given bool and assigns it to the EnableJsonBodyLimit field.
+func (o *GeneralConfigPart) SetEnableJsonBodyLimit(v bool) {
+	o.EnableJsonBodyLimit = &v
 }
 
 // GetEnableSniProxy returns the EnableSniProxy field value if set, zero value otherwise.
@@ -376,6 +410,38 @@ func (o *GeneralConfigPart) HasHvpRouteVersion() bool {
 // SetHvpRouteVersion gets a reference to the given int64 and assigns it to the HvpRouteVersion field.
 func (o *GeneralConfigPart) SetHvpRouteVersion(v int64) {
 	o.HvpRouteVersion = &v
+}
+
+// GetJsonBodyLimitMb returns the JsonBodyLimitMb field value if set, zero value otherwise.
+func (o *GeneralConfigPart) GetJsonBodyLimitMb() int64 {
+	if o == nil || IsNil(o.JsonBodyLimitMb) {
+		var ret int64
+		return ret
+	}
+	return *o.JsonBodyLimitMb
+}
+
+// GetJsonBodyLimitMbOk returns a tuple with the JsonBodyLimitMb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GeneralConfigPart) GetJsonBodyLimitMbOk() (*int64, bool) {
+	if o == nil || IsNil(o.JsonBodyLimitMb) {
+		return nil, false
+	}
+	return o.JsonBodyLimitMb, true
+}
+
+// HasJsonBodyLimitMb returns a boolean if a field has been set.
+func (o *GeneralConfigPart) HasJsonBodyLimitMb() bool {
+	if o != nil && !IsNil(o.JsonBodyLimitMb) {
+		return true
+	}
+
+	return false
+}
+
+// SetJsonBodyLimitMb gets a reference to the given int64 and assigns it to the JsonBodyLimitMb field.
+func (o *GeneralConfigPart) SetJsonBodyLimitMb(v int64) {
+	o.JsonBodyLimitMb = &v
 }
 
 // GetNotifyOnStatusChange returns the NotifyOnStatusChange field value if set, zero value otherwise.
@@ -621,6 +687,9 @@ func (o GeneralConfigPart) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayName) {
 		toSerialize["display_name"] = o.DisplayName
 	}
+	if !IsNil(o.EnableJsonBodyLimit) {
+		toSerialize["enable_json_body_limit"] = o.EnableJsonBodyLimit
+	}
 	if !IsNil(o.EnableSniProxy) {
 		toSerialize["enable_sni_proxy"] = o.EnableSniProxy
 	}
@@ -641,6 +710,9 @@ func (o GeneralConfigPart) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HvpRouteVersion) {
 		toSerialize["hvp_route_version"] = o.HvpRouteVersion
+	}
+	if !IsNil(o.JsonBodyLimitMb) {
+		toSerialize["json_body_limit_mb"] = o.JsonBodyLimitMb
 	}
 	if !IsNil(o.NotifyOnStatusChange) {
 		toSerialize["notify_on_status_change"] = o.NotifyOnStatusChange

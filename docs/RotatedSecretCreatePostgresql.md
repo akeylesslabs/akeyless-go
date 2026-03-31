@@ -11,10 +11,11 @@ Name | Type | Description | Notes
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
-**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotateAfterDisconnect** | Pointer to **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
@@ -226,6 +227,31 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretCreatePostgresql) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetLockDuringSraSession
+
+`func (o *RotatedSecretCreatePostgresql) GetLockDuringSraSession() string`
+
+GetLockDuringSraSession returns the LockDuringSraSession field if non-nil, zero value otherwise.
+
+### GetLockDuringSraSessionOk
+
+`func (o *RotatedSecretCreatePostgresql) GetLockDuringSraSessionOk() (*string, bool)`
+
+GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockDuringSraSession
+
+`func (o *RotatedSecretCreatePostgresql) SetLockDuringSraSession(v string)`
+
+SetLockDuringSraSession sets LockDuringSraSession field to given value.
+
+### HasLockDuringSraSession
+
+`func (o *RotatedSecretCreatePostgresql) HasLockDuringSraSession() bool`
+
+HasLockDuringSraSession returns a boolean if a field has been set.
 
 ### GetMaxVersions
 

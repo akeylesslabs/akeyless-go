@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **Region** | Pointer to **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
+**SelectedRepositories** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -232,6 +233,31 @@ and a boolean to check if the value has been set.
 
 SetSecretName sets SecretName field to given value.
 
+
+### GetSelectedRepositories
+
+`func (o *UscCreate) GetSelectedRepositories() string`
+
+GetSelectedRepositories returns the SelectedRepositories field if non-nil, zero value otherwise.
+
+### GetSelectedRepositoriesOk
+
+`func (o *UscCreate) GetSelectedRepositoriesOk() (*string, bool)`
+
+GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedRepositories
+
+`func (o *UscCreate) SetSelectedRepositories(v string)`
+
+SetSelectedRepositories sets SelectedRepositories field to given value.
+
+### HasSelectedRepositories
+
+`func (o *UscCreate) HasSelectedRepositories() bool`
+
+HasSelectedRepositories returns a boolean if a field has been set.
 
 ### GetTags
 

@@ -24,6 +24,7 @@ type WebBastionRdpRecord struct {
 	Azure *AzureStorage `json:"azure,omitempty"`
 	Compress *bool `json:"compress,omitempty"`
 	EncryptionKey *string `json:"encryption_key,omitempty"`
+	Netapp *NetappStorage `json:"netapp,omitempty"`
 	RecordingQuality *string `json:"recording_quality,omitempty"`
 	StorageType *string `json:"storage_type,omitempty"`
 }
@@ -173,6 +174,38 @@ func (o *WebBastionRdpRecord) SetEncryptionKey(v string) {
 	o.EncryptionKey = &v
 }
 
+// GetNetapp returns the Netapp field value if set, zero value otherwise.
+func (o *WebBastionRdpRecord) GetNetapp() NetappStorage {
+	if o == nil || IsNil(o.Netapp) {
+		var ret NetappStorage
+		return ret
+	}
+	return *o.Netapp
+}
+
+// GetNetappOk returns a tuple with the Netapp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WebBastionRdpRecord) GetNetappOk() (*NetappStorage, bool) {
+	if o == nil || IsNil(o.Netapp) {
+		return nil, false
+	}
+	return o.Netapp, true
+}
+
+// HasNetapp returns a boolean if a field has been set.
+func (o *WebBastionRdpRecord) HasNetapp() bool {
+	if o != nil && !IsNil(o.Netapp) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetapp gets a reference to the given NetappStorage and assigns it to the Netapp field.
+func (o *WebBastionRdpRecord) SetNetapp(v NetappStorage) {
+	o.Netapp = &v
+}
+
 // GetRecordingQuality returns the RecordingQuality field value if set, zero value otherwise.
 func (o *WebBastionRdpRecord) GetRecordingQuality() string {
 	if o == nil || IsNil(o.RecordingQuality) {
@@ -258,6 +291,9 @@ func (o WebBastionRdpRecord) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EncryptionKey) {
 		toSerialize["encryption_key"] = o.EncryptionKey
+	}
+	if !IsNil(o.Netapp) {
+		toSerialize["netapp"] = o.Netapp
 	}
 	if !IsNil(o.RecordingQuality) {
 		toSerialize["recording_quality"] = o.RecordingQuality

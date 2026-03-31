@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Target name | 
 **Password** | Pointer to **string** | Splunk Password (used when authenticating with username/password) | [optional] 
-**Token** | Pointer to **string** | Splunk Token (used when authenticating with token) | [optional] 
+**SplunkToken** | Pointer to **string** | Splunk Token (used when authenticating with token) | [optional] 
+**Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenOwner** | Pointer to **string** | Splunk Token Owner (required when using token authentication for rotation) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Url** | **string** | Splunk server URL | 
@@ -206,6 +207,31 @@ SetPassword sets Password field to given value.
 `func (o *TargetCreateSplunk) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetSplunkToken
+
+`func (o *TargetCreateSplunk) GetSplunkToken() string`
+
+GetSplunkToken returns the SplunkToken field if non-nil, zero value otherwise.
+
+### GetSplunkTokenOk
+
+`func (o *TargetCreateSplunk) GetSplunkTokenOk() (*string, bool)`
+
+GetSplunkTokenOk returns a tuple with the SplunkToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplunkToken
+
+`func (o *TargetCreateSplunk) SetSplunkToken(v string)`
+
+SetSplunkToken sets SplunkToken field to given value.
+
+### HasSplunkToken
+
+`func (o *TargetCreateSplunk) HasSplunkToken() bool`
+
+HasSplunkToken returns a boolean if a field has been set.
 
 ### GetToken
 

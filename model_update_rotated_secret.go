@@ -49,6 +49,8 @@ type UpdateRotatedSecret struct {
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Lock this secret for read/update while an SRA session is active
+	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
 	// Secret name
 	Name string `json:"name"`
 	// Deprecated - use description
@@ -59,7 +61,7 @@ type UpdateRotatedSecret struct {
 	NewVersion *bool `json:"new-version,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag []string `json:"rm-tag,omitempty"`
-	// Rotate the value of the secret after SRA session ends [true/false]
+	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// rotated-username password
 	RotatedPassword *string `json:"rotated-password,omitempty"`
@@ -140,8 +142,6 @@ func NewUpdateRotatedSecret(name string) *UpdateRotatedSecret {
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var rotatorCredsType string = "use-self-creds"
 	this.RotatorCredsType = &rotatorCredsType
 	var secureAccessAllowExternalUser bool = false
@@ -170,8 +170,6 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var rotatorCredsType string = "use-self-creds"
 	this.RotatorCredsType = &rotatorCredsType
 	var secureAccessAllowExternalUser bool = false
@@ -633,6 +631,38 @@ func (o *UpdateRotatedSecret) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *UpdateRotatedSecret) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetLockDuringSraSession() string {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret string
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetLockDuringSraSessionOk() (*string, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
+func (o *UpdateRotatedSecret) SetLockDuringSraSession(v string) {
+	o.LockDuringSraSession = &v
 }
 
 // GetName returns the Name field value
@@ -1830,6 +1860,9 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewMetadata) {

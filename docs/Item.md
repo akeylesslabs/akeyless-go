@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **LastRotationDate** | Pointer to **time.Time** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **LinkedDetails** | Pointer to [**LinkedDetails**](LinkedDetails.md) |  | [optional] 
+**LockingInfo** | Pointer to [**LockingInfo**](LockingInfo.md) |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **NextRotationDate** | Pointer to **time.Time** |  | [optional] 
 **ProtectionKeyName** | Pointer to **string** |  | [optional] 
@@ -891,6 +892,31 @@ SetLinkedDetails sets LinkedDetails field to given value.
 `func (o *Item) HasLinkedDetails() bool`
 
 HasLinkedDetails returns a boolean if a field has been set.
+
+### GetLockingInfo
+
+`func (o *Item) GetLockingInfo() LockingInfo`
+
+GetLockingInfo returns the LockingInfo field if non-nil, zero value otherwise.
+
+### GetLockingInfoOk
+
+`func (o *Item) GetLockingInfoOk() (*LockingInfo, bool)`
+
+GetLockingInfoOk returns a tuple with the LockingInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockingInfo
+
+`func (o *Item) SetLockingInfo(v LockingInfo)`
+
+SetLockingInfo sets LockingInfo field to given value.
+
+### HasLockingInfo
+
+`func (o *Item) HasLockingInfo() bool`
+
+HasLockingInfo returns a boolean if a field has been set.
 
 ### GetModificationDate
 

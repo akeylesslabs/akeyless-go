@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **InjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
@@ -280,6 +281,31 @@ SetJson sets Json field to given value.
 `func (o *CreateSecret) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetLockDuringSraSession
+
+`func (o *CreateSecret) GetLockDuringSraSession() string`
+
+GetLockDuringSraSession returns the LockDuringSraSession field if non-nil, zero value otherwise.
+
+### GetLockDuringSraSessionOk
+
+`func (o *CreateSecret) GetLockDuringSraSessionOk() (*string, bool)`
+
+GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockDuringSraSession
+
+`func (o *CreateSecret) SetLockDuringSraSession(v string)`
+
+SetLockDuringSraSession sets LockDuringSraSession field to given value.
+
+### HasLockDuringSraSession
+
+`func (o *CreateSecret) HasLockDuringSraSession() bool`
+
+HasLockDuringSraSession returns a boolean if a field has been set.
 
 ### GetMaxVersions
 

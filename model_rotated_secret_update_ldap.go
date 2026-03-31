@@ -43,6 +43,8 @@ type RotatedSecretUpdateLdap struct {
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Lock this secret for read/update while an SRA session is active
+	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
@@ -53,7 +55,7 @@ type RotatedSecretUpdateLdap struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag []string `json:"rm-tag,omitempty"`
-	// Rotate the value of the secret after SRA session ends [true/false]
+	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// rotated-username password (relevant only for rotator-type=ldap)
 	RotatedPassword *string `json:"rotated-password,omitempty"`
@@ -110,8 +112,6 @@ func NewRotatedSecretUpdateLdap(name string) *RotatedSecretUpdateLdap {
 	var json bool = false
 	this.Json = &json
 	this.Name = name
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
 	var secureAccessWebBrowsing bool = false
@@ -134,8 +134,6 @@ func NewRotatedSecretUpdateLdapWithDefaults() *RotatedSecretUpdateLdap {
 	this.Description = &description
 	var json bool = false
 	this.Json = &json
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
 	var secureAccessWebBrowsing bool = false
@@ -497,6 +495,38 @@ func (o *RotatedSecretUpdateLdap) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *RotatedSecretUpdateLdap) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateLdap) GetLockDuringSraSession() string {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret string
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateLdap) GetLockDuringSraSessionOk() (*string, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateLdap) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
+func (o *RotatedSecretUpdateLdap) SetLockDuringSraSession(v string) {
+	o.LockDuringSraSession = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -1333,6 +1363,9 @@ func (o RotatedSecretUpdateLdap) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions

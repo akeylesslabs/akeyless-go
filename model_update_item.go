@@ -46,6 +46,8 @@ type UpdateItem struct {
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Lock this secret for read/update while an SRA session is active
+	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Current item name
@@ -56,7 +58,7 @@ type UpdateItem struct {
 	NewName *string `json:"new-name,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag []string `json:"rm-tag,omitempty"`
-	// Rotate the value of the secret after SRA session ends [true/false]
+	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// List of the new hosts that will be attached to SRA servers host
 	SecureAccessAddHost []string `json:"secure-access-add-host,omitempty"`
@@ -140,8 +142,6 @@ func NewUpdateItem(name string) *UpdateItem {
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessWebBrowsing bool = false
 	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
 	var secureAccessWebProxy bool = false
@@ -162,8 +162,6 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessWebBrowsing bool = false
 	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
 	var secureAccessWebProxy bool = false
@@ -585,6 +583,38 @@ func (o *UpdateItem) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *UpdateItem) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *UpdateItem) GetLockDuringSraSession() string {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret string
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetLockDuringSraSessionOk() (*string, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *UpdateItem) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
+func (o *UpdateItem) SetLockDuringSraSession(v string) {
+	o.LockDuringSraSession = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -1843,6 +1873,9 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions

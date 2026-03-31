@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AwsStorageAccessKeyId** | Pointer to **string** | AWS access key id. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html | [optional] 
 **AwsStorageBucketName** | Pointer to **string** | The AWS bucket name. For more information refer to https://docs.aws.amazon.com/s3/ | [optional] 
 **AwsStorageBucketPrefix** | Pointer to **string** | The folder name in S3 bucket. For more information refer to https://docs.aws.amazon.com/s3/ | [optional] 
+**AwsStorageEndpointUrl** | Pointer to **string** | Custom AWS endpoint URL for S3-compatible storage (e.g. a private AWS endpoint) | [optional] 
 **AwsStorageRegion** | Pointer to **string** | The region where the storage is located | [optional] 
 **AwsStorageSecretAccessKey** | Pointer to **string** | AWS secret access key. For more information refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html | [optional] 
 **AzureStorageAccountName** | Pointer to **string** | Azure account name. For more information refer to https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview | [optional] 
@@ -116,6 +117,31 @@ SetAwsStorageBucketPrefix sets AwsStorageBucketPrefix field to given value.
 `func (o *GatewayUpdateRemoteAccessRdpRecordings) HasAwsStorageBucketPrefix() bool`
 
 HasAwsStorageBucketPrefix returns a boolean if a field has been set.
+
+### GetAwsStorageEndpointUrl
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetAwsStorageEndpointUrl() string`
+
+GetAwsStorageEndpointUrl returns the AwsStorageEndpointUrl field if non-nil, zero value otherwise.
+
+### GetAwsStorageEndpointUrlOk
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) GetAwsStorageEndpointUrlOk() (*string, bool)`
+
+GetAwsStorageEndpointUrlOk returns a tuple with the AwsStorageEndpointUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsStorageEndpointUrl
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) SetAwsStorageEndpointUrl(v string)`
+
+SetAwsStorageEndpointUrl sets AwsStorageEndpointUrl field to given value.
+
+### HasAwsStorageEndpointUrl
+
+`func (o *GatewayUpdateRemoteAccessRdpRecordings) HasAwsStorageEndpointUrl() bool`
+
+HasAwsStorageEndpointUrl returns a boolean if a field has been set.
 
 ### GetAwsStorageRegion
 

@@ -66,6 +66,8 @@ type UpdateAccountSettings struct {
 	HideStaticPassword *string `json:"hide-static-password,omitempty"`
 	// Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing.
 	InvalidCharacters *string `json:"invalid-characters,omitempty"`
+	// Enable item locking feature [true/false]
+	ItemLockingEnabled *string `json:"item-locking-enabled,omitempty"`
 	// VersionSettingsObjectType defines object types for account version settings
 	ItemType *string `json:"item-type,omitempty"`
 	// Set or unset the default behaviour of items deletion protection [true/false]
@@ -86,6 +88,8 @@ type UpdateAccountSettings struct {
 	LockDefaultKey *string `json:"lock-default-key,omitempty"`
 	// Lock gw-bound-ips setting in the account.
 	LockGwBoundIps *string `json:"lock-gw-bound-ips,omitempty"`
+	// Set the maximum TTL for item/target locks in minutes
+	LockMaxTtl *int64 `json:"lock-max-ttl,omitempty"`
 	// Set the maximum rotation interval for rotated secrets auto rotation settings
 	MaxRotationInterval *int32 `json:"max-rotation-interval,omitempty"`
 	// Set a maximum rotation interval for rotated secrets auto rotation settings [true/false]
@@ -883,6 +887,38 @@ func (o *UpdateAccountSettings) SetInvalidCharacters(v string) {
 	o.InvalidCharacters = &v
 }
 
+// GetItemLockingEnabled returns the ItemLockingEnabled field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetItemLockingEnabled() string {
+	if o == nil || IsNil(o.ItemLockingEnabled) {
+		var ret string
+		return ret
+	}
+	return *o.ItemLockingEnabled
+}
+
+// GetItemLockingEnabledOk returns a tuple with the ItemLockingEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetItemLockingEnabledOk() (*string, bool) {
+	if o == nil || IsNil(o.ItemLockingEnabled) {
+		return nil, false
+	}
+	return o.ItemLockingEnabled, true
+}
+
+// HasItemLockingEnabled returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasItemLockingEnabled() bool {
+	if o != nil && !IsNil(o.ItemLockingEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemLockingEnabled gets a reference to the given string and assigns it to the ItemLockingEnabled field.
+func (o *UpdateAccountSettings) SetItemLockingEnabled(v string) {
+	o.ItemLockingEnabled = &v
+}
+
 // GetItemType returns the ItemType field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetItemType() string {
 	if o == nil || IsNil(o.ItemType) {
@@ -1201,6 +1237,38 @@ func (o *UpdateAccountSettings) HasLockGwBoundIps() bool {
 // SetLockGwBoundIps gets a reference to the given string and assigns it to the LockGwBoundIps field.
 func (o *UpdateAccountSettings) SetLockGwBoundIps(v string) {
 	o.LockGwBoundIps = &v
+}
+
+// GetLockMaxTtl returns the LockMaxTtl field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetLockMaxTtl() int64 {
+	if o == nil || IsNil(o.LockMaxTtl) {
+		var ret int64
+		return ret
+	}
+	return *o.LockMaxTtl
+}
+
+// GetLockMaxTtlOk returns a tuple with the LockMaxTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetLockMaxTtlOk() (*int64, bool) {
+	if o == nil || IsNil(o.LockMaxTtl) {
+		return nil, false
+	}
+	return o.LockMaxTtl, true
+}
+
+// HasLockMaxTtl returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasLockMaxTtl() bool {
+	if o != nil && !IsNil(o.LockMaxTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockMaxTtl gets a reference to the given int64 and assigns it to the LockMaxTtl field.
+func (o *UpdateAccountSettings) SetLockMaxTtl(v int64) {
+	o.LockMaxTtl = &v
 }
 
 // GetMaxRotationInterval returns the MaxRotationInterval field value if set, zero value otherwise.
@@ -1826,6 +1894,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InvalidCharacters) {
 		toSerialize["invalid-characters"] = o.InvalidCharacters
 	}
+	if !IsNil(o.ItemLockingEnabled) {
+		toSerialize["item-locking-enabled"] = o.ItemLockingEnabled
+	}
 	if !IsNil(o.ItemType) {
 		toSerialize["item-type"] = o.ItemType
 	}
@@ -1855,6 +1926,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LockGwBoundIps) {
 		toSerialize["lock-gw-bound-ips"] = o.LockGwBoundIps
+	}
+	if !IsNil(o.LockMaxTtl) {
+		toSerialize["lock-max-ttl"] = o.LockMaxTtl
 	}
 	if !IsNil(o.MaxRotationInterval) {
 		toSerialize["max-rotation-interval"] = o.MaxRotationInterval

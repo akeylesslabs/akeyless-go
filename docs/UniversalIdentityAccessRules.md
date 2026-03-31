@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ChildTtlLimit** | Pointer to **int32** |  | [optional] 
 **DenyInheritance** | Pointer to **bool** |  | [optional] 
 **DenyRotate** | Pointer to **bool** |  | [optional] 
+**TreeLength** | Pointer to **int32** |  | [optional] 
 **Ttl** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -26,6 +28,31 @@ will change when the set of required properties is changed
 NewUniversalIdentityAccessRulesWithDefaults instantiates a new UniversalIdentityAccessRules object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetChildTtlLimit
+
+`func (o *UniversalIdentityAccessRules) GetChildTtlLimit() int32`
+
+GetChildTtlLimit returns the ChildTtlLimit field if non-nil, zero value otherwise.
+
+### GetChildTtlLimitOk
+
+`func (o *UniversalIdentityAccessRules) GetChildTtlLimitOk() (*int32, bool)`
+
+GetChildTtlLimitOk returns a tuple with the ChildTtlLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildTtlLimit
+
+`func (o *UniversalIdentityAccessRules) SetChildTtlLimit(v int32)`
+
+SetChildTtlLimit sets ChildTtlLimit field to given value.
+
+### HasChildTtlLimit
+
+`func (o *UniversalIdentityAccessRules) HasChildTtlLimit() bool`
+
+HasChildTtlLimit returns a boolean if a field has been set.
 
 ### GetDenyInheritance
 
@@ -76,6 +103,31 @@ SetDenyRotate sets DenyRotate field to given value.
 `func (o *UniversalIdentityAccessRules) HasDenyRotate() bool`
 
 HasDenyRotate returns a boolean if a field has been set.
+
+### GetTreeLength
+
+`func (o *UniversalIdentityAccessRules) GetTreeLength() int32`
+
+GetTreeLength returns the TreeLength field if non-nil, zero value otherwise.
+
+### GetTreeLengthOk
+
+`func (o *UniversalIdentityAccessRules) GetTreeLengthOk() (*int32, bool)`
+
+GetTreeLengthOk returns a tuple with the TreeLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTreeLength
+
+`func (o *UniversalIdentityAccessRules) SetTreeLength(v int32)`
+
+SetTreeLength sets TreeLength field to given value.
+
+### HasTreeLength
+
+`func (o *UniversalIdentityAccessRules) HasTreeLength() bool`
+
+HasTreeLength returns a boolean if a field has been set.
 
 ### GetTtl
 

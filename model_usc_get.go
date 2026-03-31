@@ -26,8 +26,11 @@ type UscGet struct {
 	Json *bool `json:"json,omitempty"`
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
+	ObjectType *string `json:"object-type,omitempty"`
 	// The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector
 	SecretId string `json:"secret-id"`
+	// GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured.
+	SelectedRepositories *string `json:"selected-repositories,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -127,6 +130,38 @@ func (o *UscGet) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
+// GetObjectType returns the ObjectType field value if set, zero value otherwise.
+func (o *UscGet) GetObjectType() string {
+	if o == nil || IsNil(o.ObjectType) {
+		var ret string
+		return ret
+	}
+	return *o.ObjectType
+}
+
+// GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGet) GetObjectTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ObjectType) {
+		return nil, false
+	}
+	return o.ObjectType, true
+}
+
+// HasObjectType returns a boolean if a field has been set.
+func (o *UscGet) HasObjectType() bool {
+	if o != nil && !IsNil(o.ObjectType) {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
+func (o *UscGet) SetObjectType(v string) {
+	o.ObjectType = &v
+}
+
 // GetSecretId returns the SecretId field value
 func (o *UscGet) GetSecretId() string {
 	if o == nil {
@@ -149,6 +184,38 @@ func (o *UscGet) GetSecretIdOk() (*string, bool) {
 // SetSecretId sets field value
 func (o *UscGet) SetSecretId(v string) {
 	o.SecretId = v
+}
+
+// GetSelectedRepositories returns the SelectedRepositories field value if set, zero value otherwise.
+func (o *UscGet) GetSelectedRepositories() string {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedRepositories
+}
+
+// GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGet) GetSelectedRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		return nil, false
+	}
+	return o.SelectedRepositories, true
+}
+
+// HasSelectedRepositories returns a boolean if a field has been set.
+func (o *UscGet) HasSelectedRepositories() bool {
+	if o != nil && !IsNil(o.SelectedRepositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedRepositories gets a reference to the given string and assigns it to the SelectedRepositories field.
+func (o *UscGet) SetSelectedRepositories(v string) {
+	o.SelectedRepositories = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -287,7 +354,13 @@ func (o UscGet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
 	}
+	if !IsNil(o.ObjectType) {
+		toSerialize["object-type"] = o.ObjectType
+	}
 	toSerialize["secret-id"] = o.SecretId
+	if !IsNil(o.SelectedRepositories) {
+		toSerialize["selected-repositories"] = o.SelectedRepositories
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}

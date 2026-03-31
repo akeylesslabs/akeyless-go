@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **HidePersonalFolder** | Pointer to **string** | Hide personal folder, if set - users will not be able to use personal folder [true/false] | [optional] 
 **HideStaticPassword** | Pointer to **string** | Hide static secret&#39;s password type [true/false] | [optional] 
 **InvalidCharacters** | Pointer to **string** | Characters that cannot be used for items/targets/roles/auths/event_forwarder names. Empty string will enforce nothing. | [optional] [default to "notReceivedInvalidCharacter"]
+**ItemLockingEnabled** | Pointer to **string** | Enable item locking feature [true/false] | [optional] 
 **ItemType** | Pointer to **string** | VersionSettingsObjectType defines object types for account version settings | [optional] 
 **ItemsDeletionProtection** | Pointer to **string** | Set or unset the default behaviour of items deletion protection [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -37,6 +38,7 @@ Name | Type | Description | Notes
 **LockBoundIps** | Pointer to **string** | Lock bound-ips setting globally in the account. | [optional] 
 **LockDefaultKey** | Pointer to **string** | Lock the account&#39;s default protection key, if set - users will not be able to use a different protection key, relevant only if default-key-name is configured [true/false] | [optional] 
 **LockGwBoundIps** | Pointer to **string** | Lock gw-bound-ips setting in the account. | [optional] 
+**LockMaxTtl** | Pointer to **int64** | Set the maximum TTL for item/target locks in minutes | [optional] 
 **MaxRotationInterval** | Pointer to **int32** | Set the maximum rotation interval for rotated secrets auto rotation settings | [optional] 
 **MaxRotationIntervalEnable** | Pointer to **string** | Set a maximum rotation interval for rotated secrets auto rotation settings [true/false] | [optional] 
 **MaxVersions** | Pointer to **string** | Max versions | [optional] 
@@ -649,6 +651,31 @@ SetInvalidCharacters sets InvalidCharacters field to given value.
 
 HasInvalidCharacters returns a boolean if a field has been set.
 
+### GetItemLockingEnabled
+
+`func (o *UpdateAccountSettings) GetItemLockingEnabled() string`
+
+GetItemLockingEnabled returns the ItemLockingEnabled field if non-nil, zero value otherwise.
+
+### GetItemLockingEnabledOk
+
+`func (o *UpdateAccountSettings) GetItemLockingEnabledOk() (*string, bool)`
+
+GetItemLockingEnabledOk returns a tuple with the ItemLockingEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemLockingEnabled
+
+`func (o *UpdateAccountSettings) SetItemLockingEnabled(v string)`
+
+SetItemLockingEnabled sets ItemLockingEnabled field to given value.
+
+### HasItemLockingEnabled
+
+`func (o *UpdateAccountSettings) HasItemLockingEnabled() bool`
+
+HasItemLockingEnabled returns a boolean if a field has been set.
+
 ### GetItemType
 
 `func (o *UpdateAccountSettings) GetItemType() string`
@@ -898,6 +925,31 @@ SetLockGwBoundIps sets LockGwBoundIps field to given value.
 `func (o *UpdateAccountSettings) HasLockGwBoundIps() bool`
 
 HasLockGwBoundIps returns a boolean if a field has been set.
+
+### GetLockMaxTtl
+
+`func (o *UpdateAccountSettings) GetLockMaxTtl() int64`
+
+GetLockMaxTtl returns the LockMaxTtl field if non-nil, zero value otherwise.
+
+### GetLockMaxTtlOk
+
+`func (o *UpdateAccountSettings) GetLockMaxTtlOk() (*int64, bool)`
+
+GetLockMaxTtlOk returns a tuple with the LockMaxTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockMaxTtl
+
+`func (o *UpdateAccountSettings) SetLockMaxTtl(v int64)`
+
+SetLockMaxTtl sets LockMaxTtl field to given value.
+
+### HasLockMaxTtl
+
+`func (o *UpdateAccountSettings) HasLockMaxTtl() bool`
+
+HasLockMaxTtl returns a boolean if a field has been set.
 
 ### GetMaxRotationInterval
 

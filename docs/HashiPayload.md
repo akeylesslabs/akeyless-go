@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeleteSyncOnDeletion** | Pointer to **bool** |  | [optional] 
 **ImportAsJson** | Pointer to **bool** |  | [optional] 
 **Namespaces** | Pointer to **[]string** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
+**UscName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -27,6 +29,31 @@ will change when the set of required properties is changed
 NewHashiPayloadWithDefaults instantiates a new HashiPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeleteSyncOnDeletion
+
+`func (o *HashiPayload) GetDeleteSyncOnDeletion() bool`
+
+GetDeleteSyncOnDeletion returns the DeleteSyncOnDeletion field if non-nil, zero value otherwise.
+
+### GetDeleteSyncOnDeletionOk
+
+`func (o *HashiPayload) GetDeleteSyncOnDeletionOk() (*bool, bool)`
+
+GetDeleteSyncOnDeletionOk returns a tuple with the DeleteSyncOnDeletion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteSyncOnDeletion
+
+`func (o *HashiPayload) SetDeleteSyncOnDeletion(v bool)`
+
+SetDeleteSyncOnDeletion sets DeleteSyncOnDeletion field to given value.
+
+### HasDeleteSyncOnDeletion
+
+`func (o *HashiPayload) HasDeleteSyncOnDeletion() bool`
+
+HasDeleteSyncOnDeletion returns a boolean if a field has been set.
 
 ### GetImportAsJson
 
@@ -127,6 +154,31 @@ SetUrl sets Url field to given value.
 `func (o *HashiPayload) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### GetUscName
+
+`func (o *HashiPayload) GetUscName() string`
+
+GetUscName returns the UscName field if non-nil, zero value otherwise.
+
+### GetUscNameOk
+
+`func (o *HashiPayload) GetUscNameOk() (*string, bool)`
+
+GetUscNameOk returns a tuple with the UscName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscName
+
+`func (o *HashiPayload) SetUscName(v string)`
+
+SetUscName sets UscName field to given value.
+
+### HasUscName
+
+`func (o *HashiPayload) HasUscName() bool`
+
+HasUscName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

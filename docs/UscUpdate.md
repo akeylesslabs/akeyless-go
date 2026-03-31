@@ -8,8 +8,10 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the universal secrets | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
+**ObjectType** | Pointer to **string** |  | [optional] 
 **PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update | 
+**SelectedRepositories** | Pointer to **string** | GitHub selected repositories (required for GitHub USC when repository-access is &#39;selected&#39; or for repository scope) Comma-separated repository names (e.g., \&quot;repo1,repo2\&quot;) | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -136,6 +138,31 @@ SetNamespace sets Namespace field to given value.
 
 HasNamespace returns a boolean if a field has been set.
 
+### GetObjectType
+
+`func (o *UscUpdate) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *UscUpdate) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *UscUpdate) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
+### HasObjectType
+
+`func (o *UscUpdate) HasObjectType() bool`
+
+HasObjectType returns a boolean if a field has been set.
+
 ### GetPfxPassword
 
 `func (o *UscUpdate) GetPfxPassword() string`
@@ -180,6 +207,31 @@ and a boolean to check if the value has been set.
 
 SetSecretId sets SecretId field to given value.
 
+
+### GetSelectedRepositories
+
+`func (o *UscUpdate) GetSelectedRepositories() string`
+
+GetSelectedRepositories returns the SelectedRepositories field if non-nil, zero value otherwise.
+
+### GetSelectedRepositoriesOk
+
+`func (o *UscUpdate) GetSelectedRepositoriesOk() (*string, bool)`
+
+GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedRepositories
+
+`func (o *UscUpdate) SetSelectedRepositories(v string)`
+
+SetSelectedRepositories sets SelectedRepositories field to given value.
+
+### HasSelectedRepositories
+
+`func (o *UscUpdate) HasSelectedRepositories() bool`
+
+HasSelectedRepositories returns a boolean if a field has been set.
 
 ### GetTags
 

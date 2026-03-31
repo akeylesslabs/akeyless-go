@@ -37,9 +37,11 @@ type AccountGeneralSettings struct {
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	HidePersonalFolder *bool `json:"hide_personal_folder,omitempty"`
+	HideSecretRevealCopy *bool `json:"hide_secret_reveal_copy,omitempty"`
 	HideStaticPassword *bool `json:"hide_static_password,omitempty"`
 	// InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention
 	InvalidCharacters *string `json:"invalid_characters,omitempty"`
+	ItemLocking *ItemLockingSetting `json:"item_locking,omitempty"`
 	ItemUsageEvent *UsageEventSetting `json:"item_usage_event,omitempty"`
 	// LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty
 	LockDefaultKey *bool `json:"lock_default_key,omitempty"`
@@ -548,6 +550,38 @@ func (o *AccountGeneralSettings) SetHidePersonalFolder(v bool) {
 	o.HidePersonalFolder = &v
 }
 
+// GetHideSecretRevealCopy returns the HideSecretRevealCopy field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetHideSecretRevealCopy() bool {
+	if o == nil || IsNil(o.HideSecretRevealCopy) {
+		var ret bool
+		return ret
+	}
+	return *o.HideSecretRevealCopy
+}
+
+// GetHideSecretRevealCopyOk returns a tuple with the HideSecretRevealCopy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetHideSecretRevealCopyOk() (*bool, bool) {
+	if o == nil || IsNil(o.HideSecretRevealCopy) {
+		return nil, false
+	}
+	return o.HideSecretRevealCopy, true
+}
+
+// HasHideSecretRevealCopy returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasHideSecretRevealCopy() bool {
+	if o != nil && !IsNil(o.HideSecretRevealCopy) {
+		return true
+	}
+
+	return false
+}
+
+// SetHideSecretRevealCopy gets a reference to the given bool and assigns it to the HideSecretRevealCopy field.
+func (o *AccountGeneralSettings) SetHideSecretRevealCopy(v bool) {
+	o.HideSecretRevealCopy = &v
+}
+
 // GetHideStaticPassword returns the HideStaticPassword field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetHideStaticPassword() bool {
 	if o == nil || IsNil(o.HideStaticPassword) {
@@ -610,6 +644,38 @@ func (o *AccountGeneralSettings) HasInvalidCharacters() bool {
 // SetInvalidCharacters gets a reference to the given string and assigns it to the InvalidCharacters field.
 func (o *AccountGeneralSettings) SetInvalidCharacters(v string) {
 	o.InvalidCharacters = &v
+}
+
+// GetItemLocking returns the ItemLocking field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetItemLocking() ItemLockingSetting {
+	if o == nil || IsNil(o.ItemLocking) {
+		var ret ItemLockingSetting
+		return ret
+	}
+	return *o.ItemLocking
+}
+
+// GetItemLockingOk returns a tuple with the ItemLocking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetItemLockingOk() (*ItemLockingSetting, bool) {
+	if o == nil || IsNil(o.ItemLocking) {
+		return nil, false
+	}
+	return o.ItemLocking, true
+}
+
+// HasItemLocking returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasItemLocking() bool {
+	if o != nil && !IsNil(o.ItemLocking) {
+		return true
+	}
+
+	return false
+}
+
+// SetItemLocking gets a reference to the given ItemLockingSetting and assigns it to the ItemLocking field.
+func (o *AccountGeneralSettings) SetItemLocking(v ItemLockingSetting) {
+	o.ItemLocking = &v
 }
 
 // GetItemUsageEvent returns the ItemUsageEvent field value if set, zero value otherwise.
@@ -923,11 +989,17 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HidePersonalFolder) {
 		toSerialize["hide_personal_folder"] = o.HidePersonalFolder
 	}
+	if !IsNil(o.HideSecretRevealCopy) {
+		toSerialize["hide_secret_reveal_copy"] = o.HideSecretRevealCopy
+	}
 	if !IsNil(o.HideStaticPassword) {
 		toSerialize["hide_static_password"] = o.HideStaticPassword
 	}
 	if !IsNil(o.InvalidCharacters) {
 		toSerialize["invalid_characters"] = o.InvalidCharacters
+	}
+	if !IsNil(o.ItemLocking) {
+		toSerialize["item_locking"] = o.ItemLocking
 	}
 	if !IsNil(o.ItemUsageEvent) {
 		toSerialize["item_usage_event"] = o.ItemUsageEvent

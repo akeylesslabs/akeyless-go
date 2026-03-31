@@ -52,6 +52,8 @@ type RotatedSecretCreateAzure struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Lock this secret for read/update while an SRA session is active
+	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
@@ -62,7 +64,7 @@ type RotatedSecretCreateAzure struct {
 	ResourceGroupName *string `json:"resource-group-name,omitempty"`
 	// The name of the storage account (only relevant when explicitly-set-sa=true)
 	ResourceName *string `json:"resource-name,omitempty"`
-	// Rotate the value of the secret after SRA session ends [true/false]
+	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
@@ -113,8 +115,6 @@ func NewRotatedSecretCreateAzure(name string, rotatorType string, targetName str
 	var json bool = false
 	this.Json = &json
 	this.Name = name
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	this.RotatorType = rotatorType
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
@@ -137,8 +137,6 @@ func NewRotatedSecretCreateAzureWithDefaults() *RotatedSecretCreateAzure {
 	this.ExplicitlySetSa = &explicitlySetSa
 	var json bool = false
 	this.Json = &json
-	var rotateAfterDisconnect string = "false"
-	this.RotateAfterDisconnect = &rotateAfterDisconnect
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
 	var secureAccessWebBrowsing bool = false
@@ -626,6 +624,38 @@ func (o *RotatedSecretCreateAzure) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *RotatedSecretCreateAzure) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetLockDuringSraSession returns the LockDuringSraSession field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetLockDuringSraSession() string {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		var ret string
+		return ret
+	}
+	return *o.LockDuringSraSession
+}
+
+// GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetLockDuringSraSessionOk() (*string, bool) {
+	if o == nil || IsNil(o.LockDuringSraSession) {
+		return nil, false
+	}
+	return o.LockDuringSraSession, true
+}
+
+// HasLockDuringSraSession returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasLockDuringSraSession() bool {
+	if o != nil && !IsNil(o.LockDuringSraSession) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
+func (o *RotatedSecretCreateAzure) SetLockDuringSraSession(v string) {
+	o.LockDuringSraSession = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -1362,6 +1392,9 @@ func (o RotatedSecretCreateAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
+	}
+	if !IsNil(o.LockDuringSraSession) {
+		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions

@@ -28,11 +28,13 @@ Name | Type | Description | Notes
 **IsDesktopApp** | Pointer to **bool** |  | [optional] 
 **IsWeb** | Pointer to **bool** |  | [optional] 
 **Isolated** | Pointer to **bool** |  | [optional] 
+**LockDuringSraSession** | Pointer to **bool** |  | [optional] 
 **Native** | Pointer to **bool** |  | [optional] 
 **RdGatewayServer** | Pointer to **string** |  | [optional] 
 **RdpUser** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **RotateAfterDisconnect** | Pointer to **bool** |  | [optional] 
+**RotateAfterDisconnectDelayMins** | Pointer to **int64** |  | [optional] 
 **Schema** | Pointer to **string** |  | [optional] 
 **SshPassword** | Pointer to **bool** |  | [optional] 
 **SshPrivateKey** | Pointer to **bool** |  | [optional] 
@@ -663,6 +665,31 @@ SetIsolated sets Isolated field to given value.
 
 HasIsolated returns a boolean if a field has been set.
 
+### GetLockDuringSraSession
+
+`func (o *SecureRemoteAccess) GetLockDuringSraSession() bool`
+
+GetLockDuringSraSession returns the LockDuringSraSession field if non-nil, zero value otherwise.
+
+### GetLockDuringSraSessionOk
+
+`func (o *SecureRemoteAccess) GetLockDuringSraSessionOk() (*bool, bool)`
+
+GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockDuringSraSession
+
+`func (o *SecureRemoteAccess) SetLockDuringSraSession(v bool)`
+
+SetLockDuringSraSession sets LockDuringSraSession field to given value.
+
+### HasLockDuringSraSession
+
+`func (o *SecureRemoteAccess) HasLockDuringSraSession() bool`
+
+HasLockDuringSraSession returns a boolean if a field has been set.
+
 ### GetNative
 
 `func (o *SecureRemoteAccess) GetNative() bool`
@@ -787,6 +814,31 @@ SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
 `func (o *SecureRemoteAccess) HasRotateAfterDisconnect() bool`
 
 HasRotateAfterDisconnect returns a boolean if a field has been set.
+
+### GetRotateAfterDisconnectDelayMins
+
+`func (o *SecureRemoteAccess) GetRotateAfterDisconnectDelayMins() int64`
+
+GetRotateAfterDisconnectDelayMins returns the RotateAfterDisconnectDelayMins field if non-nil, zero value otherwise.
+
+### GetRotateAfterDisconnectDelayMinsOk
+
+`func (o *SecureRemoteAccess) GetRotateAfterDisconnectDelayMinsOk() (*int64, bool)`
+
+GetRotateAfterDisconnectDelayMinsOk returns a tuple with the RotateAfterDisconnectDelayMins field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateAfterDisconnectDelayMins
+
+`func (o *SecureRemoteAccess) SetRotateAfterDisconnectDelayMins(v int64)`
+
+SetRotateAfterDisconnectDelayMins sets RotateAfterDisconnectDelayMins field to given value.
+
+### HasRotateAfterDisconnectDelayMins
+
+`func (o *SecureRemoteAccess) HasRotateAfterDisconnectDelayMins() bool`
+
+HasRotateAfterDisconnectDelayMins returns a boolean if a field has been set.
 
 ### GetSchema
 

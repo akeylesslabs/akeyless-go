@@ -30,10 +30,13 @@ type UscUpdate struct {
 	Json *bool `json:"json,omitempty"`
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
+	ObjectType *string `json:"object-type,omitempty"`
 	// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
 	PfxPassword *string `json:"pfx-password,omitempty"`
 	// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update
 	SecretId string `json:"secret-id"`
+	// GitHub selected repositories (required for GitHub USC when repository-access is 'selected' or for repository scope) Comma-separated repository names (e.g., \"repo1,repo2\")
+	SelectedRepositories *string `json:"selected-repositories,omitempty"`
 	// Tags for the universal secrets
 	Tags *map[string]string `json:"tags,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -202,6 +205,38 @@ func (o *UscUpdate) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
+// GetObjectType returns the ObjectType field value if set, zero value otherwise.
+func (o *UscUpdate) GetObjectType() string {
+	if o == nil || IsNil(o.ObjectType) {
+		var ret string
+		return ret
+	}
+	return *o.ObjectType
+}
+
+// GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetObjectTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ObjectType) {
+		return nil, false
+	}
+	return o.ObjectType, true
+}
+
+// HasObjectType returns a boolean if a field has been set.
+func (o *UscUpdate) HasObjectType() bool {
+	if o != nil && !IsNil(o.ObjectType) {
+		return true
+	}
+
+	return false
+}
+
+// SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
+func (o *UscUpdate) SetObjectType(v string) {
+	o.ObjectType = &v
+}
+
 // GetPfxPassword returns the PfxPassword field value if set, zero value otherwise.
 func (o *UscUpdate) GetPfxPassword() string {
 	if o == nil || IsNil(o.PfxPassword) {
@@ -256,6 +291,38 @@ func (o *UscUpdate) GetSecretIdOk() (*string, bool) {
 // SetSecretId sets field value
 func (o *UscUpdate) SetSecretId(v string) {
 	o.SecretId = v
+}
+
+// GetSelectedRepositories returns the SelectedRepositories field value if set, zero value otherwise.
+func (o *UscUpdate) GetSelectedRepositories() string {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedRepositories
+}
+
+// GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetSelectedRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		return nil, false
+	}
+	return o.SelectedRepositories, true
+}
+
+// HasSelectedRepositories returns a boolean if a field has been set.
+func (o *UscUpdate) HasSelectedRepositories() bool {
+	if o != nil && !IsNil(o.SelectedRepositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedRepositories gets a reference to the given string and assigns it to the SelectedRepositories field.
+func (o *UscUpdate) SetSelectedRepositories(v string) {
+	o.SelectedRepositories = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -456,10 +523,16 @@ func (o UscUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
 	}
+	if !IsNil(o.ObjectType) {
+		toSerialize["object-type"] = o.ObjectType
+	}
 	if !IsNil(o.PfxPassword) {
 		toSerialize["pfx-password"] = o.PfxPassword
 	}
 	toSerialize["secret-id"] = o.SecretId
+	if !IsNil(o.SelectedRepositories) {
+		toSerialize["selected-repositories"] = o.SelectedRepositories
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}

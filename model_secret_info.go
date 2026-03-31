@@ -29,6 +29,7 @@ type SecretInfo struct {
 	LastRetrieved *time.Time `json:"last_retrieved,omitempty"`
 	Location interface{} `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 	Region *string `json:"region,omitempty"`
 	SecretId *string `json:"secret_id,omitempty"`
 	Status *bool `json:"status,omitempty"`
@@ -312,6 +313,38 @@ func (o *SecretInfo) SetName(v string) {
 	o.Name = &v
 }
 
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
+func (o *SecretInfo) GetNamespace() string {
+	if o == nil || IsNil(o.Namespace) {
+		var ret string
+		return ret
+	}
+	return *o.Namespace
+}
+
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetNamespaceOk() (*string, bool) {
+	if o == nil || IsNil(o.Namespace) {
+		return nil, false
+	}
+	return o.Namespace, true
+}
+
+// HasNamespace returns a boolean if a field has been set.
+func (o *SecretInfo) HasNamespace() bool {
+	if o != nil && !IsNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+func (o *SecretInfo) SetNamespace(v string) {
+	o.Namespace = &v
+}
+
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *SecretInfo) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -569,6 +602,9 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AllowedClientType** | Pointer to **[]string** | limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension] | [optional] 
 **AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
+**ChildTtlLimit** | Pointer to **int32** | Maximum child token ttl allowed in uid-create-child-token | [optional] [default to 43200]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **DenyInheritance** | Pointer to **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | Pointer to **bool** | Deny from the token to rotate | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**TreeLength** | Pointer to **int32** | Maximum UID tree depth allowed (child of child of ...) | [optional] [default to 200]
 **Ttl** | Pointer to **int32** | Token ttl | [optional] [default to 60]
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
@@ -142,6 +144,31 @@ SetBoundIps sets BoundIps field to given value.
 `func (o *UpdateAuthMethodUniversalIdentity) HasBoundIps() bool`
 
 HasBoundIps returns a boolean if a field has been set.
+
+### GetChildTtlLimit
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetChildTtlLimit() int32`
+
+GetChildTtlLimit returns the ChildTtlLimit field if non-nil, zero value otherwise.
+
+### GetChildTtlLimitOk
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetChildTtlLimitOk() (*int32, bool)`
+
+GetChildTtlLimitOk returns a tuple with the ChildTtlLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChildTtlLimit
+
+`func (o *UpdateAuthMethodUniversalIdentity) SetChildTtlLimit(v int32)`
+
+SetChildTtlLimit sets ChildTtlLimit field to given value.
+
+### HasChildTtlLimit
+
+`func (o *UpdateAuthMethodUniversalIdentity) HasChildTtlLimit() bool`
+
+HasChildTtlLimit returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 
@@ -462,6 +489,31 @@ SetToken sets Token field to given value.
 `func (o *UpdateAuthMethodUniversalIdentity) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetTreeLength
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetTreeLength() int32`
+
+GetTreeLength returns the TreeLength field if non-nil, zero value otherwise.
+
+### GetTreeLengthOk
+
+`func (o *UpdateAuthMethodUniversalIdentity) GetTreeLengthOk() (*int32, bool)`
+
+GetTreeLengthOk returns a tuple with the TreeLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTreeLength
+
+`func (o *UpdateAuthMethodUniversalIdentity) SetTreeLength(v int32)`
+
+SetTreeLength sets TreeLength field to given value.
+
+### HasTreeLength
+
+`func (o *UpdateAuthMethodUniversalIdentity) HasTreeLength() bool`
+
+HasTreeLength returns a boolean if a field has been set.
 
 ### GetTtl
 

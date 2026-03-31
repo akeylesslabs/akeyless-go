@@ -44,7 +44,7 @@ type CreateUSC struct {
 	K8sNamespace *string `json:"k8s-namespace,omitempty"`
 	// Universal Secrets Connector name
 	Name string `json:"name"`
-	// The organization name to create the secret in (only relevant for: github-scope=organization)
+	// The organization name to create the secret in
 	OrganizationName *string `json:"organization-name,omitempty"`
 	RepositoryAccess *string `json:"repository-access,omitempty"`
 	// The repository names, comma-separated (only relevant for: github-scope=repository)

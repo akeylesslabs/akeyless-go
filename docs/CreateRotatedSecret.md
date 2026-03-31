@@ -21,10 +21,11 @@ Name | Type | Description | Notes
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | **string** | Secret name | 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
-**RotateAfterDisconnect** | Pointer to **string** | Rotate the value of the secret after SRA session ends [true/false] | [optional] [default to "false"]
+**RotateAfterDisconnect** | Pointer to **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotationHour** | Pointer to **int32** | The Hour of the rotation in UTC. Default rotation-hour is 14:00 | [optional] 
@@ -503,6 +504,31 @@ SetKey sets Key field to given value.
 `func (o *CreateRotatedSecret) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetLockDuringSraSession
+
+`func (o *CreateRotatedSecret) GetLockDuringSraSession() string`
+
+GetLockDuringSraSession returns the LockDuringSraSession field if non-nil, zero value otherwise.
+
+### GetLockDuringSraSessionOk
+
+`func (o *CreateRotatedSecret) GetLockDuringSraSessionOk() (*string, bool)`
+
+GetLockDuringSraSessionOk returns a tuple with the LockDuringSraSession field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockDuringSraSession
+
+`func (o *CreateRotatedSecret) SetLockDuringSraSession(v string)`
+
+SetLockDuringSraSession sets LockDuringSraSession field to given value.
+
+### HasLockDuringSraSession
+
+`func (o *CreateRotatedSecret) HasLockDuringSraSession() bool`
+
+HasLockDuringSraSession returns a boolean if a field has been set.
 
 ### GetMetadata
 

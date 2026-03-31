@@ -30,6 +30,8 @@ type AuthMethodUpdateUniversalIdentity struct {
 	AuditLogsClaims []string `json:"audit-logs-claims,omitempty"`
 	// A CIDR whitelist with the IPs that the access is restricted to
 	BoundIps []string `json:"bound-ips,omitempty"`
+	// Maximum child token ttl allowed in uid-create-child-token
+	ChildTtlLimit *int32 `json:"child-ttl-limit,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Deny from root to create children
@@ -56,6 +58,8 @@ type AuthMethodUpdateUniversalIdentity struct {
 	ProductType []string `json:"product-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// Maximum UID tree depth allowed (child of child of ...)
+	TreeLength *int32 `json:"tree-length,omitempty"`
 	// Token ttl
 	Ttl *int32 `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -72,11 +76,15 @@ func NewAuthMethodUpdateUniversalIdentity(name string) *AuthMethodUpdateUniversa
 	this := AuthMethodUpdateUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var childTtlLimit int32 = 43200
+	this.ChildTtlLimit = &childTtlLimit
 	var json bool = false
 	this.Json = &json
 	var jwtTtl int64 = 0
 	this.JwtTtl = &jwtTtl
 	this.Name = name
+	var treeLength int32 = 200
+	this.TreeLength = &treeLength
 	var ttl int32 = 60
 	this.Ttl = &ttl
 	return &this
@@ -89,10 +97,14 @@ func NewAuthMethodUpdateUniversalIdentityWithDefaults() *AuthMethodUpdateUnivers
 	this := AuthMethodUpdateUniversalIdentity{}
 	var accessExpires int64 = 0
 	this.AccessExpires = &accessExpires
+	var childTtlLimit int32 = 43200
+	this.ChildTtlLimit = &childTtlLimit
 	var json bool = false
 	this.Json = &json
 	var jwtTtl int64 = 0
 	this.JwtTtl = &jwtTtl
+	var treeLength int32 = 200
+	this.TreeLength = &treeLength
 	var ttl int32 = 60
 	this.Ttl = &ttl
 	return &this
@@ -224,6 +236,38 @@ func (o *AuthMethodUpdateUniversalIdentity) HasBoundIps() bool {
 // SetBoundIps gets a reference to the given []string and assigns it to the BoundIps field.
 func (o *AuthMethodUpdateUniversalIdentity) SetBoundIps(v []string) {
 	o.BoundIps = v
+}
+
+// GetChildTtlLimit returns the ChildTtlLimit field value if set, zero value otherwise.
+func (o *AuthMethodUpdateUniversalIdentity) GetChildTtlLimit() int32 {
+	if o == nil || IsNil(o.ChildTtlLimit) {
+		var ret int32
+		return ret
+	}
+	return *o.ChildTtlLimit
+}
+
+// GetChildTtlLimitOk returns a tuple with the ChildTtlLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodUpdateUniversalIdentity) GetChildTtlLimitOk() (*int32, bool) {
+	if o == nil || IsNil(o.ChildTtlLimit) {
+		return nil, false
+	}
+	return o.ChildTtlLimit, true
+}
+
+// HasChildTtlLimit returns a boolean if a field has been set.
+func (o *AuthMethodUpdateUniversalIdentity) HasChildTtlLimit() bool {
+	if o != nil && !IsNil(o.ChildTtlLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetChildTtlLimit gets a reference to the given int32 and assigns it to the ChildTtlLimit field.
+func (o *AuthMethodUpdateUniversalIdentity) SetChildTtlLimit(v int32) {
+	o.ChildTtlLimit = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -634,6 +678,38 @@ func (o *AuthMethodUpdateUniversalIdentity) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetTreeLength returns the TreeLength field value if set, zero value otherwise.
+func (o *AuthMethodUpdateUniversalIdentity) GetTreeLength() int32 {
+	if o == nil || IsNil(o.TreeLength) {
+		var ret int32
+		return ret
+	}
+	return *o.TreeLength
+}
+
+// GetTreeLengthOk returns a tuple with the TreeLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodUpdateUniversalIdentity) GetTreeLengthOk() (*int32, bool) {
+	if o == nil || IsNil(o.TreeLength) {
+		return nil, false
+	}
+	return o.TreeLength, true
+}
+
+// HasTreeLength returns a boolean if a field has been set.
+func (o *AuthMethodUpdateUniversalIdentity) HasTreeLength() bool {
+	if o != nil && !IsNil(o.TreeLength) {
+		return true
+	}
+
+	return false
+}
+
+// SetTreeLength gets a reference to the given int32 and assigns it to the TreeLength field.
+func (o *AuthMethodUpdateUniversalIdentity) SetTreeLength(v int32) {
+	o.TreeLength = &v
+}
+
 // GetTtl returns the Ttl field value if set, zero value otherwise.
 func (o *AuthMethodUpdateUniversalIdentity) GetTtl() int32 {
 	if o == nil || IsNil(o.Ttl) {
@@ -720,6 +796,9 @@ func (o AuthMethodUpdateUniversalIdentity) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.BoundIps) {
 		toSerialize["bound-ips"] = o.BoundIps
 	}
+	if !IsNil(o.ChildTtlLimit) {
+		toSerialize["child-ttl-limit"] = o.ChildTtlLimit
+	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
@@ -756,6 +835,9 @@ func (o AuthMethodUpdateUniversalIdentity) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.TreeLength) {
+		toSerialize["tree-length"] = o.TreeLength
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl

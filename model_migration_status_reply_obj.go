@@ -35,6 +35,7 @@ type MigrationStatusReplyObj struct {
 	MigrationTypeName *string `json:"migration_type_name,omitempty"`
 	RotatedSecrets *MigrationItems `json:"rotated_secrets,omitempty"`
 	StartTime *string `json:"start_time,omitempty"`
+	Sync *SyncCounters `json:"sync,omitempty"`
 	Targets *MigrationItems `json:"targets,omitempty"`
 }
 
@@ -535,6 +536,38 @@ func (o *MigrationStatusReplyObj) SetStartTime(v string) {
 	o.StartTime = &v
 }
 
+// GetSync returns the Sync field value if set, zero value otherwise.
+func (o *MigrationStatusReplyObj) GetSync() SyncCounters {
+	if o == nil || IsNil(o.Sync) {
+		var ret SyncCounters
+		return ret
+	}
+	return *o.Sync
+}
+
+// GetSyncOk returns a tuple with the Sync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationStatusReplyObj) GetSyncOk() (*SyncCounters, bool) {
+	if o == nil || IsNil(o.Sync) {
+		return nil, false
+	}
+	return o.Sync, true
+}
+
+// HasSync returns a boolean if a field has been set.
+func (o *MigrationStatusReplyObj) HasSync() bool {
+	if o != nil && !IsNil(o.Sync) {
+		return true
+	}
+
+	return false
+}
+
+// SetSync gets a reference to the given SyncCounters and assigns it to the Sync field.
+func (o *MigrationStatusReplyObj) SetSync(v SyncCounters) {
+	o.Sync = &v
+}
+
 // GetTargets returns the Targets field value if set, zero value otherwise.
 func (o *MigrationStatusReplyObj) GetTargets() MigrationItems {
 	if o == nil || IsNil(o.Targets) {
@@ -621,6 +654,9 @@ func (o MigrationStatusReplyObj) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StartTime) {
 		toSerialize["start_time"] = o.StartTime
+	}
+	if !IsNil(o.Sync) {
+		toSerialize["sync"] = o.Sync
 	}
 	if !IsNil(o.Targets) {
 		toSerialize["targets"] = o.Targets

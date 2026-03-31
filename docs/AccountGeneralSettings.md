@@ -19,8 +19,10 @@ Name | Type | Description | Notes
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **HidePersonalFolder** | Pointer to **bool** |  | [optional] 
+**HideSecretRevealCopy** | Pointer to **bool** |  | [optional] 
 **HideStaticPassword** | Pointer to **bool** |  | [optional] 
 **InvalidCharacters** | Pointer to **string** | InvalidCharacters is the invalid characters for items/targets/roles/auths/notifier_forwarder naming convention | [optional] 
+**ItemLocking** | Pointer to [**ItemLockingSetting**](ItemLockingSetting.md) |  | [optional] 
 **ItemUsageEvent** | Pointer to [**UsageEventSetting**](UsageEventSetting.md) |  | [optional] 
 **LockDefaultKey** | Pointer to **bool** | LockDefaultKey determines whether the configured default key can be updated by end-users on a per-request basis true - all requests use the configured default key false - every request can determine its protection key (default) nil - change nothing (every request can determine its protection key (default)) This parameter is only relevant if AccountDefaultKeyItemID is not empty | [optional] 
 **PasswordExpirationInfo** | Pointer to [**PasswordExpirationInfo**](PasswordExpirationInfo.md) |  | [optional] 
@@ -424,6 +426,31 @@ SetHidePersonalFolder sets HidePersonalFolder field to given value.
 
 HasHidePersonalFolder returns a boolean if a field has been set.
 
+### GetHideSecretRevealCopy
+
+`func (o *AccountGeneralSettings) GetHideSecretRevealCopy() bool`
+
+GetHideSecretRevealCopy returns the HideSecretRevealCopy field if non-nil, zero value otherwise.
+
+### GetHideSecretRevealCopyOk
+
+`func (o *AccountGeneralSettings) GetHideSecretRevealCopyOk() (*bool, bool)`
+
+GetHideSecretRevealCopyOk returns a tuple with the HideSecretRevealCopy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHideSecretRevealCopy
+
+`func (o *AccountGeneralSettings) SetHideSecretRevealCopy(v bool)`
+
+SetHideSecretRevealCopy sets HideSecretRevealCopy field to given value.
+
+### HasHideSecretRevealCopy
+
+`func (o *AccountGeneralSettings) HasHideSecretRevealCopy() bool`
+
+HasHideSecretRevealCopy returns a boolean if a field has been set.
+
 ### GetHideStaticPassword
 
 `func (o *AccountGeneralSettings) GetHideStaticPassword() bool`
@@ -473,6 +500,31 @@ SetInvalidCharacters sets InvalidCharacters field to given value.
 `func (o *AccountGeneralSettings) HasInvalidCharacters() bool`
 
 HasInvalidCharacters returns a boolean if a field has been set.
+
+### GetItemLocking
+
+`func (o *AccountGeneralSettings) GetItemLocking() ItemLockingSetting`
+
+GetItemLocking returns the ItemLocking field if non-nil, zero value otherwise.
+
+### GetItemLockingOk
+
+`func (o *AccountGeneralSettings) GetItemLockingOk() (*ItemLockingSetting, bool)`
+
+GetItemLockingOk returns a tuple with the ItemLocking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemLocking
+
+`func (o *AccountGeneralSettings) SetItemLocking(v ItemLockingSetting)`
+
+SetItemLocking sets ItemLocking field to given value.
+
+### HasItemLocking
+
+`func (o *AccountGeneralSettings) HasItemLocking() bool`
+
+HasItemLocking returns a boolean if a field has been set.
 
 ### GetItemUsageEvent
 

@@ -37,6 +37,8 @@ type TargetCreateSplunk struct {
 	// Splunk Password (used when authenticating with username/password)
 	Password *string `json:"password,omitempty"`
 	// Splunk Token (used when authenticating with token)
+	SplunkToken *string `json:"splunk-token,omitempty"`
+	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Splunk Token Owner (required when using token authentication for rotation)
 	TokenOwner *string `json:"token-owner,omitempty"`
@@ -295,6 +297,38 @@ func (o *TargetCreateSplunk) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetSplunkToken returns the SplunkToken field value if set, zero value otherwise.
+func (o *TargetCreateSplunk) GetSplunkToken() string {
+	if o == nil || IsNil(o.SplunkToken) {
+		var ret string
+		return ret
+	}
+	return *o.SplunkToken
+}
+
+// GetSplunkTokenOk returns a tuple with the SplunkToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateSplunk) GetSplunkTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.SplunkToken) {
+		return nil, false
+	}
+	return o.SplunkToken, true
+}
+
+// HasSplunkToken returns a boolean if a field has been set.
+func (o *TargetCreateSplunk) HasSplunkToken() bool {
+	if o != nil && !IsNil(o.SplunkToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplunkToken gets a reference to the given string and assigns it to the SplunkToken field.
+func (o *TargetCreateSplunk) SetSplunkToken(v string) {
+	o.SplunkToken = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *TargetCreateSplunk) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -507,6 +541,9 @@ func (o TargetCreateSplunk) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.SplunkToken) {
+		toSerialize["splunk-token"] = o.SplunkToken
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

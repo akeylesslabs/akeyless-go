@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ChefTargetDetails** | Pointer to [**ChefTargetDetails**](ChefTargetDetails.md) |  | [optional] 
 **CustomTargetDetails** | Pointer to [**CustomTargetDetails**](CustomTargetDetails.md) |  | [optional] 
 **DbTargetDetails** | Pointer to [**DbTargetDetails**](DbTargetDetails.md) |  | [optional] 
+**DigicertTargetDetails** | Pointer to [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 
 **DockerhubTargetDetails** | Pointer to [**DockerhubTargetDetails**](DockerhubTargetDetails.md) |  | [optional] 
 **EksTargetDetails** | Pointer to [**EKSTargetDetails**](EKSTargetDetails.md) |  | [optional] 
 **GcpTargetDetails** | Pointer to [**GcpTargetDetails**](GcpTargetDetails.md) |  | [optional] 
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **GlobalsignAtlasTargetDetails** | Pointer to [**GlobalSignAtlasTargetDetails**](GlobalSignAtlasTargetDetails.md) |  | [optional] 
 **GlobalsignTargetDetails** | Pointer to [**GlobalSignGCCTargetDetails**](GlobalSignGCCTargetDetails.md) |  | [optional] 
 **GodaddyTargetDetails** | Pointer to [**GodaddyTargetDetails**](GodaddyTargetDetails.md) |  | [optional] 
+**GoogleTrustTargetDetails** | Pointer to [**GoogleTrustTargetDetails**](GoogleTrustTargetDetails.md) |  | [optional] 
 **HashiVaultTargetDetails** | Pointer to [**HashiVaultTargetDetails**](HashiVaultTargetDetails.md) |  | [optional] 
 **LdapTargetDetails** | Pointer to [**LdapTargetDetails**](LdapTargetDetails.md) |  | [optional] 
 **LetsencryptTargetDetails** | Pointer to [**LetsEncryptTargetDetails**](LetsEncryptTargetDetails.md) |  | [optional] 
@@ -206,6 +208,31 @@ SetDbTargetDetails sets DbTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasDbTargetDetails() bool`
 
 HasDbTargetDetails returns a boolean if a field has been set.
+
+### GetDigicertTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetDigicertTargetDetails() DigiCertTargetDetails`
+
+GetDigicertTargetDetails returns the DigicertTargetDetails field if non-nil, zero value otherwise.
+
+### GetDigicertTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetDigicertTargetDetailsOk() (*DigiCertTargetDetails, bool)`
+
+GetDigicertTargetDetailsOk returns a tuple with the DigicertTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDigicertTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetDigicertTargetDetails(v DigiCertTargetDetails)`
+
+SetDigicertTargetDetails sets DigicertTargetDetails field to given value.
+
+### HasDigicertTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasDigicertTargetDetails() bool`
+
+HasDigicertTargetDetails returns a boolean if a field has been set.
 
 ### GetDockerhubTargetDetails
 
@@ -456,6 +483,31 @@ SetGodaddyTargetDetails sets GodaddyTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasGodaddyTargetDetails() bool`
 
 HasGodaddyTargetDetails returns a boolean if a field has been set.
+
+### GetGoogleTrustTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetGoogleTrustTargetDetails() GoogleTrustTargetDetails`
+
+GetGoogleTrustTargetDetails returns the GoogleTrustTargetDetails field if non-nil, zero value otherwise.
+
+### GetGoogleTrustTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetGoogleTrustTargetDetailsOk() (*GoogleTrustTargetDetails, bool)`
+
+GetGoogleTrustTargetDetailsOk returns a tuple with the GoogleTrustTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGoogleTrustTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetGoogleTrustTargetDetails(v GoogleTrustTargetDetails)`
+
+SetGoogleTrustTargetDetails sets GoogleTrustTargetDetails field to given value.
+
+### HasGoogleTrustTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasGoogleTrustTargetDetails() bool`
+
+HasGoogleTrustTargetDetails returns a boolean if a field has been set.
 
 ### GetHashiVaultTargetDetails
 

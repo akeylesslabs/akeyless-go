@@ -26,6 +26,7 @@ type TargetTypeDetailsInput struct {
 	ChefTargetDetails *ChefTargetDetails `json:"chef_target_details,omitempty"`
 	CustomTargetDetails *CustomTargetDetails `json:"custom_target_details,omitempty"`
 	DbTargetDetails *DbTargetDetails `json:"db_target_details,omitempty"`
+	DigicertTargetDetails *DigiCertTargetDetails `json:"digicert_target_details,omitempty"`
 	DockerhubTargetDetails *DockerhubTargetDetails `json:"dockerhub_target_details,omitempty"`
 	EksTargetDetails *EKSTargetDetails `json:"eks_target_details,omitempty"`
 	GcpTargetDetails *GcpTargetDetails `json:"gcp_target_details,omitempty"`
@@ -36,6 +37,7 @@ type TargetTypeDetailsInput struct {
 	GlobalsignAtlasTargetDetails *GlobalSignAtlasTargetDetails `json:"globalsign_atlas_target_details,omitempty"`
 	GlobalsignTargetDetails *GlobalSignGCCTargetDetails `json:"globalsign_target_details,omitempty"`
 	GodaddyTargetDetails *GodaddyTargetDetails `json:"godaddy_target_details,omitempty"`
+	GoogleTrustTargetDetails *GoogleTrustTargetDetails `json:"google_trust_target_details,omitempty"`
 	HashiVaultTargetDetails *HashiVaultTargetDetails `json:"hashi_vault_target_details,omitempty"`
 	LdapTargetDetails *LdapTargetDetails `json:"ldap_target_details,omitempty"`
 	LetsencryptTargetDetails *LetsEncryptTargetDetails `json:"letsencrypt_target_details,omitempty"`
@@ -262,6 +264,38 @@ func (o *TargetTypeDetailsInput) HasDbTargetDetails() bool {
 // SetDbTargetDetails gets a reference to the given DbTargetDetails and assigns it to the DbTargetDetails field.
 func (o *TargetTypeDetailsInput) SetDbTargetDetails(v DbTargetDetails) {
 	o.DbTargetDetails = &v
+}
+
+// GetDigicertTargetDetails returns the DigicertTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetDigicertTargetDetails() DigiCertTargetDetails {
+	if o == nil || IsNil(o.DigicertTargetDetails) {
+		var ret DigiCertTargetDetails
+		return ret
+	}
+	return *o.DigicertTargetDetails
+}
+
+// GetDigicertTargetDetailsOk returns a tuple with the DigicertTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetDigicertTargetDetailsOk() (*DigiCertTargetDetails, bool) {
+	if o == nil || IsNil(o.DigicertTargetDetails) {
+		return nil, false
+	}
+	return o.DigicertTargetDetails, true
+}
+
+// HasDigicertTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasDigicertTargetDetails() bool {
+	if o != nil && !IsNil(o.DigicertTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetDigicertTargetDetails gets a reference to the given DigiCertTargetDetails and assigns it to the DigicertTargetDetails field.
+func (o *TargetTypeDetailsInput) SetDigicertTargetDetails(v DigiCertTargetDetails) {
+	o.DigicertTargetDetails = &v
 }
 
 // GetDockerhubTargetDetails returns the DockerhubTargetDetails field value if set, zero value otherwise.
@@ -582,6 +616,38 @@ func (o *TargetTypeDetailsInput) HasGodaddyTargetDetails() bool {
 // SetGodaddyTargetDetails gets a reference to the given GodaddyTargetDetails and assigns it to the GodaddyTargetDetails field.
 func (o *TargetTypeDetailsInput) SetGodaddyTargetDetails(v GodaddyTargetDetails) {
 	o.GodaddyTargetDetails = &v
+}
+
+// GetGoogleTrustTargetDetails returns the GoogleTrustTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGoogleTrustTargetDetails() GoogleTrustTargetDetails {
+	if o == nil || IsNil(o.GoogleTrustTargetDetails) {
+		var ret GoogleTrustTargetDetails
+		return ret
+	}
+	return *o.GoogleTrustTargetDetails
+}
+
+// GetGoogleTrustTargetDetailsOk returns a tuple with the GoogleTrustTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGoogleTrustTargetDetailsOk() (*GoogleTrustTargetDetails, bool) {
+	if o == nil || IsNil(o.GoogleTrustTargetDetails) {
+		return nil, false
+	}
+	return o.GoogleTrustTargetDetails, true
+}
+
+// HasGoogleTrustTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGoogleTrustTargetDetails() bool {
+	if o != nil && !IsNil(o.GoogleTrustTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleTrustTargetDetails gets a reference to the given GoogleTrustTargetDetails and assigns it to the GoogleTrustTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGoogleTrustTargetDetails(v GoogleTrustTargetDetails) {
+	o.GoogleTrustTargetDetails = &v
 }
 
 // GetHashiVaultTargetDetails returns the HashiVaultTargetDetails field value if set, zero value otherwise.
@@ -1156,6 +1222,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DbTargetDetails) {
 		toSerialize["db_target_details"] = o.DbTargetDetails
 	}
+	if !IsNil(o.DigicertTargetDetails) {
+		toSerialize["digicert_target_details"] = o.DigicertTargetDetails
+	}
 	if !IsNil(o.DockerhubTargetDetails) {
 		toSerialize["dockerhub_target_details"] = o.DockerhubTargetDetails
 	}
@@ -1185,6 +1254,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GodaddyTargetDetails) {
 		toSerialize["godaddy_target_details"] = o.GodaddyTargetDetails
+	}
+	if !IsNil(o.GoogleTrustTargetDetails) {
+		toSerialize["google_trust_target_details"] = o.GoogleTrustTargetDetails
 	}
 	if !IsNil(o.HashiVaultTargetDetails) {
 		toSerialize["hashi_vault_target_details"] = o.HashiVaultTargetDetails

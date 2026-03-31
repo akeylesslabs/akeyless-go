@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **LastRetrieved** | Pointer to **time.Time** |  | [optional] 
 **Location** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**Namespace** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **SecretId** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **bool** |  | [optional] 
@@ -248,6 +249,31 @@ SetName sets Name field to given value.
 `func (o *SecretInfo) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetNamespace
+
+`func (o *SecretInfo) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *SecretInfo) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *SecretInfo) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *SecretInfo) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetRegion
 
