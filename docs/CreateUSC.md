@@ -23,7 +23,9 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscPrefix** | Pointer to **string** | Prefix for all secrets created in AWS Secrets Manager | [optional] 
+**UscTags** | Pointer to **string** | Comma-separated list of tags to apply to all secrets created on the remote USC | [optional] 
 **UsePrefixAsFilter** | Pointer to **string** | Whether to filter the USC secret list using the specified usc-prefix [true/false] | [optional] [default to "false"]
+**UseTagsAsFilter** | Pointer to **bool** | Filter the USC secret list by the value(s) of --usc-tags. [true|false] | [optional] 
 
 ## Methods
 
@@ -509,6 +511,31 @@ SetUscPrefix sets UscPrefix field to given value.
 
 HasUscPrefix returns a boolean if a field has been set.
 
+### GetUscTags
+
+`func (o *CreateUSC) GetUscTags() string`
+
+GetUscTags returns the UscTags field if non-nil, zero value otherwise.
+
+### GetUscTagsOk
+
+`func (o *CreateUSC) GetUscTagsOk() (*string, bool)`
+
+GetUscTagsOk returns a tuple with the UscTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscTags
+
+`func (o *CreateUSC) SetUscTags(v string)`
+
+SetUscTags sets UscTags field to given value.
+
+### HasUscTags
+
+`func (o *CreateUSC) HasUscTags() bool`
+
+HasUscTags returns a boolean if a field has been set.
+
 ### GetUsePrefixAsFilter
 
 `func (o *CreateUSC) GetUsePrefixAsFilter() string`
@@ -533,6 +560,31 @@ SetUsePrefixAsFilter sets UsePrefixAsFilter field to given value.
 `func (o *CreateUSC) HasUsePrefixAsFilter() bool`
 
 HasUsePrefixAsFilter returns a boolean if a field has been set.
+
+### GetUseTagsAsFilter
+
+`func (o *CreateUSC) GetUseTagsAsFilter() bool`
+
+GetUseTagsAsFilter returns the UseTagsAsFilter field if non-nil, zero value otherwise.
+
+### GetUseTagsAsFilterOk
+
+`func (o *CreateUSC) GetUseTagsAsFilterOk() (*bool, bool)`
+
+GetUseTagsAsFilterOk returns a tuple with the UseTagsAsFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseTagsAsFilter
+
+`func (o *CreateUSC) SetUseTagsAsFilter(v bool)`
+
+SetUseTagsAsFilter sets UseTagsAsFilter field to given value.
+
+### HasUseTagsAsFilter
+
+`func (o *CreateUSC) HasUseTagsAsFilter() bool`
+
+HasUseTagsAsFilter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

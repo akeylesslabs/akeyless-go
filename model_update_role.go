@@ -24,6 +24,8 @@ var _ MappedNullable = &UpdateRole{}
 type UpdateRole struct {
 	// Allow this role to view analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
+	// Allow this role to view Agentic Runtime Authority Dashboard. Currently only 'none', 'scoped', 'all' values are supported.
+	AraReportsAccess *string `json:"ara-reports-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
 	AuditAccess *string `json:"audit-access,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -118,6 +120,38 @@ func (o *UpdateRole) HasAnalyticsAccess() bool {
 // SetAnalyticsAccess gets a reference to the given string and assigns it to the AnalyticsAccess field.
 func (o *UpdateRole) SetAnalyticsAccess(v string) {
 	o.AnalyticsAccess = &v
+}
+
+// GetAraReportsAccess returns the AraReportsAccess field value if set, zero value otherwise.
+func (o *UpdateRole) GetAraReportsAccess() string {
+	if o == nil || IsNil(o.AraReportsAccess) {
+		var ret string
+		return ret
+	}
+	return *o.AraReportsAccess
+}
+
+// GetAraReportsAccessOk returns a tuple with the AraReportsAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRole) GetAraReportsAccessOk() (*string, bool) {
+	if o == nil || IsNil(o.AraReportsAccess) {
+		return nil, false
+	}
+	return o.AraReportsAccess, true
+}
+
+// HasAraReportsAccess returns a boolean if a field has been set.
+func (o *UpdateRole) HasAraReportsAccess() bool {
+	if o != nil && !IsNil(o.AraReportsAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraReportsAccess gets a reference to the given string and assigns it to the AraReportsAccess field.
+func (o *UpdateRole) SetAraReportsAccess(v string) {
+	o.AraReportsAccess = &v
 }
 
 // GetAuditAccess returns the AuditAccess field value if set, zero value otherwise.
@@ -604,6 +638,9 @@ func (o UpdateRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AnalyticsAccess) {
 		toSerialize["analytics-access"] = o.AnalyticsAccess
+	}
+	if !IsNil(o.AraReportsAccess) {
+		toSerialize["ara-reports-access"] = o.AraReportsAccess
 	}
 	if !IsNil(o.AuditAccess) {
 		toSerialize["audit-access"] = o.AuditAccess

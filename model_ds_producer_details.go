@@ -28,6 +28,7 @@ type DSProducerDetails struct {
 	AdminPwd *string `json:"admin_pwd,omitempty"`
 	AdminRotationIntervalDays *int64 `json:"admin_rotation_interval_days,omitempty"`
 	AdministrativePort *string `json:"administrative_port,omitempty"`
+	AgenticRules *AgenticRules `json:"agentic_rules,omitempty"`
 	ApiKey *string `json:"api_key,omitempty"`
 	ApiKeyId *string `json:"api_key_id,omitempty"`
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
@@ -549,6 +550,38 @@ func (o *DSProducerDetails) HasAdministrativePort() bool {
 // SetAdministrativePort gets a reference to the given string and assigns it to the AdministrativePort field.
 func (o *DSProducerDetails) SetAdministrativePort(v string) {
 	o.AdministrativePort = &v
+}
+
+// GetAgenticRules returns the AgenticRules field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAgenticRules() AgenticRules {
+	if o == nil || IsNil(o.AgenticRules) {
+		var ret AgenticRules
+		return ret
+	}
+	return *o.AgenticRules
+}
+
+// GetAgenticRulesOk returns a tuple with the AgenticRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAgenticRulesOk() (*AgenticRules, bool) {
+	if o == nil || IsNil(o.AgenticRules) {
+		return nil, false
+	}
+	return o.AgenticRules, true
+}
+
+// HasAgenticRules returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAgenticRules() bool {
+	if o != nil && !IsNil(o.AgenticRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgenticRules gets a reference to the given AgenticRules and assigns it to the AgenticRules field.
+func (o *DSProducerDetails) SetAgenticRules(v AgenticRules) {
+	o.AgenticRules = &v
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
@@ -8837,6 +8870,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdministrativePort) {
 		toSerialize["administrative_port"] = o.AdministrativePort
+	}
+	if !IsNil(o.AgenticRules) {
+		toSerialize["agentic_rules"] = o.AgenticRules
 	}
 	if !IsNil(o.ApiKey) {
 		toSerialize["api_key"] = o.ApiKey

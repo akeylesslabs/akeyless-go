@@ -56,6 +56,8 @@ Name | Type | Description | Notes
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UscTags** | Pointer to **string** | Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only. | [optional] 
+**UseTagsAsFilter** | Pointer to **string** | Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only. | [optional] 
 
 ## Methods
 
@@ -1370,6 +1372,56 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateItem) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUscTags
+
+`func (o *UpdateItem) GetUscTags() string`
+
+GetUscTags returns the UscTags field if non-nil, zero value otherwise.
+
+### GetUscTagsOk
+
+`func (o *UpdateItem) GetUscTagsOk() (*string, bool)`
+
+GetUscTagsOk returns a tuple with the UscTags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscTags
+
+`func (o *UpdateItem) SetUscTags(v string)`
+
+SetUscTags sets UscTags field to given value.
+
+### HasUscTags
+
+`func (o *UpdateItem) HasUscTags() bool`
+
+HasUscTags returns a boolean if a field has been set.
+
+### GetUseTagsAsFilter
+
+`func (o *UpdateItem) GetUseTagsAsFilter() string`
+
+GetUseTagsAsFilter returns the UseTagsAsFilter field if non-nil, zero value otherwise.
+
+### GetUseTagsAsFilterOk
+
+`func (o *UpdateItem) GetUseTagsAsFilterOk() (*string, bool)`
+
+GetUseTagsAsFilterOk returns a tuple with the UseTagsAsFilter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseTagsAsFilter
+
+`func (o *UpdateItem) SetUseTagsAsFilter(v string)`
+
+SetUseTagsAsFilter sets UseTagsAsFilter field to given value.
+
+### HasUseTagsAsFilter
+
+`func (o *UpdateItem) HasUseTagsAsFilter() bool`
+
+HasUseTagsAsFilter returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

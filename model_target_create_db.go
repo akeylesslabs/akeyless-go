@@ -42,6 +42,8 @@ type TargetCreateDB struct {
 	// (Optional) Server name for certificate verification
 	DbServerName *string `json:"db-server-name,omitempty"`
 	DbType string `json:"db-type"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	Host *string `json:"host,omitempty"`
@@ -458,6 +460,38 @@ func (o *TargetCreateDB) GetDbTypeOk() (*string, bool) {
 // SetDbType sets field value
 func (o *TargetCreateDB) SetDbType(v string) {
 	o.DbType = v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *TargetCreateDB) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateDB) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *TargetCreateDB) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *TargetCreateDB) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -1355,6 +1389,9 @@ func (o TargetCreateDB) ToMap() (map[string]interface{}, error) {
 		toSerialize["db-server-name"] = o.DbServerName
 	}
 	toSerialize["db-type"] = o.DbType
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **ObjectType** | Pointer to **string** |  | [optional] 
+**PageSize** | Pointer to **int64** | Optional: number of items requested per response (Azure KV). When set, response may include next_token | [optional] 
+**PageToken** | Pointer to **string** | Optional: continuation token returned by a previous usc list --page-size call | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
@@ -78,6 +80,56 @@ SetObjectType sets ObjectType field to given value.
 `func (o *UscList) HasObjectType() bool`
 
 HasObjectType returns a boolean if a field has been set.
+
+### GetPageSize
+
+`func (o *UscList) GetPageSize() int64`
+
+GetPageSize returns the PageSize field if non-nil, zero value otherwise.
+
+### GetPageSizeOk
+
+`func (o *UscList) GetPageSizeOk() (*int64, bool)`
+
+GetPageSizeOk returns a tuple with the PageSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPageSize
+
+`func (o *UscList) SetPageSize(v int64)`
+
+SetPageSize sets PageSize field to given value.
+
+### HasPageSize
+
+`func (o *UscList) HasPageSize() bool`
+
+HasPageSize returns a boolean if a field has been set.
+
+### GetPageToken
+
+`func (o *UscList) GetPageToken() string`
+
+GetPageToken returns the PageToken field if non-nil, zero value otherwise.
+
+### GetPageTokenOk
+
+`func (o *UscList) GetPageTokenOk() (*string, bool)`
+
+GetPageTokenOk returns a tuple with the PageToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPageToken
+
+`func (o *UscList) SetPageToken(v string)`
+
+SetPageToken sets PageToken field to given value.
+
+### HasPageToken
+
+`func (o *UscList) HasPageToken() bool`
+
+HasPageToken returns a boolean if a field has been set.
 
 ### GetToken
 

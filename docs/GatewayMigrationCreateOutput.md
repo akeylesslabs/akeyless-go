@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MigrationId** | Pointer to **string** |  | [optional] 
 **MigrationName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewGatewayMigrationCreateOutputWithDefaults instantiates a new GatewayMigrationCreateOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMigrationId
+
+`func (o *GatewayMigrationCreateOutput) GetMigrationId() string`
+
+GetMigrationId returns the MigrationId field if non-nil, zero value otherwise.
+
+### GetMigrationIdOk
+
+`func (o *GatewayMigrationCreateOutput) GetMigrationIdOk() (*string, bool)`
+
+GetMigrationIdOk returns a tuple with the MigrationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMigrationId
+
+`func (o *GatewayMigrationCreateOutput) SetMigrationId(v string)`
+
+SetMigrationId sets MigrationId field to given value.
+
+### HasMigrationId
+
+`func (o *GatewayMigrationCreateOutput) HasMigrationId() bool`
+
+HasMigrationId returns a boolean if a field has been set.
 
 ### GetMigrationName
 

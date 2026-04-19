@@ -24,6 +24,8 @@ var _ MappedNullable = &TargetUpdateZeroSSL{}
 type TargetUpdateZeroSSL struct {
 	// API Key of the ZeroSSLTarget account
 	ApiKey string `json:"api-key"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS
@@ -114,6 +116,38 @@ func (o *TargetUpdateZeroSSL) GetApiKeyOk() (*string, bool) {
 // SetApiKey sets field value
 func (o *TargetUpdateZeroSSL) SetApiKey(v string) {
 	o.ApiKey = v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *TargetUpdateZeroSSL) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateZeroSSL) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *TargetUpdateZeroSSL) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *TargetUpdateZeroSSL) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -575,6 +609,9 @@ func (o TargetUpdateZeroSSL) MarshalJSON() ([]byte, error) {
 func (o TargetUpdateZeroSSL) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["api-key"] = o.ApiKey
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

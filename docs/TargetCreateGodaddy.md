@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | **string** | Key of the api credentials to the Godaddy account | 
 **CustomerId** | Pointer to **string** | Customer ID (ShopperId) required for renewal of imported certificates | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **ImapFqdn** | **string** | ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS | 
 **ImapPassword** | **string** | ImapPassword to access the IMAP service | 
@@ -83,6 +84,31 @@ SetCustomerId sets CustomerId field to given value.
 `func (o *TargetCreateGodaddy) HasCustomerId() bool`
 
 HasCustomerId returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetCreateGodaddy) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetCreateGodaddy) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetCreateGodaddy) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetCreateGodaddy) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

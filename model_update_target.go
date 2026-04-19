@@ -22,6 +22,8 @@ var _ MappedNullable = &UpdateTarget{}
 
 // UpdateTarget struct for UpdateTarget
 type UpdateTarget struct {
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// Set output format to JSON
@@ -70,6 +72,38 @@ func NewUpdateTargetWithDefaults() *UpdateTarget {
 	var newComment string = "default_comment"
 	this.NewComment = &newComment
 	return &this
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *UpdateTarget) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateTarget) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *UpdateTarget) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *UpdateTarget) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -330,6 +364,9 @@ func (o UpdateTarget) MarshalJSON() ([]byte, error) {
 
 func (o UpdateTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

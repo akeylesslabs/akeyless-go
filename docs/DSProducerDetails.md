@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AdminPwd** | Pointer to **string** |  | [optional] 
 **AdminRotationIntervalDays** | Pointer to **int64** |  | [optional] 
 **AdministrativePort** | Pointer to **string** |  | [optional] 
+**AgenticRules** | Pointer to [**AgenticRules**](AgenticRules.md) |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
 **ApiKeyId** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
@@ -463,6 +464,31 @@ SetAdministrativePort sets AdministrativePort field to given value.
 `func (o *DSProducerDetails) HasAdministrativePort() bool`
 
 HasAdministrativePort returns a boolean if a field has been set.
+
+### GetAgenticRules
+
+`func (o *DSProducerDetails) GetAgenticRules() AgenticRules`
+
+GetAgenticRules returns the AgenticRules field if non-nil, zero value otherwise.
+
+### GetAgenticRulesOk
+
+`func (o *DSProducerDetails) GetAgenticRulesOk() (*AgenticRules, bool)`
+
+GetAgenticRulesOk returns a tuple with the AgenticRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgenticRules
+
+`func (o *DSProducerDetails) SetAgenticRules(v AgenticRules)`
+
+SetAgenticRules sets AgenticRules field to given value.
+
+### HasAgenticRules
+
+`func (o *DSProducerDetails) HasAgenticRules() bool`
+
+HasAgenticRules returns a boolean if a field has been set.
 
 ### GetApiKey
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**NextToken** | Pointer to **string** |  | [optional] 
 **SecretsList** | Pointer to [**[]SecretInfo**](SecretInfo.md) |  | [optional] 
 **Warnings** | Pointer to **[]string** |  | [optional] 
 
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewUscListSecretsOutputWithDefaults instantiates a new UscListSecretsOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetNextToken
+
+`func (o *UscListSecretsOutput) GetNextToken() string`
+
+GetNextToken returns the NextToken field if non-nil, zero value otherwise.
+
+### GetNextTokenOk
+
+`func (o *UscListSecretsOutput) GetNextTokenOk() (*string, bool)`
+
+GetNextTokenOk returns a tuple with the NextToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextToken
+
+`func (o *UscListSecretsOutput) SetNextToken(v string)`
+
+SetNextToken sets NextToken field to given value.
+
+### HasNextToken
+
+`func (o *UscListSecretsOutput) HasNextToken() bool`
+
+HasNextToken returns a boolean if a field has been set.
 
 ### GetSecretsList
 

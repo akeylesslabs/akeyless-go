@@ -26,6 +26,8 @@ type TargetUpdateGodaddy struct {
 	ApiKey string `json:"api-key"`
 	// Customer ID (ShopperId) required for renewal of imported certificates
 	CustomerId *string `json:"customer_id,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// ImapFQDN of the IMAP service, FQDN or IPv4 address. Must be FQDN if the IMAP is using TLS
@@ -149,6 +151,38 @@ func (o *TargetUpdateGodaddy) HasCustomerId() bool {
 // SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
 func (o *TargetUpdateGodaddy) SetCustomerId(v string) {
 	o.CustomerId = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *TargetUpdateGodaddy) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateGodaddy) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *TargetUpdateGodaddy) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *TargetUpdateGodaddy) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -604,6 +638,9 @@ func (o TargetUpdateGodaddy) ToMap() (map[string]interface{}, error) {
 	toSerialize["api-key"] = o.ApiKey
 	if !IsNil(o.CustomerId) {
 		toSerialize["customer_id"] = o.CustomerId
+	}
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

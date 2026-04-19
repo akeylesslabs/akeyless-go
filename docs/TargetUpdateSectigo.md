@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateProfileId** | **int64** | Certificate Profile ID in Sectigo account | 
 **CustomerUri** | **string** | Customer Uri of the Sectigo account | 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **ExternalRequester** | **string** | External Requester - a comma separated list of emails | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -79,6 +80,31 @@ and a boolean to check if the value has been set.
 
 SetCustomerUri sets CustomerUri field to given value.
 
+
+### GetDeleteProtection
+
+`func (o *TargetUpdateSectigo) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetUpdateSectigo) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetUpdateSectigo) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetUpdateSectigo) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

@@ -18447,7 +18447,7 @@ func (a *V2ApiService) DynamicSecretCreateOracleDbExecute(r ApiDynamicSecretCrea
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dynamic-secret-create-oracle"
+	localVarPath := localBasePath + "/dynamic-secret-create-oracledb"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -20172,7 +20172,7 @@ func (a *V2ApiService) DynamicSecretTmpCredsGetExecute(r ApiDynamicSecretTmpCred
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dynamic-secret-tmp-creds-Get"
+	localVarPath := localBasePath + "/dynamic-secret-tmp-creds-get"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -21894,7 +21894,7 @@ func (a *V2ApiService) DynamicSecretUpdateHanaDbExecute(r ApiDynamicSecretUpdate
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dynamic-secret-update-hana"
+	localVarPath := localBasePath + "/dynamic-secret-update-hanadb"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -22266,7 +22266,7 @@ func (a *V2ApiService) DynamicSecretUpdateMongoDbExecute(r ApiDynamicSecretUpdat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dynamic-secret-update-mongo"
+	localVarPath := localBasePath + "/dynamic-secret-update-mongodb"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -55572,6 +55572,119 @@ func (a *V2ApiService) RotatedSecretUpdateWindowsExecute(r ApiRotatedSecretUpdat
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRuntimeAuthorityRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	runtimeAuthorityCommand *RuntimeAuthorityCommand
+    body interface{}
+}
+
+func (r ApiRuntimeAuthorityRequest) RuntimeAuthorityCommand(runtimeAuthorityCommand RuntimeAuthorityCommand) ApiRuntimeAuthorityRequest {
+	r.runtimeAuthorityCommand = &runtimeAuthorityCommand
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRuntimeAuthorityRequest) Body(body RuntimeAuthorityCommand) ApiRuntimeAuthorityRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRuntimeAuthorityRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RuntimeAuthorityExecute(r)
+}
+
+/*
+RuntimeAuthority Method for RuntimeAuthority
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRuntimeAuthorityRequest
+*/
+func (a *V2ApiService) RuntimeAuthority(ctx context.Context) ApiRuntimeAuthorityRequest {
+	return ApiRuntimeAuthorityRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *V2ApiService) RuntimeAuthorityExecute(r ApiRuntimeAuthorityRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RuntimeAuthority")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/runtime-authority"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiSetItemStateRequest struct {

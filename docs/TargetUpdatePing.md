@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdministrativePort** | Pointer to **string** | Ping Federate administrative port | [optional] [default to "9999"]
 **AuthorizationPort** | Pointer to **string** | Ping Federate authorization port | [optional] [default to "9031"]
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -87,6 +88,31 @@ SetAuthorizationPort sets AuthorizationPort field to given value.
 `func (o *TargetUpdatePing) HasAuthorizationPort() bool`
 
 HasAuthorizationPort returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetUpdatePing) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetUpdatePing) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetUpdatePing) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetUpdatePing) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

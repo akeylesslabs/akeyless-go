@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to **string** | API key for Gemini | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_comment"]
 **GeminiUrl** | Pointer to **string** | Base URL of the Gemini API | [optional] [default to "https://generativelanguage.googleapis.com"]
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -60,6 +61,31 @@ SetApiKey sets ApiKey field to given value.
 `func (o *TargetUpdateGemini) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetUpdateGemini) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetUpdateGemini) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetUpdateGemini) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetUpdateGemini) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

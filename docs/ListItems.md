@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **AdvancedFilter** | Pointer to **string** | Filter by item name/username/website or part of it | [optional] 
+**AraOnly** | Pointer to **bool** | Filter by items with ARA functionality enabled | [optional] [default to false]
 **AutoPagination** | Pointer to **string** | Retrieve all items using pagination, when disabled retrieving only first 1000 items | [optional] [default to "enabled"]
 **CurrentFolder** | Pointer to **bool** | List only items in the current folder (excludes subfolders) | [optional] [default to false]
 **Filter** | Pointer to **string** | Filter by item name or part of it | [optional] 
@@ -89,6 +90,31 @@ SetAdvancedFilter sets AdvancedFilter field to given value.
 `func (o *ListItems) HasAdvancedFilter() bool`
 
 HasAdvancedFilter returns a boolean if a field has been set.
+
+### GetAraOnly
+
+`func (o *ListItems) GetAraOnly() bool`
+
+GetAraOnly returns the AraOnly field if non-nil, zero value otherwise.
+
+### GetAraOnlyOk
+
+`func (o *ListItems) GetAraOnlyOk() (*bool, bool)`
+
+GetAraOnlyOk returns a tuple with the AraOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraOnly
+
+`func (o *ListItems) SetAraOnly(v bool)`
+
+SetAraOnly sets AraOnly field to given value.
+
+### HasAraOnly
+
+`func (o *ListItems) HasAraOnly() bool`
+
+HasAraOnly returns a boolean if a field has been set.
 
 ### GetAutoPagination
 

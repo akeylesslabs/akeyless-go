@@ -23,6 +23,8 @@ type SystemAccessCredentialsReplyObj struct {
 	AccessId *string `json:"access_id,omitempty"`
 	// Temporary credentials for accessing Auth
 	AuthCreds *string `json:"auth_creds,omitempty"`
+	// CSRF token for synchronizer-token pattern (only populated for WebUI clients)
+	CsrfToken *string `json:"csrf_token,omitempty"`
 	// Credentials expiration date
 	Expiry *int64 `json:"expiry,omitempty"`
 	// Temporary credentials for accessing the KFMs instances
@@ -115,6 +117,38 @@ func (o *SystemAccessCredentialsReplyObj) HasAuthCreds() bool {
 // SetAuthCreds gets a reference to the given string and assigns it to the AuthCreds field.
 func (o *SystemAccessCredentialsReplyObj) SetAuthCreds(v string) {
 	o.AuthCreds = &v
+}
+
+// GetCsrfToken returns the CsrfToken field value if set, zero value otherwise.
+func (o *SystemAccessCredentialsReplyObj) GetCsrfToken() string {
+	if o == nil || IsNil(o.CsrfToken) {
+		var ret string
+		return ret
+	}
+	return *o.CsrfToken
+}
+
+// GetCsrfTokenOk returns a tuple with the CsrfToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemAccessCredentialsReplyObj) GetCsrfTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.CsrfToken) {
+		return nil, false
+	}
+	return o.CsrfToken, true
+}
+
+// HasCsrfToken returns a boolean if a field has been set.
+func (o *SystemAccessCredentialsReplyObj) HasCsrfToken() bool {
+	if o != nil && !IsNil(o.CsrfToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetCsrfToken gets a reference to the given string and assigns it to the CsrfToken field.
+func (o *SystemAccessCredentialsReplyObj) SetCsrfToken(v string) {
+	o.CsrfToken = &v
 }
 
 // GetExpiry returns the Expiry field value if set, zero value otherwise.
@@ -324,6 +358,9 @@ func (o SystemAccessCredentialsReplyObj) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.AuthCreds) {
 		toSerialize["auth_creds"] = o.AuthCreds
+	}
+	if !IsNil(o.CsrfToken) {
+		toSerialize["csrf_token"] = o.CsrfToken
 	}
 	if !IsNil(o.Expiry) {
 		toSerialize["expiry"] = o.Expiry

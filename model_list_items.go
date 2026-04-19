@@ -24,6 +24,8 @@ type ListItems struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Filter by item name/username/website or part of it
 	AdvancedFilter *string `json:"advanced-filter,omitempty"`
+	// Filter by items with ARA functionality enabled
+	AraOnly *bool `json:"ara-only,omitempty"`
 	// Retrieve all items using pagination, when disabled retrieving only first 1000 items
 	AutoPagination *string `json:"auto-pagination,omitempty"`
 	// List only items in the current folder (excludes subfolders)
@@ -61,6 +63,8 @@ func NewListItems() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var araOnly bool = false
+	this.AraOnly = &araOnly
 	var autoPagination string = "enabled"
 	this.AutoPagination = &autoPagination
 	var currentFolder bool = false
@@ -79,6 +83,8 @@ func NewListItemsWithDefaults() *ListItems {
 	this := ListItems{}
 	var accessibility string = "regular"
 	this.Accessibility = &accessibility
+	var araOnly bool = false
+	this.AraOnly = &araOnly
 	var autoPagination string = "enabled"
 	this.AutoPagination = &autoPagination
 	var currentFolder bool = false
@@ -152,6 +158,38 @@ func (o *ListItems) HasAdvancedFilter() bool {
 // SetAdvancedFilter gets a reference to the given string and assigns it to the AdvancedFilter field.
 func (o *ListItems) SetAdvancedFilter(v string) {
 	o.AdvancedFilter = &v
+}
+
+// GetAraOnly returns the AraOnly field value if set, zero value otherwise.
+func (o *ListItems) GetAraOnly() bool {
+	if o == nil || IsNil(o.AraOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.AraOnly
+}
+
+// GetAraOnlyOk returns a tuple with the AraOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListItems) GetAraOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraOnly) {
+		return nil, false
+	}
+	return o.AraOnly, true
+}
+
+// HasAraOnly returns a boolean if a field has been set.
+func (o *ListItems) HasAraOnly() bool {
+	if o != nil && !IsNil(o.AraOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraOnly gets a reference to the given bool and assigns it to the AraOnly field.
+func (o *ListItems) SetAraOnly(v bool) {
+	o.AraOnly = &v
 }
 
 // GetAutoPagination returns the AutoPagination field value if set, zero value otherwise.
@@ -617,6 +655,9 @@ func (o ListItems) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdvancedFilter) {
 		toSerialize["advanced-filter"] = o.AdvancedFilter
+	}
+	if !IsNil(o.AraOnly) {
+		toSerialize["ara-only"] = o.AraOnly
 	}
 	if !IsNil(o.AutoPagination) {
 		toSerialize["auto-pagination"] = o.AutoPagination

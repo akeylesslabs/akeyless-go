@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **Comment** | Pointer to **string** |  | [optional] 
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
+**DeleteProtection** | Pointer to **bool** |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **LockingInfo** | Pointer to [**LockingInfo**](LockingInfo.md) |  | [optional] 
@@ -219,6 +220,31 @@ SetCreationDate sets CreationDate field to given value.
 `func (o *Target) HasCreationDate() bool`
 
 HasCreationDate returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *Target) GetDeleteProtection() bool`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *Target) GetDeleteProtectionOk() (*bool, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *Target) SetDeleteProtection(v bool)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *Target) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetIsAccessRequestEnabled
 

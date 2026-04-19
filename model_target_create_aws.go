@@ -26,6 +26,8 @@ type TargetCreateAws struct {
 	AccessKey string `json:"access-key"`
 	// AWS access key ID
 	AccessKeyId string `json:"access-key-id"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// A unique auto-generated value used in your AWS account when configuring your AWS IAM role to securely delegate access to Akeyless. Relevant only when using GW cloud ID
@@ -128,6 +130,38 @@ func (o *TargetCreateAws) GetAccessKeyIdOk() (*string, bool) {
 // SetAccessKeyId sets field value
 func (o *TargetCreateAws) SetAccessKeyId(v string) {
 	o.AccessKeyId = v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *TargetCreateAws) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateAws) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *TargetCreateAws) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *TargetCreateAws) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -518,6 +552,9 @@ func (o TargetCreateAws) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["access-key"] = o.AccessKey
 	toSerialize["access-key-id"] = o.AccessKeyId
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}

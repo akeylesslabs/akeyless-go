@@ -29,6 +29,7 @@ type Target struct {
 	ClientPermissions []string `json:"client_permissions,omitempty"`
 	Comment *string `json:"comment,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
+	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	LockingInfo *LockingInfo `json:"locking_info,omitempty"`
@@ -284,6 +285,38 @@ func (o *Target) HasCreationDate() bool {
 // SetCreationDate gets a reference to the given time.Time and assigns it to the CreationDate field.
 func (o *Target) SetCreationDate(v time.Time) {
 	o.CreationDate = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *Target) GetDeleteProtection() bool {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetDeleteProtectionOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *Target) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given bool and assigns it to the DeleteProtection field.
+func (o *Target) SetDeleteProtection(v bool) {
+	o.DeleteProtection = &v
 }
 
 // GetIsAccessRequestEnabled returns the IsAccessRequestEnabled field value if set, zero value otherwise.
@@ -764,6 +797,9 @@ func (o Target) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CreationDate) {
 		toSerialize["creation_date"] = o.CreationDate
+	}
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if !IsNil(o.IsAccessRequestEnabled) {
 		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled

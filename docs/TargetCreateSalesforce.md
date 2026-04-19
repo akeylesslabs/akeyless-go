@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CaCertName** | Pointer to **string** | name of the certificate in Salesforce tenant to use when uploading new key | [optional] 
 **ClientId** | **string** | Client ID of the oauth2 app to use for connecting to Salesforce | 
 **ClientSecret** | Pointer to **string** | Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow) | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Email** | **string** | The email of the user attached to the oauth2 app used for connecting to Salesforce | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -180,6 +181,31 @@ SetClientSecret sets ClientSecret field to given value.
 `func (o *TargetCreateSalesforce) HasClientSecret() bool`
 
 HasClientSecret returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetCreateSalesforce) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetCreateSalesforce) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetCreateSalesforce) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetCreateSalesforce) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

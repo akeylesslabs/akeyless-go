@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessId** | Pointer to **string** |  | [optional] 
 **AuthCreds** | Pointer to **string** | Temporary credentials for accessing Auth | [optional] 
+**CsrfToken** | Pointer to **string** | CSRF token for synchronizer-token pattern (only populated for WebUI clients) | [optional] 
 **Expiry** | Pointer to **int64** | Credentials expiration date | [optional] 
 **KfmCreds** | Pointer to **string** | Temporary credentials for accessing the KFMs instances | [optional] 
 **NeedMfaAppFirstConfig** | Pointer to **bool** | If the user didn&#39;t complete to configure the MFA app | [optional] 
@@ -81,6 +82,31 @@ SetAuthCreds sets AuthCreds field to given value.
 `func (o *SystemAccessCredentialsReplyObj) HasAuthCreds() bool`
 
 HasAuthCreds returns a boolean if a field has been set.
+
+### GetCsrfToken
+
+`func (o *SystemAccessCredentialsReplyObj) GetCsrfToken() string`
+
+GetCsrfToken returns the CsrfToken field if non-nil, zero value otherwise.
+
+### GetCsrfTokenOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetCsrfTokenOk() (*string, bool)`
+
+GetCsrfTokenOk returns a tuple with the CsrfToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCsrfToken
+
+`func (o *SystemAccessCredentialsReplyObj) SetCsrfToken(v string)`
+
+SetCsrfToken sets CsrfToken field to given value.
+
+### HasCsrfToken
+
+`func (o *SystemAccessCredentialsReplyObj) HasCsrfToken() bool`
+
+HasCsrfToken returns a boolean if a field has been set.
 
 ### GetExpiry
 

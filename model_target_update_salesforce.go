@@ -34,6 +34,8 @@ type TargetUpdateSalesforce struct {
 	ClientId string `json:"client-id"`
 	// Client secret of the oauth2 app to use for connecting to Salesforce (required for password flow)
 	ClientSecret *string `json:"client-secret,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// The email of the user attached to the oauth2 app used for connecting to Salesforce
@@ -264,6 +266,38 @@ func (o *TargetUpdateSalesforce) HasClientSecret() bool {
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *TargetUpdateSalesforce) SetClientSecret(v string) {
 	o.ClientSecret = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *TargetUpdateSalesforce) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateSalesforce) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *TargetUpdateSalesforce) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *TargetUpdateSalesforce) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -681,6 +715,9 @@ func (o TargetUpdateSalesforce) ToMap() (map[string]interface{}, error) {
 	toSerialize["client-id"] = o.ClientId
 	if !IsNil(o.ClientSecret) {
 		toSerialize["client-secret"] = o.ClientSecret
+	}
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

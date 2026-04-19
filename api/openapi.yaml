@@ -3994,7 +3994,7 @@ paths:
             field.
       tags:
       - v2
-  /dynamic-secret-create-oracle:
+  /dynamic-secret-create-oracledb:
     post:
       operationId: dynamicSecretCreateOracleDb
       requestBody:
@@ -4347,7 +4347,30 @@ paths:
             field.
       tags:
       - v2
-  /dynamic-secret-tmp-creds-Get:
+  /dynamic-secret-tmp-creds-delete:
+    post:
+      operationId: dynamicSecretTmpCredsDelete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/dynamicSecretTmpCredsDelete'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          description: dynamicSecretTmpCredsDeleteResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /dynamic-secret-tmp-creds-get:
     post:
       operationId: dynamicSecretTmpCredsGet
       requestBody:
@@ -4366,29 +4389,6 @@ paths:
                   $ref: '#/components/schemas/TmpUserData'
                 type: array
           description: dynamicSecretTmpCredsGetResponse wraps response body.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/JSONError'
-          description: |-
-            errorResponse wraps any error to return it as a JSON object with one "error"
-            field.
-      tags:
-      - v2
-  /dynamic-secret-tmp-creds-delete:
-    post:
-      operationId: dynamicSecretTmpCredsDelete
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/dynamicSecretTmpCredsDelete'
-        required: true
-        x-go-name: Body
-      responses:
-        "201":
-          description: dynamicSecretTmpCredsDeleteResponse wraps response body.
         default:
           content:
             application/json:
@@ -4745,7 +4745,7 @@ paths:
             field.
       tags:
       - v2
-  /dynamic-secret-update-hana:
+  /dynamic-secret-update-hanadb:
     post:
       operationId: dynamicSecretUpdateHanaDb
       requestBody:
@@ -4826,7 +4826,7 @@ paths:
             field.
       tags:
       - v2
-  /dynamic-secret-update-mongo:
+  /dynamic-secret-update-mongodb:
     post:
       operationId: dynamicSecretUpdateMongoDb
       requestBody:
@@ -12083,6 +12083,29 @@ paths:
             field.
       tags:
       - v2
+  /runtime-authority:
+    post:
+      operationId: runtimeAuthority
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/runtimeAuthorityCommand'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /set-item-state:
     post:
       operationId: setItemState
@@ -19150,6 +19173,14 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretUpdateOutput'
       description: rotatedSecretUpdateWindowsResponse wraps response body.
+    runtimeAuthorityResponse:
+      description: ""
+    setDefaultProfileResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/setDefaultProfileOutput'
+      description: setDefaultProfileResponse wraps response body.
     setItemStateResponse:
       content:
         application/json:
@@ -20850,6 +20881,44 @@ components:
       format: int64
       type: integer
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
+    AgenticRule:
+      example:
+        name: name
+        rule: rule
+      properties:
+        name:
+          type: string
+          x-go-name: Name
+        rule:
+          type: string
+          x-go-name: Rule
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    AgenticRules:
+      example:
+        input_rules:
+        - name: name
+          rule: rule
+        - name: name
+          rule: rule
+        output_rules:
+        - name: name
+          rule: rule
+        - name: name
+          rule: rule
+      properties:
+        input_rules:
+          items:
+            $ref: '#/components/schemas/AgenticRule'
+          type: array
+          x-go-name: InputRules
+        output_rules:
+          items:
+            $ref: '#/components/schemas/AgenticRule'
+          type: array
+          x-go-name: OutputRules
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     AiInsightsConfigPart:
       example:
         target_name: target_name
@@ -23075,6 +23144,7 @@ components:
           auth_creds: auth_creds
           uam_creds: uam_creds
           kfm_creds: kfm_creds
+          csrf_token: csrf_token
           access_id: access_id
           required_mfa: required_mfa
           need_mfa_app_first_config: true
@@ -26387,6 +26457,8 @@ components:
         repository-access: public
         item-custom-fields:
           key: item-custom-fields
+        use-tags-as-filter: true
+        usc-tags: usc-tags
         name: name
         json: false
         k8s-namespace: k8s-namespace
@@ -26482,12 +26554,22 @@ components:
           description: Prefix for all secrets created in AWS Secrets Manager
           type: string
           x-go-name: USCPrefix
+        usc-tags:
+          description: Comma-separated list of tags to apply to all secrets created
+            on the remote USC
+          type: string
+          x-go-name: USCTags
         use-prefix-as-filter:
           default: "false"
           description: "Whether to filter the USC secret list using the specified\
             \ usc-prefix [true/false]"
           type: string
           x-go-name: UsePrefixAsFilterStr
+        use-tags-as-filter:
+          description: "Filter the USC secret list by the value(s) of --usc-tags.\
+            \ [true|false]"
+          type: boolean
+          x-go-name: UseTagsAsFilter
       required:
       - name
       - target-to-associate
@@ -26660,6 +26742,17 @@ components:
         rabbitmq_server_user: rabbitmq_server_user
         venafi_api_key: venafi_api_key
         mongodb_host_port: mongodb_host_port
+        agentic_rules:
+          input_rules:
+          - name: name
+            rule: rule
+          - name: name
+            rule: rule
+          output_rules:
+          - name: name
+            rule: rule
+          - name: name
+            rule: rule
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         aws_external_id: aws_external_id
         k8s_bearer_token: k8s_bearer_token
@@ -26977,6 +27070,8 @@ components:
         administrative_port:
           type: string
           x-go-name: AdministrativePort
+        agentic_rules:
+          $ref: '#/components/schemas/AgenticRules'
         api_key:
           type: string
           x-go-name: ApiKey
@@ -28668,7 +28763,11 @@ components:
         warnings:
         - warnings
         - warnings
+        next_token: next_token
       properties:
+        next_token:
+          type: string
+          x-go-name: NextToken
         secrets_list:
           items:
             $ref: '#/components/schemas/SecretInfo'
@@ -29195,8 +29294,12 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/akeyless-api/gator
     GatewayMigrationCreateOutput:
       example:
+        migration_id: migration_id
         migration_name: migration_name
       properties:
+        migration_id:
+          type: string
+          x-go-name: MigrationId
         migration_name:
           type: string
           x-go-name: MigrationName
@@ -30522,6 +30625,7 @@ components:
           parent_target_name: parent_target_name
           is_access_request_enabled: true
           last_version: 0
+          delete_protection: true
           client_permissions:
           - client_permissions
           - client_permissions
@@ -32095,6 +32199,17 @@ components:
           next_rotation_events:
           - seconds_before: 1
           - seconds_before: 1
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           cert_issue_details:
             max_ttl: 6
             pki_cert_issuer_details:
@@ -32960,6 +33075,17 @@ components:
         next_rotation_events:
         - seconds_before: 1
         - seconds_before: 1
+        agentic_rules:
+          input_rules:
+          - name: name
+            rule: rule
+          - name: name
+            rule: rule
+          output_rules:
+          - name: name
+            rule: rule
+          - name: name
+            rule: rule
         cert_issue_details:
           max_ttl: 6
           pki_cert_issuer_details:
@@ -33055,6 +33181,8 @@ components:
               key: 2
           cert_issuer_type: cert_issuer_type
       properties:
+        agentic_rules:
+          $ref: '#/components/schemas/AgenticRules'
         cert_issue_details:
           $ref: '#/components/schemas/CertificateIssueInfo'
         certificate_chain_info:
@@ -36410,6 +36538,17 @@ components:
             next_rotation_events:
             - seconds_before: 1
             - seconds_before: 1
+            agentic_rules:
+              input_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
+              output_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
             cert_issue_details:
               max_ttl: 6
               pki_cert_issuer_details:
@@ -37344,6 +37483,17 @@ components:
             next_rotation_events:
             - seconds_before: 1
             - seconds_before: 1
+            agentic_rules:
+              input_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
+              output_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
             cert_issue_details:
               max_ttl: 6
               pki_cert_issuer_details:
@@ -38304,6 +38454,17 @@ components:
             next_rotation_events:
             - seconds_before: 1
             - seconds_before: 1
+            agentic_rules:
+              input_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
+              output_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
             cert_issue_details:
               max_ttl: 6
               pki_cert_issuer_details:
@@ -39238,6 +39399,17 @@ components:
             next_rotation_events:
             - seconds_before: 1
             - seconds_before: 1
+            agentic_rules:
+              input_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
+              output_rules:
+              - name: name
+                rule: rule
+              - name: name
+                rule: rule
             cert_issue_details:
               max_ttl: 6
               pki_cert_issuer_details:
@@ -39646,6 +39818,7 @@ components:
           parent_target_name: parent_target_name
           is_access_request_enabled: true
           last_version: 0
+          delete_protection: true
           client_permissions:
           - client_permissions
           - client_permissions
@@ -39724,6 +39897,7 @@ components:
           parent_target_name: parent_target_name
           is_access_request_enabled: true
           last_version: 0
+          delete_protection: true
           client_permissions:
           - client_permissions
           - client_permissions
@@ -44583,6 +44757,7 @@ components:
         auth_creds: auth_creds
         uam_creds: uam_creds
         kfm_creds: kfm_creds
+        csrf_token: csrf_token
         access_id: access_id
         required_mfa: required_mfa
         need_mfa_app_first_config: true
@@ -44596,6 +44771,11 @@ components:
           description: Temporary credentials for accessing Auth
           type: string
           x-go-name: AuthAccessCredentials
+        csrf_token:
+          description: CSRF token for synchronizer-token pattern (only populated for
+            WebUI clients)
+          type: string
+          x-go-name: CSRFToken
         expiry:
           description: Credentials expiration date
           format: int64
@@ -44680,6 +44860,7 @@ components:
         parent_target_name: parent_target_name
         is_access_request_enabled: true
         last_version: 0
+        delete_protection: true
         client_permissions:
         - client_permissions
         - client_permissions
@@ -44756,6 +44937,9 @@ components:
           format: date-time
           type: string
           x-go-name: CreationDate
+        delete_protection:
+          type: boolean
+          x-go-name: DeleteProtection
         is_access_request_enabled:
           type: boolean
           x-go-name: IsAccessRequestEnabled
@@ -46108,7 +46292,11 @@ components:
         warnings:
         - warnings
         - warnings
+        next_token: next_token
       properties:
+        next_token:
+          type: string
+          x-go-name: NextToken
         secrets_list:
           items:
             $ref: '#/components/schemas/SecretInfo'
@@ -55564,6 +55752,12 @@ components:
             produced by the same auth methods.
           type: string
           x-go-name: AnalyticsAccess
+        ara-reports-access:
+          description: |-
+            Allow this role to view Agentic Runtime Authority Dashboard. Currently only 'none', 'scoped',
+            'all' values are supported.
+          type: string
+          x-go-name: ARAReportsAccess
         audit-access:
           description: |-
             Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all'
@@ -57554,7 +57748,8 @@ components:
         rule-type:
           default: item-rule
           description: "item-rule, role-rule, auth-method-rule, search-rule, reports-rule,\
-            \ gw-reports-rule, sra-reports-rule, sra-rule, ara-rule"
+            \ gw-reports-rule, sra-reports-rule, ara-reports-rule, sra-rule, ara-rule,\
+            \ usage-reports-rule, event-rule, event-forwarder-rule, reverse-rbac-rule"
           type: string
           x-go-name: RuleType
         token:
@@ -60556,6 +60751,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -64824,6 +65030,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -68867,6 +69084,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -69427,6 +69655,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -69955,6 +70194,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -70439,6 +70689,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -70913,6 +71174,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -71395,6 +71667,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -71855,6 +72138,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -72361,6 +72655,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -72885,6 +73190,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -73367,6 +73683,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -73864,6 +74191,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -74386,6 +74724,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -74934,6 +75283,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -75462,6 +75822,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -76005,6 +76376,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -76540,6 +76922,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -77091,6 +77484,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -77608,6 +78012,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -78152,6 +78567,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -78679,6 +79105,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -79183,6 +79620,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -79722,6 +80170,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -80209,6 +80668,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -80704,6 +81174,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -81194,6 +81675,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -81718,6 +82210,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -85607,6 +86110,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -86171,6 +86685,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -86703,6 +87228,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -87191,6 +87727,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -87669,6 +88216,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -88155,6 +88713,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -88619,6 +89188,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -89129,6 +89709,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -89657,6 +90248,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -90143,6 +90745,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -90644,6 +91257,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -91164,6 +91788,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -91716,6 +92351,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -92248,6 +92894,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -92795,6 +93452,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -93334,6 +94002,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -93889,6 +94568,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -94410,6 +95100,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -94958,6 +95659,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -95489,6 +96201,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -95997,6 +96720,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -96540,6 +97274,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -97031,6 +97776,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -97530,6 +98286,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -98024,6 +98791,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -98552,6 +99330,17 @@ components:
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
           mongodb_host_port: mongodb_host_port
+          agentic_rules:
+            input_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
+            output_rules:
+            - name: name
+              rule: rule
+            - name: name
+              rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
           k8s_bearer_token: k8s_bearer_token
@@ -101300,6 +102089,11 @@ components:
           description: Filter by item name/username/website or part of it
           type: string
           x-go-name: MultiFieldFilter
+        ara-only:
+          default: false
+          description: Filter by items with ARA functionality enabled
+          type: boolean
+          x-go-name: AraOnly
         auto-pagination:
           default: enabled
           description: "Retrieve all items using pagination, when disabled retrieving\
@@ -108358,6 +109152,67 @@ components:
       title: rotatedSecretUpdateWindows is a command that updates a rotated secret.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    runtimeAuthorityCommand:
+      properties:
+        agent-id:
+          description: Agent identifier for auditing
+          type: string
+          x-go-name: AgentID
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Secret name (dynamic secret or rotated secret)
+          type: string
+          x-go-name: SecretName
+        payload:
+          description: "Query or action payload (SQL, natural language, or CLI-style)"
+          type: string
+          x-go-name: Payload
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - agent-id
+      - name
+      - payload
+      title: runtimeAuthorityCommand runs a target query against the gateway (same
+        behavior as MCP query-db / service-execute tools).
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    setDefaultProfile:
+      properties:
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        profile:
+          description: Profile name to use as the default
+          type: string
+          x-go-name: Profile
+      required:
+      - profile
+      title: setDefaultProfile is a command that sets the default CLI profile.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    setDefaultProfileOutput:
+      properties:
+        profile_name:
+          type: string
+          x-go-name: ProfileName
+      title: setDefaultProfileOutput is the JSON-serializable result of the set-default-profile
+        command.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     setItemState:
       properties:
         desired-state:
@@ -108424,7 +109279,8 @@ components:
         rule-type:
           default: item-rule
           description: "item-rule, target-rule, role-rule, auth-method-rule, search-rule,\
-            \ reports-rule, gw-reports-rule, sra-reports-rule, sra-rule, ara-rule"
+            \ reports-rule, gw-reports-rule, sra-reports-rule, ara-reports-rule, sra-rule,\
+            \ ara-rule"
           type: string
           x-go-name: RuleType
         token:
@@ -109192,6 +110048,10 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109243,6 +110103,10 @@ components:
           description: AWS access key ID
           type: string
           x-go-name: AWSAccessKeyID
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109328,6 +110192,10 @@ components:
           description: "Type of connection [credentials/cloud-identity]"
           type: string
           x-go-name: ConnectionType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109435,6 +110303,10 @@ components:
           title: TargetType ..
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109558,6 +110430,10 @@ components:
           description: "ACME challenge type. Options: [dns]"
           type: string
           x-go-name: ChallengeType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109641,6 +110517,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateDockerhub:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109688,6 +110568,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateEks:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109760,6 +110644,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateGcp:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109811,6 +110699,10 @@ components:
           description: API key for Gemini
           type: string
           x-go-name: ApiKey
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109854,6 +110746,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateGithub:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109907,6 +110803,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateGitlab:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -109959,6 +110859,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateGke:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110037,6 +110941,10 @@ components:
           description: Telephone of the GlobalSign GCC account contact
           type: string
           x-go-name: ContactPhone
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110111,6 +111019,10 @@ components:
           description: API Secret of the GlobalSign Atlas account
           type: string
           x-go-name: APISecret
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110179,6 +111091,10 @@ components:
           description: Customer ID (ShopperId) required for renewal of imported certificates
           type: string
           x-go-name: CustomerID
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110259,6 +111175,10 @@ components:
           description: "ACME challenge type. Options: [dns]"
           type: string
           x-go-name: ChallengeType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110342,6 +111262,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateHashiVault:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110396,6 +111320,10 @@ components:
     targetCreateK8s:
       description: targetCreateK8s is a command that creates a new k8s target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110478,6 +111406,10 @@ components:
           description: Bind DN Password
           type: string
           x-go-name: BindDnPassword
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110543,6 +111475,10 @@ components:
           default: http
           type: string
           x-go-name: ChallengeType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110614,6 +111550,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetCreateLinked:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110668,6 +111608,10 @@ components:
           description: API key ID
           type: string
           x-go-name: ApiKeyID
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110740,6 +111684,10 @@ components:
           description: Ping Federate authorization port
           type: string
           x-go-name: AuthorizationPort
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110791,6 +111739,10 @@ components:
     targetCreateRabbitMq:
       description: targetCreateRabbitMq is a command that creates a new rabbitmq target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110868,6 +111820,10 @@ components:
             (required for password flow)
           type: string
           x-go-name: ClientSecret
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -110939,6 +111895,10 @@ components:
           description: Customer Uri of the Sectigo account
           type: string
           x-go-name: CustomerUri
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111013,6 +111973,10 @@ components:
             for rotation)
           type: string
           x-go-name: Audience
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111081,6 +112045,10 @@ components:
     targetCreateSsh:
       description: targetCreateSsh is a command that creates a new ssh target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111145,6 +112113,10 @@ components:
     targetCreateWeb:
       description: targetCreateWeb is a command that creates a new web target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111199,6 +112171,10 @@ components:
           description: "Type of connection to Windows Server [credentials/parent-target]"
           type: string
           x-go-name: ConnectionType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111278,6 +112254,10 @@ components:
           description: API Key of the ZeroSSLTarget account
           type: string
           x-go-name: APIKey
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111500,6 +112480,10 @@ components:
           description: Base URL
           type: string
           x-go-name: BaseUrl
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111560,6 +112544,10 @@ components:
           description: AWS access key ID
           type: string
           x-go-name: AWSAccessKeyID
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111654,6 +112642,10 @@ components:
           description: "Type of connection [credentials/cloud-identity]"
           type: string
           x-go-name: ConnectionType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111770,6 +112762,10 @@ components:
           title: TargetType ..
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -111995,6 +112991,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateDockerhub:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112052,6 +113052,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateEks:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112133,6 +113137,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateGcp:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112194,6 +113202,10 @@ components:
           description: API key for Gemini
           type: string
           x-go-name: ApiKey
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           default: default_comment
           description: Description of the object
@@ -112252,6 +113264,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateGithub:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112314,6 +113330,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateGitlab:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112375,6 +113395,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateGke:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112462,6 +113486,10 @@ components:
           description: Telephone of the GlobalSign GCC account contact
           type: string
           x-go-name: ContactPhone
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112545,6 +113573,10 @@ components:
           description: API Secret of the GlobalSign Atlas account
           type: string
           x-go-name: APISecret
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112622,6 +113654,10 @@ components:
           description: Customer ID (ShopperId) required for renewal of imported certificates
           type: string
           x-go-name: CustomerID
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112711,6 +113747,10 @@ components:
           description: "ACME challenge type. Options: [dns]"
           type: string
           x-go-name: ChallengeType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112803,6 +113843,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     targetUpdateHashiVault:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112867,6 +113911,10 @@ components:
     targetUpdateK8s:
       description: targetUpdateK8s is a command that updates an existing k8s target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -112958,6 +114006,10 @@ components:
           description: Bind DN Password
           type: string
           x-go-name: BindDnPassword
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113030,6 +114082,10 @@ components:
           default: http
           type: string
           x-go-name: ChallengeType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113183,6 +114239,10 @@ components:
           description: API key ID
           type: string
           x-go-name: ApiKeyID
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           default: default_comment
           description: Description of the object
@@ -113270,6 +114330,10 @@ components:
           description: Ping Federate authorization port
           type: string
           x-go-name: AuthorizationPort
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113331,6 +114395,10 @@ components:
       description: targetUpdateRabbitMq is a command that updates an existing rabbitmq
         target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113417,6 +114485,10 @@ components:
             (required for password flow)
           type: string
           x-go-name: ClientSecret
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113498,6 +114570,10 @@ components:
           description: Customer Uri of the Sectigo account
           type: string
           x-go-name: CustomerUri
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113576,6 +114652,10 @@ components:
     targetUpdateSsh:
       description: targetUpdateSsh is a command that updates an existing ssh target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113649,6 +114729,10 @@ components:
     targetUpdateWeb:
       description: targetUpdateWeb is a command that updates an existing web target
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113712,6 +114796,10 @@ components:
           description: "Type of connection to Windows Server [credentials/parent-target]"
           type: string
           x-go-name: ConnectionType
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -113801,6 +114889,10 @@ components:
           description: API Key of the ZeroSSLTarget account
           type: string
           x-go-name: APIKey
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           description: Description of the object
           type: string
@@ -118268,6 +119360,20 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        usc-tags:
+          description: |-
+            Comma-separated list of tags to apply to all secrets created/synced on the remote USC
+
+            USC items only.
+          type: string
+          x-go-name: USCTags
+        use-tags-as-filter:
+          description: |-
+            Whether to filter the USC secret list using the specified usc-tags [true/false]
+
+            USC items only.
+          type: string
+          x-go-name: UseTagsAsFilterStr
       required:
       - name
       title: updateItem is a command that updates item.
@@ -118947,6 +120053,12 @@ components:
             produced by the same auth methods.
           type: string
           x-go-name: AnalyticsAccess
+        ara-reports-access:
+          description: |-
+            Allow this role to view Agentic Runtime Authority Dashboard. Currently only 'none', 'scoped',
+            'all' values are supported.
+          type: string
+          x-go-name: ARAReportsAccess
         audit-access:
           description: |-
             Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all'
@@ -119865,6 +120977,10 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     updateTarget:
       properties:
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
         description:
           default: default_comment
           description: Description of the object
@@ -120610,6 +121726,17 @@ components:
         object-type:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
+        page-size:
+          description: "Optional: number of items requested per response (Azure KV).\
+            \ When set, response may include next_token"
+          format: int64
+          type: integer
+          x-go-name: PageSize
+        page-token:
+          description: "Optional: continuation token returned by a previous usc list\
+            \ --page-size call"
+          type: string
+          x-go-name: PageToken
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string

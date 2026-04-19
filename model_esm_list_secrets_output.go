@@ -20,6 +20,7 @@ var _ MappedNullable = &EsmListSecretsOutput{}
 
 // EsmListSecretsOutput struct for EsmListSecretsOutput
 type EsmListSecretsOutput struct {
+	NextToken *string `json:"next_token,omitempty"`
 	SecretsList []SecretInfo `json:"secrets_list,omitempty"`
 	Warnings []string `json:"warnings,omitempty"`
 }
@@ -39,6 +40,38 @@ func NewEsmListSecretsOutput() *EsmListSecretsOutput {
 func NewEsmListSecretsOutputWithDefaults() *EsmListSecretsOutput {
 	this := EsmListSecretsOutput{}
 	return &this
+}
+
+// GetNextToken returns the NextToken field value if set, zero value otherwise.
+func (o *EsmListSecretsOutput) GetNextToken() string {
+	if o == nil || IsNil(o.NextToken) {
+		var ret string
+		return ret
+	}
+	return *o.NextToken
+}
+
+// GetNextTokenOk returns a tuple with the NextToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EsmListSecretsOutput) GetNextTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.NextToken) {
+		return nil, false
+	}
+	return o.NextToken, true
+}
+
+// HasNextToken returns a boolean if a field has been set.
+func (o *EsmListSecretsOutput) HasNextToken() bool {
+	if o != nil && !IsNil(o.NextToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetNextToken gets a reference to the given string and assigns it to the NextToken field.
+func (o *EsmListSecretsOutput) SetNextToken(v string) {
+	o.NextToken = &v
 }
 
 // GetSecretsList returns the SecretsList field value if set, zero value otherwise.
@@ -115,6 +148,9 @@ func (o EsmListSecretsOutput) MarshalJSON() ([]byte, error) {
 
 func (o EsmListSecretsOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NextToken) {
+		toSerialize["next_token"] = o.NextToken
+	}
 	if !IsNil(o.SecretsList) {
 		toSerialize["secrets_list"] = o.SecretsList
 	}

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AgenticRules** | Pointer to [**AgenticRules**](AgenticRules.md) |  | [optional] 
 **CertIssueDetails** | Pointer to [**CertificateIssueInfo**](CertificateIssueInfo.md) |  | [optional] 
 **CertificateChainInfo** | Pointer to [**CertificateChainInfo**](CertificateChainInfo.md) |  | [optional] 
 **CertificateFormat** | Pointer to **string** |  | [optional] 
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewItemGeneralInfoWithDefaults instantiates a new ItemGeneralInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAgenticRules
+
+`func (o *ItemGeneralInfo) GetAgenticRules() AgenticRules`
+
+GetAgenticRules returns the AgenticRules field if non-nil, zero value otherwise.
+
+### GetAgenticRulesOk
+
+`func (o *ItemGeneralInfo) GetAgenticRulesOk() (*AgenticRules, bool)`
+
+GetAgenticRulesOk returns a tuple with the AgenticRules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgenticRules
+
+`func (o *ItemGeneralInfo) SetAgenticRules(v AgenticRules)`
+
+SetAgenticRules sets AgenticRules field to given value.
+
+### HasAgenticRules
+
+`func (o *ItemGeneralInfo) HasAgenticRules() bool`
+
+HasAgenticRules returns a boolean if a field has been set.
 
 ### GetCertIssueDetails
 

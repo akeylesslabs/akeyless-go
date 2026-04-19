@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ContactFirstName** | **string** | First name of the GlobalSign GCC account contact | 
 **ContactLastName** | **string** | Last name of the GlobalSign GCC account contact | 
 **ContactPhone** | **string** | Telephone of the GlobalSign GCC account contact | 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -120,6 +121,31 @@ and a boolean to check if the value has been set.
 
 SetContactPhone sets ContactPhone field to given value.
 
+
+### GetDeleteProtection
+
+`func (o *TargetUpdateGlobalSign) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetUpdateGlobalSign) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetUpdateGlobalSign) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetUpdateGlobalSign) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

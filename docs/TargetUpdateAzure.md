@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ClientId** | Pointer to **string** | Azure client/application id | [optional] 
 **ClientSecret** | Pointer to **string** | Azure client secret | [optional] 
 **ConnectionType** | Pointer to **string** | Type of connection [credentials/cloud-identity] | [optional] [default to "credentials"]
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -141,6 +142,31 @@ SetConnectionType sets ConnectionType field to given value.
 `func (o *TargetUpdateAzure) HasConnectionType() bool`
 
 HasConnectionType returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetUpdateAzure) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetUpdateAzure) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetUpdateAzure) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetUpdateAzure) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 

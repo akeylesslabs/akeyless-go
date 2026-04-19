@@ -152,7 +152,7 @@ Method | HTTP request | Description
 [**DynamicSecretCreateMsSql**](V2Api.md#DynamicSecretCreateMsSql) | **Post** /dynamic-secret-create-mssql | 
 [**DynamicSecretCreateMySql**](V2Api.md#DynamicSecretCreateMySql) | **Post** /dynamic-secret-create-mysql | 
 [**DynamicSecretCreateOpenAI**](V2Api.md#DynamicSecretCreateOpenAI) | **Post** /dynamic-secret-create-openai | 
-[**DynamicSecretCreateOracleDb**](V2Api.md#DynamicSecretCreateOracleDb) | **Post** /dynamic-secret-create-oracle | 
+[**DynamicSecretCreateOracleDb**](V2Api.md#DynamicSecretCreateOracleDb) | **Post** /dynamic-secret-create-oracledb | 
 [**DynamicSecretCreatePing**](V2Api.md#DynamicSecretCreatePing) | **Post** /dynamic-secret-create-ping | 
 [**DynamicSecretCreatePostgreSql**](V2Api.md#DynamicSecretCreatePostgreSql) | **Post** /dynamic-secret-create-postgresql | 
 [**DynamicSecretCreateRabbitMq**](V2Api.md#DynamicSecretCreateRabbitMq) | **Post** /dynamic-secret-create-rabbitmq | 
@@ -166,7 +166,7 @@ Method | HTTP request | Description
 [**DynamicSecretGetValue**](V2Api.md#DynamicSecretGetValue) | **Post** /dynamic-secret-get-value | 
 [**DynamicSecretList**](V2Api.md#DynamicSecretList) | **Post** /dynamic-secret-list | 
 [**DynamicSecretTmpCredsDelete**](V2Api.md#DynamicSecretTmpCredsDelete) | **Post** /dynamic-secret-tmp-creds-delete | 
-[**DynamicSecretTmpCredsGet**](V2Api.md#DynamicSecretTmpCredsGet) | **Post** /dynamic-secret-tmp-creds-Get | 
+[**DynamicSecretTmpCredsGet**](V2Api.md#DynamicSecretTmpCredsGet) | **Post** /dynamic-secret-tmp-creds-get | 
 [**DynamicSecretTmpCredsUpdate**](V2Api.md#DynamicSecretTmpCredsUpdate) | **Post** /dynamic-secret-tmp-creds-update | 
 [**DynamicSecretUpdateArtifactory**](V2Api.md#DynamicSecretUpdateArtifactory) | **Post** /dynamic-secret-update-artifactory | 
 [**DynamicSecretUpdateAws**](V2Api.md#DynamicSecretUpdateAws) | **Post** /dynamic-secret-update-aws | 
@@ -180,10 +180,10 @@ Method | HTTP request | Description
 [**DynamicSecretUpdateGitlab**](V2Api.md#DynamicSecretUpdateGitlab) | **Post** /dynamic-secret-update-gitlab | 
 [**DynamicSecretUpdateGke**](V2Api.md#DynamicSecretUpdateGke) | **Post** /dynamic-secret-update-gke | 
 [**DynamicSecretUpdateGoogleWorkspace**](V2Api.md#DynamicSecretUpdateGoogleWorkspace) | **Post** /dynamic-secret-update-google-workspace | 
-[**DynamicSecretUpdateHanaDb**](V2Api.md#DynamicSecretUpdateHanaDb) | **Post** /dynamic-secret-update-hana | 
+[**DynamicSecretUpdateHanaDb**](V2Api.md#DynamicSecretUpdateHanaDb) | **Post** /dynamic-secret-update-hanadb | 
 [**DynamicSecretUpdateK8s**](V2Api.md#DynamicSecretUpdateK8s) | **Post** /dynamic-secret-update-k8s | 
 [**DynamicSecretUpdateLdap**](V2Api.md#DynamicSecretUpdateLdap) | **Post** /dynamic-secret-update-ldap | 
-[**DynamicSecretUpdateMongoDb**](V2Api.md#DynamicSecretUpdateMongoDb) | **Post** /dynamic-secret-update-mongo | 
+[**DynamicSecretUpdateMongoDb**](V2Api.md#DynamicSecretUpdateMongoDb) | **Post** /dynamic-secret-update-mongodb | 
 [**DynamicSecretUpdateMsSql**](V2Api.md#DynamicSecretUpdateMsSql) | **Post** /dynamic-secret-update-mssql | 
 [**DynamicSecretUpdateMySql**](V2Api.md#DynamicSecretUpdateMySql) | **Post** /dynamic-secret-update-mysql | 
 [**DynamicSecretUpdateOpenAI**](V2Api.md#DynamicSecretUpdateOpenAI) | **Post** /dynamic-secret-update-openai | 
@@ -453,6 +453,7 @@ Method | HTTP request | Description
 [**RotatedSecretUpdateSplunk**](V2Api.md#RotatedSecretUpdateSplunk) | **Post** /rotated-secret-update-splunk | 
 [**RotatedSecretUpdateSsh**](V2Api.md#RotatedSecretUpdateSsh) | **Post** /rotated-secret-update-ssh | 
 [**RotatedSecretUpdateWindows**](V2Api.md#RotatedSecretUpdateWindows) | **Post** /rotated-secret-update-windows | 
+[**RuntimeAuthority**](V2Api.md#RuntimeAuthority) | **Post** /runtime-authority | 
 [**SetItemState**](V2Api.md#SetItemState) | **Post** /set-item-state | 
 [**SetRoleRule**](V2Api.md#SetRoleRule) | **Post** /set-role-rule | 
 [**ShareItem**](V2Api.md#ShareItem) | **Post** /share-item | 
@@ -29317,6 +29318,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RuntimeAuthority
+
+> RuntimeAuthority(ctx).RuntimeAuthorityCommand(runtimeAuthorityCommand).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	runtimeAuthorityCommand := *openapiclient.NewRuntimeAuthorityCommand("AgentId_example", "Name_example", "Payload_example") // RuntimeAuthorityCommand | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.V2Api.RuntimeAuthority(context.Background()).RuntimeAuthorityCommand(runtimeAuthorityCommand).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RuntimeAuthority``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRuntimeAuthorityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **runtimeAuthorityCommand** | [**RuntimeAuthorityCommand**](RuntimeAuthorityCommand.md) |  | 
+
+### Return type
+
+ (empty response body)
 
 ### Authorization
 

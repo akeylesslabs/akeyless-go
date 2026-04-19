@@ -27,6 +27,8 @@ docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
+docs/AgenticRule.md
+docs/AgenticRules.md
 docs/AiInsightsConfigPart.md
 docs/AiInsightsSetting.md
 docs/AkeylessGatewayConfig.md
@@ -904,6 +906,7 @@ docs/Rotator.md
 docs/RotatorsConfigPart.md
 docs/RuleAssigner.md
 docs/Rules.md
+docs/RuntimeAuthorityCommand.md
 docs/SAMLAccessRules.md
 docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
@@ -916,6 +919,8 @@ docs/SectigoTargetDetails.md
 docs/SecureRemoteAccess.md
 docs/ServerInventoryMigration.md
 docs/ServerInventoryPayload.md
+docs/SetDefaultProfile.md
+docs/SetDefaultProfileOutput.md
 docs/SetItemState.md
 docs/SetRoleRule.md
 docs/ShareItem.md
@@ -1211,6 +1216,8 @@ model_active_directory_migration.go
 model_active_directory_payload.go
 model_add_gateway_allowed_access_id.go
 model_admins_config_part.go
+model_agentic_rule.go
+model_agentic_rules.go
 model_ai_insights_config_part.go
 model_ai_insights_setting.go
 model_akeyless_gateway_config.go
@@ -2094,6 +2101,7 @@ model_rotator.go
 model_rotators_config_part.go
 model_rule_assigner.go
 model_rules.go
+model_runtime_authority_command.go
 model_salesforce_target_details.go
 model_saml_access_rules.go
 model_saml_attribute.go
@@ -2104,6 +2112,8 @@ model_sectigo_target_details.go
 model_secure_remote_access.go
 model_server_inventory_migration.go
 model_server_inventory_payload.go
+model_set_default_profile.go
+model_set_default_profile_output.go
 model_set_item_state.go
 model_set_role_rule.go
 model_share_item.go

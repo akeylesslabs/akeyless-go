@@ -25,6 +25,10 @@ type UscList struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	ObjectType *string `json:"object-type,omitempty"`
+	// Optional: number of items requested per response (Azure KV). When set, response may include next_token
+	PageSize *int64 `json:"page-size,omitempty"`
+	// Optional: continuation token returned by a previous usc list --page-size call
+	PageToken *string `json:"page-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -119,6 +123,70 @@ func (o *UscList) HasObjectType() bool {
 // SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
 func (o *UscList) SetObjectType(v string) {
 	o.ObjectType = &v
+}
+
+// GetPageSize returns the PageSize field value if set, zero value otherwise.
+func (o *UscList) GetPageSize() int64 {
+	if o == nil || IsNil(o.PageSize) {
+		var ret int64
+		return ret
+	}
+	return *o.PageSize
+}
+
+// GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetPageSizeOk() (*int64, bool) {
+	if o == nil || IsNil(o.PageSize) {
+		return nil, false
+	}
+	return o.PageSize, true
+}
+
+// HasPageSize returns a boolean if a field has been set.
+func (o *UscList) HasPageSize() bool {
+	if o != nil && !IsNil(o.PageSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetPageSize gets a reference to the given int64 and assigns it to the PageSize field.
+func (o *UscList) SetPageSize(v int64) {
+	o.PageSize = &v
+}
+
+// GetPageToken returns the PageToken field value if set, zero value otherwise.
+func (o *UscList) GetPageToken() string {
+	if o == nil || IsNil(o.PageToken) {
+		var ret string
+		return ret
+	}
+	return *o.PageToken
+}
+
+// GetPageTokenOk returns a tuple with the PageToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetPageTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.PageToken) {
+		return nil, false
+	}
+	return o.PageToken, true
+}
+
+// HasPageToken returns a boolean if a field has been set.
+func (o *UscList) HasPageToken() bool {
+	if o != nil && !IsNil(o.PageToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetPageToken gets a reference to the given string and assigns it to the PageToken field.
+func (o *UscList) SetPageToken(v string) {
+	o.PageToken = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -224,6 +292,12 @@ func (o UscList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ObjectType) {
 		toSerialize["object-type"] = o.ObjectType
+	}
+	if !IsNil(o.PageSize) {
+		toSerialize["page-size"] = o.PageSize
+	}
+	if !IsNil(o.PageToken) {
+		toSerialize["page-token"] = o.PageToken
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

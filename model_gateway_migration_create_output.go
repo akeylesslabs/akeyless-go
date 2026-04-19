@@ -20,6 +20,7 @@ var _ MappedNullable = &GatewayMigrationCreateOutput{}
 
 // GatewayMigrationCreateOutput struct for GatewayMigrationCreateOutput
 type GatewayMigrationCreateOutput struct {
+	MigrationId *string `json:"migration_id,omitempty"`
 	MigrationName *string `json:"migration_name,omitempty"`
 }
 
@@ -38,6 +39,38 @@ func NewGatewayMigrationCreateOutput() *GatewayMigrationCreateOutput {
 func NewGatewayMigrationCreateOutputWithDefaults() *GatewayMigrationCreateOutput {
 	this := GatewayMigrationCreateOutput{}
 	return &this
+}
+
+// GetMigrationId returns the MigrationId field value if set, zero value otherwise.
+func (o *GatewayMigrationCreateOutput) GetMigrationId() string {
+	if o == nil || IsNil(o.MigrationId) {
+		var ret string
+		return ret
+	}
+	return *o.MigrationId
+}
+
+// GetMigrationIdOk returns a tuple with the MigrationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayMigrationCreateOutput) GetMigrationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.MigrationId) {
+		return nil, false
+	}
+	return o.MigrationId, true
+}
+
+// HasMigrationId returns a boolean if a field has been set.
+func (o *GatewayMigrationCreateOutput) HasMigrationId() bool {
+	if o != nil && !IsNil(o.MigrationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetMigrationId gets a reference to the given string and assigns it to the MigrationId field.
+func (o *GatewayMigrationCreateOutput) SetMigrationId(v string) {
+	o.MigrationId = &v
 }
 
 // GetMigrationName returns the MigrationName field value if set, zero value otherwise.
@@ -82,6 +115,9 @@ func (o GatewayMigrationCreateOutput) MarshalJSON() ([]byte, error) {
 
 func (o GatewayMigrationCreateOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MigrationId) {
+		toSerialize["migration_id"] = o.MigrationId
+	}
 	if !IsNil(o.MigrationName) {
 		toSerialize["migration_name"] = o.MigrationName
 	}

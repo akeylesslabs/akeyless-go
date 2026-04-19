@@ -20,6 +20,7 @@ var _ MappedNullable = &ItemGeneralInfo{}
 
 // ItemGeneralInfo struct for ItemGeneralInfo
 type ItemGeneralInfo struct {
+	AgenticRules *AgenticRules `json:"agentic_rules,omitempty"`
 	CertIssueDetails *CertificateIssueInfo `json:"cert_issue_details,omitempty"`
 	CertificateChainInfo *CertificateChainInfo `json:"certificate_chain_info,omitempty"`
 	CertificateFormat *string `json:"certificate_format,omitempty"`
@@ -55,6 +56,38 @@ func NewItemGeneralInfo() *ItemGeneralInfo {
 func NewItemGeneralInfoWithDefaults() *ItemGeneralInfo {
 	this := ItemGeneralInfo{}
 	return &this
+}
+
+// GetAgenticRules returns the AgenticRules field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetAgenticRules() AgenticRules {
+	if o == nil || IsNil(o.AgenticRules) {
+		var ret AgenticRules
+		return ret
+	}
+	return *o.AgenticRules
+}
+
+// GetAgenticRulesOk returns a tuple with the AgenticRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetAgenticRulesOk() (*AgenticRules, bool) {
+	if o == nil || IsNil(o.AgenticRules) {
+		return nil, false
+	}
+	return o.AgenticRules, true
+}
+
+// HasAgenticRules returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasAgenticRules() bool {
+	if o != nil && !IsNil(o.AgenticRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgenticRules gets a reference to the given AgenticRules and assigns it to the AgenticRules field.
+func (o *ItemGeneralInfo) SetAgenticRules(v AgenticRules) {
+	o.AgenticRules = &v
 }
 
 // GetCertIssueDetails returns the CertIssueDetails field value if set, zero value otherwise.
@@ -643,6 +676,9 @@ func (o ItemGeneralInfo) MarshalJSON() ([]byte, error) {
 
 func (o ItemGeneralInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AgenticRules) {
+		toSerialize["agentic_rules"] = o.AgenticRules
+	}
 	if !IsNil(o.CertIssueDetails) {
 		toSerialize["cert_issue_details"] = o.CertIssueDetails
 	}

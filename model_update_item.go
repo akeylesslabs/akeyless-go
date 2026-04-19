@@ -123,6 +123,10 @@ type UpdateItem struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only.
+	UscTags *string `json:"usc-tags,omitempty"`
+	// Whether to filter the USC secret list using the specified usc-tags [true/false]  USC items only.
+	UseTagsAsFilter *string `json:"use-tags-as-filter,omitempty"`
 }
 
 type _UpdateItem UpdateItem
@@ -1825,6 +1829,70 @@ func (o *UpdateItem) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUscTags returns the UscTags field value if set, zero value otherwise.
+func (o *UpdateItem) GetUscTags() string {
+	if o == nil || IsNil(o.UscTags) {
+		var ret string
+		return ret
+	}
+	return *o.UscTags
+}
+
+// GetUscTagsOk returns a tuple with the UscTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetUscTagsOk() (*string, bool) {
+	if o == nil || IsNil(o.UscTags) {
+		return nil, false
+	}
+	return o.UscTags, true
+}
+
+// HasUscTags returns a boolean if a field has been set.
+func (o *UpdateItem) HasUscTags() bool {
+	if o != nil && !IsNil(o.UscTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscTags gets a reference to the given string and assigns it to the UscTags field.
+func (o *UpdateItem) SetUscTags(v string) {
+	o.UscTags = &v
+}
+
+// GetUseTagsAsFilter returns the UseTagsAsFilter field value if set, zero value otherwise.
+func (o *UpdateItem) GetUseTagsAsFilter() string {
+	if o == nil || IsNil(o.UseTagsAsFilter) {
+		var ret string
+		return ret
+	}
+	return *o.UseTagsAsFilter
+}
+
+// GetUseTagsAsFilterOk returns a tuple with the UseTagsAsFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetUseTagsAsFilterOk() (*string, bool) {
+	if o == nil || IsNil(o.UseTagsAsFilter) {
+		return nil, false
+	}
+	return o.UseTagsAsFilter, true
+}
+
+// HasUseTagsAsFilter returns a boolean if a field has been set.
+func (o *UpdateItem) HasUseTagsAsFilter() bool {
+	if o != nil && !IsNil(o.UseTagsAsFilter) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseTagsAsFilter gets a reference to the given string and assigns it to the UseTagsAsFilter field.
+func (o *UpdateItem) SetUseTagsAsFilter(v string) {
+	o.UseTagsAsFilter = &v
+}
+
 func (o UpdateItem) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1988,6 +2056,12 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UscTags) {
+		toSerialize["usc-tags"] = o.UscTags
+	}
+	if !IsNil(o.UseTagsAsFilter) {
+		toSerialize["use-tags-as-filter"] = o.UseTagsAsFilter
 	}
 	return toSerialize, nil
 }

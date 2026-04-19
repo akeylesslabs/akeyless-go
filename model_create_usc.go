@@ -59,8 +59,12 @@ type CreateUSC struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// Prefix for all secrets created in AWS Secrets Manager
 	UscPrefix *string `json:"usc-prefix,omitempty"`
+	// Comma-separated list of tags to apply to all secrets created on the remote USC
+	UscTags *string `json:"usc-tags,omitempty"`
 	// Whether to filter the USC secret list using the specified usc-prefix [true/false]
 	UsePrefixAsFilter *string `json:"use-prefix-as-filter,omitempty"`
+	// Filter the USC secret list by the value(s) of --usc-tags. [true|false]
+	UseTagsAsFilter *bool `json:"use-tags-as-filter,omitempty"`
 }
 
 type _CreateUSC CreateUSC
@@ -692,6 +696,38 @@ func (o *CreateUSC) SetUscPrefix(v string) {
 	o.UscPrefix = &v
 }
 
+// GetUscTags returns the UscTags field value if set, zero value otherwise.
+func (o *CreateUSC) GetUscTags() string {
+	if o == nil || IsNil(o.UscTags) {
+		var ret string
+		return ret
+	}
+	return *o.UscTags
+}
+
+// GetUscTagsOk returns a tuple with the UscTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetUscTagsOk() (*string, bool) {
+	if o == nil || IsNil(o.UscTags) {
+		return nil, false
+	}
+	return o.UscTags, true
+}
+
+// HasUscTags returns a boolean if a field has been set.
+func (o *CreateUSC) HasUscTags() bool {
+	if o != nil && !IsNil(o.UscTags) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscTags gets a reference to the given string and assigns it to the UscTags field.
+func (o *CreateUSC) SetUscTags(v string) {
+	o.UscTags = &v
+}
+
 // GetUsePrefixAsFilter returns the UsePrefixAsFilter field value if set, zero value otherwise.
 func (o *CreateUSC) GetUsePrefixAsFilter() string {
 	if o == nil || IsNil(o.UsePrefixAsFilter) {
@@ -722,6 +758,38 @@ func (o *CreateUSC) HasUsePrefixAsFilter() bool {
 // SetUsePrefixAsFilter gets a reference to the given string and assigns it to the UsePrefixAsFilter field.
 func (o *CreateUSC) SetUsePrefixAsFilter(v string) {
 	o.UsePrefixAsFilter = &v
+}
+
+// GetUseTagsAsFilter returns the UseTagsAsFilter field value if set, zero value otherwise.
+func (o *CreateUSC) GetUseTagsAsFilter() bool {
+	if o == nil || IsNil(o.UseTagsAsFilter) {
+		var ret bool
+		return ret
+	}
+	return *o.UseTagsAsFilter
+}
+
+// GetUseTagsAsFilterOk returns a tuple with the UseTagsAsFilter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetUseTagsAsFilterOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseTagsAsFilter) {
+		return nil, false
+	}
+	return o.UseTagsAsFilter, true
+}
+
+// HasUseTagsAsFilter returns a boolean if a field has been set.
+func (o *CreateUSC) HasUseTagsAsFilter() bool {
+	if o != nil && !IsNil(o.UseTagsAsFilter) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseTagsAsFilter gets a reference to the given bool and assigns it to the UseTagsAsFilter field.
+func (o *CreateUSC) SetUseTagsAsFilter(v bool) {
+	o.UseTagsAsFilter = &v
 }
 
 func (o CreateUSC) MarshalJSON() ([]byte, error) {
@@ -787,8 +855,14 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UscPrefix) {
 		toSerialize["usc-prefix"] = o.UscPrefix
 	}
+	if !IsNil(o.UscTags) {
+		toSerialize["usc-tags"] = o.UscTags
+	}
 	if !IsNil(o.UsePrefixAsFilter) {
 		toSerialize["use-prefix-as-filter"] = o.UsePrefixAsFilter
+	}
+	if !IsNil(o.UseTagsAsFilter) {
+		toSerialize["use-tags-as-filter"] = o.UseTagsAsFilter
 	}
 	return toSerialize, nil
 }

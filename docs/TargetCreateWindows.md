@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | Pointer to **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **ConnectionType** | Pointer to **string** | Type of connection to Windows Server [credentials/parent-target] | [optional] [default to "credentials"]
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Domain** | Pointer to **string** | User domain name | [optional] 
 **Hostname** | **string** | Server hostname | 
@@ -89,6 +90,31 @@ SetConnectionType sets ConnectionType field to given value.
 `func (o *TargetCreateWindows) HasConnectionType() bool`
 
 HasConnectionType returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetCreateWindows) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetCreateWindows) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetCreateWindows) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetCreateWindows) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
 
 ### GetDescription
 
