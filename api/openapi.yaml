@@ -4934,7 +4934,7 @@ paths:
             field.
       tags:
       - v2
-  /dynamic-secret-update-oracle:
+  /dynamic-secret-update-oracledb:
     post:
       operationId: dynamicSecretUpdateOracleDb
       requestBody:
@@ -20469,6 +20469,7 @@ components:
         allowed_gateways_ips:
           cidr_whitelist: cidr_whitelist
           lock: true
+        allow_passkeys: true
         default_auth_method:
           default_auth_method_type: default_auth_method_type
           default_access_id: default_access_id
@@ -20557,6 +20558,9 @@ components:
         allow_auto_fill:
           type: boolean
           x-go-name: AllowAutoFill
+        allow_passkeys:
+          type: boolean
+          x-go-name: AllowPasskeys
         allowed_client_types:
           $ref: '#/components/schemas/AllowedClientType'
         allowed_clients_ips:
@@ -26738,6 +26742,7 @@ components:
         cloud_service_provider: cloud_service_provider
         db_max_idle_conns: db_max_idle_conns
         gitlab_url: gitlab_url
+        enable_mtls: true
         admin_name: admin_name
         rabbitmq_server_user: rabbitmq_server_user
         venafi_api_key: venafi_api_key
@@ -26783,6 +26788,7 @@ components:
         user_principal_name: user_principal_name
         k8s_client_key_data: k8s_client_key_data
         azure_subscription_id: azure_subscription_id
+        client_private_key: client_private_key
         google_workspace_admin_name: google_workspace_admin_name
         organization_id: organization_id
         gcp_service_account_key_id: gcp_service_account_key_id
@@ -26938,6 +26944,7 @@ components:
           sso_data_base64: sso_data_base64
           login_type: login_type
           p12_data_base64: p12_data_base64
+        client_certificate: client_certificate
         eks_access_key_id: eks_access_key_id
         venafi_base_url: venafi_base_url
         user_ttl: user_ttl
@@ -26968,6 +26975,7 @@ components:
         db_tenant_id: db_tenant_id
         mongodb_uri_connection: mongodb_uri_connection
         gitlab_group_name: gitlab_group_name
+        client_key_passphrase: client_key_passphrase
         db_user_name: db_user_name
         eks_region: eks_region
         gw_cloud_identity_external_id_opt:
@@ -27213,6 +27221,23 @@ components:
         client_authentication_type:
           type: string
           x-go-name: ClientAuthenticationType
+        client_certificate:
+          description: (Optional) ClientCertificate defines the client certificate
+            for mutual TLS. Must be base64 certificate loaded by UI using file loader
+            field
+          type: string
+          x-go-name: ClientCertificate
+        client_key_passphrase:
+          description: (Optional) ClientKeyPassphrase defines the passphrase for the
+            client private key
+          type: string
+          x-go-name: ClientKeyPassphrase
+        client_private_key:
+          description: (Optional) ClientPrivateKey defines the client private key
+            for mutual TLS. Must be base64 private key loaded by UI using file loader
+            field
+          type: string
+          x-go-name: ClientPrivateKey
         cloud_service_provider:
           type: string
           x-go-name: CloudServiceProvider
@@ -27320,6 +27345,11 @@ components:
         enable_admin_rotation:
           type: boolean
           x-go-name: EnableAdminRotation
+        enable_mtls:
+          description: (Optional) EnableMTLS defines if mutual TLS will be used to
+            connect to DB
+          type: boolean
+          x-go-name: EnableMTLS
         enforce_replay_prevention:
           description: relevant for PRIVATE_KEY_JWT client authentication type
           type: boolean
@@ -27989,14 +28019,35 @@ components:
           sso_data_base64: sso_data_base64
           login_type: login_type
           p12_data_base64: p12_data_base64
+        client_certificate: client_certificate
         db_name: db_name
+        client_key_passphrase: client_key_passphrase
+        client_private_key: client_private_key
         db_user_name: db_user_name
         db_server_certificates: db_server_certificates
+        enable_mtls: true
         cluster_mode: true
         db_port: db_port
         db_server_name: db_server_name
         db_client_id: db_client_id
       properties:
+        client_certificate:
+          description: (Optional) ClientCertificate defines the client certificate
+            for mutual TLS. Must be base64 certificate loaded by UI using file loader
+            field
+          type: string
+          x-go-name: ClientCertificate
+        client_key_passphrase:
+          description: (Optional) ClientKeyPassphrase defines the passphrase for the
+            client private key
+          type: string
+          x-go-name: ClientKeyPassphrase
+        client_private_key:
+          description: (Optional) ClientPrivateKey defines the client private key
+            for mutual TLS. Must be base64 private key loaded by UI using file loader
+            field
+          type: string
+          x-go-name: ClientPrivateKey
         cloud_service_provider:
           type: string
           x-go-name: CloudServiceProvider
@@ -28052,6 +28103,11 @@ components:
         db_user_name:
           type: string
           x-go-name: DbUserName
+        enable_mtls:
+          description: (Optional) EnableMTLS defines if mutual TLS will be used to
+            connect to DB
+          type: boolean
+          x-go-name: EnableMTLS
         oracle_wallet_details:
           $ref: '#/components/schemas/WalletDetails'
         sf_account:
@@ -29861,6 +29917,7 @@ components:
           allowed_gateways_ips:
             cidr_whitelist: cidr_whitelist
             lock: true
+          allow_passkeys: true
           default_auth_method:
             default_auth_method_type: default_auth_method_type
             default_access_id: default_access_id
@@ -30545,9 +30602,13 @@ components:
               sso_data_base64: sso_data_base64
               login_type: login_type
               p12_data_base64: p12_data_base64
+            client_certificate: client_certificate
             db_name: db_name
+            client_key_passphrase: client_key_passphrase
+            client_private_key: client_private_key
             db_user_name: db_user_name
             db_server_certificates: db_server_certificates
+            enable_mtls: true
             cluster_mode: true
             db_port: db_port
             db_server_name: db_server_name
@@ -45402,9 +45463,13 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           db_name: db_name
+          client_key_passphrase: client_key_passphrase
+          client_private_key: client_private_key
           db_user_name: db_user_name
           db_server_certificates: db_server_certificates
+          enable_mtls: true
           cluster_mode: true
           db_port: db_port
           db_server_name: db_server_name
@@ -53860,6 +53925,18 @@ components:
             only)
           type: string
           x-go-name: MssqlAzureTenantID
+        client-certificate:
+          description: Client certificate for mutual TLS
+          type: string
+          x-go-name: ClientCertificate
+        client-key-passphrase:
+          description: Client private key passphrase for mutual TLS
+          type: string
+          x-go-name: ClientKeyPassphrase
+        client-private-key:
+          description: Client private key for mutual TLS
+          type: string
+          x-go-name: ClientPrivateKey
         cloud-service-provider:
           description: (Optional) Cloud service provider (currently only supports
             Azure)
@@ -53897,6 +53974,10 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        enable-mtls:
+          description: Enable mutual TLS
+          type: boolean
+          x-go-name: EnableMTLS
         host:
           type: string
           x-go-name: DbHostName
@@ -60747,6 +60828,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -60792,6 +60874,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -60947,6 +61030,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -60977,6 +61061,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -65026,6 +65111,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -65071,6 +65157,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -65226,6 +65313,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -65256,6 +65344,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -69080,6 +69169,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -69125,6 +69215,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -69280,6 +69371,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -69310,6 +69402,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -69651,6 +69744,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -69696,6 +69790,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -69851,6 +69946,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -69881,6 +69977,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -70190,6 +70287,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -70235,6 +70333,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -70390,6 +70489,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -70420,6 +70520,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -70685,6 +70786,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -70730,6 +70832,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -70885,6 +70988,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -70915,6 +71019,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -71170,6 +71275,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -71215,6 +71321,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -71370,6 +71477,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -71400,6 +71508,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -71663,6 +71772,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -71708,6 +71818,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -71863,6 +71974,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -71893,6 +72005,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -72134,6 +72247,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -72179,6 +72293,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -72334,6 +72449,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -72364,6 +72480,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -72651,6 +72768,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -72696,6 +72814,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -72851,6 +72970,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -72881,6 +73001,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -73186,6 +73307,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -73231,6 +73353,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -73386,6 +73509,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -73416,6 +73540,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -73679,6 +73804,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -73724,6 +73850,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -73879,6 +74006,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -73909,6 +74037,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -74187,6 +74316,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -74232,6 +74362,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -74387,6 +74518,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -74417,6 +74549,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -74720,6 +74853,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -74765,6 +74899,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -74920,6 +75055,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -74950,6 +75086,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -75279,6 +75416,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -75324,6 +75462,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -75479,6 +75618,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -75509,6 +75649,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -75818,6 +75959,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -75863,6 +76005,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -76018,6 +76161,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -76048,6 +76192,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -76372,6 +76517,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -76417,6 +76563,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -76572,6 +76719,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -76602,6 +76750,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -76918,6 +77067,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -76963,6 +77113,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -77118,6 +77269,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -77148,6 +77300,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -77480,6 +77633,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -77525,6 +77679,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -77680,6 +77835,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -77710,6 +77866,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -78008,6 +78165,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -78053,6 +78211,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -78208,6 +78367,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -78238,6 +78398,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -78563,6 +78724,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -78608,6 +78770,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -78763,6 +78926,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -78793,6 +78957,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -79101,6 +79266,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -79146,6 +79312,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -79301,6 +79468,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -79331,6 +79499,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -79616,6 +79785,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -79661,6 +79831,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -79816,6 +79987,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -79846,6 +80018,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -80166,6 +80339,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -80211,6 +80385,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -80366,6 +80541,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -80396,6 +80572,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -80664,6 +80841,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -80709,6 +80887,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -80864,6 +81043,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -80894,6 +81074,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -81170,6 +81351,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -81215,6 +81397,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -81370,6 +81553,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -81400,6 +81584,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -81671,6 +81856,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -81716,6 +81902,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -81871,6 +82058,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -81901,6 +82089,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -82206,6 +82395,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -82251,6 +82441,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -82406,6 +82597,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -82436,6 +82628,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -86106,6 +86299,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -86151,6 +86345,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -86306,6 +86501,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -86336,6 +86532,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -86681,6 +86878,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -86726,6 +86924,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -86881,6 +87080,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -86911,6 +87111,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -87224,6 +87425,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -87269,6 +87471,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -87424,6 +87627,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -87454,6 +87658,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -87723,6 +87928,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -87768,6 +87974,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -87923,6 +88130,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -87953,6 +88161,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -88212,6 +88421,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -88257,6 +88467,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -88412,6 +88623,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -88442,6 +88654,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -88709,6 +88922,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -88754,6 +88968,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -88909,6 +89124,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -88939,6 +89155,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -89184,6 +89401,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -89229,6 +89447,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -89384,6 +89603,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -89414,6 +89634,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -89705,6 +89926,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -89750,6 +89972,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -89905,6 +90128,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -89935,6 +90159,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -90244,6 +90469,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -90289,6 +90515,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -90444,6 +90671,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -90474,6 +90702,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -90741,6 +90970,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -90786,6 +91016,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -90941,6 +91172,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -90971,6 +91203,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -91253,6 +91486,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -91298,6 +91532,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -91453,6 +91688,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -91483,6 +91719,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -91784,6 +92021,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -91829,6 +92067,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -91984,6 +92223,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -92014,6 +92254,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -92347,6 +92588,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -92392,6 +92634,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -92547,6 +92790,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -92577,6 +92821,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -92890,6 +93135,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -92935,6 +93181,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -93090,6 +93337,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -93120,6 +93368,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -93448,6 +93697,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -93493,6 +93743,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -93648,6 +93899,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -93678,6 +93930,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -93998,6 +94251,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -94043,6 +94297,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -94198,6 +94453,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -94228,6 +94484,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -94564,6 +94821,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -94609,6 +94867,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -94764,6 +95023,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -94794,6 +95054,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -95096,6 +95357,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -95141,6 +95403,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -95296,6 +95559,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -95326,6 +95590,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -95655,6 +95920,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -95700,6 +95966,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -95855,6 +96122,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -95885,6 +96153,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -96197,6 +96466,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -96242,6 +96512,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -96397,6 +96668,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -96427,6 +96699,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -96716,6 +96989,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -96761,6 +97035,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -96916,6 +97191,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -96946,6 +97222,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -97270,6 +97547,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -97315,6 +97593,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -97470,6 +97749,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -97500,6 +97780,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -97772,6 +98053,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -97817,6 +98099,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -97972,6 +98255,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -98002,6 +98286,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -98282,6 +98567,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -98327,6 +98613,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -98482,6 +98769,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -98512,6 +98800,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -98787,6 +99076,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -98832,6 +99122,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -98987,6 +99278,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -99017,6 +99309,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -99326,6 +99619,7 @@ components:
           cloud_service_provider: cloud_service_provider
           db_max_idle_conns: db_max_idle_conns
           gitlab_url: gitlab_url
+          enable_mtls: true
           admin_name: admin_name
           rabbitmq_server_user: rabbitmq_server_user
           venafi_api_key: venafi_api_key
@@ -99371,6 +99665,7 @@ components:
           user_principal_name: user_principal_name
           k8s_client_key_data: k8s_client_key_data
           azure_subscription_id: azure_subscription_id
+          client_private_key: client_private_key
           google_workspace_admin_name: google_workspace_admin_name
           organization_id: organization_id
           gcp_service_account_key_id: gcp_service_account_key_id
@@ -99526,6 +99821,7 @@ components:
             sso_data_base64: sso_data_base64
             login_type: login_type
             p12_data_base64: p12_data_base64
+          client_certificate: client_certificate
           eks_access_key_id: eks_access_key_id
           venafi_base_url: venafi_base_url
           user_ttl: user_ttl
@@ -99556,6 +99852,7 @@ components:
           db_tenant_id: db_tenant_id
           mongodb_uri_connection: mongodb_uri_connection
           gitlab_group_name: gitlab_group_name
+          client_key_passphrase: client_key_passphrase
           db_user_name: db_user_name
           eks_region: eks_region
           gw_cloud_identity_external_id_opt:
@@ -110270,6 +110567,18 @@ components:
             only)
           type: string
           x-go-name: MssqlAzureTenantID
+        client-certificate:
+          description: Client certificate for mutual TLS
+          type: string
+          x-go-name: ClientCertificate
+        client-key-passphrase:
+          description: Client private key passphrase for mutual TLS
+          type: string
+          x-go-name: ClientKeyPassphrase
+        client-private-key:
+          description: Client private key for mutual TLS
+          type: string
+          x-go-name: ClientPrivateKey
         cloud-service-provider:
           description: (Optional) Cloud service provider (currently only supports
             Azure)
@@ -110311,6 +110620,10 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        enable-mtls:
+          description: Enable mutual TLS
+          type: boolean
+          x-go-name: EnableMTLS
         host:
           type: string
           x-go-name: DbHostName
@@ -112729,6 +113042,18 @@ components:
             only)
           type: string
           x-go-name: MssqlAzureTenantID
+        client-certificate:
+          description: Client certificate for mutual TLS
+          type: string
+          x-go-name: ClientCertificate
+        client-key-passphrase:
+          description: Client private key passphrase for mutual TLS
+          type: string
+          x-go-name: ClientKeyPassphrase
+        client-private-key:
+          description: Client private key for mutual TLS
+          type: string
+          x-go-name: ClientPrivateKey
         cloud-service-provider:
           description: (Optional) Cloud service provider (currently only supports
             Azure)
@@ -112770,6 +113095,10 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        enable-mtls:
+          description: Enable mutual TLS
+          type: boolean
+          x-go-name: EnableMTLS
         host:
           type: string
           x-go-name: DbHostName
@@ -117856,6 +118185,18 @@ components:
             only)
           type: string
           x-go-name: MssqlAzureTenantID
+        client-certificate:
+          description: Client certificate for mutual TLS
+          type: string
+          x-go-name: ClientCertificate
+        client-key-passphrase:
+          description: Client private key passphrase for mutual TLS
+          type: string
+          x-go-name: ClientKeyPassphrase
+        client-private-key:
+          description: Client private key for mutual TLS
+          type: string
+          x-go-name: ClientPrivateKey
         cloud-service-provider:
           description: (Optional) Cloud service provider (currently only supports
             Azure)
@@ -117893,6 +118234,10 @@ components:
           description: Description of the object
           type: string
           x-go-name: Description
+        enable-mtls:
+          description: Enable mutual TLS
+          type: boolean
+          x-go-name: EnableMTLS
         host:
           type: string
           x-go-name: DbHostName

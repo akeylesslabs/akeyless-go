@@ -76,6 +76,12 @@ type DSProducerDetails struct {
 	ChefServerUsername *string `json:"chef_server_username,omitempty"`
 	ChefSkipSsl *bool `json:"chef_skip_ssl,omitempty"`
 	ClientAuthenticationType *string `json:"client_authentication_type,omitempty"`
+	// (Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field
+	ClientCertificate *string `json:"client_certificate,omitempty"`
+	// (Optional) ClientKeyPassphrase defines the passphrase for the client private key
+	ClientKeyPassphrase *string `json:"client_key_passphrase,omitempty"`
+	// (Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field
+	ClientPrivateKey *string `json:"client_private_key,omitempty"`
 	CloudServiceProvider *string `json:"cloud_service_provider,omitempty"`
 	ClusterMode *bool `json:"cluster_mode,omitempty"`
 	ConnectionType *string `json:"connection_type,omitempty"`
@@ -111,6 +117,8 @@ type DSProducerDetails struct {
 	EksRegion *string `json:"eks_region,omitempty"`
 	EksSecretAccessKey *string `json:"eks_secret_access_key,omitempty"`
 	EnableAdminRotation *bool `json:"enable_admin_rotation,omitempty"`
+	// (Optional) EnableMTLS defines if mutual TLS will be used to connect to DB
+	EnableMtls *bool `json:"enable_mtls,omitempty"`
 	// relevant for PRIVATE_KEY_JWT client authentication type
 	EnforceReplayPrevention *bool `json:"enforce_replay_prevention,omitempty"`
 	ExpirationDate *time.Time `json:"expiration_date,omitempty"`
@@ -2088,6 +2096,102 @@ func (o *DSProducerDetails) SetClientAuthenticationType(v string) {
 	o.ClientAuthenticationType = &v
 }
 
+// GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetClientCertificate() string {
+	if o == nil || IsNil(o.ClientCertificate) {
+		var ret string
+		return ret
+	}
+	return *o.ClientCertificate
+}
+
+// GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetClientCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientCertificate) {
+		return nil, false
+	}
+	return o.ClientCertificate, true
+}
+
+// HasClientCertificate returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasClientCertificate() bool {
+	if o != nil && !IsNil(o.ClientCertificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientCertificate gets a reference to the given string and assigns it to the ClientCertificate field.
+func (o *DSProducerDetails) SetClientCertificate(v string) {
+	o.ClientCertificate = &v
+}
+
+// GetClientKeyPassphrase returns the ClientKeyPassphrase field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetClientKeyPassphrase() string {
+	if o == nil || IsNil(o.ClientKeyPassphrase) {
+		var ret string
+		return ret
+	}
+	return *o.ClientKeyPassphrase
+}
+
+// GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetClientKeyPassphraseOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientKeyPassphrase) {
+		return nil, false
+	}
+	return o.ClientKeyPassphrase, true
+}
+
+// HasClientKeyPassphrase returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasClientKeyPassphrase() bool {
+	if o != nil && !IsNil(o.ClientKeyPassphrase) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientKeyPassphrase gets a reference to the given string and assigns it to the ClientKeyPassphrase field.
+func (o *DSProducerDetails) SetClientKeyPassphrase(v string) {
+	o.ClientKeyPassphrase = &v
+}
+
+// GetClientPrivateKey returns the ClientPrivateKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetClientPrivateKey() string {
+	if o == nil || IsNil(o.ClientPrivateKey) {
+		var ret string
+		return ret
+	}
+	return *o.ClientPrivateKey
+}
+
+// GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetClientPrivateKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientPrivateKey) {
+		return nil, false
+	}
+	return o.ClientPrivateKey, true
+}
+
+// HasClientPrivateKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasClientPrivateKey() bool {
+	if o != nil && !IsNil(o.ClientPrivateKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientPrivateKey gets a reference to the given string and assigns it to the ClientPrivateKey field.
+func (o *DSProducerDetails) SetClientPrivateKey(v string) {
+	o.ClientPrivateKey = &v
+}
+
 // GetCloudServiceProvider returns the CloudServiceProvider field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetCloudServiceProvider() string {
 	if o == nil || IsNil(o.CloudServiceProvider) {
@@ -3110,6 +3214,38 @@ func (o *DSProducerDetails) HasEnableAdminRotation() bool {
 // SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
 func (o *DSProducerDetails) SetEnableAdminRotation(v bool) {
 	o.EnableAdminRotation = &v
+}
+
+// GetEnableMtls returns the EnableMtls field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetEnableMtls() bool {
+	if o == nil || IsNil(o.EnableMtls) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableMtls
+}
+
+// GetEnableMtlsOk returns a tuple with the EnableMtls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetEnableMtlsOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableMtls) {
+		return nil, false
+	}
+	return o.EnableMtls, true
+}
+
+// HasEnableMtls returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasEnableMtls() bool {
+	if o != nil && !IsNil(o.EnableMtls) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableMtls gets a reference to the given bool and assigns it to the EnableMtls field.
+func (o *DSProducerDetails) SetEnableMtls(v bool) {
+	o.EnableMtls = &v
 }
 
 // GetEnforceReplayPrevention returns the EnforceReplayPrevention field value if set, zero value otherwise.
@@ -9015,6 +9151,15 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClientAuthenticationType) {
 		toSerialize["client_authentication_type"] = o.ClientAuthenticationType
 	}
+	if !IsNil(o.ClientCertificate) {
+		toSerialize["client_certificate"] = o.ClientCertificate
+	}
+	if !IsNil(o.ClientKeyPassphrase) {
+		toSerialize["client_key_passphrase"] = o.ClientKeyPassphrase
+	}
+	if !IsNil(o.ClientPrivateKey) {
+		toSerialize["client_private_key"] = o.ClientPrivateKey
+	}
 	if !IsNil(o.CloudServiceProvider) {
 		toSerialize["cloud_service_provider"] = o.CloudServiceProvider
 	}
@@ -9110,6 +9255,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableAdminRotation) {
 		toSerialize["enable_admin_rotation"] = o.EnableAdminRotation
+	}
+	if !IsNil(o.EnableMtls) {
+		toSerialize["enable_mtls"] = o.EnableMtls
 	}
 	if !IsNil(o.EnforceReplayPrevention) {
 		toSerialize["enforce_replay_prevention"] = o.EnforceReplayPrevention

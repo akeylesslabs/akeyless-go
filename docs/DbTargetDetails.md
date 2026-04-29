@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClientCertificate** | Pointer to **string** | (Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field | [optional] 
+**ClientKeyPassphrase** | Pointer to **string** | (Optional) ClientKeyPassphrase defines the passphrase for the client private key | [optional] 
+**ClientPrivateKey** | Pointer to **string** | (Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field | [optional] 
 **CloudServiceProvider** | Pointer to **string** |  | [optional] 
 **ClusterMode** | Pointer to **bool** |  | [optional] 
 **ConnectionType** | Pointer to **string** |  | [optional] 
@@ -19,6 +22,7 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client&#39;s handshake to support virtual hosting unless it is an IP address. | [optional] 
 **DbTenantId** | Pointer to **string** |  | [optional] 
 **DbUserName** | Pointer to **string** |  | [optional] 
+**EnableMtls** | Pointer to **bool** | (Optional) EnableMTLS defines if mutual TLS will be used to connect to DB | [optional] 
 **OracleWalletDetails** | Pointer to [**WalletDetails**](WalletDetails.md) |  | [optional] 
 **SfAccount** | Pointer to **string** |  | [optional] 
 **SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
@@ -42,6 +46,81 @@ will change when the set of required properties is changed
 NewDbTargetDetailsWithDefaults instantiates a new DbTargetDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClientCertificate
+
+`func (o *DbTargetDetails) GetClientCertificate() string`
+
+GetClientCertificate returns the ClientCertificate field if non-nil, zero value otherwise.
+
+### GetClientCertificateOk
+
+`func (o *DbTargetDetails) GetClientCertificateOk() (*string, bool)`
+
+GetClientCertificateOk returns a tuple with the ClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientCertificate
+
+`func (o *DbTargetDetails) SetClientCertificate(v string)`
+
+SetClientCertificate sets ClientCertificate field to given value.
+
+### HasClientCertificate
+
+`func (o *DbTargetDetails) HasClientCertificate() bool`
+
+HasClientCertificate returns a boolean if a field has been set.
+
+### GetClientKeyPassphrase
+
+`func (o *DbTargetDetails) GetClientKeyPassphrase() string`
+
+GetClientKeyPassphrase returns the ClientKeyPassphrase field if non-nil, zero value otherwise.
+
+### GetClientKeyPassphraseOk
+
+`func (o *DbTargetDetails) GetClientKeyPassphraseOk() (*string, bool)`
+
+GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientKeyPassphrase
+
+`func (o *DbTargetDetails) SetClientKeyPassphrase(v string)`
+
+SetClientKeyPassphrase sets ClientKeyPassphrase field to given value.
+
+### HasClientKeyPassphrase
+
+`func (o *DbTargetDetails) HasClientKeyPassphrase() bool`
+
+HasClientKeyPassphrase returns a boolean if a field has been set.
+
+### GetClientPrivateKey
+
+`func (o *DbTargetDetails) GetClientPrivateKey() string`
+
+GetClientPrivateKey returns the ClientPrivateKey field if non-nil, zero value otherwise.
+
+### GetClientPrivateKeyOk
+
+`func (o *DbTargetDetails) GetClientPrivateKeyOk() (*string, bool)`
+
+GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientPrivateKey
+
+`func (o *DbTargetDetails) SetClientPrivateKey(v string)`
+
+SetClientPrivateKey sets ClientPrivateKey field to given value.
+
+### HasClientPrivateKey
+
+`func (o *DbTargetDetails) HasClientPrivateKey() bool`
+
+HasClientPrivateKey returns a boolean if a field has been set.
 
 ### GetCloudServiceProvider
 
@@ -417,6 +496,31 @@ SetDbUserName sets DbUserName field to given value.
 `func (o *DbTargetDetails) HasDbUserName() bool`
 
 HasDbUserName returns a boolean if a field has been set.
+
+### GetEnableMtls
+
+`func (o *DbTargetDetails) GetEnableMtls() bool`
+
+GetEnableMtls returns the EnableMtls field if non-nil, zero value otherwise.
+
+### GetEnableMtlsOk
+
+`func (o *DbTargetDetails) GetEnableMtlsOk() (*bool, bool)`
+
+GetEnableMtlsOk returns a tuple with the EnableMtls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableMtls
+
+`func (o *DbTargetDetails) SetEnableMtls(v bool)`
+
+SetEnableMtls sets EnableMtls field to given value.
+
+### HasEnableMtls
+
+`func (o *DbTargetDetails) HasEnableMtls() bool`
+
+HasEnableMtls returns a boolean if a field has been set.
 
 ### GetOracleWalletDetails
 

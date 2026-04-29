@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **AzureClientId** | Pointer to **string** | (Optional) Client id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureClientSecret** | Pointer to **string** | (Optional) Client secret (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
 **AzureTenantId** | Pointer to **string** | (Optional) Tenant id (relevant for \&quot;cloud-service-provider\&quot; only) | [optional] 
+**ClientCertificate** | Pointer to **string** | Client certificate for mutual TLS | [optional] 
+**ClientKeyPassphrase** | Pointer to **string** | Client private key passphrase for mutual TLS | [optional] 
+**ClientPrivateKey** | Pointer to **string** | Client private key for mutual TLS | [optional] 
 **CloudServiceProvider** | Pointer to **string** | (Optional) Cloud service provider (currently only supports Azure) | [optional] 
 **ClusterMode** | Pointer to **bool** | Cluster Mode | [optional] 
 **Comment** | Pointer to **string** | Deprecated - use description | [optional] 
@@ -16,6 +19,7 @@ Name | Type | Description | Notes
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
 **DbType** | **string** |  | 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**EnableMtls** | Pointer to **bool** | Enable mutual TLS | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -136,6 +140,81 @@ SetAzureTenantId sets AzureTenantId field to given value.
 `func (o *CreateDBTarget) HasAzureTenantId() bool`
 
 HasAzureTenantId returns a boolean if a field has been set.
+
+### GetClientCertificate
+
+`func (o *CreateDBTarget) GetClientCertificate() string`
+
+GetClientCertificate returns the ClientCertificate field if non-nil, zero value otherwise.
+
+### GetClientCertificateOk
+
+`func (o *CreateDBTarget) GetClientCertificateOk() (*string, bool)`
+
+GetClientCertificateOk returns a tuple with the ClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientCertificate
+
+`func (o *CreateDBTarget) SetClientCertificate(v string)`
+
+SetClientCertificate sets ClientCertificate field to given value.
+
+### HasClientCertificate
+
+`func (o *CreateDBTarget) HasClientCertificate() bool`
+
+HasClientCertificate returns a boolean if a field has been set.
+
+### GetClientKeyPassphrase
+
+`func (o *CreateDBTarget) GetClientKeyPassphrase() string`
+
+GetClientKeyPassphrase returns the ClientKeyPassphrase field if non-nil, zero value otherwise.
+
+### GetClientKeyPassphraseOk
+
+`func (o *CreateDBTarget) GetClientKeyPassphraseOk() (*string, bool)`
+
+GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientKeyPassphrase
+
+`func (o *CreateDBTarget) SetClientKeyPassphrase(v string)`
+
+SetClientKeyPassphrase sets ClientKeyPassphrase field to given value.
+
+### HasClientKeyPassphrase
+
+`func (o *CreateDBTarget) HasClientKeyPassphrase() bool`
+
+HasClientKeyPassphrase returns a boolean if a field has been set.
+
+### GetClientPrivateKey
+
+`func (o *CreateDBTarget) GetClientPrivateKey() string`
+
+GetClientPrivateKey returns the ClientPrivateKey field if non-nil, zero value otherwise.
+
+### GetClientPrivateKeyOk
+
+`func (o *CreateDBTarget) GetClientPrivateKeyOk() (*string, bool)`
+
+GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientPrivateKey
+
+`func (o *CreateDBTarget) SetClientPrivateKey(v string)`
+
+SetClientPrivateKey sets ClientPrivateKey field to given value.
+
+### HasClientPrivateKey
+
+`func (o *CreateDBTarget) HasClientPrivateKey() bool`
+
+HasClientPrivateKey returns a boolean if a field has been set.
 
 ### GetCloudServiceProvider
 
@@ -351,6 +430,31 @@ SetDescription sets Description field to given value.
 `func (o *CreateDBTarget) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnableMtls
+
+`func (o *CreateDBTarget) GetEnableMtls() bool`
+
+GetEnableMtls returns the EnableMtls field if non-nil, zero value otherwise.
+
+### GetEnableMtlsOk
+
+`func (o *CreateDBTarget) GetEnableMtlsOk() (*bool, bool)`
+
+GetEnableMtlsOk returns a tuple with the EnableMtls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableMtls
+
+`func (o *CreateDBTarget) SetEnableMtls(v bool)`
+
+SetEnableMtls sets EnableMtls field to given value.
+
+### HasEnableMtls
+
+`func (o *CreateDBTarget) HasEnableMtls() bool`
+
+HasEnableMtls returns a boolean if a field has been set.
 
 ### GetHost
 

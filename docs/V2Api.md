@@ -187,7 +187,7 @@ Method | HTTP request | Description
 [**DynamicSecretUpdateMsSql**](V2Api.md#DynamicSecretUpdateMsSql) | **Post** /dynamic-secret-update-mssql | 
 [**DynamicSecretUpdateMySql**](V2Api.md#DynamicSecretUpdateMySql) | **Post** /dynamic-secret-update-mysql | 
 [**DynamicSecretUpdateOpenAI**](V2Api.md#DynamicSecretUpdateOpenAI) | **Post** /dynamic-secret-update-openai | 
-[**DynamicSecretUpdateOracleDb**](V2Api.md#DynamicSecretUpdateOracleDb) | **Post** /dynamic-secret-update-oracle | 
+[**DynamicSecretUpdateOracleDb**](V2Api.md#DynamicSecretUpdateOracleDb) | **Post** /dynamic-secret-update-oracledb | 
 [**DynamicSecretUpdatePing**](V2Api.md#DynamicSecretUpdatePing) | **Post** /dynamic-secret-update-ping | 
 [**DynamicSecretUpdatePostgreSql**](V2Api.md#DynamicSecretUpdatePostgreSql) | **Post** /dynamic-secret-update-postgresql | 
 [**DynamicSecretUpdateRabbitMq**](V2Api.md#DynamicSecretUpdateRabbitMq) | **Post** /dynamic-secret-update-rabbitmq | 

@@ -28,6 +28,12 @@ type CreateDBTarget struct {
 	AzureClientSecret *string `json:"azure-client-secret,omitempty"`
 	// (Optional) Tenant id (relevant for \"cloud-service-provider\" only)
 	AzureTenantId *string `json:"azure-tenant-id,omitempty"`
+	// Client certificate for mutual TLS
+	ClientCertificate *string `json:"client-certificate,omitempty"`
+	// Client private key passphrase for mutual TLS
+	ClientKeyPassphrase *string `json:"client-key-passphrase,omitempty"`
+	// Client private key for mutual TLS
+	ClientPrivateKey *string `json:"client-private-key,omitempty"`
 	// (Optional) Cloud service provider (currently only supports Azure)
 	CloudServiceProvider *string `json:"cloud-service-provider,omitempty"`
 	// Cluster Mode
@@ -44,6 +50,8 @@ type CreateDBTarget struct {
 	DbType string `json:"db-type"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Enable mutual TLS
+	EnableMtls *bool `json:"enable-mtls,omitempty"`
 	Host *string `json:"host,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -218,6 +226,102 @@ func (o *CreateDBTarget) HasAzureTenantId() bool {
 // SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *CreateDBTarget) SetAzureTenantId(v string) {
 	o.AzureTenantId = &v
+}
+
+// GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetClientCertificate() string {
+	if o == nil || IsNil(o.ClientCertificate) {
+		var ret string
+		return ret
+	}
+	return *o.ClientCertificate
+}
+
+// GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetClientCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientCertificate) {
+		return nil, false
+	}
+	return o.ClientCertificate, true
+}
+
+// HasClientCertificate returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasClientCertificate() bool {
+	if o != nil && !IsNil(o.ClientCertificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientCertificate gets a reference to the given string and assigns it to the ClientCertificate field.
+func (o *CreateDBTarget) SetClientCertificate(v string) {
+	o.ClientCertificate = &v
+}
+
+// GetClientKeyPassphrase returns the ClientKeyPassphrase field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetClientKeyPassphrase() string {
+	if o == nil || IsNil(o.ClientKeyPassphrase) {
+		var ret string
+		return ret
+	}
+	return *o.ClientKeyPassphrase
+}
+
+// GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetClientKeyPassphraseOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientKeyPassphrase) {
+		return nil, false
+	}
+	return o.ClientKeyPassphrase, true
+}
+
+// HasClientKeyPassphrase returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasClientKeyPassphrase() bool {
+	if o != nil && !IsNil(o.ClientKeyPassphrase) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientKeyPassphrase gets a reference to the given string and assigns it to the ClientKeyPassphrase field.
+func (o *CreateDBTarget) SetClientKeyPassphrase(v string) {
+	o.ClientKeyPassphrase = &v
+}
+
+// GetClientPrivateKey returns the ClientPrivateKey field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetClientPrivateKey() string {
+	if o == nil || IsNil(o.ClientPrivateKey) {
+		var ret string
+		return ret
+	}
+	return *o.ClientPrivateKey
+}
+
+// GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetClientPrivateKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientPrivateKey) {
+		return nil, false
+	}
+	return o.ClientPrivateKey, true
+}
+
+// HasClientPrivateKey returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasClientPrivateKey() bool {
+	if o != nil && !IsNil(o.ClientPrivateKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientPrivateKey gets a reference to the given string and assigns it to the ClientPrivateKey field.
+func (o *CreateDBTarget) SetClientPrivateKey(v string) {
+	o.ClientPrivateKey = &v
 }
 
 // GetCloudServiceProvider returns the CloudServiceProvider field value if set, zero value otherwise.
@@ -490,6 +594,38 @@ func (o *CreateDBTarget) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CreateDBTarget) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnableMtls returns the EnableMtls field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetEnableMtls() bool {
+	if o == nil || IsNil(o.EnableMtls) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableMtls
+}
+
+// GetEnableMtlsOk returns a tuple with the EnableMtls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetEnableMtlsOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableMtls) {
+		return nil, false
+	}
+	return o.EnableMtls, true
+}
+
+// HasEnableMtls returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasEnableMtls() bool {
+	if o != nil && !IsNil(o.EnableMtls) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableMtls gets a reference to the given bool and assigns it to the EnableMtls field.
+func (o *CreateDBTarget) SetEnableMtls(v bool) {
+	o.EnableMtls = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -1335,6 +1471,15 @@ func (o CreateDBTarget) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureTenantId) {
 		toSerialize["azure-tenant-id"] = o.AzureTenantId
 	}
+	if !IsNil(o.ClientCertificate) {
+		toSerialize["client-certificate"] = o.ClientCertificate
+	}
+	if !IsNil(o.ClientKeyPassphrase) {
+		toSerialize["client-key-passphrase"] = o.ClientKeyPassphrase
+	}
+	if !IsNil(o.ClientPrivateKey) {
+		toSerialize["client-private-key"] = o.ClientPrivateKey
+	}
 	if !IsNil(o.CloudServiceProvider) {
 		toSerialize["cloud-service-provider"] = o.CloudServiceProvider
 	}
@@ -1357,6 +1502,9 @@ func (o CreateDBTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize["db-type"] = o.DbType
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnableMtls) {
+		toSerialize["enable-mtls"] = o.EnableMtls
 	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host

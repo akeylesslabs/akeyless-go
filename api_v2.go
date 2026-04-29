@@ -22762,7 +22762,7 @@ func (a *V2ApiService) DynamicSecretUpdateOracleDbExecute(r ApiDynamicSecretUpda
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/dynamic-secret-update-oracle"
+	localVarPath := localBasePath + "/dynamic-secret-update-oracledb"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

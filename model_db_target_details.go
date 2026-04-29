@@ -20,6 +20,12 @@ var _ MappedNullable = &DbTargetDetails{}
 
 // DbTargetDetails DbTargetDetails
 type DbTargetDetails struct {
+	// (Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field
+	ClientCertificate *string `json:"client_certificate,omitempty"`
+	// (Optional) ClientKeyPassphrase defines the passphrase for the client private key
+	ClientKeyPassphrase *string `json:"client_key_passphrase,omitempty"`
+	// (Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field
+	ClientPrivateKey *string `json:"client_private_key,omitempty"`
 	CloudServiceProvider *string `json:"cloud_service_provider,omitempty"`
 	ClusterMode *bool `json:"cluster_mode,omitempty"`
 	ConnectionType *string `json:"connection_type,omitempty"`
@@ -38,6 +44,8 @@ type DbTargetDetails struct {
 	DbServerName *string `json:"db_server_name,omitempty"`
 	DbTenantId *string `json:"db_tenant_id,omitempty"`
 	DbUserName *string `json:"db_user_name,omitempty"`
+	// (Optional) EnableMTLS defines if mutual TLS will be used to connect to DB
+	EnableMtls *bool `json:"enable_mtls,omitempty"`
 	OracleWalletDetails *WalletDetails `json:"oracle_wallet_details,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
 	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
@@ -61,6 +69,102 @@ func NewDbTargetDetails() *DbTargetDetails {
 func NewDbTargetDetailsWithDefaults() *DbTargetDetails {
 	this := DbTargetDetails{}
 	return &this
+}
+
+// GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
+func (o *DbTargetDetails) GetClientCertificate() string {
+	if o == nil || IsNil(o.ClientCertificate) {
+		var ret string
+		return ret
+	}
+	return *o.ClientCertificate
+}
+
+// GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DbTargetDetails) GetClientCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientCertificate) {
+		return nil, false
+	}
+	return o.ClientCertificate, true
+}
+
+// HasClientCertificate returns a boolean if a field has been set.
+func (o *DbTargetDetails) HasClientCertificate() bool {
+	if o != nil && !IsNil(o.ClientCertificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientCertificate gets a reference to the given string and assigns it to the ClientCertificate field.
+func (o *DbTargetDetails) SetClientCertificate(v string) {
+	o.ClientCertificate = &v
+}
+
+// GetClientKeyPassphrase returns the ClientKeyPassphrase field value if set, zero value otherwise.
+func (o *DbTargetDetails) GetClientKeyPassphrase() string {
+	if o == nil || IsNil(o.ClientKeyPassphrase) {
+		var ret string
+		return ret
+	}
+	return *o.ClientKeyPassphrase
+}
+
+// GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DbTargetDetails) GetClientKeyPassphraseOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientKeyPassphrase) {
+		return nil, false
+	}
+	return o.ClientKeyPassphrase, true
+}
+
+// HasClientKeyPassphrase returns a boolean if a field has been set.
+func (o *DbTargetDetails) HasClientKeyPassphrase() bool {
+	if o != nil && !IsNil(o.ClientKeyPassphrase) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientKeyPassphrase gets a reference to the given string and assigns it to the ClientKeyPassphrase field.
+func (o *DbTargetDetails) SetClientKeyPassphrase(v string) {
+	o.ClientKeyPassphrase = &v
+}
+
+// GetClientPrivateKey returns the ClientPrivateKey field value if set, zero value otherwise.
+func (o *DbTargetDetails) GetClientPrivateKey() string {
+	if o == nil || IsNil(o.ClientPrivateKey) {
+		var ret string
+		return ret
+	}
+	return *o.ClientPrivateKey
+}
+
+// GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DbTargetDetails) GetClientPrivateKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientPrivateKey) {
+		return nil, false
+	}
+	return o.ClientPrivateKey, true
+}
+
+// HasClientPrivateKey returns a boolean if a field has been set.
+func (o *DbTargetDetails) HasClientPrivateKey() bool {
+	if o != nil && !IsNil(o.ClientPrivateKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientPrivateKey gets a reference to the given string and assigns it to the ClientPrivateKey field.
+func (o *DbTargetDetails) SetClientPrivateKey(v string) {
+	o.ClientPrivateKey = &v
 }
 
 // GetCloudServiceProvider returns the CloudServiceProvider field value if set, zero value otherwise.
@@ -543,6 +647,38 @@ func (o *DbTargetDetails) SetDbUserName(v string) {
 	o.DbUserName = &v
 }
 
+// GetEnableMtls returns the EnableMtls field value if set, zero value otherwise.
+func (o *DbTargetDetails) GetEnableMtls() bool {
+	if o == nil || IsNil(o.EnableMtls) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableMtls
+}
+
+// GetEnableMtlsOk returns a tuple with the EnableMtls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DbTargetDetails) GetEnableMtlsOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableMtls) {
+		return nil, false
+	}
+	return o.EnableMtls, true
+}
+
+// HasEnableMtls returns a boolean if a field has been set.
+func (o *DbTargetDetails) HasEnableMtls() bool {
+	if o != nil && !IsNil(o.EnableMtls) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableMtls gets a reference to the given bool and assigns it to the EnableMtls field.
+func (o *DbTargetDetails) SetEnableMtls(v bool) {
+	o.EnableMtls = &v
+}
+
 // GetOracleWalletDetails returns the OracleWalletDetails field value if set, zero value otherwise.
 func (o *DbTargetDetails) GetOracleWalletDetails() WalletDetails {
 	if o == nil || IsNil(o.OracleWalletDetails) {
@@ -681,6 +817,15 @@ func (o DbTargetDetails) MarshalJSON() ([]byte, error) {
 
 func (o DbTargetDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClientCertificate) {
+		toSerialize["client_certificate"] = o.ClientCertificate
+	}
+	if !IsNil(o.ClientKeyPassphrase) {
+		toSerialize["client_key_passphrase"] = o.ClientKeyPassphrase
+	}
+	if !IsNil(o.ClientPrivateKey) {
+		toSerialize["client_private_key"] = o.ClientPrivateKey
+	}
 	if !IsNil(o.CloudServiceProvider) {
 		toSerialize["cloud_service_provider"] = o.CloudServiceProvider
 	}
@@ -725,6 +870,9 @@ func (o DbTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DbUserName) {
 		toSerialize["db_user_name"] = o.DbUserName
+	}
+	if !IsNil(o.EnableMtls) {
+		toSerialize["enable_mtls"] = o.EnableMtls
 	}
 	if !IsNil(o.OracleWalletDetails) {
 		toSerialize["oracle_wallet_details"] = o.OracleWalletDetails

@@ -59,6 +59,9 @@ Name | Type | Description | Notes
 **ChefServerUsername** | Pointer to **string** |  | [optional] 
 **ChefSkipSsl** | Pointer to **bool** |  | [optional] 
 **ClientAuthenticationType** | Pointer to **string** |  | [optional] 
+**ClientCertificate** | Pointer to **string** | (Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field | [optional] 
+**ClientKeyPassphrase** | Pointer to **string** | (Optional) ClientKeyPassphrase defines the passphrase for the client private key | [optional] 
+**ClientPrivateKey** | Pointer to **string** | (Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field | [optional] 
 **CloudServiceProvider** | Pointer to **string** |  | [optional] 
 **ClusterMode** | Pointer to **bool** |  | [optional] 
 **ConnectionType** | Pointer to **string** |  | [optional] 
@@ -91,6 +94,7 @@ Name | Type | Description | Notes
 **EksRegion** | Pointer to **string** |  | [optional] 
 **EksSecretAccessKey** | Pointer to **string** |  | [optional] 
 **EnableAdminRotation** | Pointer to **bool** |  | [optional] 
+**EnableMtls** | Pointer to **bool** | (Optional) EnableMTLS defines if mutual TLS will be used to connect to DB | [optional] 
 **EnforceReplayPrevention** | Pointer to **bool** | relevant for PRIVATE_KEY_JWT client authentication type | [optional] 
 **ExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **ExternallyProvidedUser** | Pointer to **string** |  | [optional] 
@@ -1665,6 +1669,81 @@ SetClientAuthenticationType sets ClientAuthenticationType field to given value.
 
 HasClientAuthenticationType returns a boolean if a field has been set.
 
+### GetClientCertificate
+
+`func (o *DSProducerDetails) GetClientCertificate() string`
+
+GetClientCertificate returns the ClientCertificate field if non-nil, zero value otherwise.
+
+### GetClientCertificateOk
+
+`func (o *DSProducerDetails) GetClientCertificateOk() (*string, bool)`
+
+GetClientCertificateOk returns a tuple with the ClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientCertificate
+
+`func (o *DSProducerDetails) SetClientCertificate(v string)`
+
+SetClientCertificate sets ClientCertificate field to given value.
+
+### HasClientCertificate
+
+`func (o *DSProducerDetails) HasClientCertificate() bool`
+
+HasClientCertificate returns a boolean if a field has been set.
+
+### GetClientKeyPassphrase
+
+`func (o *DSProducerDetails) GetClientKeyPassphrase() string`
+
+GetClientKeyPassphrase returns the ClientKeyPassphrase field if non-nil, zero value otherwise.
+
+### GetClientKeyPassphraseOk
+
+`func (o *DSProducerDetails) GetClientKeyPassphraseOk() (*string, bool)`
+
+GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientKeyPassphrase
+
+`func (o *DSProducerDetails) SetClientKeyPassphrase(v string)`
+
+SetClientKeyPassphrase sets ClientKeyPassphrase field to given value.
+
+### HasClientKeyPassphrase
+
+`func (o *DSProducerDetails) HasClientKeyPassphrase() bool`
+
+HasClientKeyPassphrase returns a boolean if a field has been set.
+
+### GetClientPrivateKey
+
+`func (o *DSProducerDetails) GetClientPrivateKey() string`
+
+GetClientPrivateKey returns the ClientPrivateKey field if non-nil, zero value otherwise.
+
+### GetClientPrivateKeyOk
+
+`func (o *DSProducerDetails) GetClientPrivateKeyOk() (*string, bool)`
+
+GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientPrivateKey
+
+`func (o *DSProducerDetails) SetClientPrivateKey(v string)`
+
+SetClientPrivateKey sets ClientPrivateKey field to given value.
+
+### HasClientPrivateKey
+
+`func (o *DSProducerDetails) HasClientPrivateKey() bool`
+
+HasClientPrivateKey returns a boolean if a field has been set.
+
 ### GetCloudServiceProvider
 
 `func (o *DSProducerDetails) GetCloudServiceProvider() string`
@@ -2464,6 +2543,31 @@ SetEnableAdminRotation sets EnableAdminRotation field to given value.
 `func (o *DSProducerDetails) HasEnableAdminRotation() bool`
 
 HasEnableAdminRotation returns a boolean if a field has been set.
+
+### GetEnableMtls
+
+`func (o *DSProducerDetails) GetEnableMtls() bool`
+
+GetEnableMtls returns the EnableMtls field if non-nil, zero value otherwise.
+
+### GetEnableMtlsOk
+
+`func (o *DSProducerDetails) GetEnableMtlsOk() (*bool, bool)`
+
+GetEnableMtlsOk returns a tuple with the EnableMtls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableMtls
+
+`func (o *DSProducerDetails) SetEnableMtls(v bool)`
+
+SetEnableMtls sets EnableMtls field to given value.
+
+### HasEnableMtls
+
+`func (o *DSProducerDetails) HasEnableMtls() bool`
+
+HasEnableMtls returns a boolean if a field has been set.
 
 ### GetEnforceReplayPrevention
 

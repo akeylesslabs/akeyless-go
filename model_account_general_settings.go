@@ -26,6 +26,7 @@ type AccountGeneralSettings struct {
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
 	AiInsights *AiInsightsSetting `json:"ai_insights,omitempty"`
 	AllowAutoFill *bool `json:"allow_auto_fill,omitempty"`
+	AllowPasskeys *bool `json:"allow_passkeys,omitempty"`
 	AllowedClientTypes *AllowedClientType `json:"allowed_client_types,omitempty"`
 	AllowedClientsIps *AllowedIpSettings `json:"allowed_clients_ips,omitempty"`
 	AllowedGatewaysIps *AllowedIpSettings `json:"allowed_gateways_ips,omitempty"`
@@ -196,6 +197,38 @@ func (o *AccountGeneralSettings) HasAllowAutoFill() bool {
 // SetAllowAutoFill gets a reference to the given bool and assigns it to the AllowAutoFill field.
 func (o *AccountGeneralSettings) SetAllowAutoFill(v bool) {
 	o.AllowAutoFill = &v
+}
+
+// GetAllowPasskeys returns the AllowPasskeys field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAllowPasskeys() bool {
+	if o == nil || IsNil(o.AllowPasskeys) {
+		var ret bool
+		return ret
+	}
+	return *o.AllowPasskeys
+}
+
+// GetAllowPasskeysOk returns a tuple with the AllowPasskeys field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAllowPasskeysOk() (*bool, bool) {
+	if o == nil || IsNil(o.AllowPasskeys) {
+		return nil, false
+	}
+	return o.AllowPasskeys, true
+}
+
+// HasAllowPasskeys returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAllowPasskeys() bool {
+	if o != nil && !IsNil(o.AllowPasskeys) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowPasskeys gets a reference to the given bool and assigns it to the AllowPasskeys field.
+func (o *AccountGeneralSettings) SetAllowPasskeys(v bool) {
+	o.AllowPasskeys = &v
 }
 
 // GetAllowedClientTypes returns the AllowedClientTypes field value if set, zero value otherwise.
@@ -955,6 +988,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AllowAutoFill) {
 		toSerialize["allow_auto_fill"] = o.AllowAutoFill
+	}
+	if !IsNil(o.AllowPasskeys) {
+		toSerialize["allow_passkeys"] = o.AllowPasskeys
 	}
 	if !IsNil(o.AllowedClientTypes) {
 		toSerialize["allowed_client_types"] = o.AllowedClientTypes

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
 **AiInsights** | Pointer to [**AiInsightsSetting**](AiInsightsSetting.md) |  | [optional] 
 **AllowAutoFill** | Pointer to **bool** |  | [optional] 
+**AllowPasskeys** | Pointer to **bool** |  | [optional] 
 **AllowedClientTypes** | Pointer to [**AllowedClientType**](AllowedClientType.md) |  | [optional] 
 **AllowedClientsIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
 **AllowedGatewaysIps** | Pointer to [**AllowedIpSettings**](AllowedIpSettings.md) |  | [optional] 
@@ -150,6 +151,31 @@ SetAllowAutoFill sets AllowAutoFill field to given value.
 `func (o *AccountGeneralSettings) HasAllowAutoFill() bool`
 
 HasAllowAutoFill returns a boolean if a field has been set.
+
+### GetAllowPasskeys
+
+`func (o *AccountGeneralSettings) GetAllowPasskeys() bool`
+
+GetAllowPasskeys returns the AllowPasskeys field if non-nil, zero value otherwise.
+
+### GetAllowPasskeysOk
+
+`func (o *AccountGeneralSettings) GetAllowPasskeysOk() (*bool, bool)`
+
+GetAllowPasskeysOk returns a tuple with the AllowPasskeys field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowPasskeys
+
+`func (o *AccountGeneralSettings) SetAllowPasskeys(v bool)`
+
+SetAllowPasskeys sets AllowPasskeys field to given value.
+
+### HasAllowPasskeys
+
+`func (o *AccountGeneralSettings) HasAllowPasskeys() bool`
+
+HasAllowPasskeys returns a boolean if a field has been set.
 
 ### GetAllowedClientTypes
 
