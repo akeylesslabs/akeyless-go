@@ -42,6 +42,8 @@ type CreateRole struct {
 	EventForwardersName []string `json:"event-forwarders-name,omitempty"`
 	// Allow this role to view gw analytics. Currently only 'none', 'scoped', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	GwAnalyticsAccess *string `json:"gw-analytics-access,omitempty"`
+	// Allow this role to access Identity & Secrets Intelligence. Currently only 'none', 'scoped' and 'all' values are supported.
+	IsiAccess *string `json:"isi-access,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Role name
@@ -402,6 +404,38 @@ func (o *CreateRole) SetGwAnalyticsAccess(v string) {
 	o.GwAnalyticsAccess = &v
 }
 
+// GetIsiAccess returns the IsiAccess field value if set, zero value otherwise.
+func (o *CreateRole) GetIsiAccess() string {
+	if o == nil || IsNil(o.IsiAccess) {
+		var ret string
+		return ret
+	}
+	return *o.IsiAccess
+}
+
+// GetIsiAccessOk returns a tuple with the IsiAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetIsiAccessOk() (*string, bool) {
+	if o == nil || IsNil(o.IsiAccess) {
+		return nil, false
+	}
+	return o.IsiAccess, true
+}
+
+// HasIsiAccess returns a boolean if a field has been set.
+func (o *CreateRole) HasIsiAccess() bool {
+	if o != nil && !IsNil(o.IsiAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsiAccess gets a reference to the given string and assigns it to the IsiAccess field.
+func (o *CreateRole) SetIsiAccess(v string) {
+	o.IsiAccess = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *CreateRole) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -657,6 +691,9 @@ func (o CreateRole) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GwAnalyticsAccess) {
 		toSerialize["gw-analytics-access"] = o.GwAnalyticsAccess
+	}
+	if !IsNil(o.IsiAccess) {
+		toSerialize["isi-access"] = o.IsiAccess
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

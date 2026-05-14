@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Format** | Pointer to **string** | Secret format [text/json/key-value] (relevant only for type &#39;generic&#39;) | [optional] [default to "text"]
 **InjectUrl** | Pointer to **[]string** | For Password Management use, reflect the website context | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **MultilineValue** | Pointer to **bool** | The provided value is a multiline value (separated by &#39;\\n&#39;) | [optional] 
 **Name** | **string** | Secret name | 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **Password** | Pointer to **string** | For Password Management use, additional fields | [optional] 
 **ProtectionKey** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
@@ -232,6 +234,31 @@ SetInjectUrl sets InjectUrl field to given value.
 
 HasInjectUrl returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *CreateSecret) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *CreateSecret) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *CreateSecret) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *CreateSecret) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *CreateSecret) GetItemCustomFields() map[string]string`
@@ -401,6 +428,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOutputRule
+
+`func (o *CreateSecret) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *CreateSecret) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *CreateSecret) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *CreateSecret) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetPassword
 

@@ -36,6 +36,8 @@ type CreateSecret struct {
 	Format *string `json:"format,omitempty"`
 	// For Password Management use, reflect the website context
 	InjectUrl []string `json:"inject-url,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -50,6 +52,8 @@ type CreateSecret struct {
 	MultilineValue *bool `json:"multiline_value,omitempty"`
 	// Secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// For Password Management use, additional fields
 	Password *string `json:"password,omitempty"`
 	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
@@ -358,6 +362,38 @@ func (o *CreateSecret) SetInjectUrl(v []string) {
 	o.InjectUrl = v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *CreateSecret) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *CreateSecret) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *CreateSecret) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *CreateSecret) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -572,6 +608,38 @@ func (o *CreateSecret) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateSecret) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *CreateSecret) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *CreateSecret) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *CreateSecret) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise.
@@ -1205,6 +1273,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InjectUrl) {
 		toSerialize["inject-url"] = o.InjectUrl
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -1224,6 +1295,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 		toSerialize["multiline_value"] = o.MultilineValue
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}

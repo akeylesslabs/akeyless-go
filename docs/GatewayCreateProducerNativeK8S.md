@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **K8sAllowedNamespaces** | Pointer to **string** | Comma-separated list of allowed K8S namespaces for the generated ServiceAccount (relevant only for k8s-service-account-type&#x3D;dynamic) | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **K8sServiceAccount** | Pointer to **string** | K8S ServiceAccount to extract token from. | [optional] 
 **K8sServiceAccountType** | Pointer to **string** | K8S ServiceAccount type [fixed, dynamic]. | [optional] 
 **Name** | **string** | Dynamic secret name | 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
@@ -107,6 +109,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayCreateProducerNativeK8S) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetInputRule
+
+`func (o *GatewayCreateProducerNativeK8S) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *GatewayCreateProducerNativeK8S) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *GatewayCreateProducerNativeK8S) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
 
 ### GetItemCustomFields
 
@@ -477,6 +504,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOutputRule
+
+`func (o *GatewayCreateProducerNativeK8S) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *GatewayCreateProducerNativeK8S) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *GatewayCreateProducerNativeK8S) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *GatewayCreateProducerNativeK8S) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

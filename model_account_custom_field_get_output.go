@@ -23,7 +23,7 @@ var _ MappedNullable = &AccountCustomFieldGetOutput{}
 type AccountCustomFieldGetOutput struct {
 	AccountId *string `json:"account_id,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
-	DeletionDate *NullTime `json:"deletion_date,omitempty"`
+	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	Id *int64 `json:"id,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -114,9 +114,9 @@ func (o *AccountCustomFieldGetOutput) SetCreationDate(v time.Time) {
 }
 
 // GetDeletionDate returns the DeletionDate field value if set, zero value otherwise.
-func (o *AccountCustomFieldGetOutput) GetDeletionDate() NullTime {
+func (o *AccountCustomFieldGetOutput) GetDeletionDate() time.Time {
 	if o == nil || IsNil(o.DeletionDate) {
-		var ret NullTime
+		var ret time.Time
 		return ret
 	}
 	return *o.DeletionDate
@@ -124,7 +124,7 @@ func (o *AccountCustomFieldGetOutput) GetDeletionDate() NullTime {
 
 // GetDeletionDateOk returns a tuple with the DeletionDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountCustomFieldGetOutput) GetDeletionDateOk() (*NullTime, bool) {
+func (o *AccountCustomFieldGetOutput) GetDeletionDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.DeletionDate) {
 		return nil, false
 	}
@@ -140,8 +140,8 @@ func (o *AccountCustomFieldGetOutput) HasDeletionDate() bool {
 	return false
 }
 
-// SetDeletionDate gets a reference to the given NullTime and assigns it to the DeletionDate field.
-func (o *AccountCustomFieldGetOutput) SetDeletionDate(v NullTime) {
+// SetDeletionDate gets a reference to the given time.Time and assigns it to the DeletionDate field.
+func (o *AccountCustomFieldGetOutput) SetDeletionDate(v time.Time) {
 	o.DeletionDate = &v
 }
 

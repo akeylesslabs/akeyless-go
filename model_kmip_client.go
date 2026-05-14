@@ -24,6 +24,7 @@ type KMIPClient struct {
 	ActivateKeysOnCreation *bool `json:"activate_keys_on_creation,omitempty"`
 	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
 	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
+	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Rules []PathRule `json:"rules,omitempty"`
@@ -142,6 +143,38 @@ func (o *KMIPClient) SetCertificateTtlInSeconds(v int64) {
 	o.CertificateTtlInSeconds = &v
 }
 
+// GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
+func (o *KMIPClient) GetExpirationEvents() []CertificateExpirationEvent {
+	if o == nil || IsNil(o.ExpirationEvents) {
+		var ret []CertificateExpirationEvent
+		return ret
+	}
+	return o.ExpirationEvents
+}
+
+// GetExpirationEventsOk returns a tuple with the ExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetExpirationEventsOk() ([]CertificateExpirationEvent, bool) {
+	if o == nil || IsNil(o.ExpirationEvents) {
+		return nil, false
+	}
+	return o.ExpirationEvents, true
+}
+
+// HasExpirationEvents returns a boolean if a field has been set.
+func (o *KMIPClient) HasExpirationEvents() bool {
+	if o != nil && !IsNil(o.ExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the ExpirationEvents field.
+func (o *KMIPClient) SetExpirationEvents(v []CertificateExpirationEvent) {
+	o.ExpirationEvents = v
+}
+
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *KMIPClient) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -256,6 +289,9 @@ func (o KMIPClient) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CertificateTtlInSeconds) {
 		toSerialize["certificate_ttl_in_seconds"] = o.CertificateTtlInSeconds
+	}
+	if !IsNil(o.ExpirationEvents) {
+		toSerialize["expiration_events"] = o.ExpirationEvents
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

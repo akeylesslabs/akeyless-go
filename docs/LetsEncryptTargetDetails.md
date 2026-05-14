@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ChallengeType** | Pointer to **string** | ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt | [optional] 
 **DnsTargetName** | Pointer to **string** | Name of DNS target (transient field - not stored in DB) Used by CLI to pass DNS target name to SDK for creating target_object_assoc Retrieved from target_object_assoc when reading target Required when ChallengeType is \&quot;dns\&quot; | [optional] 
 **DnsTargetType** | Pointer to **string** |  | [optional] 
+**DnsZone** | Pointer to **string** | Cloudflare zone identifier Required when DNSTargetType is Cloudflare | [optional] 
 **Email** | Pointer to **string** | Email address for ACME account registration Required | [optional] 
 **GcpProject** | Pointer to **string** | GCP Cloud DNS: Project ID Optional - can be derived from service account | [optional] 
 **HostedZone** | Pointer to **string** | AWS Route53: Hosted zone ID Required when DNSTargetType is AWS | [optional] 
@@ -184,6 +185,31 @@ SetDnsTargetType sets DnsTargetType field to given value.
 `func (o *LetsEncryptTargetDetails) HasDnsTargetType() bool`
 
 HasDnsTargetType returns a boolean if a field has been set.
+
+### GetDnsZone
+
+`func (o *LetsEncryptTargetDetails) GetDnsZone() string`
+
+GetDnsZone returns the DnsZone field if non-nil, zero value otherwise.
+
+### GetDnsZoneOk
+
+`func (o *LetsEncryptTargetDetails) GetDnsZoneOk() (*string, bool)`
+
+GetDnsZoneOk returns a tuple with the DnsZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsZone
+
+`func (o *LetsEncryptTargetDetails) SetDnsZone(v string)`
+
+SetDnsZone sets DnsZone field to given value.
+
+### HasDnsZone
+
+`func (o *LetsEncryptTargetDetails) HasDnsZone() bool`
+
+HasDnsZone returns a boolean if a field has been set.
 
 ### GetEmail
 

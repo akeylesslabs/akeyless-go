@@ -414,7 +414,7 @@ func (r ApiAccountCustomFieldListRequest) Body(body AccountCustomFieldList) ApiA
     return r
 }
 
-func (r ApiAccountCustomFieldListRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiAccountCustomFieldListRequest) Execute() ([]AccountCustomField, *http.Response, error) {
 	return r.ApiService.AccountCustomFieldListExecute(r)
 }
 
@@ -434,13 +434,13 @@ func (a *V2ApiService) AccountCustomFieldList(ctx context.Context) ApiAccountCus
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *V2ApiService) AccountCustomFieldListExecute(r ApiAccountCustomFieldListRequest) (map[string]interface{}, *http.Response, error) {
+//  @return []AccountCustomField
+func (a *V2ApiService) AccountCustomFieldListExecute(r ApiAccountCustomFieldListRequest) ([]AccountCustomField, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  []AccountCustomField
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.AccountCustomFieldList")
@@ -44741,6 +44741,127 @@ func (a *V2ApiService) KmipClientSetRuleExecute(r ApiKmipClientSetRuleRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiKmipClientUpdateRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	kmipClientUpdate *KmipClientUpdate
+    body interface{}
+}
+
+func (r ApiKmipClientUpdateRequest) KmipClientUpdate(kmipClientUpdate KmipClientUpdate) ApiKmipClientUpdateRequest {
+	r.kmipClientUpdate = &kmipClientUpdate
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiKmipClientUpdateRequest) Body(body KmipClientUpdate) ApiKmipClientUpdateRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiKmipClientUpdateRequest) Execute() (*KmipClientUpdateOutput, *http.Response, error) {
+	return r.ApiService.KmipClientUpdateExecute(r)
+}
+
+/*
+KmipClientUpdate Method for KmipClientUpdate
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKmipClientUpdateRequest
+*/
+func (a *V2ApiService) KmipClientUpdate(ctx context.Context) ApiKmipClientUpdateRequest {
+	return ApiKmipClientUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KmipClientUpdateOutput
+func (a *V2ApiService) KmipClientUpdateExecute(r ApiKmipClientUpdateRequest) (*KmipClientUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KmipClientUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.KmipClientUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/kmip-client-update"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiKmipCreateClientRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -45882,6 +46003,127 @@ func (a *V2ApiService) KmipServerSetupExecute(r ApiKmipServerSetupRequest) (*KMI
 	}
 
 	localVarPath := localBasePath + "/kmip-create-environment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiKmipServerUpdateRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	kmipServerUpdate *KmipServerUpdate
+    body interface{}
+}
+
+func (r ApiKmipServerUpdateRequest) KmipServerUpdate(kmipServerUpdate KmipServerUpdate) ApiKmipServerUpdateRequest {
+	r.kmipServerUpdate = &kmipServerUpdate
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiKmipServerUpdateRequest) Body(body KmipServerUpdate) ApiKmipServerUpdateRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiKmipServerUpdateRequest) Execute() (*KmipServerUpdateOutput, *http.Response, error) {
+	return r.ApiService.KmipServerUpdateExecute(r)
+}
+
+/*
+KmipServerUpdate Method for KmipServerUpdate
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKmipServerUpdateRequest
+*/
+func (a *V2ApiService) KmipServerUpdate(ctx context.Context) ApiKmipServerUpdateRequest {
+	return ApiKmipServerUpdateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KmipServerUpdateOutput
+func (a *V2ApiService) KmipServerUpdateExecute(r ApiKmipServerUpdateRequest) (*KmipServerUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KmipServerUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.KmipServerUpdate")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/kmip-server-update"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -57671,6 +57913,130 @@ func (a *V2ApiService) TargetCreateAzureExecute(r ApiTargetCreateAzureRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiTargetCreateCloudflareRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	targetCreateCloudflare *TargetCreateCloudflare
+    body interface{}
+}
+
+func (r ApiTargetCreateCloudflareRequest) TargetCreateCloudflare(targetCreateCloudflare TargetCreateCloudflare) ApiTargetCreateCloudflareRequest {
+	r.targetCreateCloudflare = &targetCreateCloudflare
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiTargetCreateCloudflareRequest) Body(body TargetCreateCloudflare) ApiTargetCreateCloudflareRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiTargetCreateCloudflareRequest) Execute() (*TargetCreateOutput, *http.Response, error) {
+	return r.ApiService.TargetCreateCloudflareExecute(r)
+}
+
+/*
+TargetCreateCloudflare Method for TargetCreateCloudflare
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTargetCreateCloudflareRequest
+*/
+func (a *V2ApiService) TargetCreateCloudflare(ctx context.Context) ApiTargetCreateCloudflareRequest {
+	return ApiTargetCreateCloudflareRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TargetCreateOutput
+func (a *V2ApiService) TargetCreateCloudflareExecute(r ApiTargetCreateCloudflareRequest) (*TargetCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TargetCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.TargetCreateCloudflare")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/target-create-cloudflare"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiTargetCreateDBRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -61939,6 +62305,130 @@ func (a *V2ApiService) TargetUpdateAzureExecute(r ApiTargetUpdateAzureRequest) (
 	}
 
 	localVarPath := localBasePath + "/target-update-azure"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTargetUpdateCloudflareRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	targetUpdateCloudflare *TargetUpdateCloudflare
+    body interface{}
+}
+
+func (r ApiTargetUpdateCloudflareRequest) TargetUpdateCloudflare(targetUpdateCloudflare TargetUpdateCloudflare) ApiTargetUpdateCloudflareRequest {
+	r.targetUpdateCloudflare = &targetUpdateCloudflare
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiTargetUpdateCloudflareRequest) Body(body TargetUpdateCloudflare) ApiTargetUpdateCloudflareRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiTargetUpdateCloudflareRequest) Execute() (*TargetUpdateOutput, *http.Response, error) {
+	return r.ApiService.TargetUpdateCloudflareExecute(r)
+}
+
+/*
+TargetUpdateCloudflare Method for TargetUpdateCloudflare
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTargetUpdateCloudflareRequest
+*/
+func (a *V2ApiService) TargetUpdateCloudflare(ctx context.Context) ApiTargetUpdateCloudflareRequest {
+	return ApiTargetUpdateCloudflareRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TargetUpdateOutput
+func (a *V2ApiService) TargetUpdateCloudflareExecute(r ApiTargetUpdateCloudflareRequest) (*TargetUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TargetUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.TargetUpdateCloudflare")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/target-update-cloudflare"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

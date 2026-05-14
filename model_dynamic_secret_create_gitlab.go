@@ -40,6 +40,8 @@ type DynamicSecretCreateGitlab struct {
 	GitlabUrl *string `json:"gitlab-url,omitempty"`
 	// Gitlab group name, required for access-type=group
 	GroupName *string `json:"group-name,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Gitlab project name, required for access-type=project
 	InstallationOrganization *string `json:"installation-organization,omitempty"`
 	// Additional custom fields to associate with the item
@@ -48,6 +50,8 @@ type DynamicSecretCreateGitlab struct {
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -362,6 +366,38 @@ func (o *DynamicSecretCreateGitlab) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateGitlab) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateGitlab) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateGitlab) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *DynamicSecretCreateGitlab) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetInstallationOrganization returns the InstallationOrganization field value if set, zero value otherwise.
 func (o *DynamicSecretCreateGitlab) GetInstallationOrganization() string {
 	if o == nil || IsNil(o.InstallationOrganization) {
@@ -480,6 +516,38 @@ func (o *DynamicSecretCreateGitlab) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DynamicSecretCreateGitlab) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateGitlab) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateGitlab) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateGitlab) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *DynamicSecretCreateGitlab) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -675,6 +743,9 @@ func (o DynamicSecretCreateGitlab) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupName) {
 		toSerialize["group-name"] = o.GroupName
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.InstallationOrganization) {
 		toSerialize["installation-organization"] = o.InstallationOrganization
 	}
@@ -685,6 +756,9 @@ func (o DynamicSecretCreateGitlab) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}

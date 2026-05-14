@@ -30,12 +30,16 @@ type GatewayCreateProducerDockerhub struct {
 	DockerhubTokenScopes *string `json:"dockerhub-token-scopes,omitempty"`
 	// DockerhubUsername is the name of the user in dockerhub
 	DockerhubUsername *string `json:"dockerhub-username,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Add tags attached to this object
@@ -206,6 +210,38 @@ func (o *GatewayCreateProducerDockerhub) SetDockerhubUsername(v string) {
 	o.DockerhubUsername = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *GatewayCreateProducerDockerhub) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerDockerhub) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *GatewayCreateProducerDockerhub) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *GatewayCreateProducerDockerhub) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *GatewayCreateProducerDockerhub) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -292,6 +328,38 @@ func (o *GatewayCreateProducerDockerhub) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerDockerhub) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *GatewayCreateProducerDockerhub) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerDockerhub) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *GatewayCreateProducerDockerhub) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *GatewayCreateProducerDockerhub) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -508,6 +576,9 @@ func (o GatewayCreateProducerDockerhub) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.DockerhubUsername) {
 		toSerialize["dockerhub-username"] = o.DockerhubUsername
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -515,6 +586,9 @@ func (o GatewayCreateProducerDockerhub) ToMap() (map[string]interface{}, error) 
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}

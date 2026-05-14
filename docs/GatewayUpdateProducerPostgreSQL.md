@@ -7,10 +7,12 @@ Name | Type | Description | Notes
 **CreationStatements** | Pointer to **string** | PostgreSQL Creation statements | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **PostgresqlDbName** | Pointer to **string** | PostgreSQL DB Name | [optional] 
 **PostgresqlHost** | Pointer to **string** | PostgreSQL Host | [optional] [default to "127.0.0.1"]
@@ -128,6 +130,31 @@ SetDeleteProtection sets DeleteProtection field to given value.
 
 HasDeleteProtection returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *GatewayUpdateProducerPostgreSQL) GetItemCustomFields() map[string]string`
@@ -222,6 +249,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerPostgreSQL) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOutputRule
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *GatewayUpdateProducerPostgreSQL) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *GatewayUpdateProducerPostgreSQL) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *GatewayUpdateProducerPostgreSQL) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetPasswordLength
 

@@ -107,6 +107,8 @@ type GatewayCreateMigration struct {
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false]
 	HashiJson *string `json:"hashi-json,omitempty"`
+	// Controls the amount of HashiCorp Vault secret metadata migrated with each secret value. Options: none|minimal|full
+	HashiMetadataMode *string `json:"hashi-metadata-mode,omitempty"`
 	// HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration)
 	HashiNs []string `json:"hashi-ns,omitempty"`
 	// HashiCorp Vault access token with sufficient permissions to preform list & read operations on secrets objects (relevant only for HasiCorp Vault migration)
@@ -1619,6 +1621,38 @@ func (o *GatewayCreateMigration) SetHashiJson(v string) {
 	o.HashiJson = &v
 }
 
+// GetHashiMetadataMode returns the HashiMetadataMode field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetHashiMetadataMode() string {
+	if o == nil || IsNil(o.HashiMetadataMode) {
+		var ret string
+		return ret
+	}
+	return *o.HashiMetadataMode
+}
+
+// GetHashiMetadataModeOk returns a tuple with the HashiMetadataMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetHashiMetadataModeOk() (*string, bool) {
+	if o == nil || IsNil(o.HashiMetadataMode) {
+		return nil, false
+	}
+	return o.HashiMetadataMode, true
+}
+
+// HasHashiMetadataMode returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasHashiMetadataMode() bool {
+	if o != nil && !IsNil(o.HashiMetadataMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetHashiMetadataMode gets a reference to the given string and assigns it to the HashiMetadataMode field.
+func (o *GatewayCreateMigration) SetHashiMetadataMode(v string) {
+	o.HashiMetadataMode = &v
+}
+
 // GetHashiNs returns the HashiNs field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetHashiNs() []string {
 	if o == nil || IsNil(o.HashiNs) {
@@ -2709,6 +2743,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HashiJson) {
 		toSerialize["hashi-json"] = o.HashiJson
+	}
+	if !IsNil(o.HashiMetadataMode) {
+		toSerialize["hashi-metadata-mode"] = o.HashiMetadataMode
 	}
 	if !IsNil(o.HashiNs) {
 		toSerialize["hashi-ns"] = o.HashiNs

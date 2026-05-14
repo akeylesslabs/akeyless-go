@@ -32,6 +32,8 @@ type DynamicSecretUpdateGithub struct {
 	GithubAppPrivateKey *string `json:"github-app-private-key,omitempty"`
 	// Base URL
 	GithubBaseUrl *string `json:"github-base-url,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// GitHub application installation id
 	InstallationId *int64 `json:"installation-id,omitempty"`
 	// Optional, mutually exclusive with installation id, GitHub organization name
@@ -46,6 +48,8 @@ type DynamicSecretUpdateGithub struct {
 	Name string `json:"name"`
 	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -252,6 +256,38 @@ func (o *DynamicSecretUpdateGithub) HasGithubBaseUrl() bool {
 // SetGithubBaseUrl gets a reference to the given string and assigns it to the GithubBaseUrl field.
 func (o *DynamicSecretUpdateGithub) SetGithubBaseUrl(v string) {
 	o.GithubBaseUrl = &v
+}
+
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateGithub) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateGithub) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateGithub) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *DynamicSecretUpdateGithub) SetInputRule(v []string) {
+	o.InputRule = v
 }
 
 // GetInstallationId returns the InstallationId field value if set, zero value otherwise.
@@ -468,6 +504,38 @@ func (o *DynamicSecretUpdateGithub) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *DynamicSecretUpdateGithub) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateGithub) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateGithub) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateGithub) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *DynamicSecretUpdateGithub) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -719,6 +787,9 @@ func (o DynamicSecretUpdateGithub) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GithubBaseUrl) {
 		toSerialize["github-base-url"] = o.GithubBaseUrl
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.InstallationId) {
 		toSerialize["installation-id"] = o.InstallationId
 	}
@@ -737,6 +808,9 @@ func (o DynamicSecretUpdateGithub) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

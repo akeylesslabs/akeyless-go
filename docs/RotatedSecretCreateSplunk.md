@@ -12,11 +12,13 @@ Name | Type | Description | Notes
 **ExpirationDate** | Pointer to **string** | Token expiration date in YYYY-MM-DD format (required for rotator-type&#x3D;token when manual rotation is selected and no existing token is provided). Time will be set to 00:00 UTC. | [optional] 
 **HecToken** | Pointer to **string** | Current Splunk HEC token value to store (relevant only for rotator-type&#x3D;hec-token). If not provided, a new HEC input will be created in Splunk. | [optional] 
 **HecTokenName** | Pointer to **string** | Splunk HEC input name to manage  (required for rotator-type&#x3D;hec-token) | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
@@ -250,6 +252,31 @@ SetHecTokenName sets HecTokenName field to given value.
 
 HasHecTokenName returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *RotatedSecretCreateSplunk) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *RotatedSecretCreateSplunk) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *RotatedSecretCreateSplunk) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *RotatedSecretCreateSplunk) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *RotatedSecretCreateSplunk) GetItemCustomFields() map[string]string`
@@ -369,6 +396,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOutputRule
+
+`func (o *RotatedSecretCreateSplunk) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *RotatedSecretCreateSplunk) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *RotatedSecretCreateSplunk) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *RotatedSecretCreateSplunk) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetPasswordLength
 

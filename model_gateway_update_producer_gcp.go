@@ -40,6 +40,8 @@ type GatewayUpdateProducerGcp struct {
 	GcpSaEmail *string `json:"gcp-sa-email,omitempty"`
 	// Access token scopes list, e.g. scope1,scope2 (Relevant only when --access-type=sa; required when --gcp-cred-type=token)
 	GcpTokenScopes *string `json:"gcp-token-scopes,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -48,6 +50,8 @@ type GatewayUpdateProducerGcp struct {
 	Name string `json:"name"`
 	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Role binding definitions in JSON format (Relevant only when --access-type=sa and --service-account-type=dynamic)
@@ -442,6 +446,38 @@ func (o *GatewayUpdateProducerGcp) SetGcpTokenScopes(v string) {
 	o.GcpTokenScopes = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGcp) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGcp) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGcp) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *GatewayUpdateProducerGcp) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerGcp) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -560,6 +596,38 @@ func (o *GatewayUpdateProducerGcp) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateProducerGcp) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerGcp) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerGcp) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerGcp) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *GatewayUpdateProducerGcp) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -1050,6 +1118,9 @@ func (o GatewayUpdateProducerGcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GcpTokenScopes) {
 		toSerialize["gcp-token-scopes"] = o.GcpTokenScopes
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -1059,6 +1130,9 @@ func (o GatewayUpdateProducerGcp) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
 	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

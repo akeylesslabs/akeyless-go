@@ -22,6 +22,7 @@ var _ MappedNullable = &HashiPayload{}
 type HashiPayload struct {
 	DeleteSyncOnDeletion *bool `json:"delete_sync_on_deletion,omitempty"`
 	ImportAsJson *bool `json:"import_as_json,omitempty"`
+	MetadataMode *string `json:"metadata_mode,omitempty"`
 	Namespaces []string `json:"namespaces,omitempty"`
 	Token *string `json:"token,omitempty"`
 	Url *string `json:"url,omitempty"`
@@ -107,6 +108,38 @@ func (o *HashiPayload) HasImportAsJson() bool {
 // SetImportAsJson gets a reference to the given bool and assigns it to the ImportAsJson field.
 func (o *HashiPayload) SetImportAsJson(v bool) {
 	o.ImportAsJson = &v
+}
+
+// GetMetadataMode returns the MetadataMode field value if set, zero value otherwise.
+func (o *HashiPayload) GetMetadataMode() string {
+	if o == nil || IsNil(o.MetadataMode) {
+		var ret string
+		return ret
+	}
+	return *o.MetadataMode
+}
+
+// GetMetadataModeOk returns a tuple with the MetadataMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HashiPayload) GetMetadataModeOk() (*string, bool) {
+	if o == nil || IsNil(o.MetadataMode) {
+		return nil, false
+	}
+	return o.MetadataMode, true
+}
+
+// HasMetadataMode returns a boolean if a field has been set.
+func (o *HashiPayload) HasMetadataMode() bool {
+	if o != nil && !IsNil(o.MetadataMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadataMode gets a reference to the given string and assigns it to the MetadataMode field.
+func (o *HashiPayload) SetMetadataMode(v string) {
+	o.MetadataMode = &v
 }
 
 // GetNamespaces returns the Namespaces field value if set, zero value otherwise.
@@ -252,6 +285,9 @@ func (o HashiPayload) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ImportAsJson) {
 		toSerialize["import_as_json"] = o.ImportAsJson
+	}
+	if !IsNil(o.MetadataMode) {
+		toSerialize["metadata_mode"] = o.MetadataMode
 	}
 	if !IsNil(o.Namespaces) {
 		toSerialize["namespaces"] = o.Namespaces

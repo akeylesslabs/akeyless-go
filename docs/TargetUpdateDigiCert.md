@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **AcmeChallenge** | Pointer to **string** | ACME challenge type. Options: [dns] | [optional] [default to "dns"]
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **DigicertUrl** | Pointer to **string** | DigiCert ACME endpoint selector. Options: [us-production/eu-production/us-demo/eu-demo] | [optional] [default to "us-production"]
-**DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP | [optional] 
+**DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare | [optional] 
+**DnsZone** | Pointer to **string** | Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare | [optional] 
 **EabHmacKey** | Pointer to **string** | External Account Binding HMAC key (required for ACME account bootstrap on create) | [optional] 
 **EabKeyId** | Pointer to **string** | External Account Binding key identifier (required for ACME account bootstrap on create) | [optional] 
 **Email** | **string** | Email address for ACME account registration | 
@@ -142,6 +143,31 @@ SetDnsTargetCreds sets DnsTargetCreds field to given value.
 `func (o *TargetUpdateDigiCert) HasDnsTargetCreds() bool`
 
 HasDnsTargetCreds returns a boolean if a field has been set.
+
+### GetDnsZone
+
+`func (o *TargetUpdateDigiCert) GetDnsZone() string`
+
+GetDnsZone returns the DnsZone field if non-nil, zero value otherwise.
+
+### GetDnsZoneOk
+
+`func (o *TargetUpdateDigiCert) GetDnsZoneOk() (*string, bool)`
+
+GetDnsZoneOk returns a tuple with the DnsZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsZone
+
+`func (o *TargetUpdateDigiCert) SetDnsZone(v string)`
+
+SetDnsZone sets DnsZone field to given value.
+
+### HasDnsZone
+
+`func (o *TargetUpdateDigiCert) HasDnsZone() bool`
+
+HasDnsZone returns a boolean if a field has been set.
 
 ### GetEabHmacKey
 

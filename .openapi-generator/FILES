@@ -13,6 +13,7 @@ docs/AWSSecretsMigration.md
 docs/AWSTargetDetails.md
 docs/AccessOrGroupPermissionAssignment.md
 docs/AccessPermissionAssignment.md
+docs/AccountCustomField.md
 docs/AccountCustomFieldCreate.md
 docs/AccountCustomFieldCreateOutput.md
 docs/AccountCustomFieldDelete.md
@@ -128,6 +129,7 @@ docs/ClassicKeyTargetInfo.md
 docs/ClientData.md
 docs/ClientUsageInfo.md
 docs/ClientsUsageReport.md
+docs/CloudflareTargetDetails.md
 docs/ConfigChange.md
 docs/ConfigHash.md
 docs/Configure.md
@@ -422,6 +424,7 @@ docs/FolderCreateOutput.md
 docs/FolderDelete.md
 docs/FolderGet.md
 docs/FolderGetOutput.md
+docs/FolderUSCSyncConfig.md
 docs/FolderUpdate.md
 docs/GCPAccessRules.md
 docs/GCPPayload.md
@@ -713,6 +716,8 @@ docs/KerberosAuthMethodInfo.md
 docs/KerberosConfigPart.md
 docs/KmipClientDeleteRule.md
 docs/KmipClientSetRule.md
+docs/KmipClientUpdate.md
+docs/KmipClientUpdateOutput.md
 docs/KmipCreateClient.md
 docs/KmipCreateClientOutput.md
 docs/KmipDeleteClient.md
@@ -728,6 +733,8 @@ docs/KmipRenewClientCertificateOutput.md
 docs/KmipRenewServerCertificate.md
 docs/KmipRenewServerCertificateOutput.md
 docs/KmipServerSetup.md
+docs/KmipServerUpdate.md
+docs/KmipServerUpdateOutput.md
 docs/KmipSetServerState.md
 docs/KmipSetServerStateOutput.md
 docs/KubeConfigValue.md
@@ -790,7 +797,6 @@ docs/NextAutoRotationEvent.md
 docs/NotiForwarder.md
 docs/NotiForwarderDetailsInput.md
 docs/NullString.md
-docs/NullTime.md
 docs/OAuth2AccessRules.md
 docs/OAuth2CustomClaim.md
 docs/OCIAccessRules.md
@@ -966,6 +972,7 @@ docs/Target.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
 docs/TargetCreateAzure.md
+docs/TargetCreateCloudflare.md
 docs/TargetCreateDB.md
 docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
@@ -1007,6 +1014,7 @@ docs/TargetTypeDetailsInput.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
 docs/TargetUpdateAzure.md
+docs/TargetUpdateCloudflare.md
 docs/TargetUpdateDB.md
 docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
@@ -1202,6 +1210,7 @@ go.mod
 go.sum
 model_access_or_group_permission_assignment.go
 model_access_permission_assignment.go
+model_account_custom_field.go
 model_account_custom_field_create.go
 model_account_custom_field_create_output.go
 model_account_custom_field_delete.go
@@ -1323,6 +1332,7 @@ model_classic_key_target_info.go
 model_client_data.go
 model_client_usage_info.go
 model_clients_usage_report.go
+model_cloudflare_target_details.go
 model_config_change.go
 model_config_hash.go
 model_configure.go
@@ -1618,6 +1628,7 @@ model_folder_delete.go
 model_folder_get.go
 model_folder_get_output.go
 model_folder_update.go
+model_folder_usc_sync_config.go
 model_gateway_create_allowed_access.go
 model_gateway_create_k8_s_auth_config.go
 model_gateway_create_k8_s_auth_config_output.go
@@ -1904,6 +1915,8 @@ model_kmip_client_delete_rule.go
 model_kmip_client_get_response.go
 model_kmip_client_list_response.go
 model_kmip_client_set_rule.go
+model_kmip_client_update.go
+model_kmip_client_update_output.go
 model_kmip_client_update_response.go
 model_kmip_config_part.go
 model_kmip_create_client.go
@@ -1923,6 +1936,8 @@ model_kmip_renew_server_certificate.go
 model_kmip_renew_server_certificate_output.go
 model_kmip_server.go
 model_kmip_server_setup.go
+model_kmip_server_update.go
+model_kmip_server_update_output.go
 model_kmip_set_server_state.go
 model_kmip_set_server_state_output.go
 model_kube_config_value.go
@@ -1985,7 +2000,6 @@ model_next_auto_rotation_event.go
 model_noti_forwarder.go
 model_noti_forwarder_details_input.go
 model_null_string.go
-model_null_time.go
 model_o_auth2_access_rules.go
 model_o_auth2_custom_claim.go
 model_object_version_settings_output.go
@@ -2161,6 +2175,7 @@ model_target.go
 model_target_create_artifactory.go
 model_target_create_aws.go
 model_target_create_azure.go
+model_target_create_cloudflare.go
 model_target_create_db.go
 model_target_create_digi_cert.go
 model_target_create_dockerhub.go
@@ -2202,6 +2217,7 @@ model_target_type_details_input.go
 model_target_update_artifactory.go
 model_target_update_aws.go
 model_target_update_azure.go
+model_target_update_cloudflare.go
 model_target_update_db.go
 model_target_update_digi_cert.go
 model_target_update_dockerhub.go

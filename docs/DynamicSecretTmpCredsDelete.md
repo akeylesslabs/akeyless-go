@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Host** | Pointer to **string** | Host | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **RevokeAll** | Pointer to **bool** | Revoke All Temp Creds | [optional] 
 **SoftDelete** | Pointer to **bool** | Soft Delete | [optional] 
 **TmpCredsId** | Pointer to **string** | Tmp Creds ID | [optional] 
@@ -57,6 +59,31 @@ SetHost sets Host field to given value.
 
 HasHost returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *DynamicSecretTmpCredsDelete) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *DynamicSecretTmpCredsDelete) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *DynamicSecretTmpCredsDelete) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *DynamicSecretTmpCredsDelete) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetJson
 
 `func (o *DynamicSecretTmpCredsDelete) GetJson() bool`
@@ -101,6 +128,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOutputRule
+
+`func (o *DynamicSecretTmpCredsDelete) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *DynamicSecretTmpCredsDelete) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *DynamicSecretTmpCredsDelete) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *DynamicSecretTmpCredsDelete) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetRevokeAll
 

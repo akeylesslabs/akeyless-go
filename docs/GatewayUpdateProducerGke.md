@@ -10,10 +10,12 @@ Name | Type | Description | Notes
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
 **GkeClusterName** | Pointer to **string** | GKE cluster name | [optional] 
 **GkeServiceAccountEmail** | Pointer to **string** | GKE service account email | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
@@ -197,6 +199,31 @@ SetGkeServiceAccountEmail sets GkeServiceAccountEmail field to given value.
 
 HasGkeServiceAccountEmail returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *GatewayUpdateProducerGke) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *GatewayUpdateProducerGke) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *GatewayUpdateProducerGke) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *GatewayUpdateProducerGke) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *GatewayUpdateProducerGke) GetItemCustomFields() map[string]string`
@@ -291,6 +318,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerGke) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOutputRule
+
+`func (o *GatewayUpdateProducerGke) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *GatewayUpdateProducerGke) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *GatewayUpdateProducerGke) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *GatewayUpdateProducerGke) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

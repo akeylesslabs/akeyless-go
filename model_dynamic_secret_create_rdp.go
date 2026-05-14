@@ -34,12 +34,16 @@ type DynamicSecretCreateRdp struct {
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
 	// Allow access using externally (IdP) provided username [true/false]
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
@@ -322,6 +326,38 @@ func (o *DynamicSecretCreateRdp) SetFixedUserOnly(v string) {
 	o.FixedUserOnly = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *DynamicSecretCreateRdp) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *DynamicSecretCreateRdp) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -408,6 +444,38 @@ func (o *DynamicSecretCreateRdp) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DynamicSecretCreateRdp) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *DynamicSecretCreateRdp) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
@@ -1142,6 +1210,9 @@ func (o DynamicSecretCreateRdp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FixedUserOnly) {
 		toSerialize["fixed-user-only"] = o.FixedUserOnly
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -1149,6 +1220,9 @@ func (o DynamicSecretCreateRdp) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
 	}

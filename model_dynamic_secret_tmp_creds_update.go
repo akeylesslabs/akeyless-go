@@ -24,12 +24,16 @@ var _ MappedNullable = &DynamicSecretTmpCredsUpdate{}
 type DynamicSecretTmpCredsUpdate struct {
 	// Host
 	Host string `json:"host"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
 	// New TTL in Minutes
 	NewTtlMin int64 `json:"new-ttl-min"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Tmp Creds ID
 	TmpCredsId string `json:"tmp-creds-id"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -87,6 +91,38 @@ func (o *DynamicSecretTmpCredsUpdate) GetHostOk() (*string, bool) {
 // SetHost sets field value
 func (o *DynamicSecretTmpCredsUpdate) SetHost(v string) {
 	o.Host = v
+}
+
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *DynamicSecretTmpCredsUpdate) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretTmpCredsUpdate) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *DynamicSecretTmpCredsUpdate) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *DynamicSecretTmpCredsUpdate) SetInputRule(v []string) {
+	o.InputRule = v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -167,6 +203,38 @@ func (o *DynamicSecretTmpCredsUpdate) GetNewTtlMinOk() (*int64, bool) {
 // SetNewTtlMin sets field value
 func (o *DynamicSecretTmpCredsUpdate) SetNewTtlMin(v int64) {
 	o.NewTtlMin = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *DynamicSecretTmpCredsUpdate) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretTmpCredsUpdate) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *DynamicSecretTmpCredsUpdate) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *DynamicSecretTmpCredsUpdate) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetTmpCredsId returns the TmpCredsId field value
@@ -268,11 +336,17 @@ func (o DynamicSecretTmpCredsUpdate) MarshalJSON() ([]byte, error) {
 func (o DynamicSecretTmpCredsUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["host"] = o.Host
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["new-ttl-min"] = o.NewTtlMin
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	toSerialize["tmp-creds-id"] = o.TmpCredsId
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

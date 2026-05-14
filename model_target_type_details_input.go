@@ -24,6 +24,7 @@ type TargetTypeDetailsInput struct {
 	AwsTargetDetails *AWSTargetDetails `json:"aws_target_details,omitempty"`
 	AzureTargetDetails *AzureTargetDetails `json:"azure_target_details,omitempty"`
 	ChefTargetDetails *ChefTargetDetails `json:"chef_target_details,omitempty"`
+	CloudflareTargetDetails *CloudflareTargetDetails `json:"cloudflare_target_details,omitempty"`
 	CustomTargetDetails *CustomTargetDetails `json:"custom_target_details,omitempty"`
 	DbTargetDetails *DbTargetDetails `json:"db_target_details,omitempty"`
 	DigicertTargetDetails *DigiCertTargetDetails `json:"digicert_target_details,omitempty"`
@@ -200,6 +201,38 @@ func (o *TargetTypeDetailsInput) HasChefTargetDetails() bool {
 // SetChefTargetDetails gets a reference to the given ChefTargetDetails and assigns it to the ChefTargetDetails field.
 func (o *TargetTypeDetailsInput) SetChefTargetDetails(v ChefTargetDetails) {
 	o.ChefTargetDetails = &v
+}
+
+// GetCloudflareTargetDetails returns the CloudflareTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetCloudflareTargetDetails() CloudflareTargetDetails {
+	if o == nil || IsNil(o.CloudflareTargetDetails) {
+		var ret CloudflareTargetDetails
+		return ret
+	}
+	return *o.CloudflareTargetDetails
+}
+
+// GetCloudflareTargetDetailsOk returns a tuple with the CloudflareTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetCloudflareTargetDetailsOk() (*CloudflareTargetDetails, bool) {
+	if o == nil || IsNil(o.CloudflareTargetDetails) {
+		return nil, false
+	}
+	return o.CloudflareTargetDetails, true
+}
+
+// HasCloudflareTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasCloudflareTargetDetails() bool {
+	if o != nil && !IsNil(o.CloudflareTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudflareTargetDetails gets a reference to the given CloudflareTargetDetails and assigns it to the CloudflareTargetDetails field.
+func (o *TargetTypeDetailsInput) SetCloudflareTargetDetails(v CloudflareTargetDetails) {
+	o.CloudflareTargetDetails = &v
 }
 
 // GetCustomTargetDetails returns the CustomTargetDetails field value if set, zero value otherwise.
@@ -1215,6 +1248,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ChefTargetDetails) {
 		toSerialize["chef_target_details"] = o.ChefTargetDetails
+	}
+	if !IsNil(o.CloudflareTargetDetails) {
+		toSerialize["cloudflare_target_details"] = o.CloudflareTargetDetails
 	}
 	if !IsNil(o.CustomTargetDetails) {
 		toSerialize["custom_target_details"] = o.CustomTargetDetails

@@ -365,6 +365,7 @@ Method | HTTP request | Description
 [**ImportPasswords**](V2Api.md#ImportPasswords) | **Post** /import-passwords | 
 [**KmipClientDeleteRule**](V2Api.md#KmipClientDeleteRule) | **Post** /kmip-client-delete-rule | 
 [**KmipClientSetRule**](V2Api.md#KmipClientSetRule) | **Post** /kmip-client-set-rule | 
+[**KmipClientUpdate**](V2Api.md#KmipClientUpdate) | **Post** /kmip-client-update | 
 [**KmipCreateClient**](V2Api.md#KmipCreateClient) | **Post** /kmip-create-client | 
 [**KmipDeleteClient**](V2Api.md#KmipDeleteClient) | **Post** /kmip-delete-client | 
 [**KmipDeleteServer**](V2Api.md#KmipDeleteServer) | **Delete** /kmip-delete-environment | 
@@ -375,6 +376,7 @@ Method | HTTP request | Description
 [**KmipRenewClientCertificate**](V2Api.md#KmipRenewClientCertificate) | **Post** /kmip-renew-client | 
 [**KmipRenewServerCertificate**](V2Api.md#KmipRenewServerCertificate) | **Post** /kmip-renew-environment | 
 [**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
+[**KmipServerUpdate**](V2Api.md#KmipServerUpdate) | **Post** /kmip-server-update | 
 [**KmipSetServerState**](V2Api.md#KmipSetServerState) | **Post** /kmip-set-environment-state | 
 [**KubeconfigGenerate**](V2Api.md#KubeconfigGenerate) | **Post** /kubeconfig-generate | 
 [**ListAcmeAccounts**](V2Api.md#ListAcmeAccounts) | **Post** /list-acme-accounts | 
@@ -470,6 +472,7 @@ Method | HTTP request | Description
 [**TargetCreateArtifactory**](V2Api.md#TargetCreateArtifactory) | **Post** /target-create-artifactory | 
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
 [**TargetCreateAzure**](V2Api.md#TargetCreateAzure) | **Post** /target-create-azure | 
+[**TargetCreateCloudflare**](V2Api.md#TargetCreateCloudflare) | **Post** /target-create-cloudflare | 
 [**TargetCreateDB**](V2Api.md#TargetCreateDB) | **Post** /target-create-db | 
 [**TargetCreateDigiCert**](V2Api.md#TargetCreateDigiCert) | **Post** /target-create-digicert | 
 [**TargetCreateDockerhub**](V2Api.md#TargetCreateDockerhub) | **Post** /target-create-dockerhub | 
@@ -505,6 +508,7 @@ Method | HTTP request | Description
 [**TargetUpdateArtifactory**](V2Api.md#TargetUpdateArtifactory) | **Post** /target-update-artifactory | 
 [**TargetUpdateAws**](V2Api.md#TargetUpdateAws) | **Post** /target-update-aws | 
 [**TargetUpdateAzure**](V2Api.md#TargetUpdateAzure) | **Post** /target-update-azure | 
+[**TargetUpdateCloudflare**](V2Api.md#TargetUpdateCloudflare) | **Post** /target-update-cloudflare | 
 [**TargetUpdateDB**](V2Api.md#TargetUpdateDB) | **Post** /target-update-db | 
 [**TargetUpdateDigiCert**](V2Api.md#TargetUpdateDigiCert) | **Post** /target-update-digicert | 
 [**TargetUpdateDockerhub**](V2Api.md#TargetUpdateDockerhub) | **Post** /target-update-dockerhub | 
@@ -814,7 +818,7 @@ No authorization required
 
 ## AccountCustomFieldList
 
-> map[string]interface{} AccountCustomFieldList(ctx).AccountCustomFieldList(accountCustomFieldList).Execute()
+> []AccountCustomField AccountCustomFieldList(ctx).AccountCustomFieldList(accountCustomFieldList).Execute()
 
 List all account custom fields.
 
@@ -842,7 +846,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AccountCustomFieldList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AccountCustomFieldList`: map[string]interface{}
+	// response from `AccountCustomFieldList`: []AccountCustomField
 	fmt.Fprintf(os.Stdout, "Response from `V2Api.AccountCustomFieldList`: %v\n", resp)
 }
 ```
@@ -862,7 +866,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**[]AccountCustomField**](AccountCustomField.md)
 
 ### Authorization
 
@@ -23713,6 +23717,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## KmipClientUpdate
+
+> KmipClientUpdateOutput KmipClientUpdate(ctx).KmipClientUpdate(kmipClientUpdate).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	kmipClientUpdate := *openapiclient.NewKmipClientUpdate() // KmipClientUpdate |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.KmipClientUpdate(context.Background()).KmipClientUpdate(kmipClientUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipClientUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KmipClientUpdate`: KmipClientUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipClientUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipClientUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kmipClientUpdate** | [**KmipClientUpdate**](KmipClientUpdate.md) |  | 
+
+### Return type
+
+[**KmipClientUpdateOutput**](KmipClientUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## KmipCreateClient
 
 > KmipCreateClientOutput KmipCreateClient(ctx).KmipCreateClient(kmipCreateClient).Execute()
@@ -24338,6 +24406,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**KMIPEnvironmentCreateResponse**](KMIPEnvironmentCreateResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipServerUpdate
+
+> KmipServerUpdateOutput KmipServerUpdate(ctx).KmipServerUpdate(kmipServerUpdate).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	kmipServerUpdate := *openapiclient.NewKmipServerUpdate() // KmipServerUpdate |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.KmipServerUpdate(context.Background()).KmipServerUpdate(kmipServerUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipServerUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KmipServerUpdate`: KmipServerUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipServerUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipServerUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kmipServerUpdate** | [**KmipServerUpdate**](KmipServerUpdate.md) |  | 
+
+### Return type
+
+[**KmipServerUpdateOutput**](KmipServerUpdateOutput.md)
 
 ### Authorization
 
@@ -30419,6 +30551,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateCloudflare
+
+> TargetCreateOutput TargetCreateCloudflare(ctx).TargetCreateCloudflare(targetCreateCloudflare).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateCloudflare := *openapiclient.NewTargetCreateCloudflare("Name_example") // TargetCreateCloudflare | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateCloudflare(context.Background()).TargetCreateCloudflare(targetCreateCloudflare).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateCloudflare``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateCloudflare`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateCloudflare`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateCloudflareRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateCloudflare** | [**TargetCreateCloudflare**](TargetCreateCloudflare.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateDB
 
 > TargetCreateOutput TargetCreateDB(ctx).TargetCreateDB(targetCreateDB).Execute()
@@ -32640,6 +32836,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateAzureRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateAzure** | [**TargetUpdateAzure**](TargetUpdateAzure.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateCloudflare
+
+> TargetUpdateOutput TargetUpdateCloudflare(ctx).TargetUpdateCloudflare(targetUpdateCloudflare).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateCloudflare := *openapiclient.NewTargetUpdateCloudflare("Name_example") // TargetUpdateCloudflare | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateCloudflare(context.Background()).TargetUpdateCloudflare(targetUpdateCloudflare).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateCloudflare``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateCloudflare`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateCloudflare`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateCloudflareRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateCloudflare** | [**TargetUpdateCloudflare**](TargetUpdateCloudflare.md) |  | 
 
 ### Return type
 

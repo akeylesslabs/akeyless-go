@@ -14,12 +14,14 @@ Name | Type | Description | Notes
 **FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) | [optional] [default to "ext_username"]
 **GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LdapCaCert** | Pointer to **string** | CA Certificate File Content | [optional] 
 **LdapUrl** | Pointer to **string** | LDAP Server URL | [optional] 
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
@@ -308,6 +310,31 @@ SetHostProvider sets HostProvider field to given value.
 
 HasHostProvider returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *DynamicSecretUpdateLdap) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *DynamicSecretUpdateLdap) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *DynamicSecretUpdateLdap) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *DynamicSecretUpdateLdap) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *DynamicSecretUpdateLdap) GetItemCustomFields() map[string]string`
@@ -452,6 +479,31 @@ SetNewName sets NewName field to given value.
 `func (o *DynamicSecretUpdateLdap) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOutputRule
+
+`func (o *DynamicSecretUpdateLdap) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *DynamicSecretUpdateLdap) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *DynamicSecretUpdateLdap) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *DynamicSecretUpdateLdap) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetPasswordLength
 

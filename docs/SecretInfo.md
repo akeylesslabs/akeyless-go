@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivationDate** | Pointer to **time.Time** |  | [optional] 
 **Created** | Pointer to **time.Time** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
 **Expiration** | Pointer to **time.Time** |  | [optional] 
@@ -39,6 +40,31 @@ will change when the set of required properties is changed
 NewSecretInfoWithDefaults instantiates a new SecretInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActivationDate
+
+`func (o *SecretInfo) GetActivationDate() time.Time`
+
+GetActivationDate returns the ActivationDate field if non-nil, zero value otherwise.
+
+### GetActivationDateOk
+
+`func (o *SecretInfo) GetActivationDateOk() (*time.Time, bool)`
+
+GetActivationDateOk returns a tuple with the ActivationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivationDate
+
+`func (o *SecretInfo) SetActivationDate(v time.Time)`
+
+SetActivationDate sets ActivationDate field to given value.
+
+### HasActivationDate
+
+`func (o *SecretInfo) HasActivationDate() bool`
+
+HasActivationDate returns a boolean if a field has been set.
 
 ### GetCreated
 

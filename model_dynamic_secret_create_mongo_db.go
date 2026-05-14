@@ -28,6 +28,8 @@ type DynamicSecretCreateMongoDb struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -60,6 +62,8 @@ type DynamicSecretCreateMongoDb struct {
 	MongodbUsername *string `json:"mongodb-username,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
 	// Encrypt producer with following key
@@ -220,6 +224,38 @@ func (o *DynamicSecretCreateMongoDb) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DynamicSecretCreateMongoDb) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateMongoDb) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateMongoDb) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateMongoDb) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *DynamicSecretCreateMongoDb) SetInputRule(v []string) {
+	o.InputRule = v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -726,6 +762,38 @@ func (o *DynamicSecretCreateMongoDb) SetName(v string) {
 	o.Name = v
 }
 
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateMongoDb) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateMongoDb) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateMongoDb) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *DynamicSecretCreateMongoDb) SetOutputRule(v []string) {
+	o.OutputRule = v
+}
+
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
 func (o *DynamicSecretCreateMongoDb) GetPasswordLength() string {
 	if o == nil || IsNil(o.PasswordLength) {
@@ -1193,6 +1261,9 @@ func (o DynamicSecretCreateMongoDb) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -1239,6 +1310,9 @@ func (o DynamicSecretCreateMongoDb) ToMap() (map[string]interface{}, error) {
 		toSerialize["mongodb-username"] = o.MongodbUsername
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
 	}

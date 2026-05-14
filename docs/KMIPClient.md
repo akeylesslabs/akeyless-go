@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **ActivateKeysOnCreation** | Pointer to **bool** |  | [optional] 
 **CertificateIssueDate** | Pointer to **time.Time** |  | [optional] 
 **CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
+**ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**[]PathRule**](PathRule.md) |  | [optional] 
@@ -104,6 +105,31 @@ SetCertificateTtlInSeconds sets CertificateTtlInSeconds field to given value.
 `func (o *KMIPClient) HasCertificateTtlInSeconds() bool`
 
 HasCertificateTtlInSeconds returns a boolean if a field has been set.
+
+### GetExpirationEvents
+
+`func (o *KMIPClient) GetExpirationEvents() []CertificateExpirationEvent`
+
+GetExpirationEvents returns the ExpirationEvents field if non-nil, zero value otherwise.
+
+### GetExpirationEventsOk
+
+`func (o *KMIPClient) GetExpirationEventsOk() (*[]CertificateExpirationEvent, bool)`
+
+GetExpirationEventsOk returns a tuple with the ExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEvents
+
+`func (o *KMIPClient) SetExpirationEvents(v []CertificateExpirationEvent)`
+
+SetExpirationEvents sets ExpirationEvents field to given value.
+
+### HasExpirationEvents
+
+`func (o *KMIPClient) HasExpirationEvents() bool`
+
+HasExpirationEvents returns a boolean if a field has been set.
 
 ### GetId
 

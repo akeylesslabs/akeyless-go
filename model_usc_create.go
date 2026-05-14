@@ -35,6 +35,10 @@ type UscCreate struct {
 	PfxPassword *string `json:"pfx-password,omitempty"`
 	// Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default).
 	Region *string `json:"region,omitempty"`
+	// Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+	RemoteSecretActivationDate *string `json:"remote-secret-activation-date,omitempty"`
+	// Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+	RemoteSecretExpires *string `json:"remote-secret-expires,omitempty"`
 	// Name for the new universal secrets
 	SecretName string `json:"secret-name"`
 	SelectedRepositories *string `json:"selected-repositories,omitempty"`
@@ -302,6 +306,70 @@ func (o *UscCreate) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetRemoteSecretActivationDate returns the RemoteSecretActivationDate field value if set, zero value otherwise.
+func (o *UscCreate) GetRemoteSecretActivationDate() string {
+	if o == nil || IsNil(o.RemoteSecretActivationDate) {
+		var ret string
+		return ret
+	}
+	return *o.RemoteSecretActivationDate
+}
+
+// GetRemoteSecretActivationDateOk returns a tuple with the RemoteSecretActivationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetRemoteSecretActivationDateOk() (*string, bool) {
+	if o == nil || IsNil(o.RemoteSecretActivationDate) {
+		return nil, false
+	}
+	return o.RemoteSecretActivationDate, true
+}
+
+// HasRemoteSecretActivationDate returns a boolean if a field has been set.
+func (o *UscCreate) HasRemoteSecretActivationDate() bool {
+	if o != nil && !IsNil(o.RemoteSecretActivationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteSecretActivationDate gets a reference to the given string and assigns it to the RemoteSecretActivationDate field.
+func (o *UscCreate) SetRemoteSecretActivationDate(v string) {
+	o.RemoteSecretActivationDate = &v
+}
+
+// GetRemoteSecretExpires returns the RemoteSecretExpires field value if set, zero value otherwise.
+func (o *UscCreate) GetRemoteSecretExpires() string {
+	if o == nil || IsNil(o.RemoteSecretExpires) {
+		var ret string
+		return ret
+	}
+	return *o.RemoteSecretExpires
+}
+
+// GetRemoteSecretExpiresOk returns a tuple with the RemoteSecretExpires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetRemoteSecretExpiresOk() (*string, bool) {
+	if o == nil || IsNil(o.RemoteSecretExpires) {
+		return nil, false
+	}
+	return o.RemoteSecretExpires, true
+}
+
+// HasRemoteSecretExpires returns a boolean if a field has been set.
+func (o *UscCreate) HasRemoteSecretExpires() bool {
+	if o != nil && !IsNil(o.RemoteSecretExpires) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteSecretExpires gets a reference to the given string and assigns it to the RemoteSecretExpires field.
+func (o *UscCreate) SetRemoteSecretExpires(v string) {
+	o.RemoteSecretExpires = &v
+}
+
 // GetSecretName returns the SecretName field value
 func (o *UscCreate) GetSecretName() string {
 	if o == nil {
@@ -564,6 +632,12 @@ func (o UscCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.RemoteSecretActivationDate) {
+		toSerialize["remote-secret-activation-date"] = o.RemoteSecretActivationDate
+	}
+	if !IsNil(o.RemoteSecretExpires) {
+		toSerialize["remote-secret-expires"] = o.RemoteSecretExpires
 	}
 	toSerialize["secret-name"] = o.SecretName
 	if !IsNil(o.SelectedRepositories) {

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **ExpirationDate** | Pointer to **string** | Token expiration date in YYYY-MM-DD format (relevant only for rotator-type&#x3D;token when manual rotation is selected). Time will be set to 00:00 UTC. | [optional] 
 **HecToken** | Pointer to **string** | For rotator-type&#x3D;hec-token, optionally set/replace the stored HEC token value. | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
@@ -248,6 +250,31 @@ SetHecToken sets HecToken field to given value.
 
 HasHecToken returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *RotatedSecretUpdateSplunk) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *RotatedSecretUpdateSplunk) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *RotatedSecretUpdateSplunk) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *RotatedSecretUpdateSplunk) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *RotatedSecretUpdateSplunk) GetItemCustomFields() map[string]string`
@@ -417,6 +444,31 @@ SetNewName sets NewName field to given value.
 `func (o *RotatedSecretUpdateSplunk) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOutputRule
+
+`func (o *RotatedSecretUpdateSplunk) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *RotatedSecretUpdateSplunk) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *RotatedSecretUpdateSplunk) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *RotatedSecretUpdateSplunk) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetPasswordLength
 

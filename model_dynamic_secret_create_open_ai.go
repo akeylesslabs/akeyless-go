@@ -28,12 +28,16 @@ type DynamicSecretCreateOpenAI struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Project ID
@@ -174,6 +178,38 @@ func (o *DynamicSecretCreateOpenAI) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateOpenAI) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateOpenAI) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateOpenAI) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *DynamicSecretCreateOpenAI) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *DynamicSecretCreateOpenAI) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -260,6 +296,38 @@ func (o *DynamicSecretCreateOpenAI) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *DynamicSecretCreateOpenAI) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *DynamicSecretCreateOpenAI) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateOpenAI) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *DynamicSecretCreateOpenAI) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *DynamicSecretCreateOpenAI) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -505,6 +573,9 @@ func (o DynamicSecretCreateOpenAI) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -512,6 +583,9 @@ func (o DynamicSecretCreateOpenAI) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}

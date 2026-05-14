@@ -26,6 +26,8 @@ type GatewayUpdateProducerNativeK8S struct {
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -58,6 +60,8 @@ type GatewayUpdateProducerNativeK8S struct {
 	Name string `json:"name"`
 	// Dynamic secret name
 	NewName *string `json:"new-name,omitempty"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Enable Port forwarding while using CLI access
@@ -196,6 +200,38 @@ func (o *GatewayUpdateProducerNativeK8S) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayUpdateProducerNativeK8S) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerNativeK8S) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerNativeK8S) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerNativeK8S) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *GatewayUpdateProducerNativeK8S) SetInputRule(v []string) {
+	o.InputRule = v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -700,6 +736,38 @@ func (o *GatewayUpdateProducerNativeK8S) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *GatewayUpdateProducerNativeK8S) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerNativeK8S) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerNativeK8S) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerNativeK8S) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *GatewayUpdateProducerNativeK8S) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetProducerEncryptionKeyName returns the ProducerEncryptionKeyName field value if set, zero value otherwise.
@@ -1262,6 +1330,9 @@ func (o GatewayUpdateProducerNativeK8S) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -1307,6 +1378,9 @@ func (o GatewayUpdateProducerNativeK8S) ToMap() (map[string]interface{}, error) 
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
 	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName

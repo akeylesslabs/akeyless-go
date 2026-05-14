@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificateTtl** | Pointer to **int64** | Server certificate TTL in days | [optional] [default to 90]
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **Hostname** | **string** | Hostname | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Root** | **string** | Root path of KMIP Resources | 
@@ -54,6 +55,31 @@ SetCertificateTtl sets CertificateTtl field to given value.
 `func (o *KmipServerSetup) HasCertificateTtl() bool`
 
 HasCertificateTtl returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *KmipServerSetup) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *KmipServerSetup) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *KmipServerSetup) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *KmipServerSetup) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
 
 ### GetHostname
 

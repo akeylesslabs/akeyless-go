@@ -24,6 +24,8 @@ var _ MappedNullable = &KmipServerSetup{}
 type KmipServerSetup struct {
 	// Server certificate TTL in days
 	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
+	// How many days before the expiration of the certificate would you like to be notified.
+	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Hostname
 	Hostname string `json:"hostname"`
 	// Set output format to JSON
@@ -95,6 +97,38 @@ func (o *KmipServerSetup) HasCertificateTtl() bool {
 // SetCertificateTtl gets a reference to the given int64 and assigns it to the CertificateTtl field.
 func (o *KmipServerSetup) SetCertificateTtl(v int64) {
 	o.CertificateTtl = &v
+}
+
+// GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
+func (o *KmipServerSetup) GetExpirationEventIn() []string {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		var ret []string
+		return ret
+	}
+	return o.ExpirationEventIn
+}
+
+// GetExpirationEventInOk returns a tuple with the ExpirationEventIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipServerSetup) GetExpirationEventInOk() ([]string, bool) {
+	if o == nil || IsNil(o.ExpirationEventIn) {
+		return nil, false
+	}
+	return o.ExpirationEventIn, true
+}
+
+// HasExpirationEventIn returns a boolean if a field has been set.
+func (o *KmipServerSetup) HasExpirationEventIn() bool {
+	if o != nil && !IsNil(o.ExpirationEventIn) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEventIn gets a reference to the given []string and assigns it to the ExpirationEventIn field.
+func (o *KmipServerSetup) SetExpirationEventIn(v []string) {
+	o.ExpirationEventIn = v
 }
 
 // GetHostname returns the Hostname field value
@@ -253,6 +287,9 @@ func (o KmipServerSetup) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CertificateTtl) {
 		toSerialize["certificate-ttl"] = o.CertificateTtl
+	}
+	if !IsNil(o.ExpirationEventIn) {
+		toSerialize["expiration-event-in"] = o.ExpirationEventIn
 	}
 	toSerialize["hostname"] = o.Hostname
 	if !IsNil(o.Json) {

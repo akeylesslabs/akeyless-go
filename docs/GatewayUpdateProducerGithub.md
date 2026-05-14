@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **GithubAppId** | Pointer to **int64** | Github app id | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **InstallationId** | Pointer to **int64** | GitHub application installation id | [optional] 
 **InstallationOrganization** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub organization name | [optional] 
 **InstallationRepository** | Pointer to **string** | Optional, mutually exclusive with installation id, GitHub repository &#39;&lt;owner&gt;/&lt;repo-name&gt;&#39; | [optional] 
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -141,6 +143,31 @@ SetGithubBaseUrl sets GithubBaseUrl field to given value.
 `func (o *GatewayUpdateProducerGithub) HasGithubBaseUrl() bool`
 
 HasGithubBaseUrl returns a boolean if a field has been set.
+
+### GetInputRule
+
+`func (o *GatewayUpdateProducerGithub) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *GatewayUpdateProducerGithub) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *GatewayUpdateProducerGithub) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *GatewayUpdateProducerGithub) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
 
 ### GetInstallationId
 
@@ -311,6 +338,31 @@ SetNewName sets NewName field to given value.
 `func (o *GatewayUpdateProducerGithub) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOutputRule
+
+`func (o *GatewayUpdateProducerGithub) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *GatewayUpdateProducerGithub) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *GatewayUpdateProducerGithub) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *GatewayUpdateProducerGithub) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetTags
 

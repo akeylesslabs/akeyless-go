@@ -31,6 +31,8 @@ type GoogleTrustTargetDetails struct {
 	// Name of DNS target (transient field - not stored in DB) Used by CLI to pass DNS target name to SDK for creating target_object_assoc Retrieved from target_object_assoc when reading target Required when ChallengeType is \"dns\"
 	DnsTargetName *string `json:"dns_target_name,omitempty"`
 	DnsTargetType *string `json:"dns_target_type,omitempty"`
+	// Cloudflare zone identifier Required when DNSTargetType is Cloudflare
+	DnsZone *string `json:"dns_zone,omitempty"`
 	// External Account Binding HMAC key (required for ACME account bootstrap on target creation) Not persisted after bootstrap
 	EabHmacKey *string `json:"eab_hmac_key,omitempty"`
 	// External Account Binding key identifier (required for ACME account bootstrap on target creation) Not persisted after bootstrap
@@ -254,6 +256,38 @@ func (o *GoogleTrustTargetDetails) HasDnsTargetType() bool {
 // SetDnsTargetType gets a reference to the given string and assigns it to the DnsTargetType field.
 func (o *GoogleTrustTargetDetails) SetDnsTargetType(v string) {
 	o.DnsTargetType = &v
+}
+
+// GetDnsZone returns the DnsZone field value if set, zero value otherwise.
+func (o *GoogleTrustTargetDetails) GetDnsZone() string {
+	if o == nil || IsNil(o.DnsZone) {
+		var ret string
+		return ret
+	}
+	return *o.DnsZone
+}
+
+// GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GoogleTrustTargetDetails) GetDnsZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.DnsZone) {
+		return nil, false
+	}
+	return o.DnsZone, true
+}
+
+// HasDnsZone returns a boolean if a field has been set.
+func (o *GoogleTrustTargetDetails) HasDnsZone() bool {
+	if o != nil && !IsNil(o.DnsZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsZone gets a reference to the given string and assigns it to the DnsZone field.
+func (o *GoogleTrustTargetDetails) SetDnsZone(v string) {
+	o.DnsZone = &v
 }
 
 // GetEabHmacKey returns the EabHmacKey field value if set, zero value otherwise.
@@ -507,6 +541,9 @@ func (o GoogleTrustTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DnsTargetType) {
 		toSerialize["dns_target_type"] = o.DnsTargetType
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns_zone"] = o.DnsZone
 	}
 	if !IsNil(o.EabHmacKey) {
 		toSerialize["eab_hmac_key"] = o.EabHmacKey

@@ -26,6 +26,7 @@ type KMIPServer struct {
 	Certificate []int32 `json:"certificate,omitempty"`
 	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
 	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
+	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	Hostname *string `json:"hostname,omitempty"`
 	Root *string `json:"root,omitempty"`
 }
@@ -207,6 +208,38 @@ func (o *KMIPServer) SetCertificateTtlInSeconds(v int64) {
 	o.CertificateTtlInSeconds = &v
 }
 
+// GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
+func (o *KMIPServer) GetExpirationEvents() []CertificateExpirationEvent {
+	if o == nil || IsNil(o.ExpirationEvents) {
+		var ret []CertificateExpirationEvent
+		return ret
+	}
+	return o.ExpirationEvents
+}
+
+// GetExpirationEventsOk returns a tuple with the ExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPServer) GetExpirationEventsOk() ([]CertificateExpirationEvent, bool) {
+	if o == nil || IsNil(o.ExpirationEvents) {
+		return nil, false
+	}
+	return o.ExpirationEvents, true
+}
+
+// HasExpirationEvents returns a boolean if a field has been set.
+func (o *KMIPServer) HasExpirationEvents() bool {
+	if o != nil && !IsNil(o.ExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpirationEvents gets a reference to the given []CertificateExpirationEvent and assigns it to the ExpirationEvents field.
+func (o *KMIPServer) SetExpirationEvents(v []CertificateExpirationEvent) {
+	o.ExpirationEvents = v
+}
+
 // GetHostname returns the Hostname field value if set, zero value otherwise.
 func (o *KMIPServer) GetHostname() string {
 	if o == nil || IsNil(o.Hostname) {
@@ -295,6 +328,9 @@ func (o KMIPServer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CertificateTtlInSeconds) {
 		toSerialize["certificate_ttl_in_seconds"] = o.CertificateTtlInSeconds
+	}
+	if !IsNil(o.ExpirationEvents) {
+		toSerialize["expiration_events"] = o.ExpirationEvents
 	}
 	if !IsNil(o.Hostname) {
 		toSerialize["hostname"] = o.Hostname

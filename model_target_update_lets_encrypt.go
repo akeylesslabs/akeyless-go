@@ -27,8 +27,10 @@ type TargetUpdateLetsEncrypt struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Name of existing cloud target for DNS credentials. Required when acme-challenge=dns. Supported: AWS, Azure, GCP targets
+	// Name of existing cloud target for DNS credentials. Required when acme-challenge=dns. Supported: AWS, Azure, GCP, Cloudflare targets
 	DnsTargetCreds *string `json:"dns-target-creds,omitempty"`
+	// Cloudflare DNS zone identifier. Required when dns-target-creds points to Cloudflare target
+	DnsZone *string `json:"dns-zone,omitempty"`
 	// Email address for ACME account registration
 	Email string `json:"email"`
 	// GCP Cloud DNS: Project ID. Optional - can be derived from service account
@@ -220,6 +222,38 @@ func (o *TargetUpdateLetsEncrypt) HasDnsTargetCreds() bool {
 // SetDnsTargetCreds gets a reference to the given string and assigns it to the DnsTargetCreds field.
 func (o *TargetUpdateLetsEncrypt) SetDnsTargetCreds(v string) {
 	o.DnsTargetCreds = &v
+}
+
+// GetDnsZone returns the DnsZone field value if set, zero value otherwise.
+func (o *TargetUpdateLetsEncrypt) GetDnsZone() string {
+	if o == nil || IsNil(o.DnsZone) {
+		var ret string
+		return ret
+	}
+	return *o.DnsZone
+}
+
+// GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateLetsEncrypt) GetDnsZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.DnsZone) {
+		return nil, false
+	}
+	return o.DnsZone, true
+}
+
+// HasDnsZone returns a boolean if a field has been set.
+func (o *TargetUpdateLetsEncrypt) HasDnsZone() bool {
+	if o != nil && !IsNil(o.DnsZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsZone gets a reference to the given string and assigns it to the DnsZone field.
+func (o *TargetUpdateLetsEncrypt) SetDnsZone(v string) {
+	o.DnsZone = &v
 }
 
 // GetEmail returns the Email field value
@@ -675,6 +709,9 @@ func (o TargetUpdateLetsEncrypt) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DnsTargetCreds) {
 		toSerialize["dns-target-creds"] = o.DnsTargetCreds
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns-zone"] = o.DnsZone
 	}
 	toSerialize["email"] = o.Email
 	if !IsNil(o.GcpProject) {

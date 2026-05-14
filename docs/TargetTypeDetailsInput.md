@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsTargetDetails** | Pointer to [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 
 **AzureTargetDetails** | Pointer to [**AzureTargetDetails**](AzureTargetDetails.md) |  | [optional] 
 **ChefTargetDetails** | Pointer to [**ChefTargetDetails**](ChefTargetDetails.md) |  | [optional] 
+**CloudflareTargetDetails** | Pointer to [**CloudflareTargetDetails**](CloudflareTargetDetails.md) |  | [optional] 
 **CustomTargetDetails** | Pointer to [**CustomTargetDetails**](CustomTargetDetails.md) |  | [optional] 
 **DbTargetDetails** | Pointer to [**DbTargetDetails**](DbTargetDetails.md) |  | [optional] 
 **DigicertTargetDetails** | Pointer to [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 
@@ -158,6 +159,31 @@ SetChefTargetDetails sets ChefTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasChefTargetDetails() bool`
 
 HasChefTargetDetails returns a boolean if a field has been set.
+
+### GetCloudflareTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetCloudflareTargetDetails() CloudflareTargetDetails`
+
+GetCloudflareTargetDetails returns the CloudflareTargetDetails field if non-nil, zero value otherwise.
+
+### GetCloudflareTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetCloudflareTargetDetailsOk() (*CloudflareTargetDetails, bool)`
+
+GetCloudflareTargetDetailsOk returns a tuple with the CloudflareTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudflareTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetCloudflareTargetDetails(v CloudflareTargetDetails)`
+
+SetCloudflareTargetDetails sets CloudflareTargetDetails field to given value.
+
+### HasCloudflareTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasCloudflareTargetDetails() bool`
+
+HasCloudflareTargetDetails returns a boolean if a field has been set.
 
 ### GetCustomTargetDetails
 

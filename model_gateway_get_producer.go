@@ -22,10 +22,14 @@ var _ MappedNullable = &GatewayGetProducer{}
 
 // GatewayGetProducer gatewayGetProducer is a command that returns producer [Deprecated: Use dynamic-secret-get command]
 type GatewayGetProducer struct {
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -54,6 +58,38 @@ func NewGatewayGetProducerWithDefaults() *GatewayGetProducer {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *GatewayGetProducer) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetProducer) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *GatewayGetProducer) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *GatewayGetProducer) SetInputRule(v []string) {
+	o.InputRule = v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -110,6 +146,38 @@ func (o *GatewayGetProducer) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayGetProducer) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *GatewayGetProducer) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetProducer) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *GatewayGetProducer) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *GatewayGetProducer) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -186,10 +254,16 @@ func (o GatewayGetProducer) MarshalJSON() ([]byte, error) {
 
 func (o GatewayGetProducer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}

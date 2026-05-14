@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **ObjectType** | Pointer to **string** |  | [optional] 
 **PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
 **Region** | Pointer to **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
+**RemoteSecretActivationDate** | Pointer to **string** | Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
+**RemoteSecretExpires** | Pointer to **string** | Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
 **SelectedRepositories** | Pointer to **string** |  | [optional] 
 **Tags** | Pointer to **map[string]string** | Tags for the universal secrets | [optional] 
@@ -213,6 +215,56 @@ SetRegion sets Region field to given value.
 `func (o *UscCreate) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetRemoteSecretActivationDate
+
+`func (o *UscCreate) GetRemoteSecretActivationDate() string`
+
+GetRemoteSecretActivationDate returns the RemoteSecretActivationDate field if non-nil, zero value otherwise.
+
+### GetRemoteSecretActivationDateOk
+
+`func (o *UscCreate) GetRemoteSecretActivationDateOk() (*string, bool)`
+
+GetRemoteSecretActivationDateOk returns a tuple with the RemoteSecretActivationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRemoteSecretActivationDate
+
+`func (o *UscCreate) SetRemoteSecretActivationDate(v string)`
+
+SetRemoteSecretActivationDate sets RemoteSecretActivationDate field to given value.
+
+### HasRemoteSecretActivationDate
+
+`func (o *UscCreate) HasRemoteSecretActivationDate() bool`
+
+HasRemoteSecretActivationDate returns a boolean if a field has been set.
+
+### GetRemoteSecretExpires
+
+`func (o *UscCreate) GetRemoteSecretExpires() string`
+
+GetRemoteSecretExpires returns the RemoteSecretExpires field if non-nil, zero value otherwise.
+
+### GetRemoteSecretExpiresOk
+
+`func (o *UscCreate) GetRemoteSecretExpiresOk() (*string, bool)`
+
+GetRemoteSecretExpiresOk returns a tuple with the RemoteSecretExpires field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRemoteSecretExpires
+
+`func (o *UscCreate) SetRemoteSecretExpires(v string)`
+
+SetRemoteSecretExpires sets RemoteSecretExpires field to given value.
+
+### HasRemoteSecretExpires
+
+`func (o *UscCreate) HasRemoteSecretExpires() bool`
+
+HasRemoteSecretExpires returns a boolean if a field has been set.
 
 ### GetSecretName
 

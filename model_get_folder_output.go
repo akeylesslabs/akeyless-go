@@ -31,6 +31,7 @@ type GetFolderOutput struct {
 	Metadata *string `json:"metadata,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
 	Tags []string `json:"tags,omitempty"`
+	UscSyncConfigs []FolderUSCSyncConfig `json:"usc_sync_configs,omitempty"`
 }
 
 // NewGetFolderOutput instantiates a new GetFolderOutput object
@@ -370,6 +371,38 @@ func (o *GetFolderOutput) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetUscSyncConfigs returns the UscSyncConfigs field value if set, zero value otherwise.
+func (o *GetFolderOutput) GetUscSyncConfigs() []FolderUSCSyncConfig {
+	if o == nil || IsNil(o.UscSyncConfigs) {
+		var ret []FolderUSCSyncConfig
+		return ret
+	}
+	return o.UscSyncConfigs
+}
+
+// GetUscSyncConfigsOk returns a tuple with the UscSyncConfigs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetFolderOutput) GetUscSyncConfigsOk() ([]FolderUSCSyncConfig, bool) {
+	if o == nil || IsNil(o.UscSyncConfigs) {
+		return nil, false
+	}
+	return o.UscSyncConfigs, true
+}
+
+// HasUscSyncConfigs returns a boolean if a field has been set.
+func (o *GetFolderOutput) HasUscSyncConfigs() bool {
+	if o != nil && !IsNil(o.UscSyncConfigs) {
+		return true
+	}
+
+	return false
+}
+
+// SetUscSyncConfigs gets a reference to the given []FolderUSCSyncConfig and assigns it to the UscSyncConfigs field.
+func (o *GetFolderOutput) SetUscSyncConfigs(v []FolderUSCSyncConfig) {
+	o.UscSyncConfigs = v
+}
+
 func (o GetFolderOutput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -409,6 +442,9 @@ func (o GetFolderOutput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.UscSyncConfigs) {
+		toSerialize["usc_sync_configs"] = o.UscSyncConfigs
 	}
 	return toSerialize, nil
 }

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ActivateKeysOnCreation** | Pointer to **string** | If set to &#39;true&#39;, newly created keys on the client will be set to an &#39;active&#39; state | [optional] [default to "false"]
 **CertificateTtl** | Pointer to **int64** | Client certificate TTL in days | [optional] [default to 90]
+**ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Client name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -79,6 +80,31 @@ SetCertificateTtl sets CertificateTtl field to given value.
 `func (o *KmipCreateClient) HasCertificateTtl() bool`
 
 HasCertificateTtl returns a boolean if a field has been set.
+
+### GetExpirationEventIn
+
+`func (o *KmipCreateClient) GetExpirationEventIn() []string`
+
+GetExpirationEventIn returns the ExpirationEventIn field if non-nil, zero value otherwise.
+
+### GetExpirationEventInOk
+
+`func (o *KmipCreateClient) GetExpirationEventInOk() (*[]string, bool)`
+
+GetExpirationEventInOk returns a tuple with the ExpirationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpirationEventIn
+
+`func (o *KmipCreateClient) SetExpirationEventIn(v []string)`
+
+SetExpirationEventIn sets ExpirationEventIn field to given value.
+
+### HasExpirationEventIn
+
+`func (o *KmipCreateClient) HasExpirationEventIn() bool`
+
+HasExpirationEventIn returns a boolean if a field has been set.
 
 ### GetJson
 

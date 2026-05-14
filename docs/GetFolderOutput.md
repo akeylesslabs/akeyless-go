@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **string** |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **Tags** | Pointer to **[]string** |  | [optional] 
+**UscSyncConfigs** | Pointer to [**[]FolderUSCSyncConfig**](FolderUSCSyncConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetTags sets Tags field to given value.
 `func (o *GetFolderOutput) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetUscSyncConfigs
+
+`func (o *GetFolderOutput) GetUscSyncConfigs() []FolderUSCSyncConfig`
+
+GetUscSyncConfigs returns the UscSyncConfigs field if non-nil, zero value otherwise.
+
+### GetUscSyncConfigsOk
+
+`func (o *GetFolderOutput) GetUscSyncConfigsOk() (*[]FolderUSCSyncConfig, bool)`
+
+GetUscSyncConfigsOk returns a tuple with the UscSyncConfigs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUscSyncConfigs
+
+`func (o *GetFolderOutput) SetUscSyncConfigs(v []FolderUSCSyncConfig)`
+
+SetUscSyncConfigs sets UscSyncConfigs field to given value.
+
+### HasUscSyncConfigs
+
+`func (o *GetFolderOutput) HasUscSyncConfigs() bool`
+
+HasUscSyncConfigs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

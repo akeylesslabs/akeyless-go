@@ -13,11 +13,13 @@ Name | Type | Description | Notes
 **GitlabTokenScopes** | **string** | Comma-separated list of access token scopes to grant | 
 **GitlabUrl** | Pointer to **string** | Gitlab base url | [optional] [default to "https://gitlab.com/"]
 **GroupName** | Pointer to **string** | Gitlab group name, required for access-type&#x3D;group | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **InstallationOrganization** | Pointer to **string** | Gitlab project name, required for access-type&#x3D;project | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -258,6 +260,31 @@ SetGroupName sets GroupName field to given value.
 
 HasGroupName returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *DynamicSecretUpdateGitlab) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *DynamicSecretUpdateGitlab) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *DynamicSecretUpdateGitlab) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *DynamicSecretUpdateGitlab) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetInstallationOrganization
 
 `func (o *DynamicSecretUpdateGitlab) GetInstallationOrganization() string`
@@ -377,6 +404,31 @@ SetNewName sets NewName field to given value.
 `func (o *DynamicSecretUpdateGitlab) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOutputRule
+
+`func (o *DynamicSecretUpdateGitlab) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *DynamicSecretUpdateGitlab) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *DynamicSecretUpdateGitlab) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *DynamicSecretUpdateGitlab) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetTags
 

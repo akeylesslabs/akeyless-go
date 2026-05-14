@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **EventCenterAccess** | Pointer to **string** | Allow this role to view Event Center. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported | [optional] 
 **EventForwarderAccess** | Pointer to **string** | Allow this role to manage Event Forwarders. Currently only &#39;none&#39; and &#39;all&#39; values are supported. | [optional] 
 **GwAnalyticsAccess** | Pointer to **string** | Allow this role to view gw analytics. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
+**IsiAccess** | Pointer to **string** | Allow this role to access Identity &amp; Secrets Intelligence. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Role name | 
 **NewComment** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_comment"]
@@ -240,6 +241,31 @@ SetGwAnalyticsAccess sets GwAnalyticsAccess field to given value.
 `func (o *UpdateRole) HasGwAnalyticsAccess() bool`
 
 HasGwAnalyticsAccess returns a boolean if a field has been set.
+
+### GetIsiAccess
+
+`func (o *UpdateRole) GetIsiAccess() string`
+
+GetIsiAccess returns the IsiAccess field if non-nil, zero value otherwise.
+
+### GetIsiAccessOk
+
+`func (o *UpdateRole) GetIsiAccessOk() (*string, bool)`
+
+GetIsiAccessOk returns a tuple with the IsiAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsiAccess
+
+`func (o *UpdateRole) SetIsiAccess(v string)`
+
+SetIsiAccess sets IsiAccess field to given value.
+
+### HasIsiAccess
+
+`func (o *UpdateRole) HasIsiAccess() bool`
+
+HasIsiAccess returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -12,9 +12,11 @@ Name | Type | Description | Notes
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GroupEmail** | Pointer to **string** | A group email, relevant only for group access-mode | [optional] 
 **GroupRole** | Pointer to **string** |  | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RoleName** | Pointer to **string** | Name of the admin role to assign to the user, relevant only for role access-mode | [optional] 
 **RoleScope** | Pointer to **string** |  | [optional] 
@@ -239,6 +241,31 @@ SetGroupRole sets GroupRole field to given value.
 
 HasGroupRole returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *DynamicSecretCreateGoogleWorkspace) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *DynamicSecretCreateGoogleWorkspace) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *DynamicSecretCreateGoogleWorkspace) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *DynamicSecretCreateGoogleWorkspace) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *DynamicSecretCreateGoogleWorkspace) GetItemCustomFields() map[string]string`
@@ -308,6 +335,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOutputRule
+
+`func (o *DynamicSecretCreateGoogleWorkspace) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *DynamicSecretCreateGoogleWorkspace) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *DynamicSecretCreateGoogleWorkspace) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *DynamicSecretCreateGoogleWorkspace) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
 
 ### GetProducerEncryptionKeyName
 

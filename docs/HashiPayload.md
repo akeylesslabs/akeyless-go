@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteSyncOnDeletion** | Pointer to **bool** |  | [optional] 
 **ImportAsJson** | Pointer to **bool** |  | [optional] 
+**MetadataMode** | Pointer to **string** |  | [optional] 
 **Namespaces** | Pointer to **[]string** |  | [optional] 
 **Token** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** |  | [optional] 
@@ -79,6 +80,31 @@ SetImportAsJson sets ImportAsJson field to given value.
 `func (o *HashiPayload) HasImportAsJson() bool`
 
 HasImportAsJson returns a boolean if a field has been set.
+
+### GetMetadataMode
+
+`func (o *HashiPayload) GetMetadataMode() string`
+
+GetMetadataMode returns the MetadataMode field if non-nil, zero value otherwise.
+
+### GetMetadataModeOk
+
+`func (o *HashiPayload) GetMetadataModeOk() (*string, bool)`
+
+GetMetadataModeOk returns a tuple with the MetadataMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetadataMode
+
+`func (o *HashiPayload) SetMetadataMode(v string)`
+
+SetMetadataMode sets MetadataMode field to given value.
+
+### HasMetadataMode
+
+`func (o *HashiPayload) HasMetadataMode() bool`
+
+HasMetadataMode returns a boolean if a field has been set.
 
 ### GetNamespaces
 

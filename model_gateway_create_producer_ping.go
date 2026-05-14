@@ -24,12 +24,16 @@ var _ MappedNullable = &GatewayCreateProducerPing{}
 type GatewayCreateProducerPing struct {
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Dynamic secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// Ping Federate administrative port
 	PingAdministrativePort *string `json:"ping-administrative-port,omitempty"`
 	// Set a specific Access Token Management (ATM) instance for the created OAuth Client by providing the ATM Id. If no explicit value is given, the default pingfederate server ATM will be set.
@@ -152,6 +156,38 @@ func (o *GatewayCreateProducerPing) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *GatewayCreateProducerPing) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerPing) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPing) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *GatewayCreateProducerPing) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *GatewayCreateProducerPing) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -238,6 +274,38 @@ func (o *GatewayCreateProducerPing) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *GatewayCreateProducerPing) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *GatewayCreateProducerPing) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerPing) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *GatewayCreateProducerPing) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *GatewayCreateProducerPing) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetPingAdministrativePort returns the PingAdministrativePort field value if set, zero value otherwise.
@@ -957,6 +1025,9 @@ func (o GatewayCreateProducerPing) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -964,6 +1035,9 @@ func (o GatewayCreateProducerPing) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.PingAdministrativePort) {
 		toSerialize["ping-administrative-port"] = o.PingAdministrativePort
 	}

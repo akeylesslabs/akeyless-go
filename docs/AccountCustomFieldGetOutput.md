@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountId** | Pointer to **string** |  | [optional] 
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
-**DeletionDate** | Pointer to [**NullTime**](NullTime.md) |  | [optional] 
+**DeletionDate** | Pointer to **time.Time** |  | [optional] 
 **Id** | Pointer to **int64** |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -85,20 +85,20 @@ HasCreationDate returns a boolean if a field has been set.
 
 ### GetDeletionDate
 
-`func (o *AccountCustomFieldGetOutput) GetDeletionDate() NullTime`
+`func (o *AccountCustomFieldGetOutput) GetDeletionDate() time.Time`
 
 GetDeletionDate returns the DeletionDate field if non-nil, zero value otherwise.
 
 ### GetDeletionDateOk
 
-`func (o *AccountCustomFieldGetOutput) GetDeletionDateOk() (*NullTime, bool)`
+`func (o *AccountCustomFieldGetOutput) GetDeletionDateOk() (*time.Time, bool)`
 
 GetDeletionDateOk returns a tuple with the DeletionDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeletionDate
 
-`func (o *AccountCustomFieldGetOutput) SetDeletionDate(v NullTime)`
+`func (o *AccountCustomFieldGetOutput) SetDeletionDate(v time.Time)`
 
 SetDeletionDate sets DeletionDate field to given value.
 

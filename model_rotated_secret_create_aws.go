@@ -44,6 +44,8 @@ type RotatedSecretCreateAws struct {
 	GraceRotationInterval *string `json:"grace-rotation-interval,omitempty"`
 	// When to create the new version relative to the rotation date [after/before]
 	GraceRotationTiming *string `json:"grace-rotation-timing,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -56,6 +58,8 @@ type RotatedSecretCreateAws struct {
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
 	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
@@ -474,6 +478,38 @@ func (o *RotatedSecretCreateAws) SetGraceRotationTiming(v string) {
 	o.GraceRotationTiming = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAws) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAws) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAws) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *RotatedSecretCreateAws) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *RotatedSecretCreateAws) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -656,6 +692,38 @@ func (o *RotatedSecretCreateAws) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *RotatedSecretCreateAws) SetName(v string) {
 	o.Name = v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAws) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAws) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAws) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *RotatedSecretCreateAws) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
@@ -1165,6 +1233,9 @@ func (o RotatedSecretCreateAws) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GraceRotationTiming) {
 		toSerialize["grace-rotation-timing"] = o.GraceRotationTiming
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -1181,6 +1252,9 @@ func (o RotatedSecretCreateAws) ToMap() (map[string]interface{}, error) {
 		toSerialize["max-versions"] = o.MaxVersions
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
 	}

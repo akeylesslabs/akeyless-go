@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DigicertDirectoryType** | Pointer to **string** |  | [optional] 
 **DnsTargetName** | Pointer to **string** | Name of DNS target (transient field - not stored in DB). Used by CLI to pass DNS target name to SDK for creating target_object_assoc. Retrieved from target_object_assoc when reading target. Required when ChallengeType is dns. | [optional] 
 **DnsTargetType** | Pointer to **string** |  | [optional] 
+**DnsZone** | Pointer to **string** | Cloudflare zone identifier. Required when DNSTargetType is Cloudflare. | [optional] 
 **EabHmacKey** | Pointer to **string** | External Account Binding HMAC key. Required until ACME account is bootstrapped on first issuance. | [optional] 
 **EabKeyId** | Pointer to **string** | External Account Binding key identifier. Required until ACME account is bootstrapped on first issuance. | [optional] 
 **Email** | Pointer to **string** | Email address for ACME account registration. Required. | [optional] 
@@ -186,6 +187,31 @@ SetDnsTargetType sets DnsTargetType field to given value.
 `func (o *DigiCertTargetDetails) HasDnsTargetType() bool`
 
 HasDnsTargetType returns a boolean if a field has been set.
+
+### GetDnsZone
+
+`func (o *DigiCertTargetDetails) GetDnsZone() string`
+
+GetDnsZone returns the DnsZone field if non-nil, zero value otherwise.
+
+### GetDnsZoneOk
+
+`func (o *DigiCertTargetDetails) GetDnsZoneOk() (*string, bool)`
+
+GetDnsZoneOk returns a tuple with the DnsZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsZone
+
+`func (o *DigiCertTargetDetails) SetDnsZone(v string)`
+
+SetDnsZone sets DnsZone field to given value.
+
+### HasDnsZone
+
+`func (o *DigiCertTargetDetails) HasDnsZone() bool`
+
+HasDnsZone returns a boolean if a field has been set.
 
 ### GetEabHmacKey
 

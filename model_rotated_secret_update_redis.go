@@ -32,6 +32,8 @@ type RotatedSecretUpdateRedis struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
@@ -46,6 +48,8 @@ type RotatedSecretUpdateRedis struct {
 	Name string `json:"name"`
 	// New item name
 	NewName *string `json:"new-name,omitempty"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
 	// List of the existent tags that will be removed from this item
@@ -256,6 +260,38 @@ func (o *RotatedSecretUpdateRedis) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *RotatedSecretUpdateRedis) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateRedis) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateRedis) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateRedis) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *RotatedSecretUpdateRedis) SetInputRule(v []string) {
+	o.InputRule = v
 }
 
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
@@ -472,6 +508,38 @@ func (o *RotatedSecretUpdateRedis) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *RotatedSecretUpdateRedis) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateRedis) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateRedis) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateRedis) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *RotatedSecretUpdateRedis) SetOutputRule(v []string) {
+	o.OutputRule = v
 }
 
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
@@ -787,6 +855,9 @@ func (o RotatedSecretUpdateRedis) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -805,6 +876,9 @@ func (o RotatedSecretUpdateRedis) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
 	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength

@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **AcmeChallenge** | Pointer to **string** |  | [optional] [default to "http"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP targets | [optional] 
+**DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP, Cloudflare targets | [optional] 
+**DnsZone** | Pointer to **string** | Cloudflare DNS zone identifier. Required when dns-target-creds points to Cloudflare target | [optional] 
 **Email** | **string** | Email address for ACME account registration | 
 **GcpProject** | Pointer to **string** | GCP Cloud DNS: Project ID. Optional - can be derived from service account | [optional] 
 **HostedZone** | Pointer to **string** | AWS Route53 hosted zone ID. Required when dns-target-creds points to AWS target | [optional] 
@@ -139,6 +140,31 @@ SetDnsTargetCreds sets DnsTargetCreds field to given value.
 `func (o *TargetCreateLetsEncrypt) HasDnsTargetCreds() bool`
 
 HasDnsTargetCreds returns a boolean if a field has been set.
+
+### GetDnsZone
+
+`func (o *TargetCreateLetsEncrypt) GetDnsZone() string`
+
+GetDnsZone returns the DnsZone field if non-nil, zero value otherwise.
+
+### GetDnsZoneOk
+
+`func (o *TargetCreateLetsEncrypt) GetDnsZoneOk() (*string, bool)`
+
+GetDnsZoneOk returns a tuple with the DnsZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsZone
+
+`func (o *TargetCreateLetsEncrypt) SetDnsZone(v string)`
+
+SetDnsZone sets DnsZone field to given value.
+
+### HasDnsZone
+
+`func (o *TargetCreateLetsEncrypt) HasDnsZone() bool`
+
+HasDnsZone returns a boolean if a field has been set.
 
 ### GetEmail
 

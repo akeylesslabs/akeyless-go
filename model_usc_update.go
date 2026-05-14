@@ -33,6 +33,10 @@ type UscUpdate struct {
 	ObjectType *string `json:"object-type,omitempty"`
 	// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
 	PfxPassword *string `json:"pfx-password,omitempty"`
+	// Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+	RemoteSecretActivationDate *string `json:"remote-secret-activation-date,omitempty"`
+	// Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
+	RemoteSecretExpires *string `json:"remote-secret-expires,omitempty"`
 	// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update
 	SecretId string `json:"secret-id"`
 	// GitHub selected repositories (required for GitHub USC when repository-access is 'selected' or for repository scope) Comma-separated repository names (e.g., \"repo1,repo2\")
@@ -267,6 +271,70 @@ func (o *UscUpdate) HasPfxPassword() bool {
 // SetPfxPassword gets a reference to the given string and assigns it to the PfxPassword field.
 func (o *UscUpdate) SetPfxPassword(v string) {
 	o.PfxPassword = &v
+}
+
+// GetRemoteSecretActivationDate returns the RemoteSecretActivationDate field value if set, zero value otherwise.
+func (o *UscUpdate) GetRemoteSecretActivationDate() string {
+	if o == nil || IsNil(o.RemoteSecretActivationDate) {
+		var ret string
+		return ret
+	}
+	return *o.RemoteSecretActivationDate
+}
+
+// GetRemoteSecretActivationDateOk returns a tuple with the RemoteSecretActivationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetRemoteSecretActivationDateOk() (*string, bool) {
+	if o == nil || IsNil(o.RemoteSecretActivationDate) {
+		return nil, false
+	}
+	return o.RemoteSecretActivationDate, true
+}
+
+// HasRemoteSecretActivationDate returns a boolean if a field has been set.
+func (o *UscUpdate) HasRemoteSecretActivationDate() bool {
+	if o != nil && !IsNil(o.RemoteSecretActivationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteSecretActivationDate gets a reference to the given string and assigns it to the RemoteSecretActivationDate field.
+func (o *UscUpdate) SetRemoteSecretActivationDate(v string) {
+	o.RemoteSecretActivationDate = &v
+}
+
+// GetRemoteSecretExpires returns the RemoteSecretExpires field value if set, zero value otherwise.
+func (o *UscUpdate) GetRemoteSecretExpires() string {
+	if o == nil || IsNil(o.RemoteSecretExpires) {
+		var ret string
+		return ret
+	}
+	return *o.RemoteSecretExpires
+}
+
+// GetRemoteSecretExpiresOk returns a tuple with the RemoteSecretExpires field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetRemoteSecretExpiresOk() (*string, bool) {
+	if o == nil || IsNil(o.RemoteSecretExpires) {
+		return nil, false
+	}
+	return o.RemoteSecretExpires, true
+}
+
+// HasRemoteSecretExpires returns a boolean if a field has been set.
+func (o *UscUpdate) HasRemoteSecretExpires() bool {
+	if o != nil && !IsNil(o.RemoteSecretExpires) {
+		return true
+	}
+
+	return false
+}
+
+// SetRemoteSecretExpires gets a reference to the given string and assigns it to the RemoteSecretExpires field.
+func (o *UscUpdate) SetRemoteSecretExpires(v string) {
+	o.RemoteSecretExpires = &v
 }
 
 // GetSecretId returns the SecretId field value
@@ -528,6 +596,12 @@ func (o UscUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PfxPassword) {
 		toSerialize["pfx-password"] = o.PfxPassword
+	}
+	if !IsNil(o.RemoteSecretActivationDate) {
+		toSerialize["remote-secret-activation-date"] = o.RemoteSecretActivationDate
+	}
+	if !IsNil(o.RemoteSecretExpires) {
+		toSerialize["remote-secret-expires"] = o.RemoteSecretExpires
 	}
 	toSerialize["secret-id"] = o.SecretId
 	if !IsNil(o.SelectedRepositories) {

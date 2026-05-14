@@ -28,8 +28,10 @@ type TargetCreateGoogleTrust struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP
+	// Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare
 	DnsTargetCreds *string `json:"dns-target-creds,omitempty"`
+	// Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare
+	DnsZone *string `json:"dns-zone,omitempty"`
 	// External Account Binding HMAC key (required for ACME account bootstrap on create)
 	EabHmacKey *string `json:"eab-hmac-key,omitempty"`
 	// External Account Binding key identifier (required for ACME account bootstrap on create)
@@ -223,6 +225,38 @@ func (o *TargetCreateGoogleTrust) HasDnsTargetCreds() bool {
 // SetDnsTargetCreds gets a reference to the given string and assigns it to the DnsTargetCreds field.
 func (o *TargetCreateGoogleTrust) SetDnsTargetCreds(v string) {
 	o.DnsTargetCreds = &v
+}
+
+// GetDnsZone returns the DnsZone field value if set, zero value otherwise.
+func (o *TargetCreateGoogleTrust) GetDnsZone() string {
+	if o == nil || IsNil(o.DnsZone) {
+		var ret string
+		return ret
+	}
+	return *o.DnsZone
+}
+
+// GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateGoogleTrust) GetDnsZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.DnsZone) {
+		return nil, false
+	}
+	return o.DnsZone, true
+}
+
+// HasDnsZone returns a boolean if a field has been set.
+func (o *TargetCreateGoogleTrust) HasDnsZone() bool {
+	if o != nil && !IsNil(o.DnsZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsZone gets a reference to the given string and assigns it to the DnsZone field.
+func (o *TargetCreateGoogleTrust) SetDnsZone(v string) {
+	o.DnsZone = &v
 }
 
 // GetEabHmacKey returns the EabHmacKey field value if set, zero value otherwise.
@@ -678,6 +712,9 @@ func (o TargetCreateGoogleTrust) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DnsTargetCreds) {
 		toSerialize["dns-target-creds"] = o.DnsTargetCreds
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns-zone"] = o.DnsZone
 	}
 	if !IsNil(o.EabHmacKey) {
 		toSerialize["eab-hmac-key"] = o.EabHmacKey

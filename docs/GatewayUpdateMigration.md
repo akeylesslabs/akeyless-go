@@ -47,6 +47,7 @@ Name | Type | Description | Notes
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (cross-project override) | [optional] 
 **HashiJson** | Pointer to **string** | Import secret key as json value or independent secrets (relevant only for HasiCorp Vault migration) [true/false] | [optional] [default to "true"]
+**HashiMetadataMode** | Pointer to **string** | Controls the amount of HashiCorp Vault secret metadata migrated with each secret value. Options: none|minimal|full | [optional] 
 **HashiNs** | Pointer to **[]string** | HashiCorp Vault Namespaces is a comma-separated list of namespaces which need to be imported into Akeyless Vault. For every provided namespace, all its child namespaces are imported as well, e.g. nmsp/subnmsp1/subnmsp2,nmsp/anothernmsp. By default, import all namespaces (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiToken** | Pointer to **string** | HashiCorp Vault access token with sufficient permissions to preform list &amp; read operations on secrets objects (relevant only for HasiCorp Vault migration) | [optional] 
 **HashiUrl** | Pointer to **string** | HashiCorp Vault API URL, e.g. https://vault-mgr01:8200 (relevant only for HasiCorp Vault migration) | [optional] 
@@ -1173,6 +1174,31 @@ SetHashiJson sets HashiJson field to given value.
 `func (o *GatewayUpdateMigration) HasHashiJson() bool`
 
 HasHashiJson returns a boolean if a field has been set.
+
+### GetHashiMetadataMode
+
+`func (o *GatewayUpdateMigration) GetHashiMetadataMode() string`
+
+GetHashiMetadataMode returns the HashiMetadataMode field if non-nil, zero value otherwise.
+
+### GetHashiMetadataModeOk
+
+`func (o *GatewayUpdateMigration) GetHashiMetadataModeOk() (*string, bool)`
+
+GetHashiMetadataModeOk returns a tuple with the HashiMetadataMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashiMetadataMode
+
+`func (o *GatewayUpdateMigration) SetHashiMetadataMode(v string)`
+
+SetHashiMetadataMode sets HashiMetadataMode field to given value.
+
+### HasHashiMetadataMode
+
+`func (o *GatewayUpdateMigration) HasHashiMetadataMode() bool`
+
+HasHashiMetadataMode returns a boolean if a field has been set.
 
 ### GetHashiNs
 

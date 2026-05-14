@@ -31,6 +31,8 @@ type LetsEncryptTargetDetails struct {
 	// Name of DNS target (transient field - not stored in DB) Used by CLI to pass DNS target name to SDK for creating target_object_assoc Retrieved from target_object_assoc when reading target Required when ChallengeType is \"dns\"
 	DnsTargetName *string `json:"dns_target_name,omitempty"`
 	DnsTargetType *string `json:"dns_target_type,omitempty"`
+	// Cloudflare zone identifier Required when DNSTargetType is Cloudflare
+	DnsZone *string `json:"dns_zone,omitempty"`
 	// Email address for ACME account registration Required
 	Email *string `json:"email,omitempty"`
 	// GCP Cloud DNS: Project ID Optional - can be derived from service account
@@ -252,6 +254,38 @@ func (o *LetsEncryptTargetDetails) SetDnsTargetType(v string) {
 	o.DnsTargetType = &v
 }
 
+// GetDnsZone returns the DnsZone field value if set, zero value otherwise.
+func (o *LetsEncryptTargetDetails) GetDnsZone() string {
+	if o == nil || IsNil(o.DnsZone) {
+		var ret string
+		return ret
+	}
+	return *o.DnsZone
+}
+
+// GetDnsZoneOk returns a tuple with the DnsZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LetsEncryptTargetDetails) GetDnsZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.DnsZone) {
+		return nil, false
+	}
+	return o.DnsZone, true
+}
+
+// HasDnsZone returns a boolean if a field has been set.
+func (o *LetsEncryptTargetDetails) HasDnsZone() bool {
+	if o != nil && !IsNil(o.DnsZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsZone gets a reference to the given string and assigns it to the DnsZone field.
+func (o *LetsEncryptTargetDetails) SetDnsZone(v string) {
+	o.DnsZone = &v
+}
+
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *LetsEncryptTargetDetails) GetEmail() string {
 	if o == nil || IsNil(o.Email) {
@@ -439,6 +473,9 @@ func (o LetsEncryptTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DnsTargetType) {
 		toSerialize["dns_target_type"] = o.DnsTargetType
+	}
+	if !IsNil(o.DnsZone) {
+		toSerialize["dns_zone"] = o.DnsZone
 	}
 	if !IsNil(o.Email) {
 		toSerialize["email"] = o.Email

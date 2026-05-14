@@ -21,6 +21,7 @@ var _ MappedNullable = &SecretInfo{}
 
 // SecretInfo struct for SecretInfo
 type SecretInfo struct {
+	ActivationDate *time.Time `json:"activation_date,omitempty"`
 	Created *time.Time `json:"created,omitempty"`
 	Description *string `json:"description,omitempty"`
 	Expiration *time.Time `json:"expiration,omitempty"`
@@ -54,6 +55,38 @@ func NewSecretInfo() *SecretInfo {
 func NewSecretInfoWithDefaults() *SecretInfo {
 	this := SecretInfo{}
 	return &this
+}
+
+// GetActivationDate returns the ActivationDate field value if set, zero value otherwise.
+func (o *SecretInfo) GetActivationDate() time.Time {
+	if o == nil || IsNil(o.ActivationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ActivationDate
+}
+
+// GetActivationDateOk returns a tuple with the ActivationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetActivationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ActivationDate) {
+		return nil, false
+	}
+	return o.ActivationDate, true
+}
+
+// HasActivationDate returns a boolean if a field has been set.
+func (o *SecretInfo) HasActivationDate() bool {
+	if o != nil && !IsNil(o.ActivationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetActivationDate gets a reference to the given time.Time and assigns it to the ActivationDate field.
+func (o *SecretInfo) SetActivationDate(v time.Time) {
+	o.ActivationDate = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
@@ -579,6 +612,9 @@ func (o SecretInfo) MarshalJSON() ([]byte, error) {
 
 func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ActivationDate) {
+		toSerialize["activation_date"] = o.ActivationDate
+	}
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
