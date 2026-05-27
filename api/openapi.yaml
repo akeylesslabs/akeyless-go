@@ -20656,6 +20656,7 @@ components:
           enable: true
           enable_time: 2000-01-23T04:56:07.000+00:00
           interval_by_days: 6
+        enable_search_history: true
         hide_static_password: true
         lock_default_key: true
         account_default_key_name: account_default_key_name
@@ -20755,6 +20756,9 @@ components:
         enable_request_for_access:
           type: boolean
           x-go-name: EnableRequestForAccess
+        enable_search_history:
+          type: boolean
+          x-go-name: EnableSearchHistory
         hide_personal_folder:
           type: boolean
           x-go-name: HidePersonalFolder
@@ -24927,6 +24931,7 @@ components:
           - organization_unit_list
           - organization_unit_list
           auto_renew_certificate: true
+          basic_constraints: basic_constraints
           gw_cluster_url: gw_cluster_url
           organization_list:
           - organization_list
@@ -24968,6 +24973,7 @@ components:
           disable_wildcards: true
           code_signing_flag: true
           create_public_crl: true
+          basic_constraints_critical: true
           create_private_crl: true
           postal_code:
           - postal_code
@@ -26194,55 +26200,56 @@ components:
         key-usage: "DigitalSignature,KeyAgreement,KeyEncipherment"
         country: country
         allowed-extra-extensions: allowed-extra-extensions
-        create-public-ocsp: true
         metadata: metadata
         allowed-ip-sans: allowed-ip-sans
-        enable-acme: true
-        description: description
         organizational-units: organizational-units
-        uid-token: uid-token
         allow-subdomains: true
-        not-require-cn: true
-        allowed-uri-sans: allowed-uri-sans
         destination-path: destination-path
         create-private-ocsp: true
         province: province
-        street-address: street-address
-        auto-renew: true
-        json: false
         expiration-event-in:
         - expiration-event-in
         - expiration-event-in
-        signer-key-name: signer-key-name
         tag:
         - tag
         - tag
         scheduled-renew: 6
         is-ca: true
-        create-private-crl: true
-        ca-target: ca-target
-        critical-key-usage: "true"
         protect-certificates: true
-        code-signing-flag: true
         locality: locality
         allowed-domains: allowed-domains
         disable-wildcards: true
         allow-any-name: true
+        create-public-crl: true
+        delete_protection: delete_protection
+        server-flag: true
+        name: name
+        not-enforce-hostnames: true
+        allow-copy-ext-from-csr: true
+        create-public-ocsp: true
+        enable-acme: true
+        description: description
+        uid-token: uid-token
+        not-require-cn: true
+        allowed-uri-sans: allowed-uri-sans
+        street-address: street-address
+        auto-renew: true
+        json: false
+        signer-key-name: signer-key-name
+        create-private-crl: true
+        ca-target: ca-target
+        critical-key-usage: "true"
+        basic-constraints: basic-constraints
+        code-signing-flag: true
         ttl: ttl
         token: token
         client-flag: true
-        create-public-crl: true
-        delete_protection: delete_protection
         postal-code: postal-code
-        server-flag: true
         item-custom-fields:
           key: item-custom-fields
         max-path-len: 0
-        name: name
         organizations: organizations
         ocsp-ttl: ocsp-ttl
-        not-enforce-hostnames: true
-        allow-copy-ext-from-csr: true
         gw-cluster-url: gw-cluster-url
       properties:
         allow-any-name:
@@ -26287,6 +26294,11 @@ components:
           description: Automatically renew certificates before expiration
           type: boolean
           x-go-name: AutoRenew
+        basic-constraints:
+          description: Defines the X.509 Basic Constraints extension for certificates
+            issued by this PKI issuer template
+          type: string
+          x-go-name: BasicConstraints
         ca-target:
           description: "The name of an existing CA target to attach this PKI Certificate\
             \ Issuer to, required in Public CA mode"
@@ -26955,6 +26967,7 @@ components:
             rule: rule
         gke_cluster_ca_certificate: gke_cluster_ca_certificate
         aws_external_id: aws_external_id
+        preserve_existing_password_settings: true
         k8s_bearer_token: k8s_bearer_token
         azure_resource_name: azure_resource_name
         cassandra_creation_statements: cassandra_creation_statements
@@ -27017,6 +27030,12 @@ components:
         venafi_tpp_refresh_token: venafi_tpp_refresh_token
         aws_transitive_tag_keys: aws_transitive_tag_keys
         k8s_cluster_name: k8s_cluster_name
+        password_policy_info:
+          use_numbers: true
+          use_capital_letters: true
+          use_special_characters: true
+          use_lower_letters: true
+          password_length: 2
         sf_account: sf_account
         secure_remote_access_details:
           schema: schema
@@ -27949,6 +27968,8 @@ components:
         password_policy:
           type: string
           x-go-name: PasswordPolicy
+        password_policy_info:
+          $ref: '#/components/schemas/PasswordPolicyInfo'
         payload:
           type: string
           x-go-name: Payload
@@ -27961,6 +27982,12 @@ components:
         postgres_revocation_statements:
           type: string
           x-go-name: PostgresRevocationStatements
+        preserve_existing_password_settings:
+          description: |-
+            Internal marker for DS update flows: when true, keep the persisted
+            password settings and merge explicit rule updates on top.
+          type: boolean
+          x-go-name: PreserveExistingPasswordSettings
         privileged_user:
           type: string
           x-go-name: PrivilegedUser
@@ -30157,6 +30184,7 @@ components:
             enable: true
             enable_time: 2000-01-23T04:56:07.000+00:00
             interval_by_days: 6
+          enable_search_history: true
           hide_static_password: true
           lock_default_key: true
           account_default_key_name: account_default_key_name
@@ -31898,6 +31926,7 @@ components:
             - organization_unit_list
             - organization_unit_list
             auto_renew_certificate: true
+            basic_constraints: basic_constraints
             gw_cluster_url: gw_cluster_url
             organization_list:
             - organization_list
@@ -31939,6 +31968,7 @@ components:
             disable_wildcards: true
             code_signing_flag: true
             create_public_crl: true
+            basic_constraints_critical: true
             create_private_crl: true
             postal_code:
             - postal_code
@@ -32562,6 +32592,7 @@ components:
               - organization_unit_list
               - organization_unit_list
               auto_renew_certificate: true
+              basic_constraints: basic_constraints
               gw_cluster_url: gw_cluster_url
               organization_list:
               - organization_list
@@ -32603,6 +32634,7 @@ components:
               disable_wildcards: true
               code_signing_flag: true
               create_public_crl: true
+              basic_constraints_critical: true
               create_private_crl: true
               postal_code:
               - postal_code
@@ -33438,6 +33470,7 @@ components:
             - organization_unit_list
             - organization_unit_list
             auto_renew_certificate: true
+            basic_constraints: basic_constraints
             gw_cluster_url: gw_cluster_url
             organization_list:
             - organization_list
@@ -33479,6 +33512,7 @@ components:
             disable_wildcards: true
             code_signing_flag: true
             create_public_crl: true
+            basic_constraints_critical: true
             create_private_crl: true
             postal_code:
             - postal_code
@@ -36285,6 +36319,7 @@ components:
               - organization_unit_list
               - organization_unit_list
               auto_renew_certificate: true
+              basic_constraints: basic_constraints
               gw_cluster_url: gw_cluster_url
               organization_list:
               - organization_list
@@ -36326,6 +36361,7 @@ components:
               disable_wildcards: true
               code_signing_flag: true
               create_public_crl: true
+              basic_constraints_critical: true
               create_private_crl: true
               postal_code:
               - postal_code
@@ -36949,6 +36985,7 @@ components:
                 - organization_unit_list
                 - organization_unit_list
                 auto_renew_certificate: true
+                basic_constraints: basic_constraints
                 gw_cluster_url: gw_cluster_url
                 organization_list:
                 - organization_list
@@ -36990,6 +37027,7 @@ components:
                 disable_wildcards: true
                 code_signing_flag: true
                 create_public_crl: true
+                basic_constraints_critical: true
                 create_private_crl: true
                 postal_code:
                 - postal_code
@@ -37230,6 +37268,7 @@ components:
               - organization_unit_list
               - organization_unit_list
               auto_renew_certificate: true
+              basic_constraints: basic_constraints
               gw_cluster_url: gw_cluster_url
               organization_list:
               - organization_list
@@ -37271,6 +37310,7 @@ components:
               disable_wildcards: true
               code_signing_flag: true
               create_public_crl: true
+              basic_constraints_critical: true
               create_private_crl: true
               postal_code:
               - postal_code
@@ -37894,6 +37934,7 @@ components:
                 - organization_unit_list
                 - organization_unit_list
                 auto_renew_certificate: true
+                basic_constraints: basic_constraints
                 gw_cluster_url: gw_cluster_url
                 organization_list:
                 - organization_list
@@ -37935,6 +37976,7 @@ components:
                 disable_wildcards: true
                 code_signing_flag: true
                 create_public_crl: true
+                basic_constraints_critical: true
                 create_private_crl: true
                 postal_code:
                 - postal_code
@@ -38201,6 +38243,7 @@ components:
               - organization_unit_list
               - organization_unit_list
               auto_renew_certificate: true
+              basic_constraints: basic_constraints
               gw_cluster_url: gw_cluster_url
               organization_list:
               - organization_list
@@ -38242,6 +38285,7 @@ components:
               disable_wildcards: true
               code_signing_flag: true
               create_public_crl: true
+              basic_constraints_critical: true
               create_private_crl: true
               postal_code:
               - postal_code
@@ -38865,6 +38909,7 @@ components:
                 - organization_unit_list
                 - organization_unit_list
                 auto_renew_certificate: true
+                basic_constraints: basic_constraints
                 gw_cluster_url: gw_cluster_url
                 organization_list:
                 - organization_list
@@ -38906,6 +38951,7 @@ components:
                 disable_wildcards: true
                 code_signing_flag: true
                 create_public_crl: true
+                basic_constraints_critical: true
                 create_private_crl: true
                 postal_code:
                 - postal_code
@@ -39146,6 +39192,7 @@ components:
               - organization_unit_list
               - organization_unit_list
               auto_renew_certificate: true
+              basic_constraints: basic_constraints
               gw_cluster_url: gw_cluster_url
               organization_list:
               - organization_list
@@ -39187,6 +39234,7 @@ components:
               disable_wildcards: true
               code_signing_flag: true
               create_public_crl: true
+              basic_constraints_critical: true
               create_private_crl: true
               postal_code:
               - postal_code
@@ -39810,6 +39858,7 @@ components:
                 - organization_unit_list
                 - organization_unit_list
                 auto_renew_certificate: true
+                basic_constraints: basic_constraints
                 gw_cluster_url: gw_cluster_url
                 organization_list:
                 - organization_list
@@ -39851,6 +39900,7 @@ components:
                 disable_wildcards: true
                 code_signing_flag: true
                 create_public_crl: true
+                basic_constraints_critical: true
                 create_private_crl: true
                 postal_code:
                 - postal_code
@@ -42162,6 +42212,7 @@ components:
         - organization_unit_list
         - organization_unit_list
         auto_renew_certificate: true
+        basic_constraints: basic_constraints
         gw_cluster_url: gw_cluster_url
         organization_list:
         - organization_list
@@ -42203,6 +42254,7 @@ components:
         disable_wildcards: true
         code_signing_flag: true
         create_public_crl: true
+        basic_constraints_critical: true
         create_private_crl: true
         postal_code:
         - postal_code
@@ -42247,6 +42299,12 @@ components:
         auto_renew_certificate:
           type: boolean
           x-go-name: AutoRenewCertificate
+        basic_constraints:
+          type: string
+          x-go-name: BasicConstraints
+        basic_constraints_critical:
+          type: boolean
+          x-go-name: BasicConstraintsCritical
         basic_constraints_valid_for_non_ca:
           type: boolean
           x-go-name: BasicConstraintsValidForNonCA
@@ -46238,6 +46296,7 @@ components:
         signer-key-name: signer-key-name
         create-private-crl: true
         critical-key-usage: "true"
+        basic-constraints: basic-constraints
         code-signing-flag: true
         ttl: ttl
         token: token
@@ -46298,6 +46357,11 @@ components:
           description: Automatically renew certificates before expiration
           type: boolean
           x-go-name: AutoRenew
+        basic-constraints:
+          description: Defines the X.509 Basic Constraints extension for certificates
+            issued by this PKI issuer template
+          type: string
+          x-go-name: BasicConstraints
         client-flag:
           description: "If set, certificates will be flagged for client auth use"
           type: boolean
@@ -58823,6 +58887,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -58959,6 +59044,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-group-obj-id:
           description: User Group Object Id
           type: string
@@ -59095,6 +59201,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -59199,6 +59326,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -60317,6 +60465,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -60667,6 +60836,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-attribute:
           description: User Attribute
           type: string
@@ -60847,6 +61037,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -61005,6 +61216,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -61170,6 +61402,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -61400,6 +61653,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -61516,6 +61790,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -61578,6 +61853,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -62136,6 +62417,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -62270,6 +62572,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -62433,6 +62756,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -62551,6 +62895,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -62680,6 +63045,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -62796,6 +63182,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 24h
           description: User TTL
@@ -63542,6 +63949,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -63682,6 +64110,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-group-obj-id:
           description: User Group Object Id
           type: string
@@ -63822,6 +64271,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -63930,6 +64400,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -65084,6 +65575,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -65442,6 +65954,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-attribute:
           description: User Attribute
           type: string
@@ -65626,6 +66159,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -65788,6 +66342,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -65957,6 +66532,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -66195,6 +66791,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -66311,6 +66928,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -66373,6 +66991,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -66939,6 +67563,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -67077,6 +67722,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -67244,6 +67910,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -67366,6 +68053,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -67499,6 +68207,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -67619,6 +68348,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 24h
           description: User TTL
@@ -70527,6 +71277,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -70589,6 +71340,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -71002,6 +71759,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -71118,6 +71896,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -71180,6 +71959,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -71539,6 +72324,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-group-obj-id:
           description: User Group Object Id
           type: string
@@ -71677,6 +72483,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -71739,6 +72546,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -72076,6 +72889,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -72192,6 +73026,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -72254,6 +73089,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -72581,6 +73422,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -72697,6 +73559,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -72759,6 +73622,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -73210,6 +74079,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -73272,6 +74142,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -73701,6 +74577,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -73763,6 +74640,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -74238,6 +75121,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -74300,6 +75184,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -74793,6 +75683,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -74855,6 +75746,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -75306,6 +76203,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -75368,6 +76266,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -75834,6 +76738,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -75896,6 +76801,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -76271,6 +77182,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -76387,6 +77319,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -76449,6 +77382,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -76842,6 +77781,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-attribute:
           description: User Attribute
           type: string
@@ -76966,6 +77926,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -77028,6 +77989,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -77409,6 +78376,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -77525,6 +78513,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -77587,6 +78576,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -77983,6 +78978,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -78099,6 +79115,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -78161,6 +79178,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -78549,6 +79572,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -78665,6 +79709,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -78727,6 +79772,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -79247,6 +80298,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -79309,6 +80361,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -79679,6 +80737,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -79795,6 +80874,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -79857,6 +80937,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -80370,6 +81456,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -80432,6 +81519,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -80812,6 +81905,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -80928,6 +82042,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -80990,6 +82105,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -81347,6 +82468,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -81463,6 +82605,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -81525,6 +82668,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -81912,6 +83061,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -82033,6 +83203,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -82095,6 +83266,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -82431,6 +83608,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -82551,6 +83749,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -82613,6 +83812,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -82961,6 +84166,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -83077,6 +84303,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -83139,6 +84366,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -83478,6 +84711,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 24h
           description: User TTL
@@ -83598,6 +84852,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -83660,6 +84915,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -84153,6 +85414,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -84215,6 +85477,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -88178,6 +89446,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -88240,6 +89509,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -88657,6 +89932,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -88773,6 +90069,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -88835,6 +90132,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -89198,6 +90501,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-group-obj-id:
           description: User Group Object Id
           type: string
@@ -89336,6 +90660,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -89398,6 +90723,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -89739,6 +91070,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -89855,6 +91207,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -89917,6 +91270,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -90248,6 +91607,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -90364,6 +91744,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -90426,6 +91807,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -90881,6 +92268,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -90943,6 +92331,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -91376,6 +92770,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -91438,6 +92833,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -91917,6 +93318,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -91979,6 +93381,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -92476,6 +93884,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -92538,6 +93947,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -92993,6 +94408,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -93055,6 +94471,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -93525,6 +94947,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -93587,6 +95010,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -93960,6 +95389,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -94076,6 +95526,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -94138,6 +95589,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -94535,6 +95992,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-attribute:
           description: User Attribute
           type: string
@@ -94659,6 +96137,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -94721,6 +96200,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -95106,6 +96591,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -95222,6 +96728,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -95284,6 +96791,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -95684,6 +97197,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -95800,6 +97334,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -95862,6 +97397,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -96254,6 +97795,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -96370,6 +97932,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -96432,6 +97995,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -96956,6 +98525,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -97018,6 +98588,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -97392,6 +98968,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -97508,6 +99105,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -97570,6 +99168,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -98087,6 +99691,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -98149,6 +99754,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -98533,6 +100144,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -98649,6 +100281,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -98711,6 +100344,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -99072,6 +100711,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -99188,6 +100848,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -99250,6 +100911,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -99641,6 +101308,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -99762,6 +101450,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -99824,6 +101513,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -100164,6 +101859,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -100284,6 +102000,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -100346,6 +102063,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -100698,6 +102421,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 60m
           description: User TTL
@@ -100814,6 +102558,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -100876,6 +102621,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -101219,6 +102970,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-ttl:
           default: 24h
           description: User TTL
@@ -101339,6 +103111,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -101401,6 +103174,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -101898,6 +103677,7 @@ components:
               rule: rule
           gke_cluster_ca_certificate: gke_cluster_ca_certificate
           aws_external_id: aws_external_id
+          preserve_existing_password_settings: true
           k8s_bearer_token: k8s_bearer_token
           azure_resource_name: azure_resource_name
           cassandra_creation_statements: cassandra_creation_statements
@@ -101960,6 +103740,12 @@ components:
           venafi_tpp_refresh_token: venafi_tpp_refresh_token
           aws_transitive_tag_keys: aws_transitive_tag_keys
           k8s_cluster_name: k8s_cluster_name
+          password_policy_info:
+            use_numbers: true
+            use_capital_letters: true
+            use_special_characters: true
+            use_lower_letters: true
+            password_length: 2
           sf_account: sf_account
           secure_remote_access_details:
             schema: schema
@@ -105970,6 +107756,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -106171,6 +107978,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         username:
           description: The user principal name to rotate his password (relevant only
             for rotator-type=password)
@@ -106297,6 +108125,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -106487,19 +108336,24 @@ components:
           type: string
           x-go-name: UIDToken
         use-capital-letters:
-          description: "Password must contain capital letters [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
           type: string
           x-go-name: UseCapitalLettersV2
         use-lower-letters:
-          description: "Password must contain lower case letters [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
           type: string
           x-go-name: UseLowerLetters
         use-numbers:
-          description: "Password must contain numbers [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
           type: string
           x-go-name: UseNumbers
         use-special-characters:
-          description: "Password must contain special characters [true/false]"
+          example: "! @ # $. [true/false]"
           type: string
           x-go-name: UseSpecialCharacters
       required:
@@ -106607,6 +108461,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - target-name
@@ -106750,6 +108625,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -106871,6 +108767,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -107064,6 +108981,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-attribute:
           default: cn
           description: "LDAP User Attribute, Default value \"cn\""
@@ -107235,6 +109173,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -107401,6 +109360,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -107563,6 +109543,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -107684,6 +109685,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -107837,6 +109859,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108012,6 +110055,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108133,6 +110197,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108281,6 +110366,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108412,6 +110518,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108567,6 +110694,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108759,6 +110907,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -108930,6 +111099,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -109297,6 +111487,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateAws is a command that updates a rotated secret.
@@ -109504,6 +111715,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         username:
           description: The user principal name to rotate his password (relevant only
             for rotator-type=password)
@@ -109636,6 +111868,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateCassandra is a command that updates a rotated secret.
@@ -109835,19 +112088,24 @@ components:
           type: string
           x-go-name: UIDToken
         use-capital-letters:
-          description: "Password must contain capital letters [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
           type: string
           x-go-name: UseCapitalLettersV2
         use-lower-letters:
-          description: "Password must contain lower case letters [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
           type: string
           x-go-name: UseLowerLetters
         use-numbers:
-          description: "Password must contain numbers [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
           type: string
           x-go-name: UseNumbers
         use-special-characters:
-          description: "Password must contain special characters [true/false]"
+          example: "! @ # $. [true/false]"
           type: string
           x-go-name: UseSpecialCharacters
       required:
@@ -109966,6 +112224,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateDockerhub is a command that updates a rotated secret.
@@ -110120,6 +112399,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -110248,6 +112548,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateHanadb is a command that updates a rotated secret.
@@ -110447,6 +112768,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
         user-attribute:
           default: cn
           description: "LDAP User Attribute, Default value \"cn\""
@@ -110624,6 +112966,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateMongodb is a command that updates a rotated secret.
@@ -110796,6 +113159,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateMssql is a command that updates a rotated secret.
@@ -110964,6 +113348,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateMysql is a command that updates a rotated secret.
@@ -111090,6 +113495,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: OpenAI
@@ -111249,6 +113675,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateOracledb is a command that updates a rotated secret.
@@ -111430,6 +113877,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdatePostgresql is a command that updates a rotated secret.
@@ -111557,6 +114025,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateRedis is a command that updates a rotated secret.
@@ -111711,6 +114200,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateRedshift is a command that updates a rotated secret.
@@ -111848,6 +114358,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: rotatedSecretUpdateSnowflake is a command that updates a rotated secret.
@@ -111994,6 +114525,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       title: Splunk
@@ -112196,6 +114748,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -112378,6 +114951,27 @@ components:
             \ authentication"
           type: string
           x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
       required:
       - name
       - rotator-type
@@ -119141,19 +121735,24 @@ components:
           type: string
           x-go-name: UsageEventObjectType
         use-capital-letters:
-          description: "Password must contain capital letters [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
           type: string
           x-go-name: UseCapitalLettersV2
         use-lower-letters:
-          description: "Password must contain lower case letters [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
           type: string
           x-go-name: UseLowerLetters
         use-numbers:
-          description: "Password must contain numbers [true/false]"
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
           type: string
           x-go-name: UseNumbers
         use-special-characters:
-          description: "Password must contain special characters [true/false]"
+          example: "! @ # $. [true/false]"
           type: string
           x-go-name: UseSpecialCharacters
       title: updateAccountSettings is a command that updates an existing account settings.

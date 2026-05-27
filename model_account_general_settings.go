@@ -37,6 +37,7 @@ type AccountGeneralSettings struct {
 	DefaultHomePage *DefaultHomePage `json:"default_home_page,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
+	EnableSearchHistory *bool `json:"enable_search_history,omitempty"`
 	HidePersonalFolder *bool `json:"hide_personal_folder,omitempty"`
 	HideSecretRevealCopy *bool `json:"hide_secret_reveal_copy,omitempty"`
 	HideStaticPassword *bool `json:"hide_static_password,omitempty"`
@@ -551,6 +552,38 @@ func (o *AccountGeneralSettings) SetEnableRequestForAccess(v bool) {
 	o.EnableRequestForAccess = &v
 }
 
+// GetEnableSearchHistory returns the EnableSearchHistory field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetEnableSearchHistory() bool {
+	if o == nil || IsNil(o.EnableSearchHistory) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableSearchHistory
+}
+
+// GetEnableSearchHistoryOk returns a tuple with the EnableSearchHistory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetEnableSearchHistoryOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableSearchHistory) {
+		return nil, false
+	}
+	return o.EnableSearchHistory, true
+}
+
+// HasEnableSearchHistory returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasEnableSearchHistory() bool {
+	if o != nil && !IsNil(o.EnableSearchHistory) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableSearchHistory gets a reference to the given bool and assigns it to the EnableSearchHistory field.
+func (o *AccountGeneralSettings) SetEnableSearchHistory(v bool) {
+	o.EnableSearchHistory = &v
+}
+
 // GetHidePersonalFolder returns the HidePersonalFolder field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetHidePersonalFolder() bool {
 	if o == nil || IsNil(o.HidePersonalFolder) {
@@ -1021,6 +1054,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableRequestForAccess) {
 		toSerialize["enable_request_for_access"] = o.EnableRequestForAccess
+	}
+	if !IsNil(o.EnableSearchHistory) {
+		toSerialize["enable_search_history"] = o.EnableSearchHistory
 	}
 	if !IsNil(o.HidePersonalFolder) {
 		toSerialize["hide_personal_folder"] = o.HidePersonalFolder

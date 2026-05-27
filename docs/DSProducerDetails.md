@@ -213,10 +213,12 @@ Name | Type | Description | Notes
 **Password** | Pointer to **string** |  | [optional] 
 **PasswordLength** | Pointer to **int64** |  | [optional] 
 **PasswordPolicy** | Pointer to **string** |  | [optional] 
+**PasswordPolicyInfo** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **Payload** | Pointer to **string** |  | [optional] 
 **PingUrl** | Pointer to **string** |  | [optional] 
 **PostgresCreationStatements** | Pointer to **string** |  | [optional] 
 **PostgresRevocationStatements** | Pointer to **string** |  | [optional] 
+**PreserveExistingPasswordSettings** | Pointer to **bool** | Internal marker for DS update flows: when true, keep the persisted password settings and merge explicit rule updates on top. | [optional] 
 **PrivilegedUser** | Pointer to **string** |  | [optional] 
 **ProjectId** | Pointer to **string** |  | [optional] 
 **RabbitmqServerPassword** | Pointer to **string** |  | [optional] 
@@ -5519,6 +5521,31 @@ SetPasswordPolicy sets PasswordPolicy field to given value.
 
 HasPasswordPolicy returns a boolean if a field has been set.
 
+### GetPasswordPolicyInfo
+
+`func (o *DSProducerDetails) GetPasswordPolicyInfo() PasswordPolicyInfo`
+
+GetPasswordPolicyInfo returns the PasswordPolicyInfo field if non-nil, zero value otherwise.
+
+### GetPasswordPolicyInfoOk
+
+`func (o *DSProducerDetails) GetPasswordPolicyInfoOk() (*PasswordPolicyInfo, bool)`
+
+GetPasswordPolicyInfoOk returns a tuple with the PasswordPolicyInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordPolicyInfo
+
+`func (o *DSProducerDetails) SetPasswordPolicyInfo(v PasswordPolicyInfo)`
+
+SetPasswordPolicyInfo sets PasswordPolicyInfo field to given value.
+
+### HasPasswordPolicyInfo
+
+`func (o *DSProducerDetails) HasPasswordPolicyInfo() bool`
+
+HasPasswordPolicyInfo returns a boolean if a field has been set.
+
 ### GetPayload
 
 `func (o *DSProducerDetails) GetPayload() string`
@@ -5618,6 +5645,31 @@ SetPostgresRevocationStatements sets PostgresRevocationStatements field to given
 `func (o *DSProducerDetails) HasPostgresRevocationStatements() bool`
 
 HasPostgresRevocationStatements returns a boolean if a field has been set.
+
+### GetPreserveExistingPasswordSettings
+
+`func (o *DSProducerDetails) GetPreserveExistingPasswordSettings() bool`
+
+GetPreserveExistingPasswordSettings returns the PreserveExistingPasswordSettings field if non-nil, zero value otherwise.
+
+### GetPreserveExistingPasswordSettingsOk
+
+`func (o *DSProducerDetails) GetPreserveExistingPasswordSettingsOk() (*bool, bool)`
+
+GetPreserveExistingPasswordSettingsOk returns a tuple with the PreserveExistingPasswordSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreserveExistingPasswordSettings
+
+`func (o *DSProducerDetails) SetPreserveExistingPasswordSettings(v bool)`
+
+SetPreserveExistingPasswordSettings sets PreserveExistingPasswordSettings field to given value.
+
+### HasPreserveExistingPasswordSettings
+
+`func (o *DSProducerDetails) HasPreserveExistingPasswordSettings() bool`
+
+HasPreserveExistingPasswordSettings returns a boolean if a field has been set.
 
 ### GetPrivilegedUser
 

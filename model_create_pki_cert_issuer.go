@@ -38,6 +38,8 @@ type CreatePKICertIssuer struct {
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
 	// Automatically renew certificates before expiration
 	AutoRenew *bool `json:"auto-renew,omitempty"`
+	// Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template
+	BasicConstraints *string `json:"basic-constraints,omitempty"`
 	// The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode
 	CaTarget *string `json:"ca-target,omitempty"`
 	// If set, certificates will be flagged for client auth use
@@ -411,6 +413,38 @@ func (o *CreatePKICertIssuer) HasAutoRenew() bool {
 // SetAutoRenew gets a reference to the given bool and assigns it to the AutoRenew field.
 func (o *CreatePKICertIssuer) SetAutoRenew(v bool) {
 	o.AutoRenew = &v
+}
+
+// GetBasicConstraints returns the BasicConstraints field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetBasicConstraints() string {
+	if o == nil || IsNil(o.BasicConstraints) {
+		var ret string
+		return ret
+	}
+	return *o.BasicConstraints
+}
+
+// GetBasicConstraintsOk returns a tuple with the BasicConstraints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetBasicConstraintsOk() (*string, bool) {
+	if o == nil || IsNil(o.BasicConstraints) {
+		return nil, false
+	}
+	return o.BasicConstraints, true
+}
+
+// HasBasicConstraints returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasBasicConstraints() bool {
+	if o != nil && !IsNil(o.BasicConstraints) {
+		return true
+	}
+
+	return false
+}
+
+// SetBasicConstraints gets a reference to the given string and assigns it to the BasicConstraints field.
+func (o *CreatePKICertIssuer) SetBasicConstraints(v string) {
+	o.BasicConstraints = &v
 }
 
 // GetCaTarget returns the CaTarget field value if set, zero value otherwise.
@@ -1710,6 +1744,9 @@ func (o CreatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoRenew) {
 		toSerialize["auto-renew"] = o.AutoRenew
+	}
+	if !IsNil(o.BasicConstraints) {
+		toSerialize["basic-constraints"] = o.BasicConstraints
 	}
 	if !IsNil(o.CaTarget) {
 		toSerialize["ca-target"] = o.CaTarget

@@ -34,6 +34,10 @@ Name | Type | Description | Notes
 **TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 
+**UseLowerLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false] | [optional] 
+**UseNumbers** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false] | [optional] 
+**UseSpecialCharacters** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -788,6 +792,106 @@ SetUidToken sets UidToken field to given value.
 `func (o *RotatedSecretCreateMysql) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *RotatedSecretCreateMysql) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *RotatedSecretCreateMysql) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *RotatedSecretCreateMysql) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *RotatedSecretCreateMysql) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
+### GetUseLowerLetters
+
+`func (o *RotatedSecretCreateMysql) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *RotatedSecretCreateMysql) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *RotatedSecretCreateMysql) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *RotatedSecretCreateMysql) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *RotatedSecretCreateMysql) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *RotatedSecretCreateMysql) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *RotatedSecretCreateMysql) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *RotatedSecretCreateMysql) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *RotatedSecretCreateMysql) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *RotatedSecretCreateMysql) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *RotatedSecretCreateMysql) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *RotatedSecretCreateMysql) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

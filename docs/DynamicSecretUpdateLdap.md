@@ -37,6 +37,10 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 
+**UseLowerLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false] | [optional] 
+**UseNumbers** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false] | [optional] 
+**UseSpecialCharacters** | Pointer to **string** |  | [optional] 
 **UserAttribute** | Pointer to **string** | User Attribute | [optional] 
 **UserDn** | Pointer to **string** | User DN | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "60m"]
@@ -879,6 +883,106 @@ SetUidToken sets UidToken field to given value.
 `func (o *DynamicSecretUpdateLdap) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *DynamicSecretUpdateLdap) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *DynamicSecretUpdateLdap) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *DynamicSecretUpdateLdap) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *DynamicSecretUpdateLdap) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
+### GetUseLowerLetters
+
+`func (o *DynamicSecretUpdateLdap) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *DynamicSecretUpdateLdap) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *DynamicSecretUpdateLdap) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *DynamicSecretUpdateLdap) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *DynamicSecretUpdateLdap) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *DynamicSecretUpdateLdap) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *DynamicSecretUpdateLdap) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *DynamicSecretUpdateLdap) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *DynamicSecretUpdateLdap) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *DynamicSecretUpdateLdap) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *DynamicSecretUpdateLdap) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *DynamicSecretUpdateLdap) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
 
 ### GetUserAttribute
 

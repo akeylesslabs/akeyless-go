@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **AllowedIpSans** | Pointer to **[]string** |  | [optional] 
 **AllowedUriSans** | Pointer to **[]string** |  | [optional] 
 **AutoRenewCertificate** | Pointer to **bool** |  | [optional] 
+**BasicConstraints** | Pointer to **string** |  | [optional] 
+**BasicConstraintsCritical** | Pointer to **bool** |  | [optional] 
 **BasicConstraintsValidForNonCa** | Pointer to **bool** |  | [optional] 
 **CertificateAuthorityMode** | Pointer to **string** |  | [optional] 
 **ClientFlag** | Pointer to **bool** |  | [optional] 
@@ -291,6 +293,56 @@ SetAutoRenewCertificate sets AutoRenewCertificate field to given value.
 `func (o *PKICertificateIssueDetails) HasAutoRenewCertificate() bool`
 
 HasAutoRenewCertificate returns a boolean if a field has been set.
+
+### GetBasicConstraints
+
+`func (o *PKICertificateIssueDetails) GetBasicConstraints() string`
+
+GetBasicConstraints returns the BasicConstraints field if non-nil, zero value otherwise.
+
+### GetBasicConstraintsOk
+
+`func (o *PKICertificateIssueDetails) GetBasicConstraintsOk() (*string, bool)`
+
+GetBasicConstraintsOk returns a tuple with the BasicConstraints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBasicConstraints
+
+`func (o *PKICertificateIssueDetails) SetBasicConstraints(v string)`
+
+SetBasicConstraints sets BasicConstraints field to given value.
+
+### HasBasicConstraints
+
+`func (o *PKICertificateIssueDetails) HasBasicConstraints() bool`
+
+HasBasicConstraints returns a boolean if a field has been set.
+
+### GetBasicConstraintsCritical
+
+`func (o *PKICertificateIssueDetails) GetBasicConstraintsCritical() bool`
+
+GetBasicConstraintsCritical returns the BasicConstraintsCritical field if non-nil, zero value otherwise.
+
+### GetBasicConstraintsCriticalOk
+
+`func (o *PKICertificateIssueDetails) GetBasicConstraintsCriticalOk() (*bool, bool)`
+
+GetBasicConstraintsCriticalOk returns a tuple with the BasicConstraintsCritical field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBasicConstraintsCritical
+
+`func (o *PKICertificateIssueDetails) SetBasicConstraintsCritical(v bool)`
+
+SetBasicConstraintsCritical sets BasicConstraintsCritical field to given value.
+
+### HasBasicConstraintsCritical
+
+`func (o *PKICertificateIssueDetails) HasBasicConstraintsCritical() bool`
+
+HasBasicConstraintsCritical returns a boolean if a field has been set.
 
 ### GetBasicConstraintsValidForNonCa
 

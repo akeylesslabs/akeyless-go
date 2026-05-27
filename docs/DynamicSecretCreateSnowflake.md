@@ -26,6 +26,10 @@ Name | Type | Description | Notes
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 
+**UseLowerLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false] | [optional] 
+**UseNumbers** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false] | [optional] 
+**UseSpecialCharacters** | Pointer to **string** |  | [optional] 
 **UserTtl** | Pointer to **string** | User TTL | [optional] [default to "24h"]
 **Warehouse** | Pointer to **string** | Warehouse name | [optional] 
 
@@ -592,6 +596,106 @@ SetUidToken sets UidToken field to given value.
 `func (o *DynamicSecretCreateSnowflake) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *DynamicSecretCreateSnowflake) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *DynamicSecretCreateSnowflake) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *DynamicSecretCreateSnowflake) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *DynamicSecretCreateSnowflake) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
+### GetUseLowerLetters
+
+`func (o *DynamicSecretCreateSnowflake) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *DynamicSecretCreateSnowflake) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *DynamicSecretCreateSnowflake) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *DynamicSecretCreateSnowflake) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *DynamicSecretCreateSnowflake) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *DynamicSecretCreateSnowflake) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *DynamicSecretCreateSnowflake) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *DynamicSecretCreateSnowflake) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *DynamicSecretCreateSnowflake) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *DynamicSecretCreateSnowflake) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *DynamicSecretCreateSnowflake) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *DynamicSecretCreateSnowflake) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
 
 ### GetUserTtl
 

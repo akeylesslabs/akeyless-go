@@ -250,10 +250,13 @@ type DSProducerDetails struct {
 	Password *string `json:"password,omitempty"`
 	PasswordLength *int64 `json:"password_length,omitempty"`
 	PasswordPolicy *string `json:"password_policy,omitempty"`
+	PasswordPolicyInfo *PasswordPolicyInfo `json:"password_policy_info,omitempty"`
 	Payload *string `json:"payload,omitempty"`
 	PingUrl *string `json:"ping_url,omitempty"`
 	PostgresCreationStatements *string `json:"postgres_creation_statements,omitempty"`
 	PostgresRevocationStatements *string `json:"postgres_revocation_statements,omitempty"`
+	// Internal marker for DS update flows: when true, keep the persisted password settings and merge explicit rule updates on top.
+	PreserveExistingPasswordSettings *bool `json:"preserve_existing_password_settings,omitempty"`
 	PrivilegedUser *string `json:"privileged_user,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
 	RabbitmqServerPassword *string `json:"rabbitmq_server_password,omitempty"`
@@ -7024,6 +7027,38 @@ func (o *DSProducerDetails) SetPasswordPolicy(v string) {
 	o.PasswordPolicy = &v
 }
 
+// GetPasswordPolicyInfo returns the PasswordPolicyInfo field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPasswordPolicyInfo() PasswordPolicyInfo {
+	if o == nil || IsNil(o.PasswordPolicyInfo) {
+		var ret PasswordPolicyInfo
+		return ret
+	}
+	return *o.PasswordPolicyInfo
+}
+
+// GetPasswordPolicyInfoOk returns a tuple with the PasswordPolicyInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPasswordPolicyInfoOk() (*PasswordPolicyInfo, bool) {
+	if o == nil || IsNil(o.PasswordPolicyInfo) {
+		return nil, false
+	}
+	return o.PasswordPolicyInfo, true
+}
+
+// HasPasswordPolicyInfo returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPasswordPolicyInfo() bool {
+	if o != nil && !IsNil(o.PasswordPolicyInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicyInfo gets a reference to the given PasswordPolicyInfo and assigns it to the PasswordPolicyInfo field.
+func (o *DSProducerDetails) SetPasswordPolicyInfo(v PasswordPolicyInfo) {
+	o.PasswordPolicyInfo = &v
+}
+
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetPayload() string {
 	if o == nil || IsNil(o.Payload) {
@@ -7150,6 +7185,38 @@ func (o *DSProducerDetails) HasPostgresRevocationStatements() bool {
 // SetPostgresRevocationStatements gets a reference to the given string and assigns it to the PostgresRevocationStatements field.
 func (o *DSProducerDetails) SetPostgresRevocationStatements(v string) {
 	o.PostgresRevocationStatements = &v
+}
+
+// GetPreserveExistingPasswordSettings returns the PreserveExistingPasswordSettings field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetPreserveExistingPasswordSettings() bool {
+	if o == nil || IsNil(o.PreserveExistingPasswordSettings) {
+		var ret bool
+		return ret
+	}
+	return *o.PreserveExistingPasswordSettings
+}
+
+// GetPreserveExistingPasswordSettingsOk returns a tuple with the PreserveExistingPasswordSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetPreserveExistingPasswordSettingsOk() (*bool, bool) {
+	if o == nil || IsNil(o.PreserveExistingPasswordSettings) {
+		return nil, false
+	}
+	return o.PreserveExistingPasswordSettings, true
+}
+
+// HasPreserveExistingPasswordSettings returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasPreserveExistingPasswordSettings() bool {
+	if o != nil && !IsNil(o.PreserveExistingPasswordSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreserveExistingPasswordSettings gets a reference to the given bool and assigns it to the PreserveExistingPasswordSettings field.
+func (o *DSProducerDetails) SetPreserveExistingPasswordSettings(v bool) {
+	o.PreserveExistingPasswordSettings = &v
 }
 
 // GetPrivilegedUser returns the PrivilegedUser field value if set, zero value otherwise.
@@ -9613,6 +9680,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PasswordPolicy) {
 		toSerialize["password_policy"] = o.PasswordPolicy
 	}
+	if !IsNil(o.PasswordPolicyInfo) {
+		toSerialize["password_policy_info"] = o.PasswordPolicyInfo
+	}
 	if !IsNil(o.Payload) {
 		toSerialize["payload"] = o.Payload
 	}
@@ -9624,6 +9694,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PostgresRevocationStatements) {
 		toSerialize["postgres_revocation_statements"] = o.PostgresRevocationStatements
+	}
+	if !IsNil(o.PreserveExistingPasswordSettings) {
+		toSerialize["preserve_existing_password_settings"] = o.PreserveExistingPasswordSettings
 	}
 	if !IsNil(o.PrivilegedUser) {
 		toSerialize["privileged_user"] = o.PrivilegedUser

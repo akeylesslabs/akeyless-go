@@ -40,6 +40,8 @@ type UpdatePKICertIssuer struct {
 	AllowedUriSans *string `json:"allowed-uri-sans,omitempty"`
 	// Automatically renew certificates before expiration
 	AutoRenew *bool `json:"auto-renew,omitempty"`
+	// Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template
+	BasicConstraints *string `json:"basic-constraints,omitempty"`
 	// If set, certificates will be flagged for client auth use
 	ClientFlag *bool `json:"client-flag,omitempty"`
 	// If set, certificates will be flagged for code signing use
@@ -445,6 +447,38 @@ func (o *UpdatePKICertIssuer) HasAutoRenew() bool {
 // SetAutoRenew gets a reference to the given bool and assigns it to the AutoRenew field.
 func (o *UpdatePKICertIssuer) SetAutoRenew(v bool) {
 	o.AutoRenew = &v
+}
+
+// GetBasicConstraints returns the BasicConstraints field value if set, zero value otherwise.
+func (o *UpdatePKICertIssuer) GetBasicConstraints() string {
+	if o == nil || IsNil(o.BasicConstraints) {
+		var ret string
+		return ret
+	}
+	return *o.BasicConstraints
+}
+
+// GetBasicConstraintsOk returns a tuple with the BasicConstraints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdatePKICertIssuer) GetBasicConstraintsOk() (*string, bool) {
+	if o == nil || IsNil(o.BasicConstraints) {
+		return nil, false
+	}
+	return o.BasicConstraints, true
+}
+
+// HasBasicConstraints returns a boolean if a field has been set.
+func (o *UpdatePKICertIssuer) HasBasicConstraints() bool {
+	if o != nil && !IsNil(o.BasicConstraints) {
+		return true
+	}
+
+	return false
+}
+
+// SetBasicConstraints gets a reference to the given string and assigns it to the BasicConstraints field.
+func (o *UpdatePKICertIssuer) SetBasicConstraints(v string) {
+	o.BasicConstraints = &v
 }
 
 // GetClientFlag returns the ClientFlag field value if set, zero value otherwise.
@@ -1747,6 +1781,9 @@ func (o UpdatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoRenew) {
 		toSerialize["auto-renew"] = o.AutoRenew
+	}
+	if !IsNil(o.BasicConstraints) {
+		toSerialize["basic-constraints"] = o.BasicConstraints
 	}
 	if !IsNil(o.ClientFlag) {
 		toSerialize["client-flag"] = o.ClientFlag

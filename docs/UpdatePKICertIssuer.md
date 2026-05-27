@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **AllowedIpSans** | Pointer to **string** | A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AllowedUriSans** | Pointer to **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AutoRenew** | Pointer to **bool** | Automatically renew certificates before expiration | [optional] 
+**BasicConstraints** | Pointer to **string** | Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template | [optional] 
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
 **Country** | Pointer to **string** | A comma-separated list of countries that will be set in the issued certificate | [optional] 
@@ -297,6 +298,31 @@ SetAutoRenew sets AutoRenew field to given value.
 `func (o *UpdatePKICertIssuer) HasAutoRenew() bool`
 
 HasAutoRenew returns a boolean if a field has been set.
+
+### GetBasicConstraints
+
+`func (o *UpdatePKICertIssuer) GetBasicConstraints() string`
+
+GetBasicConstraints returns the BasicConstraints field if non-nil, zero value otherwise.
+
+### GetBasicConstraintsOk
+
+`func (o *UpdatePKICertIssuer) GetBasicConstraintsOk() (*string, bool)`
+
+GetBasicConstraintsOk returns a tuple with the BasicConstraints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBasicConstraints
+
+`func (o *UpdatePKICertIssuer) SetBasicConstraints(v string)`
+
+SetBasicConstraints sets BasicConstraints field to given value.
+
+### HasBasicConstraints
+
+`func (o *UpdatePKICertIssuer) HasBasicConstraints() bool`
+
+HasBasicConstraints returns a boolean if a field has been set.
 
 ### GetClientFlag
 

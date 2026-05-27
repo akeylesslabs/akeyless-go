@@ -116,13 +116,12 @@ type UpdateAccountSettings struct {
 	UsageEventInterval *int64 `json:"usage-event-interval,omitempty"`
 	// Usage event is supported for auth method or secrets-and-keys [auth/item]
 	UsageEventObjectType *string `json:"usage-event-object-type,omitempty"`
-	// Password must contain capital letters [true/false]
+	// Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]
 	UseCapitalLetters *string `json:"use-capital-letters,omitempty"`
-	// Password must contain lower case letters [true/false]
+	// Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]
 	UseLowerLetters *string `json:"use-lower-letters,omitempty"`
-	// Password must contain numbers [true/false]
+	// Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]
 	UseNumbers *string `json:"use-numbers,omitempty"`
-	// Password must contain special characters [true/false]
 	UseSpecialCharacters *string `json:"use-special-characters,omitempty"`
 }
 

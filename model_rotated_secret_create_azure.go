@@ -100,6 +100,13 @@ type RotatedSecretCreateAzure struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false]
+	UseCapitalLetters *string `json:"use-capital-letters,omitempty"`
+	// Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false]
+	UseLowerLetters *string `json:"use-lower-letters,omitempty"`
+	// Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false]
+	UseNumbers *string `json:"use-numbers,omitempty"`
+	UseSpecialCharacters *string `json:"use-special-characters,omitempty"`
 	// The user principal name to rotate his password (relevant only for rotator-type=password)
 	Username *string `json:"username,omitempty"`
 }
@@ -1374,6 +1381,134 @@ func (o *RotatedSecretCreateAzure) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseCapitalLetters returns the UseCapitalLetters field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetUseCapitalLetters() string {
+	if o == nil || IsNil(o.UseCapitalLetters) {
+		var ret string
+		return ret
+	}
+	return *o.UseCapitalLetters
+}
+
+// GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetUseCapitalLettersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseCapitalLetters) {
+		return nil, false
+	}
+	return o.UseCapitalLetters, true
+}
+
+// HasUseCapitalLetters returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasUseCapitalLetters() bool {
+	if o != nil && !IsNil(o.UseCapitalLetters) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseCapitalLetters gets a reference to the given string and assigns it to the UseCapitalLetters field.
+func (o *RotatedSecretCreateAzure) SetUseCapitalLetters(v string) {
+	o.UseCapitalLetters = &v
+}
+
+// GetUseLowerLetters returns the UseLowerLetters field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetUseLowerLetters() string {
+	if o == nil || IsNil(o.UseLowerLetters) {
+		var ret string
+		return ret
+	}
+	return *o.UseLowerLetters
+}
+
+// GetUseLowerLettersOk returns a tuple with the UseLowerLetters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetUseLowerLettersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseLowerLetters) {
+		return nil, false
+	}
+	return o.UseLowerLetters, true
+}
+
+// HasUseLowerLetters returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasUseLowerLetters() bool {
+	if o != nil && !IsNil(o.UseLowerLetters) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLowerLetters gets a reference to the given string and assigns it to the UseLowerLetters field.
+func (o *RotatedSecretCreateAzure) SetUseLowerLetters(v string) {
+	o.UseLowerLetters = &v
+}
+
+// GetUseNumbers returns the UseNumbers field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetUseNumbers() string {
+	if o == nil || IsNil(o.UseNumbers) {
+		var ret string
+		return ret
+	}
+	return *o.UseNumbers
+}
+
+// GetUseNumbersOk returns a tuple with the UseNumbers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetUseNumbersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseNumbers) {
+		return nil, false
+	}
+	return o.UseNumbers, true
+}
+
+// HasUseNumbers returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasUseNumbers() bool {
+	if o != nil && !IsNil(o.UseNumbers) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseNumbers gets a reference to the given string and assigns it to the UseNumbers field.
+func (o *RotatedSecretCreateAzure) SetUseNumbers(v string) {
+	o.UseNumbers = &v
+}
+
+// GetUseSpecialCharacters returns the UseSpecialCharacters field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetUseSpecialCharacters() string {
+	if o == nil || IsNil(o.UseSpecialCharacters) {
+		var ret string
+		return ret
+	}
+	return *o.UseSpecialCharacters
+}
+
+// GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetUseSpecialCharactersOk() (*string, bool) {
+	if o == nil || IsNil(o.UseSpecialCharacters) {
+		return nil, false
+	}
+	return o.UseSpecialCharacters, true
+}
+
+// HasUseSpecialCharacters returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasUseSpecialCharacters() bool {
+	if o != nil && !IsNil(o.UseSpecialCharacters) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseSpecialCharacters gets a reference to the given string and assigns it to the UseSpecialCharacters field.
+func (o *RotatedSecretCreateAzure) SetUseSpecialCharacters(v string) {
+	o.UseSpecialCharacters = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *RotatedSecretCreateAzure) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -1526,6 +1661,18 @@ func (o RotatedSecretCreateAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UseCapitalLetters) {
+		toSerialize["use-capital-letters"] = o.UseCapitalLetters
+	}
+	if !IsNil(o.UseLowerLetters) {
+		toSerialize["use-lower-letters"] = o.UseLowerLetters
+	}
+	if !IsNil(o.UseNumbers) {
+		toSerialize["use-numbers"] = o.UseNumbers
+	}
+	if !IsNil(o.UseSpecialCharacters) {
+		toSerialize["use-special-characters"] = o.UseSpecialCharacters
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username

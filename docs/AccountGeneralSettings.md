@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **DefaultHomePage** | Pointer to [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
+**EnableSearchHistory** | Pointer to **bool** |  | [optional] 
 **HidePersonalFolder** | Pointer to **bool** |  | [optional] 
 **HideSecretRevealCopy** | Pointer to **bool** |  | [optional] 
 **HideStaticPassword** | Pointer to **bool** |  | [optional] 
@@ -426,6 +427,31 @@ SetEnableRequestForAccess sets EnableRequestForAccess field to given value.
 `func (o *AccountGeneralSettings) HasEnableRequestForAccess() bool`
 
 HasEnableRequestForAccess returns a boolean if a field has been set.
+
+### GetEnableSearchHistory
+
+`func (o *AccountGeneralSettings) GetEnableSearchHistory() bool`
+
+GetEnableSearchHistory returns the EnableSearchHistory field if non-nil, zero value otherwise.
+
+### GetEnableSearchHistoryOk
+
+`func (o *AccountGeneralSettings) GetEnableSearchHistoryOk() (*bool, bool)`
+
+GetEnableSearchHistoryOk returns a tuple with the EnableSearchHistory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableSearchHistory
+
+`func (o *AccountGeneralSettings) SetEnableSearchHistory(v bool)`
+
+SetEnableSearchHistory sets EnableSearchHistory field to given value.
+
+### HasEnableSearchHistory
+
+`func (o *AccountGeneralSettings) HasEnableSearchHistory() bool`
+
+HasEnableSearchHistory returns a boolean if a field has been set.
 
 ### GetHidePersonalFolder
 

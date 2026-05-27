@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **AllowedIpSans** | Pointer to **string** | A list of the allowed CIDRs for ips that clients can request to be included in the certificate as part of the IP Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AllowedUriSans** | Pointer to **string** | A list of the allowed URIs that clients can request to be included in the certificate as part of the URI Subject Alternative Names (in a comma-delimited list) | [optional] 
 **AutoRenew** | Pointer to **bool** | Automatically renew certificates before expiration | [optional] 
+**BasicConstraints** | Pointer to **string** | Defines the X.509 Basic Constraints extension for certificates issued by this PKI issuer template | [optional] 
 **CaTarget** | Pointer to **string** | The name of an existing CA target to attach this PKI Certificate Issuer to, required in Public CA mode | [optional] 
 **ClientFlag** | Pointer to **bool** | If set, certificates will be flagged for client auth use | [optional] 
 **CodeSigningFlag** | Pointer to **bool** | If set, certificates will be flagged for code signing use | [optional] 
@@ -271,6 +272,31 @@ SetAutoRenew sets AutoRenew field to given value.
 `func (o *CreatePKICertIssuer) HasAutoRenew() bool`
 
 HasAutoRenew returns a boolean if a field has been set.
+
+### GetBasicConstraints
+
+`func (o *CreatePKICertIssuer) GetBasicConstraints() string`
+
+GetBasicConstraints returns the BasicConstraints field if non-nil, zero value otherwise.
+
+### GetBasicConstraintsOk
+
+`func (o *CreatePKICertIssuer) GetBasicConstraintsOk() (*string, bool)`
+
+GetBasicConstraintsOk returns a tuple with the BasicConstraints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBasicConstraints
+
+`func (o *CreatePKICertIssuer) SetBasicConstraints(v string)`
+
+SetBasicConstraints sets BasicConstraints field to given value.
+
+### HasBasicConstraints
+
+`func (o *CreatePKICertIssuer) HasBasicConstraints() bool`
+
+HasBasicConstraints returns a boolean if a field has been set.
 
 ### GetCaTarget
 

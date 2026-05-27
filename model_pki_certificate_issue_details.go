@@ -29,6 +29,8 @@ type PKICertificateIssueDetails struct {
 	AllowedIpSans []string `json:"allowed_ip_sans,omitempty"`
 	AllowedUriSans []string `json:"allowed_uri_sans,omitempty"`
 	AutoRenewCertificate *bool `json:"auto_renew_certificate,omitempty"`
+	BasicConstraints *string `json:"basic_constraints,omitempty"`
+	BasicConstraintsCritical *bool `json:"basic_constraints_critical,omitempty"`
 	BasicConstraintsValidForNonCa *bool `json:"basic_constraints_valid_for_non_ca,omitempty"`
 	CertificateAuthorityMode *string `json:"certificate_authority_mode,omitempty"`
 	ClientFlag *bool `json:"client_flag,omitempty"`
@@ -376,6 +378,70 @@ func (o *PKICertificateIssueDetails) HasAutoRenewCertificate() bool {
 // SetAutoRenewCertificate gets a reference to the given bool and assigns it to the AutoRenewCertificate field.
 func (o *PKICertificateIssueDetails) SetAutoRenewCertificate(v bool) {
 	o.AutoRenewCertificate = &v
+}
+
+// GetBasicConstraints returns the BasicConstraints field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetBasicConstraints() string {
+	if o == nil || IsNil(o.BasicConstraints) {
+		var ret string
+		return ret
+	}
+	return *o.BasicConstraints
+}
+
+// GetBasicConstraintsOk returns a tuple with the BasicConstraints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetBasicConstraintsOk() (*string, bool) {
+	if o == nil || IsNil(o.BasicConstraints) {
+		return nil, false
+	}
+	return o.BasicConstraints, true
+}
+
+// HasBasicConstraints returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasBasicConstraints() bool {
+	if o != nil && !IsNil(o.BasicConstraints) {
+		return true
+	}
+
+	return false
+}
+
+// SetBasicConstraints gets a reference to the given string and assigns it to the BasicConstraints field.
+func (o *PKICertificateIssueDetails) SetBasicConstraints(v string) {
+	o.BasicConstraints = &v
+}
+
+// GetBasicConstraintsCritical returns the BasicConstraintsCritical field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetBasicConstraintsCritical() bool {
+	if o == nil || IsNil(o.BasicConstraintsCritical) {
+		var ret bool
+		return ret
+	}
+	return *o.BasicConstraintsCritical
+}
+
+// GetBasicConstraintsCriticalOk returns a tuple with the BasicConstraintsCritical field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetBasicConstraintsCriticalOk() (*bool, bool) {
+	if o == nil || IsNil(o.BasicConstraintsCritical) {
+		return nil, false
+	}
+	return o.BasicConstraintsCritical, true
+}
+
+// HasBasicConstraintsCritical returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasBasicConstraintsCritical() bool {
+	if o != nil && !IsNil(o.BasicConstraintsCritical) {
+		return true
+	}
+
+	return false
+}
+
+// SetBasicConstraintsCritical gets a reference to the given bool and assigns it to the BasicConstraintsCritical field.
+func (o *PKICertificateIssueDetails) SetBasicConstraintsCritical(v bool) {
+	o.BasicConstraintsCritical = &v
 }
 
 // GetBasicConstraintsValidForNonCa returns the BasicConstraintsValidForNonCa field value if set, zero value otherwise.
@@ -1502,6 +1568,12 @@ func (o PKICertificateIssueDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoRenewCertificate) {
 		toSerialize["auto_renew_certificate"] = o.AutoRenewCertificate
+	}
+	if !IsNil(o.BasicConstraints) {
+		toSerialize["basic_constraints"] = o.BasicConstraints
+	}
+	if !IsNil(o.BasicConstraintsCritical) {
+		toSerialize["basic_constraints_critical"] = o.BasicConstraintsCritical
 	}
 	if !IsNil(o.BasicConstraintsValidForNonCa) {
 		toSerialize["basic_constraints_valid_for_non_ca"] = o.BasicConstraintsValidForNonCa
