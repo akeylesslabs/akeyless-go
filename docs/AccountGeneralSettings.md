@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **PasswordExpirationInfo** | Pointer to [**PasswordExpirationInfo**](PasswordExpirationInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
 **PasswordScore** | Pointer to [**PasswordScoreSetting**](PasswordScoreSetting.md) |  | [optional] 
+**PersonalFolderGlobalMapping** | Pointer to [**PersonalFolderGlobalMappingSettings**](PersonalFolderGlobalMappingSettings.md) |  | [optional] 
 **ProtectItemsByDefault** | Pointer to **bool** |  | [optional] 
 **RotationSecretMaxInterval** | Pointer to [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
 **SharingPolicy** | Pointer to [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 
@@ -702,6 +703,31 @@ SetPasswordScore sets PasswordScore field to given value.
 `func (o *AccountGeneralSettings) HasPasswordScore() bool`
 
 HasPasswordScore returns a boolean if a field has been set.
+
+### GetPersonalFolderGlobalMapping
+
+`func (o *AccountGeneralSettings) GetPersonalFolderGlobalMapping() PersonalFolderGlobalMappingSettings`
+
+GetPersonalFolderGlobalMapping returns the PersonalFolderGlobalMapping field if non-nil, zero value otherwise.
+
+### GetPersonalFolderGlobalMappingOk
+
+`func (o *AccountGeneralSettings) GetPersonalFolderGlobalMappingOk() (*PersonalFolderGlobalMappingSettings, bool)`
+
+GetPersonalFolderGlobalMappingOk returns a tuple with the PersonalFolderGlobalMapping field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPersonalFolderGlobalMapping
+
+`func (o *AccountGeneralSettings) SetPersonalFolderGlobalMapping(v PersonalFolderGlobalMappingSettings)`
+
+SetPersonalFolderGlobalMapping sets PersonalFolderGlobalMapping field to given value.
+
+### HasPersonalFolderGlobalMapping
+
+`func (o *AccountGeneralSettings) HasPersonalFolderGlobalMapping() bool`
+
+HasPersonalFolderGlobalMapping returns a boolean if a field has been set.
 
 ### GetProtectItemsByDefault
 

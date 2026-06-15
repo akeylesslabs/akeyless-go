@@ -32,7 +32,6 @@ type RotatedSecretUpdateAzure struct {
 	ApplicationId *string `json:"application-id,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -56,7 +55,6 @@ type RotatedSecretUpdateAzure struct {
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
-	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Lock this secret for read/update while an SRA session is active
 	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
@@ -68,6 +66,8 @@ type RotatedSecretUpdateAzure struct {
 	NewName *string `json:"new-name,omitempty"`
 	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
 	OutputRule []string `json:"output-rule,omitempty"`
+	// The password for the user principal name to rotate (relevant only for rotator-type=password)
+	Password *string `json:"password,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
 	// The resource group name (only relevant when explicitly-set-sa=true)
@@ -80,9 +80,7 @@ type RotatedSecretUpdateAzure struct {
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
-	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
-	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// Enable this flag to prevent simultaneous use of the same secret
 	SecureAccessDisableConcurrentConnections *bool `json:"secure-access-disable-concurrent-connections,omitempty"`
@@ -889,6 +887,38 @@ func (o *RotatedSecretUpdateAzure) SetOutputRule(v []string) {
 	o.OutputRule = v
 }
 
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *RotatedSecretUpdateAzure) SetPassword(v string) {
+	o.Password = &v
+}
+
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateAzure) GetPasswordLength() string {
 	if o == nil || IsNil(o.PasswordLength) {
@@ -1669,6 +1699,9 @@ func (o RotatedSecretUpdateAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OutputRule) {
 		toSerialize["output-rule"] = o.OutputRule
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength

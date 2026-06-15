@@ -23,7 +23,7 @@ var _ MappedNullable = &RotatedSecretSync{}
 // RotatedSecretSync struct for RotatedSecretSync
 type RotatedSecretSync struct {
 	// Delete the secret from remote secret manager (for association create/update)
-	DeleteRemote *bool `json:"DeleteRemote,omitempty"`
+	DeleteRemote *bool `json:"delete-remote,omitempty"`
 	// JQ expression to filter or transform the secret value
 	FilterSecretValue *string `json:"filter-secret-value,omitempty"`
 	// Set output format to JSON
@@ -357,7 +357,7 @@ func (o RotatedSecretSync) MarshalJSON() ([]byte, error) {
 func (o RotatedSecretSync) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DeleteRemote) {
-		toSerialize["DeleteRemote"] = o.DeleteRemote
+		toSerialize["delete-remote"] = o.DeleteRemote
 	}
 	if !IsNil(o.FilterSecretValue) {
 		toSerialize["filter-secret-value"] = o.FilterSecretValue

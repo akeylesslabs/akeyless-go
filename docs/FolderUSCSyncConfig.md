@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteRemote** | Pointer to **bool** |  | [optional] 
+**EngineName** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
 **UscItemId** | Pointer to **int64** |  | [optional] 
 **UscItemName** | Pointer to **string** |  | [optional] 
@@ -52,6 +53,31 @@ SetDeleteRemote sets DeleteRemote field to given value.
 `func (o *FolderUSCSyncConfig) HasDeleteRemote() bool`
 
 HasDeleteRemote returns a boolean if a field has been set.
+
+### GetEngineName
+
+`func (o *FolderUSCSyncConfig) GetEngineName() string`
+
+GetEngineName returns the EngineName field if non-nil, zero value otherwise.
+
+### GetEngineNameOk
+
+`func (o *FolderUSCSyncConfig) GetEngineNameOk() (*string, bool)`
+
+GetEngineNameOk returns a tuple with the EngineName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEngineName
+
+`func (o *FolderUSCSyncConfig) SetEngineName(v string)`
+
+SetEngineName sets EngineName field to given value.
+
+### HasEngineName
+
+`func (o *FolderUSCSyncConfig) HasEngineName() bool`
+
+HasEngineName returns a boolean if a field has been set.
 
 ### GetNamespace
 

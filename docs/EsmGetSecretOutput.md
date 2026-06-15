@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
+**VersionId** | Pointer to **string** |  | [optional] 
+**VersionIds** | Pointer to **[]string** |  | [optional] 
+**Warnings** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -189,6 +192,81 @@ SetValue sets Value field to given value.
 `func (o *EsmGetSecretOutput) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetVersionId
+
+`func (o *EsmGetSecretOutput) GetVersionId() string`
+
+GetVersionId returns the VersionId field if non-nil, zero value otherwise.
+
+### GetVersionIdOk
+
+`func (o *EsmGetSecretOutput) GetVersionIdOk() (*string, bool)`
+
+GetVersionIdOk returns a tuple with the VersionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionId
+
+`func (o *EsmGetSecretOutput) SetVersionId(v string)`
+
+SetVersionId sets VersionId field to given value.
+
+### HasVersionId
+
+`func (o *EsmGetSecretOutput) HasVersionId() bool`
+
+HasVersionId returns a boolean if a field has been set.
+
+### GetVersionIds
+
+`func (o *EsmGetSecretOutput) GetVersionIds() []string`
+
+GetVersionIds returns the VersionIds field if non-nil, zero value otherwise.
+
+### GetVersionIdsOk
+
+`func (o *EsmGetSecretOutput) GetVersionIdsOk() (*[]string, bool)`
+
+GetVersionIdsOk returns a tuple with the VersionIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionIds
+
+`func (o *EsmGetSecretOutput) SetVersionIds(v []string)`
+
+SetVersionIds sets VersionIds field to given value.
+
+### HasVersionIds
+
+`func (o *EsmGetSecretOutput) HasVersionIds() bool`
+
+HasVersionIds returns a boolean if a field has been set.
+
+### GetWarnings
+
+`func (o *EsmGetSecretOutput) GetWarnings() []string`
+
+GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+
+### GetWarningsOk
+
+`func (o *EsmGetSecretOutput) GetWarningsOk() (*[]string, bool)`
+
+GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnings
+
+`func (o *EsmGetSecretOutput) SetWarnings(v []string)`
+
+SetWarnings sets Warnings field to given value.
+
+### HasWarnings
+
+`func (o *EsmGetSecretOutput) HasWarnings() bool`
+
+HasWarnings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

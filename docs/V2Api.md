@@ -221,7 +221,10 @@ Method | HTTP request | Description
 [**ExportClassicKey**](V2Api.md#ExportClassicKey) | **Post** /export-classic-key | 
 [**FolderCreate**](V2Api.md#FolderCreate) | **Post** /folder-create | 
 [**FolderDelete**](V2Api.md#FolderDelete) | **Post** /folder-delete | 
+[**FolderDeleteSync**](V2Api.md#FolderDeleteSync) | **Post** /folder-delete-sync | 
 [**FolderGet**](V2Api.md#FolderGet) | **Post** /folder-get | 
+[**FolderSync**](V2Api.md#FolderSync) | **Post** /folder-sync | 
+[**FolderSyncAll**](V2Api.md#FolderSyncAll) | **Post** /folder-sync-all | 
 [**FolderUpdate**](V2Api.md#FolderUpdate) | **Post** /folder-update | 
 [**GatewayCreateAllowedAccess**](V2Api.md#GatewayCreateAllowedAccess) | **Post** /gateway-create-allowed-access | 
 [**GatewayCreateK8SAuthConfig**](V2Api.md#GatewayCreateK8SAuthConfig) | **Post** /gateway-create-k8s-auth-config | 
@@ -417,6 +420,7 @@ Method | HTTP request | Description
 [**RotatedSecretCreateDockerhub**](V2Api.md#RotatedSecretCreateDockerhub) | **Post** /rotated-secret-create-dockerhub | 
 [**RotatedSecretCreateGcp**](V2Api.md#RotatedSecretCreateGcp) | **Post** /rotated-secret-create-gcp | 
 [**RotatedSecretCreateHanadb**](V2Api.md#RotatedSecretCreateHanadb) | **Post** /rotated-secret-create-hanadb | 
+[**RotatedSecretCreateHashiVault**](V2Api.md#RotatedSecretCreateHashiVault) | **Post** /rotated-secret-create-hashi-vault | 
 [**RotatedSecretCreateLdap**](V2Api.md#RotatedSecretCreateLdap) | **Post** /rotated-secret-create-ldap | 
 [**RotatedSecretCreateMongodb**](V2Api.md#RotatedSecretCreateMongodb) | **Post** /rotated-secret-create-mongodb | 
 [**RotatedSecretCreateMssql**](V2Api.md#RotatedSecretCreateMssql) | **Post** /rotated-secret-create-mssql | 
@@ -442,6 +446,7 @@ Method | HTTP request | Description
 [**RotatedSecretUpdateDockerhub**](V2Api.md#RotatedSecretUpdateDockerhub) | **Post** /rotated-secret-update-dockerhub | 
 [**RotatedSecretUpdateGcp**](V2Api.md#RotatedSecretUpdateGcp) | **Post** /rotated-secret-update-gcp | 
 [**RotatedSecretUpdateHanadb**](V2Api.md#RotatedSecretUpdateHanadb) | **Post** /rotated-secret-update-hanadb | 
+[**RotatedSecretUpdateHashiVault**](V2Api.md#RotatedSecretUpdateHashiVault) | **Post** /rotated-secret-update-hashi-vault | 
 [**RotatedSecretUpdateLdap**](V2Api.md#RotatedSecretUpdateLdap) | **Post** /rotated-secret-update-ldap | 
 [**RotatedSecretUpdateMongodb**](V2Api.md#RotatedSecretUpdateMongodb) | **Post** /rotated-secret-update-mongodb | 
 [**RotatedSecretUpdateMssql**](V2Api.md#RotatedSecretUpdateMssql) | **Post** /rotated-secret-update-mssql | 
@@ -14510,6 +14515,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## FolderDeleteSync
+
+> FolderDeleteSyncOutput FolderDeleteSync(ctx).FolderDeleteSync(folderDeleteSync).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	folderDeleteSync := *openapiclient.NewFolderDeleteSync("Name_example", "UscName_example") // FolderDeleteSync | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.FolderDeleteSync(context.Background()).FolderDeleteSync(folderDeleteSync).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.FolderDeleteSync``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FolderDeleteSync`: FolderDeleteSyncOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.FolderDeleteSync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFolderDeleteSyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folderDeleteSync** | [**FolderDeleteSync**](FolderDeleteSync.md) |  | 
+
+### Return type
+
+[**FolderDeleteSyncOutput**](FolderDeleteSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## FolderGet
 
 > FolderGetOutput FolderGet(ctx).FolderGet(folderGet).Execute()
@@ -14559,6 +14628,134 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FolderGetOutput**](FolderGetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FolderSync
+
+> FolderSyncOutput FolderSync(ctx).FolderSync(folderSync).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	folderSync := *openapiclient.NewFolderSync("Name_example") // FolderSync | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.FolderSync(context.Background()).FolderSync(folderSync).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.FolderSync``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FolderSync`: FolderSyncOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.FolderSync`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFolderSyncRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folderSync** | [**FolderSync**](FolderSync.md) |  | 
+
+### Return type
+
+[**FolderSyncOutput**](FolderSyncOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## FolderSyncAll
+
+> FolderSyncAllOutput FolderSyncAll(ctx).FolderSyncAll(folderSyncAll).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	folderSyncAll := *openapiclient.NewFolderSyncAll("Name_example") // FolderSyncAll | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.FolderSyncAll(context.Background()).FolderSyncAll(folderSyncAll).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.FolderSyncAll``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FolderSyncAll`: FolderSyncAllOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.FolderSyncAll`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFolderSyncAllRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **folderSyncAll** | [**FolderSyncAll**](FolderSyncAll.md) |  | 
+
+### Return type
+
+[**FolderSyncAllOutput**](FolderSyncAllOutput.md)
 
 ### Authorization
 
@@ -27033,6 +27230,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretCreateHashiVault
+
+> RotatedSecretCreateOutput RotatedSecretCreateHashiVault(ctx).RotatedSecretCreateHashiVault(rotatedSecretCreateHashiVault).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateHashiVault := *openapiclient.NewRotatedSecretCreateHashiVault("Name_example", "TargetName_example") // RotatedSecretCreateHashiVault | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateHashiVault(context.Background()).RotatedSecretCreateHashiVault(rotatedSecretCreateHashiVault).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateHashiVault``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateHashiVault`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateHashiVault`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateHashiVaultRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateHashiVault** | [**RotatedSecretCreateHashiVault**](RotatedSecretCreateHashiVault.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretCreateLdap
 
 > RotatedSecretCreateOutput RotatedSecretCreateLdap(ctx).RotatedSecretCreateLdap(rotatedSecretCreateLdap).Execute()
@@ -28614,6 +28875,70 @@ Other parameters are passed through a pointer to a apiRotatedSecretUpdateHanadbR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rotatedSecretUpdateHanadb** | [**RotatedSecretUpdateHanadb**](RotatedSecretUpdateHanadb.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateHashiVault
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateHashiVault(ctx).RotatedSecretUpdateHashiVault(rotatedSecretUpdateHashiVault).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretUpdateHashiVault := *openapiclient.NewRotatedSecretUpdateHashiVault("Name_example") // RotatedSecretUpdateHashiVault | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretUpdateHashiVault(context.Background()).RotatedSecretUpdateHashiVault(rotatedSecretUpdateHashiVault).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateHashiVault``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretUpdateHashiVault`: RotatedSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateHashiVault`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateHashiVaultRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretUpdateHashiVault** | [**RotatedSecretUpdateHashiVault**](RotatedSecretUpdateHashiVault.md) |  | 
 
 ### Return type
 

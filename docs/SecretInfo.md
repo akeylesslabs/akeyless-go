@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **Thumbprint** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
+**VersionId** | Pointer to **string** |  | [optional] 
+**VersionIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -475,6 +477,56 @@ SetVersion sets Version field to given value.
 `func (o *SecretInfo) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### GetVersionId
+
+`func (o *SecretInfo) GetVersionId() string`
+
+GetVersionId returns the VersionId field if non-nil, zero value otherwise.
+
+### GetVersionIdOk
+
+`func (o *SecretInfo) GetVersionIdOk() (*string, bool)`
+
+GetVersionIdOk returns a tuple with the VersionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionId
+
+`func (o *SecretInfo) SetVersionId(v string)`
+
+SetVersionId sets VersionId field to given value.
+
+### HasVersionId
+
+`func (o *SecretInfo) HasVersionId() bool`
+
+HasVersionId returns a boolean if a field has been set.
+
+### GetVersionIds
+
+`func (o *SecretInfo) GetVersionIds() []string`
+
+GetVersionIds returns the VersionIds field if non-nil, zero value otherwise.
+
+### GetVersionIdsOk
+
+`func (o *SecretInfo) GetVersionIdsOk() (*[]string, bool)`
+
+GetVersionIdsOk returns a tuple with the VersionIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionIds
+
+`func (o *SecretInfo) SetVersionIds(v []string)`
+
+SetVersionIds sets VersionIds field to given value.
+
+### HasVersionIds
+
+`func (o *SecretInfo) HasVersionIds() bool`
+
+HasVersionIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

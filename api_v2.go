@@ -26927,6 +26927,130 @@ func (a *V2ApiService) FolderDeleteExecute(r ApiFolderDeleteRequest) (map[string
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiFolderDeleteSyncRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	folderDeleteSync *FolderDeleteSync
+    body interface{}
+}
+
+func (r ApiFolderDeleteSyncRequest) FolderDeleteSync(folderDeleteSync FolderDeleteSync) ApiFolderDeleteSyncRequest {
+	r.folderDeleteSync = &folderDeleteSync
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiFolderDeleteSyncRequest) Body(body FolderDeleteSync) ApiFolderDeleteSyncRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiFolderDeleteSyncRequest) Execute() (*FolderDeleteSyncOutput, *http.Response, error) {
+	return r.ApiService.FolderDeleteSyncExecute(r)
+}
+
+/*
+FolderDeleteSync Method for FolderDeleteSync
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFolderDeleteSyncRequest
+*/
+func (a *V2ApiService) FolderDeleteSync(ctx context.Context) ApiFolderDeleteSyncRequest {
+	return ApiFolderDeleteSyncRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return FolderDeleteSyncOutput
+func (a *V2ApiService) FolderDeleteSyncExecute(r ApiFolderDeleteSyncRequest) (*FolderDeleteSyncOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FolderDeleteSyncOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.FolderDeleteSync")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/folder-delete-sync"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiFolderGetRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -26979,6 +27103,254 @@ func (a *V2ApiService) FolderGetExecute(r ApiFolderGetRequest) (*FolderGetOutput
 	}
 
 	localVarPath := localBasePath + "/folder-get"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFolderSyncRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	folderSync *FolderSync
+    body interface{}
+}
+
+func (r ApiFolderSyncRequest) FolderSync(folderSync FolderSync) ApiFolderSyncRequest {
+	r.folderSync = &folderSync
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiFolderSyncRequest) Body(body FolderSync) ApiFolderSyncRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiFolderSyncRequest) Execute() (*FolderSyncOutput, *http.Response, error) {
+	return r.ApiService.FolderSyncExecute(r)
+}
+
+/*
+FolderSync Method for FolderSync
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFolderSyncRequest
+*/
+func (a *V2ApiService) FolderSync(ctx context.Context) ApiFolderSyncRequest {
+	return ApiFolderSyncRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return FolderSyncOutput
+func (a *V2ApiService) FolderSyncExecute(r ApiFolderSyncRequest) (*FolderSyncOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FolderSyncOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.FolderSync")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/folder-sync"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiFolderSyncAllRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	folderSyncAll *FolderSyncAll
+    body interface{}
+}
+
+func (r ApiFolderSyncAllRequest) FolderSyncAll(folderSyncAll FolderSyncAll) ApiFolderSyncAllRequest {
+	r.folderSyncAll = &folderSyncAll
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiFolderSyncAllRequest) Body(body FolderSyncAll) ApiFolderSyncAllRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiFolderSyncAllRequest) Execute() (*FolderSyncAllOutput, *http.Response, error) {
+	return r.ApiService.FolderSyncAllExecute(r)
+}
+
+/*
+FolderSyncAll Method for FolderSyncAll
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiFolderSyncAllRequest
+*/
+func (a *V2ApiService) FolderSyncAll(ctx context.Context) ApiFolderSyncAllRequest {
+	return ApiFolderSyncAllRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return FolderSyncAllOutput
+func (a *V2ApiService) FolderSyncAllExecute(r ApiFolderSyncAllRequest) (*FolderSyncAllOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *FolderSyncAllOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.FolderSyncAll")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/folder-sync-all"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -51104,6 +51476,130 @@ func (a *V2ApiService) RotatedSecretCreateHanadbExecute(r ApiRotatedSecretCreate
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRotatedSecretCreateHashiVaultRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretCreateHashiVault *RotatedSecretCreateHashiVault
+    body interface{}
+}
+
+func (r ApiRotatedSecretCreateHashiVaultRequest) RotatedSecretCreateHashiVault(rotatedSecretCreateHashiVault RotatedSecretCreateHashiVault) ApiRotatedSecretCreateHashiVaultRequest {
+	r.rotatedSecretCreateHashiVault = &rotatedSecretCreateHashiVault
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretCreateHashiVaultRequest) Body(body RotatedSecretCreateHashiVault) ApiRotatedSecretCreateHashiVaultRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretCreateHashiVaultRequest) Execute() (*RotatedSecretCreateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretCreateHashiVaultExecute(r)
+}
+
+/*
+RotatedSecretCreateHashiVault Method for RotatedSecretCreateHashiVault
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretCreateHashiVaultRequest
+*/
+func (a *V2ApiService) RotatedSecretCreateHashiVault(ctx context.Context) ApiRotatedSecretCreateHashiVaultRequest {
+	return ApiRotatedSecretCreateHashiVaultRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretCreateOutput
+func (a *V2ApiService) RotatedSecretCreateHashiVaultExecute(r ApiRotatedSecretCreateHashiVaultRequest) (*RotatedSecretCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretCreateHashiVault")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-create-hashi-vault"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRotatedSecretCreateLdapRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -54132,6 +54628,130 @@ func (a *V2ApiService) RotatedSecretUpdateHanadbExecute(r ApiRotatedSecretUpdate
 	}
 
 	localVarPath := localBasePath + "/rotated-secret-update-hanadb"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRotatedSecretUpdateHashiVaultRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretUpdateHashiVault *RotatedSecretUpdateHashiVault
+    body interface{}
+}
+
+func (r ApiRotatedSecretUpdateHashiVaultRequest) RotatedSecretUpdateHashiVault(rotatedSecretUpdateHashiVault RotatedSecretUpdateHashiVault) ApiRotatedSecretUpdateHashiVaultRequest {
+	r.rotatedSecretUpdateHashiVault = &rotatedSecretUpdateHashiVault
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretUpdateHashiVaultRequest) Body(body RotatedSecretUpdateHashiVault) ApiRotatedSecretUpdateHashiVaultRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretUpdateHashiVaultRequest) Execute() (*RotatedSecretUpdateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretUpdateHashiVaultExecute(r)
+}
+
+/*
+RotatedSecretUpdateHashiVault Method for RotatedSecretUpdateHashiVault
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretUpdateHashiVaultRequest
+*/
+func (a *V2ApiService) RotatedSecretUpdateHashiVault(ctx context.Context) ApiRotatedSecretUpdateHashiVaultRequest {
+	return ApiRotatedSecretUpdateHashiVaultRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretUpdateOutput
+func (a *V2ApiService) RotatedSecretUpdateHashiVaultExecute(r ApiRotatedSecretUpdateHashiVaultRequest) (*RotatedSecretUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretUpdateHashiVault")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-update-hashi-vault"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

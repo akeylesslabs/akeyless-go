@@ -28,7 +28,6 @@ type RotatedSecretCreateOpenAI struct {
 	ApiKeyId *string `json:"api-key-id,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -40,7 +39,6 @@ type RotatedSecretCreateOpenAI struct {
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
@@ -52,9 +50,7 @@ type RotatedSecretCreateOpenAI struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
-	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
-	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The rotator type. options: [target/api-key]
 	RotatorType string `json:"rotator-type"`

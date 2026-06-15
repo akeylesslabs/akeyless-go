@@ -30,7 +30,6 @@ type RotatedSecretCreateAzure struct {
 	ApplicationId *string `json:"application-id,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -52,7 +51,6 @@ type RotatedSecretCreateAzure struct {
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Lock this secret for read/update while an SRA session is active
 	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
@@ -62,6 +60,8 @@ type RotatedSecretCreateAzure struct {
 	Name string `json:"name"`
 	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
 	OutputRule []string `json:"output-rule,omitempty"`
+	// The password for the user principal name to rotate (relevant only for rotator-type=password)
+	Password *string `json:"password,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
 	// The resource group name (only relevant when explicitly-set-sa=true)
@@ -72,9 +72,7 @@ type RotatedSecretCreateAzure struct {
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
-	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
-	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The rotator type. options: [target/password/api-key/azure-storage-account]
 	RotatorType string `json:"rotator-type"`
@@ -787,6 +785,38 @@ func (o *RotatedSecretCreateAzure) HasOutputRule() bool {
 // SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
 func (o *RotatedSecretCreateAzure) SetOutputRule(v []string) {
 	o.OutputRule = v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *RotatedSecretCreateAzure) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateAzure) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *RotatedSecretCreateAzure) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *RotatedSecretCreateAzure) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
@@ -1608,6 +1638,9 @@ func (o RotatedSecretCreateAzure) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.OutputRule) {
 		toSerialize["output-rule"] = o.OutputRule
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength

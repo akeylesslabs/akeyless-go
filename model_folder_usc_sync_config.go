@@ -21,6 +21,7 @@ var _ MappedNullable = &FolderUSCSyncConfig{}
 // FolderUSCSyncConfig struct for FolderUSCSyncConfig
 type FolderUSCSyncConfig struct {
 	DeleteRemote *bool `json:"delete_remote,omitempty"`
+	EngineName *string `json:"engine_name,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
 	UscItemId *int64 `json:"usc_item_id,omitempty"`
 	UscItemName *string `json:"usc_item_name,omitempty"`
@@ -73,6 +74,38 @@ func (o *FolderUSCSyncConfig) HasDeleteRemote() bool {
 // SetDeleteRemote gets a reference to the given bool and assigns it to the DeleteRemote field.
 func (o *FolderUSCSyncConfig) SetDeleteRemote(v bool) {
 	o.DeleteRemote = &v
+}
+
+// GetEngineName returns the EngineName field value if set, zero value otherwise.
+func (o *FolderUSCSyncConfig) GetEngineName() string {
+	if o == nil || IsNil(o.EngineName) {
+		var ret string
+		return ret
+	}
+	return *o.EngineName
+}
+
+// GetEngineNameOk returns a tuple with the EngineName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FolderUSCSyncConfig) GetEngineNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EngineName) {
+		return nil, false
+	}
+	return o.EngineName, true
+}
+
+// HasEngineName returns a boolean if a field has been set.
+func (o *FolderUSCSyncConfig) HasEngineName() bool {
+	if o != nil && !IsNil(o.EngineName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEngineName gets a reference to the given string and assigns it to the EngineName field.
+func (o *FolderUSCSyncConfig) SetEngineName(v string) {
+	o.EngineName = &v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
@@ -183,6 +216,9 @@ func (o FolderUSCSyncConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DeleteRemote) {
 		toSerialize["delete_remote"] = o.DeleteRemote
+	}
+	if !IsNil(o.EngineName) {
+		toSerialize["engine_name"] = o.EngineName
 	}
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace

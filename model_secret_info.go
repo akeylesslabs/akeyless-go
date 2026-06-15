@@ -38,6 +38,8 @@ type SecretInfo struct {
 	Thumbprint *string `json:"thumbprint,omitempty"`
 	Type *string `json:"type,omitempty"`
 	Version *int64 `json:"version,omitempty"`
+	VersionId *string `json:"version_id,omitempty"`
+	VersionIds []string `json:"version_ids,omitempty"`
 }
 
 // NewSecretInfo instantiates a new SecretInfo object
@@ -602,6 +604,70 @@ func (o *SecretInfo) SetVersion(v int64) {
 	o.Version = &v
 }
 
+// GetVersionId returns the VersionId field value if set, zero value otherwise.
+func (o *SecretInfo) GetVersionId() string {
+	if o == nil || IsNil(o.VersionId) {
+		var ret string
+		return ret
+	}
+	return *o.VersionId
+}
+
+// GetVersionIdOk returns a tuple with the VersionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetVersionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.VersionId) {
+		return nil, false
+	}
+	return o.VersionId, true
+}
+
+// HasVersionId returns a boolean if a field has been set.
+func (o *SecretInfo) HasVersionId() bool {
+	if o != nil && !IsNil(o.VersionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersionId gets a reference to the given string and assigns it to the VersionId field.
+func (o *SecretInfo) SetVersionId(v string) {
+	o.VersionId = &v
+}
+
+// GetVersionIds returns the VersionIds field value if set, zero value otherwise.
+func (o *SecretInfo) GetVersionIds() []string {
+	if o == nil || IsNil(o.VersionIds) {
+		var ret []string
+		return ret
+	}
+	return o.VersionIds
+}
+
+// GetVersionIdsOk returns a tuple with the VersionIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetVersionIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.VersionIds) {
+		return nil, false
+	}
+	return o.VersionIds, true
+}
+
+// HasVersionIds returns a boolean if a field has been set.
+func (o *SecretInfo) HasVersionIds() bool {
+	if o != nil && !IsNil(o.VersionIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersionIds gets a reference to the given []string and assigns it to the VersionIds field.
+func (o *SecretInfo) SetVersionIds(v []string) {
+	o.VersionIds = v
+}
+
 func (o SecretInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -662,6 +728,12 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.VersionId) {
+		toSerialize["version_id"] = o.VersionId
+	}
+	if !IsNil(o.VersionIds) {
+		toSerialize["version_ids"] = o.VersionIds
 	}
 	return toSerialize, nil
 }

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedRedirectURIs** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
 **Audience** | Pointer to **string** | Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider&#39;s Application | [optional] 
+**AuthorizedGwClusterName** | Pointer to **string** | AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled. | [optional] 
 **BoundClaims** | Pointer to [**[]OIDCCustomClaim**](OIDCCustomClaim.md) | The claims that login is restricted to. | [optional] 
 **ClientId** | Pointer to **string** | Client ID | [optional] 
 **ClientSecret** | Pointer to **string** | Client Secret | [optional] 
@@ -83,6 +84,31 @@ SetAudience sets Audience field to given value.
 `func (o *OIDCAccessRules) HasAudience() bool`
 
 HasAudience returns a boolean if a field has been set.
+
+### GetAuthorizedGwClusterName
+
+`func (o *OIDCAccessRules) GetAuthorizedGwClusterName() string`
+
+GetAuthorizedGwClusterName returns the AuthorizedGwClusterName field if non-nil, zero value otherwise.
+
+### GetAuthorizedGwClusterNameOk
+
+`func (o *OIDCAccessRules) GetAuthorizedGwClusterNameOk() (*string, bool)`
+
+GetAuthorizedGwClusterNameOk returns a tuple with the AuthorizedGwClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizedGwClusterName
+
+`func (o *OIDCAccessRules) SetAuthorizedGwClusterName(v string)`
+
+SetAuthorizedGwClusterName sets AuthorizedGwClusterName field to given value.
+
+### HasAuthorizedGwClusterName
+
+`func (o *OIDCAccessRules) HasAuthorizedGwClusterName() bool`
+
+HasAuthorizedGwClusterName returns a boolean if a field has been set.
 
 ### GetBoundClaims
 

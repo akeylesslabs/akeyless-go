@@ -5847,6 +5847,33 @@ paths:
             field.
       tags:
       - v2
+  /folder-delete-sync:
+    post:
+      operationId: folderDeleteSync
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderDeleteSync'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderDeleteSyncOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /folder-get:
     post:
       operationId: folderGet
@@ -5864,6 +5891,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/folderGetOutput'
           description: folderGetResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /folder-sync:
+    post:
+      operationId: folderSync
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderSync'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderSyncOutput'
+          description: ""
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /folder-sync-all:
+    post:
+      operationId: folderSyncAll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/folderSyncAll'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/folderSyncAllOutput'
+          description: ""
         default:
           content:
             application/json:
@@ -11108,6 +11189,33 @@ paths:
             field.
       tags:
       - v2
+  /rotated-secret-create-hashi-vault:
+    post:
+      operationId: rotatedSecretCreateHashiVault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotatedSecretCreateHashiVault'
+        required: true
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretCreateOutput'
+          description: rotatedSecretCreateHashiVaultResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /rotated-secret-create-ldap:
     post:
       operationId: rotatedSecretCreateLdap
@@ -11774,6 +11882,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/rotatedSecretUpdateOutput'
           description: rotatedSecretUpdateHanadbResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /rotated-secret-update-hashi-vault:
+    post:
+      operationId: rotatedSecretUpdateHashiVault
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/rotatedSecretUpdateHashiVault'
+        required: true
+        x-go-name: Body
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rotatedSecretUpdateOutput'
+          description: rotatedSecretUpdateHashiVaultResponse wraps response body.
         default:
           content:
             application/json:
@@ -18003,12 +18138,30 @@ components:
           schema:
             $ref: '#/components/schemas/folderDeleteOutput'
       description: folderDeleteResponse wraps response body.
+    folderDeleteSyncResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderDeleteSyncOutput'
+      description: ""
     folderGetResponse:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/folderGetOutput'
       description: folderGetResponse wraps response body.
+    folderSyncAllResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderSyncAllOutput'
+      description: ""
+    folderSyncResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/folderSyncOutput'
+      description: ""
     folderUpdateResponse:
       content:
         application/json:
@@ -19062,6 +19215,12 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretCreateOutput'
       description: rotatedSecretCreateHanadbResponse wraps response body.
+    rotatedSecretCreateHashiVaultResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretCreateOutput'
+      description: rotatedSecretCreateHashiVaultResponse wraps response body.
     rotatedSecretCreateLdapResponse:
       content:
         application/json:
@@ -19213,6 +19372,12 @@ components:
           schema:
             $ref: '#/components/schemas/rotatedSecretUpdateOutput'
       description: rotatedSecretUpdateHanadbResponse wraps response body.
+    rotatedSecretUpdateHashiVaultResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/rotatedSecretUpdateOutput'
+      description: rotatedSecretUpdateHashiVaultResponse wraps response body.
     rotatedSecretUpdateLdapResponse:
       content:
         application/json:
@@ -20681,6 +20846,9 @@ components:
         item_locking:
           enable: true
           max_lock_ttl_mins: 5
+        personal_folder_global_mapping:
+          enable: true
+          unique_identifier_claim: unique_identifier_claim
         password_policy:
           use_numbers: true
           use_capital_letters: true
@@ -20792,6 +20960,8 @@ components:
           $ref: '#/components/schemas/PasswordPolicyInfo'
         password_score:
           $ref: '#/components/schemas/PasswordScoreSetting'
+        personal_folder_global_mapping:
+          $ref: '#/components/schemas/PersonalFolderGlobalMappingSettings'
         protect_items_by_default:
           type: boolean
           x-go-name: ProtectItemsByDefault
@@ -22700,6 +22870,7 @@ components:
             audience: audience
             is_internal: true
             unique_identifier: unique_identifier
+            authorized_gw_cluster_name: authorized_gw_cluster_name
             allowed_redirect_URIs:
             - allowed_redirect_URIs
             - allowed_redirect_URIs
@@ -23014,6 +23185,7 @@ components:
           audience: audience
           is_internal: true
           unique_identifier: unique_identifier
+          authorized_gw_cluster_name: authorized_gw_cluster_name
           allowed_redirect_URIs:
           - allowed_redirect_URIs
           - allowed_redirect_URIs
@@ -28971,9 +29143,16 @@ components:
     EsmGetSecretOutput:
       example:
         metadata: ""
+        version_ids:
+        - version_ids
+        - version_ids
+        warnings:
+        - warnings
+        - warnings
         name: name
         encryption_key: encryption_key
         id: id
+        version_id: version_id
         value: value
         binary_value: true
       properties:
@@ -28994,6 +29173,19 @@ components:
         value:
           type: string
           x-go-name: Value
+        version_id:
+          type: string
+          x-go-name: VersionId
+        version_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: VersionIds
+        warnings:
+          items:
+            type: string
+          type: array
+          x-go-name: Warnings
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     EsmListSecretsOutput:
@@ -29010,8 +29202,12 @@ components:
           activation_date: 2000-01-23T04:56:07.000+00:00
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
+          version_ids:
+          - version_ids
+          - version_ids
           thumbprint: thumbprint
           description: description
+          version_id: version_id
           type: type
           version: 0
           tags:
@@ -29034,8 +29230,12 @@ components:
           activation_date: 2000-01-23T04:56:07.000+00:00
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
+          version_ids:
+          - version_ids
+          - version_ids
           thumbprint: thumbprint
           description: description
+          version_id: version_id
           type: type
           version: 0
           tags:
@@ -29214,10 +29414,14 @@ components:
         usc_item_name: usc_item_name
         delete_remote: true
         namespace: namespace
+        engine_name: engine_name
       properties:
         delete_remote:
           type: boolean
           x-go-name: DeleteRemote
+        engine_name:
+          type: string
+          x-go-name: EngineName
         namespace:
           type: string
           x-go-name: Namespace
@@ -30209,6 +30413,9 @@ components:
           item_locking:
             enable: true
             max_lock_ttl_mins: 5
+          personal_folder_global_mapping:
+            enable: true
+            unique_identifier_claim: unique_identifier_claim
           password_policy:
             use_numbers: true
             use_capital_letters: true
@@ -30339,10 +30546,12 @@ components:
           usc_item_name: usc_item_name
           delete_remote: true
           namespace: namespace
+          engine_name: engine_name
         - usc_item_id: 1
           usc_item_name: usc_item_name
           delete_remote: true
           namespace: namespace
+          engine_name: engine_name
         tags:
         - tags
         - tags
@@ -35580,6 +35789,7 @@ components:
               audience: audience
               is_internal: true
               unique_identifier: unique_identifier
+              authorized_gw_cluster_name: authorized_gw_cluster_name
               allowed_redirect_URIs:
               - allowed_redirect_URIs
               - allowed_redirect_URIs
@@ -35958,6 +36168,7 @@ components:
               audience: audience
               is_internal: true
               unique_identifier: unique_identifier
+              authorized_gw_cluster_name: authorized_gw_cluster_name
               allowed_redirect_URIs:
               - allowed_redirect_URIs
               - allowed_redirect_URIs
@@ -41905,6 +42116,7 @@ components:
         audience: audience
         is_internal: true
         unique_identifier: unique_identifier
+        authorized_gw_cluster_name: authorized_gw_cluster_name
         allowed_redirect_URIs:
         - allowed_redirect_URIs
         - allowed_redirect_URIs
@@ -41928,6 +42140,12 @@ components:
             \ Application"
           type: string
           x-go-name: Audience
+        authorized_gw_cluster_name:
+          description: |-
+            AuthorizedGwClusterName binds the access method to a single GW cluster.
+            When empty (or whitespace-only), GW-driven auth is disabled.
+          type: string
+          x-go-name: AuthorizedGwClusterName
         bound_claims:
           description: The claims that login is restricted to.
           items:
@@ -42674,6 +42892,19 @@ components:
     PathRuleType:
       title: PathRuleType defines a kind of every PathRule assigned to a Role.
       type: string
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    PersonalFolderGlobalMappingSettings:
+      example:
+        enable: true
+        unique_identifier_claim: unique_identifier_claim
+      properties:
+        enable:
+          type: boolean
+          x-go-name: Enable
+        unique_identifier_claim:
+          type: string
+          x-go-name: UniqueIdentifierClaim
+      type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     PingTargetDetails:
       description: PingTargetDetails
@@ -44087,8 +44318,12 @@ components:
         activation_date: 2000-01-23T04:56:07.000+00:00
         key_id: key_id
         created: 2000-01-23T04:56:07.000+00:00
+        version_ids:
+        - version_ids
+        - version_ids
         thumbprint: thumbprint
         description: description
+        version_id: version_id
         type: type
         version: 0
         tags:
@@ -44157,6 +44392,14 @@ components:
           format: int64
           type: integer
           x-go-name: Version
+        version_id:
+          type: string
+          x-go-name: VersionId
+        version_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: VersionIds
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
     SecretSyncOutput:
@@ -46656,9 +46899,16 @@ components:
     UscGetSecretOutput:
       example:
         metadata: ""
+        version_ids:
+        - version_ids
+        - version_ids
+        warnings:
+        - warnings
+        - warnings
         name: name
         encryption_key: encryption_key
         id: id
+        version_id: version_id
         value: value
         binary_value: true
       properties:
@@ -46679,6 +46929,19 @@ components:
         value:
           type: string
           x-go-name: Value
+        version_id:
+          type: string
+          x-go-name: VersionId
+        version_ids:
+          items:
+            type: string
+          type: array
+          x-go-name: VersionIds
+        warnings:
+          items:
+            type: string
+          type: array
+          x-go-name: Warnings
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     UscListSecretsOutput:
@@ -46695,8 +46958,12 @@ components:
           activation_date: 2000-01-23T04:56:07.000+00:00
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
+          version_ids:
+          - version_ids
+          - version_ids
           thumbprint: thumbprint
           description: description
+          version_id: version_id
           type: type
           version: 0
           tags:
@@ -46719,8 +46986,12 @@ components:
           activation_date: 2000-01-23T04:56:07.000+00:00
           key_id: key_id
           created: 2000-01-23T04:56:07.000+00:00
+          version_ids:
+          - version_ids
+          - version_ids
           thumbprint: thumbprint
           description: description
+          version_id: version_id
           type: type
           version: 0
           tags:
@@ -70280,6 +70551,79 @@ components:
     folderDeleteOutput:
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderDeleteSync:
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        delete-from-usc:
+          default: false
+          description: Delete the secrets from the remote target usc as well
+          type: boolean
+          x-go-name: DeleteRemote
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        remote-secret-name:
+          description: Remote Secret Name to delete when multiple syncs exist under
+            the same USC
+          type: string
+          x-go-name: RemoteSecretName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        usc-name:
+          description: Universal Secret Connector name
+          type: string
+          x-go-name: USCName
+      required:
+      - name
+      - usc-name
+      title: folderDeleteSync is a command that deletes folder sync.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderDeleteSyncOutput:
+      example:
+        usc_name: usc_name
+        failed_items:
+          key: failed_items
+        deleted_syncs:
+        - deleted_syncs
+        - deleted_syncs
+        folder_name: folder_name
+      properties:
+        deleted_syncs:
+          items:
+            type: string
+          type: array
+          x-go-name: Deleted
+        failed_items:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: FailedItems
+        folder_name:
+          type: string
+          x-go-name: FolderName
+        usc_name:
+          type: string
+          x-go-name: USCName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     folderGet:
       description: folderGet is a command that get folder
       properties:
@@ -70330,16 +70674,136 @@ components:
             usc_item_name: usc_item_name
             delete_remote: true
             namespace: namespace
+            engine_name: engine_name
           - usc_item_id: 1
             usc_item_name: usc_item_name
             delete_remote: true
             namespace: namespace
+            engine_name: engine_name
           tags:
           - tags
           - tags
       properties:
         folder:
           $ref: '#/components/schemas/GetFolderOutput'
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderSync:
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        delete-remote:
+          description: Delete the secret from the remote target as well
+          type: boolean
+          x-go-name: DeleteRemote
+        engine-name:
+          description: "Hashi Vault engine name prefix, must end with '/'"
+          type: string
+          x-go-name: EngineName
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        namespace:
+          description: "Vault namespace, relevant only for Hashicorp Vault Target"
+          type: string
+          x-go-name: Namespace
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        usc-name:
+          description: "Universal Secret Connector name, If not provided all attached\
+            \ USC's will be synced"
+          type: string
+          x-go-name: USCName
+      required:
+      - name
+      title: folderSync is a command that syncs folder secrets.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderSyncAll:
+      properties:
+        accessibility:
+          default: regular
+          description: for personal password manager
+          type: string
+          x-go-name: ItemAccessibilityString
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        name:
+          description: Folder name
+          type: string
+          x-go-name: FolderName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - name
+      title: folderSyncAll is a command that syncs all USCs for a folder.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderSyncAllOutput:
+      example:
+        folder_name: folder_name
+      properties:
+        folder_name:
+          type: string
+          x-go-name: FolderName
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    folderSyncOutput:
+      example:
+        synced_items:
+        - synced_items
+        - synced_items
+        failed_items:
+          key: failed_items
+        skipped_items:
+        - skipped_items
+        - skipped_items
+        folder_name: folder_name
+      properties:
+        failed_items:
+          additionalProperties:
+            type: string
+          type: object
+          x-go-name: FailedItems
+        folder_name:
+          type: string
+          x-go-name: FolderName
+        skipped_items:
+          items:
+            type: string
+          type: array
+          x-go-name: SkippedItems
+        synced_items:
+          items:
+            type: string
+          type: array
+          x-go-name: SyncedItems
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     folderUpdate:
@@ -107602,8 +108066,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         aws-region:
@@ -107660,8 +108122,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -107703,13 +108163,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -107805,8 +108262,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -107863,8 +108318,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -107887,6 +108340,11 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
+        password:
+          description: The password for the user principal name to rotate (relevant
+            only for rotator-type=password)
+          type: string
+          x-go-name: Password
         password-length:
           description: The length of the password to be generated
           type: string
@@ -107914,13 +108372,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -108019,8 +108474,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -108050,8 +108503,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -108093,13 +108544,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -108161,8 +108609,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         custom-payload:
@@ -108200,8 +108646,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -108243,13 +108687,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-allow-external-user:
@@ -108370,8 +108811,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -108401,8 +108840,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -108433,13 +108870,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         tags:
@@ -108496,8 +108930,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -108561,8 +108993,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -108593,13 +109023,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -108661,8 +109088,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -108692,8 +109117,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -108735,13 +109158,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -108795,6 +109215,120 @@ components:
       title: rotatedSecretCreateHanadb is a command that creates a rotated secret.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretCreateHashiVault:
+      properties:
+        auto-rotate:
+          type: string
+          x-go-name: AutoRotate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        input-rule:
+          description: "Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize\
+            \ input)"
+          items:
+            type: string
+          type: array
+          x-go-name: InputRules
+        item-custom-fields:
+          additionalProperties:
+            type: string
+          description: Additional custom fields to associate with the item
+          type: object
+          x-go-name: ItemCustomFields
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        key:
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Rotated secret name
+          type: string
+          x-go-name: SecretName
+        output-rule:
+          description: "Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask\
+            \ secrets)"
+          items:
+            type: string
+          type: array
+          x-go-name: OutputRules
+        password-length:
+          description: The length of the password to be generated
+          type: string
+          x-go-name: PasswordLengthInput
+        rotation-event-in:
+          description: How many days before the rotation of the item would you like
+            to be notified
+          items:
+            type: string
+          type: array
+          x-go-name: RotationEventsInDays
+        rotation-hour:
+          format: int32
+          type: integer
+          x-go-name: RotationHour
+        rotation-interval:
+          type: string
+          x-go-name: RotationInterval
+        tags:
+          description: Add tags attached to this object
+          items:
+            type: string
+          type: array
+          x-go-name: Tags
+        target-name:
+          description: The target name to associate
+          type: string
+          x-go-name: TargetName
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
+      required:
+      - name
+      - target-name
+      title: rotatedSecretCreateHashiVault is a command that creates a rotated secret.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretCreateLdap:
       properties:
         ProviderType:
@@ -108806,8 +109340,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -108843,8 +109375,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -108897,13 +109427,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -109026,8 +109553,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -109057,8 +109582,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -109111,13 +109634,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -109209,8 +109729,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -109240,8 +109758,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -109294,13 +109810,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -109396,8 +109909,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -109427,8 +109938,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -109481,13 +109990,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -109590,8 +110096,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -109621,8 +110125,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -109653,13 +110155,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -109721,8 +110220,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -109752,8 +110249,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -109806,13 +110301,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -109904,8 +110396,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -109935,8 +110425,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -109989,13 +110477,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -110091,8 +110576,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -110122,8 +110605,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -110165,13 +110646,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -110233,8 +110711,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -110264,8 +110740,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -110318,13 +110792,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -110402,8 +110873,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -110433,8 +110902,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -110486,13 +110953,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -110562,8 +111026,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -110609,8 +111071,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -110652,13 +111112,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -110730,8 +111187,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -110761,8 +111216,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         key-data-base64:
@@ -110823,13 +111276,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-custom-cmd:
@@ -110943,8 +111393,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -110974,8 +111422,6 @@ components:
           type: boolean
           x-go-name: Json
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -111028,13 +111474,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -111262,10 +111705,11 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretSync:
       properties:
-        DeleteRemote:
+        delete-remote:
           description: Delete the secret from remote secret manager (for association
             create/update)
           type: boolean
+          x-go-name: DeleteRemote
         filter-secret-value:
           description: JQ expression to filter or transform the secret value
           type: string
@@ -111331,8 +111775,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         aws-region:
@@ -111395,8 +111837,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -111448,13 +111888,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-aws-account-id:
@@ -111540,8 +111977,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -111604,8 +112039,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -111632,6 +112065,11 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
+        password:
+          description: The password for the user principal name to rotate (relevant
+            only for rotator-type=password)
+          type: string
+          x-go-name: Password
         password-length:
           description: The length of the password to be generated
           type: string
@@ -111665,13 +112103,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-disable-concurrent-connections:
@@ -111760,8 +112195,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -111797,8 +112230,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -111850,13 +112281,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         token:
@@ -111908,8 +112336,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         custom-payload:
@@ -111953,8 +112379,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -112006,13 +112430,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-allow-external-user:
@@ -112127,8 +112548,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -112164,8 +112583,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -112206,13 +112623,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         token:
@@ -112264,8 +112678,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -112335,8 +112747,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -112377,13 +112787,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -112440,8 +112847,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -112477,8 +112882,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -112530,13 +112933,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         token:
@@ -112574,6 +112974,131 @@ components:
       title: rotatedSecretUpdateHanadb is a command that updates a rotated secret.
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    rotatedSecretUpdateHashiVault:
+      properties:
+        add-tag:
+          description: List of the new tags that will be attached to this item
+          items:
+            type: string
+          type: array
+          x-go-name: AddTags
+        auto-rotate:
+          type: string
+          x-go-name: AutoRotate
+        delete_protection:
+          description: "Protection from accidental deletion of this object [true/false]"
+          type: string
+          x-go-name: ObjectProtected
+        description:
+          default: default_metadata
+          description: Description of the object
+          type: string
+          x-go-name: Description
+        input-rule:
+          description: "Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize\
+            \ input)"
+          items:
+            type: string
+          type: array
+          x-go-name: InputRules
+        item-custom-fields:
+          additionalProperties:
+            type: string
+          description: Additional custom fields to associate with the item
+          type: object
+          x-go-name: ItemCustomFields
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        keep-prev-version:
+          description: "Whether to keep previous version [true/false]. If not set,\
+            \ use default according to account settings"
+          type: string
+          x-go-name: KeepPrevVersion
+        key:
+          type: string
+          x-go-name: ProtectionKey
+        max-versions:
+          description: "Set the maximum number of versions, limited by the account\
+            \ settings defaults."
+          type: string
+          x-go-name: MaxVersions
+        name:
+          description: Rotated secret name
+          type: string
+          x-go-name: SecretName
+        new-name:
+          description: New item name
+          type: string
+          x-go-name: NewName
+        output-rule:
+          description: "Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask\
+            \ secrets)"
+          items:
+            type: string
+          type: array
+          x-go-name: OutputRules
+        password-length:
+          description: The length of the password to be generated
+          type: string
+          x-go-name: PasswordLengthInput
+        rm-tag:
+          description: List of the existent tags that will be removed from this item
+          items:
+            type: string
+          type: array
+          x-go-name: RemoveTags
+        rotation-event-in:
+          description: How many days before the rotation of the item would you like
+            to be notified
+          items:
+            type: string
+          type: array
+          x-go-name: RotationEventsInDays
+        rotation-hour:
+          format: int32
+          type: integer
+          x-go-name: RotationHour
+        rotation-interval:
+          type: string
+          x-go-name: RotationInterval
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+        use-capital-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one uppercase character from the ISO basic Latin alphabet (A\
+            \ to Z). [true/false]"
+          type: string
+          x-go-name: UseCapitalLettersV2
+        use-lower-letters:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one lowercase character from the ISO basic Latin alphabet (a\
+            \ to z). [true/false]"
+          type: string
+          x-go-name: UseLowerLetters
+        use-numbers:
+          description: "Specifies whether the generated temporary password must contain\
+            \ at least one numeric character (0 to 9). [true/false]"
+          type: string
+          x-go-name: UseNumbers
+        use-special-characters:
+          example: "! @ # $. [true/false]"
+          type: string
+          x-go-name: UseSpecialCharacters
+      required:
+      - name
+      title: rotatedSecretUpdateHashiVault is a command that updates a rotated secret.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     rotatedSecretUpdateLdap:
       properties:
         ProviderType:
@@ -112591,8 +113116,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -112634,8 +113157,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -112698,13 +113219,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-bastion-issuer:
@@ -112817,8 +113335,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -112854,8 +113370,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -112918,13 +113432,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-bastion-issuer:
@@ -113006,8 +113517,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -113043,8 +113552,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -113107,13 +113614,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-bastion-issuer:
@@ -113199,8 +113703,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -113236,8 +113738,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -113300,13 +113800,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-bastion-issuer:
@@ -113398,8 +113895,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -113435,8 +113930,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -113477,13 +113970,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         token:
@@ -113535,8 +114025,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -113572,8 +114060,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -113636,13 +114122,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-db-name:
@@ -113724,8 +114207,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -113761,8 +114242,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -113825,13 +114304,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-bastion-issuer:
@@ -113917,8 +114393,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -113954,8 +114428,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -114007,13 +114479,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         token:
@@ -114065,8 +114534,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -114102,8 +114569,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -114166,13 +114631,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         secure-access-db-name:
@@ -114240,8 +114702,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -114277,8 +114737,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -114340,13 +114798,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         token:
@@ -114406,8 +114861,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -114454,8 +114907,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         max-versions:
@@ -114496,13 +114947,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         splunk-token:
@@ -114565,8 +115013,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -114602,8 +115048,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         key-data-base64:
@@ -114674,13 +115118,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-custom-cmd:
@@ -114789,8 +115230,6 @@ components:
           type: string
           x-go-name: RotatorCredsType
         auto-rotate:
-          description: "Whether to automatically rotate every --rotation-interval\
-            \ days, or disable existing automatic rotation [true/false]"
           type: string
           x-go-name: AutoRotate
         delete_protection:
@@ -114826,8 +115265,6 @@ components:
           type: string
           x-go-name: KeepPrevVersion
         key:
-          description: "The name of a key that used to encrypt the secret value (if\
-            \ empty, the account default protectionKey key will be used)"
           type: string
           x-go-name: ProtectionKey
         lock-during-sra-session:
@@ -114890,13 +115327,10 @@ components:
           type: array
           x-go-name: RotationEventsInDays
         rotation-hour:
-          description: The Hour of the rotation in UTC
           format: int32
           type: integer
           x-go-name: RotationHour
         rotation-interval:
-          description: The number of days to wait between every automatic key rotation
-            (1-365)
           type: string
           x-go-name: RotationInterval
         rotator-type:
@@ -115816,10 +116250,11 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     staticSecretSync:
       properties:
-        DeleteRemote:
+        delete-remote:
           description: Delete the secret from remote secret manager (for association
             create/update)
           type: boolean
+          x-go-name: DeleteRemote
         filter-secret-value:
           description: JQ expression to filter or transform the secret value
           type: string

@@ -24,6 +24,8 @@ type OIDCAccessRules struct {
 	AllowedRedirectURIs []string `json:"allowed_redirect_URIs,omitempty"`
 	// Audience claim to be used as part of the authentication flow. In case set, it must match the one configured on the Identity Provider's Application
 	Audience *string `json:"audience,omitempty"`
+	// AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled.
+	AuthorizedGwClusterName *string `json:"authorized_gw_cluster_name,omitempty"`
 	// The claims that login is restricted to.
 	BoundClaims []OIDCCustomClaim `json:"bound_claims,omitempty"`
 	// Client ID
@@ -121,6 +123,38 @@ func (o *OIDCAccessRules) HasAudience() bool {
 // SetAudience gets a reference to the given string and assigns it to the Audience field.
 func (o *OIDCAccessRules) SetAudience(v string) {
 	o.Audience = &v
+}
+
+// GetAuthorizedGwClusterName returns the AuthorizedGwClusterName field value if set, zero value otherwise.
+func (o *OIDCAccessRules) GetAuthorizedGwClusterName() string {
+	if o == nil || IsNil(o.AuthorizedGwClusterName) {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizedGwClusterName
+}
+
+// GetAuthorizedGwClusterNameOk returns a tuple with the AuthorizedGwClusterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OIDCAccessRules) GetAuthorizedGwClusterNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthorizedGwClusterName) {
+		return nil, false
+	}
+	return o.AuthorizedGwClusterName, true
+}
+
+// HasAuthorizedGwClusterName returns a boolean if a field has been set.
+func (o *OIDCAccessRules) HasAuthorizedGwClusterName() bool {
+	if o != nil && !IsNil(o.AuthorizedGwClusterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizedGwClusterName gets a reference to the given string and assigns it to the AuthorizedGwClusterName field.
+func (o *OIDCAccessRules) SetAuthorizedGwClusterName(v string) {
+	o.AuthorizedGwClusterName = &v
 }
 
 // GetBoundClaims returns the BoundClaims field value if set, zero value otherwise.
@@ -394,6 +428,9 @@ func (o OIDCAccessRules) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
+	}
+	if !IsNil(o.AuthorizedGwClusterName) {
+		toSerialize["authorized_gw_cluster_name"] = o.AuthorizedGwClusterName
 	}
 	if !IsNil(o.BoundClaims) {
 		toSerialize["bound_claims"] = o.BoundClaims

@@ -422,8 +422,14 @@ docs/ExternalKMSKeyId.md
 docs/FolderCreate.md
 docs/FolderCreateOutput.md
 docs/FolderDelete.md
+docs/FolderDeleteSync.md
+docs/FolderDeleteSyncOutput.md
 docs/FolderGet.md
 docs/FolderGetOutput.md
+docs/FolderSync.md
+docs/FolderSyncAll.md
+docs/FolderSyncAllOutput.md
+docs/FolderSyncOutput.md
 docs/FolderUSCSyncConfig.md
 docs/FolderUpdate.md
 docs/GCPAccessRules.md
@@ -815,6 +821,7 @@ docs/PasswordScoreInfo.md
 docs/PasswordScoreSetting.md
 docs/PasswordSecurityInfo.md
 docs/PathRule.md
+docs/PersonalFolderGlobalMappingSettings.md
 docs/PingTargetDetails.md
 docs/PoliciesCreateOutput.md
 docs/PoliciesDelete.md
@@ -864,6 +871,7 @@ docs/RotatedSecretCreateCustom.md
 docs/RotatedSecretCreateDockerhub.md
 docs/RotatedSecretCreateGcp.md
 docs/RotatedSecretCreateHanadb.md
+docs/RotatedSecretCreateHashiVault.md
 docs/RotatedSecretCreateLdap.md
 docs/RotatedSecretCreateMongodb.md
 docs/RotatedSecretCreateMssql.md
@@ -893,6 +901,7 @@ docs/RotatedSecretUpdateCustom.md
 docs/RotatedSecretUpdateDockerhub.md
 docs/RotatedSecretUpdateGcp.md
 docs/RotatedSecretUpdateHanadb.md
+docs/RotatedSecretUpdateHashiVault.md
 docs/RotatedSecretUpdateLdap.md
 docs/RotatedSecretUpdateMongodb.md
 docs/RotatedSecretUpdateMssql.md
@@ -1625,8 +1634,14 @@ model_external_kms_key_id.go
 model_folder_create.go
 model_folder_create_output.go
 model_folder_delete.go
+model_folder_delete_sync.go
+model_folder_delete_sync_output.go
 model_folder_get.go
 model_folder_get_output.go
+model_folder_sync.go
+model_folder_sync_all.go
+model_folder_sync_all_output.go
+model_folder_sync_output.go
 model_folder_update.go
 model_folder_usc_sync_config.go
 model_gateway_create_allowed_access.go
@@ -2017,6 +2032,7 @@ model_password_score_info.go
 model_password_score_setting.go
 model_password_security_info.go
 model_path_rule.go
+model_personal_folder_global_mapping_settings.go
 model_ping_target_details.go
 model_pki_certificate_issue_details.go
 model_policies_create_output.go
@@ -2067,6 +2083,7 @@ model_rotated_secret_create_custom.go
 model_rotated_secret_create_dockerhub.go
 model_rotated_secret_create_gcp.go
 model_rotated_secret_create_hanadb.go
+model_rotated_secret_create_hashi_vault.go
 model_rotated_secret_create_ldap.go
 model_rotated_secret_create_mongodb.go
 model_rotated_secret_create_mssql.go
@@ -2096,6 +2113,7 @@ model_rotated_secret_update_custom.go
 model_rotated_secret_update_dockerhub.go
 model_rotated_secret_update_gcp.go
 model_rotated_secret_update_hanadb.go
+model_rotated_secret_update_hashi_vault.go
 model_rotated_secret_update_ldap.go
 model_rotated_secret_update_mongodb.go
 model_rotated_secret_update_mssql.go

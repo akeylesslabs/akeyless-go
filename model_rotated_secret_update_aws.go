@@ -30,7 +30,6 @@ type RotatedSecretUpdateAws struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
-	// Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Aws Region
 	AwsRegion *string `json:"aws-region,omitempty"`
@@ -54,7 +53,6 @@ type RotatedSecretUpdateAws struct {
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
-	// The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
 	// Lock this secret for read/update while an SRA session is active
 	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
@@ -74,9 +72,7 @@ type RotatedSecretUpdateAws struct {
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
-	// The Hour of the rotation in UTC
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
-	// The number of days to wait between every automatic key rotation (1-365)
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The AWS account id
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`

@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **Metadata** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
+**VersionId** | Pointer to **string** |  | [optional] 
+**VersionIds** | Pointer to **[]string** |  | [optional] 
+**Warnings** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -189,6 +192,81 @@ SetValue sets Value field to given value.
 `func (o *UscGetSecretOutput) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetVersionId
+
+`func (o *UscGetSecretOutput) GetVersionId() string`
+
+GetVersionId returns the VersionId field if non-nil, zero value otherwise.
+
+### GetVersionIdOk
+
+`func (o *UscGetSecretOutput) GetVersionIdOk() (*string, bool)`
+
+GetVersionIdOk returns a tuple with the VersionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionId
+
+`func (o *UscGetSecretOutput) SetVersionId(v string)`
+
+SetVersionId sets VersionId field to given value.
+
+### HasVersionId
+
+`func (o *UscGetSecretOutput) HasVersionId() bool`
+
+HasVersionId returns a boolean if a field has been set.
+
+### GetVersionIds
+
+`func (o *UscGetSecretOutput) GetVersionIds() []string`
+
+GetVersionIds returns the VersionIds field if non-nil, zero value otherwise.
+
+### GetVersionIdsOk
+
+`func (o *UscGetSecretOutput) GetVersionIdsOk() (*[]string, bool)`
+
+GetVersionIdsOk returns a tuple with the VersionIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersionIds
+
+`func (o *UscGetSecretOutput) SetVersionIds(v []string)`
+
+SetVersionIds sets VersionIds field to given value.
+
+### HasVersionIds
+
+`func (o *UscGetSecretOutput) HasVersionIds() bool`
+
+HasVersionIds returns a boolean if a field has been set.
+
+### GetWarnings
+
+`func (o *UscGetSecretOutput) GetWarnings() []string`
+
+GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+
+### GetWarningsOk
+
+`func (o *UscGetSecretOutput) GetWarningsOk() (*[]string, bool)`
+
+GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnings
+
+`func (o *UscGetSecretOutput) SetWarnings(v []string)`
+
+SetWarnings sets Warnings field to given value.
+
+### HasWarnings
+
+`func (o *UscGetSecretOutput) HasWarnings() bool`
+
+HasWarnings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

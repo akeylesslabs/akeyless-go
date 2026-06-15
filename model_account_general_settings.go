@@ -50,6 +50,7 @@ type AccountGeneralSettings struct {
 	PasswordExpirationInfo *PasswordExpirationInfo `json:"password_expiration_info,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
 	PasswordScore *PasswordScoreSetting `json:"password_score,omitempty"`
+	PersonalFolderGlobalMapping *PersonalFolderGlobalMappingSettings `json:"personal_folder_global_mapping,omitempty"`
 	ProtectItemsByDefault *bool `json:"protect_items_by_default,omitempty"`
 	RotationSecretMaxInterval *RotationSecretMaxInterval `json:"rotation_secret_max_interval,omitempty"`
 	SharingPolicy *SharingPolicyInfo `json:"sharing_policy,omitempty"`
@@ -904,6 +905,38 @@ func (o *AccountGeneralSettings) SetPasswordScore(v PasswordScoreSetting) {
 	o.PasswordScore = &v
 }
 
+// GetPersonalFolderGlobalMapping returns the PersonalFolderGlobalMapping field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetPersonalFolderGlobalMapping() PersonalFolderGlobalMappingSettings {
+	if o == nil || IsNil(o.PersonalFolderGlobalMapping) {
+		var ret PersonalFolderGlobalMappingSettings
+		return ret
+	}
+	return *o.PersonalFolderGlobalMapping
+}
+
+// GetPersonalFolderGlobalMappingOk returns a tuple with the PersonalFolderGlobalMapping field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetPersonalFolderGlobalMappingOk() (*PersonalFolderGlobalMappingSettings, bool) {
+	if o == nil || IsNil(o.PersonalFolderGlobalMapping) {
+		return nil, false
+	}
+	return o.PersonalFolderGlobalMapping, true
+}
+
+// HasPersonalFolderGlobalMapping returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasPersonalFolderGlobalMapping() bool {
+	if o != nil && !IsNil(o.PersonalFolderGlobalMapping) {
+		return true
+	}
+
+	return false
+}
+
+// SetPersonalFolderGlobalMapping gets a reference to the given PersonalFolderGlobalMappingSettings and assigns it to the PersonalFolderGlobalMapping field.
+func (o *AccountGeneralSettings) SetPersonalFolderGlobalMapping(v PersonalFolderGlobalMappingSettings) {
+	o.PersonalFolderGlobalMapping = &v
+}
+
 // GetProtectItemsByDefault returns the ProtectItemsByDefault field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetProtectItemsByDefault() bool {
 	if o == nil || IsNil(o.ProtectItemsByDefault) {
@@ -1087,6 +1120,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PasswordScore) {
 		toSerialize["password_score"] = o.PasswordScore
+	}
+	if !IsNil(o.PersonalFolderGlobalMapping) {
+		toSerialize["personal_folder_global_mapping"] = o.PersonalFolderGlobalMapping
 	}
 	if !IsNil(o.ProtectItemsByDefault) {
 		toSerialize["protect_items_by_default"] = o.ProtectItemsByDefault
