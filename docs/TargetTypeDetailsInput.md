@@ -4,11 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AnthropicTargetDetails** | Pointer to [**AnthropicTargetDetails**](AnthropicTargetDetails.md) |  | [optional] 
 **ArtifactoryTargetDetails** | Pointer to [**ArtifactoryTargetDetails**](ArtifactoryTargetDetails.md) |  | [optional] 
 **AwsTargetDetails** | Pointer to [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 
 **AzureTargetDetails** | Pointer to [**AzureTargetDetails**](AzureTargetDetails.md) |  | [optional] 
+**BedrockTargetDetails** | Pointer to [**BedrockTargetDetails**](BedrockTargetDetails.md) |  | [optional] 
 **ChefTargetDetails** | Pointer to [**ChefTargetDetails**](ChefTargetDetails.md) |  | [optional] 
 **CloudflareTargetDetails** | Pointer to [**CloudflareTargetDetails**](CloudflareTargetDetails.md) |  | [optional] 
+**CustomDnsTargetDetails** | Pointer to [**CustomDnsTargetDetails**](CustomDnsTargetDetails.md) |  | [optional] 
 **CustomTargetDetails** | Pointer to [**CustomTargetDetails**](CustomTargetDetails.md) |  | [optional] 
 **DbTargetDetails** | Pointer to [**DbTargetDetails**](DbTargetDetails.md) |  | [optional] 
 **DigicertTargetDetails** | Pointer to [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 
@@ -23,12 +26,15 @@ Name | Type | Description | Notes
 **GlobalsignTargetDetails** | Pointer to [**GlobalSignGCCTargetDetails**](GlobalSignGCCTargetDetails.md) |  | [optional] 
 **GodaddyTargetDetails** | Pointer to [**GodaddyTargetDetails**](GodaddyTargetDetails.md) |  | [optional] 
 **GoogleTrustTargetDetails** | Pointer to [**GoogleTrustTargetDetails**](GoogleTrustTargetDetails.md) |  | [optional] 
+**GrokTargetDetails** | Pointer to [**GrokTargetDetails**](GrokTargetDetails.md) |  | [optional] 
 **HashiVaultTargetDetails** | Pointer to [**HashiVaultTargetDetails**](HashiVaultTargetDetails.md) |  | [optional] 
+**KeycloakTargetDetails** | Pointer to [**KeycloakTargetDetails**](KeycloakTargetDetails.md) |  | [optional] 
 **LdapTargetDetails** | Pointer to [**LdapTargetDetails**](LdapTargetDetails.md) |  | [optional] 
 **LetsencryptTargetDetails** | Pointer to [**LetsEncryptTargetDetails**](LetsEncryptTargetDetails.md) |  | [optional] 
 **LinkedTargetDetails** | Pointer to [**LinkedTargetDetails**](LinkedTargetDetails.md) |  | [optional] 
 **MongoDbTargetDetails** | Pointer to [**MongoDBTargetDetails**](MongoDBTargetDetails.md) |  | [optional] 
 **NativeK8sTargetDetails** | Pointer to [**NativeK8sTargetDetails**](NativeK8sTargetDetails.md) |  | [optional] 
+**OktaTargetDetails** | Pointer to [**OktaTargetDetails**](OktaTargetDetails.md) |  | [optional] 
 **OpenaiTargetDetails** | Pointer to [**OpenAITargetDetails**](OpenAITargetDetails.md) |  | [optional] 
 **PingTargetDetails** | Pointer to [**PingTargetDetails**](PingTargetDetails.md) |  | [optional] 
 **RabbitMqTargetDetails** | Pointer to [**RabbitMQTargetDetails**](RabbitMQTargetDetails.md) |  | [optional] 
@@ -59,6 +65,31 @@ will change when the set of required properties is changed
 NewTargetTypeDetailsInputWithDefaults instantiates a new TargetTypeDetailsInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAnthropicTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetAnthropicTargetDetails() AnthropicTargetDetails`
+
+GetAnthropicTargetDetails returns the AnthropicTargetDetails field if non-nil, zero value otherwise.
+
+### GetAnthropicTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetAnthropicTargetDetailsOk() (*AnthropicTargetDetails, bool)`
+
+GetAnthropicTargetDetailsOk returns a tuple with the AnthropicTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnthropicTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetAnthropicTargetDetails(v AnthropicTargetDetails)`
+
+SetAnthropicTargetDetails sets AnthropicTargetDetails field to given value.
+
+### HasAnthropicTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasAnthropicTargetDetails() bool`
+
+HasAnthropicTargetDetails returns a boolean if a field has been set.
 
 ### GetArtifactoryTargetDetails
 
@@ -135,6 +166,31 @@ SetAzureTargetDetails sets AzureTargetDetails field to given value.
 
 HasAzureTargetDetails returns a boolean if a field has been set.
 
+### GetBedrockTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetBedrockTargetDetails() BedrockTargetDetails`
+
+GetBedrockTargetDetails returns the BedrockTargetDetails field if non-nil, zero value otherwise.
+
+### GetBedrockTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetBedrockTargetDetailsOk() (*BedrockTargetDetails, bool)`
+
+GetBedrockTargetDetailsOk returns a tuple with the BedrockTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBedrockTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetBedrockTargetDetails(v BedrockTargetDetails)`
+
+SetBedrockTargetDetails sets BedrockTargetDetails field to given value.
+
+### HasBedrockTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasBedrockTargetDetails() bool`
+
+HasBedrockTargetDetails returns a boolean if a field has been set.
+
 ### GetChefTargetDetails
 
 `func (o *TargetTypeDetailsInput) GetChefTargetDetails() ChefTargetDetails`
@@ -184,6 +240,31 @@ SetCloudflareTargetDetails sets CloudflareTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasCloudflareTargetDetails() bool`
 
 HasCloudflareTargetDetails returns a boolean if a field has been set.
+
+### GetCustomDnsTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetCustomDnsTargetDetails() CustomDnsTargetDetails`
+
+GetCustomDnsTargetDetails returns the CustomDnsTargetDetails field if non-nil, zero value otherwise.
+
+### GetCustomDnsTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetCustomDnsTargetDetailsOk() (*CustomDnsTargetDetails, bool)`
+
+GetCustomDnsTargetDetailsOk returns a tuple with the CustomDnsTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomDnsTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetCustomDnsTargetDetails(v CustomDnsTargetDetails)`
+
+SetCustomDnsTargetDetails sets CustomDnsTargetDetails field to given value.
+
+### HasCustomDnsTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasCustomDnsTargetDetails() bool`
+
+HasCustomDnsTargetDetails returns a boolean if a field has been set.
 
 ### GetCustomTargetDetails
 
@@ -535,6 +616,31 @@ SetGoogleTrustTargetDetails sets GoogleTrustTargetDetails field to given value.
 
 HasGoogleTrustTargetDetails returns a boolean if a field has been set.
 
+### GetGrokTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetGrokTargetDetails() GrokTargetDetails`
+
+GetGrokTargetDetails returns the GrokTargetDetails field if non-nil, zero value otherwise.
+
+### GetGrokTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetGrokTargetDetailsOk() (*GrokTargetDetails, bool)`
+
+GetGrokTargetDetailsOk returns a tuple with the GrokTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGrokTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetGrokTargetDetails(v GrokTargetDetails)`
+
+SetGrokTargetDetails sets GrokTargetDetails field to given value.
+
+### HasGrokTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasGrokTargetDetails() bool`
+
+HasGrokTargetDetails returns a boolean if a field has been set.
+
 ### GetHashiVaultTargetDetails
 
 `func (o *TargetTypeDetailsInput) GetHashiVaultTargetDetails() HashiVaultTargetDetails`
@@ -559,6 +665,31 @@ SetHashiVaultTargetDetails sets HashiVaultTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasHashiVaultTargetDetails() bool`
 
 HasHashiVaultTargetDetails returns a boolean if a field has been set.
+
+### GetKeycloakTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetKeycloakTargetDetails() KeycloakTargetDetails`
+
+GetKeycloakTargetDetails returns the KeycloakTargetDetails field if non-nil, zero value otherwise.
+
+### GetKeycloakTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetKeycloakTargetDetailsOk() (*KeycloakTargetDetails, bool)`
+
+GetKeycloakTargetDetailsOk returns a tuple with the KeycloakTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeycloakTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetKeycloakTargetDetails(v KeycloakTargetDetails)`
+
+SetKeycloakTargetDetails sets KeycloakTargetDetails field to given value.
+
+### HasKeycloakTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasKeycloakTargetDetails() bool`
+
+HasKeycloakTargetDetails returns a boolean if a field has been set.
 
 ### GetLdapTargetDetails
 
@@ -684,6 +815,31 @@ SetNativeK8sTargetDetails sets NativeK8sTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasNativeK8sTargetDetails() bool`
 
 HasNativeK8sTargetDetails returns a boolean if a field has been set.
+
+### GetOktaTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetOktaTargetDetails() OktaTargetDetails`
+
+GetOktaTargetDetails returns the OktaTargetDetails field if non-nil, zero value otherwise.
+
+### GetOktaTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetOktaTargetDetailsOk() (*OktaTargetDetails, bool)`
+
+GetOktaTargetDetailsOk returns a tuple with the OktaTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOktaTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetOktaTargetDetails(v OktaTargetDetails)`
+
+SetOktaTargetDetails sets OktaTargetDetails field to given value.
+
+### HasOktaTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasOktaTargetDetails() bool`
+
+HasOktaTargetDetails returns a boolean if a field has been set.
 
 ### GetOpenaiTargetDetails
 

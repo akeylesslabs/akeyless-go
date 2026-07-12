@@ -86,6 +86,9 @@ Method | HTTP request | Description
 [**CreateHashiVaultTarget**](V2Api.md#CreateHashiVaultTarget) | **Post** /create-hashi-vault-target | 
 [**CreateKey**](V2Api.md#CreateKey) | **Post** /create-key | 
 [**CreateLinkedTarget**](V2Api.md#CreateLinkedTarget) | **Post** /create-linked-target | 
+[**CreateMcpSecretBearerToken**](V2Api.md#CreateMcpSecretBearerToken) | **Post** /create-mcp-secret-bearer-token | 
+[**CreateMcpSecretOAuthAuthCode**](V2Api.md#CreateMcpSecretOAuthAuthCode) | **Post** /create-mcp-secret-oauth-authorization-code | 
+[**CreateMcpSecretOAuthClientCreds**](V2Api.md#CreateMcpSecretOAuthClientCreds) | **Post** /create-mcp-secret-oauth-client-credentials | 
 [**CreateNativeK8STarget**](V2Api.md#CreateNativeK8STarget) | **Post** /create-k8s-target | 
 [**CreateOidcApp**](V2Api.md#CreateOidcApp) | **Post** /create-oidc-app | 
 [**CreatePKICertIssuer**](V2Api.md#CreatePKICertIssuer) | **Post** /create-pki-cert-issuer | 
@@ -474,10 +477,13 @@ Method | HTTP request | Description
 [**StaticCredsAuth**](V2Api.md#StaticCredsAuth) | **Post** /static-creds-auth | 
 [**StaticSecretDeleteSync**](V2Api.md#StaticSecretDeleteSync) | **Post** /static-secret-delete-sync | 
 [**StaticSecretSync**](V2Api.md#StaticSecretSync) | **Post** /static-secret-sync | 
+[**TargetCreateAnthropic**](V2Api.md#TargetCreateAnthropic) | **Post** /target-create-anthropic | 
 [**TargetCreateArtifactory**](V2Api.md#TargetCreateArtifactory) | **Post** /target-create-artifactory | 
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
 [**TargetCreateAzure**](V2Api.md#TargetCreateAzure) | **Post** /target-create-azure | 
+[**TargetCreateBedrock**](V2Api.md#TargetCreateBedrock) | **Post** /target-create-bedrock | 
 [**TargetCreateCloudflare**](V2Api.md#TargetCreateCloudflare) | **Post** /target-create-cloudflare | 
+[**TargetCreateCustomDns**](V2Api.md#TargetCreateCustomDns) | **Post** /target-create-custom-dns | 
 [**TargetCreateDB**](V2Api.md#TargetCreateDB) | **Post** /target-create-db | 
 [**TargetCreateDigiCert**](V2Api.md#TargetCreateDigiCert) | **Post** /target-create-digicert | 
 [**TargetCreateDockerhub**](V2Api.md#TargetCreateDockerhub) | **Post** /target-create-dockerhub | 
@@ -491,11 +497,14 @@ Method | HTTP request | Description
 [**TargetCreateGlobalSignAtlas**](V2Api.md#TargetCreateGlobalSignAtlas) | **Post** /target-create-globalsign-atlas | 
 [**TargetCreateGodaddy**](V2Api.md#TargetCreateGodaddy) | **Post** /target-create-godaddy | 
 [**TargetCreateGoogleTrust**](V2Api.md#TargetCreateGoogleTrust) | **Post** /target-create-google-trust | 
+[**TargetCreateGrok**](V2Api.md#TargetCreateGrok) | **Post** /target-create-grok | 
 [**TargetCreateHashiVault**](V2Api.md#TargetCreateHashiVault) | **Post** /target-create-hashi-vault | 
 [**TargetCreateK8s**](V2Api.md#TargetCreateK8s) | **Post** /target-create-k8s | 
+[**TargetCreateKeycloak**](V2Api.md#TargetCreateKeycloak) | **Post** /target-create-keycloak | 
 [**TargetCreateLdap**](V2Api.md#TargetCreateLdap) | **Post** /target-create-ldap | 
 [**TargetCreateLetsEncrypt**](V2Api.md#TargetCreateLetsEncrypt) | **Post** /target-create-lets-encrypt | 
 [**TargetCreateLinked**](V2Api.md#TargetCreateLinked) | **Post** /target-create-linked | 
+[**TargetCreateOkta**](V2Api.md#TargetCreateOkta) | **Post** /target-create-okta | 
 [**TargetCreateOpenAI**](V2Api.md#TargetCreateOpenAI) | **Post** /target-create-openai | 
 [**TargetCreatePing**](V2Api.md#TargetCreatePing) | **Post** /target-create-ping | 
 [**TargetCreateRabbitMq**](V2Api.md#TargetCreateRabbitMq) | **Post** /target-create-rabbitmq | 
@@ -510,10 +519,13 @@ Method | HTTP request | Description
 [**TargetGet**](V2Api.md#TargetGet) | **Post** /target-get | 
 [**TargetGetDetails**](V2Api.md#TargetGetDetails) | **Post** /target-get-details | 
 [**TargetList**](V2Api.md#TargetList) | **Post** /target-list | 
+[**TargetUpdateAnthropic**](V2Api.md#TargetUpdateAnthropic) | **Post** /target-update-anthropic | 
 [**TargetUpdateArtifactory**](V2Api.md#TargetUpdateArtifactory) | **Post** /target-update-artifactory | 
 [**TargetUpdateAws**](V2Api.md#TargetUpdateAws) | **Post** /target-update-aws | 
 [**TargetUpdateAzure**](V2Api.md#TargetUpdateAzure) | **Post** /target-update-azure | 
+[**TargetUpdateBedrock**](V2Api.md#TargetUpdateBedrock) | **Post** /target-update-bedrock | 
 [**TargetUpdateCloudflare**](V2Api.md#TargetUpdateCloudflare) | **Post** /target-update-cloudflare | 
+[**TargetUpdateCustomDns**](V2Api.md#TargetUpdateCustomDns) | **Post** /target-update-custom-dns | 
 [**TargetUpdateDB**](V2Api.md#TargetUpdateDB) | **Post** /target-update-db | 
 [**TargetUpdateDigiCert**](V2Api.md#TargetUpdateDigiCert) | **Post** /target-update-digicert | 
 [**TargetUpdateDockerhub**](V2Api.md#TargetUpdateDockerhub) | **Post** /target-update-dockerhub | 
@@ -527,11 +539,14 @@ Method | HTTP request | Description
 [**TargetUpdateGlobalSignAtlas**](V2Api.md#TargetUpdateGlobalSignAtlas) | **Post** /target-update-globalsign-atlas | 
 [**TargetUpdateGodaddy**](V2Api.md#TargetUpdateGodaddy) | **Post** /target-update-godaddy | 
 [**TargetUpdateGoogleTrust**](V2Api.md#TargetUpdateGoogleTrust) | **Post** /target-update-google-trust | 
+[**TargetUpdateGrok**](V2Api.md#TargetUpdateGrok) | **Post** /target-update-grok | 
 [**TargetUpdateHashiVault**](V2Api.md#TargetUpdateHashiVault) | **Post** /target-update-hashi-vault | 
 [**TargetUpdateK8s**](V2Api.md#TargetUpdateK8s) | **Post** /target-update-k8s | 
+[**TargetUpdateKeycloak**](V2Api.md#TargetUpdateKeycloak) | **Post** /target-update-keycloak | 
 [**TargetUpdateLdap**](V2Api.md#TargetUpdateLdap) | **Post** /target-update-ldap | 
 [**TargetUpdateLetsEncrypt**](V2Api.md#TargetUpdateLetsEncrypt) | **Post** /target-update-lets-encrypt | 
 [**TargetUpdateLinked**](V2Api.md#TargetUpdateLinked) | **Post** /target-update-linked | 
+[**TargetUpdateOkta**](V2Api.md#TargetUpdateOkta) | **Post** /target-update-okta | 
 [**TargetUpdateOpenAI**](V2Api.md#TargetUpdateOpenAI) | **Post** /target-update-openai | 
 [**TargetUpdatePing**](V2Api.md#TargetUpdatePing) | **Post** /target-update-ping | 
 [**TargetUpdateRabbitMq**](V2Api.md#TargetUpdateRabbitMq) | **Post** /target-update-rabbitmq | 
@@ -589,6 +604,9 @@ Method | HTTP request | Description
 [**UpdateLdapTarget**](V2Api.md#UpdateLdapTarget) | **Post** /update-ldap-target | 
 [**UpdateLdapTargetDetails**](V2Api.md#UpdateLdapTargetDetails) | **Post** /update-ldap-target-details | 
 [**UpdateLinkedTarget**](V2Api.md#UpdateLinkedTarget) | **Post** /update-linked-target | 
+[**UpdateMcpSecretBearerToken**](V2Api.md#UpdateMcpSecretBearerToken) | **Post** /update-mcp-secret-bearer-token | 
+[**UpdateMcpSecretOAuthAuthCode**](V2Api.md#UpdateMcpSecretOAuthAuthCode) | **Post** /update-mcp-secret-oauth-authorization-code | 
+[**UpdateMcpSecretOAuthClientCreds**](V2Api.md#UpdateMcpSecretOAuthClientCreds) | **Post** /update-mcp-secret-oauth-client-credentials | 
 [**UpdateNativeK8STarget**](V2Api.md#UpdateNativeK8STarget) | **Post** /update-k8s-target | 
 [**UpdateOidcApp**](V2Api.md#UpdateOidcApp) | **Post** /update-oidc-app | 
 [**UpdatePKICertIssuer**](V2Api.md#UpdatePKICertIssuer) | **Post** /update-pki-cert-issuer | 
@@ -5864,6 +5882,198 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateLinkedTargetOutput**](CreateLinkedTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateMcpSecretBearerToken
+
+> CreateSecretOutput CreateMcpSecretBearerToken(ctx).CreateMcpSecretBearerToken(createMcpSecretBearerToken).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	createMcpSecretBearerToken := *openapiclient.NewCreateMcpSecretBearerToken("Name_example") // CreateMcpSecretBearerToken | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.CreateMcpSecretBearerToken(context.Background()).CreateMcpSecretBearerToken(createMcpSecretBearerToken).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateMcpSecretBearerToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateMcpSecretBearerToken`: CreateSecretOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateMcpSecretBearerToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateMcpSecretBearerTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMcpSecretBearerToken** | [**CreateMcpSecretBearerToken**](CreateMcpSecretBearerToken.md) |  | 
+
+### Return type
+
+[**CreateSecretOutput**](CreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateMcpSecretOAuthAuthCode
+
+> CreateSecretOutput CreateMcpSecretOAuthAuthCode(ctx).CreateMcpSecretOAuthAuthCode(createMcpSecretOAuthAuthCode).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	createMcpSecretOAuthAuthCode := *openapiclient.NewCreateMcpSecretOAuthAuthCode("Name_example") // CreateMcpSecretOAuthAuthCode | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.CreateMcpSecretOAuthAuthCode(context.Background()).CreateMcpSecretOAuthAuthCode(createMcpSecretOAuthAuthCode).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateMcpSecretOAuthAuthCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateMcpSecretOAuthAuthCode`: CreateSecretOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateMcpSecretOAuthAuthCode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateMcpSecretOAuthAuthCodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMcpSecretOAuthAuthCode** | [**CreateMcpSecretOAuthAuthCode**](CreateMcpSecretOAuthAuthCode.md) |  | 
+
+### Return type
+
+[**CreateSecretOutput**](CreateSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateMcpSecretOAuthClientCreds
+
+> CreateSecretOutput CreateMcpSecretOAuthClientCreds(ctx).CreateMcpSecretOAuthClientCreds(createMcpSecretOAuthClientCreds).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	createMcpSecretOAuthClientCreds := *openapiclient.NewCreateMcpSecretOAuthClientCreds("Name_example") // CreateMcpSecretOAuthClientCreds | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.CreateMcpSecretOAuthClientCreds(context.Background()).CreateMcpSecretOAuthClientCreds(createMcpSecretOAuthClientCreds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateMcpSecretOAuthClientCreds``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateMcpSecretOAuthClientCreds`: CreateSecretOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateMcpSecretOAuthClientCreds`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateMcpSecretOAuthClientCredsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMcpSecretOAuthClientCreds** | [**CreateMcpSecretOAuthClientCreds**](CreateMcpSecretOAuthClientCreds.md) |  | 
+
+### Return type
+
+[**CreateSecretOutput**](CreateSecretOutput.md)
 
 ### Authorization
 
@@ -30684,6 +30894,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateAnthropic
+
+> TargetCreateOutput TargetCreateAnthropic(ctx).TargetCreateAnthropic(targetCreateAnthropic).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateAnthropic := *openapiclient.NewTargetCreateAnthropic("Name_example") // TargetCreateAnthropic | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateAnthropic(context.Background()).TargetCreateAnthropic(targetCreateAnthropic).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateAnthropic``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateAnthropic`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateAnthropic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateAnthropicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateAnthropic** | [**TargetCreateAnthropic**](TargetCreateAnthropic.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateArtifactory
 
 > TargetCreateOutput TargetCreateArtifactory(ctx).TargetCreateArtifactory(targetCreateArtifactory).Execute()
@@ -30876,6 +31150,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateBedrock
+
+> TargetCreateOutput TargetCreateBedrock(ctx).TargetCreateBedrock(targetCreateBedrock).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateBedrock := *openapiclient.NewTargetCreateBedrock("Name_example") // TargetCreateBedrock | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateBedrock(context.Background()).TargetCreateBedrock(targetCreateBedrock).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateBedrock``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateBedrock`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateBedrock`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateBedrockRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateBedrock** | [**TargetCreateBedrock**](TargetCreateBedrock.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateCloudflare
 
 > TargetCreateOutput TargetCreateCloudflare(ctx).TargetCreateCloudflare(targetCreateCloudflare).Execute()
@@ -30921,6 +31259,70 @@ Other parameters are passed through a pointer to a apiTargetCreateCloudflareRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateCloudflare** | [**TargetCreateCloudflare**](TargetCreateCloudflare.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateCustomDns
+
+> TargetCreateOutput TargetCreateCustomDns(ctx).TargetCreateCustomDns(targetCreateCustomDns).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateCustomDns := *openapiclient.NewTargetCreateCustomDns(map[string]string{"key": "Inner_example"}, "Name_example", "ProviderType_example") // TargetCreateCustomDns | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateCustomDns(context.Background()).TargetCreateCustomDns(targetCreateCustomDns).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateCustomDns``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateCustomDns`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateCustomDns`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateCustomDnsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateCustomDns** | [**TargetCreateCustomDns**](TargetCreateCustomDns.md) |  | 
 
 ### Return type
 
@@ -31772,6 +32174,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateGrok
+
+> TargetCreateOutput TargetCreateGrok(ctx).TargetCreateGrok(targetCreateGrok).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateGrok := *openapiclient.NewTargetCreateGrok("Name_example") // TargetCreateGrok | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateGrok(context.Background()).TargetCreateGrok(targetCreateGrok).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateGrok``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateGrok`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateGrok`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateGrokRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateGrok** | [**TargetCreateGrok**](TargetCreateGrok.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateHashiVault
 
 > TargetCreateOutput TargetCreateHashiVault(ctx).TargetCreateHashiVault(targetCreateHashiVault).Execute()
@@ -31881,6 +32347,70 @@ Other parameters are passed through a pointer to a apiTargetCreateK8sRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateK8s** | [**TargetCreateK8s**](TargetCreateK8s.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateKeycloak
+
+> TargetCreateOutput TargetCreateKeycloak(ctx).TargetCreateKeycloak(targetCreateKeycloak).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateKeycloak := *openapiclient.NewTargetCreateKeycloak("Name_example") // TargetCreateKeycloak | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateKeycloak(context.Background()).TargetCreateKeycloak(targetCreateKeycloak).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateKeycloak``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateKeycloak`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateKeycloak`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateKeycloakRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateKeycloak** | [**TargetCreateKeycloak**](TargetCreateKeycloak.md) |  | 
 
 ### Return type
 
@@ -32073,6 +32603,70 @@ Other parameters are passed through a pointer to a apiTargetCreateLinkedRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateLinked** | [**TargetCreateLinked**](TargetCreateLinked.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateOkta
+
+> TargetCreateOutput TargetCreateOkta(ctx).TargetCreateOkta(targetCreateOkta).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateOkta := *openapiclient.NewTargetCreateOkta("Name_example") // TargetCreateOkta | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateOkta(context.Background()).TargetCreateOkta(targetCreateOkta).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateOkta``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateOkta`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateOkta`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateOktaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateOkta** | [**TargetCreateOkta**](TargetCreateOkta.md) |  | 
 
 ### Return type
 
@@ -32988,6 +33582,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateAnthropic
+
+> TargetUpdateOutput TargetUpdateAnthropic(ctx).TargetUpdateAnthropic(targetUpdateAnthropic).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateAnthropic := *openapiclient.NewTargetUpdateAnthropic("Name_example") // TargetUpdateAnthropic | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateAnthropic(context.Background()).TargetUpdateAnthropic(targetUpdateAnthropic).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateAnthropic``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateAnthropic`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateAnthropic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateAnthropicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateAnthropic** | [**TargetUpdateAnthropic**](TargetUpdateAnthropic.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateArtifactory
 
 > TargetUpdateOutput TargetUpdateArtifactory(ctx).TargetUpdateArtifactory(targetUpdateArtifactory).Execute()
@@ -33180,6 +33838,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateBedrock
+
+> TargetUpdateOutput TargetUpdateBedrock(ctx).TargetUpdateBedrock(targetUpdateBedrock).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateBedrock := *openapiclient.NewTargetUpdateBedrock("Name_example") // TargetUpdateBedrock | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateBedrock(context.Background()).TargetUpdateBedrock(targetUpdateBedrock).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateBedrock``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateBedrock`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateBedrock`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateBedrockRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateBedrock** | [**TargetUpdateBedrock**](TargetUpdateBedrock.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateCloudflare
 
 > TargetUpdateOutput TargetUpdateCloudflare(ctx).TargetUpdateCloudflare(targetUpdateCloudflare).Execute()
@@ -33225,6 +33947,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateCloudflareRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateCloudflare** | [**TargetUpdateCloudflare**](TargetUpdateCloudflare.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateCustomDns
+
+> TargetUpdateOutput TargetUpdateCustomDns(ctx).TargetUpdateCustomDns(targetUpdateCustomDns).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateCustomDns := *openapiclient.NewTargetUpdateCustomDns(map[string]string{"key": "Inner_example"}, "Name_example", "ProviderType_example") // TargetUpdateCustomDns | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateCustomDns(context.Background()).TargetUpdateCustomDns(targetUpdateCustomDns).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateCustomDns``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateCustomDns`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateCustomDns`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateCustomDnsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateCustomDns** | [**TargetUpdateCustomDns**](TargetUpdateCustomDns.md) |  | 
 
 ### Return type
 
@@ -34076,6 +34862,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetUpdateGrok
+
+> TargetUpdateOutput TargetUpdateGrok(ctx).TargetUpdateGrok(targetUpdateGrok).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateGrok := *openapiclient.NewTargetUpdateGrok("Name_example") // TargetUpdateGrok | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateGrok(context.Background()).TargetUpdateGrok(targetUpdateGrok).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateGrok``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateGrok`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateGrok`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateGrokRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateGrok** | [**TargetUpdateGrok**](TargetUpdateGrok.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetUpdateHashiVault
 
 > TargetUpdateOutput TargetUpdateHashiVault(ctx).TargetUpdateHashiVault(targetUpdateHashiVault).Execute()
@@ -34185,6 +35035,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateK8sRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateK8s** | [**TargetUpdateK8s**](TargetUpdateK8s.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateKeycloak
+
+> TargetUpdateOutput TargetUpdateKeycloak(ctx).TargetUpdateKeycloak(targetUpdateKeycloak).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateKeycloak := *openapiclient.NewTargetUpdateKeycloak("Name_example") // TargetUpdateKeycloak | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateKeycloak(context.Background()).TargetUpdateKeycloak(targetUpdateKeycloak).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateKeycloak``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateKeycloak`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateKeycloak`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateKeycloakRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateKeycloak** | [**TargetUpdateKeycloak**](TargetUpdateKeycloak.md) |  | 
 
 ### Return type
 
@@ -34377,6 +35291,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateLinkedRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateLinked** | [**TargetUpdateLinked**](TargetUpdateLinked.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateOkta
+
+> TargetUpdateOutput TargetUpdateOkta(ctx).TargetUpdateOkta(targetUpdateOkta).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateOkta := *openapiclient.NewTargetUpdateOkta("Name_example") // TargetUpdateOkta | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateOkta(context.Background()).TargetUpdateOkta(targetUpdateOkta).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateOkta``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateOkta`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateOkta`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateOktaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateOkta** | [**TargetUpdateOkta**](TargetUpdateOkta.md) |  | 
 
 ### Return type
 
@@ -38029,6 +39007,198 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateMcpSecretBearerToken
+
+> UpdateSecretValOutput UpdateMcpSecretBearerToken(ctx).UpdateMcpSecretBearerToken(updateMcpSecretBearerToken).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	updateMcpSecretBearerToken := *openapiclient.NewUpdateMcpSecretBearerToken("Name_example") // UpdateMcpSecretBearerToken | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.UpdateMcpSecretBearerToken(context.Background()).UpdateMcpSecretBearerToken(updateMcpSecretBearerToken).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateMcpSecretBearerToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateMcpSecretBearerToken`: UpdateSecretValOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateMcpSecretBearerToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateMcpSecretBearerTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateMcpSecretBearerToken** | [**UpdateMcpSecretBearerToken**](UpdateMcpSecretBearerToken.md) |  | 
+
+### Return type
+
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateMcpSecretOAuthAuthCode
+
+> UpdateSecretValOutput UpdateMcpSecretOAuthAuthCode(ctx).UpdateMcpSecretOAuthAuthCode(updateMcpSecretOAuthAuthCode).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	updateMcpSecretOAuthAuthCode := *openapiclient.NewUpdateMcpSecretOAuthAuthCode("Name_example") // UpdateMcpSecretOAuthAuthCode | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.UpdateMcpSecretOAuthAuthCode(context.Background()).UpdateMcpSecretOAuthAuthCode(updateMcpSecretOAuthAuthCode).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateMcpSecretOAuthAuthCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateMcpSecretOAuthAuthCode`: UpdateSecretValOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateMcpSecretOAuthAuthCode`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateMcpSecretOAuthAuthCodeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateMcpSecretOAuthAuthCode** | [**UpdateMcpSecretOAuthAuthCode**](UpdateMcpSecretOAuthAuthCode.md) |  | 
+
+### Return type
+
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateMcpSecretOAuthClientCreds
+
+> UpdateSecretValOutput UpdateMcpSecretOAuthClientCreds(ctx).UpdateMcpSecretOAuthClientCreds(updateMcpSecretOAuthClientCreds).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	updateMcpSecretOAuthClientCreds := *openapiclient.NewUpdateMcpSecretOAuthClientCreds("Name_example") // UpdateMcpSecretOAuthClientCreds | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.UpdateMcpSecretOAuthClientCreds(context.Background()).UpdateMcpSecretOAuthClientCreds(updateMcpSecretOAuthClientCreds).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateMcpSecretOAuthClientCreds``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateMcpSecretOAuthClientCreds`: UpdateSecretValOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateMcpSecretOAuthClientCreds`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateMcpSecretOAuthClientCredsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateMcpSecretOAuthClientCreds** | [**UpdateMcpSecretOAuthClientCreds**](UpdateMcpSecretOAuthClientCreds.md) |  | 
+
+### Return type
+
+[**UpdateSecretValOutput**](UpdateSecretValOutput.md)
 
 ### Authorization
 

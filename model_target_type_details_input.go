@@ -20,11 +20,14 @@ var _ MappedNullable = &TargetTypeDetailsInput{}
 
 // TargetTypeDetailsInput struct for TargetTypeDetailsInput
 type TargetTypeDetailsInput struct {
+	AnthropicTargetDetails *AnthropicTargetDetails `json:"anthropic_target_details,omitempty"`
 	ArtifactoryTargetDetails *ArtifactoryTargetDetails `json:"artifactory_target_details,omitempty"`
 	AwsTargetDetails *AWSTargetDetails `json:"aws_target_details,omitempty"`
 	AzureTargetDetails *AzureTargetDetails `json:"azure_target_details,omitempty"`
+	BedrockTargetDetails *BedrockTargetDetails `json:"bedrock_target_details,omitempty"`
 	ChefTargetDetails *ChefTargetDetails `json:"chef_target_details,omitempty"`
 	CloudflareTargetDetails *CloudflareTargetDetails `json:"cloudflare_target_details,omitempty"`
+	CustomDnsTargetDetails *CustomDnsTargetDetails `json:"custom_dns_target_details,omitempty"`
 	CustomTargetDetails *CustomTargetDetails `json:"custom_target_details,omitempty"`
 	DbTargetDetails *DbTargetDetails `json:"db_target_details,omitempty"`
 	DigicertTargetDetails *DigiCertTargetDetails `json:"digicert_target_details,omitempty"`
@@ -39,12 +42,15 @@ type TargetTypeDetailsInput struct {
 	GlobalsignTargetDetails *GlobalSignGCCTargetDetails `json:"globalsign_target_details,omitempty"`
 	GodaddyTargetDetails *GodaddyTargetDetails `json:"godaddy_target_details,omitempty"`
 	GoogleTrustTargetDetails *GoogleTrustTargetDetails `json:"google_trust_target_details,omitempty"`
+	GrokTargetDetails *GrokTargetDetails `json:"grok_target_details,omitempty"`
 	HashiVaultTargetDetails *HashiVaultTargetDetails `json:"hashi_vault_target_details,omitempty"`
+	KeycloakTargetDetails *KeycloakTargetDetails `json:"keycloak_target_details,omitempty"`
 	LdapTargetDetails *LdapTargetDetails `json:"ldap_target_details,omitempty"`
 	LetsencryptTargetDetails *LetsEncryptTargetDetails `json:"letsencrypt_target_details,omitempty"`
 	LinkedTargetDetails *LinkedTargetDetails `json:"linked_target_details,omitempty"`
 	MongoDbTargetDetails *MongoDBTargetDetails `json:"mongo_db_target_details,omitempty"`
 	NativeK8sTargetDetails *NativeK8sTargetDetails `json:"native_k8s_target_details,omitempty"`
+	OktaTargetDetails *OktaTargetDetails `json:"okta_target_details,omitempty"`
 	OpenaiTargetDetails *OpenAITargetDetails `json:"openai_target_details,omitempty"`
 	PingTargetDetails *PingTargetDetails `json:"ping_target_details,omitempty"`
 	RabbitMqTargetDetails *RabbitMQTargetDetails `json:"rabbit_mq_target_details,omitempty"`
@@ -73,6 +79,38 @@ func NewTargetTypeDetailsInput() *TargetTypeDetailsInput {
 func NewTargetTypeDetailsInputWithDefaults() *TargetTypeDetailsInput {
 	this := TargetTypeDetailsInput{}
 	return &this
+}
+
+// GetAnthropicTargetDetails returns the AnthropicTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAnthropicTargetDetails() AnthropicTargetDetails {
+	if o == nil || IsNil(o.AnthropicTargetDetails) {
+		var ret AnthropicTargetDetails
+		return ret
+	}
+	return *o.AnthropicTargetDetails
+}
+
+// GetAnthropicTargetDetailsOk returns a tuple with the AnthropicTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAnthropicTargetDetailsOk() (*AnthropicTargetDetails, bool) {
+	if o == nil || IsNil(o.AnthropicTargetDetails) {
+		return nil, false
+	}
+	return o.AnthropicTargetDetails, true
+}
+
+// HasAnthropicTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAnthropicTargetDetails() bool {
+	if o != nil && !IsNil(o.AnthropicTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnthropicTargetDetails gets a reference to the given AnthropicTargetDetails and assigns it to the AnthropicTargetDetails field.
+func (o *TargetTypeDetailsInput) SetAnthropicTargetDetails(v AnthropicTargetDetails) {
+	o.AnthropicTargetDetails = &v
 }
 
 // GetArtifactoryTargetDetails returns the ArtifactoryTargetDetails field value if set, zero value otherwise.
@@ -171,6 +209,38 @@ func (o *TargetTypeDetailsInput) SetAzureTargetDetails(v AzureTargetDetails) {
 	o.AzureTargetDetails = &v
 }
 
+// GetBedrockTargetDetails returns the BedrockTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetBedrockTargetDetails() BedrockTargetDetails {
+	if o == nil || IsNil(o.BedrockTargetDetails) {
+		var ret BedrockTargetDetails
+		return ret
+	}
+	return *o.BedrockTargetDetails
+}
+
+// GetBedrockTargetDetailsOk returns a tuple with the BedrockTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetBedrockTargetDetailsOk() (*BedrockTargetDetails, bool) {
+	if o == nil || IsNil(o.BedrockTargetDetails) {
+		return nil, false
+	}
+	return o.BedrockTargetDetails, true
+}
+
+// HasBedrockTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasBedrockTargetDetails() bool {
+	if o != nil && !IsNil(o.BedrockTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetBedrockTargetDetails gets a reference to the given BedrockTargetDetails and assigns it to the BedrockTargetDetails field.
+func (o *TargetTypeDetailsInput) SetBedrockTargetDetails(v BedrockTargetDetails) {
+	o.BedrockTargetDetails = &v
+}
+
 // GetChefTargetDetails returns the ChefTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetChefTargetDetails() ChefTargetDetails {
 	if o == nil || IsNil(o.ChefTargetDetails) {
@@ -233,6 +303,38 @@ func (o *TargetTypeDetailsInput) HasCloudflareTargetDetails() bool {
 // SetCloudflareTargetDetails gets a reference to the given CloudflareTargetDetails and assigns it to the CloudflareTargetDetails field.
 func (o *TargetTypeDetailsInput) SetCloudflareTargetDetails(v CloudflareTargetDetails) {
 	o.CloudflareTargetDetails = &v
+}
+
+// GetCustomDnsTargetDetails returns the CustomDnsTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetCustomDnsTargetDetails() CustomDnsTargetDetails {
+	if o == nil || IsNil(o.CustomDnsTargetDetails) {
+		var ret CustomDnsTargetDetails
+		return ret
+	}
+	return *o.CustomDnsTargetDetails
+}
+
+// GetCustomDnsTargetDetailsOk returns a tuple with the CustomDnsTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetCustomDnsTargetDetailsOk() (*CustomDnsTargetDetails, bool) {
+	if o == nil || IsNil(o.CustomDnsTargetDetails) {
+		return nil, false
+	}
+	return o.CustomDnsTargetDetails, true
+}
+
+// HasCustomDnsTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasCustomDnsTargetDetails() bool {
+	if o != nil && !IsNil(o.CustomDnsTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomDnsTargetDetails gets a reference to the given CustomDnsTargetDetails and assigns it to the CustomDnsTargetDetails field.
+func (o *TargetTypeDetailsInput) SetCustomDnsTargetDetails(v CustomDnsTargetDetails) {
+	o.CustomDnsTargetDetails = &v
 }
 
 // GetCustomTargetDetails returns the CustomTargetDetails field value if set, zero value otherwise.
@@ -683,6 +785,38 @@ func (o *TargetTypeDetailsInput) SetGoogleTrustTargetDetails(v GoogleTrustTarget
 	o.GoogleTrustTargetDetails = &v
 }
 
+// GetGrokTargetDetails returns the GrokTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetGrokTargetDetails() GrokTargetDetails {
+	if o == nil || IsNil(o.GrokTargetDetails) {
+		var ret GrokTargetDetails
+		return ret
+	}
+	return *o.GrokTargetDetails
+}
+
+// GetGrokTargetDetailsOk returns a tuple with the GrokTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetGrokTargetDetailsOk() (*GrokTargetDetails, bool) {
+	if o == nil || IsNil(o.GrokTargetDetails) {
+		return nil, false
+	}
+	return o.GrokTargetDetails, true
+}
+
+// HasGrokTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasGrokTargetDetails() bool {
+	if o != nil && !IsNil(o.GrokTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrokTargetDetails gets a reference to the given GrokTargetDetails and assigns it to the GrokTargetDetails field.
+func (o *TargetTypeDetailsInput) SetGrokTargetDetails(v GrokTargetDetails) {
+	o.GrokTargetDetails = &v
+}
+
 // GetHashiVaultTargetDetails returns the HashiVaultTargetDetails field value if set, zero value otherwise.
 func (o *TargetTypeDetailsInput) GetHashiVaultTargetDetails() HashiVaultTargetDetails {
 	if o == nil || IsNil(o.HashiVaultTargetDetails) {
@@ -713,6 +847,38 @@ func (o *TargetTypeDetailsInput) HasHashiVaultTargetDetails() bool {
 // SetHashiVaultTargetDetails gets a reference to the given HashiVaultTargetDetails and assigns it to the HashiVaultTargetDetails field.
 func (o *TargetTypeDetailsInput) SetHashiVaultTargetDetails(v HashiVaultTargetDetails) {
 	o.HashiVaultTargetDetails = &v
+}
+
+// GetKeycloakTargetDetails returns the KeycloakTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetKeycloakTargetDetails() KeycloakTargetDetails {
+	if o == nil || IsNil(o.KeycloakTargetDetails) {
+		var ret KeycloakTargetDetails
+		return ret
+	}
+	return *o.KeycloakTargetDetails
+}
+
+// GetKeycloakTargetDetailsOk returns a tuple with the KeycloakTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetKeycloakTargetDetailsOk() (*KeycloakTargetDetails, bool) {
+	if o == nil || IsNil(o.KeycloakTargetDetails) {
+		return nil, false
+	}
+	return o.KeycloakTargetDetails, true
+}
+
+// HasKeycloakTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasKeycloakTargetDetails() bool {
+	if o != nil && !IsNil(o.KeycloakTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeycloakTargetDetails gets a reference to the given KeycloakTargetDetails and assigns it to the KeycloakTargetDetails field.
+func (o *TargetTypeDetailsInput) SetKeycloakTargetDetails(v KeycloakTargetDetails) {
+	o.KeycloakTargetDetails = &v
 }
 
 // GetLdapTargetDetails returns the LdapTargetDetails field value if set, zero value otherwise.
@@ -873,6 +1039,38 @@ func (o *TargetTypeDetailsInput) HasNativeK8sTargetDetails() bool {
 // SetNativeK8sTargetDetails gets a reference to the given NativeK8sTargetDetails and assigns it to the NativeK8sTargetDetails field.
 func (o *TargetTypeDetailsInput) SetNativeK8sTargetDetails(v NativeK8sTargetDetails) {
 	o.NativeK8sTargetDetails = &v
+}
+
+// GetOktaTargetDetails returns the OktaTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetOktaTargetDetails() OktaTargetDetails {
+	if o == nil || IsNil(o.OktaTargetDetails) {
+		var ret OktaTargetDetails
+		return ret
+	}
+	return *o.OktaTargetDetails
+}
+
+// GetOktaTargetDetailsOk returns a tuple with the OktaTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetOktaTargetDetailsOk() (*OktaTargetDetails, bool) {
+	if o == nil || IsNil(o.OktaTargetDetails) {
+		return nil, false
+	}
+	return o.OktaTargetDetails, true
+}
+
+// HasOktaTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasOktaTargetDetails() bool {
+	if o != nil && !IsNil(o.OktaTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetOktaTargetDetails gets a reference to the given OktaTargetDetails and assigns it to the OktaTargetDetails field.
+func (o *TargetTypeDetailsInput) SetOktaTargetDetails(v OktaTargetDetails) {
+	o.OktaTargetDetails = &v
 }
 
 // GetOpenaiTargetDetails returns the OpenaiTargetDetails field value if set, zero value otherwise.
@@ -1237,6 +1435,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 
 func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AnthropicTargetDetails) {
+		toSerialize["anthropic_target_details"] = o.AnthropicTargetDetails
+	}
 	if !IsNil(o.ArtifactoryTargetDetails) {
 		toSerialize["artifactory_target_details"] = o.ArtifactoryTargetDetails
 	}
@@ -1246,11 +1447,17 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureTargetDetails) {
 		toSerialize["azure_target_details"] = o.AzureTargetDetails
 	}
+	if !IsNil(o.BedrockTargetDetails) {
+		toSerialize["bedrock_target_details"] = o.BedrockTargetDetails
+	}
 	if !IsNil(o.ChefTargetDetails) {
 		toSerialize["chef_target_details"] = o.ChefTargetDetails
 	}
 	if !IsNil(o.CloudflareTargetDetails) {
 		toSerialize["cloudflare_target_details"] = o.CloudflareTargetDetails
+	}
+	if !IsNil(o.CustomDnsTargetDetails) {
+		toSerialize["custom_dns_target_details"] = o.CustomDnsTargetDetails
 	}
 	if !IsNil(o.CustomTargetDetails) {
 		toSerialize["custom_target_details"] = o.CustomTargetDetails
@@ -1294,8 +1501,14 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GoogleTrustTargetDetails) {
 		toSerialize["google_trust_target_details"] = o.GoogleTrustTargetDetails
 	}
+	if !IsNil(o.GrokTargetDetails) {
+		toSerialize["grok_target_details"] = o.GrokTargetDetails
+	}
 	if !IsNil(o.HashiVaultTargetDetails) {
 		toSerialize["hashi_vault_target_details"] = o.HashiVaultTargetDetails
+	}
+	if !IsNil(o.KeycloakTargetDetails) {
+		toSerialize["keycloak_target_details"] = o.KeycloakTargetDetails
 	}
 	if !IsNil(o.LdapTargetDetails) {
 		toSerialize["ldap_target_details"] = o.LdapTargetDetails
@@ -1311,6 +1524,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NativeK8sTargetDetails) {
 		toSerialize["native_k8s_target_details"] = o.NativeK8sTargetDetails
+	}
+	if !IsNil(o.OktaTargetDetails) {
+		toSerialize["okta_target_details"] = o.OktaTargetDetails
 	}
 	if !IsNil(o.OpenaiTargetDetails) {
 		toSerialize["openai_target_details"] = o.OpenaiTargetDetails

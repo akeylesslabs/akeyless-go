@@ -74,6 +74,7 @@ Name | Type | Description | Notes
 **SiUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration) | [optional] 
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
+**TargetName** | Pointer to **string** | Name of existing target to use to create the migration | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **string** | Migration type (hashi/aws/gcp/k8s/azure_kv/conjur/active_directory/server_inventory/certificate) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -1823,6 +1824,31 @@ and a boolean to check if the value has been set.
 
 SetTargetLocation sets TargetLocation field to given value.
 
+
+### GetTargetName
+
+`func (o *GatewayCreateMigration) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *GatewayCreateMigration) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *GatewayCreateMigration) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *GatewayCreateMigration) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 ### GetToken
 

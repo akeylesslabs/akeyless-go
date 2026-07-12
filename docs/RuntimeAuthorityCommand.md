@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **AgentId** | **string** | Agent identifier for auditing | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Secret name (dynamic secret or rotated secret) | 
+**OriginalPrompt** | Pointer to **string** | Original natural-language prompt from the user (optional, for auditing) | [optional] 
+**OriginalUser** | Pointer to **string** | Human end-user behind the agent (optional, for auditing) | [optional] 
 **Payload** | **string** | Query or action payload (SQL, natural language, or CLI-style) | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -94,6 +96,56 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOriginalPrompt
+
+`func (o *RuntimeAuthorityCommand) GetOriginalPrompt() string`
+
+GetOriginalPrompt returns the OriginalPrompt field if non-nil, zero value otherwise.
+
+### GetOriginalPromptOk
+
+`func (o *RuntimeAuthorityCommand) GetOriginalPromptOk() (*string, bool)`
+
+GetOriginalPromptOk returns a tuple with the OriginalPrompt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginalPrompt
+
+`func (o *RuntimeAuthorityCommand) SetOriginalPrompt(v string)`
+
+SetOriginalPrompt sets OriginalPrompt field to given value.
+
+### HasOriginalPrompt
+
+`func (o *RuntimeAuthorityCommand) HasOriginalPrompt() bool`
+
+HasOriginalPrompt returns a boolean if a field has been set.
+
+### GetOriginalUser
+
+`func (o *RuntimeAuthorityCommand) GetOriginalUser() string`
+
+GetOriginalUser returns the OriginalUser field if non-nil, zero value otherwise.
+
+### GetOriginalUserOk
+
+`func (o *RuntimeAuthorityCommand) GetOriginalUserOk() (*string, bool)`
+
+GetOriginalUserOk returns a tuple with the OriginalUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginalUser
+
+`func (o *RuntimeAuthorityCommand) SetOriginalUser(v string)`
+
+SetOriginalUser sets OriginalUser field to given value.
+
+### HasOriginalUser
+
+`func (o *RuntimeAuthorityCommand) HasOriginalUser() bool`
+
+HasOriginalUser returns a boolean if a field has been set.
 
 ### GetPayload
 

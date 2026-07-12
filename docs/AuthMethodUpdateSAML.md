@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UniqueIdentifier** | **string** | A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \&quot;sub claim\&quot; that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization. | 
+**UseDedicatedSamlUrls** | Pointer to **bool** | Use dedicated per-access-id SP URLs for login | [optional] 
 
 ## Methods
 
@@ -559,6 +560,31 @@ and a boolean to check if the value has been set.
 
 SetUniqueIdentifier sets UniqueIdentifier field to given value.
 
+
+### GetUseDedicatedSamlUrls
+
+`func (o *AuthMethodUpdateSAML) GetUseDedicatedSamlUrls() bool`
+
+GetUseDedicatedSamlUrls returns the UseDedicatedSamlUrls field if non-nil, zero value otherwise.
+
+### GetUseDedicatedSamlUrlsOk
+
+`func (o *AuthMethodUpdateSAML) GetUseDedicatedSamlUrlsOk() (*bool, bool)`
+
+GetUseDedicatedSamlUrlsOk returns a tuple with the UseDedicatedSamlUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseDedicatedSamlUrls
+
+`func (o *AuthMethodUpdateSAML) SetUseDedicatedSamlUrls(v bool)`
+
+SetUseDedicatedSamlUrls sets UseDedicatedSamlUrls field to given value.
+
+### HasUseDedicatedSamlUrls
+
+`func (o *AuthMethodUpdateSAML) HasUseDedicatedSamlUrls() bool`
+
+HasUseDedicatedSamlUrls returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

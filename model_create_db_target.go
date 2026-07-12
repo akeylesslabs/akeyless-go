@@ -84,6 +84,8 @@ type CreateDBTarget struct {
 	ParentTargetName *string `json:"parent-target-name,omitempty"`
 	Port *string `json:"port,omitempty"`
 	Pwd *string `json:"pwd,omitempty"`
+	// (Optional) Skip server name verification
+	SkipServerNameValidation *string `json:"skip-server-name-validation,omitempty"`
 	SnowflakeAccount *string `json:"snowflake-account,omitempty"`
 	// RSA Private key (base64 encoded)
 	SnowflakeApiPrivateKey *string `json:"snowflake-api-private-key,omitempty"`
@@ -1196,6 +1198,38 @@ func (o *CreateDBTarget) SetPwd(v string) {
 	o.Pwd = &v
 }
 
+// GetSkipServerNameValidation returns the SkipServerNameValidation field value if set, zero value otherwise.
+func (o *CreateDBTarget) GetSkipServerNameValidation() string {
+	if o == nil || IsNil(o.SkipServerNameValidation) {
+		var ret string
+		return ret
+	}
+	return *o.SkipServerNameValidation
+}
+
+// GetSkipServerNameValidationOk returns a tuple with the SkipServerNameValidation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateDBTarget) GetSkipServerNameValidationOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipServerNameValidation) {
+		return nil, false
+	}
+	return o.SkipServerNameValidation, true
+}
+
+// HasSkipServerNameValidation returns a boolean if a field has been set.
+func (o *CreateDBTarget) HasSkipServerNameValidation() bool {
+	if o != nil && !IsNil(o.SkipServerNameValidation) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipServerNameValidation gets a reference to the given string and assigns it to the SkipServerNameValidation field.
+func (o *CreateDBTarget) SetSkipServerNameValidation(v string) {
+	o.SkipServerNameValidation = &v
+}
+
 // GetSnowflakeAccount returns the SnowflakeAccount field value if set, zero value otherwise.
 func (o *CreateDBTarget) GetSnowflakeAccount() string {
 	if o == nil || IsNil(o.SnowflakeAccount) {
@@ -1557,6 +1591,9 @@ func (o CreateDBTarget) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Pwd) {
 		toSerialize["pwd"] = o.Pwd
+	}
+	if !IsNil(o.SkipServerNameValidation) {
+		toSerialize["skip-server-name-validation"] = o.SkipServerNameValidation
 	}
 	if !IsNil(o.SnowflakeAccount) {
 		toSerialize["snowflake-account"] = o.SnowflakeAccount

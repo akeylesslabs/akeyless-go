@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
 **IdpMetadataXml** | Pointer to **string** | IDP metadata XML | [optional] 
 **UniqueIdentifier** | Pointer to **string** | A unique identifier to distinguish different users | [optional] 
+**UseDedicatedSamlUrls** | Pointer to **bool** | When true, the login AuthnRequest is signed with this access method&#39;s dedicated SP identity (Entity ID https://&lt;sp&gt;/saml/sp/{access_id} and ACS https://&lt;sp&gt;/saml/acs/{access_id}) instead of the shared global identity. Default false keeps the legacy global identity for backward compatibility. | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetUniqueIdentifier sets UniqueIdentifier field to given value.
 `func (o *SAMLAccessRules) HasUniqueIdentifier() bool`
 
 HasUniqueIdentifier returns a boolean if a field has been set.
+
+### GetUseDedicatedSamlUrls
+
+`func (o *SAMLAccessRules) GetUseDedicatedSamlUrls() bool`
+
+GetUseDedicatedSamlUrls returns the UseDedicatedSamlUrls field if non-nil, zero value otherwise.
+
+### GetUseDedicatedSamlUrlsOk
+
+`func (o *SAMLAccessRules) GetUseDedicatedSamlUrlsOk() (*bool, bool)`
+
+GetUseDedicatedSamlUrlsOk returns a tuple with the UseDedicatedSamlUrls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseDedicatedSamlUrls
+
+`func (o *SAMLAccessRules) SetUseDedicatedSamlUrls(v bool)`
+
+SetUseDedicatedSamlUrls sets UseDedicatedSamlUrls field to given value.
+
+### HasUseDedicatedSamlUrls
+
+`func (o *SAMLAccessRules) HasUseDedicatedSamlUrls() bool`
+
+HasUseDedicatedSamlUrls returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

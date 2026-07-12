@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountDefaultKeyItemId** | Pointer to **int64** | AccountDefaultKeyItemID is the item ID of the DFC key item configured as the default protection key | [optional] 
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
+**AccountFileBytesUsed** | Pointer to **int64** | AccountFileBytesUsed tracks active + pending file-item plain bytes for quota enforcement. | [optional] 
 **AiInsights** | Pointer to [**AiInsightsSetting**](AiInsightsSetting.md) |  | [optional] 
 **AllowAutoFill** | Pointer to **bool** |  | [optional] 
 **AllowPasskeys** | Pointer to **bool** |  | [optional] 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **DefaultAuthMethod** | Pointer to [**DefaultAuthMethodSettings**](DefaultAuthMethodSettings.md) |  | [optional] 
 **DefaultHomePage** | Pointer to [**DefaultHomePage**](DefaultHomePage.md) |  | [optional] 
 **DynamicSecretMaxTtl** | Pointer to [**DynamicSecretMaxTtl**](DynamicSecretMaxTtl.md) |  | [optional] 
+**EmailCustomization** | Pointer to [**EmailCustomization**](EmailCustomization.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **EnableSearchHistory** | Pointer to **bool** |  | [optional] 
 **HidePersonalFolder** | Pointer to **bool** |  | [optional] 
@@ -103,6 +105,31 @@ SetAccountDefaultKeyName sets AccountDefaultKeyName field to given value.
 `func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool`
 
 HasAccountDefaultKeyName returns a boolean if a field has been set.
+
+### GetAccountFileBytesUsed
+
+`func (o *AccountGeneralSettings) GetAccountFileBytesUsed() int64`
+
+GetAccountFileBytesUsed returns the AccountFileBytesUsed field if non-nil, zero value otherwise.
+
+### GetAccountFileBytesUsedOk
+
+`func (o *AccountGeneralSettings) GetAccountFileBytesUsedOk() (*int64, bool)`
+
+GetAccountFileBytesUsedOk returns a tuple with the AccountFileBytesUsed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountFileBytesUsed
+
+`func (o *AccountGeneralSettings) SetAccountFileBytesUsed(v int64)`
+
+SetAccountFileBytesUsed sets AccountFileBytesUsed field to given value.
+
+### HasAccountFileBytesUsed
+
+`func (o *AccountGeneralSettings) HasAccountFileBytesUsed() bool`
+
+HasAccountFileBytesUsed returns a boolean if a field has been set.
 
 ### GetAiInsights
 
@@ -403,6 +430,31 @@ SetDynamicSecretMaxTtl sets DynamicSecretMaxTtl field to given value.
 `func (o *AccountGeneralSettings) HasDynamicSecretMaxTtl() bool`
 
 HasDynamicSecretMaxTtl returns a boolean if a field has been set.
+
+### GetEmailCustomization
+
+`func (o *AccountGeneralSettings) GetEmailCustomization() EmailCustomization`
+
+GetEmailCustomization returns the EmailCustomization field if non-nil, zero value otherwise.
+
+### GetEmailCustomizationOk
+
+`func (o *AccountGeneralSettings) GetEmailCustomizationOk() (*EmailCustomization, bool)`
+
+GetEmailCustomizationOk returns a tuple with the EmailCustomization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmailCustomization
+
+`func (o *AccountGeneralSettings) SetEmailCustomization(v EmailCustomization)`
+
+SetEmailCustomization sets EmailCustomization field to given value.
+
+### HasEmailCustomization
+
+`func (o *AccountGeneralSettings) HasEmailCustomization() bool`
+
+HasEmailCustomization returns a boolean if a field has been set.
 
 ### GetEnableRequestForAccess
 

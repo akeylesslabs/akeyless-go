@@ -30,6 +30,8 @@ type SAMLAccessRules struct {
 	IdpMetadataXml *string `json:"idp_metadata_xml,omitempty"`
 	// A unique identifier to distinguish different users
 	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
+	// When true, the login AuthnRequest is signed with this access method's dedicated SP identity (Entity ID https://<sp>/saml/sp/{access_id} and ACS https://<sp>/saml/acs/{access_id}) instead of the shared global identity. Default false keeps the legacy global identity for backward compatibility.
+	UseDedicatedSamlUrls *bool `json:"use_dedicated_saml_urls,omitempty"`
 }
 
 // NewSAMLAccessRules instantiates a new SAMLAccessRules object
@@ -209,6 +211,38 @@ func (o *SAMLAccessRules) SetUniqueIdentifier(v string) {
 	o.UniqueIdentifier = &v
 }
 
+// GetUseDedicatedSamlUrls returns the UseDedicatedSamlUrls field value if set, zero value otherwise.
+func (o *SAMLAccessRules) GetUseDedicatedSamlUrls() bool {
+	if o == nil || IsNil(o.UseDedicatedSamlUrls) {
+		var ret bool
+		return ret
+	}
+	return *o.UseDedicatedSamlUrls
+}
+
+// GetUseDedicatedSamlUrlsOk returns a tuple with the UseDedicatedSamlUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SAMLAccessRules) GetUseDedicatedSamlUrlsOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseDedicatedSamlUrls) {
+		return nil, false
+	}
+	return o.UseDedicatedSamlUrls, true
+}
+
+// HasUseDedicatedSamlUrls returns a boolean if a field has been set.
+func (o *SAMLAccessRules) HasUseDedicatedSamlUrls() bool {
+	if o != nil && !IsNil(o.UseDedicatedSamlUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseDedicatedSamlUrls gets a reference to the given bool and assigns it to the UseDedicatedSamlUrls field.
+func (o *SAMLAccessRules) SetUseDedicatedSamlUrls(v bool) {
+	o.UseDedicatedSamlUrls = &v
+}
+
 func (o SAMLAccessRules) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -233,6 +267,9 @@ func (o SAMLAccessRules) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UniqueIdentifier) {
 		toSerialize["unique_identifier"] = o.UniqueIdentifier
+	}
+	if !IsNil(o.UseDedicatedSamlUrls) {
+		toSerialize["use_dedicated_saml_urls"] = o.UseDedicatedSamlUrls
 	}
 	return toSerialize, nil
 }

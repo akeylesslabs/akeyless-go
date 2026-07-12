@@ -1,0 +1,337 @@
+# TargetCreateKeycloak
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**ClientId** | Pointer to **string** | Keycloak service account client ID | [optional] 
+**ClientSecret** | Pointer to **string** | Keycloak service account client secret | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Key** | Pointer to **string** | The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used) | [optional] 
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
+**Name** | **string** | Target name | 
+**Realm** | Pointer to **string** | Keycloak realm | [optional] 
+**Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Url** | Pointer to **string** | Keycloak URL | [optional] 
+
+## Methods
+
+### NewTargetCreateKeycloak
+
+`func NewTargetCreateKeycloak(name string, ) *TargetCreateKeycloak`
+
+NewTargetCreateKeycloak instantiates a new TargetCreateKeycloak object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewTargetCreateKeycloakWithDefaults
+
+`func NewTargetCreateKeycloakWithDefaults() *TargetCreateKeycloak`
+
+NewTargetCreateKeycloakWithDefaults instantiates a new TargetCreateKeycloak object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetClientId
+
+`func (o *TargetCreateKeycloak) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *TargetCreateKeycloak) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *TargetCreateKeycloak) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *TargetCreateKeycloak) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+
+### GetClientSecret
+
+`func (o *TargetCreateKeycloak) GetClientSecret() string`
+
+GetClientSecret returns the ClientSecret field if non-nil, zero value otherwise.
+
+### GetClientSecretOk
+
+`func (o *TargetCreateKeycloak) GetClientSecretOk() (*string, bool)`
+
+GetClientSecretOk returns a tuple with the ClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientSecret
+
+`func (o *TargetCreateKeycloak) SetClientSecret(v string)`
+
+SetClientSecret sets ClientSecret field to given value.
+
+### HasClientSecret
+
+`func (o *TargetCreateKeycloak) HasClientSecret() bool`
+
+HasClientSecret returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *TargetCreateKeycloak) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *TargetCreateKeycloak) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *TargetCreateKeycloak) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *TargetCreateKeycloak) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *TargetCreateKeycloak) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *TargetCreateKeycloak) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *TargetCreateKeycloak) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *TargetCreateKeycloak) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *TargetCreateKeycloak) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *TargetCreateKeycloak) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *TargetCreateKeycloak) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *TargetCreateKeycloak) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *TargetCreateKeycloak) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *TargetCreateKeycloak) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *TargetCreateKeycloak) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *TargetCreateKeycloak) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *TargetCreateKeycloak) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *TargetCreateKeycloak) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *TargetCreateKeycloak) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *TargetCreateKeycloak) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *TargetCreateKeycloak) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *TargetCreateKeycloak) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *TargetCreateKeycloak) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetRealm
+
+`func (o *TargetCreateKeycloak) GetRealm() string`
+
+GetRealm returns the Realm field if non-nil, zero value otherwise.
+
+### GetRealmOk
+
+`func (o *TargetCreateKeycloak) GetRealmOk() (*string, bool)`
+
+GetRealmOk returns a tuple with the Realm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRealm
+
+`func (o *TargetCreateKeycloak) SetRealm(v string)`
+
+SetRealm sets Realm field to given value.
+
+### HasRealm
+
+`func (o *TargetCreateKeycloak) HasRealm() bool`
+
+HasRealm returns a boolean if a field has been set.
+
+### GetToken
+
+`func (o *TargetCreateKeycloak) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *TargetCreateKeycloak) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *TargetCreateKeycloak) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *TargetCreateKeycloak) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
+
+### GetUidToken
+
+`func (o *TargetCreateKeycloak) GetUidToken() string`
+
+GetUidToken returns the UidToken field if non-nil, zero value otherwise.
+
+### GetUidTokenOk
+
+`func (o *TargetCreateKeycloak) GetUidTokenOk() (*string, bool)`
+
+GetUidTokenOk returns a tuple with the UidToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUidToken
+
+`func (o *TargetCreateKeycloak) SetUidToken(v string)`
+
+SetUidToken sets UidToken field to given value.
+
+### HasUidToken
+
+`func (o *TargetCreateKeycloak) HasUidToken() bool`
+
+HasUidToken returns a boolean if a field has been set.
+
+### GetUrl
+
+`func (o *TargetCreateKeycloak) GetUrl() string`
+
+GetUrl returns the Url field if non-nil, zero value otherwise.
+
+### GetUrlOk
+
+`func (o *TargetCreateKeycloak) GetUrlOk() (*string, bool)`
+
+GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUrl
+
+`func (o *TargetCreateKeycloak) SetUrl(v string)`
+
+SetUrl sets Url field to given value.
+
+### HasUrl
+
+`func (o *TargetCreateKeycloak) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

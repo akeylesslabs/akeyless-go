@@ -48,6 +48,8 @@ type AuthMethodAccessInfo struct {
 	RulesType *string `json:"rules_type,omitempty"`
 	SamlAccessRules *SAMLAccessRules `json:"saml_access_rules,omitempty"`
 	SubClaimsDelimiters []string `json:"sub_claims_delimiters,omitempty"`
+	// Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds.
+	UidExpirationEvents []UidExpirationEvent `json:"uid_expiration_events,omitempty"`
 	UniversalIdentityAccessRules *UniversalIdentityAccessRules `json:"universal_identity_access_rules,omitempty"`
 }
 
@@ -868,6 +870,38 @@ func (o *AuthMethodAccessInfo) SetSubClaimsDelimiters(v []string) {
 	o.SubClaimsDelimiters = v
 }
 
+// GetUidExpirationEvents returns the UidExpirationEvents field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetUidExpirationEvents() []UidExpirationEvent {
+	if o == nil || IsNil(o.UidExpirationEvents) {
+		var ret []UidExpirationEvent
+		return ret
+	}
+	return o.UidExpirationEvents
+}
+
+// GetUidExpirationEventsOk returns a tuple with the UidExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetUidExpirationEventsOk() ([]UidExpirationEvent, bool) {
+	if o == nil || IsNil(o.UidExpirationEvents) {
+		return nil, false
+	}
+	return o.UidExpirationEvents, true
+}
+
+// HasUidExpirationEvents returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasUidExpirationEvents() bool {
+	if o != nil && !IsNil(o.UidExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetUidExpirationEvents gets a reference to the given []UidExpirationEvent and assigns it to the UidExpirationEvents field.
+func (o *AuthMethodAccessInfo) SetUidExpirationEvents(v []UidExpirationEvent) {
+	o.UidExpirationEvents = v
+}
+
 // GetUniversalIdentityAccessRules returns the UniversalIdentityAccessRules field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetUniversalIdentityAccessRules() UniversalIdentityAccessRules {
 	if o == nil || IsNil(o.UniversalIdentityAccessRules) {
@@ -984,6 +1018,9 @@ func (o AuthMethodAccessInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SubClaimsDelimiters) {
 		toSerialize["sub_claims_delimiters"] = o.SubClaimsDelimiters
+	}
+	if !IsNil(o.UidExpirationEvents) {
+		toSerialize["uid_expiration_events"] = o.UidExpirationEvents
 	}
 	if !IsNil(o.UniversalIdentityAccessRules) {
 		toSerialize["universal_identity_access_rules"] = o.UniversalIdentityAccessRules

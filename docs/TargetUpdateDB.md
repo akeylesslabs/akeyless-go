@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **ParentTargetName** | Pointer to **string** | Name of the parent target, relevant only when connection-type is parent-target | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
 **Pwd** | Pointer to **string** |  | [optional] 
+**SkipServerNameValidation** | Pointer to **string** | (Optional) Skip server name verification | [optional] 
 **SnowflakeAccount** | Pointer to **string** |  | [optional] 
 **SnowflakeApiPrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **SnowflakeApiPrivateKeyPassword** | Pointer to **string** | The Private key passphrase | [optional] 
@@ -978,6 +979,31 @@ SetPwd sets Pwd field to given value.
 `func (o *TargetUpdateDB) HasPwd() bool`
 
 HasPwd returns a boolean if a field has been set.
+
+### GetSkipServerNameValidation
+
+`func (o *TargetUpdateDB) GetSkipServerNameValidation() string`
+
+GetSkipServerNameValidation returns the SkipServerNameValidation field if non-nil, zero value otherwise.
+
+### GetSkipServerNameValidationOk
+
+`func (o *TargetUpdateDB) GetSkipServerNameValidationOk() (*string, bool)`
+
+GetSkipServerNameValidationOk returns a tuple with the SkipServerNameValidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipServerNameValidation
+
+`func (o *TargetUpdateDB) SetSkipServerNameValidation(v string)`
+
+SetSkipServerNameValidation sets SkipServerNameValidation field to given value.
+
+### HasSkipServerNameValidation
+
+`func (o *TargetUpdateDB) HasSkipServerNameValidation() bool`
+
+HasSkipServerNameValidation returns a boolean if a field has been set.
 
 ### GetSnowflakeAccount
 

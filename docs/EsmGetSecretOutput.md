@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ActivationDate** | Pointer to **time.Time** |  | [optional] 
 **BinaryValue** | Pointer to **bool** |  | [optional] 
 **EncryptionKey** | Pointer to **string** |  | [optional] 
+**Expiration** | Pointer to **time.Time** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **interface{}** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -32,6 +34,31 @@ will change when the set of required properties is changed
 NewEsmGetSecretOutputWithDefaults instantiates a new EsmGetSecretOutput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetActivationDate
+
+`func (o *EsmGetSecretOutput) GetActivationDate() time.Time`
+
+GetActivationDate returns the ActivationDate field if non-nil, zero value otherwise.
+
+### GetActivationDateOk
+
+`func (o *EsmGetSecretOutput) GetActivationDateOk() (*time.Time, bool)`
+
+GetActivationDateOk returns a tuple with the ActivationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivationDate
+
+`func (o *EsmGetSecretOutput) SetActivationDate(v time.Time)`
+
+SetActivationDate sets ActivationDate field to given value.
+
+### HasActivationDate
+
+`func (o *EsmGetSecretOutput) HasActivationDate() bool`
+
+HasActivationDate returns a boolean if a field has been set.
 
 ### GetBinaryValue
 
@@ -82,6 +109,31 @@ SetEncryptionKey sets EncryptionKey field to given value.
 `func (o *EsmGetSecretOutput) HasEncryptionKey() bool`
 
 HasEncryptionKey returns a boolean if a field has been set.
+
+### GetExpiration
+
+`func (o *EsmGetSecretOutput) GetExpiration() time.Time`
+
+GetExpiration returns the Expiration field if non-nil, zero value otherwise.
+
+### GetExpirationOk
+
+`func (o *EsmGetSecretOutput) GetExpirationOk() (*time.Time, bool)`
+
+GetExpirationOk returns a tuple with the Expiration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpiration
+
+`func (o *EsmGetSecretOutput) SetExpiration(v time.Time)`
+
+SetExpiration sets Expiration field to given value.
+
+### HasExpiration
+
+`func (o *EsmGetSecretOutput) HasExpiration() bool`
+
+HasExpiration returns a boolean if a field has been set.
 
 ### GetId
 

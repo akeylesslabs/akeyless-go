@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **KeyDataBase64** | Pointer to **string** | PKI key file contents. If this option is used, the certificate will be printed to stdout | [optional] 
 **MaxPathLen** | Pointer to **int64** | The maximum path length for the generated certificate. -1, means unlimited unless the signing certificate has a maximum path length set | [optional] [default to -1]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
-**Ttl** | Pointer to **string** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL) | [optional] 
+**Ttl** | Pointer to **string** | Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL). Ignored for Let&#39;s Encrypt public CA issuers, which always use the CA default lifetime (about 90 days). | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UriSans** | Pointer to **string** | The URI Subject Alternative Names to be included in the PKI certificate (in a comma-separated list) (if CSR is supplied this flag is ignored and any URI.* names are taken from it) | [optional] 
 

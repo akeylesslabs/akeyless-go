@@ -165,6 +165,8 @@ type GatewayUpdateMigration struct {
 	SiUsersPathTemplate string `json:"si-users-path-template"`
 	// Target location in Akeyless for imported secrets
 	TargetLocation string `json:"target-location"`
+	// Name of existing target to use to create the migration
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -2518,6 +2520,38 @@ func (o *GatewayUpdateMigration) SetTargetLocation(v string) {
 	o.TargetLocation = v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetTargetName() string {
+	if o == nil || IsNil(o.TargetName) {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetName) {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasTargetName() bool {
+	if o != nil && !IsNil(o.TargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *GatewayUpdateMigration) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -2864,6 +2898,9 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["si-users-path-template"] = o.SiUsersPathTemplate
 	toSerialize["target-location"] = o.TargetLocation
+	if !IsNil(o.TargetName) {
+		toSerialize["target-name"] = o.TargetName
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}

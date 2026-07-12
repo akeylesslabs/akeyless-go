@@ -62,6 +62,8 @@ type CreateAuthMethodSAML struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// A unique identifier (ID) value should be configured for OAuth2, LDAP and SAML authentication method types and is usually a value such as the email, username, or upn for example. Whenever a user logs in with a token, these authentication types issue a \"sub claim\" that contains details uniquely identifying that user. This sub claim includes a key containing the ID value that you configured, and is used to distinguish between different users from within the same organization.
 	UniqueIdentifier string `json:"unique-identifier"`
+	// Use dedicated per-access-id SP URLs for login
+	UseDedicatedSamlUrls *bool `json:"use-dedicated-saml-urls,omitempty"`
 }
 
 type _CreateAuthMethodSAML CreateAuthMethodSAML
@@ -721,6 +723,38 @@ func (o *CreateAuthMethodSAML) SetUniqueIdentifier(v string) {
 	o.UniqueIdentifier = v
 }
 
+// GetUseDedicatedSamlUrls returns the UseDedicatedSamlUrls field value if set, zero value otherwise.
+func (o *CreateAuthMethodSAML) GetUseDedicatedSamlUrls() bool {
+	if o == nil || IsNil(o.UseDedicatedSamlUrls) {
+		var ret bool
+		return ret
+	}
+	return *o.UseDedicatedSamlUrls
+}
+
+// GetUseDedicatedSamlUrlsOk returns a tuple with the UseDedicatedSamlUrls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodSAML) GetUseDedicatedSamlUrlsOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseDedicatedSamlUrls) {
+		return nil, false
+	}
+	return o.UseDedicatedSamlUrls, true
+}
+
+// HasUseDedicatedSamlUrls returns a boolean if a field has been set.
+func (o *CreateAuthMethodSAML) HasUseDedicatedSamlUrls() bool {
+	if o != nil && !IsNil(o.UseDedicatedSamlUrls) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseDedicatedSamlUrls gets a reference to the given bool and assigns it to the UseDedicatedSamlUrls field.
+func (o *CreateAuthMethodSAML) SetUseDedicatedSamlUrls(v bool) {
+	o.UseDedicatedSamlUrls = &v
+}
+
 func (o CreateAuthMethodSAML) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -787,6 +821,9 @@ func (o CreateAuthMethodSAML) ToMap() (map[string]interface{}, error) {
 		toSerialize["uid-token"] = o.UidToken
 	}
 	toSerialize["unique-identifier"] = o.UniqueIdentifier
+	if !IsNil(o.UseDedicatedSamlUrls) {
+		toSerialize["use-dedicated-saml-urls"] = o.UseDedicatedSamlUrls
+	}
 	return toSerialize, nil
 }
 

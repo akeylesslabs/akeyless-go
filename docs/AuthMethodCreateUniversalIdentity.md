@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TreeLength** | Pointer to **int32** | Maximum UID tree depth allowed (child of child of ...) | [optional] [default to 200]
 **Ttl** | Pointer to **int32** | Token ttl | [optional] [default to 60]
+**UidExpirationEventAt** | Pointer to **[]string** | Notify when this percent of the token TTL has elapsed (1-99). | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -513,6 +514,31 @@ SetTtl sets Ttl field to given value.
 `func (o *AuthMethodCreateUniversalIdentity) HasTtl() bool`
 
 HasTtl returns a boolean if a field has been set.
+
+### GetUidExpirationEventAt
+
+`func (o *AuthMethodCreateUniversalIdentity) GetUidExpirationEventAt() []string`
+
+GetUidExpirationEventAt returns the UidExpirationEventAt field if non-nil, zero value otherwise.
+
+### GetUidExpirationEventAtOk
+
+`func (o *AuthMethodCreateUniversalIdentity) GetUidExpirationEventAtOk() (*[]string, bool)`
+
+GetUidExpirationEventAtOk returns a tuple with the UidExpirationEventAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUidExpirationEventAt
+
+`func (o *AuthMethodCreateUniversalIdentity) SetUidExpirationEventAt(v []string)`
+
+SetUidExpirationEventAt sets UidExpirationEventAt field to given value.
+
+### HasUidExpirationEventAt
+
+`func (o *AuthMethodCreateUniversalIdentity) HasUidExpirationEventAt() bool`
+
+HasUidExpirationEventAt returns a boolean if a field has been set.
 
 ### GetUidToken
 

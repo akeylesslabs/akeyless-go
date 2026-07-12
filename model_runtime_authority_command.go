@@ -28,6 +28,10 @@ type RuntimeAuthorityCommand struct {
 	Json *bool `json:"json,omitempty"`
 	// Secret name (dynamic secret or rotated secret)
 	Name string `json:"name"`
+	// Original natural-language prompt from the user (optional, for auditing)
+	OriginalPrompt *string `json:"original-prompt,omitempty"`
+	// Human end-user behind the agent (optional, for auditing)
+	OriginalUser *string `json:"original-user,omitempty"`
 	// Query or action payload (SQL, natural language, or CLI-style)
 	Payload string `json:"payload"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -142,6 +146,70 @@ func (o *RuntimeAuthorityCommand) SetName(v string) {
 	o.Name = v
 }
 
+// GetOriginalPrompt returns the OriginalPrompt field value if set, zero value otherwise.
+func (o *RuntimeAuthorityCommand) GetOriginalPrompt() string {
+	if o == nil || IsNil(o.OriginalPrompt) {
+		var ret string
+		return ret
+	}
+	return *o.OriginalPrompt
+}
+
+// GetOriginalPromptOk returns a tuple with the OriginalPrompt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RuntimeAuthorityCommand) GetOriginalPromptOk() (*string, bool) {
+	if o == nil || IsNil(o.OriginalPrompt) {
+		return nil, false
+	}
+	return o.OriginalPrompt, true
+}
+
+// HasOriginalPrompt returns a boolean if a field has been set.
+func (o *RuntimeAuthorityCommand) HasOriginalPrompt() bool {
+	if o != nil && !IsNil(o.OriginalPrompt) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalPrompt gets a reference to the given string and assigns it to the OriginalPrompt field.
+func (o *RuntimeAuthorityCommand) SetOriginalPrompt(v string) {
+	o.OriginalPrompt = &v
+}
+
+// GetOriginalUser returns the OriginalUser field value if set, zero value otherwise.
+func (o *RuntimeAuthorityCommand) GetOriginalUser() string {
+	if o == nil || IsNil(o.OriginalUser) {
+		var ret string
+		return ret
+	}
+	return *o.OriginalUser
+}
+
+// GetOriginalUserOk returns a tuple with the OriginalUser field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RuntimeAuthorityCommand) GetOriginalUserOk() (*string, bool) {
+	if o == nil || IsNil(o.OriginalUser) {
+		return nil, false
+	}
+	return o.OriginalUser, true
+}
+
+// HasOriginalUser returns a boolean if a field has been set.
+func (o *RuntimeAuthorityCommand) HasOriginalUser() bool {
+	if o != nil && !IsNil(o.OriginalUser) {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalUser gets a reference to the given string and assigns it to the OriginalUser field.
+func (o *RuntimeAuthorityCommand) SetOriginalUser(v string) {
+	o.OriginalUser = &v
+}
+
 // GetPayload returns the Payload field value
 func (o *RuntimeAuthorityCommand) GetPayload() string {
 	if o == nil {
@@ -245,6 +313,12 @@ func (o RuntimeAuthorityCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.OriginalPrompt) {
+		toSerialize["original-prompt"] = o.OriginalPrompt
+	}
+	if !IsNil(o.OriginalUser) {
+		toSerialize["original-user"] = o.OriginalUser
+	}
 	toSerialize["payload"] = o.Payload
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

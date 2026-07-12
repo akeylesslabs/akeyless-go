@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteSyncOnDeletion** | Pointer to **bool** |  | [optional] 
+**HashiTargetId** | Pointer to **int64** |  | [optional] 
 **ImportAsJson** | Pointer to **bool** |  | [optional] 
 **MetadataMode** | Pointer to **string** |  | [optional] 
 **Namespaces** | Pointer to **[]string** |  | [optional] 
@@ -55,6 +56,31 @@ SetDeleteSyncOnDeletion sets DeleteSyncOnDeletion field to given value.
 `func (o *HashiPayload) HasDeleteSyncOnDeletion() bool`
 
 HasDeleteSyncOnDeletion returns a boolean if a field has been set.
+
+### GetHashiTargetId
+
+`func (o *HashiPayload) GetHashiTargetId() int64`
+
+GetHashiTargetId returns the HashiTargetId field if non-nil, zero value otherwise.
+
+### GetHashiTargetIdOk
+
+`func (o *HashiPayload) GetHashiTargetIdOk() (*int64, bool)`
+
+GetHashiTargetIdOk returns a tuple with the HashiTargetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHashiTargetId
+
+`func (o *HashiPayload) SetHashiTargetId(v int64)`
+
+SetHashiTargetId sets HashiTargetId field to given value.
+
+### HasHashiTargetId
+
+`func (o *HashiPayload) HasHashiTargetId() bool`
+
+HasHashiTargetId returns a boolean if a field has been set.
 
 ### GetImportAsJson
 

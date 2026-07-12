@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **RulesType** | Pointer to **string** |  | [optional] 
 **SamlAccessRules** | Pointer to [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
 **SubClaimsDelimiters** | Pointer to **[]string** |  | [optional] 
+**UidExpirationEvents** | Pointer to [**[]UidExpirationEvent**](UidExpirationEvent.md) | Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds. | [optional] 
 **UniversalIdentityAccessRules** | Pointer to [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 
 
 ## Methods
@@ -674,6 +675,31 @@ SetSubClaimsDelimiters sets SubClaimsDelimiters field to given value.
 `func (o *AuthMethodAccessInfo) HasSubClaimsDelimiters() bool`
 
 HasSubClaimsDelimiters returns a boolean if a field has been set.
+
+### GetUidExpirationEvents
+
+`func (o *AuthMethodAccessInfo) GetUidExpirationEvents() []UidExpirationEvent`
+
+GetUidExpirationEvents returns the UidExpirationEvents field if non-nil, zero value otherwise.
+
+### GetUidExpirationEventsOk
+
+`func (o *AuthMethodAccessInfo) GetUidExpirationEventsOk() (*[]UidExpirationEvent, bool)`
+
+GetUidExpirationEventsOk returns a tuple with the UidExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUidExpirationEvents
+
+`func (o *AuthMethodAccessInfo) SetUidExpirationEvents(v []UidExpirationEvent)`
+
+SetUidExpirationEvents sets UidExpirationEvents field to given value.
+
+### HasUidExpirationEvents
+
+`func (o *AuthMethodAccessInfo) HasUidExpirationEvents() bool`
+
+HasUidExpirationEvents returns a boolean if a field has been set.
 
 ### GetUniversalIdentityAccessRules
 

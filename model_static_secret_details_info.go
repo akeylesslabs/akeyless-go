@@ -20,6 +20,7 @@ var _ MappedNullable = &StaticSecretDetailsInfo{}
 
 // StaticSecretDetailsInfo struct for StaticSecretDetailsInfo
 type StaticSecretDetailsInfo struct {
+	FileInfo *FileInfo `json:"file_info,omitempty"`
 	// StaticSecretFormat defines the format of static secret (e.g. Text)
 	Format *string `json:"format,omitempty"`
 	MaxVersions *int64 `json:"max_versions,omitempty"`
@@ -46,6 +47,38 @@ func NewStaticSecretDetailsInfo() *StaticSecretDetailsInfo {
 func NewStaticSecretDetailsInfoWithDefaults() *StaticSecretDetailsInfo {
 	this := StaticSecretDetailsInfo{}
 	return &this
+}
+
+// GetFileInfo returns the FileInfo field value if set, zero value otherwise.
+func (o *StaticSecretDetailsInfo) GetFileInfo() FileInfo {
+	if o == nil || IsNil(o.FileInfo) {
+		var ret FileInfo
+		return ret
+	}
+	return *o.FileInfo
+}
+
+// GetFileInfoOk returns a tuple with the FileInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretDetailsInfo) GetFileInfoOk() (*FileInfo, bool) {
+	if o == nil || IsNil(o.FileInfo) {
+		return nil, false
+	}
+	return o.FileInfo, true
+}
+
+// HasFileInfo returns a boolean if a field has been set.
+func (o *StaticSecretDetailsInfo) HasFileInfo() bool {
+	if o != nil && !IsNil(o.FileInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileInfo gets a reference to the given FileInfo and assigns it to the FileInfo field.
+func (o *StaticSecretDetailsInfo) SetFileInfo(v FileInfo) {
+	o.FileInfo = &v
 }
 
 // GetFormat returns the Format field value if set, zero value otherwise.
@@ -282,6 +315,9 @@ func (o StaticSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 
 func (o StaticSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FileInfo) {
+		toSerialize["file_info"] = o.FileInfo
+	}
 	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format
 	}

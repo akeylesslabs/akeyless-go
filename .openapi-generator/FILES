@@ -40,6 +40,7 @@ docs/AllowedAccess.md
 docs/AllowedAccessOld.md
 docs/AllowedClientType.md
 docs/AllowedIpSettings.md
+docs/AnthropicTargetDetails.md
 docs/ArtifactoryTargetDetails.md
 docs/AssocRoleAuthMethod.md
 docs/AssocTargetItem.md
@@ -101,6 +102,7 @@ docs/BatchEncryptionRequestLine.md
 docs/BatchEncryptionResponseLine.md
 docs/BatchTokenizationRequestLine.md
 docs/BatchTokenizationResponseLine.md
+docs/BedrockTargetDetails.md
 docs/CFConfigPart.md
 docs/CaCertificatesConfigPart.md
 docs/CacheConfigPart.md
@@ -212,6 +214,9 @@ docs/CreateLdapTarget.md
 docs/CreateLdapTargetOutput.md
 docs/CreateLinkedTarget.md
 docs/CreateLinkedTargetOutput.md
+docs/CreateMcpSecretBearerToken.md
+docs/CreateMcpSecretOAuthAuthCode.md
+docs/CreateMcpSecretOAuthClientCreds.md
 docs/CreateNativeK8STarget.md
 docs/CreateNativeK8STargetOutput.md
 docs/CreateOidcApp.md
@@ -249,6 +254,7 @@ docs/CreateWindowsTarget.md
 docs/CreateWindowsTargetOutput.md
 docs/CreateZeroSSLTarget.md
 docs/CreateZeroSSLTargetOutput.md
+docs/CustomDnsTargetDetails.md
 docs/CustomTargetDetails.md
 docs/CustomerFragmentConfig.md
 docs/CustomerFragmentsConfigJson.md
@@ -377,6 +383,9 @@ docs/DynamicSecretUpdateSnowflake.md
 docs/DynamicSecretUpdateVenafi.md
 docs/EKSTargetDetails.md
 docs/ElasticsearchLogForwardingConfig.md
+docs/EmailCustomization.md
+docs/EmailCustomizationAccountInformation.md
+docs/EmailCustomizationAccountInformationValues.md
 docs/EmailEntry.md
 docs/EmailError.md
 docs/EmailPassAccessRules.md
@@ -419,6 +428,8 @@ docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
 docs/Extension.md
 docs/ExternalKMSKeyId.md
+docs/FileDownloadInstructions.md
+docs/FileInfo.md
 docs/FolderCreate.md
 docs/FolderCreateOutput.md
 docs/FolderDelete.md
@@ -672,6 +683,7 @@ docs/GlobalSignGCCTargetDetails.md
 docs/GodaddyTargetDetails.md
 docs/GoogleChronicleForwardingConfig.md
 docs/GoogleTrustTargetDetails.md
+docs/GrokTargetDetails.md
 docs/Group.md
 docs/GwClusterIdentity.md
 docs/GwUpdateRemoteAccessSessionLogsAwsS3.md
@@ -720,6 +732,7 @@ docs/KMIPServer.md
 docs/KerberosAccessRules.md
 docs/KerberosAuthMethodInfo.md
 docs/KerberosConfigPart.md
+docs/KeycloakTargetDetails.md
 docs/KmipClientDeleteRule.md
 docs/KmipClientSetRule.md
 docs/KmipClientUpdate.md
@@ -810,6 +823,7 @@ docs/OIDCAccessRules.md
 docs/OIDCCustomClaim.md
 docs/ObjectVersionSettingsOutput.md
 docs/OidcClientInfo.md
+docs/OktaTargetDetails.md
 docs/OnePasswordMigration.md
 docs/OnePasswordPayload.md
 docs/OpenAITargetDetails.md
@@ -978,10 +992,13 @@ docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
 docs/Target.md
+docs/TargetCreateAnthropic.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
 docs/TargetCreateAzure.md
+docs/TargetCreateBedrock.md
 docs/TargetCreateCloudflare.md
+docs/TargetCreateCustomDns.md
 docs/TargetCreateDB.md
 docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
@@ -995,11 +1012,14 @@ docs/TargetCreateGlobalSign.md
 docs/TargetCreateGlobalSignAtlas.md
 docs/TargetCreateGodaddy.md
 docs/TargetCreateGoogleTrust.md
+docs/TargetCreateGrok.md
 docs/TargetCreateHashiVault.md
 docs/TargetCreateK8s.md
+docs/TargetCreateKeycloak.md
 docs/TargetCreateLdap.md
 docs/TargetCreateLetsEncrypt.md
 docs/TargetCreateLinked.md
+docs/TargetCreateOkta.md
 docs/TargetCreateOpenAI.md
 docs/TargetCreateOutput.md
 docs/TargetCreatePing.md
@@ -1020,10 +1040,13 @@ docs/TargetItemVersion.md
 docs/TargetList.md
 docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
+docs/TargetUpdateAnthropic.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
 docs/TargetUpdateAzure.md
+docs/TargetUpdateBedrock.md
 docs/TargetUpdateCloudflare.md
+docs/TargetUpdateCustomDns.md
 docs/TargetUpdateDB.md
 docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
@@ -1037,11 +1060,14 @@ docs/TargetUpdateGlobalSign.md
 docs/TargetUpdateGlobalSignAtlas.md
 docs/TargetUpdateGodaddy.md
 docs/TargetUpdateGoogleTrust.md
+docs/TargetUpdateGrok.md
 docs/TargetUpdateHashiVault.md
 docs/TargetUpdateK8s.md
+docs/TargetUpdateKeycloak.md
 docs/TargetUpdateLdap.md
 docs/TargetUpdateLetsEncrypt.md
 docs/TargetUpdateLinked.md
+docs/TargetUpdateOkta.md
 docs/TargetUpdateOpenAI.md
 docs/TargetUpdateOutput.md
 docs/TargetUpdatePing.md
@@ -1060,6 +1086,7 @@ docs/TokenizerInfo.md
 docs/UIDTokenDetails.md
 docs/UidCreateChildToken.md
 docs/UidCreateChildTokenOutput.md
+docs/UidExpirationEvent.md
 docs/UidGenerateToken.md
 docs/UidGenerateTokenOutput.md
 docs/UidListChildren.md
@@ -1135,6 +1162,9 @@ docs/UpdateLdapTarget.md
 docs/UpdateLdapTargetDetails.md
 docs/UpdateLdapTargetOutput.md
 docs/UpdateLinkedTarget.md
+docs/UpdateMcpSecretBearerToken.md
+docs/UpdateMcpSecretOAuthAuthCode.md
+docs/UpdateMcpSecretOAuthClientCreds.md
 docs/UpdateNativeK8STarget.md
 docs/UpdateNativeK8STargetOutput.md
 docs/UpdateOidcApp.md
@@ -1246,6 +1276,7 @@ model_allowed_access.go
 model_allowed_access_old.go
 model_allowed_client_type.go
 model_allowed_ip_settings.go
+model_anthropic_target_details.go
 model_api_key_access_rules.go
 model_artifactory_target_details.go
 model_assoc_role_auth_method.go
@@ -1313,6 +1344,7 @@ model_batch_encryption_request_line.go
 model_batch_encryption_response_line.go
 model_batch_tokenization_request_line.go
 model_batch_tokenization_response_line.go
+model_bedrock_target_details.go
 model_ca_certificates_config_part.go
 model_cache_config_part.go
 model_calc_password_security_info.go
@@ -1424,6 +1456,9 @@ model_create_ldap_target.go
 model_create_ldap_target_output.go
 model_create_linked_target.go
 model_create_linked_target_output.go
+model_create_mcp_secret_bearer_token.go
+model_create_mcp_secret_o_auth_auth_code.go
+model_create_mcp_secret_o_auth_client_creds.go
 model_create_native_k8_s_target.go
 model_create_native_k8_s_target_output.go
 model_create_oidc_app.go
@@ -1461,6 +1496,7 @@ model_create_windows_target.go
 model_create_windows_target_output.go
 model_create_zero_ssl_target.go
 model_create_zero_ssl_target_output.go
+model_custom_dns_target_details.go
 model_custom_target_details.go
 model_customer_fragment_config.go
 model_customer_fragments_config_json.go
@@ -1589,6 +1625,9 @@ model_dynamic_secret_update_snowflake.go
 model_dynamic_secret_update_venafi.go
 model_eks_target_details.go
 model_elasticsearch_log_forwarding_config.go
+model_email_customization.go
+model_email_customization_account_information.go
+model_email_customization_account_information_values.go
 model_email_entry.go
 model_email_error.go
 model_email_pass_access_rules.go
@@ -1631,6 +1670,8 @@ model_export_classic_key.go
 model_export_classic_key_output.go
 model_extension.go
 model_external_kms_key_id.go
+model_file_download_instructions.go
+model_file_info.go
 model_folder_create.go
 model_folder_create_output.go
 model_folder_delete.go
@@ -1884,6 +1925,7 @@ model_global_sign_gcc_target_details.go
 model_godaddy_target_details.go
 model_google_chronicle_forwarding_config.go
 model_google_trust_target_details.go
+model_grok_target_details.go
 model_group.go
 model_gw_cluster_identity.go
 model_gw_update_remote_access_session_logs_aws_s3.go
@@ -1925,6 +1967,7 @@ model_k8_s_payload.go
 model_kerberos_access_rules.go
 model_kerberos_auth_method_info.go
 model_kerberos_config_part.go
+model_keycloak_target_details.go
 model_kmip_client.go
 model_kmip_client_delete_rule.go
 model_kmip_client_get_response.go
@@ -2022,6 +2065,7 @@ model_oci_access_rules.go
 model_oidc_access_rules.go
 model_oidc_client_info.go
 model_oidc_custom_claim.go
+model_okta_target_details.go
 model_one_password_migration.go
 model_one_password_payload.go
 model_open_ai_target_details.go
@@ -2190,10 +2234,13 @@ model_syslog_log_forwarding_config.go
 model_system_access_credentials_reply_obj.go
 model_system_access_creds_settings.go
 model_target.go
+model_target_create_anthropic.go
 model_target_create_artifactory.go
 model_target_create_aws.go
 model_target_create_azure.go
+model_target_create_bedrock.go
 model_target_create_cloudflare.go
+model_target_create_custom_dns.go
 model_target_create_db.go
 model_target_create_digi_cert.go
 model_target_create_dockerhub.go
@@ -2207,11 +2254,14 @@ model_target_create_global_sign.go
 model_target_create_global_sign_atlas.go
 model_target_create_godaddy.go
 model_target_create_google_trust.go
+model_target_create_grok.go
 model_target_create_hashi_vault.go
 model_target_create_k8s.go
+model_target_create_keycloak.go
 model_target_create_ldap.go
 model_target_create_lets_encrypt.go
 model_target_create_linked.go
+model_target_create_okta.go
 model_target_create_open_ai.go
 model_target_create_output.go
 model_target_create_ping.go
@@ -2232,10 +2282,13 @@ model_target_item_version.go
 model_target_list.go
 model_target_name_with_hosts.go
 model_target_type_details_input.go
+model_target_update_anthropic.go
 model_target_update_artifactory.go
 model_target_update_aws.go
 model_target_update_azure.go
+model_target_update_bedrock.go
 model_target_update_cloudflare.go
+model_target_update_custom_dns.go
 model_target_update_db.go
 model_target_update_digi_cert.go
 model_target_update_dockerhub.go
@@ -2249,11 +2302,14 @@ model_target_update_global_sign.go
 model_target_update_global_sign_atlas.go
 model_target_update_godaddy.go
 model_target_update_google_trust.go
+model_target_update_grok.go
 model_target_update_hashi_vault.go
 model_target_update_k8s.go
+model_target_update_keycloak.go
 model_target_update_ldap.go
 model_target_update_lets_encrypt.go
 model_target_update_linked.go
+model_target_update_okta.go
 model_target_update_open_ai.go
 model_target_update_output.go
 model_target_update_ping.go
@@ -2271,6 +2327,7 @@ model_tokenize_output.go
 model_tokenizer_info.go
 model_uid_create_child_token.go
 model_uid_create_child_token_output.go
+model_uid_expiration_event.go
 model_uid_generate_token.go
 model_uid_generate_token_output.go
 model_uid_list_children.go
@@ -2347,6 +2404,9 @@ model_update_ldap_target.go
 model_update_ldap_target_details.go
 model_update_ldap_target_output.go
 model_update_linked_target.go
+model_update_mcp_secret_bearer_token.go
+model_update_mcp_secret_o_auth_auth_code.go
+model_update_mcp_secret_o_auth_client_creds.go
 model_update_native_k8_s_target.go
 model_update_native_k8_s_target_output.go
 model_update_oidc_app.go

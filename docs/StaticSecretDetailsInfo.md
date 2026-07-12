@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**FileInfo** | Pointer to [**FileInfo**](FileInfo.md) |  | [optional] 
 **Format** | Pointer to **string** | StaticSecretFormat defines the format of static secret (e.g. Text) | [optional] 
 **MaxVersions** | Pointer to **int64** |  | [optional] 
 **NotifyOnChangeEvent** | Pointer to **bool** |  | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewStaticSecretDetailsInfoWithDefaults instantiates a new StaticSecretDetailsInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetFileInfo
+
+`func (o *StaticSecretDetailsInfo) GetFileInfo() FileInfo`
+
+GetFileInfo returns the FileInfo field if non-nil, zero value otherwise.
+
+### GetFileInfoOk
+
+`func (o *StaticSecretDetailsInfo) GetFileInfoOk() (*FileInfo, bool)`
+
+GetFileInfoOk returns a tuple with the FileInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileInfo
+
+`func (o *StaticSecretDetailsInfo) SetFileInfo(v FileInfo)`
+
+SetFileInfo sets FileInfo field to given value.
+
+### HasFileInfo
+
+`func (o *StaticSecretDetailsInfo) HasFileInfo() bool`
+
+HasFileInfo returns a boolean if a field has been set.
 
 ### GetFormat
 

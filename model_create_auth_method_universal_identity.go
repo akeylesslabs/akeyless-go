@@ -60,6 +60,8 @@ type CreateAuthMethodUniversalIdentity struct {
 	TreeLength *int32 `json:"tree-length,omitempty"`
 	// Token ttl
 	Ttl *int32 `json:"ttl,omitempty"`
+	// Notify when this percent of the token TTL has elapsed (1-99).
+	UidExpirationEventAt []string `json:"uid-expiration-event-at,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -708,6 +710,38 @@ func (o *CreateAuthMethodUniversalIdentity) SetTtl(v int32) {
 	o.Ttl = &v
 }
 
+// GetUidExpirationEventAt returns the UidExpirationEventAt field value if set, zero value otherwise.
+func (o *CreateAuthMethodUniversalIdentity) GetUidExpirationEventAt() []string {
+	if o == nil || IsNil(o.UidExpirationEventAt) {
+		var ret []string
+		return ret
+	}
+	return o.UidExpirationEventAt
+}
+
+// GetUidExpirationEventAtOk returns a tuple with the UidExpirationEventAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateAuthMethodUniversalIdentity) GetUidExpirationEventAtOk() ([]string, bool) {
+	if o == nil || IsNil(o.UidExpirationEventAt) {
+		return nil, false
+	}
+	return o.UidExpirationEventAt, true
+}
+
+// HasUidExpirationEventAt returns a boolean if a field has been set.
+func (o *CreateAuthMethodUniversalIdentity) HasUidExpirationEventAt() bool {
+	if o != nil && !IsNil(o.UidExpirationEventAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUidExpirationEventAt gets a reference to the given []string and assigns it to the UidExpirationEventAt field.
+func (o *CreateAuthMethodUniversalIdentity) SetUidExpirationEventAt(v []string) {
+	o.UidExpirationEventAt = v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *CreateAuthMethodUniversalIdentity) GetUidToken() string {
 	if o == nil || IsNil(o.UidToken) {
@@ -804,6 +838,9 @@ func (o CreateAuthMethodUniversalIdentity) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl
+	}
+	if !IsNil(o.UidExpirationEventAt) {
+		toSerialize["uid-expiration-event-at"] = o.UidExpirationEventAt
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken

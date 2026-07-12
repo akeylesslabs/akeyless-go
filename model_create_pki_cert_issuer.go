@@ -116,7 +116,7 @@ type CreatePKICertIssuer struct {
 	Tag []string `json:"tag,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target's supported maximum TTLs
+	// The maximum requested Time To Live for issued certificates, in seconds. In case of Public CA, this is based on the CA target's supported maximum TTLs. Not supported for Let's Encrypt, which always uses the CA default lifetime (about 90 days).
 	Ttl string `json:"ttl"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ExpirationEvents** | Pointer to [**[]AuthExpirationEvent**](AuthExpirationEvent.md) |  | [optional] 
 **IsApproved** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
+**UidExpirationEvents** | Pointer to [**[]UidExpirationEvent**](UidExpirationEvent.md) |  | [optional] 
 
 ## Methods
 
@@ -465,6 +466,31 @@ SetModificationDate sets ModificationDate field to given value.
 `func (o *AuthMethod) HasModificationDate() bool`
 
 HasModificationDate returns a boolean if a field has been set.
+
+### GetUidExpirationEvents
+
+`func (o *AuthMethod) GetUidExpirationEvents() []UidExpirationEvent`
+
+GetUidExpirationEvents returns the UidExpirationEvents field if non-nil, zero value otherwise.
+
+### GetUidExpirationEventsOk
+
+`func (o *AuthMethod) GetUidExpirationEventsOk() (*[]UidExpirationEvent, bool)`
+
+GetUidExpirationEventsOk returns a tuple with the UidExpirationEvents field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUidExpirationEvents
+
+`func (o *AuthMethod) SetUidExpirationEvents(v []UidExpirationEvent)`
+
+SetUidExpirationEvents sets UidExpirationEvents field to given value.
+
+### HasUidExpirationEvents
+
+`func (o *AuthMethod) HasUidExpirationEvents() bool`
+
+HasUidExpirationEvents returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

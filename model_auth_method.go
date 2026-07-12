@@ -38,6 +38,7 @@ type AuthMethod struct {
 	ExpirationEvents []AuthExpirationEvent `json:"expiration_events,omitempty"`
 	IsApproved *bool `json:"is_approved,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
+	UidExpirationEvents []UidExpirationEvent `json:"uid_expiration_events,omitempty"`
 }
 
 // NewAuthMethod instantiates a new AuthMethod object
@@ -601,6 +602,38 @@ func (o *AuthMethod) SetModificationDate(v time.Time) {
 	o.ModificationDate = &v
 }
 
+// GetUidExpirationEvents returns the UidExpirationEvents field value if set, zero value otherwise.
+func (o *AuthMethod) GetUidExpirationEvents() []UidExpirationEvent {
+	if o == nil || IsNil(o.UidExpirationEvents) {
+		var ret []UidExpirationEvent
+		return ret
+	}
+	return o.UidExpirationEvents
+}
+
+// GetUidExpirationEventsOk returns a tuple with the UidExpirationEvents field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetUidExpirationEventsOk() ([]UidExpirationEvent, bool) {
+	if o == nil || IsNil(o.UidExpirationEvents) {
+		return nil, false
+	}
+	return o.UidExpirationEvents, true
+}
+
+// HasUidExpirationEvents returns a boolean if a field has been set.
+func (o *AuthMethod) HasUidExpirationEvents() bool {
+	if o != nil && !IsNil(o.UidExpirationEvents) {
+		return true
+	}
+
+	return false
+}
+
+// SetUidExpirationEvents gets a reference to the given []UidExpirationEvent and assigns it to the UidExpirationEvents field.
+func (o *AuthMethod) SetUidExpirationEvents(v []UidExpirationEvent) {
+	o.UidExpirationEvents = v
+}
+
 func (o AuthMethod) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -661,6 +694,9 @@ func (o AuthMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ModificationDate) {
 		toSerialize["modification_date"] = o.ModificationDate
+	}
+	if !IsNil(o.UidExpirationEvents) {
+		toSerialize["uid_expiration_events"] = o.UidExpirationEvents
 	}
 	return toSerialize, nil
 }

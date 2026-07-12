@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the EsmGetSecretOutput type satisfies the MappedNullable interface at compile time
@@ -20,8 +21,10 @@ var _ MappedNullable = &EsmGetSecretOutput{}
 
 // EsmGetSecretOutput struct for EsmGetSecretOutput
 type EsmGetSecretOutput struct {
+	ActivationDate *time.Time `json:"activation_date,omitempty"`
 	BinaryValue *bool `json:"binary_value,omitempty"`
 	EncryptionKey *string `json:"encryption_key,omitempty"`
+	Expiration *time.Time `json:"expiration,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Metadata interface{} `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -46,6 +49,38 @@ func NewEsmGetSecretOutput() *EsmGetSecretOutput {
 func NewEsmGetSecretOutputWithDefaults() *EsmGetSecretOutput {
 	this := EsmGetSecretOutput{}
 	return &this
+}
+
+// GetActivationDate returns the ActivationDate field value if set, zero value otherwise.
+func (o *EsmGetSecretOutput) GetActivationDate() time.Time {
+	if o == nil || IsNil(o.ActivationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ActivationDate
+}
+
+// GetActivationDateOk returns a tuple with the ActivationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EsmGetSecretOutput) GetActivationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ActivationDate) {
+		return nil, false
+	}
+	return o.ActivationDate, true
+}
+
+// HasActivationDate returns a boolean if a field has been set.
+func (o *EsmGetSecretOutput) HasActivationDate() bool {
+	if o != nil && !IsNil(o.ActivationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetActivationDate gets a reference to the given time.Time and assigns it to the ActivationDate field.
+func (o *EsmGetSecretOutput) SetActivationDate(v time.Time) {
+	o.ActivationDate = &v
 }
 
 // GetBinaryValue returns the BinaryValue field value if set, zero value otherwise.
@@ -110,6 +145,38 @@ func (o *EsmGetSecretOutput) HasEncryptionKey() bool {
 // SetEncryptionKey gets a reference to the given string and assigns it to the EncryptionKey field.
 func (o *EsmGetSecretOutput) SetEncryptionKey(v string) {
 	o.EncryptionKey = &v
+}
+
+// GetExpiration returns the Expiration field value if set, zero value otherwise.
+func (o *EsmGetSecretOutput) GetExpiration() time.Time {
+	if o == nil || IsNil(o.Expiration) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Expiration
+}
+
+// GetExpirationOk returns a tuple with the Expiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EsmGetSecretOutput) GetExpirationOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.Expiration) {
+		return nil, false
+	}
+	return o.Expiration, true
+}
+
+// HasExpiration returns a boolean if a field has been set.
+func (o *EsmGetSecretOutput) HasExpiration() bool {
+	if o != nil && !IsNil(o.Expiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
+func (o *EsmGetSecretOutput) SetExpiration(v time.Time) {
+	o.Expiration = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
@@ -347,11 +414,17 @@ func (o EsmGetSecretOutput) MarshalJSON() ([]byte, error) {
 
 func (o EsmGetSecretOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ActivationDate) {
+		toSerialize["activation_date"] = o.ActivationDate
+	}
 	if !IsNil(o.BinaryValue) {
 		toSerialize["binary_value"] = o.BinaryValue
 	}
 	if !IsNil(o.EncryptionKey) {
 		toSerialize["encryption_key"] = o.EncryptionKey
+	}
+	if !IsNil(o.Expiration) {
+		toSerialize["expiration"] = o.Expiration
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id

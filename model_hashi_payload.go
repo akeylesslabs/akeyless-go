@@ -21,6 +21,7 @@ var _ MappedNullable = &HashiPayload{}
 // HashiPayload struct for HashiPayload
 type HashiPayload struct {
 	DeleteSyncOnDeletion *bool `json:"delete_sync_on_deletion,omitempty"`
+	HashiTargetId *int64 `json:"hashi_target_id,omitempty"`
 	ImportAsJson *bool `json:"import_as_json,omitempty"`
 	MetadataMode *string `json:"metadata_mode,omitempty"`
 	Namespaces []string `json:"namespaces,omitempty"`
@@ -76,6 +77,38 @@ func (o *HashiPayload) HasDeleteSyncOnDeletion() bool {
 // SetDeleteSyncOnDeletion gets a reference to the given bool and assigns it to the DeleteSyncOnDeletion field.
 func (o *HashiPayload) SetDeleteSyncOnDeletion(v bool) {
 	o.DeleteSyncOnDeletion = &v
+}
+
+// GetHashiTargetId returns the HashiTargetId field value if set, zero value otherwise.
+func (o *HashiPayload) GetHashiTargetId() int64 {
+	if o == nil || IsNil(o.HashiTargetId) {
+		var ret int64
+		return ret
+	}
+	return *o.HashiTargetId
+}
+
+// GetHashiTargetIdOk returns a tuple with the HashiTargetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HashiPayload) GetHashiTargetIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.HashiTargetId) {
+		return nil, false
+	}
+	return o.HashiTargetId, true
+}
+
+// HasHashiTargetId returns a boolean if a field has been set.
+func (o *HashiPayload) HasHashiTargetId() bool {
+	if o != nil && !IsNil(o.HashiTargetId) {
+		return true
+	}
+
+	return false
+}
+
+// SetHashiTargetId gets a reference to the given int64 and assigns it to the HashiTargetId field.
+func (o *HashiPayload) SetHashiTargetId(v int64) {
+	o.HashiTargetId = &v
 }
 
 // GetImportAsJson returns the ImportAsJson field value if set, zero value otherwise.
@@ -282,6 +315,9 @@ func (o HashiPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.DeleteSyncOnDeletion) {
 		toSerialize["delete_sync_on_deletion"] = o.DeleteSyncOnDeletion
+	}
+	if !IsNil(o.HashiTargetId) {
+		toSerialize["hashi_target_id"] = o.HashiTargetId
 	}
 	if !IsNil(o.ImportAsJson) {
 		toSerialize["import_as_json"] = o.ImportAsJson

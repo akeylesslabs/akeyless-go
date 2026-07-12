@@ -245,6 +245,7 @@ Name | Type | Description | Notes
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
 **SigningAlgorithm** | Pointer to **string** |  | [optional] 
+**SkipServerNameValidation** | Pointer to **string** | (Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false. | [optional] 
 **SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
 **SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
 **SubjectDn** | Pointer to **string** |  | [optional] 
@@ -6320,6 +6321,31 @@ SetSigningAlgorithm sets SigningAlgorithm field to given value.
 `func (o *DSProducerDetails) HasSigningAlgorithm() bool`
 
 HasSigningAlgorithm returns a boolean if a field has been set.
+
+### GetSkipServerNameValidation
+
+`func (o *DSProducerDetails) GetSkipServerNameValidation() string`
+
+GetSkipServerNameValidation returns the SkipServerNameValidation field if non-nil, zero value otherwise.
+
+### GetSkipServerNameValidationOk
+
+`func (o *DSProducerDetails) GetSkipServerNameValidationOk() (*string, bool)`
+
+GetSkipServerNameValidationOk returns a tuple with the SkipServerNameValidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipServerNameValidation
+
+`func (o *DSProducerDetails) SetSkipServerNameValidation(v string)`
+
+SetSkipServerNameValidation sets SkipServerNameValidation field to given value.
+
+### HasSkipServerNameValidation
+
+`func (o *DSProducerDetails) HasSkipServerNameValidation() bool`
+
+HasSkipServerNameValidation returns a boolean if a field has been set.
 
 ### GetSslConnectionCertificate
 

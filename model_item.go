@@ -35,6 +35,7 @@ type Item struct {
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	DeletionDate *time.Time `json:"deletion_date,omitempty"`
 	DisplayId *string `json:"display_id,omitempty"`
+	FileDownload *FileDownloadInstructions `json:"file_download,omitempty"`
 	GatewayDetails []GatewayDetailsForItemReplyObj `json:"gateway_details,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
 	IsEnabled *bool `json:"is_enabled,omitempty"`
@@ -532,6 +533,38 @@ func (o *Item) HasDisplayId() bool {
 // SetDisplayId gets a reference to the given string and assigns it to the DisplayId field.
 func (o *Item) SetDisplayId(v string) {
 	o.DisplayId = &v
+}
+
+// GetFileDownload returns the FileDownload field value if set, zero value otherwise.
+func (o *Item) GetFileDownload() FileDownloadInstructions {
+	if o == nil || IsNil(o.FileDownload) {
+		var ret FileDownloadInstructions
+		return ret
+	}
+	return *o.FileDownload
+}
+
+// GetFileDownloadOk returns a tuple with the FileDownload field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetFileDownloadOk() (*FileDownloadInstructions, bool) {
+	if o == nil || IsNil(o.FileDownload) {
+		return nil, false
+	}
+	return o.FileDownload, true
+}
+
+// HasFileDownload returns a boolean if a field has been set.
+func (o *Item) HasFileDownload() bool {
+	if o != nil && !IsNil(o.FileDownload) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileDownload gets a reference to the given FileDownloadInstructions and assigns it to the FileDownload field.
+func (o *Item) SetFileDownload(v FileDownloadInstructions) {
+	o.FileDownload = &v
 }
 
 // GetGatewayDetails returns the GatewayDetails field value if set, zero value otherwise.
@@ -1545,6 +1578,9 @@ func (o Item) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DisplayId) {
 		toSerialize["display_id"] = o.DisplayId
+	}
+	if !IsNil(o.FileDownload) {
+		toSerialize["file_download"] = o.FileDownload
 	}
 	if !IsNil(o.GatewayDetails) {
 		toSerialize["gateway_details"] = o.GatewayDetails

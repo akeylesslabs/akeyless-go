@@ -24,6 +24,8 @@ type AccountGeneralSettings struct {
 	AccountDefaultKeyItemId *int64 `json:"account_default_key_item_id,omitempty"`
 	// AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will.
 	AccountDefaultKeyName *string `json:"account_default_key_name,omitempty"`
+	// AccountFileBytesUsed tracks active + pending file-item plain bytes for quota enforcement.
+	AccountFileBytesUsed *int64 `json:"account_file_bytes_used,omitempty"`
 	AiInsights *AiInsightsSetting `json:"ai_insights,omitempty"`
 	AllowAutoFill *bool `json:"allow_auto_fill,omitempty"`
 	AllowPasskeys *bool `json:"allow_passkeys,omitempty"`
@@ -36,6 +38,7 @@ type AccountGeneralSettings struct {
 	DefaultAuthMethod *DefaultAuthMethodSettings `json:"default_auth_method,omitempty"`
 	DefaultHomePage *DefaultHomePage `json:"default_home_page,omitempty"`
 	DynamicSecretMaxTtl *DynamicSecretMaxTtl `json:"dynamic_secret_max_ttl,omitempty"`
+	EmailCustomization *EmailCustomization `json:"email_customization,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	EnableSearchHistory *bool `json:"enable_search_history,omitempty"`
 	HidePersonalFolder *bool `json:"hide_personal_folder,omitempty"`
@@ -135,6 +138,38 @@ func (o *AccountGeneralSettings) HasAccountDefaultKeyName() bool {
 // SetAccountDefaultKeyName gets a reference to the given string and assigns it to the AccountDefaultKeyName field.
 func (o *AccountGeneralSettings) SetAccountDefaultKeyName(v string) {
 	o.AccountDefaultKeyName = &v
+}
+
+// GetAccountFileBytesUsed returns the AccountFileBytesUsed field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAccountFileBytesUsed() int64 {
+	if o == nil || IsNil(o.AccountFileBytesUsed) {
+		var ret int64
+		return ret
+	}
+	return *o.AccountFileBytesUsed
+}
+
+// GetAccountFileBytesUsedOk returns a tuple with the AccountFileBytesUsed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAccountFileBytesUsedOk() (*int64, bool) {
+	if o == nil || IsNil(o.AccountFileBytesUsed) {
+		return nil, false
+	}
+	return o.AccountFileBytesUsed, true
+}
+
+// HasAccountFileBytesUsed returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAccountFileBytesUsed() bool {
+	if o != nil && !IsNil(o.AccountFileBytesUsed) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountFileBytesUsed gets a reference to the given int64 and assigns it to the AccountFileBytesUsed field.
+func (o *AccountGeneralSettings) SetAccountFileBytesUsed(v int64) {
+	o.AccountFileBytesUsed = &v
 }
 
 // GetAiInsights returns the AiInsights field value if set, zero value otherwise.
@@ -519,6 +554,38 @@ func (o *AccountGeneralSettings) HasDynamicSecretMaxTtl() bool {
 // SetDynamicSecretMaxTtl gets a reference to the given DynamicSecretMaxTtl and assigns it to the DynamicSecretMaxTtl field.
 func (o *AccountGeneralSettings) SetDynamicSecretMaxTtl(v DynamicSecretMaxTtl) {
 	o.DynamicSecretMaxTtl = &v
+}
+
+// GetEmailCustomization returns the EmailCustomization field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetEmailCustomization() EmailCustomization {
+	if o == nil || IsNil(o.EmailCustomization) {
+		var ret EmailCustomization
+		return ret
+	}
+	return *o.EmailCustomization
+}
+
+// GetEmailCustomizationOk returns a tuple with the EmailCustomization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetEmailCustomizationOk() (*EmailCustomization, bool) {
+	if o == nil || IsNil(o.EmailCustomization) {
+		return nil, false
+	}
+	return o.EmailCustomization, true
+}
+
+// HasEmailCustomization returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasEmailCustomization() bool {
+	if o != nil && !IsNil(o.EmailCustomization) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmailCustomization gets a reference to the given EmailCustomization and assigns it to the EmailCustomization field.
+func (o *AccountGeneralSettings) SetEmailCustomization(v EmailCustomization) {
+	o.EmailCustomization = &v
 }
 
 // GetEnableRequestForAccess returns the EnableRequestForAccess field value if set, zero value otherwise.
@@ -1049,6 +1116,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccountDefaultKeyName) {
 		toSerialize["account_default_key_name"] = o.AccountDefaultKeyName
 	}
+	if !IsNil(o.AccountFileBytesUsed) {
+		toSerialize["account_file_bytes_used"] = o.AccountFileBytesUsed
+	}
 	if !IsNil(o.AiInsights) {
 		toSerialize["ai_insights"] = o.AiInsights
 	}
@@ -1084,6 +1154,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DynamicSecretMaxTtl) {
 		toSerialize["dynamic_secret_max_ttl"] = o.DynamicSecretMaxTtl
+	}
+	if !IsNil(o.EmailCustomization) {
+		toSerialize["email_customization"] = o.EmailCustomization
 	}
 	if !IsNil(o.EnableRequestForAccess) {
 		toSerialize["enable_request_for_access"] = o.EnableRequestForAccess

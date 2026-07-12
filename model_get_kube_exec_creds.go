@@ -44,7 +44,7 @@ type GetKubeExecCreds struct {
 	MaxPathLen *int64 `json:"max-path-len,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
-	// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL)
+	// Updated certificate lifetime in seconds (must be less than the Certificate Issuer default TTL). Ignored for Let's Encrypt public CA issuers, which always use the CA default lifetime (about 90 days).
 	Ttl *string `json:"ttl,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`

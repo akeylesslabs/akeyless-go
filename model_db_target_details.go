@@ -48,6 +48,8 @@ type DbTargetDetails struct {
 	EnableMtls *bool `json:"enable_mtls,omitempty"`
 	OracleWalletDetails *WalletDetails `json:"oracle_wallet_details,omitempty"`
 	SfAccount *string `json:"sf_account,omitempty"`
+	// (Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \"skip hostname validation\"; MySQL treats empty as false.
+	SkipServerNameValidation *string `json:"skip_server_name_validation,omitempty"`
 	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
 	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
 	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
@@ -743,6 +745,38 @@ func (o *DbTargetDetails) SetSfAccount(v string) {
 	o.SfAccount = &v
 }
 
+// GetSkipServerNameValidation returns the SkipServerNameValidation field value if set, zero value otherwise.
+func (o *DbTargetDetails) GetSkipServerNameValidation() string {
+	if o == nil || IsNil(o.SkipServerNameValidation) {
+		var ret string
+		return ret
+	}
+	return *o.SkipServerNameValidation
+}
+
+// GetSkipServerNameValidationOk returns a tuple with the SkipServerNameValidation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DbTargetDetails) GetSkipServerNameValidationOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipServerNameValidation) {
+		return nil, false
+	}
+	return o.SkipServerNameValidation, true
+}
+
+// HasSkipServerNameValidation returns a boolean if a field has been set.
+func (o *DbTargetDetails) HasSkipServerNameValidation() bool {
+	if o != nil && !IsNil(o.SkipServerNameValidation) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipServerNameValidation gets a reference to the given string and assigns it to the SkipServerNameValidation field.
+func (o *DbTargetDetails) SetSkipServerNameValidation(v string) {
+	o.SkipServerNameValidation = &v
+}
+
 // GetSslConnectionCertificate returns the SslConnectionCertificate field value if set, zero value otherwise.
 func (o *DbTargetDetails) GetSslConnectionCertificate() string {
 	if o == nil || IsNil(o.SslConnectionCertificate) {
@@ -879,6 +913,9 @@ func (o DbTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SfAccount) {
 		toSerialize["sf_account"] = o.SfAccount
+	}
+	if !IsNil(o.SkipServerNameValidation) {
+		toSerialize["skip_server_name_validation"] = o.SkipServerNameValidation
 	}
 	if !IsNil(o.SslConnectionCertificate) {
 		toSerialize["ssl_connection_certificate"] = o.SslConnectionCertificate

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **DeletionDate** | Pointer to **time.Time** |  | [optional] 
 **DisplayId** | Pointer to **string** |  | [optional] 
+**FileDownload** | Pointer to [**FileDownloadInstructions**](FileDownloadInstructions.md) |  | [optional] 
 **GatewayDetails** | Pointer to [**[]GatewayDetailsForItemReplyObj**](GatewayDetailsForItemReplyObj.md) |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
 **IsEnabled** | Pointer to **bool** |  | [optional] 
@@ -417,6 +418,31 @@ SetDisplayId sets DisplayId field to given value.
 `func (o *Item) HasDisplayId() bool`
 
 HasDisplayId returns a boolean if a field has been set.
+
+### GetFileDownload
+
+`func (o *Item) GetFileDownload() FileDownloadInstructions`
+
+GetFileDownload returns the FileDownload field if non-nil, zero value otherwise.
+
+### GetFileDownloadOk
+
+`func (o *Item) GetFileDownloadOk() (*FileDownloadInstructions, bool)`
+
+GetFileDownloadOk returns a tuple with the FileDownload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileDownload
+
+`func (o *Item) SetFileDownload(v FileDownloadInstructions)`
+
+SetFileDownload sets FileDownload field to given value.
+
+### HasFileDownload
+
+`func (o *Item) HasFileDownload() bool`
+
+HasFileDownload returns a boolean if a field has been set.
 
 ### GetGatewayDetails
 
