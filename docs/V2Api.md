@@ -477,6 +477,7 @@ Method | HTTP request | Description
 [**StaticCredsAuth**](V2Api.md#StaticCredsAuth) | **Post** /static-creds-auth | 
 [**StaticSecretDeleteSync**](V2Api.md#StaticSecretDeleteSync) | **Post** /static-secret-delete-sync | 
 [**StaticSecretSync**](V2Api.md#StaticSecretSync) | **Post** /static-secret-sync | 
+[**TargetCreateAerospike**](V2Api.md#TargetCreateAerospike) | **Post** /target-create-aerospike | 
 [**TargetCreateAnthropic**](V2Api.md#TargetCreateAnthropic) | **Post** /target-create-anthropic | 
 [**TargetCreateArtifactory**](V2Api.md#TargetCreateArtifactory) | **Post** /target-create-artifactory | 
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
@@ -519,6 +520,7 @@ Method | HTTP request | Description
 [**TargetGet**](V2Api.md#TargetGet) | **Post** /target-get | 
 [**TargetGetDetails**](V2Api.md#TargetGetDetails) | **Post** /target-get-details | 
 [**TargetList**](V2Api.md#TargetList) | **Post** /target-list | 
+[**TargetUpdateAerospike**](V2Api.md#TargetUpdateAerospike) | **Post** /target-update-aerospike | 
 [**TargetUpdateAnthropic**](V2Api.md#TargetUpdateAnthropic) | **Post** /target-update-anthropic | 
 [**TargetUpdateArtifactory**](V2Api.md#TargetUpdateArtifactory) | **Post** /target-update-artifactory | 
 [**TargetUpdateAws**](V2Api.md#TargetUpdateAws) | **Post** /target-update-aws | 
@@ -30894,6 +30896,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateAerospike
+
+> TargetCreateOutput TargetCreateAerospike(ctx).TargetCreateAerospike(targetCreateAerospike).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateAerospike := *openapiclient.NewTargetCreateAerospike("Name_example") // TargetCreateAerospike | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateAerospike(context.Background()).TargetCreateAerospike(targetCreateAerospike).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateAerospike``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateAerospike`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateAerospike`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateAerospikeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateAerospike** | [**TargetCreateAerospike**](TargetCreateAerospike.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateAnthropic
 
 > TargetCreateOutput TargetCreateAnthropic(ctx).TargetCreateAnthropic(targetCreateAnthropic).Execute()
@@ -33567,6 +33633,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListTargetsOutput**](ListTargetsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateAerospike
+
+> TargetUpdateOutput TargetUpdateAerospike(ctx).TargetUpdateAerospike(targetUpdateAerospike).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateAerospike := *openapiclient.NewTargetUpdateAerospike("Name_example") // TargetUpdateAerospike | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateAerospike(context.Background()).TargetUpdateAerospike(targetUpdateAerospike).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateAerospike``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateAerospike`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateAerospike`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateAerospikeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateAerospike** | [**TargetUpdateAerospike**](TargetUpdateAerospike.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
 
 ### Authorization
 

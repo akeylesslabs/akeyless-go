@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **ConjurUrl** | Pointer to **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
 **ConjurUsername** | Pointer to **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
 **DeleteRemote** | Pointer to **bool** | Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration) | [optional] 
+**ExcludeHosts** | Pointer to **string** | A comma separated list of IPs, CIDR ranges, or DNS names to exclude from the scan | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (cross-project override) | [optional] 
@@ -1074,6 +1075,31 @@ SetDeleteRemote sets DeleteRemote field to given value.
 `func (o *GatewayCreateMigration) HasDeleteRemote() bool`
 
 HasDeleteRemote returns a boolean if a field has been set.
+
+### GetExcludeHosts
+
+`func (o *GatewayCreateMigration) GetExcludeHosts() string`
+
+GetExcludeHosts returns the ExcludeHosts field if non-nil, zero value otherwise.
+
+### GetExcludeHostsOk
+
+`func (o *GatewayCreateMigration) GetExcludeHostsOk() (*string, bool)`
+
+GetExcludeHostsOk returns a tuple with the ExcludeHosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExcludeHosts
+
+`func (o *GatewayCreateMigration) SetExcludeHosts(v string)`
+
+SetExcludeHosts sets ExcludeHosts field to given value.
+
+### HasExcludeHosts
+
+`func (o *GatewayCreateMigration) HasExcludeHosts() bool`
+
+HasExcludeHosts returns a boolean if a field has been set.
 
 ### GetExpirationEventIn
 

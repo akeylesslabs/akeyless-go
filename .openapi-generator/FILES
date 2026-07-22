@@ -28,6 +28,7 @@ docs/ActiveDirectoryMigration.md
 docs/ActiveDirectoryPayload.md
 docs/AddGatewayAllowedAccessId.md
 docs/AdminsConfigPart.md
+docs/AerospikeTargetDetails.md
 docs/AgenticRule.md
 docs/AgenticRules.md
 docs/AiInsightsConfigPart.md
@@ -992,6 +993,7 @@ docs/SyslogLogForwardingConfig.md
 docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
 docs/Target.md
+docs/TargetCreateAerospike.md
 docs/TargetCreateAnthropic.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
@@ -1040,6 +1042,7 @@ docs/TargetItemVersion.md
 docs/TargetList.md
 docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
+docs/TargetUpdateAerospike.md
 docs/TargetUpdateAnthropic.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
@@ -1264,6 +1267,7 @@ model_active_directory_migration.go
 model_active_directory_payload.go
 model_add_gateway_allowed_access_id.go
 model_admins_config_part.go
+model_aerospike_target_details.go
 model_agentic_rule.go
 model_agentic_rules.go
 model_ai_insights_config_part.go
@@ -2234,6 +2238,7 @@ model_syslog_log_forwarding_config.go
 model_system_access_credentials_reply_obj.go
 model_system_access_creds_settings.go
 model_target.go
+model_target_create_aerospike.go
 model_target_create_anthropic.go
 model_target_create_artifactory.go
 model_target_create_aws.go
@@ -2282,6 +2287,7 @@ model_target_item_version.go
 model_target_list.go
 model_target_name_with_hosts.go
 model_target_type_details_input.go
+model_target_update_aerospike.go
 model_target_update_anthropic.go
 model_target_update_artifactory.go
 model_target_update_aws.go

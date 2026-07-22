@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AerospikeTargetDetails** | Pointer to [**AerospikeTargetDetails**](AerospikeTargetDetails.md) |  | [optional] 
 **AnthropicTargetDetails** | Pointer to [**AnthropicTargetDetails**](AnthropicTargetDetails.md) |  | [optional] 
 **ArtifactoryTargetDetails** | Pointer to [**ArtifactoryTargetDetails**](ArtifactoryTargetDetails.md) |  | [optional] 
 **AwsTargetDetails** | Pointer to [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 
@@ -65,6 +66,31 @@ will change when the set of required properties is changed
 NewTargetTypeDetailsInputWithDefaults instantiates a new TargetTypeDetailsInput object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAerospikeTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetAerospikeTargetDetails() AerospikeTargetDetails`
+
+GetAerospikeTargetDetails returns the AerospikeTargetDetails field if non-nil, zero value otherwise.
+
+### GetAerospikeTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetAerospikeTargetDetailsOk() (*AerospikeTargetDetails, bool)`
+
+GetAerospikeTargetDetailsOk returns a tuple with the AerospikeTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetAerospikeTargetDetails(v AerospikeTargetDetails)`
+
+SetAerospikeTargetDetails sets AerospikeTargetDetails field to given value.
+
+### HasAerospikeTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasAerospikeTargetDetails() bool`
+
+HasAerospikeTargetDetails returns a boolean if a field has been set.
 
 ### GetAnthropicTargetDetails
 

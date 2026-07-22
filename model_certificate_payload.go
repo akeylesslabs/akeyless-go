@@ -20,6 +20,7 @@ var _ MappedNullable = &CertificatePayload{}
 
 // CertificatePayload struct for CertificatePayload
 type CertificatePayload struct {
+	ExcludeHosts []string `json:"exclude_hosts,omitempty"`
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	Folder *string `json:"folder,omitempty"`
 	MaxDialTimeout *int64 `json:"max_dial_timeout,omitempty"`
@@ -44,6 +45,38 @@ func NewCertificatePayload() *CertificatePayload {
 func NewCertificatePayloadWithDefaults() *CertificatePayload {
 	this := CertificatePayload{}
 	return &this
+}
+
+// GetExcludeHosts returns the ExcludeHosts field value if set, zero value otherwise.
+func (o *CertificatePayload) GetExcludeHosts() []string {
+	if o == nil || IsNil(o.ExcludeHosts) {
+		var ret []string
+		return ret
+	}
+	return o.ExcludeHosts
+}
+
+// GetExcludeHostsOk returns a tuple with the ExcludeHosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificatePayload) GetExcludeHostsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ExcludeHosts) {
+		return nil, false
+	}
+	return o.ExcludeHosts, true
+}
+
+// HasExcludeHosts returns a boolean if a field has been set.
+func (o *CertificatePayload) HasExcludeHosts() bool {
+	if o != nil && !IsNil(o.ExcludeHosts) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeHosts gets a reference to the given []string and assigns it to the ExcludeHosts field.
+func (o *CertificatePayload) SetExcludeHosts(v []string) {
+	o.ExcludeHosts = v
 }
 
 // GetExpirationEvents returns the ExpirationEvents field value if set, zero value otherwise.
@@ -280,6 +313,9 @@ func (o CertificatePayload) MarshalJSON() ([]byte, error) {
 
 func (o CertificatePayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExcludeHosts) {
+		toSerialize["exclude_hosts"] = o.ExcludeHosts
+	}
 	if !IsNil(o.ExpirationEvents) {
 		toSerialize["expiration_events"] = o.ExpirationEvents
 	}

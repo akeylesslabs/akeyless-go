@@ -99,6 +99,8 @@ type GatewayUpdateMigration struct {
 	ConjurUsername *string `json:"conjur-username,omitempty"`
 	// Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration)
 	DeleteRemote *bool `json:"delete-remote,omitempty"`
+	// A comma separated list of IPs, CIDR ranges, or DNS names to exclude from the scan
+	ExcludeHosts *string `json:"exclude-hosts,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. 'roles/secretmanager.secretAccessor' (relevant only for GCP migration)
@@ -1496,6 +1498,38 @@ func (o *GatewayUpdateMigration) SetDeleteRemote(v bool) {
 	o.DeleteRemote = &v
 }
 
+// GetExcludeHosts returns the ExcludeHosts field value if set, zero value otherwise.
+func (o *GatewayUpdateMigration) GetExcludeHosts() string {
+	if o == nil || IsNil(o.ExcludeHosts) {
+		var ret string
+		return ret
+	}
+	return *o.ExcludeHosts
+}
+
+// GetExcludeHostsOk returns a tuple with the ExcludeHosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateMigration) GetExcludeHostsOk() (*string, bool) {
+	if o == nil || IsNil(o.ExcludeHosts) {
+		return nil, false
+	}
+	return o.ExcludeHosts, true
+}
+
+// HasExcludeHosts returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasExcludeHosts() bool {
+	if o != nil && !IsNil(o.ExcludeHosts) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeHosts gets a reference to the given string and assigns it to the ExcludeHosts field.
+func (o *GatewayUpdateMigration) SetExcludeHosts(v string) {
+	o.ExcludeHosts = &v
+}
+
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetExpirationEventIn() []string {
 	if o == nil || IsNil(o.ExpirationEventIn) {
@@ -2806,6 +2840,9 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeleteRemote) {
 		toSerialize["delete-remote"] = o.DeleteRemote
+	}
+	if !IsNil(o.ExcludeHosts) {
+		toSerialize["exclude-hosts"] = o.ExcludeHosts
 	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn

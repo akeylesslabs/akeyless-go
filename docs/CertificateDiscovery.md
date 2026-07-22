@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Debug** | Pointer to **bool** | Debug mode | [optional] [default to false]
+**ExcludeHosts** | Pointer to **string** | A comma separated list of IP addresses, CIDR ranges, or DNS names to exclude from the scan | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **Hosts** | **string** | A comma separated list of IPs, CIDR ranges, or DNS names to discovery | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -57,6 +58,31 @@ SetDebug sets Debug field to given value.
 `func (o *CertificateDiscovery) HasDebug() bool`
 
 HasDebug returns a boolean if a field has been set.
+
+### GetExcludeHosts
+
+`func (o *CertificateDiscovery) GetExcludeHosts() string`
+
+GetExcludeHosts returns the ExcludeHosts field if non-nil, zero value otherwise.
+
+### GetExcludeHostsOk
+
+`func (o *CertificateDiscovery) GetExcludeHostsOk() (*string, bool)`
+
+GetExcludeHostsOk returns a tuple with the ExcludeHosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExcludeHosts
+
+`func (o *CertificateDiscovery) SetExcludeHosts(v string)`
+
+SetExcludeHosts sets ExcludeHosts field to given value.
+
+### HasExcludeHosts
+
+`func (o *CertificateDiscovery) HasExcludeHosts() bool`
+
+HasExcludeHosts returns a boolean if a field has been set.
 
 ### GetExpirationEventIn
 

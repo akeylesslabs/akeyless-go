@@ -24,6 +24,8 @@ var _ MappedNullable = &CertificateDiscovery{}
 type CertificateDiscovery struct {
 	// Debug mode
 	Debug *bool `json:"debug,omitempty"`
+	// A comma separated list of IP addresses, CIDR ranges, or DNS names to exclude from the scan
+	ExcludeHosts *string `json:"exclude-hosts,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// A comma separated list of IPs, CIDR ranges, or DNS names to discovery
@@ -105,6 +107,38 @@ func (o *CertificateDiscovery) HasDebug() bool {
 // SetDebug gets a reference to the given bool and assigns it to the Debug field.
 func (o *CertificateDiscovery) SetDebug(v bool) {
 	o.Debug = &v
+}
+
+// GetExcludeHosts returns the ExcludeHosts field value if set, zero value otherwise.
+func (o *CertificateDiscovery) GetExcludeHosts() string {
+	if o == nil || IsNil(o.ExcludeHosts) {
+		var ret string
+		return ret
+	}
+	return *o.ExcludeHosts
+}
+
+// GetExcludeHostsOk returns a tuple with the ExcludeHosts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateDiscovery) GetExcludeHostsOk() (*string, bool) {
+	if o == nil || IsNil(o.ExcludeHosts) {
+		return nil, false
+	}
+	return o.ExcludeHosts, true
+}
+
+// HasExcludeHosts returns a boolean if a field has been set.
+func (o *CertificateDiscovery) HasExcludeHosts() bool {
+	if o != nil && !IsNil(o.ExcludeHosts) {
+		return true
+	}
+
+	return false
+}
+
+// SetExcludeHosts gets a reference to the given string and assigns it to the ExcludeHosts field.
+func (o *CertificateDiscovery) SetExcludeHosts(v string) {
+	o.ExcludeHosts = &v
 }
 
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
@@ -359,6 +393,9 @@ func (o CertificateDiscovery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Debug) {
 		toSerialize["debug"] = o.Debug
+	}
+	if !IsNil(o.ExcludeHosts) {
+		toSerialize["exclude-hosts"] = o.ExcludeHosts
 	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn

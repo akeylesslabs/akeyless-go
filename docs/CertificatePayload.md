@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ExcludeHosts** | Pointer to **[]string** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **Folder** | Pointer to **string** |  | [optional] 
 **MaxDialTimeout** | Pointer to **int64** |  | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewCertificatePayloadWithDefaults instantiates a new CertificatePayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetExcludeHosts
+
+`func (o *CertificatePayload) GetExcludeHosts() []string`
+
+GetExcludeHosts returns the ExcludeHosts field if non-nil, zero value otherwise.
+
+### GetExcludeHostsOk
+
+`func (o *CertificatePayload) GetExcludeHostsOk() (*[]string, bool)`
+
+GetExcludeHostsOk returns a tuple with the ExcludeHosts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExcludeHosts
+
+`func (o *CertificatePayload) SetExcludeHosts(v []string)`
+
+SetExcludeHosts sets ExcludeHosts field to given value.
+
+### HasExcludeHosts
+
+`func (o *CertificatePayload) HasExcludeHosts() bool`
+
+HasExcludeHosts returns a boolean if a field has been set.
 
 ### GetExpirationEvents
 

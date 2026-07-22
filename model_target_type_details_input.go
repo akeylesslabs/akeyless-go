@@ -20,6 +20,7 @@ var _ MappedNullable = &TargetTypeDetailsInput{}
 
 // TargetTypeDetailsInput struct for TargetTypeDetailsInput
 type TargetTypeDetailsInput struct {
+	AerospikeTargetDetails *AerospikeTargetDetails `json:"aerospike_target_details,omitempty"`
 	AnthropicTargetDetails *AnthropicTargetDetails `json:"anthropic_target_details,omitempty"`
 	ArtifactoryTargetDetails *ArtifactoryTargetDetails `json:"artifactory_target_details,omitempty"`
 	AwsTargetDetails *AWSTargetDetails `json:"aws_target_details,omitempty"`
@@ -79,6 +80,38 @@ func NewTargetTypeDetailsInput() *TargetTypeDetailsInput {
 func NewTargetTypeDetailsInputWithDefaults() *TargetTypeDetailsInput {
 	this := TargetTypeDetailsInput{}
 	return &this
+}
+
+// GetAerospikeTargetDetails returns the AerospikeTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAerospikeTargetDetails() AerospikeTargetDetails {
+	if o == nil || IsNil(o.AerospikeTargetDetails) {
+		var ret AerospikeTargetDetails
+		return ret
+	}
+	return *o.AerospikeTargetDetails
+}
+
+// GetAerospikeTargetDetailsOk returns a tuple with the AerospikeTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAerospikeTargetDetailsOk() (*AerospikeTargetDetails, bool) {
+	if o == nil || IsNil(o.AerospikeTargetDetails) {
+		return nil, false
+	}
+	return o.AerospikeTargetDetails, true
+}
+
+// HasAerospikeTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAerospikeTargetDetails() bool {
+	if o != nil && !IsNil(o.AerospikeTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetAerospikeTargetDetails gets a reference to the given AerospikeTargetDetails and assigns it to the AerospikeTargetDetails field.
+func (o *TargetTypeDetailsInput) SetAerospikeTargetDetails(v AerospikeTargetDetails) {
+	o.AerospikeTargetDetails = &v
 }
 
 // GetAnthropicTargetDetails returns the AnthropicTargetDetails field value if set, zero value otherwise.
@@ -1435,6 +1468,9 @@ func (o TargetTypeDetailsInput) MarshalJSON() ([]byte, error) {
 
 func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AerospikeTargetDetails) {
+		toSerialize["aerospike_target_details"] = o.AerospikeTargetDetails
+	}
 	if !IsNil(o.AnthropicTargetDetails) {
 		toSerialize["anthropic_target_details"] = o.AnthropicTargetDetails
 	}

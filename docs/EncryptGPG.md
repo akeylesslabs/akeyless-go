@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Plaintext** | **string** | Data to be encrypted | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**Version** | Pointer to **int32** | key version (relevant only for classic key) | [optional] 
 
 ## Methods
 
@@ -221,6 +222,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *EncryptGPG) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetVersion
+
+`func (o *EncryptGPG) GetVersion() int32`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *EncryptGPG) GetVersionOk() (*int32, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *EncryptGPG) SetVersion(v int32)`
+
+SetVersion sets Version field to given value.
+
+### HasVersion
+
+`func (o *EncryptGPG) HasVersion() bool`
+
+HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
