@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only. | [optional] 
-**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessGateway** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server (relevant only for rdp) | [optional] 
@@ -52,8 +53,9 @@ Name | Type | Description | Notes
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
 **SecureAccessUseInternalBastion** | Pointer to **bool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
 **SecureAccessUseInternalSshAccess** | Pointer to **bool** | Use internal SSH Access | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscTags** | Pointer to **string** | Comma-separated list of tags to apply to all secrets created/synced on the remote USC  USC items only. | [optional] 
@@ -973,6 +975,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 
 HasSecureAccessEnable returns a boolean if a field has been set.
 
+### GetSecureAccessEnforceHostsRestriction
+
+`func (o *UpdateItem) GetSecureAccessEnforceHostsRestriction() bool`
+
+GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnforceHostsRestrictionOk
+
+`func (o *UpdateItem) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool)`
+
+GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnforceHostsRestriction
+
+`func (o *UpdateItem) SetSecureAccessEnforceHostsRestriction(v bool)`
+
+SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction field to given value.
+
+### HasSecureAccessEnforceHostsRestriction
+
+`func (o *UpdateItem) HasSecureAccessEnforceHostsRestriction() bool`
+
+HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+
 ### GetSecureAccessGateway
 
 `func (o *UpdateItem) GetSecureAccessGateway() string`
@@ -1322,6 +1349,31 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 `func (o *UpdateItem) HasSecureAccessWebProxy() bool`
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
+
+### GetTarget
+
+`func (o *UpdateItem) GetTarget() []string`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *UpdateItem) GetTargetOk() (*[]string, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *UpdateItem) SetTarget(v []string)`
+
+SetTarget sets Target field to given value.
+
+### HasTarget
+
+`func (o *UpdateItem) HasTarget() bool`
+
+HasTarget returns a boolean if a field has been set.
 
 ### GetToken
 

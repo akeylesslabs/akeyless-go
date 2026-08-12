@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayUpdateProducerPing{}
 
 // GatewayUpdateProducerPing gatewayUpdateProducerPing is a command that updates Ping producer [Deprecated: Use dynamic-secret-update-ping command]
 type GatewayUpdateProducerPing struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
@@ -70,6 +72,8 @@ type GatewayUpdateProducerPing struct {
 	PingUrl *string `json:"ping-url,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -124,6 +128,38 @@ func NewGatewayUpdateProducerPingWithDefaults() *GatewayUpdateProducerPing {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerPing) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerPing) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerPing) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayUpdateProducerPing) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -886,6 +922,38 @@ func (o *GatewayUpdateProducerPing) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerPing) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerPing) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerPing) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayUpdateProducerPing) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerPing) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1056,6 +1124,9 @@ func (o GatewayUpdateProducerPing) MarshalJSON() ([]byte, error) {
 
 func (o GatewayUpdateProducerPing) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
@@ -1125,6 +1196,9 @@ func (o GatewayUpdateProducerPing) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

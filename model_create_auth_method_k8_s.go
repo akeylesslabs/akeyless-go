@@ -56,7 +56,7 @@ type CreateAuthMethodK8S struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Base64-encoded or PEM formatted public key data for K8S authentication method is required [RSA2048]
 	PublicKey *string `json:"public-key,omitempty"`

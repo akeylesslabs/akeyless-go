@@ -30,8 +30,14 @@ type CreateUSC struct {
 	Description *string `json:"description,omitempty"`
 	// The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope=repository-environment)
 	EnvironmentNames *string `json:"environment-names,omitempty"`
+	// GCP Folder ID (Relevant only for GCP targets with folder scope)
+	GcpFolderId *string `json:"gcp-folder-id,omitempty"`
+	// GCP Organization ID (Relevant only for GCP targets)
+	GcpOrganizationId *string `json:"gcp-organization-id,omitempty"`
 	// GCP Project ID (Relevant only for GCP targets)
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
+	// The gcp usc scope [ project / organization / folder]
+	GcpScope *string `json:"gcp-scope,omitempty"`
 	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type=regional-secrets.
 	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`
 	// The scope where secrets will be created, available options: [repository, organization, repository-environment]
@@ -75,6 +81,8 @@ type _CreateUSC CreateUSC
 // will change when the set of required properties is changed
 func NewCreateUSC(name string, targetToAssociate string) *CreateUSC {
 	this := CreateUSC{}
+	var gcpScope string = "project"
+	this.GcpScope = &gcpScope
 	var githubScope string = "repository"
 	this.GithubScope = &githubScope
 	var json bool = false
@@ -93,6 +101,8 @@ func NewCreateUSC(name string, targetToAssociate string) *CreateUSC {
 // but it doesn't guarantee that properties required by API are set
 func NewCreateUSCWithDefaults() *CreateUSC {
 	this := CreateUSC{}
+	var gcpScope string = "project"
+	this.GcpScope = &gcpScope
 	var githubScope string = "repository"
 	this.GithubScope = &githubScope
 	var json bool = false
@@ -232,6 +242,70 @@ func (o *CreateUSC) SetEnvironmentNames(v string) {
 	o.EnvironmentNames = &v
 }
 
+// GetGcpFolderId returns the GcpFolderId field value if set, zero value otherwise.
+func (o *CreateUSC) GetGcpFolderId() string {
+	if o == nil || IsNil(o.GcpFolderId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpFolderId
+}
+
+// GetGcpFolderIdOk returns a tuple with the GcpFolderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetGcpFolderIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpFolderId) {
+		return nil, false
+	}
+	return o.GcpFolderId, true
+}
+
+// HasGcpFolderId returns a boolean if a field has been set.
+func (o *CreateUSC) HasGcpFolderId() bool {
+	if o != nil && !IsNil(o.GcpFolderId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpFolderId gets a reference to the given string and assigns it to the GcpFolderId field.
+func (o *CreateUSC) SetGcpFolderId(v string) {
+	o.GcpFolderId = &v
+}
+
+// GetGcpOrganizationId returns the GcpOrganizationId field value if set, zero value otherwise.
+func (o *CreateUSC) GetGcpOrganizationId() string {
+	if o == nil || IsNil(o.GcpOrganizationId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpOrganizationId
+}
+
+// GetGcpOrganizationIdOk returns a tuple with the GcpOrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetGcpOrganizationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpOrganizationId) {
+		return nil, false
+	}
+	return o.GcpOrganizationId, true
+}
+
+// HasGcpOrganizationId returns a boolean if a field has been set.
+func (o *CreateUSC) HasGcpOrganizationId() bool {
+	if o != nil && !IsNil(o.GcpOrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpOrganizationId gets a reference to the given string and assigns it to the GcpOrganizationId field.
+func (o *CreateUSC) SetGcpOrganizationId(v string) {
+	o.GcpOrganizationId = &v
+}
+
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
 func (o *CreateUSC) GetGcpProjectId() string {
 	if o == nil || IsNil(o.GcpProjectId) {
@@ -262,6 +336,38 @@ func (o *CreateUSC) HasGcpProjectId() bool {
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CreateUSC) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
+}
+
+// GetGcpScope returns the GcpScope field value if set, zero value otherwise.
+func (o *CreateUSC) GetGcpScope() string {
+	if o == nil || IsNil(o.GcpScope) {
+		var ret string
+		return ret
+	}
+	return *o.GcpScope
+}
+
+// GetGcpScopeOk returns a tuple with the GcpScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetGcpScopeOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpScope) {
+		return nil, false
+	}
+	return o.GcpScope, true
+}
+
+// HasGcpScope returns a boolean if a field has been set.
+func (o *CreateUSC) HasGcpScope() bool {
+	if o != nil && !IsNil(o.GcpScope) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpScope gets a reference to the given string and assigns it to the GcpScope field.
+func (o *CreateUSC) SetGcpScope(v string) {
+	o.GcpScope = &v
 }
 
 // GetGcpSmRegions returns the GcpSmRegions field value if set, zero value otherwise.
@@ -814,8 +920,17 @@ func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnvironmentNames) {
 		toSerialize["environment-names"] = o.EnvironmentNames
 	}
+	if !IsNil(o.GcpFolderId) {
+		toSerialize["gcp-folder-id"] = o.GcpFolderId
+	}
+	if !IsNil(o.GcpOrganizationId) {
+		toSerialize["gcp-organization-id"] = o.GcpOrganizationId
+	}
 	if !IsNil(o.GcpProjectId) {
 		toSerialize["gcp-project-id"] = o.GcpProjectId
+	}
+	if !IsNil(o.GcpScope) {
+		toSerialize["gcp-scope"] = o.GcpScope
 	}
 	if !IsNil(o.GcpSmRegions) {
 		toSerialize["gcp-sm-regions"] = o.GcpSmRegions

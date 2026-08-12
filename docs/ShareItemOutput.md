@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **EmailError** | Pointer to **map[string]string** |  | [optional] 
 **ItemsError** | Pointer to [**[]ResponseStopShareItem**](ResponseStopShareItem.md) |  | [optional] 
 **SToken** | Pointer to **string** |  | [optional] 
+**SharedTokenId** | Pointer to **string** |  | [optional] 
 **SharedUsers** | Pointer to **[]string** |  | [optional] 
 **SharedUsersFullInfo** | Pointer to [**[]SharingItemFullInfo**](SharingItemFullInfo.md) |  | [optional] 
 **SharingUrl** | Pointer to **string** |  | [optional] 
@@ -104,6 +105,31 @@ SetSToken sets SToken field to given value.
 `func (o *ShareItemOutput) HasSToken() bool`
 
 HasSToken returns a boolean if a field has been set.
+
+### GetSharedTokenId
+
+`func (o *ShareItemOutput) GetSharedTokenId() string`
+
+GetSharedTokenId returns the SharedTokenId field if non-nil, zero value otherwise.
+
+### GetSharedTokenIdOk
+
+`func (o *ShareItemOutput) GetSharedTokenIdOk() (*string, bool)`
+
+GetSharedTokenIdOk returns a tuple with the SharedTokenId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharedTokenId
+
+`func (o *ShareItemOutput) SetSharedTokenId(v string)`
+
+SetSharedTokenId sets SharedTokenId field to given value.
+
+### HasSharedTokenId
+
+`func (o *ShareItemOutput) HasSharedTokenId() bool`
+
+HasSharedTokenId returns a boolean if a field has been set.
 
 ### GetSharedUsers
 

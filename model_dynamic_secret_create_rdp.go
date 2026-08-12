@@ -22,8 +22,11 @@ var _ MappedNullable = &DynamicSecretCreateRdp{}
 
 // DynamicSecretCreateRdp dynamicSecretCreateRdp is a command that creates rdp dynamic secret
 type DynamicSecretCreateRdp struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// AllowUserExtendSession
 	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Customize how temporary usernames are generated using go template
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -34,6 +37,8 @@ type DynamicSecretCreateRdp struct {
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
 	// Allow access using externally (IdP) provided username [true/false]
 	FixedUserOnly *string `json:"fixed-user-only,omitempty"`
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
 	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
@@ -68,6 +73,8 @@ type DynamicSecretCreateRdp struct {
 	SecureAccessDelay *int64 `json:"secure-access-delay,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// RD Gateway server
@@ -76,8 +83,12 @@ type DynamicSecretCreateRdp struct {
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Override the RDP Domain username
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+	Target []string `json:"target,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -141,6 +152,38 @@ func NewDynamicSecretCreateRdpWithDefaults() *DynamicSecretCreateRdp {
 	return &this
 }
 
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetProviderType() string {
+	if o == nil || IsNil(o.ProviderType) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetProviderTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ProviderType) {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasProviderType() bool {
+	if o != nil && !IsNil(o.ProviderType) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *DynamicSecretCreateRdp) SetProviderType(v string) {
+	o.ProviderType = &v
+}
+
 // GetAllowUserExtendSession returns the AllowUserExtendSession field value if set, zero value otherwise.
 func (o *DynamicSecretCreateRdp) GetAllowUserExtendSession() int64 {
 	if o == nil || IsNil(o.AllowUserExtendSession) {
@@ -171,6 +214,38 @@ func (o *DynamicSecretCreateRdp) HasAllowUserExtendSession() bool {
 // SetAllowUserExtendSession gets a reference to the given int64 and assigns it to the AllowUserExtendSession field.
 func (o *DynamicSecretCreateRdp) SetAllowUserExtendSession(v int64) {
 	o.AllowUserExtendSession = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretCreateRdp) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
@@ -331,6 +406,38 @@ func (o *DynamicSecretCreateRdp) HasFixedUserOnly() bool {
 // SetFixedUserOnly gets a reference to the given string and assigns it to the FixedUserOnly field.
 func (o *DynamicSecretCreateRdp) SetFixedUserOnly(v string) {
 	o.FixedUserOnly = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetHostProvider() string {
+	if o == nil || IsNil(o.HostProvider) {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetHostProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.HostProvider) {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasHostProvider() bool {
+	if o != nil && !IsNil(o.HostProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *DynamicSecretCreateRdp) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -869,6 +976,38 @@ func (o *DynamicSecretCreateRdp) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *DynamicSecretCreateRdp) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *DynamicSecretCreateRdp) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -997,6 +1136,38 @@ func (o *DynamicSecretCreateRdp) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretCreateRdp) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *DynamicSecretCreateRdp) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1027,6 +1198,38 @@ func (o *DynamicSecretCreateRdp) HasTags() bool {
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *DynamicSecretCreateRdp) SetTags(v []string) {
 	o.Tags = v
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRdp) GetTarget() []string {
+	if o == nil || IsNil(o.Target) {
+		var ret []string
+		return ret
+	}
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRdp) GetTargetOk() ([]string, bool) {
+	if o == nil || IsNil(o.Target) {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRdp) HasTarget() bool {
+	if o != nil && !IsNil(o.Target) {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *DynamicSecretCreateRdp) SetTarget(v []string) {
+	o.Target = v
 }
 
 // GetTargetName returns the TargetName field value if set, zero value otherwise.
@@ -1327,8 +1530,14 @@ func (o DynamicSecretCreateRdp) MarshalJSON() ([]byte, error) {
 
 func (o DynamicSecretCreateRdp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProviderType) {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if !IsNil(o.AllowUserExtendSession) {
 		toSerialize["allow-user-extend-session"] = o.AllowUserExtendSession
+	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
 	}
 	if !IsNil(o.CustomUsernameTemplate) {
 		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
@@ -1344,6 +1553,9 @@ func (o DynamicSecretCreateRdp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FixedUserOnly) {
 		toSerialize["fixed-user-only"] = o.FixedUserOnly
+	}
+	if !IsNil(o.HostProvider) {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule
@@ -1394,6 +1606,9 @@ func (o DynamicSecretCreateRdp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
@@ -1406,8 +1621,14 @@ func (o DynamicSecretCreateRdp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessRdpUser) {
 		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
 	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.TargetName) {
 		toSerialize["target-name"] = o.TargetName

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GcpProjectId** | Pointer to **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
@@ -32,6 +33,31 @@ will change when the set of required properties is changed
 NewUscGetWithDefaults instantiates a new UscGet object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGcpProjectId
+
+`func (o *UscGet) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *UscGet) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *UscGet) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *UscGet) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetJson
 

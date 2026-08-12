@@ -19,10 +19,13 @@ Name | Type | Description | Notes
 **DomainName** | Pointer to **string** |  | [optional] 
 **DomainServerTargetsPathTemplate** | Pointer to **string** |  | [optional] 
 **DomainUsersRotatedSecretsPathTemplate** | Pointer to **string** |  | [optional] 
+**EnablePasswordPolicy** | Pointer to **bool** | EnablePasswordPolicy enables applying PasswordPolicy to newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided). | [optional] 
 **EnableRdpSra** | Pointer to **bool** |  | [optional] 
 **LocalUsersIgnoreList** | Pointer to **map[string]bool** |  | [optional] 
 **LocalUsersRotatedSecretsPathTemplate** | Pointer to **string** |  | [optional] 
 **OsFilter** | Pointer to **string** |  | [optional] 
+**PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
+**SkipDryRun** | Pointer to **bool** | SkipDryRun enables skip_dry_run on newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil &#x3D; not provided). When false/unset, existing rotated-secret SkipDryRun values are left unchanged on sync. | [optional] 
 **SshPort** | Pointer to **string** |  | [optional] 
 **TargetFormat** | Pointer to **string** |  | [optional] 
 **TargetsType** | Pointer to **string** |  | [optional] 
@@ -425,6 +428,31 @@ SetDomainUsersRotatedSecretsPathTemplate sets DomainUsersRotatedSecretsPathTempl
 
 HasDomainUsersRotatedSecretsPathTemplate returns a boolean if a field has been set.
 
+### GetEnablePasswordPolicy
+
+`func (o *ActiveDirectoryPayload) GetEnablePasswordPolicy() bool`
+
+GetEnablePasswordPolicy returns the EnablePasswordPolicy field if non-nil, zero value otherwise.
+
+### GetEnablePasswordPolicyOk
+
+`func (o *ActiveDirectoryPayload) GetEnablePasswordPolicyOk() (*bool, bool)`
+
+GetEnablePasswordPolicyOk returns a tuple with the EnablePasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnablePasswordPolicy
+
+`func (o *ActiveDirectoryPayload) SetEnablePasswordPolicy(v bool)`
+
+SetEnablePasswordPolicy sets EnablePasswordPolicy field to given value.
+
+### HasEnablePasswordPolicy
+
+`func (o *ActiveDirectoryPayload) HasEnablePasswordPolicy() bool`
+
+HasEnablePasswordPolicy returns a boolean if a field has been set.
+
 ### GetEnableRdpSra
 
 `func (o *ActiveDirectoryPayload) GetEnableRdpSra() bool`
@@ -524,6 +552,56 @@ SetOsFilter sets OsFilter field to given value.
 `func (o *ActiveDirectoryPayload) HasOsFilter() bool`
 
 HasOsFilter returns a boolean if a field has been set.
+
+### GetPasswordPolicy
+
+`func (o *ActiveDirectoryPayload) GetPasswordPolicy() PasswordPolicyInfo`
+
+GetPasswordPolicy returns the PasswordPolicy field if non-nil, zero value otherwise.
+
+### GetPasswordPolicyOk
+
+`func (o *ActiveDirectoryPayload) GetPasswordPolicyOk() (*PasswordPolicyInfo, bool)`
+
+GetPasswordPolicyOk returns a tuple with the PasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordPolicy
+
+`func (o *ActiveDirectoryPayload) SetPasswordPolicy(v PasswordPolicyInfo)`
+
+SetPasswordPolicy sets PasswordPolicy field to given value.
+
+### HasPasswordPolicy
+
+`func (o *ActiveDirectoryPayload) HasPasswordPolicy() bool`
+
+HasPasswordPolicy returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *ActiveDirectoryPayload) GetSkipDryRun() bool`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *ActiveDirectoryPayload) GetSkipDryRunOk() (*bool, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *ActiveDirectoryPayload) SetSkipDryRun(v bool)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *ActiveDirectoryPayload) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetSshPort
 

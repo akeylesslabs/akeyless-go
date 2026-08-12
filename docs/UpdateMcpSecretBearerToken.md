@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **BearerToken** | Pointer to **string** | Bearer token value | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -60,6 +61,31 @@ SetAccessibility sets Accessibility field to given value.
 `func (o *UpdateMcpSecretBearerToken) HasAccessibility() bool`
 
 HasAccessibility returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *UpdateMcpSecretBearerToken) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *UpdateMcpSecretBearerToken) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *UpdateMcpSecretBearerToken) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *UpdateMcpSecretBearerToken) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetBearerToken
 

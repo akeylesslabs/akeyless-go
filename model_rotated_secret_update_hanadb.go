@@ -24,6 +24,8 @@ var _ MappedNullable = &RotatedSecretUpdateHanadb{}
 type RotatedSecretUpdateHanadb struct {
 	// List of the new tags that will be attached to this item
 	AddTag []string `json:"add-tag,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -60,6 +62,8 @@ type RotatedSecretUpdateHanadb struct {
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	RotationInterval *string `json:"rotation-interval,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -135,6 +139,38 @@ func (o *RotatedSecretUpdateHanadb) HasAddTag() bool {
 // SetAddTag gets a reference to the given []string and assigns it to the AddTag field.
 func (o *RotatedSecretUpdateHanadb) SetAddTag(v []string) {
 	o.AddTag = v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateHanadb) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateHanadb) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateHanadb) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretUpdateHanadb) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -769,6 +805,38 @@ func (o *RotatedSecretUpdateHanadb) SetRotationInterval(v string) {
 	o.RotationInterval = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateHanadb) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateHanadb) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateHanadb) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateHanadb) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateHanadb) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -974,6 +1042,9 @@ func (o RotatedSecretUpdateHanadb) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddTag) {
 		toSerialize["add-tag"] = o.AddTag
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AuthenticationCredentials) {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
 	}
@@ -1031,6 +1102,9 @@ func (o RotatedSecretUpdateHanadb) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RotationInterval) {
 		toSerialize["rotation-interval"] = o.RotationInterval
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

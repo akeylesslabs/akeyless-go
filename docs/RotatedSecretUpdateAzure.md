@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ApiId** | Pointer to **string** | API ID to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] 
 **ApiKey** | Pointer to **string** | API key to rotate (relevant only for rotator-type&#x3D;api-key) | [optional] 
 **ApplicationId** | Pointer to **string** | Id of the azure app that hold the serect to be rotated (relevant only for rotator-type&#x3D;api-key &amp; authentication-credentials&#x3D;use-target-creds) | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
@@ -42,6 +43,7 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -169,6 +171,31 @@ SetApplicationId sets ApplicationId field to given value.
 `func (o *RotatedSecretUpdateAzure) HasApplicationId() bool`
 
 HasApplicationId returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *RotatedSecretUpdateAzure) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *RotatedSecretUpdateAzure) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *RotatedSecretUpdateAzure) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *RotatedSecretUpdateAzure) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAuthenticationCredentials
 
@@ -1014,6 +1041,31 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 `func (o *RotatedSecretUpdateAzure) HasSecureAccessWebProxy() bool`
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *RotatedSecretUpdateAzure) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *RotatedSecretUpdateAzure) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *RotatedSecretUpdateAzure) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *RotatedSecretUpdateAzure) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetStorageAccountKeyName
 

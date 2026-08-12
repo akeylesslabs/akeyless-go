@@ -22,6 +22,8 @@ var _ MappedNullable = &DynamicSecretCreatePostgreSql{}
 
 // DynamicSecretCreatePostgreSql dynamicSecretCreatePostgreSql is a command that creates postgresql dynamic secret
 type DynamicSecretCreatePostgreSql struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// PostgreSQL Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
 	// Customize how temporary usernames are generated using go template
@@ -72,6 +74,8 @@ type DynamicSecretCreatePostgreSql struct {
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// Add tags attached to this object
@@ -135,6 +139,38 @@ func NewDynamicSecretCreatePostgreSqlWithDefaults() *DynamicSecretCreatePostgreS
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretCreatePostgreSql) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreatePostgreSql) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretCreatePostgreSql) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretCreatePostgreSql) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCreationStatements returns the CreationStatements field value if set, zero value otherwise.
@@ -929,6 +965,38 @@ func (o *DynamicSecretCreatePostgreSql) SetSecureAccessWeb(v bool) {
 	o.SecureAccessWeb = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretCreatePostgreSql) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreatePostgreSql) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretCreatePostgreSql) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretCreatePostgreSql) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetSsl returns the Ssl field value if set, zero value otherwise.
 func (o *DynamicSecretCreatePostgreSql) GetSsl() bool {
 	if o == nil || IsNil(o.Ssl) {
@@ -1259,6 +1327,9 @@ func (o DynamicSecretCreatePostgreSql) MarshalJSON() ([]byte, error) {
 
 func (o DynamicSecretCreatePostgreSql) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.CreationStatements) {
 		toSerialize["creation-statements"] = o.CreationStatements
 	}
@@ -1331,6 +1402,9 @@ func (o DynamicSecretCreatePostgreSql) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWeb) {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Ssl) {
 		toSerialize["ssl"] = o.Ssl

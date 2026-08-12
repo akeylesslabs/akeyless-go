@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | Pointer to **bool** |  | [optional] 
 **Ca** | Pointer to **[]int32** |  | [optional] 
+**Cas** | Pointer to [**[]KMIPCA**](KMIPCA.md) |  | [optional] 
 **Certificate** | Pointer to **[]int32** |  | [optional] 
 **CertificateIssueDate** | Pointer to **time.Time** |  | [optional] 
 **CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
@@ -81,6 +82,31 @@ SetCa sets Ca field to given value.
 `func (o *KMIPServer) HasCa() bool`
 
 HasCa returns a boolean if a field has been set.
+
+### GetCas
+
+`func (o *KMIPServer) GetCas() []KMIPCA`
+
+GetCas returns the Cas field if non-nil, zero value otherwise.
+
+### GetCasOk
+
+`func (o *KMIPServer) GetCasOk() (*[]KMIPCA, bool)`
+
+GetCasOk returns a tuple with the Cas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCas
+
+`func (o *KMIPServer) SetCas(v []KMIPCA)`
+
+SetCas sets Cas field to given value.
+
+### HasCas
+
+`func (o *KMIPServer) HasCas() bool`
+
+HasCas returns a boolean if a field has been set.
 
 ### GetCertificate
 

@@ -24,6 +24,8 @@ var _ MappedNullable = &GatewayCreateProducerRedis{}
 type GatewayCreateProducerRedis struct {
 	// A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys '[\"~*\", \"+@read\"]'
 	AclRules *string `json:"acl-rules,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Customize how temporary usernames are generated using go template
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -48,6 +50,8 @@ type GatewayCreateProducerRedis struct {
 	Port *string `json:"port,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
@@ -143,6 +147,38 @@ func (o *GatewayCreateProducerRedis) HasAclRules() bool {
 // SetAclRules gets a reference to the given string and assigns it to the AclRules field.
 func (o *GatewayCreateProducerRedis) SetAclRules(v string) {
 	o.AclRules = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedis) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedis) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedis) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayCreateProducerRedis) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
@@ -519,6 +555,38 @@ func (o *GatewayCreateProducerRedis) HasProducerEncryptionKeyName() bool {
 // SetProducerEncryptionKeyName gets a reference to the given string and assigns it to the ProducerEncryptionKeyName field.
 func (o *GatewayCreateProducerRedis) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
+}
+
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedis) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedis) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedis) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerRedis) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
 }
 
 // GetSsl returns the Ssl field value if set, zero value otherwise.
@@ -918,6 +986,9 @@ func (o GatewayCreateProducerRedis) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AclRules) {
 		toSerialize["acl-rules"] = o.AclRules
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.CustomUsernameTemplate) {
 		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
@@ -951,6 +1022,9 @@ func (o GatewayCreateProducerRedis) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Ssl) {
 		toSerialize["ssl"] = o.Ssl

@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretCreateSplunk{}
 
 // RotatedSecretCreateSplunk rotatedSecretCreateSplunk is a command that creates a rotated secret for a Splunk target. Currently we support target-rotator behavior (rotate credentials on the target itself).
 type RotatedSecretCreateSplunk struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Token audience for Splunk token creation (required for rotator-type=token)
 	Audience *string `json:"audience,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
@@ -62,6 +64,8 @@ type RotatedSecretCreateSplunk struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The rotator type. options: [target/password/token/hec-token]
 	RotatorType string `json:"rotator-type"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Current Splunk authentication token to store (relevant only for rotator-type=token). If not provided, a new token will be created in Splunk.
 	SplunkToken *string `json:"splunk-token,omitempty"`
 	// Add tags attached to this object
@@ -111,6 +115,38 @@ func NewRotatedSecretCreateSplunkWithDefaults() *RotatedSecretCreateSplunk {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSplunk) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSplunk) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSplunk) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretCreateSplunk) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
@@ -801,6 +837,38 @@ func (o *RotatedSecretCreateSplunk) SetRotatorType(v string) {
 	o.RotatorType = v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSplunk) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSplunk) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSplunk) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateSplunk) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetSplunkToken returns the SplunkToken field value if set, zero value otherwise.
 func (o *RotatedSecretCreateSplunk) GetSplunkToken() string {
 	if o == nil || IsNil(o.SplunkToken) {
@@ -1123,6 +1191,9 @@ func (o RotatedSecretCreateSplunk) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretCreateSplunk) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.Audience) {
 		toSerialize["audience"] = o.Audience
 	}
@@ -1185,6 +1256,9 @@ func (o RotatedSecretCreateSplunk) ToMap() (map[string]interface{}, error) {
 		toSerialize["rotation-interval"] = o.RotationInterval
 	}
 	toSerialize["rotator-type"] = o.RotatorType
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
+	}
 	if !IsNil(o.SplunkToken) {
 		toSerialize["splunk-token"] = o.SplunkToken
 	}

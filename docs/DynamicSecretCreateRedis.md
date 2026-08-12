@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AclRules** | Pointer to **string** | A JSON array list of redis ACL rules to attach to the created user. For available rules see the ACL CAT command https://redis.io/commands/acl-cat By default the user will have permissions to read all keys &#39;[\&quot;~*\&quot;, \&quot;+@read\&quot;]&#39; | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **Port** | Pointer to **string** | Redis Port | [optional] [default to "6379"]
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | Pointer to **string** | SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
@@ -74,6 +76,31 @@ SetAclRules sets AclRules field to given value.
 `func (o *DynamicSecretCreateRedis) HasAclRules() bool`
 
 HasAclRules returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *DynamicSecretCreateRedis) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *DynamicSecretCreateRedis) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *DynamicSecretCreateRedis) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *DynamicSecretCreateRedis) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetCustomUsernameTemplate
 
@@ -394,6 +421,31 @@ SetProducerEncryptionKeyName sets ProducerEncryptionKeyName field to given value
 `func (o *DynamicSecretCreateRedis) HasProducerEncryptionKeyName() bool`
 
 HasProducerEncryptionKeyName returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *DynamicSecretCreateRedis) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *DynamicSecretCreateRedis) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *DynamicSecretCreateRedis) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *DynamicSecretCreateRedis) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetSsl
 

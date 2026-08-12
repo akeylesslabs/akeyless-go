@@ -62,7 +62,7 @@ type CreateAuthMethodOAuth2 struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
 	SubclaimsDelimiters []string `json:"subclaims-delimiters,omitempty"`

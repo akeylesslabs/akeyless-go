@@ -22,8 +22,11 @@ var _ MappedNullable = &RotatedSecretUpdateWindows{}
 
 // RotatedSecretUpdateWindows struct for RotatedSecretUpdateWindows
 type RotatedSecretUpdateWindows struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// List of the new tags that will be attached to this item
 	AddTag []string `json:"add-tag,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -31,6 +34,8 @@ type RotatedSecretUpdateWindows struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
 	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
@@ -76,12 +81,18 @@ type RotatedSecretUpdateWindows struct {
 	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Default domain name server. i.e. microsoft.com
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Override the RDP Domain username
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+	Target []string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -132,6 +143,38 @@ func NewRotatedSecretUpdateWindowsWithDefaults() *RotatedSecretUpdateWindows {
 	return &this
 }
 
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateWindows) GetProviderType() string {
+	if o == nil || IsNil(o.ProviderType) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateWindows) GetProviderTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ProviderType) {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateWindows) HasProviderType() bool {
+	if o != nil && !IsNil(o.ProviderType) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *RotatedSecretUpdateWindows) SetProviderType(v string) {
+	o.ProviderType = &v
+}
+
 // GetAddTag returns the AddTag field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateWindows) GetAddTag() []string {
 	if o == nil || IsNil(o.AddTag) {
@@ -162,6 +205,38 @@ func (o *RotatedSecretUpdateWindows) HasAddTag() bool {
 // SetAddTag gets a reference to the given []string and assigns it to the AddTag field.
 func (o *RotatedSecretUpdateWindows) SetAddTag(v []string) {
 	o.AddTag = v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateWindows) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateWindows) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateWindows) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretUpdateWindows) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -290,6 +365,38 @@ func (o *RotatedSecretUpdateWindows) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *RotatedSecretUpdateWindows) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateWindows) GetHostProvider() string {
+	if o == nil || IsNil(o.HostProvider) {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateWindows) GetHostProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.HostProvider) {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateWindows) HasHostProvider() bool {
+	if o != nil && !IsNil(o.HostProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *RotatedSecretUpdateWindows) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -1044,6 +1151,38 @@ func (o *RotatedSecretUpdateWindows) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateWindows) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateWindows) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateWindows) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *RotatedSecretUpdateWindows) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateWindows) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -1138,6 +1277,70 @@ func (o *RotatedSecretUpdateWindows) HasSecureAccessRdpUser() bool {
 // SetSecureAccessRdpUser gets a reference to the given string and assigns it to the SecureAccessRdpUser field.
 func (o *RotatedSecretUpdateWindows) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
+}
+
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateWindows) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateWindows) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateWindows) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateWindows) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateWindows) GetTarget() []string {
+	if o == nil || IsNil(o.Target) {
+		var ret []string
+		return ret
+	}
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateWindows) GetTargetOk() ([]string, bool) {
+	if o == nil || IsNil(o.Target) {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateWindows) HasTarget() bool {
+	if o != nil && !IsNil(o.Target) {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *RotatedSecretUpdateWindows) SetTarget(v []string) {
+	o.Target = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -1342,8 +1545,14 @@ func (o RotatedSecretUpdateWindows) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretUpdateWindows) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProviderType) {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if !IsNil(o.AddTag) {
 		toSerialize["add-tag"] = o.AddTag
+	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
 	}
 	if !IsNil(o.AuthenticationCredentials) {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
@@ -1356,6 +1565,9 @@ func (o RotatedSecretUpdateWindows) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.HostProvider) {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule
@@ -1425,6 +1637,9 @@ func (o RotatedSecretUpdateWindows) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
@@ -1433,6 +1648,12 @@ func (o RotatedSecretUpdateWindows) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessRdpUser) {
 		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

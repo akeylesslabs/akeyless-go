@@ -40,7 +40,7 @@ type UpdateItem struct {
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only.
 	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`
-	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
@@ -92,6 +92,8 @@ type UpdateItem struct {
 	SecureAccessDbSchema *string `json:"secure-access-db-schema,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	SecureAccessGateway *string `json:"secure-access-gateway,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
@@ -119,6 +121,8 @@ type UpdateItem struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+	Target []string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -146,10 +150,6 @@ func NewUpdateItem(name string) *UpdateItem {
 	this.Name = name
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
-	var secureAccessWebBrowsing bool = false
-	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
-	var secureAccessWebProxy bool = false
-	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -166,10 +166,6 @@ func NewUpdateItemWithDefaults() *UpdateItem {
 	this.Json = &json
 	var newMetadata string = "default_metadata"
 	this.NewMetadata = &newMetadata
-	var secureAccessWebBrowsing bool = false
-	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
-	var secureAccessWebProxy bool = false
-	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -1317,6 +1313,38 @@ func (o *UpdateItem) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *UpdateItem) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *UpdateItem) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessGateway returns the SecureAccessGateway field value if set, zero value otherwise.
 func (o *UpdateItem) GetSecureAccessGateway() string {
 	if o == nil || IsNil(o.SecureAccessGateway) {
@@ -1765,6 +1793,38 @@ func (o *UpdateItem) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *UpdateItem) GetTarget() []string {
+	if o == nil || IsNil(o.Target) {
+		var ret []string
+		return ret
+	}
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetTargetOk() ([]string, bool) {
+	if o == nil || IsNil(o.Target) {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *UpdateItem) HasTarget() bool {
+	if o != nil && !IsNil(o.Target) {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *UpdateItem) SetTarget(v []string) {
+	o.Target = v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateItem) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -2009,6 +2069,9 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessGateway) {
 		toSerialize["secure-access-gateway"] = o.SecureAccessGateway
 	}
@@ -2050,6 +2113,9 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWebProxy) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

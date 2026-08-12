@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AwsRegion** | Pointer to **string** |  | [optional] 
 **AwsSecretAccessKey** | Pointer to **string** |  | [optional] 
 **AwsSessionToken** | Pointer to **string** |  | [optional] 
+**AwsUserName** | Pointer to **string** |  | [optional] 
 **GwCloudIdentityExternalIdOpt** | Pointer to [**AWSGatewayCloudIdentityExternalIdOpt**](AWSGatewayCloudIdentityExternalIdOpt.md) |  | [optional] 
 **UseGwCloudIdentity** | Pointer to **bool** |  | [optional] 
 
@@ -129,6 +130,31 @@ SetAwsSessionToken sets AwsSessionToken field to given value.
 `func (o *AWSTargetDetails) HasAwsSessionToken() bool`
 
 HasAwsSessionToken returns a boolean if a field has been set.
+
+### GetAwsUserName
+
+`func (o *AWSTargetDetails) GetAwsUserName() string`
+
+GetAwsUserName returns the AwsUserName field if non-nil, zero value otherwise.
+
+### GetAwsUserNameOk
+
+`func (o *AWSTargetDetails) GetAwsUserNameOk() (*string, bool)`
+
+GetAwsUserNameOk returns a tuple with the AwsUserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsUserName
+
+`func (o *AWSTargetDetails) SetAwsUserName(v string)`
+
+SetAwsUserName sets AwsUserName field to given value.
+
+### HasAwsUserName
+
+`func (o *AWSTargetDetails) HasAwsUserName() bool`
+
+HasAwsUserName returns a boolean if a field has been set.
 
 ### GetGwCloudIdentityExternalIdOpt
 

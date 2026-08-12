@@ -60,7 +60,7 @@ type AuthMethodUpdateGcp struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// ServiceAccount credentials data instead of giving a file path, base64 encoded
 	ServiceAccountCredsData *string `json:"service-account-creds-data,omitempty"`

@@ -26,6 +26,8 @@ type UscSyncInfo struct {
 	Namespace *string `json:"namespace,omitempty"`
 	SecretId *string `json:"secret_id,omitempty"`
 	SecretName *string `json:"secret_name,omitempty"`
+	SelectedEnvironments *string `json:"selected_environments,omitempty"`
+	SelectedRepositories *string `json:"selected_repositories,omitempty"`
 }
 
 // NewUscSyncInfo instantiates a new UscSyncInfo object
@@ -237,6 +239,70 @@ func (o *UscSyncInfo) SetSecretName(v string) {
 	o.SecretName = &v
 }
 
+// GetSelectedEnvironments returns the SelectedEnvironments field value if set, zero value otherwise.
+func (o *UscSyncInfo) GetSelectedEnvironments() string {
+	if o == nil || IsNil(o.SelectedEnvironments) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedEnvironments
+}
+
+// GetSelectedEnvironmentsOk returns a tuple with the SelectedEnvironments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscSyncInfo) GetSelectedEnvironmentsOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedEnvironments) {
+		return nil, false
+	}
+	return o.SelectedEnvironments, true
+}
+
+// HasSelectedEnvironments returns a boolean if a field has been set.
+func (o *UscSyncInfo) HasSelectedEnvironments() bool {
+	if o != nil && !IsNil(o.SelectedEnvironments) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedEnvironments gets a reference to the given string and assigns it to the SelectedEnvironments field.
+func (o *UscSyncInfo) SetSelectedEnvironments(v string) {
+	o.SelectedEnvironments = &v
+}
+
+// GetSelectedRepositories returns the SelectedRepositories field value if set, zero value otherwise.
+func (o *UscSyncInfo) GetSelectedRepositories() string {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedRepositories
+}
+
+// GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscSyncInfo) GetSelectedRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		return nil, false
+	}
+	return o.SelectedRepositories, true
+}
+
+// HasSelectedRepositories returns a boolean if a field has been set.
+func (o *UscSyncInfo) HasSelectedRepositories() bool {
+	if o != nil && !IsNil(o.SelectedRepositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedRepositories gets a reference to the given string and assigns it to the SelectedRepositories field.
+func (o *UscSyncInfo) SetSelectedRepositories(v string) {
+	o.SelectedRepositories = &v
+}
+
 func (o UscSyncInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -264,6 +330,12 @@ func (o UscSyncInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecretName) {
 		toSerialize["secret_name"] = o.SecretName
+	}
+	if !IsNil(o.SelectedEnvironments) {
+		toSerialize["selected_environments"] = o.SelectedEnvironments
+	}
+	if !IsNil(o.SelectedRepositories) {
+		toSerialize["selected_repositories"] = o.SelectedRepositories
 	}
 	return toSerialize, nil
 }

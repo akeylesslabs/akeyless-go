@@ -20,7 +20,13 @@ var _ MappedNullable = &UscCreateSecretOutput{}
 
 // UscCreateSecretOutput struct for UscCreateSecretOutput
 type UscCreateSecretOutput struct {
+	// PartialFailure aggregates per-target create failures when some targets still succeeded.
+	PartialFailure *string `json:"partial_failure,omitempty"`
 	SecretId *string `json:"secret_id,omitempty"`
+	// SelectedEnvironments is the subset of GitHub environments where create succeeded (comma-separated).
+	SelectedEnvironments *string `json:"selected_environments,omitempty"`
+	// SelectedRepositories is the subset of GitHub repositories where create succeeded (comma-separated).
+	SelectedRepositories *string `json:"selected_repositories,omitempty"`
 	VersionId *string `json:"version_id,omitempty"`
 }
 
@@ -39,6 +45,38 @@ func NewUscCreateSecretOutput() *UscCreateSecretOutput {
 func NewUscCreateSecretOutputWithDefaults() *UscCreateSecretOutput {
 	this := UscCreateSecretOutput{}
 	return &this
+}
+
+// GetPartialFailure returns the PartialFailure field value if set, zero value otherwise.
+func (o *UscCreateSecretOutput) GetPartialFailure() string {
+	if o == nil || IsNil(o.PartialFailure) {
+		var ret string
+		return ret
+	}
+	return *o.PartialFailure
+}
+
+// GetPartialFailureOk returns a tuple with the PartialFailure field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreateSecretOutput) GetPartialFailureOk() (*string, bool) {
+	if o == nil || IsNil(o.PartialFailure) {
+		return nil, false
+	}
+	return o.PartialFailure, true
+}
+
+// HasPartialFailure returns a boolean if a field has been set.
+func (o *UscCreateSecretOutput) HasPartialFailure() bool {
+	if o != nil && !IsNil(o.PartialFailure) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartialFailure gets a reference to the given string and assigns it to the PartialFailure field.
+func (o *UscCreateSecretOutput) SetPartialFailure(v string) {
+	o.PartialFailure = &v
 }
 
 // GetSecretId returns the SecretId field value if set, zero value otherwise.
@@ -71,6 +109,70 @@ func (o *UscCreateSecretOutput) HasSecretId() bool {
 // SetSecretId gets a reference to the given string and assigns it to the SecretId field.
 func (o *UscCreateSecretOutput) SetSecretId(v string) {
 	o.SecretId = &v
+}
+
+// GetSelectedEnvironments returns the SelectedEnvironments field value if set, zero value otherwise.
+func (o *UscCreateSecretOutput) GetSelectedEnvironments() string {
+	if o == nil || IsNil(o.SelectedEnvironments) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedEnvironments
+}
+
+// GetSelectedEnvironmentsOk returns a tuple with the SelectedEnvironments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreateSecretOutput) GetSelectedEnvironmentsOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedEnvironments) {
+		return nil, false
+	}
+	return o.SelectedEnvironments, true
+}
+
+// HasSelectedEnvironments returns a boolean if a field has been set.
+func (o *UscCreateSecretOutput) HasSelectedEnvironments() bool {
+	if o != nil && !IsNil(o.SelectedEnvironments) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedEnvironments gets a reference to the given string and assigns it to the SelectedEnvironments field.
+func (o *UscCreateSecretOutput) SetSelectedEnvironments(v string) {
+	o.SelectedEnvironments = &v
+}
+
+// GetSelectedRepositories returns the SelectedRepositories field value if set, zero value otherwise.
+func (o *UscCreateSecretOutput) GetSelectedRepositories() string {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		var ret string
+		return ret
+	}
+	return *o.SelectedRepositories
+}
+
+// GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreateSecretOutput) GetSelectedRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.SelectedRepositories) {
+		return nil, false
+	}
+	return o.SelectedRepositories, true
+}
+
+// HasSelectedRepositories returns a boolean if a field has been set.
+func (o *UscCreateSecretOutput) HasSelectedRepositories() bool {
+	if o != nil && !IsNil(o.SelectedRepositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetSelectedRepositories gets a reference to the given string and assigns it to the SelectedRepositories field.
+func (o *UscCreateSecretOutput) SetSelectedRepositories(v string) {
+	o.SelectedRepositories = &v
 }
 
 // GetVersionId returns the VersionId field value if set, zero value otherwise.
@@ -115,8 +217,17 @@ func (o UscCreateSecretOutput) MarshalJSON() ([]byte, error) {
 
 func (o UscCreateSecretOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PartialFailure) {
+		toSerialize["partial_failure"] = o.PartialFailure
+	}
 	if !IsNil(o.SecretId) {
 		toSerialize["secret_id"] = o.SecretId
+	}
+	if !IsNil(o.SelectedEnvironments) {
+		toSerialize["selected_environments"] = o.SelectedEnvironments
+	}
+	if !IsNil(o.SelectedRepositories) {
+		toSerialize["selected_repositories"] = o.SelectedRepositories
 	}
 	if !IsNil(o.VersionId) {
 		toSerialize["version_id"] = o.VersionId

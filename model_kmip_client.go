@@ -26,6 +26,7 @@ type KMIPClient struct {
 	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	Id *string `json:"id,omitempty"`
+	IssuingCaId *string `json:"issuing_ca_id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Rules []PathRule `json:"rules,omitempty"`
 }
@@ -207,6 +208,38 @@ func (o *KMIPClient) SetId(v string) {
 	o.Id = &v
 }
 
+// GetIssuingCaId returns the IssuingCaId field value if set, zero value otherwise.
+func (o *KMIPClient) GetIssuingCaId() string {
+	if o == nil || IsNil(o.IssuingCaId) {
+		var ret string
+		return ret
+	}
+	return *o.IssuingCaId
+}
+
+// GetIssuingCaIdOk returns a tuple with the IssuingCaId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPClient) GetIssuingCaIdOk() (*string, bool) {
+	if o == nil || IsNil(o.IssuingCaId) {
+		return nil, false
+	}
+	return o.IssuingCaId, true
+}
+
+// HasIssuingCaId returns a boolean if a field has been set.
+func (o *KMIPClient) HasIssuingCaId() bool {
+	if o != nil && !IsNil(o.IssuingCaId) {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuingCaId gets a reference to the given string and assigns it to the IssuingCaId field.
+func (o *KMIPClient) SetIssuingCaId(v string) {
+	o.IssuingCaId = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *KMIPClient) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -295,6 +328,9 @@ func (o KMIPClient) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.IssuingCaId) {
+		toSerialize["issuing_ca_id"] = o.IssuingCaId
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

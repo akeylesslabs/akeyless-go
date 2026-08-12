@@ -5,9 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteFromUsc** | Pointer to **bool** | Delete the secret from the remote target USC as well | [optional] [default to false]
+**Environments** | Pointer to **string** | GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --environments repo1/env1,repo2/env2). | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **RemoteSecretName** | Pointer to **string** | Remote Secret Name to disambiguate when multiple syncs exist under the same USC | [optional] 
+**Repositories** | Pointer to **string** | GitHub repositories to delete from. Defaults to all repositories available on the selected USC. GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --repositories repo1,repo2). | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Universal Secret Connector name | 
@@ -55,6 +57,31 @@ SetDeleteFromUsc sets DeleteFromUsc field to given value.
 `func (o *RotatedSecretDeleteSync) HasDeleteFromUsc() bool`
 
 HasDeleteFromUsc returns a boolean if a field has been set.
+
+### GetEnvironments
+
+`func (o *RotatedSecretDeleteSync) GetEnvironments() string`
+
+GetEnvironments returns the Environments field if non-nil, zero value otherwise.
+
+### GetEnvironmentsOk
+
+`func (o *RotatedSecretDeleteSync) GetEnvironmentsOk() (*string, bool)`
+
+GetEnvironmentsOk returns a tuple with the Environments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironments
+
+`func (o *RotatedSecretDeleteSync) SetEnvironments(v string)`
+
+SetEnvironments sets Environments field to given value.
+
+### HasEnvironments
+
+`func (o *RotatedSecretDeleteSync) HasEnvironments() bool`
+
+HasEnvironments returns a boolean if a field has been set.
 
 ### GetJson
 
@@ -125,6 +152,31 @@ SetRemoteSecretName sets RemoteSecretName field to given value.
 `func (o *RotatedSecretDeleteSync) HasRemoteSecretName() bool`
 
 HasRemoteSecretName returns a boolean if a field has been set.
+
+### GetRepositories
+
+`func (o *RotatedSecretDeleteSync) GetRepositories() string`
+
+GetRepositories returns the Repositories field if non-nil, zero value otherwise.
+
+### GetRepositoriesOk
+
+`func (o *RotatedSecretDeleteSync) GetRepositoriesOk() (*string, bool)`
+
+GetRepositoriesOk returns a tuple with the Repositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRepositories
+
+`func (o *RotatedSecretDeleteSync) SetRepositories(v string)`
+
+SetRepositories sets Repositories field to given value.
+
+### HasRepositories
+
+`func (o *RotatedSecretDeleteSync) HasRepositories() bool`
+
+HasRepositories returns a boolean if a field has been set.
 
 ### GetToken
 

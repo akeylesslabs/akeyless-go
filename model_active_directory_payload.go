@@ -36,10 +36,15 @@ type ActiveDirectoryPayload struct {
 	DomainName *string `json:"domain_name,omitempty"`
 	DomainServerTargetsPathTemplate *string `json:"domain_server_targets_path_template,omitempty"`
 	DomainUsersRotatedSecretsPathTemplate *string `json:"domain_users_rotated_secrets_path_template,omitempty"`
+	// EnablePasswordPolicy enables applying PasswordPolicy to newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil = not provided).
+	EnablePasswordPolicy *bool `json:"enable_password_policy,omitempty"`
 	EnableRdpSra *bool `json:"enable_rdp_sra,omitempty"`
 	LocalUsersIgnoreList *map[string]bool `json:"local_users_ignore_list,omitempty"`
 	LocalUsersRotatedSecretsPathTemplate *string `json:"local_users_rotated_secrets_path_template,omitempty"`
 	OsFilter *string `json:"os_filter,omitempty"`
+	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
+	// SkipDryRun enables skip_dry_run on newly created domain/local user rotated secrets. Pointer so omitted values are preserved on partial update (nil = not provided). When false/unset, existing rotated-secret SkipDryRun values are left unchanged on sync.
+	SkipDryRun *bool `json:"skip_dry_run,omitempty"`
 	SshPort *string `json:"ssh_port,omitempty"`
 	TargetFormat *string `json:"target_format,omitempty"`
 	TargetsType *string `json:"targets_type,omitempty"`
@@ -546,6 +551,38 @@ func (o *ActiveDirectoryPayload) SetDomainUsersRotatedSecretsPathTemplate(v stri
 	o.DomainUsersRotatedSecretsPathTemplate = &v
 }
 
+// GetEnablePasswordPolicy returns the EnablePasswordPolicy field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetEnablePasswordPolicy() bool {
+	if o == nil || IsNil(o.EnablePasswordPolicy) {
+		var ret bool
+		return ret
+	}
+	return *o.EnablePasswordPolicy
+}
+
+// GetEnablePasswordPolicyOk returns a tuple with the EnablePasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetEnablePasswordPolicyOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnablePasswordPolicy) {
+		return nil, false
+	}
+	return o.EnablePasswordPolicy, true
+}
+
+// HasEnablePasswordPolicy returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasEnablePasswordPolicy() bool {
+	if o != nil && !IsNil(o.EnablePasswordPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnablePasswordPolicy gets a reference to the given bool and assigns it to the EnablePasswordPolicy field.
+func (o *ActiveDirectoryPayload) SetEnablePasswordPolicy(v bool) {
+	o.EnablePasswordPolicy = &v
+}
+
 // GetEnableRdpSra returns the EnableRdpSra field value if set, zero value otherwise.
 func (o *ActiveDirectoryPayload) GetEnableRdpSra() bool {
 	if o == nil || IsNil(o.EnableRdpSra) {
@@ -672,6 +709,70 @@ func (o *ActiveDirectoryPayload) HasOsFilter() bool {
 // SetOsFilter gets a reference to the given string and assigns it to the OsFilter field.
 func (o *ActiveDirectoryPayload) SetOsFilter(v string) {
 	o.OsFilter = &v
+}
+
+// GetPasswordPolicy returns the PasswordPolicy field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetPasswordPolicy() PasswordPolicyInfo {
+	if o == nil || IsNil(o.PasswordPolicy) {
+		var ret PasswordPolicyInfo
+		return ret
+	}
+	return *o.PasswordPolicy
+}
+
+// GetPasswordPolicyOk returns a tuple with the PasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetPasswordPolicyOk() (*PasswordPolicyInfo, bool) {
+	if o == nil || IsNil(o.PasswordPolicy) {
+		return nil, false
+	}
+	return o.PasswordPolicy, true
+}
+
+// HasPasswordPolicy returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasPasswordPolicy() bool {
+	if o != nil && !IsNil(o.PasswordPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordPolicy gets a reference to the given PasswordPolicyInfo and assigns it to the PasswordPolicy field.
+func (o *ActiveDirectoryPayload) SetPasswordPolicy(v PasswordPolicyInfo) {
+	o.PasswordPolicy = &v
+}
+
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *ActiveDirectoryPayload) GetSkipDryRun() bool {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ActiveDirectoryPayload) GetSkipDryRunOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *ActiveDirectoryPayload) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *ActiveDirectoryPayload) SetSkipDryRun(v bool) {
+	o.SkipDryRun = &v
 }
 
 // GetSshPort returns the SshPort field value if set, zero value otherwise.
@@ -953,6 +1054,9 @@ func (o ActiveDirectoryPayload) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DomainUsersRotatedSecretsPathTemplate) {
 		toSerialize["domain_users_rotated_secrets_path_template"] = o.DomainUsersRotatedSecretsPathTemplate
 	}
+	if !IsNil(o.EnablePasswordPolicy) {
+		toSerialize["enable_password_policy"] = o.EnablePasswordPolicy
+	}
 	if !IsNil(o.EnableRdpSra) {
 		toSerialize["enable_rdp_sra"] = o.EnableRdpSra
 	}
@@ -964,6 +1068,12 @@ func (o ActiveDirectoryPayload) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OsFilter) {
 		toSerialize["os_filter"] = o.OsFilter
+	}
+	if !IsNil(o.PasswordPolicy) {
+		toSerialize["password_policy"] = o.PasswordPolicy
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.SshPort) {
 		toSerialize["ssh_port"] = o.SshPort

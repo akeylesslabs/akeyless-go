@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsUserName** | Pointer to **string** |  | [optional] 
 **DeletePreviousVersionInDays** | Pointer to **int32** |  | [optional] 
 **EnableCustomPasswordPolicy** | Pointer to **bool** |  | [optional] 
 **GraceRotation** | Pointer to **bool** |  | [optional] 
@@ -26,6 +27,7 @@ Name | Type | Description | Notes
 **RotatorType** | Pointer to **string** |  | [optional] 
 **SamePassword** | Pointer to **bool** |  | [optional] 
 **ServicesDetails** | Pointer to [**[]WindowsService**](WindowsService.md) |  | [optional] 
+**SkipDryRun** | Pointer to **bool** |  | [optional] 
 **TimeoutSeconds** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -46,6 +48,31 @@ will change when the set of required properties is changed
 NewRotatedSecretDetailsInfoWithDefaults instantiates a new RotatedSecretDetailsInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsUserName
+
+`func (o *RotatedSecretDetailsInfo) GetAwsUserName() string`
+
+GetAwsUserName returns the AwsUserName field if non-nil, zero value otherwise.
+
+### GetAwsUserNameOk
+
+`func (o *RotatedSecretDetailsInfo) GetAwsUserNameOk() (*string, bool)`
+
+GetAwsUserNameOk returns a tuple with the AwsUserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsUserName
+
+`func (o *RotatedSecretDetailsInfo) SetAwsUserName(v string)`
+
+SetAwsUserName sets AwsUserName field to given value.
+
+### HasAwsUserName
+
+`func (o *RotatedSecretDetailsInfo) HasAwsUserName() bool`
+
+HasAwsUserName returns a boolean if a field has been set.
 
 ### GetDeletePreviousVersionInDays
 
@@ -596,6 +623,31 @@ SetServicesDetails sets ServicesDetails field to given value.
 `func (o *RotatedSecretDetailsInfo) HasServicesDetails() bool`
 
 HasServicesDetails returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *RotatedSecretDetailsInfo) GetSkipDryRun() bool`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *RotatedSecretDetailsInfo) GetSkipDryRunOk() (*bool, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *RotatedSecretDetailsInfo) SetSkipDryRun(v bool)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *RotatedSecretDetailsInfo) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTimeoutSeconds
 

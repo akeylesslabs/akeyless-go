@@ -99,6 +99,8 @@ type GatewayCreateMigration struct {
 	ConjurUsername *string `json:"conjur-username,omitempty"`
 	// Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration)
 	DeleteRemote *bool `json:"delete-remote,omitempty"`
+	// Enable password policy for rotated secrets created for Local and Domain users (Relevant only for Active Directory migration)
+	EnablePasswordPolicy *string `json:"enable-password-policy,omitempty"`
 	// A comma separated list of IPs, CIDR ranges, or DNS names to exclude from the scan
 	ExcludeHosts *string `json:"exclude-hosts,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
@@ -141,6 +143,8 @@ type GatewayCreateMigration struct {
 	K8sUsername *string `json:"k8s-username,omitempty"`
 	// Migration name
 	Name string `json:"name"`
+	// The length of the password to be generated (between 8 and 50). Relevant only for Active Directory migration when enable-password-policy is true.
+	PasswordLength *string `json:"password-length,omitempty"`
 	// A comma separated list of port ranges Examples: \"80,443\" or \"80,443,8080-8090\" or \"443\"
 	PortRanges *string `json:"port-ranges,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
@@ -161,6 +165,8 @@ type GatewayCreateMigration struct {
 	SiUsersIgnore *string `json:"si-users-ignore,omitempty"`
 	// Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration)
 	SiUsersPathTemplate string `json:"si-users-path-template"`
+	// Skip dry-run validation for rotated secrets created for Local and Domain users (Relevant only for Active Directory migration)
+	SkipDryRun *string `json:"skip-dry-run,omitempty"`
 	// Target location in Akeyless for imported secrets
 	TargetLocation string `json:"target-location"`
 	// Name of existing target to use to create the migration
@@ -201,6 +207,8 @@ func NewGatewayCreateMigration(hosts string, name string, siTargetName string, s
 	this.AdWinrmPort = &adWinrmPort
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var enablePasswordPolicy string = "false"
+	this.EnablePasswordPolicy = &enablePasswordPolicy
 	var hashiJson string = "true"
 	this.HashiJson = &hashiJson
 	this.Hosts = hosts
@@ -213,6 +221,8 @@ func NewGatewayCreateMigration(hosts string, name string, siTargetName string, s
 	this.SiSraEnableRdp = &siSraEnableRdp
 	this.SiTargetName = siTargetName
 	this.SiUsersPathTemplate = siUsersPathTemplate
+	var skipDryRun string = "false"
+	this.SkipDryRun = &skipDryRun
 	this.TargetLocation = targetLocation
 	return &this
 }
@@ -238,6 +248,8 @@ func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	this.AdWinrmPort = &adWinrmPort
 	var awsRegion string = "us-east-2"
 	this.AwsRegion = &awsRegion
+	var enablePasswordPolicy string = "false"
+	this.EnablePasswordPolicy = &enablePasswordPolicy
 	var hashiJson string = "true"
 	this.HashiJson = &hashiJson
 	var json bool = false
@@ -246,6 +258,8 @@ func NewGatewayCreateMigrationWithDefaults() *GatewayCreateMigration {
 	this.PortRanges = &portRanges
 	var siSraEnableRdp string = "false"
 	this.SiSraEnableRdp = &siSraEnableRdp
+	var skipDryRun string = "false"
+	this.SkipDryRun = &skipDryRun
 	return &this
 }
 
@@ -1497,6 +1511,38 @@ func (o *GatewayCreateMigration) SetDeleteRemote(v bool) {
 	o.DeleteRemote = &v
 }
 
+// GetEnablePasswordPolicy returns the EnablePasswordPolicy field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetEnablePasswordPolicy() string {
+	if o == nil || IsNil(o.EnablePasswordPolicy) {
+		var ret string
+		return ret
+	}
+	return *o.EnablePasswordPolicy
+}
+
+// GetEnablePasswordPolicyOk returns a tuple with the EnablePasswordPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetEnablePasswordPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.EnablePasswordPolicy) {
+		return nil, false
+	}
+	return o.EnablePasswordPolicy, true
+}
+
+// HasEnablePasswordPolicy returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasEnablePasswordPolicy() bool {
+	if o != nil && !IsNil(o.EnablePasswordPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnablePasswordPolicy gets a reference to the given string and assigns it to the EnablePasswordPolicy field.
+func (o *GatewayCreateMigration) SetEnablePasswordPolicy(v string) {
+	o.EnablePasswordPolicy = &v
+}
+
 // GetExcludeHosts returns the ExcludeHosts field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetExcludeHosts() string {
 	if o == nil || IsNil(o.ExcludeHosts) {
@@ -2153,6 +2199,38 @@ func (o *GatewayCreateMigration) SetName(v string) {
 	o.Name = v
 }
 
+// GetPasswordLength returns the PasswordLength field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetPasswordLength() string {
+	if o == nil || IsNil(o.PasswordLength) {
+		var ret string
+		return ret
+	}
+	return *o.PasswordLength
+}
+
+// GetPasswordLengthOk returns a tuple with the PasswordLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetPasswordLengthOk() (*string, bool) {
+	if o == nil || IsNil(o.PasswordLength) {
+		return nil, false
+	}
+	return o.PasswordLength, true
+}
+
+// HasPasswordLength returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasPasswordLength() bool {
+	if o != nil && !IsNil(o.PasswordLength) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
+func (o *GatewayCreateMigration) SetPasswordLength(v string) {
+	o.PasswordLength = &v
+}
+
 // GetPortRanges returns the PortRanges field value if set, zero value otherwise.
 func (o *GatewayCreateMigration) GetPortRanges() string {
 	if o == nil || IsNil(o.PortRanges) {
@@ -2455,6 +2533,38 @@ func (o *GatewayCreateMigration) GetSiUsersPathTemplateOk() (*string, bool) {
 // SetSiUsersPathTemplate sets field value
 func (o *GatewayCreateMigration) SetSiUsersPathTemplate(v string) {
 	o.SiUsersPathTemplate = v
+}
+
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayCreateMigration) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateMigration) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayCreateMigration) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayCreateMigration) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
 }
 
 // GetTargetLocation returns the TargetLocation field value
@@ -2800,6 +2910,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteRemote) {
 		toSerialize["delete-remote"] = o.DeleteRemote
 	}
+	if !IsNil(o.EnablePasswordPolicy) {
+		toSerialize["enable-password-policy"] = o.EnablePasswordPolicy
+	}
 	if !IsNil(o.ExcludeHosts) {
 		toSerialize["exclude-hosts"] = o.ExcludeHosts
 	}
@@ -2859,6 +2972,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 		toSerialize["k8s-username"] = o.K8sUsername
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PasswordLength) {
+		toSerialize["password-length"] = o.PasswordLength
+	}
 	if !IsNil(o.PortRanges) {
 		toSerialize["port-ranges"] = o.PortRanges
 	}
@@ -2885,6 +3001,9 @@ func (o GatewayCreateMigration) ToMap() (map[string]interface{}, error) {
 		toSerialize["si-users-ignore"] = o.SiUsersIgnore
 	}
 	toSerialize["si-users-path-template"] = o.SiUsersPathTemplate
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip-dry-run"] = o.SkipDryRun
+	}
 	toSerialize["target-location"] = o.TargetLocation
 	if !IsNil(o.TargetName) {
 		toSerialize["target-name"] = o.TargetName

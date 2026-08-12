@@ -8840,6 +8840,130 @@ func (a *V2ApiService) CreateEventForwarderExecute(r ApiCreateEventForwarderRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateF5BigIpTargetRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	createF5BigIpTarget *CreateF5BigIpTarget
+    body interface{}
+}
+
+func (r ApiCreateF5BigIpTargetRequest) CreateF5BigIpTarget(createF5BigIpTarget CreateF5BigIpTarget) ApiCreateF5BigIpTargetRequest {
+	r.createF5BigIpTarget = &createF5BigIpTarget
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiCreateF5BigIpTargetRequest) Body(body CreateF5BigIpTarget) ApiCreateF5BigIpTargetRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiCreateF5BigIpTargetRequest) Execute() (*CreateF5BigIpTargetOutput, *http.Response, error) {
+	return r.ApiService.CreateF5BigIpTargetExecute(r)
+}
+
+/*
+CreateF5BigIpTarget Method for CreateF5BigIpTarget
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateF5BigIpTargetRequest
+*/
+func (a *V2ApiService) CreateF5BigIpTarget(ctx context.Context) ApiCreateF5BigIpTargetRequest {
+	return ApiCreateF5BigIpTargetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CreateF5BigIpTargetOutput
+func (a *V2ApiService) CreateF5BigIpTargetExecute(r ApiCreateF5BigIpTargetRequest) (*CreateF5BigIpTargetOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CreateF5BigIpTargetOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.CreateF5BigIpTarget")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/create-f5-big-ip-target"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateGKETargetRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -16415,6 +16539,130 @@ func (a *V2ApiService) DetokenizeBatchExecute(r ApiDetokenizeBatchRequest) (*Det
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiDynamicSecretCreateAerospikeRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	dynamicSecretCreateAerospike *DynamicSecretCreateAerospike
+    body interface{}
+}
+
+func (r ApiDynamicSecretCreateAerospikeRequest) DynamicSecretCreateAerospike(dynamicSecretCreateAerospike DynamicSecretCreateAerospike) ApiDynamicSecretCreateAerospikeRequest {
+	r.dynamicSecretCreateAerospike = &dynamicSecretCreateAerospike
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiDynamicSecretCreateAerospikeRequest) Body(body DynamicSecretCreateAerospike) ApiDynamicSecretCreateAerospikeRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiDynamicSecretCreateAerospikeRequest) Execute() (*DynamicSecretCreateOutput, *http.Response, error) {
+	return r.ApiService.DynamicSecretCreateAerospikeExecute(r)
+}
+
+/*
+DynamicSecretCreateAerospike Method for DynamicSecretCreateAerospike
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDynamicSecretCreateAerospikeRequest
+*/
+func (a *V2ApiService) DynamicSecretCreateAerospike(ctx context.Context) ApiDynamicSecretCreateAerospikeRequest {
+	return ApiDynamicSecretCreateAerospikeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return DynamicSecretCreateOutput
+func (a *V2ApiService) DynamicSecretCreateAerospikeExecute(r ApiDynamicSecretCreateAerospikeRequest) (*DynamicSecretCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DynamicSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.DynamicSecretCreateAerospike")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dynamic-secret-create-aerospike"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDynamicSecretCreateArtifactoryRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -20728,6 +20976,130 @@ func (a *V2ApiService) DynamicSecretTmpCredsUpdateExecute(r ApiDynamicSecretTmpC
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiDynamicSecretUpdateAerospikeRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	dynamicSecretUpdateAerospike *DynamicSecretUpdateAerospike
+    body interface{}
+}
+
+func (r ApiDynamicSecretUpdateAerospikeRequest) DynamicSecretUpdateAerospike(dynamicSecretUpdateAerospike DynamicSecretUpdateAerospike) ApiDynamicSecretUpdateAerospikeRequest {
+	r.dynamicSecretUpdateAerospike = &dynamicSecretUpdateAerospike
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiDynamicSecretUpdateAerospikeRequest) Body(body DynamicSecretUpdateAerospike) ApiDynamicSecretUpdateAerospikeRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiDynamicSecretUpdateAerospikeRequest) Execute() (*DynamicSecretUpdateOutput, *http.Response, error) {
+	return r.ApiService.DynamicSecretUpdateAerospikeExecute(r)
+}
+
+/*
+DynamicSecretUpdateAerospike Method for DynamicSecretUpdateAerospike
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiDynamicSecretUpdateAerospikeRequest
+*/
+func (a *V2ApiService) DynamicSecretUpdateAerospike(ctx context.Context) ApiDynamicSecretUpdateAerospikeRequest {
+	return ApiDynamicSecretUpdateAerospikeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return DynamicSecretUpdateOutput
+func (a *V2ApiService) DynamicSecretUpdateAerospikeExecute(r ApiDynamicSecretUpdateAerospikeRequest) (*DynamicSecretUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DynamicSecretUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.DynamicSecretUpdateAerospike")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/dynamic-secret-update-aerospike"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiDynamicSecretUpdateArtifactoryRequest struct {
@@ -50980,6 +51352,130 @@ func (a *V2ApiService) RotateSecretExecute(r ApiRotateSecretRequest) (*RotatedSe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiRotatedSecretCreateAerospikeRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretCreateAerospike *RotatedSecretCreateAerospike
+    body interface{}
+}
+
+func (r ApiRotatedSecretCreateAerospikeRequest) RotatedSecretCreateAerospike(rotatedSecretCreateAerospike RotatedSecretCreateAerospike) ApiRotatedSecretCreateAerospikeRequest {
+	r.rotatedSecretCreateAerospike = &rotatedSecretCreateAerospike
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretCreateAerospikeRequest) Body(body RotatedSecretCreateAerospike) ApiRotatedSecretCreateAerospikeRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretCreateAerospikeRequest) Execute() (*RotatedSecretCreateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretCreateAerospikeExecute(r)
+}
+
+/*
+RotatedSecretCreateAerospike Method for RotatedSecretCreateAerospike
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretCreateAerospikeRequest
+*/
+func (a *V2ApiService) RotatedSecretCreateAerospike(ctx context.Context) ApiRotatedSecretCreateAerospikeRequest {
+	return ApiRotatedSecretCreateAerospikeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretCreateOutput
+func (a *V2ApiService) RotatedSecretCreateAerospikeExecute(r ApiRotatedSecretCreateAerospikeRequest) (*RotatedSecretCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretCreateAerospike")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-create-aerospike"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiRotatedSecretCreateAwsRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -51528,6 +52024,130 @@ func (a *V2ApiService) RotatedSecretCreateDockerhubExecute(r ApiRotatedSecretCre
 	}
 
 	localVarPath := localBasePath + "/rotated-secret-create-dockerhub"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRotatedSecretCreateF5BigIpRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretCreateF5BigIp *RotatedSecretCreateF5BigIp
+    body interface{}
+}
+
+func (r ApiRotatedSecretCreateF5BigIpRequest) RotatedSecretCreateF5BigIp(rotatedSecretCreateF5BigIp RotatedSecretCreateF5BigIp) ApiRotatedSecretCreateF5BigIpRequest {
+	r.rotatedSecretCreateF5BigIp = &rotatedSecretCreateF5BigIp
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretCreateF5BigIpRequest) Body(body RotatedSecretCreateF5BigIp) ApiRotatedSecretCreateF5BigIpRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretCreateF5BigIpRequest) Execute() (*RotatedSecretCreateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretCreateF5BigIpExecute(r)
+}
+
+/*
+RotatedSecretCreateF5BigIp Method for RotatedSecretCreateF5BigIp
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretCreateF5BigIpRequest
+*/
+func (a *V2ApiService) RotatedSecretCreateF5BigIp(ctx context.Context) ApiRotatedSecretCreateF5BigIpRequest {
+	return ApiRotatedSecretCreateF5BigIpRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretCreateOutput
+func (a *V2ApiService) RotatedSecretCreateF5BigIpExecute(r ApiRotatedSecretCreateF5BigIpRequest) (*RotatedSecretCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretCreateF5BigIp")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-create-f5-big-ip"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -54132,6 +54752,130 @@ func (a *V2ApiService) RotatedSecretSyncExecute(r ApiRotatedSecretSyncRequest) (
 	}
 
 	localVarPath := localBasePath + "/rotated-secret-sync"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiRotatedSecretUpdateAerospikeRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	rotatedSecretUpdateAerospike *RotatedSecretUpdateAerospike
+    body interface{}
+}
+
+func (r ApiRotatedSecretUpdateAerospikeRequest) RotatedSecretUpdateAerospike(rotatedSecretUpdateAerospike RotatedSecretUpdateAerospike) ApiRotatedSecretUpdateAerospikeRequest {
+	r.rotatedSecretUpdateAerospike = &rotatedSecretUpdateAerospike
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiRotatedSecretUpdateAerospikeRequest) Body(body RotatedSecretUpdateAerospike) ApiRotatedSecretUpdateAerospikeRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiRotatedSecretUpdateAerospikeRequest) Execute() (*RotatedSecretUpdateOutput, *http.Response, error) {
+	return r.ApiService.RotatedSecretUpdateAerospikeExecute(r)
+}
+
+/*
+RotatedSecretUpdateAerospike Method for RotatedSecretUpdateAerospike
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiRotatedSecretUpdateAerospikeRequest
+*/
+func (a *V2ApiService) RotatedSecretUpdateAerospike(ctx context.Context) ApiRotatedSecretUpdateAerospikeRequest {
+	return ApiRotatedSecretUpdateAerospikeRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return RotatedSecretUpdateOutput
+func (a *V2ApiService) RotatedSecretUpdateAerospikeExecute(r ApiRotatedSecretUpdateAerospikeRequest) (*RotatedSecretUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RotatedSecretUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.RotatedSecretUpdateAerospike")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/rotated-secret-update-aerospike"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -60021,6 +60765,130 @@ func (a *V2ApiService) TargetCreateEksExecute(r ApiTargetCreateEksRequest) (*Tar
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiTargetCreateF5BigIpRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	targetCreateF5BigIp *TargetCreateF5BigIp
+    body interface{}
+}
+
+func (r ApiTargetCreateF5BigIpRequest) TargetCreateF5BigIp(targetCreateF5BigIp TargetCreateF5BigIp) ApiTargetCreateF5BigIpRequest {
+	r.targetCreateF5BigIp = &targetCreateF5BigIp
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiTargetCreateF5BigIpRequest) Body(body TargetCreateF5BigIp) ApiTargetCreateF5BigIpRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiTargetCreateF5BigIpRequest) Execute() (*TargetCreateOutput, *http.Response, error) {
+	return r.ApiService.TargetCreateF5BigIpExecute(r)
+}
+
+/*
+TargetCreateF5BigIp Method for TargetCreateF5BigIp
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTargetCreateF5BigIpRequest
+*/
+func (a *V2ApiService) TargetCreateF5BigIp(ctx context.Context) ApiTargetCreateF5BigIpRequest {
+	return ApiTargetCreateF5BigIpRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TargetCreateOutput
+func (a *V2ApiService) TargetCreateF5BigIpExecute(r ApiTargetCreateF5BigIpRequest) (*TargetCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TargetCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.TargetCreateF5BigIp")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/target-create-f5-big-ip"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiTargetCreateGcpRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -65281,6 +66149,130 @@ func (a *V2ApiService) TargetUpdateEksExecute(r ApiTargetUpdateEksRequest) (*Tar
 	}
 
 	localVarPath := localBasePath + "/target-update-eks"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTargetUpdateF5BigIpRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	targetUpdateF5BigIp *TargetUpdateF5BigIp
+    body interface{}
+}
+
+func (r ApiTargetUpdateF5BigIpRequest) TargetUpdateF5BigIp(targetUpdateF5BigIp TargetUpdateF5BigIp) ApiTargetUpdateF5BigIpRequest {
+	r.targetUpdateF5BigIp = &targetUpdateF5BigIp
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiTargetUpdateF5BigIpRequest) Body(body TargetUpdateF5BigIp) ApiTargetUpdateF5BigIpRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiTargetUpdateF5BigIpRequest) Execute() (*TargetUpdateOutput, *http.Response, error) {
+	return r.ApiService.TargetUpdateF5BigIpExecute(r)
+}
+
+/*
+TargetUpdateF5BigIp Method for TargetUpdateF5BigIp
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTargetUpdateF5BigIpRequest
+*/
+func (a *V2ApiService) TargetUpdateF5BigIp(ctx context.Context) ApiTargetUpdateF5BigIpRequest {
+	return ApiTargetUpdateF5BigIpRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return TargetUpdateOutput
+func (a *V2ApiService) TargetUpdateF5BigIpExecute(r ApiTargetUpdateF5BigIpRequest) (*TargetUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TargetUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.TargetUpdateF5BigIp")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/target-update-f5-big-ip"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -72845,6 +73837,130 @@ func (a *V2ApiService) UpdateEventForwarderExecute(r ApiUpdateEventForwarderRequ
 	}
 
 	localVarPath := localBasePath + "/update-event-forwarder"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateF5BigIpTargetRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	updateF5BigIpTarget *UpdateF5BigIpTarget
+    body interface{}
+}
+
+func (r ApiUpdateF5BigIpTargetRequest) UpdateF5BigIpTarget(updateF5BigIpTarget UpdateF5BigIpTarget) ApiUpdateF5BigIpTargetRequest {
+	r.updateF5BigIpTarget = &updateF5BigIpTarget
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiUpdateF5BigIpTargetRequest) Body(body UpdateF5BigIpTarget) ApiUpdateF5BigIpTargetRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiUpdateF5BigIpTargetRequest) Execute() (*UpdateF5BigIpTargetOutput, *http.Response, error) {
+	return r.ApiService.UpdateF5BigIpTargetExecute(r)
+}
+
+/*
+UpdateF5BigIpTarget Method for UpdateF5BigIpTarget
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUpdateF5BigIpTargetRequest
+*/
+func (a *V2ApiService) UpdateF5BigIpTarget(ctx context.Context) ApiUpdateF5BigIpTargetRequest {
+	return ApiUpdateF5BigIpTargetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return UpdateF5BigIpTargetOutput
+func (a *V2ApiService) UpdateF5BigIpTargetExecute(r ApiUpdateF5BigIpTargetRequest) (*UpdateF5BigIpTargetOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UpdateF5BigIpTargetOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.UpdateF5BigIpTarget")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/update-f5-big-ip-target"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

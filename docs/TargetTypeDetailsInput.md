@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **DigicertTargetDetails** | Pointer to [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 
 **DockerhubTargetDetails** | Pointer to [**DockerhubTargetDetails**](DockerhubTargetDetails.md) |  | [optional] 
 **EksTargetDetails** | Pointer to [**EKSTargetDetails**](EKSTargetDetails.md) |  | [optional] 
+**F5BigIpTargetDetails** | Pointer to [**F5BigIpTargetDetails**](F5BigIpTargetDetails.md) |  | [optional] 
 **GcpTargetDetails** | Pointer to [**GcpTargetDetails**](GcpTargetDetails.md) |  | [optional] 
 **GeminiTargetDetails** | Pointer to [**GeminiTargetDetails**](GeminiTargetDetails.md) |  | [optional] 
 **GithubTargetDetails** | Pointer to [**GithubTargetDetails**](GithubTargetDetails.md) |  | [optional] 
@@ -416,6 +417,31 @@ SetEksTargetDetails sets EksTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasEksTargetDetails() bool`
 
 HasEksTargetDetails returns a boolean if a field has been set.
+
+### GetF5BigIpTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetF5BigIpTargetDetails() F5BigIpTargetDetails`
+
+GetF5BigIpTargetDetails returns the F5BigIpTargetDetails field if non-nil, zero value otherwise.
+
+### GetF5BigIpTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetF5BigIpTargetDetailsOk() (*F5BigIpTargetDetails, bool)`
+
+GetF5BigIpTargetDetailsOk returns a tuple with the F5BigIpTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetF5BigIpTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetF5BigIpTargetDetails(v F5BigIpTargetDetails)`
+
+SetF5BigIpTargetDetails sets F5BigIpTargetDetails field to given value.
+
+### HasF5BigIpTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasF5BigIpTargetDetails() bool`
+
+HasF5BigIpTargetDetails returns a boolean if a field has been set.
 
 ### GetGcpTargetDetails
 

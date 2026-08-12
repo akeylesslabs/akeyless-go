@@ -4,12 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProviderType** | Pointer to **string** |  | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **EnablePasswordPolicy** | Pointer to **string** | Enable password policy | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -27,6 +30,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
@@ -35,7 +39,9 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
+**Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **TargetName** | **string** | The target name to associate | 
 **TimeoutSec** | Pointer to **int64** | Maximum allowed time in seconds for the custom rotator to return the results | [optional] [default to 40]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -63,6 +69,56 @@ will change when the set of required properties is changed
 NewRotatedSecretCreateCustomWithDefaults instantiates a new RotatedSecretCreateCustom object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProviderType
+
+`func (o *RotatedSecretCreateCustom) GetProviderType() string`
+
+GetProviderType returns the ProviderType field if non-nil, zero value otherwise.
+
+### GetProviderTypeOk
+
+`func (o *RotatedSecretCreateCustom) GetProviderTypeOk() (*string, bool)`
+
+GetProviderTypeOk returns a tuple with the ProviderType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderType
+
+`func (o *RotatedSecretCreateCustom) SetProviderType(v string)`
+
+SetProviderType sets ProviderType field to given value.
+
+### HasProviderType
+
+`func (o *RotatedSecretCreateCustom) HasProviderType() bool`
+
+HasProviderType returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *RotatedSecretCreateCustom) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *RotatedSecretCreateCustom) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *RotatedSecretCreateCustom) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *RotatedSecretCreateCustom) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAuthenticationCredentials
 
@@ -213,6 +269,31 @@ SetEnablePasswordPolicy sets EnablePasswordPolicy field to given value.
 `func (o *RotatedSecretCreateCustom) HasEnablePasswordPolicy() bool`
 
 HasEnablePasswordPolicy returns a boolean if a field has been set.
+
+### GetHostProvider
+
+`func (o *RotatedSecretCreateCustom) GetHostProvider() string`
+
+GetHostProvider returns the HostProvider field if non-nil, zero value otherwise.
+
+### GetHostProviderOk
+
+`func (o *RotatedSecretCreateCustom) GetHostProviderOk() (*string, bool)`
+
+GetHostProviderOk returns a tuple with the HostProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostProvider
+
+`func (o *RotatedSecretCreateCustom) SetHostProvider(v string)`
+
+SetHostProvider sets HostProvider field to given value.
+
+### HasHostProvider
+
+`func (o *RotatedSecretCreateCustom) HasHostProvider() bool`
+
+HasHostProvider returns a boolean if a field has been set.
 
 ### GetInputRule
 
@@ -634,6 +715,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 
 HasSecureAccessEnable returns a boolean if a field has been set.
 
+### GetSecureAccessEnforceHostsRestriction
+
+`func (o *RotatedSecretCreateCustom) GetSecureAccessEnforceHostsRestriction() bool`
+
+GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnforceHostsRestrictionOk
+
+`func (o *RotatedSecretCreateCustom) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool)`
+
+GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnforceHostsRestriction
+
+`func (o *RotatedSecretCreateCustom) SetSecureAccessEnforceHostsRestriction(v bool)`
+
+SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction field to given value.
+
+### HasSecureAccessEnforceHostsRestriction
+
+`func (o *RotatedSecretCreateCustom) HasSecureAccessEnforceHostsRestriction() bool`
+
+HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+
 ### GetSecureAccessHost
 
 `func (o *RotatedSecretCreateCustom) GetSecureAccessHost() []string`
@@ -834,6 +940,31 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
 
+### GetSkipDryRun
+
+`func (o *RotatedSecretCreateCustom) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *RotatedSecretCreateCustom) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *RotatedSecretCreateCustom) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *RotatedSecretCreateCustom) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *RotatedSecretCreateCustom) GetTags() []string`
@@ -858,6 +989,31 @@ SetTags sets Tags field to given value.
 `func (o *RotatedSecretCreateCustom) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetTarget
+
+`func (o *RotatedSecretCreateCustom) GetTarget() []string`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *RotatedSecretCreateCustom) GetTargetOk() (*[]string, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *RotatedSecretCreateCustom) SetTarget(v []string)`
+
+SetTarget sets Target field to given value.
+
+### HasTarget
+
+`func (o *RotatedSecretCreateCustom) HasTarget() bool`
+
+HasTarget returns a boolean if a field has been set.
 
 ### GetTargetName
 

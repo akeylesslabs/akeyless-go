@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Expiry** | Pointer to **int64** | Credentials expiration date | [optional] 
 **KfmCreds** | Pointer to **string** | Temporary credentials for accessing the KFMs instances | [optional] 
 **NeedMfaAppFirstConfig** | Pointer to **bool** | If the user didn&#39;t complete to configure the MFA app | [optional] 
+**RecoveryKeyId** | Pointer to **string** | RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery. | [optional] 
 **RequiredMfa** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Credentials tmp token | [optional] 
 **UamCreds** | Pointer to **string** | Temporary credentials for accessing the UAM service | [optional] 
@@ -182,6 +183,31 @@ SetNeedMfaAppFirstConfig sets NeedMfaAppFirstConfig field to given value.
 `func (o *SystemAccessCredentialsReplyObj) HasNeedMfaAppFirstConfig() bool`
 
 HasNeedMfaAppFirstConfig returns a boolean if a field has been set.
+
+### GetRecoveryKeyId
+
+`func (o *SystemAccessCredentialsReplyObj) GetRecoveryKeyId() string`
+
+GetRecoveryKeyId returns the RecoveryKeyId field if non-nil, zero value otherwise.
+
+### GetRecoveryKeyIdOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetRecoveryKeyIdOk() (*string, bool)`
+
+GetRecoveryKeyIdOk returns a tuple with the RecoveryKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecoveryKeyId
+
+`func (o *SystemAccessCredentialsReplyObj) SetRecoveryKeyId(v string)`
+
+SetRecoveryKeyId sets RecoveryKeyId field to given value.
+
+### HasRecoveryKeyId
+
+`func (o *SystemAccessCredentialsReplyObj) HasRecoveryKeyId() bool`
+
+HasRecoveryKeyId returns a boolean if a field has been set.
 
 ### GetRequiredMfa
 

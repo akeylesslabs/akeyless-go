@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CreationStatements** | Pointer to **string** | Redshift Creation statements | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
@@ -22,6 +23,7 @@ Name | Type | Description | Notes
 **RedshiftUsername** | Pointer to **string** | Redshift Username | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
@@ -51,6 +53,31 @@ will change when the set of required properties is changed
 NewDynamicSecretCreateRedshiftWithDefaults instantiates a new DynamicSecretCreateRedshift object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAraEnabled
+
+`func (o *DynamicSecretCreateRedshift) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *DynamicSecretCreateRedshift) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *DynamicSecretCreateRedshift) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *DynamicSecretCreateRedshift) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetCreationStatements
 
@@ -496,6 +523,31 @@ SetSecureAccessHost sets SecureAccessHost field to given value.
 `func (o *DynamicSecretCreateRedshift) HasSecureAccessHost() bool`
 
 HasSecureAccessHost returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *DynamicSecretCreateRedshift) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *DynamicSecretCreateRedshift) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *DynamicSecretCreateRedshift) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *DynamicSecretCreateRedshift) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetSsl
 

@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretDelete{}
 
 // RotatedSecretDelete rotatedSecretDelete is a command that deletes a rotated secret
 type RotatedSecretDelete struct {
+	// Delete the rotated secret only from Akeyless if failed to delete it from the third-party provider
+	ForceDelete *bool `json:"force-delete,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Rotated secret name
@@ -60,6 +62,38 @@ func NewRotatedSecretDeleteWithDefaults() *RotatedSecretDelete {
 	var version int32 = -1
 	this.Version = &version
 	return &this
+}
+
+// GetForceDelete returns the ForceDelete field value if set, zero value otherwise.
+func (o *RotatedSecretDelete) GetForceDelete() bool {
+	if o == nil || IsNil(o.ForceDelete) {
+		var ret bool
+		return ret
+	}
+	return *o.ForceDelete
+}
+
+// GetForceDeleteOk returns a tuple with the ForceDelete field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDelete) GetForceDeleteOk() (*bool, bool) {
+	if o == nil || IsNil(o.ForceDelete) {
+		return nil, false
+	}
+	return o.ForceDelete, true
+}
+
+// HasForceDelete returns a boolean if a field has been set.
+func (o *RotatedSecretDelete) HasForceDelete() bool {
+	if o != nil && !IsNil(o.ForceDelete) {
+		return true
+	}
+
+	return false
+}
+
+// SetForceDelete gets a reference to the given bool and assigns it to the ForceDelete field.
+func (o *RotatedSecretDelete) SetForceDelete(v bool) {
+	o.ForceDelete = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -224,6 +258,9 @@ func (o RotatedSecretDelete) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretDelete) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ForceDelete) {
+		toSerialize["force-delete"] = o.ForceDelete
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

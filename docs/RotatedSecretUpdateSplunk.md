@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **Audience** | Pointer to **string** | Token audience for Splunk token creation (relevant only for rotator-type&#x3D;token) | [optional] 
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** |  | [optional] 
@@ -26,6 +27,7 @@ Name | Type | Description | Notes
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **SplunkToken** | Pointer to **string** | For rotator-type&#x3D;token, optionally set/replace the stored Splunk authentication token value. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenOwner** | Pointer to **string** | For rotator-type&#x3D;token, specify the Splunk username that the new token should be issued for. (Splunk 10 requires name&#x3D;&lt;token-owner&gt; when creating auth tokens.) | [optional] 
@@ -78,6 +80,31 @@ SetAddTag sets AddTag field to given value.
 `func (o *RotatedSecretUpdateSplunk) HasAddTag() bool`
 
 HasAddTag returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *RotatedSecretUpdateSplunk) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *RotatedSecretUpdateSplunk) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *RotatedSecretUpdateSplunk) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *RotatedSecretUpdateSplunk) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAudience
 
@@ -598,6 +625,31 @@ SetRotationInterval sets RotationInterval field to given value.
 `func (o *RotatedSecretUpdateSplunk) HasRotationInterval() bool`
 
 HasRotationInterval returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *RotatedSecretUpdateSplunk) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *RotatedSecretUpdateSplunk) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *RotatedSecretUpdateSplunk) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *RotatedSecretUpdateSplunk) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetSplunkToken
 

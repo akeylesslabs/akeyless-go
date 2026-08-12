@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CertificateTtlInSeconds** | Pointer to **int64** |  | [optional] 
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
+**IssuingCaId** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Rules** | Pointer to [**[]PathRule**](PathRule.md) |  | [optional] 
 
@@ -155,6 +156,31 @@ SetId sets Id field to given value.
 `func (o *KMIPClient) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIssuingCaId
+
+`func (o *KMIPClient) GetIssuingCaId() string`
+
+GetIssuingCaId returns the IssuingCaId field if non-nil, zero value otherwise.
+
+### GetIssuingCaIdOk
+
+`func (o *KMIPClient) GetIssuingCaIdOk() (*string, bool)`
+
+GetIssuingCaIdOk returns a tuple with the IssuingCaId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIssuingCaId
+
+`func (o *KMIPClient) SetIssuingCaId(v string)`
+
+SetIssuingCaId sets IssuingCaId field to given value.
+
+### HasIssuingCaId
+
+`func (o *KMIPClient) HasIssuingCaId() bool`
+
+HasIssuingCaId returns a boolean if a field has been set.
 
 ### GetName
 

@@ -62,7 +62,7 @@ type CreateAuthMethodCert struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication.
 	RequireCrlDp *bool `json:"require-crl-dp,omitempty"`

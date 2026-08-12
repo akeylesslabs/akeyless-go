@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**GcpProjectId** | Pointer to **string** | The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **ObjectType** | Pointer to **string** |  | [optional] 
 **PageSize** | Pointer to **int64** | Optional: number of items requested per response (Azure KV). When set, response may include next_token | [optional] 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewUscListWithDefaults instantiates a new UscList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGcpProjectId
+
+`func (o *UscList) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *UscList) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *UscList) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *UscList) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetJson
 

@@ -26,6 +26,8 @@ type UscCreate struct {
 	BinaryValue *bool `json:"binary-value,omitempty"`
 	// Description of the universal secrets
 	Description *string `json:"description,omitempty"`
+	// The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.
+	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// The namespace (relevant for Hashi vault target)
@@ -144,6 +146,38 @@ func (o *UscCreate) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *UscCreate) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *UscCreate) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscCreate) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *UscCreate) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *UscCreate) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -617,6 +651,9 @@ func (o UscCreate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

@@ -24,6 +24,8 @@ var _ MappedNullable = &RotatedSecretSync{}
 type RotatedSecretSync struct {
 	// Delete the secret from remote secret manager (for association create/update)
 	DeleteRemote *bool `json:"delete-remote,omitempty"`
+	// GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --environments repo1/env1,repo2/env2).
+	Environments *string `json:"environments,omitempty"`
 	// JQ expression to filter or transform the secret value
 	FilterSecretValue *string `json:"filter-secret-value,omitempty"`
 	// Set output format to JSON
@@ -34,6 +36,8 @@ type RotatedSecretSync struct {
 	Namespace *string `json:"namespace,omitempty"`
 	// Remote Secret Name that will be synced on the remote endpoint
 	RemoteSecretName *string `json:"remote-secret-name,omitempty"`
+	// GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --repositories repo1,repo2).
+	Repositories *string `json:"repositories,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -96,6 +100,38 @@ func (o *RotatedSecretSync) HasDeleteRemote() bool {
 // SetDeleteRemote gets a reference to the given bool and assigns it to the DeleteRemote field.
 func (o *RotatedSecretSync) SetDeleteRemote(v bool) {
 	o.DeleteRemote = &v
+}
+
+// GetEnvironments returns the Environments field value if set, zero value otherwise.
+func (o *RotatedSecretSync) GetEnvironments() string {
+	if o == nil || IsNil(o.Environments) {
+		var ret string
+		return ret
+	}
+	return *o.Environments
+}
+
+// GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretSync) GetEnvironmentsOk() (*string, bool) {
+	if o == nil || IsNil(o.Environments) {
+		return nil, false
+	}
+	return o.Environments, true
+}
+
+// HasEnvironments returns a boolean if a field has been set.
+func (o *RotatedSecretSync) HasEnvironments() bool {
+	if o != nil && !IsNil(o.Environments) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironments gets a reference to the given string and assigns it to the Environments field.
+func (o *RotatedSecretSync) SetEnvironments(v string) {
+	o.Environments = &v
 }
 
 // GetFilterSecretValue returns the FilterSecretValue field value if set, zero value otherwise.
@@ -250,6 +286,38 @@ func (o *RotatedSecretSync) SetRemoteSecretName(v string) {
 	o.RemoteSecretName = &v
 }
 
+// GetRepositories returns the Repositories field value if set, zero value otherwise.
+func (o *RotatedSecretSync) GetRepositories() string {
+	if o == nil || IsNil(o.Repositories) {
+		var ret string
+		return ret
+	}
+	return *o.Repositories
+}
+
+// GetRepositoriesOk returns a tuple with the Repositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretSync) GetRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.Repositories) {
+		return nil, false
+	}
+	return o.Repositories, true
+}
+
+// HasRepositories returns a boolean if a field has been set.
+func (o *RotatedSecretSync) HasRepositories() bool {
+	if o != nil && !IsNil(o.Repositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositories gets a reference to the given string and assigns it to the Repositories field.
+func (o *RotatedSecretSync) SetRepositories(v string) {
+	o.Repositories = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *RotatedSecretSync) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -359,6 +427,9 @@ func (o RotatedSecretSync) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteRemote) {
 		toSerialize["delete-remote"] = o.DeleteRemote
 	}
+	if !IsNil(o.Environments) {
+		toSerialize["environments"] = o.Environments
+	}
 	if !IsNil(o.FilterSecretValue) {
 		toSerialize["filter-secret-value"] = o.FilterSecretValue
 	}
@@ -371,6 +442,9 @@ func (o RotatedSecretSync) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RemoteSecretName) {
 		toSerialize["remote-secret-name"] = o.RemoteSecretName
+	}
+	if !IsNil(o.Repositories) {
+		toSerialize["repositories"] = o.Repositories
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

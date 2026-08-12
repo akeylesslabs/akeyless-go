@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayCreateProducerRedshift{}
 
 // GatewayCreateProducerRedshift gatewayCreateProducerRedshift is a command that creates redshift producer [Deprecated: Use dynamic-secret-create-redshift command]
 type GatewayCreateProducerRedshift struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Redshift Creation statements
 	CreationStatements *string `json:"creation-statements,omitempty"`
 	// Customize how temporary usernames are generated using go template
@@ -56,6 +58,8 @@ type GatewayCreateProducerRedshift struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// Add tags attached to this object
@@ -115,6 +119,38 @@ func NewGatewayCreateProducerRedshiftWithDefaults() *GatewayCreateProducerRedshi
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedshift) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedshift) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedshift) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayCreateProducerRedshift) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCreationStatements returns the CreationStatements field value if set, zero value otherwise.
@@ -653,6 +689,38 @@ func (o *GatewayCreateProducerRedshift) SetSecureAccessHost(v []string) {
 	o.SecureAccessHost = v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayCreateProducerRedshift) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerRedshift) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayCreateProducerRedshift) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerRedshift) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetSsl returns the Ssl field value if set, zero value otherwise.
 func (o *GatewayCreateProducerRedshift) GetSsl() bool {
 	if o == nil || IsNil(o.Ssl) {
@@ -983,6 +1051,9 @@ func (o GatewayCreateProducerRedshift) MarshalJSON() ([]byte, error) {
 
 func (o GatewayCreateProducerRedshift) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.CreationStatements) {
 		toSerialize["creation-statements"] = o.CreationStatements
 	}
@@ -1031,6 +1102,9 @@ func (o GatewayCreateProducerRedshift) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Ssl) {
 		toSerialize["ssl"] = o.Ssl

@@ -52,7 +52,7 @@ type AuthMethodCreateEmail struct {
 	MfaType *string `json:"mfa-type,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

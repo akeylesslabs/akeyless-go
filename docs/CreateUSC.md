@@ -8,7 +8,10 @@ Name | Type | Description | Notes
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the Universal Secrets Connector | [optional] 
 **EnvironmentNames** | Pointer to **string** | The environments in repo-name/environment-name format, comma-separated (only relevant for: github-scope&#x3D;repository-environment) | [optional] 
+**GcpFolderId** | Pointer to **string** | GCP Folder ID (Relevant only for GCP targets with folder scope) | [optional] 
+**GcpOrganizationId** | Pointer to **string** | GCP Organization ID (Relevant only for GCP targets) | [optional] 
 **GcpProjectId** | Pointer to **string** | GCP Project ID (Relevant only for GCP targets) | [optional] 
+**GcpScope** | Pointer to **string** | The gcp usc scope [ project / organization / folder] | [optional] [default to "project"]
 **GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type&#x3D;regional-secrets. | [optional] 
 **GithubScope** | Pointer to **string** | The scope where secrets will be created, available options: [repository, organization, repository-environment] | [optional] [default to "repository"]
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
@@ -146,6 +149,56 @@ SetEnvironmentNames sets EnvironmentNames field to given value.
 
 HasEnvironmentNames returns a boolean if a field has been set.
 
+### GetGcpFolderId
+
+`func (o *CreateUSC) GetGcpFolderId() string`
+
+GetGcpFolderId returns the GcpFolderId field if non-nil, zero value otherwise.
+
+### GetGcpFolderIdOk
+
+`func (o *CreateUSC) GetGcpFolderIdOk() (*string, bool)`
+
+GetGcpFolderIdOk returns a tuple with the GcpFolderId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpFolderId
+
+`func (o *CreateUSC) SetGcpFolderId(v string)`
+
+SetGcpFolderId sets GcpFolderId field to given value.
+
+### HasGcpFolderId
+
+`func (o *CreateUSC) HasGcpFolderId() bool`
+
+HasGcpFolderId returns a boolean if a field has been set.
+
+### GetGcpOrganizationId
+
+`func (o *CreateUSC) GetGcpOrganizationId() string`
+
+GetGcpOrganizationId returns the GcpOrganizationId field if non-nil, zero value otherwise.
+
+### GetGcpOrganizationIdOk
+
+`func (o *CreateUSC) GetGcpOrganizationIdOk() (*string, bool)`
+
+GetGcpOrganizationIdOk returns a tuple with the GcpOrganizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpOrganizationId
+
+`func (o *CreateUSC) SetGcpOrganizationId(v string)`
+
+SetGcpOrganizationId sets GcpOrganizationId field to given value.
+
+### HasGcpOrganizationId
+
+`func (o *CreateUSC) HasGcpOrganizationId() bool`
+
+HasGcpOrganizationId returns a boolean if a field has been set.
+
 ### GetGcpProjectId
 
 `func (o *CreateUSC) GetGcpProjectId() string`
@@ -170,6 +223,31 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *CreateUSC) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### GetGcpScope
+
+`func (o *CreateUSC) GetGcpScope() string`
+
+GetGcpScope returns the GcpScope field if non-nil, zero value otherwise.
+
+### GetGcpScopeOk
+
+`func (o *CreateUSC) GetGcpScopeOk() (*string, bool)`
+
+GetGcpScopeOk returns a tuple with the GcpScope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpScope
+
+`func (o *CreateUSC) SetGcpScope(v string)`
+
+SetGcpScope sets GcpScope field to given value.
+
+### HasGcpScope
+
+`func (o *CreateUSC) HasGcpScope() bool`
+
+HasGcpScope returns a boolean if a field has been set.
 
 ### GetGcpSmRegions
 

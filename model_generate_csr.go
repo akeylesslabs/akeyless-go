@@ -25,7 +25,7 @@ type GenerateCsr struct {
 	Alg *string `json:"alg,omitempty"`
 	// A comma-separated list of dns alternative names
 	AltNames *string `json:"alt-names,omitempty"`
-	// The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing)
+	// A comma-separated list of certificate types to include in the CSR certificate (ssl-client/ssl-server/certificate-signing)
 	CertificateType *string `json:"certificate-type,omitempty"`
 	// The city to be included in the CSR certificate
 	City *string `json:"city,omitempty"`
@@ -35,12 +35,16 @@ type GenerateCsr struct {
 	Country *string `json:"country,omitempty"`
 	// Add critical to the key usage extension (will be false if not added)
 	Critical *bool `json:"critical,omitempty"`
+	// The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment)
+	CustomerFrgId *string `json:"customer-frg-id,omitempty"`
 	// The department to be included in the CSR certificate
 	Dep *string `json:"dep,omitempty"`
 	// A comma-separated list of email addresses alternative names
 	EmailAddresses *string `json:"email-addresses,omitempty"`
 	// The flag to indicate if the private key should be exported
 	ExportPrivateKey *bool `json:"export-private-key,omitempty"`
+	// A comma-separated list of extended key usages to include in the CSR certificate
+	ExtKeyUsage *string `json:"ext-key-usage,omitempty"`
 	// Generate a new classic key for the csr
 	GenerateKey *bool `json:"generate-key,omitempty"`
 	// Specifies the hash algorithm used for the encryption key's operations, available options: SHA256, SHA384, SHA512
@@ -51,6 +55,8 @@ type GenerateCsr struct {
 	Json *bool `json:"json,omitempty"`
 	// The type of the key to generate (classic-key/dfc)
 	KeyType string `json:"key-type"`
+	// A comma-separated list of key usages to include in the CSR certificate
+	KeyUsage *string `json:"key-usage,omitempty"`
 	// The key name
 	Name string `json:"name"`
 	// The organization to be included in the CSR certificate
@@ -323,6 +329,38 @@ func (o *GenerateCsr) SetCritical(v bool) {
 	o.Critical = &v
 }
 
+// GetCustomerFrgId returns the CustomerFrgId field value if set, zero value otherwise.
+func (o *GenerateCsr) GetCustomerFrgId() string {
+	if o == nil || IsNil(o.CustomerFrgId) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerFrgId
+}
+
+// GetCustomerFrgIdOk returns a tuple with the CustomerFrgId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenerateCsr) GetCustomerFrgIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerFrgId) {
+		return nil, false
+	}
+	return o.CustomerFrgId, true
+}
+
+// HasCustomerFrgId returns a boolean if a field has been set.
+func (o *GenerateCsr) HasCustomerFrgId() bool {
+	if o != nil && !IsNil(o.CustomerFrgId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerFrgId gets a reference to the given string and assigns it to the CustomerFrgId field.
+func (o *GenerateCsr) SetCustomerFrgId(v string) {
+	o.CustomerFrgId = &v
+}
+
 // GetDep returns the Dep field value if set, zero value otherwise.
 func (o *GenerateCsr) GetDep() string {
 	if o == nil || IsNil(o.Dep) {
@@ -417,6 +455,38 @@ func (o *GenerateCsr) HasExportPrivateKey() bool {
 // SetExportPrivateKey gets a reference to the given bool and assigns it to the ExportPrivateKey field.
 func (o *GenerateCsr) SetExportPrivateKey(v bool) {
 	o.ExportPrivateKey = &v
+}
+
+// GetExtKeyUsage returns the ExtKeyUsage field value if set, zero value otherwise.
+func (o *GenerateCsr) GetExtKeyUsage() string {
+	if o == nil || IsNil(o.ExtKeyUsage) {
+		var ret string
+		return ret
+	}
+	return *o.ExtKeyUsage
+}
+
+// GetExtKeyUsageOk returns a tuple with the ExtKeyUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenerateCsr) GetExtKeyUsageOk() (*string, bool) {
+	if o == nil || IsNil(o.ExtKeyUsage) {
+		return nil, false
+	}
+	return o.ExtKeyUsage, true
+}
+
+// HasExtKeyUsage returns a boolean if a field has been set.
+func (o *GenerateCsr) HasExtKeyUsage() bool {
+	if o != nil && !IsNil(o.ExtKeyUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtKeyUsage gets a reference to the given string and assigns it to the ExtKeyUsage field.
+func (o *GenerateCsr) SetExtKeyUsage(v string) {
+	o.ExtKeyUsage = &v
 }
 
 // GetGenerateKey returns the GenerateKey field value if set, zero value otherwise.
@@ -569,6 +639,38 @@ func (o *GenerateCsr) GetKeyTypeOk() (*string, bool) {
 // SetKeyType sets field value
 func (o *GenerateCsr) SetKeyType(v string) {
 	o.KeyType = v
+}
+
+// GetKeyUsage returns the KeyUsage field value if set, zero value otherwise.
+func (o *GenerateCsr) GetKeyUsage() string {
+	if o == nil || IsNil(o.KeyUsage) {
+		var ret string
+		return ret
+	}
+	return *o.KeyUsage
+}
+
+// GetKeyUsageOk returns a tuple with the KeyUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenerateCsr) GetKeyUsageOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyUsage) {
+		return nil, false
+	}
+	return o.KeyUsage, true
+}
+
+// HasKeyUsage returns a boolean if a field has been set.
+func (o *GenerateCsr) HasKeyUsage() bool {
+	if o != nil && !IsNil(o.KeyUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyUsage gets a reference to the given string and assigns it to the KeyUsage field.
+func (o *GenerateCsr) SetKeyUsage(v string) {
+	o.KeyUsage = &v
 }
 
 // GetName returns the Name field value
@@ -816,6 +918,9 @@ func (o GenerateCsr) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Critical) {
 		toSerialize["critical"] = o.Critical
 	}
+	if !IsNil(o.CustomerFrgId) {
+		toSerialize["customer-frg-id"] = o.CustomerFrgId
+	}
 	if !IsNil(o.Dep) {
 		toSerialize["dep"] = o.Dep
 	}
@@ -824,6 +929,9 @@ func (o GenerateCsr) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExportPrivateKey) {
 		toSerialize["export-private-key"] = o.ExportPrivateKey
+	}
+	if !IsNil(o.ExtKeyUsage) {
+		toSerialize["ext-key-usage"] = o.ExtKeyUsage
 	}
 	if !IsNil(o.GenerateKey) {
 		toSerialize["generate-key"] = o.GenerateKey
@@ -838,6 +946,9 @@ func (o GenerateCsr) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["key-type"] = o.KeyType
+	if !IsNil(o.KeyUsage) {
+		toSerialize["key-usage"] = o.KeyUsage
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Org) {
 		toSerialize["org"] = o.Org

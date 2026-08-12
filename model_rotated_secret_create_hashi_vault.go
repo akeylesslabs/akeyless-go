@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretCreateHashiVault{}
 
 // RotatedSecretCreateHashiVault struct for RotatedSecretCreateHashiVault
 type RotatedSecretCreateHashiVault struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
@@ -46,6 +48,8 @@ type RotatedSecretCreateHashiVault struct {
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	RotationInterval *string `json:"rotation-interval,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// The target name to associate
@@ -86,6 +90,38 @@ func NewRotatedSecretCreateHashiVaultWithDefaults() *RotatedSecretCreateHashiVau
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretCreateHashiVault) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateHashiVault) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretCreateHashiVault) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretCreateHashiVault) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAutoRotate returns the AutoRotate field value if set, zero value otherwise.
@@ -528,6 +564,38 @@ func (o *RotatedSecretCreateHashiVault) SetRotationInterval(v string) {
 	o.RotationInterval = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretCreateHashiVault) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateHashiVault) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretCreateHashiVault) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateHashiVault) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RotatedSecretCreateHashiVault) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -786,6 +854,9 @@ func (o RotatedSecretCreateHashiVault) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretCreateHashiVault) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AutoRotate) {
 		toSerialize["auto-rotate"] = o.AutoRotate
 	}
@@ -825,6 +896,9 @@ func (o RotatedSecretCreateHashiVault) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RotationInterval) {
 		toSerialize["rotation-interval"] = o.RotationInterval
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

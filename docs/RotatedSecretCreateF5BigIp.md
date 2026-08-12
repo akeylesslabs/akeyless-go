@@ -1,0 +1,743 @@
+# RotatedSecretCreateF5BigIp
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
+**AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
+**AutoRotate** | Pointer to **string** |  | [optional] 
+**DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**Description** | Pointer to **string** | Description of the object | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
+**ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
+**Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Key** | Pointer to **string** |  | [optional] 
+**MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
+**Name** | **string** | Rotated secret name | 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
+**RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
+**RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
+**RotationHour** | Pointer to **int32** |  | [optional] 
+**RotationInterval** | Pointer to **string** |  | [optional] 
+**RotatorType** | **string** | The rotator type. options: [target/password] | 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
+**TargetName** | **string** | The target name to associate | 
+**Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UseCapitalLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 
+**UseLowerLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one lowercase character from the ISO basic Latin alphabet (a to z). [true/false] | [optional] 
+**UseNumbers** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one numeric character (0 to 9). [true/false] | [optional] 
+**UseSpecialCharacters** | Pointer to **string** |  | [optional] 
+
+## Methods
+
+### NewRotatedSecretCreateF5BigIp
+
+`func NewRotatedSecretCreateF5BigIp(name string, rotatorType string, targetName string, ) *RotatedSecretCreateF5BigIp`
+
+NewRotatedSecretCreateF5BigIp instantiates a new RotatedSecretCreateF5BigIp object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewRotatedSecretCreateF5BigIpWithDefaults
+
+`func NewRotatedSecretCreateF5BigIpWithDefaults() *RotatedSecretCreateF5BigIp`
+
+NewRotatedSecretCreateF5BigIpWithDefaults instantiates a new RotatedSecretCreateF5BigIp object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetAraEnabled
+
+`func (o *RotatedSecretCreateF5BigIp) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *RotatedSecretCreateF5BigIp) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *RotatedSecretCreateF5BigIp) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
+
+### GetAuthenticationCredentials
+
+`func (o *RotatedSecretCreateF5BigIp) GetAuthenticationCredentials() string`
+
+GetAuthenticationCredentials returns the AuthenticationCredentials field if non-nil, zero value otherwise.
+
+### GetAuthenticationCredentialsOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetAuthenticationCredentialsOk() (*string, bool)`
+
+GetAuthenticationCredentialsOk returns a tuple with the AuthenticationCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationCredentials
+
+`func (o *RotatedSecretCreateF5BigIp) SetAuthenticationCredentials(v string)`
+
+SetAuthenticationCredentials sets AuthenticationCredentials field to given value.
+
+### HasAuthenticationCredentials
+
+`func (o *RotatedSecretCreateF5BigIp) HasAuthenticationCredentials() bool`
+
+HasAuthenticationCredentials returns a boolean if a field has been set.
+
+### GetAutoRotate
+
+`func (o *RotatedSecretCreateF5BigIp) GetAutoRotate() string`
+
+GetAutoRotate returns the AutoRotate field if non-nil, zero value otherwise.
+
+### GetAutoRotateOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetAutoRotateOk() (*string, bool)`
+
+GetAutoRotateOk returns a tuple with the AutoRotate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoRotate
+
+`func (o *RotatedSecretCreateF5BigIp) SetAutoRotate(v string)`
+
+SetAutoRotate sets AutoRotate field to given value.
+
+### HasAutoRotate
+
+`func (o *RotatedSecretCreateF5BigIp) HasAutoRotate() bool`
+
+HasAutoRotate returns a boolean if a field has been set.
+
+### GetDeleteProtection
+
+`func (o *RotatedSecretCreateF5BigIp) GetDeleteProtection() string`
+
+GetDeleteProtection returns the DeleteProtection field if non-nil, zero value otherwise.
+
+### GetDeleteProtectionOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetDeleteProtectionOk() (*string, bool)`
+
+GetDeleteProtectionOk returns a tuple with the DeleteProtection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeleteProtection
+
+`func (o *RotatedSecretCreateF5BigIp) SetDeleteProtection(v string)`
+
+SetDeleteProtection sets DeleteProtection field to given value.
+
+### HasDeleteProtection
+
+`func (o *RotatedSecretCreateF5BigIp) HasDeleteProtection() bool`
+
+HasDeleteProtection returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *RotatedSecretCreateF5BigIp) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *RotatedSecretCreateF5BigIp) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *RotatedSecretCreateF5BigIp) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### GetInputRule
+
+`func (o *RotatedSecretCreateF5BigIp) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *RotatedSecretCreateF5BigIp) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *RotatedSecretCreateF5BigIp) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
+### GetItemCustomFields
+
+`func (o *RotatedSecretCreateF5BigIp) GetItemCustomFields() map[string]string`
+
+GetItemCustomFields returns the ItemCustomFields field if non-nil, zero value otherwise.
+
+### GetItemCustomFieldsOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetItemCustomFieldsOk() (*map[string]string, bool)`
+
+GetItemCustomFieldsOk returns a tuple with the ItemCustomFields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItemCustomFields
+
+`func (o *RotatedSecretCreateF5BigIp) SetItemCustomFields(v map[string]string)`
+
+SetItemCustomFields sets ItemCustomFields field to given value.
+
+### HasItemCustomFields
+
+`func (o *RotatedSecretCreateF5BigIp) HasItemCustomFields() bool`
+
+HasItemCustomFields returns a boolean if a field has been set.
+
+### GetJson
+
+`func (o *RotatedSecretCreateF5BigIp) GetJson() bool`
+
+GetJson returns the Json field if non-nil, zero value otherwise.
+
+### GetJsonOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetJsonOk() (*bool, bool)`
+
+GetJsonOk returns a tuple with the Json field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJson
+
+`func (o *RotatedSecretCreateF5BigIp) SetJson(v bool)`
+
+SetJson sets Json field to given value.
+
+### HasJson
+
+`func (o *RotatedSecretCreateF5BigIp) HasJson() bool`
+
+HasJson returns a boolean if a field has been set.
+
+### GetKey
+
+`func (o *RotatedSecretCreateF5BigIp) GetKey() string`
+
+GetKey returns the Key field if non-nil, zero value otherwise.
+
+### GetKeyOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetKeyOk() (*string, bool)`
+
+GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKey
+
+`func (o *RotatedSecretCreateF5BigIp) SetKey(v string)`
+
+SetKey sets Key field to given value.
+
+### HasKey
+
+`func (o *RotatedSecretCreateF5BigIp) HasKey() bool`
+
+HasKey returns a boolean if a field has been set.
+
+### GetMaxVersions
+
+`func (o *RotatedSecretCreateF5BigIp) GetMaxVersions() string`
+
+GetMaxVersions returns the MaxVersions field if non-nil, zero value otherwise.
+
+### GetMaxVersionsOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetMaxVersionsOk() (*string, bool)`
+
+GetMaxVersionsOk returns a tuple with the MaxVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxVersions
+
+`func (o *RotatedSecretCreateF5BigIp) SetMaxVersions(v string)`
+
+SetMaxVersions sets MaxVersions field to given value.
+
+### HasMaxVersions
+
+`func (o *RotatedSecretCreateF5BigIp) HasMaxVersions() bool`
+
+HasMaxVersions returns a boolean if a field has been set.
+
+### GetName
+
+`func (o *RotatedSecretCreateF5BigIp) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *RotatedSecretCreateF5BigIp) SetName(v string)`
+
+SetName sets Name field to given value.
+
+
+### GetOutputRule
+
+`func (o *RotatedSecretCreateF5BigIp) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *RotatedSecretCreateF5BigIp) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *RotatedSecretCreateF5BigIp) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
+
+### GetPasswordLength
+
+`func (o *RotatedSecretCreateF5BigIp) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *RotatedSecretCreateF5BigIp) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *RotatedSecretCreateF5BigIp) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
+
+### GetRotatedPassword
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotatedPassword() string`
+
+GetRotatedPassword returns the RotatedPassword field if non-nil, zero value otherwise.
+
+### GetRotatedPasswordOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotatedPasswordOk() (*string, bool)`
+
+GetRotatedPasswordOk returns a tuple with the RotatedPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedPassword
+
+`func (o *RotatedSecretCreateF5BigIp) SetRotatedPassword(v string)`
+
+SetRotatedPassword sets RotatedPassword field to given value.
+
+### HasRotatedPassword
+
+`func (o *RotatedSecretCreateF5BigIp) HasRotatedPassword() bool`
+
+HasRotatedPassword returns a boolean if a field has been set.
+
+### GetRotatedUsername
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotatedUsername() string`
+
+GetRotatedUsername returns the RotatedUsername field if non-nil, zero value otherwise.
+
+### GetRotatedUsernameOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotatedUsernameOk() (*string, bool)`
+
+GetRotatedUsernameOk returns a tuple with the RotatedUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatedUsername
+
+`func (o *RotatedSecretCreateF5BigIp) SetRotatedUsername(v string)`
+
+SetRotatedUsername sets RotatedUsername field to given value.
+
+### HasRotatedUsername
+
+`func (o *RotatedSecretCreateF5BigIp) HasRotatedUsername() bool`
+
+HasRotatedUsername returns a boolean if a field has been set.
+
+### GetRotationEventIn
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotationEventIn() []string`
+
+GetRotationEventIn returns the RotationEventIn field if non-nil, zero value otherwise.
+
+### GetRotationEventInOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotationEventInOk() (*[]string, bool)`
+
+GetRotationEventInOk returns a tuple with the RotationEventIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationEventIn
+
+`func (o *RotatedSecretCreateF5BigIp) SetRotationEventIn(v []string)`
+
+SetRotationEventIn sets RotationEventIn field to given value.
+
+### HasRotationEventIn
+
+`func (o *RotatedSecretCreateF5BigIp) HasRotationEventIn() bool`
+
+HasRotationEventIn returns a boolean if a field has been set.
+
+### GetRotationHour
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotationHour() int32`
+
+GetRotationHour returns the RotationHour field if non-nil, zero value otherwise.
+
+### GetRotationHourOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotationHourOk() (*int32, bool)`
+
+GetRotationHourOk returns a tuple with the RotationHour field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationHour
+
+`func (o *RotatedSecretCreateF5BigIp) SetRotationHour(v int32)`
+
+SetRotationHour sets RotationHour field to given value.
+
+### HasRotationHour
+
+`func (o *RotatedSecretCreateF5BigIp) HasRotationHour() bool`
+
+HasRotationHour returns a boolean if a field has been set.
+
+### GetRotationInterval
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotationInterval() string`
+
+GetRotationInterval returns the RotationInterval field if non-nil, zero value otherwise.
+
+### GetRotationIntervalOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotationIntervalOk() (*string, bool)`
+
+GetRotationIntervalOk returns a tuple with the RotationInterval field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationInterval
+
+`func (o *RotatedSecretCreateF5BigIp) SetRotationInterval(v string)`
+
+SetRotationInterval sets RotationInterval field to given value.
+
+### HasRotationInterval
+
+`func (o *RotatedSecretCreateF5BigIp) HasRotationInterval() bool`
+
+HasRotationInterval returns a boolean if a field has been set.
+
+### GetRotatorType
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotatorType() string`
+
+GetRotatorType returns the RotatorType field if non-nil, zero value otherwise.
+
+### GetRotatorTypeOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetRotatorTypeOk() (*string, bool)`
+
+GetRotatorTypeOk returns a tuple with the RotatorType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotatorType
+
+`func (o *RotatedSecretCreateF5BigIp) SetRotatorType(v string)`
+
+SetRotatorType sets RotatorType field to given value.
+
+
+### GetSkipDryRun
+
+`func (o *RotatedSecretCreateF5BigIp) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *RotatedSecretCreateF5BigIp) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *RotatedSecretCreateF5BigIp) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *RotatedSecretCreateF5BigIp) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *RotatedSecretCreateF5BigIp) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *RotatedSecretCreateF5BigIp) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *RotatedSecretCreateF5BigIp) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *RotatedSecretCreateF5BigIp) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+
+### GetToken
+
+`func (o *RotatedSecretCreateF5BigIp) GetToken() string`
+
+GetToken returns the Token field if non-nil, zero value otherwise.
+
+### GetTokenOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetTokenOk() (*string, bool)`
+
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToken
+
+`func (o *RotatedSecretCreateF5BigIp) SetToken(v string)`
+
+SetToken sets Token field to given value.
+
+### HasToken
+
+`func (o *RotatedSecretCreateF5BigIp) HasToken() bool`
+
+HasToken returns a boolean if a field has been set.
+
+### GetUidToken
+
+`func (o *RotatedSecretCreateF5BigIp) GetUidToken() string`
+
+GetUidToken returns the UidToken field if non-nil, zero value otherwise.
+
+### GetUidTokenOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetUidTokenOk() (*string, bool)`
+
+GetUidTokenOk returns a tuple with the UidToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUidToken
+
+`func (o *RotatedSecretCreateF5BigIp) SetUidToken(v string)`
+
+SetUidToken sets UidToken field to given value.
+
+### HasUidToken
+
+`func (o *RotatedSecretCreateF5BigIp) HasUidToken() bool`
+
+HasUidToken returns a boolean if a field has been set.
+
+### GetUseCapitalLetters
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseCapitalLetters() string`
+
+GetUseCapitalLetters returns the UseCapitalLetters field if non-nil, zero value otherwise.
+
+### GetUseCapitalLettersOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseCapitalLettersOk() (*string, bool)`
+
+GetUseCapitalLettersOk returns a tuple with the UseCapitalLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseCapitalLetters
+
+`func (o *RotatedSecretCreateF5BigIp) SetUseCapitalLetters(v string)`
+
+SetUseCapitalLetters sets UseCapitalLetters field to given value.
+
+### HasUseCapitalLetters
+
+`func (o *RotatedSecretCreateF5BigIp) HasUseCapitalLetters() bool`
+
+HasUseCapitalLetters returns a boolean if a field has been set.
+
+### GetUseLowerLetters
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseLowerLetters() string`
+
+GetUseLowerLetters returns the UseLowerLetters field if non-nil, zero value otherwise.
+
+### GetUseLowerLettersOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseLowerLettersOk() (*string, bool)`
+
+GetUseLowerLettersOk returns a tuple with the UseLowerLetters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseLowerLetters
+
+`func (o *RotatedSecretCreateF5BigIp) SetUseLowerLetters(v string)`
+
+SetUseLowerLetters sets UseLowerLetters field to given value.
+
+### HasUseLowerLetters
+
+`func (o *RotatedSecretCreateF5BigIp) HasUseLowerLetters() bool`
+
+HasUseLowerLetters returns a boolean if a field has been set.
+
+### GetUseNumbers
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseNumbers() string`
+
+GetUseNumbers returns the UseNumbers field if non-nil, zero value otherwise.
+
+### GetUseNumbersOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseNumbersOk() (*string, bool)`
+
+GetUseNumbersOk returns a tuple with the UseNumbers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseNumbers
+
+`func (o *RotatedSecretCreateF5BigIp) SetUseNumbers(v string)`
+
+SetUseNumbers sets UseNumbers field to given value.
+
+### HasUseNumbers
+
+`func (o *RotatedSecretCreateF5BigIp) HasUseNumbers() bool`
+
+HasUseNumbers returns a boolean if a field has been set.
+
+### GetUseSpecialCharacters
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseSpecialCharacters() string`
+
+GetUseSpecialCharacters returns the UseSpecialCharacters field if non-nil, zero value otherwise.
+
+### GetUseSpecialCharactersOk
+
+`func (o *RotatedSecretCreateF5BigIp) GetUseSpecialCharactersOk() (*string, bool)`
+
+GetUseSpecialCharactersOk returns a tuple with the UseSpecialCharacters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseSpecialCharacters
+
+`func (o *RotatedSecretCreateF5BigIp) SetUseSpecialCharacters(v string)`
+
+SetUseSpecialCharacters sets UseSpecialCharacters field to given value.
+
+### HasUseSpecialCharacters
+
+`func (o *RotatedSecretCreateF5BigIp) HasUseSpecialCharacters() bool`
+
+HasUseSpecialCharacters returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -22,6 +22,8 @@ var _ MappedNullable = &DynamicSecretCreateCassandra{}
 
 // DynamicSecretCreateCassandra dynamicSecretCreateCassandra is a command that creates a Cassandra dynamic secret
 type DynamicSecretCreateCassandra struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Cassandra creation statements
 	CassandraCreationStatements *string `json:"cassandra-creation-statements,omitempty"`
 	// Cassandra hosts IP or addresses, comma separated
@@ -52,6 +54,8 @@ type DynamicSecretCreateCassandra struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
@@ -109,6 +113,38 @@ func NewDynamicSecretCreateCassandraWithDefaults() *DynamicSecretCreateCassandra
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretCreateCassandra) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateCassandra) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretCreateCassandra) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretCreateCassandra) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCassandraCreationStatements returns the CassandraCreationStatements field value if set, zero value otherwise.
@@ -583,6 +619,38 @@ func (o *DynamicSecretCreateCassandra) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretCreateCassandra) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateCassandra) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretCreateCassandra) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretCreateCassandra) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetSsl returns the Ssl field value if set, zero value otherwise.
 func (o *DynamicSecretCreateCassandra) GetSsl() bool {
 	if o == nil || IsNil(o.Ssl) {
@@ -945,6 +1013,9 @@ func (o DynamicSecretCreateCassandra) MarshalJSON() ([]byte, error) {
 
 func (o DynamicSecretCreateCassandra) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.CassandraCreationStatements) {
 		toSerialize["cassandra-creation-statements"] = o.CassandraCreationStatements
 	}
@@ -987,6 +1058,9 @@ func (o DynamicSecretCreateCassandra) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Ssl) {
 		toSerialize["ssl"] = o.Ssl

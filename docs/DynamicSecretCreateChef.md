@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **ChefOrgs** | Pointer to **string** | Organizations | [optional] 
 **ChefServerKey** | Pointer to **string** | Server key | [optional] 
 **ChefServerUrl** | Pointer to **string** | Server URL | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **SkipSsl** | Pointer to **bool** | Skip SSL | [optional] [default to true]
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -47,6 +49,31 @@ will change when the set of required properties is changed
 NewDynamicSecretCreateChefWithDefaults instantiates a new DynamicSecretCreateChef object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAraEnabled
+
+`func (o *DynamicSecretCreateChef) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *DynamicSecretCreateChef) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *DynamicSecretCreateChef) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *DynamicSecretCreateChef) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetChefOrgs
 
@@ -417,6 +444,31 @@ SetSkipSsl sets SkipSsl field to given value.
 `func (o *DynamicSecretCreateChef) HasSkipSsl() bool`
 
 HasSkipSsl returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *DynamicSecretCreateChef) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *DynamicSecretCreateChef) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *DynamicSecretCreateChef) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *DynamicSecretCreateChef) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTags
 

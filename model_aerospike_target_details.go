@@ -21,48 +21,21 @@ var _ MappedNullable = &AerospikeTargetDetails{}
 // AerospikeTargetDetails struct for AerospikeTargetDetails
 type AerospikeTargetDetails struct {
 	AerospikeAdminUsername *string `json:"aerospike_admin_username,omitempty"`
+	AerospikeClientCertificate *string `json:"aerospike_client_certificate,omitempty"`
 	AerospikeClientId *string `json:"aerospike_client_id,omitempty"`
+	AerospikeClientPrivateKey *string `json:"aerospike_client_private_key,omitempty"`
 	AerospikeClientSecret *string `json:"aerospike_client_secret,omitempty"`
 	AerospikeCloud *bool `json:"aerospike_cloud,omitempty"`
 	AerospikeClusterId *string `json:"aerospike_cluster_id,omitempty"`
+	AerospikeDbServerName *string `json:"aerospike_db_server_name,omitempty"`
+	AerospikeEnableMtls *bool `json:"aerospike_enable_mtls,omitempty"`
 	AerospikeHostname *string `json:"aerospike_hostname,omitempty"`
 	AerospikeNamespace *string `json:"aerospike_namespace,omitempty"`
 	AerospikePassword *string `json:"aerospike_password,omitempty"`
 	AerospikePort *string `json:"aerospike_port,omitempty"`
-	// (Optional) ClientCertificate defines the client certificate for mutual TLS. Must be base64 certificate loaded by UI using file loader field
-	ClientCertificate *string `json:"client_certificate,omitempty"`
-	// (Optional) ClientKeyPassphrase defines the passphrase for the client private key
-	ClientKeyPassphrase *string `json:"client_key_passphrase,omitempty"`
-	// (Optional) ClientPrivateKey defines the client private key for mutual TLS. Must be base64 private key loaded by UI using file loader field
-	ClientPrivateKey *string `json:"client_private_key,omitempty"`
-	CloudServiceProvider *string `json:"cloud_service_provider,omitempty"`
-	ClusterMode *bool `json:"cluster_mode,omitempty"`
-	ConnectionType *string `json:"connection_type,omitempty"`
-	DbClientId *string `json:"db_client_id,omitempty"`
-	DbClientSecret *string `json:"db_client_secret,omitempty"`
-	DbHostName *string `json:"db_host_name,omitempty"`
-	DbName *string `json:"db_name,omitempty"`
-	DbPort *string `json:"db_port,omitempty"`
-	// (Optional) Private Key in PEM format
-	DbPrivateKey *string `json:"db_private_key,omitempty"`
-	DbPrivateKeyPassphrase *string `json:"db_private_key_passphrase,omitempty"`
-	DbPwd *string `json:"db_pwd,omitempty"`
-	// (Optional) DBServerCertificates defines the set of root certificate authorities that clients use when verifying server certificates. If DBServerCertificates is empty, TLS uses the host's root CA set.
-	DbServerCertificates *string `json:"db_server_certificates,omitempty"`
-	// (Optional) ServerName is used to verify the hostname on the returned certificates unless InsecureSkipVerify is given. It is also included in the client's handshake to support virtual hosting unless it is an IP address.
-	DbServerName *string `json:"db_server_name,omitempty"`
-	DbTenantId *string `json:"db_tenant_id,omitempty"`
-	DbUserName *string `json:"db_user_name,omitempty"`
-	// (Optional) EnableMTLS defines if mutual TLS will be used to connect to DB
-	EnableMtls *bool `json:"enable_mtls,omitempty"`
-	OracleWalletDetails *WalletDetails `json:"oracle_wallet_details,omitempty"`
-	SfAccount *string `json:"sf_account,omitempty"`
-	// (Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \"skip hostname validation\"; MySQL treats empty as false.
-	SkipServerNameValidation *string `json:"skip_server_name_validation,omitempty"`
-	// (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field
-	SslConnectionCertificate *string `json:"ssl_connection_certificate,omitempty"`
-	// (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB
-	SslConnectionMode *bool `json:"ssl_connection_mode,omitempty"`
+	AerospikeSkipServerNameValidation *string `json:"aerospike_skip_server_name_validation,omitempty"`
+	AerospikeSslConnectionCertificate *string `json:"aerospike_ssl_connection_certificate,omitempty"`
+	AerospikeSslConnectionMode *bool `json:"aerospike_ssl_connection_mode,omitempty"`
 }
 
 // NewAerospikeTargetDetails instantiates a new AerospikeTargetDetails object
@@ -114,6 +87,38 @@ func (o *AerospikeTargetDetails) SetAerospikeAdminUsername(v string) {
 	o.AerospikeAdminUsername = &v
 }
 
+// GetAerospikeClientCertificate returns the AerospikeClientCertificate field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeClientCertificate() string {
+	if o == nil || IsNil(o.AerospikeClientCertificate) {
+		var ret string
+		return ret
+	}
+	return *o.AerospikeClientCertificate
+}
+
+// GetAerospikeClientCertificateOk returns a tuple with the AerospikeClientCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AerospikeTargetDetails) GetAerospikeClientCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.AerospikeClientCertificate) {
+		return nil, false
+	}
+	return o.AerospikeClientCertificate, true
+}
+
+// HasAerospikeClientCertificate returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeClientCertificate() bool {
+	if o != nil && !IsNil(o.AerospikeClientCertificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetAerospikeClientCertificate gets a reference to the given string and assigns it to the AerospikeClientCertificate field.
+func (o *AerospikeTargetDetails) SetAerospikeClientCertificate(v string) {
+	o.AerospikeClientCertificate = &v
+}
+
 // GetAerospikeClientId returns the AerospikeClientId field value if set, zero value otherwise.
 func (o *AerospikeTargetDetails) GetAerospikeClientId() string {
 	if o == nil || IsNil(o.AerospikeClientId) {
@@ -144,6 +149,38 @@ func (o *AerospikeTargetDetails) HasAerospikeClientId() bool {
 // SetAerospikeClientId gets a reference to the given string and assigns it to the AerospikeClientId field.
 func (o *AerospikeTargetDetails) SetAerospikeClientId(v string) {
 	o.AerospikeClientId = &v
+}
+
+// GetAerospikeClientPrivateKey returns the AerospikeClientPrivateKey field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeClientPrivateKey() string {
+	if o == nil || IsNil(o.AerospikeClientPrivateKey) {
+		var ret string
+		return ret
+	}
+	return *o.AerospikeClientPrivateKey
+}
+
+// GetAerospikeClientPrivateKeyOk returns a tuple with the AerospikeClientPrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AerospikeTargetDetails) GetAerospikeClientPrivateKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.AerospikeClientPrivateKey) {
+		return nil, false
+	}
+	return o.AerospikeClientPrivateKey, true
+}
+
+// HasAerospikeClientPrivateKey returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeClientPrivateKey() bool {
+	if o != nil && !IsNil(o.AerospikeClientPrivateKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAerospikeClientPrivateKey gets a reference to the given string and assigns it to the AerospikeClientPrivateKey field.
+func (o *AerospikeTargetDetails) SetAerospikeClientPrivateKey(v string) {
+	o.AerospikeClientPrivateKey = &v
 }
 
 // GetAerospikeClientSecret returns the AerospikeClientSecret field value if set, zero value otherwise.
@@ -240,6 +277,70 @@ func (o *AerospikeTargetDetails) HasAerospikeClusterId() bool {
 // SetAerospikeClusterId gets a reference to the given string and assigns it to the AerospikeClusterId field.
 func (o *AerospikeTargetDetails) SetAerospikeClusterId(v string) {
 	o.AerospikeClusterId = &v
+}
+
+// GetAerospikeDbServerName returns the AerospikeDbServerName field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeDbServerName() string {
+	if o == nil || IsNil(o.AerospikeDbServerName) {
+		var ret string
+		return ret
+	}
+	return *o.AerospikeDbServerName
+}
+
+// GetAerospikeDbServerNameOk returns a tuple with the AerospikeDbServerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AerospikeTargetDetails) GetAerospikeDbServerNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AerospikeDbServerName) {
+		return nil, false
+	}
+	return o.AerospikeDbServerName, true
+}
+
+// HasAerospikeDbServerName returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeDbServerName() bool {
+	if o != nil && !IsNil(o.AerospikeDbServerName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAerospikeDbServerName gets a reference to the given string and assigns it to the AerospikeDbServerName field.
+func (o *AerospikeTargetDetails) SetAerospikeDbServerName(v string) {
+	o.AerospikeDbServerName = &v
+}
+
+// GetAerospikeEnableMtls returns the AerospikeEnableMtls field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeEnableMtls() bool {
+	if o == nil || IsNil(o.AerospikeEnableMtls) {
+		var ret bool
+		return ret
+	}
+	return *o.AerospikeEnableMtls
+}
+
+// GetAerospikeEnableMtlsOk returns a tuple with the AerospikeEnableMtls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AerospikeTargetDetails) GetAerospikeEnableMtlsOk() (*bool, bool) {
+	if o == nil || IsNil(o.AerospikeEnableMtls) {
+		return nil, false
+	}
+	return o.AerospikeEnableMtls, true
+}
+
+// HasAerospikeEnableMtls returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeEnableMtls() bool {
+	if o != nil && !IsNil(o.AerospikeEnableMtls) {
+		return true
+	}
+
+	return false
+}
+
+// SetAerospikeEnableMtls gets a reference to the given bool and assigns it to the AerospikeEnableMtls field.
+func (o *AerospikeTargetDetails) SetAerospikeEnableMtls(v bool) {
+	o.AerospikeEnableMtls = &v
 }
 
 // GetAerospikeHostname returns the AerospikeHostname field value if set, zero value otherwise.
@@ -370,772 +471,100 @@ func (o *AerospikeTargetDetails) SetAerospikePort(v string) {
 	o.AerospikePort = &v
 }
 
-// GetClientCertificate returns the ClientCertificate field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetClientCertificate() string {
-	if o == nil || IsNil(o.ClientCertificate) {
+// GetAerospikeSkipServerNameValidation returns the AerospikeSkipServerNameValidation field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeSkipServerNameValidation() string {
+	if o == nil || IsNil(o.AerospikeSkipServerNameValidation) {
 		var ret string
 		return ret
 	}
-	return *o.ClientCertificate
+	return *o.AerospikeSkipServerNameValidation
 }
 
-// GetClientCertificateOk returns a tuple with the ClientCertificate field value if set, nil otherwise
+// GetAerospikeSkipServerNameValidationOk returns a tuple with the AerospikeSkipServerNameValidation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetClientCertificateOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientCertificate) {
+func (o *AerospikeTargetDetails) GetAerospikeSkipServerNameValidationOk() (*string, bool) {
+	if o == nil || IsNil(o.AerospikeSkipServerNameValidation) {
 		return nil, false
 	}
-	return o.ClientCertificate, true
+	return o.AerospikeSkipServerNameValidation, true
 }
 
-// HasClientCertificate returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasClientCertificate() bool {
-	if o != nil && !IsNil(o.ClientCertificate) {
+// HasAerospikeSkipServerNameValidation returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeSkipServerNameValidation() bool {
+	if o != nil && !IsNil(o.AerospikeSkipServerNameValidation) {
 		return true
 	}
 
 	return false
 }
 
-// SetClientCertificate gets a reference to the given string and assigns it to the ClientCertificate field.
-func (o *AerospikeTargetDetails) SetClientCertificate(v string) {
-	o.ClientCertificate = &v
+// SetAerospikeSkipServerNameValidation gets a reference to the given string and assigns it to the AerospikeSkipServerNameValidation field.
+func (o *AerospikeTargetDetails) SetAerospikeSkipServerNameValidation(v string) {
+	o.AerospikeSkipServerNameValidation = &v
 }
 
-// GetClientKeyPassphrase returns the ClientKeyPassphrase field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetClientKeyPassphrase() string {
-	if o == nil || IsNil(o.ClientKeyPassphrase) {
+// GetAerospikeSslConnectionCertificate returns the AerospikeSslConnectionCertificate field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeSslConnectionCertificate() string {
+	if o == nil || IsNil(o.AerospikeSslConnectionCertificate) {
 		var ret string
 		return ret
 	}
-	return *o.ClientKeyPassphrase
+	return *o.AerospikeSslConnectionCertificate
 }
 
-// GetClientKeyPassphraseOk returns a tuple with the ClientKeyPassphrase field value if set, nil otherwise
+// GetAerospikeSslConnectionCertificateOk returns a tuple with the AerospikeSslConnectionCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetClientKeyPassphraseOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientKeyPassphrase) {
+func (o *AerospikeTargetDetails) GetAerospikeSslConnectionCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.AerospikeSslConnectionCertificate) {
 		return nil, false
 	}
-	return o.ClientKeyPassphrase, true
+	return o.AerospikeSslConnectionCertificate, true
 }
 
-// HasClientKeyPassphrase returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasClientKeyPassphrase() bool {
-	if o != nil && !IsNil(o.ClientKeyPassphrase) {
+// HasAerospikeSslConnectionCertificate returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeSslConnectionCertificate() bool {
+	if o != nil && !IsNil(o.AerospikeSslConnectionCertificate) {
 		return true
 	}
 
 	return false
 }
 
-// SetClientKeyPassphrase gets a reference to the given string and assigns it to the ClientKeyPassphrase field.
-func (o *AerospikeTargetDetails) SetClientKeyPassphrase(v string) {
-	o.ClientKeyPassphrase = &v
+// SetAerospikeSslConnectionCertificate gets a reference to the given string and assigns it to the AerospikeSslConnectionCertificate field.
+func (o *AerospikeTargetDetails) SetAerospikeSslConnectionCertificate(v string) {
+	o.AerospikeSslConnectionCertificate = &v
 }
 
-// GetClientPrivateKey returns the ClientPrivateKey field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetClientPrivateKey() string {
-	if o == nil || IsNil(o.ClientPrivateKey) {
-		var ret string
-		return ret
-	}
-	return *o.ClientPrivateKey
-}
-
-// GetClientPrivateKeyOk returns a tuple with the ClientPrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetClientPrivateKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientPrivateKey) {
-		return nil, false
-	}
-	return o.ClientPrivateKey, true
-}
-
-// HasClientPrivateKey returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasClientPrivateKey() bool {
-	if o != nil && !IsNil(o.ClientPrivateKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetClientPrivateKey gets a reference to the given string and assigns it to the ClientPrivateKey field.
-func (o *AerospikeTargetDetails) SetClientPrivateKey(v string) {
-	o.ClientPrivateKey = &v
-}
-
-// GetCloudServiceProvider returns the CloudServiceProvider field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetCloudServiceProvider() string {
-	if o == nil || IsNil(o.CloudServiceProvider) {
-		var ret string
-		return ret
-	}
-	return *o.CloudServiceProvider
-}
-
-// GetCloudServiceProviderOk returns a tuple with the CloudServiceProvider field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetCloudServiceProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.CloudServiceProvider) {
-		return nil, false
-	}
-	return o.CloudServiceProvider, true
-}
-
-// HasCloudServiceProvider returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasCloudServiceProvider() bool {
-	if o != nil && !IsNil(o.CloudServiceProvider) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudServiceProvider gets a reference to the given string and assigns it to the CloudServiceProvider field.
-func (o *AerospikeTargetDetails) SetCloudServiceProvider(v string) {
-	o.CloudServiceProvider = &v
-}
-
-// GetClusterMode returns the ClusterMode field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetClusterMode() bool {
-	if o == nil || IsNil(o.ClusterMode) {
+// GetAerospikeSslConnectionMode returns the AerospikeSslConnectionMode field value if set, zero value otherwise.
+func (o *AerospikeTargetDetails) GetAerospikeSslConnectionMode() bool {
+	if o == nil || IsNil(o.AerospikeSslConnectionMode) {
 		var ret bool
 		return ret
 	}
-	return *o.ClusterMode
+	return *o.AerospikeSslConnectionMode
 }
 
-// GetClusterModeOk returns a tuple with the ClusterMode field value if set, nil otherwise
+// GetAerospikeSslConnectionModeOk returns a tuple with the AerospikeSslConnectionMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetClusterModeOk() (*bool, bool) {
-	if o == nil || IsNil(o.ClusterMode) {
+func (o *AerospikeTargetDetails) GetAerospikeSslConnectionModeOk() (*bool, bool) {
+	if o == nil || IsNil(o.AerospikeSslConnectionMode) {
 		return nil, false
 	}
-	return o.ClusterMode, true
+	return o.AerospikeSslConnectionMode, true
 }
 
-// HasClusterMode returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasClusterMode() bool {
-	if o != nil && !IsNil(o.ClusterMode) {
+// HasAerospikeSslConnectionMode returns a boolean if a field has been set.
+func (o *AerospikeTargetDetails) HasAerospikeSslConnectionMode() bool {
+	if o != nil && !IsNil(o.AerospikeSslConnectionMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetClusterMode gets a reference to the given bool and assigns it to the ClusterMode field.
-func (o *AerospikeTargetDetails) SetClusterMode(v bool) {
-	o.ClusterMode = &v
-}
-
-// GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetConnectionType() string {
-	if o == nil || IsNil(o.ConnectionType) {
-		var ret string
-		return ret
-	}
-	return *o.ConnectionType
-}
-
-// GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetConnectionTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ConnectionType) {
-		return nil, false
-	}
-	return o.ConnectionType, true
-}
-
-// HasConnectionType returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasConnectionType() bool {
-	if o != nil && !IsNil(o.ConnectionType) {
-		return true
-	}
-
-	return false
-}
-
-// SetConnectionType gets a reference to the given string and assigns it to the ConnectionType field.
-func (o *AerospikeTargetDetails) SetConnectionType(v string) {
-	o.ConnectionType = &v
-}
-
-// GetDbClientId returns the DbClientId field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbClientId() string {
-	if o == nil || IsNil(o.DbClientId) {
-		var ret string
-		return ret
-	}
-	return *o.DbClientId
-}
-
-// GetDbClientIdOk returns a tuple with the DbClientId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbClientIdOk() (*string, bool) {
-	if o == nil || IsNil(o.DbClientId) {
-		return nil, false
-	}
-	return o.DbClientId, true
-}
-
-// HasDbClientId returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbClientId() bool {
-	if o != nil && !IsNil(o.DbClientId) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbClientId gets a reference to the given string and assigns it to the DbClientId field.
-func (o *AerospikeTargetDetails) SetDbClientId(v string) {
-	o.DbClientId = &v
-}
-
-// GetDbClientSecret returns the DbClientSecret field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbClientSecret() string {
-	if o == nil || IsNil(o.DbClientSecret) {
-		var ret string
-		return ret
-	}
-	return *o.DbClientSecret
-}
-
-// GetDbClientSecretOk returns a tuple with the DbClientSecret field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbClientSecretOk() (*string, bool) {
-	if o == nil || IsNil(o.DbClientSecret) {
-		return nil, false
-	}
-	return o.DbClientSecret, true
-}
-
-// HasDbClientSecret returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbClientSecret() bool {
-	if o != nil && !IsNil(o.DbClientSecret) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbClientSecret gets a reference to the given string and assigns it to the DbClientSecret field.
-func (o *AerospikeTargetDetails) SetDbClientSecret(v string) {
-	o.DbClientSecret = &v
-}
-
-// GetDbHostName returns the DbHostName field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbHostName() string {
-	if o == nil || IsNil(o.DbHostName) {
-		var ret string
-		return ret
-	}
-	return *o.DbHostName
-}
-
-// GetDbHostNameOk returns a tuple with the DbHostName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbHostNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DbHostName) {
-		return nil, false
-	}
-	return o.DbHostName, true
-}
-
-// HasDbHostName returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbHostName() bool {
-	if o != nil && !IsNil(o.DbHostName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbHostName gets a reference to the given string and assigns it to the DbHostName field.
-func (o *AerospikeTargetDetails) SetDbHostName(v string) {
-	o.DbHostName = &v
-}
-
-// GetDbName returns the DbName field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbName() string {
-	if o == nil || IsNil(o.DbName) {
-		var ret string
-		return ret
-	}
-	return *o.DbName
-}
-
-// GetDbNameOk returns a tuple with the DbName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DbName) {
-		return nil, false
-	}
-	return o.DbName, true
-}
-
-// HasDbName returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbName() bool {
-	if o != nil && !IsNil(o.DbName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbName gets a reference to the given string and assigns it to the DbName field.
-func (o *AerospikeTargetDetails) SetDbName(v string) {
-	o.DbName = &v
-}
-
-// GetDbPort returns the DbPort field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbPort() string {
-	if o == nil || IsNil(o.DbPort) {
-		var ret string
-		return ret
-	}
-	return *o.DbPort
-}
-
-// GetDbPortOk returns a tuple with the DbPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbPortOk() (*string, bool) {
-	if o == nil || IsNil(o.DbPort) {
-		return nil, false
-	}
-	return o.DbPort, true
-}
-
-// HasDbPort returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbPort() bool {
-	if o != nil && !IsNil(o.DbPort) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPort gets a reference to the given string and assigns it to the DbPort field.
-func (o *AerospikeTargetDetails) SetDbPort(v string) {
-	o.DbPort = &v
-}
-
-// GetDbPrivateKey returns the DbPrivateKey field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbPrivateKey() string {
-	if o == nil || IsNil(o.DbPrivateKey) {
-		var ret string
-		return ret
-	}
-	return *o.DbPrivateKey
-}
-
-// GetDbPrivateKeyOk returns a tuple with the DbPrivateKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbPrivateKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.DbPrivateKey) {
-		return nil, false
-	}
-	return o.DbPrivateKey, true
-}
-
-// HasDbPrivateKey returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbPrivateKey() bool {
-	if o != nil && !IsNil(o.DbPrivateKey) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPrivateKey gets a reference to the given string and assigns it to the DbPrivateKey field.
-func (o *AerospikeTargetDetails) SetDbPrivateKey(v string) {
-	o.DbPrivateKey = &v
-}
-
-// GetDbPrivateKeyPassphrase returns the DbPrivateKeyPassphrase field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbPrivateKeyPassphrase() string {
-	if o == nil || IsNil(o.DbPrivateKeyPassphrase) {
-		var ret string
-		return ret
-	}
-	return *o.DbPrivateKeyPassphrase
-}
-
-// GetDbPrivateKeyPassphraseOk returns a tuple with the DbPrivateKeyPassphrase field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbPrivateKeyPassphraseOk() (*string, bool) {
-	if o == nil || IsNil(o.DbPrivateKeyPassphrase) {
-		return nil, false
-	}
-	return o.DbPrivateKeyPassphrase, true
-}
-
-// HasDbPrivateKeyPassphrase returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbPrivateKeyPassphrase() bool {
-	if o != nil && !IsNil(o.DbPrivateKeyPassphrase) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPrivateKeyPassphrase gets a reference to the given string and assigns it to the DbPrivateKeyPassphrase field.
-func (o *AerospikeTargetDetails) SetDbPrivateKeyPassphrase(v string) {
-	o.DbPrivateKeyPassphrase = &v
-}
-
-// GetDbPwd returns the DbPwd field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbPwd() string {
-	if o == nil || IsNil(o.DbPwd) {
-		var ret string
-		return ret
-	}
-	return *o.DbPwd
-}
-
-// GetDbPwdOk returns a tuple with the DbPwd field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbPwdOk() (*string, bool) {
-	if o == nil || IsNil(o.DbPwd) {
-		return nil, false
-	}
-	return o.DbPwd, true
-}
-
-// HasDbPwd returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbPwd() bool {
-	if o != nil && !IsNil(o.DbPwd) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbPwd gets a reference to the given string and assigns it to the DbPwd field.
-func (o *AerospikeTargetDetails) SetDbPwd(v string) {
-	o.DbPwd = &v
-}
-
-// GetDbServerCertificates returns the DbServerCertificates field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbServerCertificates() string {
-	if o == nil || IsNil(o.DbServerCertificates) {
-		var ret string
-		return ret
-	}
-	return *o.DbServerCertificates
-}
-
-// GetDbServerCertificatesOk returns a tuple with the DbServerCertificates field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbServerCertificatesOk() (*string, bool) {
-	if o == nil || IsNil(o.DbServerCertificates) {
-		return nil, false
-	}
-	return o.DbServerCertificates, true
-}
-
-// HasDbServerCertificates returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbServerCertificates() bool {
-	if o != nil && !IsNil(o.DbServerCertificates) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbServerCertificates gets a reference to the given string and assigns it to the DbServerCertificates field.
-func (o *AerospikeTargetDetails) SetDbServerCertificates(v string) {
-	o.DbServerCertificates = &v
-}
-
-// GetDbServerName returns the DbServerName field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbServerName() string {
-	if o == nil || IsNil(o.DbServerName) {
-		var ret string
-		return ret
-	}
-	return *o.DbServerName
-}
-
-// GetDbServerNameOk returns a tuple with the DbServerName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbServerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DbServerName) {
-		return nil, false
-	}
-	return o.DbServerName, true
-}
-
-// HasDbServerName returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbServerName() bool {
-	if o != nil && !IsNil(o.DbServerName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbServerName gets a reference to the given string and assigns it to the DbServerName field.
-func (o *AerospikeTargetDetails) SetDbServerName(v string) {
-	o.DbServerName = &v
-}
-
-// GetDbTenantId returns the DbTenantId field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbTenantId() string {
-	if o == nil || IsNil(o.DbTenantId) {
-		var ret string
-		return ret
-	}
-	return *o.DbTenantId
-}
-
-// GetDbTenantIdOk returns a tuple with the DbTenantId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.DbTenantId) {
-		return nil, false
-	}
-	return o.DbTenantId, true
-}
-
-// HasDbTenantId returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbTenantId() bool {
-	if o != nil && !IsNil(o.DbTenantId) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbTenantId gets a reference to the given string and assigns it to the DbTenantId field.
-func (o *AerospikeTargetDetails) SetDbTenantId(v string) {
-	o.DbTenantId = &v
-}
-
-// GetDbUserName returns the DbUserName field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetDbUserName() string {
-	if o == nil || IsNil(o.DbUserName) {
-		var ret string
-		return ret
-	}
-	return *o.DbUserName
-}
-
-// GetDbUserNameOk returns a tuple with the DbUserName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetDbUserNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DbUserName) {
-		return nil, false
-	}
-	return o.DbUserName, true
-}
-
-// HasDbUserName returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasDbUserName() bool {
-	if o != nil && !IsNil(o.DbUserName) {
-		return true
-	}
-
-	return false
-}
-
-// SetDbUserName gets a reference to the given string and assigns it to the DbUserName field.
-func (o *AerospikeTargetDetails) SetDbUserName(v string) {
-	o.DbUserName = &v
-}
-
-// GetEnableMtls returns the EnableMtls field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetEnableMtls() bool {
-	if o == nil || IsNil(o.EnableMtls) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableMtls
-}
-
-// GetEnableMtlsOk returns a tuple with the EnableMtls field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetEnableMtlsOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableMtls) {
-		return nil, false
-	}
-	return o.EnableMtls, true
-}
-
-// HasEnableMtls returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasEnableMtls() bool {
-	if o != nil && !IsNil(o.EnableMtls) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableMtls gets a reference to the given bool and assigns it to the EnableMtls field.
-func (o *AerospikeTargetDetails) SetEnableMtls(v bool) {
-	o.EnableMtls = &v
-}
-
-// GetOracleWalletDetails returns the OracleWalletDetails field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetOracleWalletDetails() WalletDetails {
-	if o == nil || IsNil(o.OracleWalletDetails) {
-		var ret WalletDetails
-		return ret
-	}
-	return *o.OracleWalletDetails
-}
-
-// GetOracleWalletDetailsOk returns a tuple with the OracleWalletDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetOracleWalletDetailsOk() (*WalletDetails, bool) {
-	if o == nil || IsNil(o.OracleWalletDetails) {
-		return nil, false
-	}
-	return o.OracleWalletDetails, true
-}
-
-// HasOracleWalletDetails returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasOracleWalletDetails() bool {
-	if o != nil && !IsNil(o.OracleWalletDetails) {
-		return true
-	}
-
-	return false
-}
-
-// SetOracleWalletDetails gets a reference to the given WalletDetails and assigns it to the OracleWalletDetails field.
-func (o *AerospikeTargetDetails) SetOracleWalletDetails(v WalletDetails) {
-	o.OracleWalletDetails = &v
-}
-
-// GetSfAccount returns the SfAccount field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetSfAccount() string {
-	if o == nil || IsNil(o.SfAccount) {
-		var ret string
-		return ret
-	}
-	return *o.SfAccount
-}
-
-// GetSfAccountOk returns a tuple with the SfAccount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetSfAccountOk() (*string, bool) {
-	if o == nil || IsNil(o.SfAccount) {
-		return nil, false
-	}
-	return o.SfAccount, true
-}
-
-// HasSfAccount returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasSfAccount() bool {
-	if o != nil && !IsNil(o.SfAccount) {
-		return true
-	}
-
-	return false
-}
-
-// SetSfAccount gets a reference to the given string and assigns it to the SfAccount field.
-func (o *AerospikeTargetDetails) SetSfAccount(v string) {
-	o.SfAccount = &v
-}
-
-// GetSkipServerNameValidation returns the SkipServerNameValidation field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetSkipServerNameValidation() string {
-	if o == nil || IsNil(o.SkipServerNameValidation) {
-		var ret string
-		return ret
-	}
-	return *o.SkipServerNameValidation
-}
-
-// GetSkipServerNameValidationOk returns a tuple with the SkipServerNameValidation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetSkipServerNameValidationOk() (*string, bool) {
-	if o == nil || IsNil(o.SkipServerNameValidation) {
-		return nil, false
-	}
-	return o.SkipServerNameValidation, true
-}
-
-// HasSkipServerNameValidation returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasSkipServerNameValidation() bool {
-	if o != nil && !IsNil(o.SkipServerNameValidation) {
-		return true
-	}
-
-	return false
-}
-
-// SetSkipServerNameValidation gets a reference to the given string and assigns it to the SkipServerNameValidation field.
-func (o *AerospikeTargetDetails) SetSkipServerNameValidation(v string) {
-	o.SkipServerNameValidation = &v
-}
-
-// GetSslConnectionCertificate returns the SslConnectionCertificate field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetSslConnectionCertificate() string {
-	if o == nil || IsNil(o.SslConnectionCertificate) {
-		var ret string
-		return ret
-	}
-	return *o.SslConnectionCertificate
-}
-
-// GetSslConnectionCertificateOk returns a tuple with the SslConnectionCertificate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetSslConnectionCertificateOk() (*string, bool) {
-	if o == nil || IsNil(o.SslConnectionCertificate) {
-		return nil, false
-	}
-	return o.SslConnectionCertificate, true
-}
-
-// HasSslConnectionCertificate returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasSslConnectionCertificate() bool {
-	if o != nil && !IsNil(o.SslConnectionCertificate) {
-		return true
-	}
-
-	return false
-}
-
-// SetSslConnectionCertificate gets a reference to the given string and assigns it to the SslConnectionCertificate field.
-func (o *AerospikeTargetDetails) SetSslConnectionCertificate(v string) {
-	o.SslConnectionCertificate = &v
-}
-
-// GetSslConnectionMode returns the SslConnectionMode field value if set, zero value otherwise.
-func (o *AerospikeTargetDetails) GetSslConnectionMode() bool {
-	if o == nil || IsNil(o.SslConnectionMode) {
-		var ret bool
-		return ret
-	}
-	return *o.SslConnectionMode
-}
-
-// GetSslConnectionModeOk returns a tuple with the SslConnectionMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AerospikeTargetDetails) GetSslConnectionModeOk() (*bool, bool) {
-	if o == nil || IsNil(o.SslConnectionMode) {
-		return nil, false
-	}
-	return o.SslConnectionMode, true
-}
-
-// HasSslConnectionMode returns a boolean if a field has been set.
-func (o *AerospikeTargetDetails) HasSslConnectionMode() bool {
-	if o != nil && !IsNil(o.SslConnectionMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetSslConnectionMode gets a reference to the given bool and assigns it to the SslConnectionMode field.
-func (o *AerospikeTargetDetails) SetSslConnectionMode(v bool) {
-	o.SslConnectionMode = &v
+// SetAerospikeSslConnectionMode gets a reference to the given bool and assigns it to the AerospikeSslConnectionMode field.
+func (o *AerospikeTargetDetails) SetAerospikeSslConnectionMode(v bool) {
+	o.AerospikeSslConnectionMode = &v
 }
 
 func (o AerospikeTargetDetails) MarshalJSON() ([]byte, error) {
@@ -1151,8 +580,14 @@ func (o AerospikeTargetDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AerospikeAdminUsername) {
 		toSerialize["aerospike_admin_username"] = o.AerospikeAdminUsername
 	}
+	if !IsNil(o.AerospikeClientCertificate) {
+		toSerialize["aerospike_client_certificate"] = o.AerospikeClientCertificate
+	}
 	if !IsNil(o.AerospikeClientId) {
 		toSerialize["aerospike_client_id"] = o.AerospikeClientId
+	}
+	if !IsNil(o.AerospikeClientPrivateKey) {
+		toSerialize["aerospike_client_private_key"] = o.AerospikeClientPrivateKey
 	}
 	if !IsNil(o.AerospikeClientSecret) {
 		toSerialize["aerospike_client_secret"] = o.AerospikeClientSecret
@@ -1162,6 +597,12 @@ func (o AerospikeTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AerospikeClusterId) {
 		toSerialize["aerospike_cluster_id"] = o.AerospikeClusterId
+	}
+	if !IsNil(o.AerospikeDbServerName) {
+		toSerialize["aerospike_db_server_name"] = o.AerospikeDbServerName
+	}
+	if !IsNil(o.AerospikeEnableMtls) {
+		toSerialize["aerospike_enable_mtls"] = o.AerospikeEnableMtls
 	}
 	if !IsNil(o.AerospikeHostname) {
 		toSerialize["aerospike_hostname"] = o.AerospikeHostname
@@ -1175,77 +616,14 @@ func (o AerospikeTargetDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AerospikePort) {
 		toSerialize["aerospike_port"] = o.AerospikePort
 	}
-	if !IsNil(o.ClientCertificate) {
-		toSerialize["client_certificate"] = o.ClientCertificate
+	if !IsNil(o.AerospikeSkipServerNameValidation) {
+		toSerialize["aerospike_skip_server_name_validation"] = o.AerospikeSkipServerNameValidation
 	}
-	if !IsNil(o.ClientKeyPassphrase) {
-		toSerialize["client_key_passphrase"] = o.ClientKeyPassphrase
+	if !IsNil(o.AerospikeSslConnectionCertificate) {
+		toSerialize["aerospike_ssl_connection_certificate"] = o.AerospikeSslConnectionCertificate
 	}
-	if !IsNil(o.ClientPrivateKey) {
-		toSerialize["client_private_key"] = o.ClientPrivateKey
-	}
-	if !IsNil(o.CloudServiceProvider) {
-		toSerialize["cloud_service_provider"] = o.CloudServiceProvider
-	}
-	if !IsNil(o.ClusterMode) {
-		toSerialize["cluster_mode"] = o.ClusterMode
-	}
-	if !IsNil(o.ConnectionType) {
-		toSerialize["connection_type"] = o.ConnectionType
-	}
-	if !IsNil(o.DbClientId) {
-		toSerialize["db_client_id"] = o.DbClientId
-	}
-	if !IsNil(o.DbClientSecret) {
-		toSerialize["db_client_secret"] = o.DbClientSecret
-	}
-	if !IsNil(o.DbHostName) {
-		toSerialize["db_host_name"] = o.DbHostName
-	}
-	if !IsNil(o.DbName) {
-		toSerialize["db_name"] = o.DbName
-	}
-	if !IsNil(o.DbPort) {
-		toSerialize["db_port"] = o.DbPort
-	}
-	if !IsNil(o.DbPrivateKey) {
-		toSerialize["db_private_key"] = o.DbPrivateKey
-	}
-	if !IsNil(o.DbPrivateKeyPassphrase) {
-		toSerialize["db_private_key_passphrase"] = o.DbPrivateKeyPassphrase
-	}
-	if !IsNil(o.DbPwd) {
-		toSerialize["db_pwd"] = o.DbPwd
-	}
-	if !IsNil(o.DbServerCertificates) {
-		toSerialize["db_server_certificates"] = o.DbServerCertificates
-	}
-	if !IsNil(o.DbServerName) {
-		toSerialize["db_server_name"] = o.DbServerName
-	}
-	if !IsNil(o.DbTenantId) {
-		toSerialize["db_tenant_id"] = o.DbTenantId
-	}
-	if !IsNil(o.DbUserName) {
-		toSerialize["db_user_name"] = o.DbUserName
-	}
-	if !IsNil(o.EnableMtls) {
-		toSerialize["enable_mtls"] = o.EnableMtls
-	}
-	if !IsNil(o.OracleWalletDetails) {
-		toSerialize["oracle_wallet_details"] = o.OracleWalletDetails
-	}
-	if !IsNil(o.SfAccount) {
-		toSerialize["sf_account"] = o.SfAccount
-	}
-	if !IsNil(o.SkipServerNameValidation) {
-		toSerialize["skip_server_name_validation"] = o.SkipServerNameValidation
-	}
-	if !IsNil(o.SslConnectionCertificate) {
-		toSerialize["ssl_connection_certificate"] = o.SslConnectionCertificate
-	}
-	if !IsNil(o.SslConnectionMode) {
-		toSerialize["ssl_connection_mode"] = o.SslConnectionMode
+	if !IsNil(o.AerospikeSslConnectionMode) {
+		toSerialize["aerospike_ssl_connection_mode"] = o.AerospikeSslConnectionMode
 	}
 	return toSerialize, nil
 }

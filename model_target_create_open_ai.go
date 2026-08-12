@@ -26,6 +26,14 @@ type TargetCreateOpenAI struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// API key ID
 	ApiKeyId *string `json:"api-key-id,omitempty"`
+	// Codex OAuth access token (auth.json tokens.access_token), used when codex-oauth-mode=chatgpt_oauth
+	CodexOauthAccessToken *string `json:"codex-oauth-access-token,omitempty"`
+	// Codex OAuth account id (auth.json tokens.account_id), used when codex-oauth-mode=chatgpt_oauth
+	CodexOauthAccountId *string `json:"codex-oauth-account-id,omitempty"`
+	// Auth mode: empty (default, static api-key) or chatgpt_oauth
+	CodexOauthMode *string `json:"codex-oauth-mode,omitempty"`
+	// Codex OAuth refresh token (auth.json tokens.refresh_token), used when codex-oauth-mode=chatgpt_oauth
+	CodexOauthRefreshToken *string `json:"codex-oauth-refresh-token,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -140,6 +148,134 @@ func (o *TargetCreateOpenAI) HasApiKeyId() bool {
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *TargetCreateOpenAI) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
+}
+
+// GetCodexOauthAccessToken returns the CodexOauthAccessToken field value if set, zero value otherwise.
+func (o *TargetCreateOpenAI) GetCodexOauthAccessToken() string {
+	if o == nil || IsNil(o.CodexOauthAccessToken) {
+		var ret string
+		return ret
+	}
+	return *o.CodexOauthAccessToken
+}
+
+// GetCodexOauthAccessTokenOk returns a tuple with the CodexOauthAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateOpenAI) GetCodexOauthAccessTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.CodexOauthAccessToken) {
+		return nil, false
+	}
+	return o.CodexOauthAccessToken, true
+}
+
+// HasCodexOauthAccessToken returns a boolean if a field has been set.
+func (o *TargetCreateOpenAI) HasCodexOauthAccessToken() bool {
+	if o != nil && !IsNil(o.CodexOauthAccessToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetCodexOauthAccessToken gets a reference to the given string and assigns it to the CodexOauthAccessToken field.
+func (o *TargetCreateOpenAI) SetCodexOauthAccessToken(v string) {
+	o.CodexOauthAccessToken = &v
+}
+
+// GetCodexOauthAccountId returns the CodexOauthAccountId field value if set, zero value otherwise.
+func (o *TargetCreateOpenAI) GetCodexOauthAccountId() string {
+	if o == nil || IsNil(o.CodexOauthAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.CodexOauthAccountId
+}
+
+// GetCodexOauthAccountIdOk returns a tuple with the CodexOauthAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateOpenAI) GetCodexOauthAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CodexOauthAccountId) {
+		return nil, false
+	}
+	return o.CodexOauthAccountId, true
+}
+
+// HasCodexOauthAccountId returns a boolean if a field has been set.
+func (o *TargetCreateOpenAI) HasCodexOauthAccountId() bool {
+	if o != nil && !IsNil(o.CodexOauthAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCodexOauthAccountId gets a reference to the given string and assigns it to the CodexOauthAccountId field.
+func (o *TargetCreateOpenAI) SetCodexOauthAccountId(v string) {
+	o.CodexOauthAccountId = &v
+}
+
+// GetCodexOauthMode returns the CodexOauthMode field value if set, zero value otherwise.
+func (o *TargetCreateOpenAI) GetCodexOauthMode() string {
+	if o == nil || IsNil(o.CodexOauthMode) {
+		var ret string
+		return ret
+	}
+	return *o.CodexOauthMode
+}
+
+// GetCodexOauthModeOk returns a tuple with the CodexOauthMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateOpenAI) GetCodexOauthModeOk() (*string, bool) {
+	if o == nil || IsNil(o.CodexOauthMode) {
+		return nil, false
+	}
+	return o.CodexOauthMode, true
+}
+
+// HasCodexOauthMode returns a boolean if a field has been set.
+func (o *TargetCreateOpenAI) HasCodexOauthMode() bool {
+	if o != nil && !IsNil(o.CodexOauthMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetCodexOauthMode gets a reference to the given string and assigns it to the CodexOauthMode field.
+func (o *TargetCreateOpenAI) SetCodexOauthMode(v string) {
+	o.CodexOauthMode = &v
+}
+
+// GetCodexOauthRefreshToken returns the CodexOauthRefreshToken field value if set, zero value otherwise.
+func (o *TargetCreateOpenAI) GetCodexOauthRefreshToken() string {
+	if o == nil || IsNil(o.CodexOauthRefreshToken) {
+		var ret string
+		return ret
+	}
+	return *o.CodexOauthRefreshToken
+}
+
+// GetCodexOauthRefreshTokenOk returns a tuple with the CodexOauthRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetCreateOpenAI) GetCodexOauthRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.CodexOauthRefreshToken) {
+		return nil, false
+	}
+	return o.CodexOauthRefreshToken, true
+}
+
+// HasCodexOauthRefreshToken returns a boolean if a field has been set.
+func (o *TargetCreateOpenAI) HasCodexOauthRefreshToken() bool {
+	if o != nil && !IsNil(o.CodexOauthRefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetCodexOauthRefreshToken gets a reference to the given string and assigns it to the CodexOauthRefreshToken field.
+func (o *TargetCreateOpenAI) SetCodexOauthRefreshToken(v string) {
+	o.CodexOauthRefreshToken = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -501,6 +637,18 @@ func (o TargetCreateOpenAI) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApiKeyId) {
 		toSerialize["api-key-id"] = o.ApiKeyId
+	}
+	if !IsNil(o.CodexOauthAccessToken) {
+		toSerialize["codex-oauth-access-token"] = o.CodexOauthAccessToken
+	}
+	if !IsNil(o.CodexOauthAccountId) {
+		toSerialize["codex-oauth-account-id"] = o.CodexOauthAccountId
+	}
+	if !IsNil(o.CodexOauthMode) {
+		toSerialize["codex-oauth-mode"] = o.CodexOauthMode
+	}
+	if !IsNil(o.CodexOauthRefreshToken) {
+		toSerialize["codex-oauth-refresh-token"] = o.CodexOauthRefreshToken
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection

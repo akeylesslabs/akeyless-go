@@ -23,6 +23,7 @@ var _ MappedNullable = &KMIPServer{}
 type KMIPServer struct {
 	Active *bool `json:"active,omitempty"`
 	Ca []int32 `json:"ca,omitempty"`
+	Cas []KMIPCA `json:"cas,omitempty"`
 	Certificate []int32 `json:"certificate,omitempty"`
 	CertificateIssueDate *time.Time `json:"certificate_issue_date,omitempty"`
 	CertificateTtlInSeconds *int64 `json:"certificate_ttl_in_seconds,omitempty"`
@@ -110,6 +111,38 @@ func (o *KMIPServer) HasCa() bool {
 // SetCa gets a reference to the given []int32 and assigns it to the Ca field.
 func (o *KMIPServer) SetCa(v []int32) {
 	o.Ca = v
+}
+
+// GetCas returns the Cas field value if set, zero value otherwise.
+func (o *KMIPServer) GetCas() []KMIPCA {
+	if o == nil || IsNil(o.Cas) {
+		var ret []KMIPCA
+		return ret
+	}
+	return o.Cas
+}
+
+// GetCasOk returns a tuple with the Cas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KMIPServer) GetCasOk() ([]KMIPCA, bool) {
+	if o == nil || IsNil(o.Cas) {
+		return nil, false
+	}
+	return o.Cas, true
+}
+
+// HasCas returns a boolean if a field has been set.
+func (o *KMIPServer) HasCas() bool {
+	if o != nil && !IsNil(o.Cas) {
+		return true
+	}
+
+	return false
+}
+
+// SetCas gets a reference to the given []KMIPCA and assigns it to the Cas field.
+func (o *KMIPServer) SetCas(v []KMIPCA) {
+	o.Cas = v
 }
 
 // GetCertificate returns the Certificate field value if set, zero value otherwise.
@@ -319,6 +352,9 @@ func (o KMIPServer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ca) {
 		toSerialize["ca"] = o.Ca
+	}
+	if !IsNil(o.Cas) {
+		toSerialize["cas"] = o.Cas
 	}
 	if !IsNil(o.Certificate) {
 		toSerialize["certificate"] = o.Certificate

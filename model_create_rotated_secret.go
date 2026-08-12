@@ -49,7 +49,7 @@ type CreateRotatedSecret struct {
 	GcpServiceAccountKeyId *string `json:"gcp-service-account-key-id,omitempty"`
 	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
 	GraceRotation *string `json:"grace-rotation,omitempty"`
-	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -98,6 +98,8 @@ type CreateRotatedSecret struct {
 	SecureAccessDisableConcurrentConnections *bool `json:"secure-access-disable-concurrent-connections,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
@@ -120,7 +122,7 @@ type CreateRotatedSecret struct {
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
 	// Target name
 	TargetName string `json:"target-name"`
@@ -1420,6 +1422,38 @@ func (o *CreateRotatedSecret) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *CreateRotatedSecret) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRotatedSecret) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *CreateRotatedSecret) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *CreateRotatedSecret) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *CreateRotatedSecret) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -2078,6 +2112,9 @@ func (o CreateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
+	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
 	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost

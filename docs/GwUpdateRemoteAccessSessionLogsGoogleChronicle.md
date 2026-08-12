@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **LogType** | Pointer to **string** | Google chronicle log type | [optional] 
 **OutputFormat** | Pointer to **string** | Logs format [text/json] | [optional] [default to "text"]
 **PullInterval** | Pointer to **string** | Pull interval in seconds | [optional] [default to "10"]
-**Region** | Pointer to **string** | Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv] | [optional] 
+**Region** | Pointer to **string** | Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv/toronto/sydney/frankfurt/zurich/dammam/mumbai/tokyo] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

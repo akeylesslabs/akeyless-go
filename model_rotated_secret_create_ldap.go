@@ -23,6 +23,8 @@ var _ MappedNullable = &RotatedSecretCreateLdap{}
 // RotatedSecretCreateLdap struct for RotatedSecretCreateLdap
 type RotatedSecretCreateLdap struct {
 	ProviderType *string `json:"ProviderType,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -30,7 +32,7 @@ type RotatedSecretCreateLdap struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
 	InputRule []string `json:"input-rule,omitempty"`
@@ -67,6 +69,8 @@ type RotatedSecretCreateLdap struct {
 	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Default domain name server. i.e. microsoft.com
@@ -79,9 +83,11 @@ type RotatedSecretCreateLdap struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
 	// The target name to associate
 	TargetName string `json:"target-name"`
@@ -178,6 +184,38 @@ func (o *RotatedSecretCreateLdap) HasProviderType() bool {
 // SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
 func (o *RotatedSecretCreateLdap) SetProviderType(v string) {
 	o.ProviderType = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretCreateLdap) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -932,6 +970,38 @@ func (o *RotatedSecretCreateLdap) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *RotatedSecretCreateLdap) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *RotatedSecretCreateLdap) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -1122,6 +1192,38 @@ func (o *RotatedSecretCreateLdap) HasSecureAccessWebProxy() bool {
 // SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
 func (o *RotatedSecretCreateLdap) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
+}
+
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretCreateLdap) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateLdap) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretCreateLdap) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateLdap) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -1481,6 +1583,9 @@ func (o RotatedSecretCreateLdap) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProviderType) {
 		toSerialize["ProviderType"] = o.ProviderType
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AuthenticationCredentials) {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
 	}
@@ -1549,6 +1654,9 @@ func (o RotatedSecretCreateLdap) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
@@ -1566,6 +1674,9 @@ func (o RotatedSecretCreateLdap) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWebProxy) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

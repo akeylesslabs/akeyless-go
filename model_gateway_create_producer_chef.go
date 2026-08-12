@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayCreateProducerChef{}
 
 // GatewayCreateProducerChef gatewayCreateProducerChef is a command that creates chef producer [Deprecated: Use dynamic-secret-create-chef command]
 type GatewayCreateProducerChef struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Organizations
 	ChefOrgs *string `json:"chef-orgs,omitempty"`
 	// Server key
@@ -50,6 +52,8 @@ type GatewayCreateProducerChef struct {
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
 	// Skip SSL
 	SkipSsl *bool `json:"skip-ssl,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -99,6 +103,38 @@ func NewGatewayCreateProducerChefWithDefaults() *GatewayCreateProducerChef {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayCreateProducerChef) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerChef) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayCreateProducerChef) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetChefOrgs returns the ChefOrgs field value if set, zero value otherwise.
@@ -541,6 +577,38 @@ func (o *GatewayCreateProducerChef) SetSkipSsl(v bool) {
 	o.SkipSsl = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayCreateProducerChef) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerChef) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayCreateProducerChef) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerChef) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerChef) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -839,6 +907,9 @@ func (o GatewayCreateProducerChef) MarshalJSON() ([]byte, error) {
 
 func (o GatewayCreateProducerChef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.ChefOrgs) {
 		toSerialize["chef-orgs"] = o.ChefOrgs
 	}
@@ -878,6 +949,9 @@ func (o GatewayCreateProducerChef) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SkipSsl) {
 		toSerialize["skip-ssl"] = o.SkipSsl
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

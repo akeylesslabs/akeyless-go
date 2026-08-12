@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **MfaType** | Pointer to **string** | Enable two-factor-authentication via [email/auth app] | [optional] [default to "email"]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
-**ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca] | [optional] 
+**ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 

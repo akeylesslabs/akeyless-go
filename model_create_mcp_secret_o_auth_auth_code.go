@@ -24,6 +24,8 @@ var _ MappedNullable = &CreateMcpSecretOAuthAuthCode{}
 type CreateMcpSecretOAuthAuthCode struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -121,6 +123,38 @@ func (o *CreateMcpSecretOAuthAuthCode) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *CreateMcpSecretOAuthAuthCode) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *CreateMcpSecretOAuthAuthCode) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateMcpSecretOAuthAuthCode) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *CreateMcpSecretOAuthAuthCode) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *CreateMcpSecretOAuthAuthCode) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -735,6 +769,9 @@ func (o CreateMcpSecretOAuthAuthCode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Accessibility) {
 		toSerialize["accessibility"] = o.Accessibility
+	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection

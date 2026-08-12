@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbServerCertificates** | Pointer to **string** | (Optional) DB server certificates | [optional] 
 **DbServerName** | Pointer to **string** | (Optional) Server name for certificate verification | [optional] 
@@ -29,6 +30,7 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
@@ -59,6 +61,31 @@ will change when the set of required properties is changed
 NewGatewayCreateProducerMySQLWithDefaults instantiates a new GatewayCreateProducerMySQL object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAraEnabled
+
+`func (o *GatewayCreateProducerMySQL) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *GatewayCreateProducerMySQL) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *GatewayCreateProducerMySQL) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *GatewayCreateProducerMySQL) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetCustomUsernameTemplate
 
@@ -679,6 +706,31 @@ SetSecureAccessWeb sets SecureAccessWeb field to given value.
 `func (o *GatewayCreateProducerMySQL) HasSecureAccessWeb() bool`
 
 HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *GatewayCreateProducerMySQL) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *GatewayCreateProducerMySQL) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *GatewayCreateProducerMySQL) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *GatewayCreateProducerMySQL) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetSsl
 

@@ -34,7 +34,7 @@ type GwUpdateRemoteAccessSessionLogsGoogleChronicle struct {
 	OutputFormat *string `json:"output-format,omitempty"`
 	// Pull interval in seconds
 	PullInterval *string `json:"pull-interval,omitempty"`
-	// Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv]
+	// Google chronicle region [eu_multi_region/london/us_multi_region/singapore/tel_aviv/toronto/sydney/frankfurt/zurich/dammam/mumbai/tokyo]
 	Region *string `json:"region,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

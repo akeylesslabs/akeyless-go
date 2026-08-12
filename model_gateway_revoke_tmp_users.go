@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayRevokeTmpUsers{}
 
 // GatewayRevokeTmpUsers gatewayRevokeTmpUsers is a command that revoke producer tmp user [Deprecated: Use dynamic-secret-tmp-creds-delete command]
 type GatewayRevokeTmpUsers struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Host
 	Host *string `json:"host,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
@@ -34,6 +36,8 @@ type GatewayRevokeTmpUsers struct {
 	OutputRule []string `json:"output-rule,omitempty"`
 	// Revoke All Temp Creds
 	RevokeAll *bool `json:"revoke-all,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Soft Delete
 	SoftDelete *bool `json:"soft-delete,omitempty"`
 	// Tmp Creds ID
@@ -66,6 +70,38 @@ func NewGatewayRevokeTmpUsersWithDefaults() *GatewayRevokeTmpUsers {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayRevokeTmpUsers) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayRevokeTmpUsers) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayRevokeTmpUsers) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayRevokeTmpUsers) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -252,6 +288,38 @@ func (o *GatewayRevokeTmpUsers) SetRevokeAll(v bool) {
 	o.RevokeAll = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayRevokeTmpUsers) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayRevokeTmpUsers) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayRevokeTmpUsers) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayRevokeTmpUsers) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetSoftDelete returns the SoftDelete field value if set, zero value otherwise.
 func (o *GatewayRevokeTmpUsers) GetSoftDelete() bool {
 	if o == nil || IsNil(o.SoftDelete) {
@@ -390,6 +458,9 @@ func (o GatewayRevokeTmpUsers) MarshalJSON() ([]byte, error) {
 
 func (o GatewayRevokeTmpUsers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}
@@ -405,6 +476,9 @@ func (o GatewayRevokeTmpUsers) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RevokeAll) {
 		toSerialize["revoke-all"] = o.RevokeAll
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.SoftDelete) {
 		toSerialize["soft-delete"] = o.SoftDelete

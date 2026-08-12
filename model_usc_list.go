@@ -22,6 +22,8 @@ var _ MappedNullable = &UscList{}
 
 // UscList uscList is a command that lists the secrets of a Universal Secrets Connector
 type UscList struct {
+	// The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.
+	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	ObjectType *string `json:"object-type,omitempty"`
@@ -59,6 +61,38 @@ func NewUscListWithDefaults() *UscList {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *UscList) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *UscList) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *UscList) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -287,6 +321,9 @@ func (o UscList) MarshalJSON() ([]byte, error) {
 
 func (o UscList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp-project-id"] = o.GcpProjectId
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}

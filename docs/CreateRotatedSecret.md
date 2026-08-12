@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **GcpServiceAccountEmail** | Pointer to **string** | The email of the gcp service account to rotate | [optional] 
 **GcpServiceAccountKeyId** | Pointer to **string** | The key id of the gcp service account to rotate | [optional] 
 **GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
-**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **SecureAccessDbSchema** | Pointer to **string** | The db schema (relevant only for mssql or postgresql) | [optional] 
 **SecureAccessDisableConcurrentConnections** | Pointer to **bool** | Enable this flag to prevent simultaneous use of the same secret | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
@@ -54,7 +55,7 @@ Name | Type | Description | Notes
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account) | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
-**Target** | Pointer to **[]string** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times | [optional] 
+**Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **TargetName** | **string** | Target name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -1044,6 +1045,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 `func (o *CreateRotatedSecret) HasSecureAccessEnable() bool`
 
 HasSecureAccessEnable returns a boolean if a field has been set.
+
+### GetSecureAccessEnforceHostsRestriction
+
+`func (o *CreateRotatedSecret) GetSecureAccessEnforceHostsRestriction() bool`
+
+GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnforceHostsRestrictionOk
+
+`func (o *CreateRotatedSecret) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool)`
+
+GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnforceHostsRestriction
+
+`func (o *CreateRotatedSecret) SetSecureAccessEnforceHostsRestriction(v bool)`
+
+SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction field to given value.
+
+### HasSecureAccessEnforceHostsRestriction
+
+`func (o *CreateRotatedSecret) HasSecureAccessEnforceHostsRestriction() bool`
+
+HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
 
 ### GetSecureAccessHost
 

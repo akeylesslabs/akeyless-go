@@ -31,6 +31,8 @@ type SystemAccessCredentialsReplyObj struct {
 	KfmCreds *string `json:"kfm_creds,omitempty"`
 	// If the user didn't complete to configure the MFA app
 	NeedMfaAppFirstConfig *bool `json:"need_mfa_app_first_config,omitempty"`
+	// RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery.
+	RecoveryKeyId *string `json:"recovery_key_id,omitempty"`
 	RequiredMfa *string `json:"required_mfa,omitempty"`
 	// Credentials tmp token
 	Token *string `json:"token,omitempty"`
@@ -247,6 +249,38 @@ func (o *SystemAccessCredentialsReplyObj) SetNeedMfaAppFirstConfig(v bool) {
 	o.NeedMfaAppFirstConfig = &v
 }
 
+// GetRecoveryKeyId returns the RecoveryKeyId field value if set, zero value otherwise.
+func (o *SystemAccessCredentialsReplyObj) GetRecoveryKeyId() string {
+	if o == nil || IsNil(o.RecoveryKeyId) {
+		var ret string
+		return ret
+	}
+	return *o.RecoveryKeyId
+}
+
+// GetRecoveryKeyIdOk returns a tuple with the RecoveryKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemAccessCredentialsReplyObj) GetRecoveryKeyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RecoveryKeyId) {
+		return nil, false
+	}
+	return o.RecoveryKeyId, true
+}
+
+// HasRecoveryKeyId returns a boolean if a field has been set.
+func (o *SystemAccessCredentialsReplyObj) HasRecoveryKeyId() bool {
+	if o != nil && !IsNil(o.RecoveryKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecoveryKeyId gets a reference to the given string and assigns it to the RecoveryKeyId field.
+func (o *SystemAccessCredentialsReplyObj) SetRecoveryKeyId(v string) {
+	o.RecoveryKeyId = &v
+}
+
 // GetRequiredMfa returns the RequiredMfa field value if set, zero value otherwise.
 func (o *SystemAccessCredentialsReplyObj) GetRequiredMfa() string {
 	if o == nil || IsNil(o.RequiredMfa) {
@@ -370,6 +404,9 @@ func (o SystemAccessCredentialsReplyObj) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.NeedMfaAppFirstConfig) {
 		toSerialize["need_mfa_app_first_config"] = o.NeedMfaAppFirstConfig
+	}
+	if !IsNil(o.RecoveryKeyId) {
+		toSerialize["recovery_key_id"] = o.RecoveryKeyId
 	}
 	if !IsNil(o.RequiredMfa) {
 		toSerialize["required_mfa"] = o.RequiredMfa

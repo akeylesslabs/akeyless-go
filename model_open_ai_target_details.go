@@ -22,6 +22,16 @@ var _ MappedNullable = &OpenAITargetDetails{}
 type OpenAITargetDetails struct {
 	ApiKey *string `json:"api_key,omitempty"`
 	ApiKeyId *string `json:"api_key_id,omitempty"`
+	// AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below.
+	AuthMode *string `json:"auth_mode,omitempty"`
+	// OAuthAccessToken is the current ChatGPT-issued access token (the `tokens.access_token` field of the customer's local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived.
+	OauthAccessToken *string `json:"oauth_access_token,omitempty"`
+	// OAuthAccountID is the ChatGPT workspace/account id (`tokens.account_id` in auth.json), required on every request to the ChatGPT backend.
+	OauthAccountId *string `json:"oauth_account_id,omitempty"`
+	// OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token's JWT exp claim can't be parsed.
+	OauthLastRefresh *string `json:"oauth_last_refresh,omitempty"`
+	// OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid.
+	OauthRefreshToken *string `json:"oauth_refresh_token,omitempty"`
 	OpenaiUrl *string `json:"openai_url,omitempty"`
 	OrganizationId *string `json:"organization_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
@@ -106,6 +116,166 @@ func (o *OpenAITargetDetails) HasApiKeyId() bool {
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *OpenAITargetDetails) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
+}
+
+// GetAuthMode returns the AuthMode field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetAuthMode() string {
+	if o == nil || IsNil(o.AuthMode) {
+		var ret string
+		return ret
+	}
+	return *o.AuthMode
+}
+
+// GetAuthModeOk returns a tuple with the AuthMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetAuthModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthMode) {
+		return nil, false
+	}
+	return o.AuthMode, true
+}
+
+// HasAuthMode returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasAuthMode() bool {
+	if o != nil && !IsNil(o.AuthMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthMode gets a reference to the given string and assigns it to the AuthMode field.
+func (o *OpenAITargetDetails) SetAuthMode(v string) {
+	o.AuthMode = &v
+}
+
+// GetOauthAccessToken returns the OauthAccessToken field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetOauthAccessToken() string {
+	if o == nil || IsNil(o.OauthAccessToken) {
+		var ret string
+		return ret
+	}
+	return *o.OauthAccessToken
+}
+
+// GetOauthAccessTokenOk returns a tuple with the OauthAccessToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetOauthAccessTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.OauthAccessToken) {
+		return nil, false
+	}
+	return o.OauthAccessToken, true
+}
+
+// HasOauthAccessToken returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasOauthAccessToken() bool {
+	if o != nil && !IsNil(o.OauthAccessToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetOauthAccessToken gets a reference to the given string and assigns it to the OauthAccessToken field.
+func (o *OpenAITargetDetails) SetOauthAccessToken(v string) {
+	o.OauthAccessToken = &v
+}
+
+// GetOauthAccountId returns the OauthAccountId field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetOauthAccountId() string {
+	if o == nil || IsNil(o.OauthAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.OauthAccountId
+}
+
+// GetOauthAccountIdOk returns a tuple with the OauthAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetOauthAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OauthAccountId) {
+		return nil, false
+	}
+	return o.OauthAccountId, true
+}
+
+// HasOauthAccountId returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasOauthAccountId() bool {
+	if o != nil && !IsNil(o.OauthAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetOauthAccountId gets a reference to the given string and assigns it to the OauthAccountId field.
+func (o *OpenAITargetDetails) SetOauthAccountId(v string) {
+	o.OauthAccountId = &v
+}
+
+// GetOauthLastRefresh returns the OauthLastRefresh field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetOauthLastRefresh() string {
+	if o == nil || IsNil(o.OauthLastRefresh) {
+		var ret string
+		return ret
+	}
+	return *o.OauthLastRefresh
+}
+
+// GetOauthLastRefreshOk returns a tuple with the OauthLastRefresh field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetOauthLastRefreshOk() (*string, bool) {
+	if o == nil || IsNil(o.OauthLastRefresh) {
+		return nil, false
+	}
+	return o.OauthLastRefresh, true
+}
+
+// HasOauthLastRefresh returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasOauthLastRefresh() bool {
+	if o != nil && !IsNil(o.OauthLastRefresh) {
+		return true
+	}
+
+	return false
+}
+
+// SetOauthLastRefresh gets a reference to the given string and assigns it to the OauthLastRefresh field.
+func (o *OpenAITargetDetails) SetOauthLastRefresh(v string) {
+	o.OauthLastRefresh = &v
+}
+
+// GetOauthRefreshToken returns the OauthRefreshToken field value if set, zero value otherwise.
+func (o *OpenAITargetDetails) GetOauthRefreshToken() string {
+	if o == nil || IsNil(o.OauthRefreshToken) {
+		var ret string
+		return ret
+	}
+	return *o.OauthRefreshToken
+}
+
+// GetOauthRefreshTokenOk returns a tuple with the OauthRefreshToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenAITargetDetails) GetOauthRefreshTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.OauthRefreshToken) {
+		return nil, false
+	}
+	return o.OauthRefreshToken, true
+}
+
+// HasOauthRefreshToken returns a boolean if a field has been set.
+func (o *OpenAITargetDetails) HasOauthRefreshToken() bool {
+	if o != nil && !IsNil(o.OauthRefreshToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetOauthRefreshToken gets a reference to the given string and assigns it to the OauthRefreshToken field.
+func (o *OpenAITargetDetails) SetOauthRefreshToken(v string) {
+	o.OauthRefreshToken = &v
 }
 
 // GetOpenaiUrl returns the OpenaiUrl field value if set, zero value otherwise.
@@ -219,6 +389,21 @@ func (o OpenAITargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApiKeyId) {
 		toSerialize["api_key_id"] = o.ApiKeyId
+	}
+	if !IsNil(o.AuthMode) {
+		toSerialize["auth_mode"] = o.AuthMode
+	}
+	if !IsNil(o.OauthAccessToken) {
+		toSerialize["oauth_access_token"] = o.OauthAccessToken
+	}
+	if !IsNil(o.OauthAccountId) {
+		toSerialize["oauth_account_id"] = o.OauthAccountId
+	}
+	if !IsNil(o.OauthLastRefresh) {
+		toSerialize["oauth_last_refresh"] = o.OauthLastRefresh
+	}
+	if !IsNil(o.OauthRefreshToken) {
+		toSerialize["oauth_refresh_token"] = o.OauthRefreshToken
 	}
 	if !IsNil(o.OpenaiUrl) {
 		toSerialize["openai_url"] = o.OpenaiUrl

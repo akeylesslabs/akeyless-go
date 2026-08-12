@@ -48,7 +48,7 @@ type UpdateAuthMethod struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProviderType** | Pointer to **string** |  | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **BindDn** | Pointer to **string** | Bind DN | [optional] 
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 **ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
 **FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) | [optional] [default to "ext_username"]
 **GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
-**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -27,11 +28,13 @@ Name | Type | Description | Notes
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user | [optional] 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
-**Target** | Pointer to **[]string** | A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times | [optional] 
+**Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
@@ -87,6 +90,31 @@ SetProviderType sets ProviderType field to given value.
 `func (o *DynamicSecretCreateLdap) HasProviderType() bool`
 
 HasProviderType returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *DynamicSecretCreateLdap) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *DynamicSecretCreateLdap) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *DynamicSecretCreateLdap) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *DynamicSecretCreateLdap) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetBindDn
 
@@ -633,6 +661,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 
 HasSecureAccessEnable returns a boolean if a field has been set.
 
+### GetSecureAccessEnforceHostsRestriction
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessEnforceHostsRestriction() bool`
+
+GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnforceHostsRestrictionOk
+
+`func (o *DynamicSecretCreateLdap) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool)`
+
+GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnforceHostsRestriction
+
+`func (o *DynamicSecretCreateLdap) SetSecureAccessEnforceHostsRestriction(v bool)`
+
+SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction field to given value.
+
+### HasSecureAccessEnforceHostsRestriction
+
+`func (o *DynamicSecretCreateLdap) HasSecureAccessEnforceHostsRestriction() bool`
+
+HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+
 ### GetSecureAccessHost
 
 `func (o *DynamicSecretCreateLdap) GetSecureAccessHost() []string`
@@ -707,6 +760,31 @@ SetSecureAccessRdpDomain sets SecureAccessRdpDomain field to given value.
 `func (o *DynamicSecretCreateLdap) HasSecureAccessRdpDomain() bool`
 
 HasSecureAccessRdpDomain returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *DynamicSecretCreateLdap) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *DynamicSecretCreateLdap) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *DynamicSecretCreateLdap) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *DynamicSecretCreateLdap) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTags
 

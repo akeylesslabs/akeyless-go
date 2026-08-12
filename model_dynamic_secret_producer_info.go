@@ -31,6 +31,7 @@ type DynamicSecretProducerInfo struct {
 	// RotationStatus defines types of rotation Status
 	ProducerStatus *string `json:"producer_status,omitempty"`
 	ProducerType *string `json:"producer_type,omitempty"`
+	SkipDryRun *bool `json:"skip_dry_run,omitempty"`
 	UserTtl *string `json:"user_ttl,omitempty"`
 }
 
@@ -307,6 +308,38 @@ func (o *DynamicSecretProducerInfo) SetProducerType(v string) {
 	o.ProducerType = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretProducerInfo) GetSkipDryRun() bool {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretProducerInfo) GetSkipDryRunOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretProducerInfo) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *DynamicSecretProducerInfo) SetSkipDryRun(v bool) {
+	o.SkipDryRun = &v
+}
+
 // GetUserTtl returns the UserTtl field value if set, zero value otherwise.
 func (o *DynamicSecretProducerInfo) GetUserTtl() string {
 	if o == nil || IsNil(o.UserTtl) {
@@ -372,6 +405,9 @@ func (o DynamicSecretProducerInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProducerType) {
 		toSerialize["producer_type"] = o.ProducerType
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.UserTtl) {
 		toSerialize["user_ttl"] = o.UserTtl

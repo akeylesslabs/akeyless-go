@@ -35,7 +35,7 @@ type CreateSSHCertIssuer struct {
 	ExternalUsername *string `json:"external-username,omitempty"`
 	// For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username=true)
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
-	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
@@ -55,7 +55,7 @@ type CreateSSHCertIssuer struct {
 	SecureAccessBastionSsh *string `json:"secure-access-bastion-ssh,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
-	// Enable this flag to enforce connections only to the hosts listed in --secure-access-host
+	// Enforce connections only to allowed SRA hosts
 	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	SecureAccessGateway *string `json:"secure-access-gateway,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
@@ -72,7 +72,7 @@ type CreateSSHCertIssuer struct {
 	SignerKeyName string `json:"signer-key-name"`
 	// List of the tags attached to this key
 	Tag []string `json:"tag,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`

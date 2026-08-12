@@ -22,6 +22,8 @@ var _ MappedNullable = &RotatedSecretCreateMysql{}
 
 // RotatedSecretCreateMysql struct for RotatedSecretCreateMysql
 type RotatedSecretCreateMysql struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -70,6 +72,8 @@ type RotatedSecretCreateMysql struct {
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// The target name to associate
@@ -119,6 +123,38 @@ func NewRotatedSecretCreateMysqlWithDefaults() *RotatedSecretCreateMysql {
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretCreateMysql) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateMysql) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretCreateMysql) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretCreateMysql) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -937,6 +973,38 @@ func (o *RotatedSecretCreateMysql) SetSecureAccessWeb(v bool) {
 	o.SecureAccessWeb = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretCreateMysql) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateMysql) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretCreateMysql) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateMysql) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RotatedSecretCreateMysql) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1195,6 +1263,9 @@ func (o RotatedSecretCreateMysql) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretCreateMysql) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AuthenticationCredentials) {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
 	}
@@ -1268,6 +1339,9 @@ func (o RotatedSecretCreateMysql) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWeb) {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

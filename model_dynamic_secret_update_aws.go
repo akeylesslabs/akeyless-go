@@ -25,6 +25,8 @@ type DynamicSecretUpdateAws struct {
 	AccessMode *string `json:"access-mode,omitempty"`
 	// Admin credentials rotation interval (days)
 	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Access Key ID
 	AwsAccessKeyId *string `json:"aws-access-key-id,omitempty"`
 	// Secret Access Key
@@ -87,6 +89,8 @@ type DynamicSecretUpdateAws struct {
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// String of Key value session tags comma separated, relevant only for Assumed Role
 	SessionTags *string `json:"session-tags,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -230,6 +234,38 @@ func (o *DynamicSecretUpdateAws) HasAdminRotationIntervalDays() bool {
 // SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
 func (o *DynamicSecretUpdateAws) SetAdminRotationIntervalDays(v int64) {
 	o.AdminRotationIntervalDays = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateAws) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateAws) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateAws) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretUpdateAws) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
@@ -1216,6 +1252,38 @@ func (o *DynamicSecretUpdateAws) SetSessionTags(v string) {
 	o.SessionTags = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateAws) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateAws) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateAws) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretUpdateAws) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *DynamicSecretUpdateAws) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1552,6 +1620,9 @@ func (o DynamicSecretUpdateAws) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdminRotationIntervalDays) {
 		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AwsAccessKeyId) {
 		toSerialize["aws-access-key-id"] = o.AwsAccessKeyId
 	}
@@ -1642,6 +1713,9 @@ func (o DynamicSecretUpdateAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SessionTags) {
 		toSerialize["session-tags"] = o.SessionTags
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

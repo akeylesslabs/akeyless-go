@@ -6,19 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Alg** | Pointer to **string** |  | [optional] 
 **AltNames** | Pointer to **string** | A comma-separated list of dns alternative names | [optional] 
-**CertificateType** | Pointer to **string** | The certificate type to be included in the CSR certificate (ssl-client/ssl-server/certificate-signing) | [optional] 
+**CertificateType** | Pointer to **string** | A comma-separated list of certificate types to include in the CSR certificate (ssl-client/ssl-server/certificate-signing) | [optional] 
 **City** | Pointer to **string** | The city to be included in the CSR certificate | [optional] 
 **CommonName** | **string** | The common name to be included in the CSR certificate | 
 **Country** | Pointer to **string** | The country to be included in the CSR certificate | [optional] 
 **Critical** | Pointer to **bool** | Add critical to the key usage extension (will be false if not added) | [optional] 
+**CustomerFrgId** | Pointer to **string** | The customer fragment ID that will be used to create the key (if empty, the key will be created independently of a customer fragment) | [optional] 
 **Dep** | Pointer to **string** | The department to be included in the CSR certificate | [optional] 
 **EmailAddresses** | Pointer to **string** | A comma-separated list of email addresses alternative names | [optional] 
 **ExportPrivateKey** | Pointer to **bool** | The flag to indicate if the private key should be exported | [optional] [default to false]
+**ExtKeyUsage** | Pointer to **string** | A comma-separated list of extended key usages to include in the CSR certificate | [optional] 
 **GenerateKey** | Pointer to **bool** | Generate a new classic key for the csr | [optional] 
 **HashAlgorithm** | Pointer to **string** | Specifies the hash algorithm used for the encryption key&#39;s operations, available options: SHA256, SHA384, SHA512 | [optional] [default to "SHA256"]
 **IpAddresses** | Pointer to **string** | A comma-separated list of ip addresses alternative names | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyType** | **string** | The type of the key to generate (classic-key/dfc) | [default to "classic-key"]
+**KeyUsage** | Pointer to **string** | A comma-separated list of key usages to include in the CSR certificate | [optional] 
 **Name** | **string** | The key name | 
 **Org** | Pointer to **string** | The organization to be included in the CSR certificate | [optional] 
 **SplitLevel** | Pointer to **int64** | The number of fragments that the item will be split into (not includes customer fragment) | [optional] [default to 3]
@@ -216,6 +219,31 @@ SetCritical sets Critical field to given value.
 
 HasCritical returns a boolean if a field has been set.
 
+### GetCustomerFrgId
+
+`func (o *GenerateCsr) GetCustomerFrgId() string`
+
+GetCustomerFrgId returns the CustomerFrgId field if non-nil, zero value otherwise.
+
+### GetCustomerFrgIdOk
+
+`func (o *GenerateCsr) GetCustomerFrgIdOk() (*string, bool)`
+
+GetCustomerFrgIdOk returns a tuple with the CustomerFrgId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerFrgId
+
+`func (o *GenerateCsr) SetCustomerFrgId(v string)`
+
+SetCustomerFrgId sets CustomerFrgId field to given value.
+
+### HasCustomerFrgId
+
+`func (o *GenerateCsr) HasCustomerFrgId() bool`
+
+HasCustomerFrgId returns a boolean if a field has been set.
+
 ### GetDep
 
 `func (o *GenerateCsr) GetDep() string`
@@ -290,6 +318,31 @@ SetExportPrivateKey sets ExportPrivateKey field to given value.
 `func (o *GenerateCsr) HasExportPrivateKey() bool`
 
 HasExportPrivateKey returns a boolean if a field has been set.
+
+### GetExtKeyUsage
+
+`func (o *GenerateCsr) GetExtKeyUsage() string`
+
+GetExtKeyUsage returns the ExtKeyUsage field if non-nil, zero value otherwise.
+
+### GetExtKeyUsageOk
+
+`func (o *GenerateCsr) GetExtKeyUsageOk() (*string, bool)`
+
+GetExtKeyUsageOk returns a tuple with the ExtKeyUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtKeyUsage
+
+`func (o *GenerateCsr) SetExtKeyUsage(v string)`
+
+SetExtKeyUsage sets ExtKeyUsage field to given value.
+
+### HasExtKeyUsage
+
+`func (o *GenerateCsr) HasExtKeyUsage() bool`
+
+HasExtKeyUsage returns a boolean if a field has been set.
 
 ### GetGenerateKey
 
@@ -410,6 +463,31 @@ and a boolean to check if the value has been set.
 
 SetKeyType sets KeyType field to given value.
 
+
+### GetKeyUsage
+
+`func (o *GenerateCsr) GetKeyUsage() string`
+
+GetKeyUsage returns the KeyUsage field if non-nil, zero value otherwise.
+
+### GetKeyUsageOk
+
+`func (o *GenerateCsr) GetKeyUsageOk() (*string, bool)`
+
+GetKeyUsageOk returns a tuple with the KeyUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyUsage
+
+`func (o *GenerateCsr) SetKeyUsage(v string)`
+
+SetKeyUsage sets KeyUsage field to given value.
+
+### HasKeyUsage
+
+`func (o *GenerateCsr) HasKeyUsage() bool`
+
+HasKeyUsage returns a boolean if a field has been set.
 
 ### GetName
 

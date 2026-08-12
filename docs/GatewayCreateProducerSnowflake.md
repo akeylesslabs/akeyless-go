@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Account** | Pointer to **string** | Account name | [optional] 
 **AccountPassword** | Pointer to **string** | Database Password | [optional] 
 **AccountUsername** | Pointer to **string** | Database Username | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AuthMode** | Pointer to **string** | The authentication mode for the temporary user [password/key] | [optional] [default to "password"]
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DbName** | Pointer to **string** | Database name | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **PrivateKeyPassphrase** | Pointer to **string** | The Private key passphrase | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -125,6 +127,31 @@ SetAccountUsername sets AccountUsername field to given value.
 `func (o *GatewayCreateProducerSnowflake) HasAccountUsername() bool`
 
 HasAccountUsername returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *GatewayCreateProducerSnowflake) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *GatewayCreateProducerSnowflake) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *GatewayCreateProducerSnowflake) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *GatewayCreateProducerSnowflake) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAuthMode
 
@@ -470,6 +497,31 @@ SetRole sets Role field to given value.
 `func (o *GatewayCreateProducerSnowflake) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *GatewayCreateProducerSnowflake) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *GatewayCreateProducerSnowflake) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *GatewayCreateProducerSnowflake) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *GatewayCreateProducerSnowflake) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTags
 

@@ -22,8 +22,11 @@ var _ MappedNullable = &CreateSecret{}
 
 // CreateSecret struct for CreateSecret
 type CreateSecret struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
 	ChangeEvent *string `json:"change-event,omitempty"`
 	// For Password Management use, additional fields
@@ -34,6 +37,8 @@ type CreateSecret struct {
 	Description *string `json:"description,omitempty"`
 	// Secret format [text/json/key-value] (relevant only for type 'generic')
 	Format *string `json:"format,omitempty"`
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
+	HostProvider *string `json:"host-provider,omitempty"`
 	// For Password Management use, reflect the website context
 	InjectUrl []string `json:"inject-url,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
@@ -64,6 +69,8 @@ type CreateSecret struct {
 	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	SecureAccessGateway *string `json:"secure-access-gateway,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
@@ -81,6 +88,8 @@ type CreateSecret struct {
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+	Target []string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The secret sub type [generic/password]
@@ -138,6 +147,38 @@ func NewCreateSecretWithDefaults() *CreateSecret {
 	return &this
 }
 
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *CreateSecret) GetProviderType() string {
+	if o == nil || IsNil(o.ProviderType) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetProviderTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ProviderType) {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *CreateSecret) HasProviderType() bool {
+	if o != nil && !IsNil(o.ProviderType) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *CreateSecret) SetProviderType(v string) {
+	o.ProviderType = &v
+}
+
 // GetAccessibility returns the Accessibility field value if set, zero value otherwise.
 func (o *CreateSecret) GetAccessibility() string {
 	if o == nil || IsNil(o.Accessibility) {
@@ -168,6 +209,38 @@ func (o *CreateSecret) HasAccessibility() bool {
 // SetAccessibility gets a reference to the given string and assigns it to the Accessibility field.
 func (o *CreateSecret) SetAccessibility(v string) {
 	o.Accessibility = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *CreateSecret) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *CreateSecret) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *CreateSecret) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetChangeEvent returns the ChangeEvent field value if set, zero value otherwise.
@@ -328,6 +401,38 @@ func (o *CreateSecret) HasFormat() bool {
 // SetFormat gets a reference to the given string and assigns it to the Format field.
 func (o *CreateSecret) SetFormat(v string) {
 	o.Format = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *CreateSecret) GetHostProvider() string {
+	if o == nil || IsNil(o.HostProvider) {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetHostProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.HostProvider) {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *CreateSecret) HasHostProvider() bool {
+	if o != nil && !IsNil(o.HostProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *CreateSecret) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetInjectUrl returns the InjectUrl field value if set, zero value otherwise.
@@ -802,6 +907,38 @@ func (o *CreateSecret) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *CreateSecret) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *CreateSecret) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *CreateSecret) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessGateway returns the SecureAccessGateway field value if set, zero value otherwise.
 func (o *CreateSecret) GetSecureAccessGateway() string {
 	if o == nil || IsNil(o.SecureAccessGateway) {
@@ -1090,6 +1227,38 @@ func (o *CreateSecret) SetTags(v []string) {
 	o.Tags = v
 }
 
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *CreateSecret) GetTarget() []string {
+	if o == nil || IsNil(o.Target) {
+		var ret []string
+		return ret
+	}
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateSecret) GetTargetOk() ([]string, bool) {
+	if o == nil || IsNil(o.Target) {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *CreateSecret) HasTarget() bool {
+	if o != nil && !IsNil(o.Target) {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *CreateSecret) SetTarget(v []string) {
+	o.Target = v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateSecret) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -1252,8 +1421,14 @@ func (o CreateSecret) MarshalJSON() ([]byte, error) {
 
 func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProviderType) {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
 	if !IsNil(o.Accessibility) {
 		toSerialize["accessibility"] = o.Accessibility
+	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
 	}
 	if !IsNil(o.ChangeEvent) {
 		toSerialize["change-event"] = o.ChangeEvent
@@ -1269,6 +1444,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format
+	}
+	if !IsNil(o.HostProvider) {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if !IsNil(o.InjectUrl) {
 		toSerialize["inject-url"] = o.InjectUrl
@@ -1313,6 +1491,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessGateway) {
 		toSerialize["secure-access-gateway"] = o.SecureAccessGateway
 	}
@@ -1339,6 +1520,9 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

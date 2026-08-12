@@ -20,6 +20,8 @@ var _ MappedNullable = &AgenticRules{}
 
 // AgenticRules struct for AgenticRules
 type AgenticRules struct {
+	// Enabled is a pointer so rules persisted before this field existed (nil) keep enforcing, rather than silently switching off.
+	Enabled *bool `json:"enabled,omitempty"`
 	InputRules []AgenticRule `json:"input_rules,omitempty"`
 	OutputRules []AgenticRule `json:"output_rules,omitempty"`
 }
@@ -39,6 +41,38 @@ func NewAgenticRules() *AgenticRules {
 func NewAgenticRulesWithDefaults() *AgenticRules {
 	this := AgenticRules{}
 	return &this
+}
+
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *AgenticRules) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticRules) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *AgenticRules) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *AgenticRules) SetEnabled(v bool) {
+	o.Enabled = &v
 }
 
 // GetInputRules returns the InputRules field value if set, zero value otherwise.
@@ -115,6 +149,9 @@ func (o AgenticRules) MarshalJSON() ([]byte, error) {
 
 func (o AgenticRules) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	if !IsNil(o.InputRules) {
 		toSerialize["input_rules"] = o.InputRules
 	}

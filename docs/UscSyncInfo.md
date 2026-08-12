@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Namespace** | Pointer to **string** |  | [optional] 
 **SecretId** | Pointer to **string** |  | [optional] 
 **SecretName** | Pointer to **string** |  | [optional] 
+**SelectedEnvironments** | Pointer to **string** |  | [optional] 
+**SelectedRepositories** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetSecretName sets SecretName field to given value.
 `func (o *UscSyncInfo) HasSecretName() bool`
 
 HasSecretName returns a boolean if a field has been set.
+
+### GetSelectedEnvironments
+
+`func (o *UscSyncInfo) GetSelectedEnvironments() string`
+
+GetSelectedEnvironments returns the SelectedEnvironments field if non-nil, zero value otherwise.
+
+### GetSelectedEnvironmentsOk
+
+`func (o *UscSyncInfo) GetSelectedEnvironmentsOk() (*string, bool)`
+
+GetSelectedEnvironmentsOk returns a tuple with the SelectedEnvironments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedEnvironments
+
+`func (o *UscSyncInfo) SetSelectedEnvironments(v string)`
+
+SetSelectedEnvironments sets SelectedEnvironments field to given value.
+
+### HasSelectedEnvironments
+
+`func (o *UscSyncInfo) HasSelectedEnvironments() bool`
+
+HasSelectedEnvironments returns a boolean if a field has been set.
+
+### GetSelectedRepositories
+
+`func (o *UscSyncInfo) GetSelectedRepositories() string`
+
+GetSelectedRepositories returns the SelectedRepositories field if non-nil, zero value otherwise.
+
+### GetSelectedRepositoriesOk
+
+`func (o *UscSyncInfo) GetSelectedRepositoriesOk() (*string, bool)`
+
+GetSelectedRepositoriesOk returns a tuple with the SelectedRepositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectedRepositories
+
+`func (o *UscSyncInfo) SetSelectedRepositories(v string)`
+
+SetSelectedRepositories sets SelectedRepositories field to given value.
+
+### HasSelectedRepositories
+
+`func (o *UscSyncInfo) HasSelectedRepositories() bool`
+
+HasSelectedRepositories returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

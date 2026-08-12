@@ -23,6 +23,8 @@ var _ MappedNullable = &GatewayCreateProducerLdap{}
 // GatewayCreateProducerLdap gatewayCreateProducerLdap is a command that creates ldap producer [Deprecated: Use dynamic-secret-create-ldap command]
 type GatewayCreateProducerLdap struct {
 	ProviderType *string `json:"ProviderType,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Bind DN
 	BindDn *string `json:"bind-dn,omitempty"`
 	// Bind DN Password
@@ -37,7 +39,7 @@ type GatewayCreateProducerLdap struct {
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
 	// Group DN which the temporary user should be added
 	GroupDn *string `json:"group-dn,omitempty"`
-	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
 	InputRule []string `json:"input-rule,omitempty"`
@@ -65,15 +67,19 @@ type GatewayCreateProducerLdap struct {
 	SecureAccessDelay *int64 `json:"secure-access-delay,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// RD Gateway server
 	SecureAccessRdGatewayServer *string `json:"secure-access-rd-gateway-server,omitempty"`
 	// Required when the Dynamic Secret is used for a domain user
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
-	// A list of linked targets to be associated, Relevant only for Secure Remote Access for ssh cert issuer, ldap rotated secret and ldap dynamic secret, To specify multiple targets use argument multiple times
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
 	// Target name
 	TargetName *string `json:"target-name,omitempty"`
@@ -164,6 +170,38 @@ func (o *GatewayCreateProducerLdap) HasProviderType() bool {
 // SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
 func (o *GatewayCreateProducerLdap) SetProviderType(v string) {
 	o.ProviderType = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayCreateProducerLdap) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetBindDn returns the BindDn field value if set, zero value otherwise.
@@ -830,6 +868,38 @@ func (o *GatewayCreateProducerLdap) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *GatewayCreateProducerLdap) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *GatewayCreateProducerLdap) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -924,6 +994,38 @@ func (o *GatewayCreateProducerLdap) HasSecureAccessRdpDomain() bool {
 // SetSecureAccessRdpDomain gets a reference to the given string and assigns it to the SecureAccessRdpDomain field.
 func (o *GatewayCreateProducerLdap) SetSecureAccessRdpDomain(v string) {
 	o.SecureAccessRdpDomain = &v
+}
+
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayCreateProducerLdap) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerLdap) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayCreateProducerLdap) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerLdap) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -1355,6 +1457,9 @@ func (o GatewayCreateProducerLdap) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProviderType) {
 		toSerialize["ProviderType"] = o.ProviderType
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.BindDn) {
 		toSerialize["bind-dn"] = o.BindDn
 	}
@@ -1416,6 +1521,9 @@ func (o GatewayCreateProducerLdap) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
@@ -1424,6 +1532,9 @@ func (o GatewayCreateProducerLdap) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessRdpDomain) {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

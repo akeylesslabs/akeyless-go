@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | Pointer to **string** | Azure App Object Id | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AzureAdministrativeUnit** | Pointer to **string** | Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true) | [optional] 
 **AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
@@ -25,6 +26,7 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -83,6 +85,31 @@ SetAppObjId sets AppObjId field to given value.
 `func (o *GatewayCreateProducerAzure) HasAppObjId() bool`
 
 HasAppObjId returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *GatewayCreateProducerAzure) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *GatewayCreateProducerAzure) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *GatewayCreateProducerAzure) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *GatewayCreateProducerAzure) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAzureAdministrativeUnit
 
@@ -578,6 +605,31 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 `func (o *GatewayCreateProducerAzure) HasSecureAccessWebProxy() bool`
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *GatewayCreateProducerAzure) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *GatewayCreateProducerAzure) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *GatewayCreateProducerAzure) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *GatewayCreateProducerAzure) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTags
 

@@ -24,6 +24,8 @@ var _ MappedNullable = &DynamicSecretUpdateCustom{}
 type DynamicSecretUpdateCustom struct {
 	// Define rotation interval in days
 	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
 	// Protection from accidental deletion of this object [true/false]
@@ -52,6 +54,8 @@ type DynamicSecretUpdateCustom struct {
 	RevokeSyncUrl string `json:"revoke-sync-url"`
 	// URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate
 	RotateSyncUrl *string `json:"rotate-sync-url,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Maximum allowed time in seconds for the webhook to return the results
@@ -132,6 +136,38 @@ func (o *DynamicSecretUpdateCustom) HasAdminRotationIntervalDays() bool {
 // SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
 func (o *DynamicSecretUpdateCustom) SetAdminRotationIntervalDays(v int64) {
 	o.AdminRotationIntervalDays = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateCustom) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateCustom) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateCustom) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretUpdateCustom) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCreateSyncUrl returns the CreateSyncUrl field value
@@ -558,6 +594,38 @@ func (o *DynamicSecretUpdateCustom) SetRotateSyncUrl(v string) {
 	o.RotateSyncUrl = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretUpdateCustom) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretUpdateCustom) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretUpdateCustom) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretUpdateCustom) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *DynamicSecretUpdateCustom) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -731,6 +799,9 @@ func (o DynamicSecretUpdateCustom) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdminRotationIntervalDays) {
 		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	toSerialize["create-sync-url"] = o.CreateSyncUrl
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
@@ -766,6 +837,9 @@ func (o DynamicSecretUpdateCustom) ToMap() (map[string]interface{}, error) {
 	toSerialize["revoke-sync-url"] = o.RevokeSyncUrl
 	if !IsNil(o.RotateSyncUrl) {
 		toSerialize["rotate-sync-url"] = o.RotateSyncUrl
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

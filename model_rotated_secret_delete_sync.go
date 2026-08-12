@@ -24,12 +24,16 @@ var _ MappedNullable = &RotatedSecretDeleteSync{}
 type RotatedSecretDeleteSync struct {
 	// Delete the secret from the remote target USC as well
 	DeleteFromUsc *bool `json:"delete-from-usc,omitempty"`
+	// GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --environments repo1/env1,repo2/env2).
+	Environments *string `json:"environments,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Rotated secret name
 	Name string `json:"name"`
 	// Remote Secret Name to disambiguate when multiple syncs exist under the same USC
 	RemoteSecretName *string `json:"remote-secret-name,omitempty"`
+	// GitHub repositories to delete from. Defaults to all repositories available on the selected USC. GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --repositories repo1,repo2).
+	Repositories *string `json:"repositories,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -97,6 +101,38 @@ func (o *RotatedSecretDeleteSync) HasDeleteFromUsc() bool {
 // SetDeleteFromUsc gets a reference to the given bool and assigns it to the DeleteFromUsc field.
 func (o *RotatedSecretDeleteSync) SetDeleteFromUsc(v bool) {
 	o.DeleteFromUsc = &v
+}
+
+// GetEnvironments returns the Environments field value if set, zero value otherwise.
+func (o *RotatedSecretDeleteSync) GetEnvironments() string {
+	if o == nil || IsNil(o.Environments) {
+		var ret string
+		return ret
+	}
+	return *o.Environments
+}
+
+// GetEnvironmentsOk returns a tuple with the Environments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDeleteSync) GetEnvironmentsOk() (*string, bool) {
+	if o == nil || IsNil(o.Environments) {
+		return nil, false
+	}
+	return o.Environments, true
+}
+
+// HasEnvironments returns a boolean if a field has been set.
+func (o *RotatedSecretDeleteSync) HasEnvironments() bool {
+	if o != nil && !IsNil(o.Environments) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvironments gets a reference to the given string and assigns it to the Environments field.
+func (o *RotatedSecretDeleteSync) SetEnvironments(v string) {
+	o.Environments = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -185,6 +221,38 @@ func (o *RotatedSecretDeleteSync) HasRemoteSecretName() bool {
 // SetRemoteSecretName gets a reference to the given string and assigns it to the RemoteSecretName field.
 func (o *RotatedSecretDeleteSync) SetRemoteSecretName(v string) {
 	o.RemoteSecretName = &v
+}
+
+// GetRepositories returns the Repositories field value if set, zero value otherwise.
+func (o *RotatedSecretDeleteSync) GetRepositories() string {
+	if o == nil || IsNil(o.Repositories) {
+		var ret string
+		return ret
+	}
+	return *o.Repositories
+}
+
+// GetRepositoriesOk returns a tuple with the Repositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDeleteSync) GetRepositoriesOk() (*string, bool) {
+	if o == nil || IsNil(o.Repositories) {
+		return nil, false
+	}
+	return o.Repositories, true
+}
+
+// HasRepositories returns a boolean if a field has been set.
+func (o *RotatedSecretDeleteSync) HasRepositories() bool {
+	if o != nil && !IsNil(o.Repositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositories gets a reference to the given string and assigns it to the Repositories field.
+func (o *RotatedSecretDeleteSync) SetRepositories(v string) {
+	o.Repositories = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -288,12 +356,18 @@ func (o RotatedSecretDeleteSync) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeleteFromUsc) {
 		toSerialize["delete-from-usc"] = o.DeleteFromUsc
 	}
+	if !IsNil(o.Environments) {
+		toSerialize["environments"] = o.Environments
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.RemoteSecretName) {
 		toSerialize["remote-secret-name"] = o.RemoteSecretName
+	}
+	if !IsNil(o.Repositories) {
+		toSerialize["repositories"] = o.Repositories
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

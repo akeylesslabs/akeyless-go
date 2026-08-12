@@ -22,6 +22,8 @@ var _ MappedNullable = &DynamicSecretCreateRabbitMq{}
 
 // DynamicSecretCreateRabbitMq dynamicSecretCreateRabbitMq is a command that creates rabbitmq dynamic secret
 type DynamicSecretCreateRabbitMq struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -66,6 +68,8 @@ type DynamicSecretCreateRabbitMq struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -123,6 +127,38 @@ func NewDynamicSecretCreateRabbitMqWithDefaults() *DynamicSecretCreateRabbitMq {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRabbitMq) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRabbitMq) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRabbitMq) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretCreateRabbitMq) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -821,6 +857,38 @@ func (o *DynamicSecretCreateRabbitMq) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretCreateRabbitMq) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateRabbitMq) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretCreateRabbitMq) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretCreateRabbitMq) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *DynamicSecretCreateRabbitMq) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1119,6 +1187,9 @@ func (o DynamicSecretCreateRabbitMq) MarshalJSON() ([]byte, error) {
 
 func (o DynamicSecretCreateRabbitMq) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
@@ -1182,6 +1253,9 @@ func (o DynamicSecretCreateRabbitMq) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWebProxy) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

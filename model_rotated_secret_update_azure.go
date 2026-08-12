@@ -30,6 +30,8 @@ type RotatedSecretUpdateAzure struct {
 	ApiKey *string `json:"api-key,omitempty"`
 	// Id of the azure app that hold the serect to be rotated (relevant only for rotator-type=api-key & authentication-credentials=use-target-creds)
 	ApplicationId *string `json:"application-id,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -94,6 +96,8 @@ type RotatedSecretUpdateAzure struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -285,6 +289,38 @@ func (o *RotatedSecretUpdateAzure) HasApplicationId() bool {
 // SetApplicationId gets a reference to the given string and assigns it to the ApplicationId field.
 func (o *RotatedSecretUpdateAzure) SetApplicationId(v string) {
 	o.ApplicationId = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretUpdateAzure) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -1367,6 +1403,38 @@ func (o *RotatedSecretUpdateAzure) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateAzure) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateAzure) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateAzure) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateAzure) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetStorageAccountKeyName returns the StorageAccountKeyName field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateAzure) GetStorageAccountKeyName() string {
 	if o == nil || IsNil(o.StorageAccountKeyName) {
@@ -1645,6 +1713,9 @@ func (o RotatedSecretUpdateAzure) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationId) {
 		toSerialize["application-id"] = o.ApplicationId
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AuthenticationCredentials) {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
 	}
@@ -1744,6 +1815,9 @@ func (o RotatedSecretUpdateAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWebProxy) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.StorageAccountKeyName) {
 		toSerialize["storage-account-key-name"] = o.StorageAccountKeyName

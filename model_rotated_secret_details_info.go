@@ -20,6 +20,7 @@ var _ MappedNullable = &RotatedSecretDetailsInfo{}
 
 // RotatedSecretDetailsInfo RotatedSecretDetailsInfo The rotated secret rotator info
 type RotatedSecretDetailsInfo struct {
+	AwsUserName *string `json:"aws_user_name,omitempty"`
 	DeletePreviousVersionInDays *int32 `json:"delete_previous_version_in_days,omitempty"`
 	EnableCustomPasswordPolicy *bool `json:"enable_custom_password_policy,omitempty"`
 	GraceRotation *bool `json:"grace_rotation,omitempty"`
@@ -43,6 +44,7 @@ type RotatedSecretDetailsInfo struct {
 	RotatorType *string `json:"rotator_type,omitempty"`
 	SamePassword *bool `json:"same_password,omitempty"`
 	ServicesDetails []WindowsService `json:"services_details,omitempty"`
+	SkipDryRun *bool `json:"skip_dry_run,omitempty"`
 	TimeoutSeconds *int64 `json:"timeout_seconds,omitempty"`
 }
 
@@ -61,6 +63,38 @@ func NewRotatedSecretDetailsInfo() *RotatedSecretDetailsInfo {
 func NewRotatedSecretDetailsInfoWithDefaults() *RotatedSecretDetailsInfo {
 	this := RotatedSecretDetailsInfo{}
 	return &this
+}
+
+// GetAwsUserName returns the AwsUserName field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetAwsUserName() string {
+	if o == nil || IsNil(o.AwsUserName) {
+		var ret string
+		return ret
+	}
+	return *o.AwsUserName
+}
+
+// GetAwsUserNameOk returns a tuple with the AwsUserName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetAwsUserNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsUserName) {
+		return nil, false
+	}
+	return o.AwsUserName, true
+}
+
+// HasAwsUserName returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasAwsUserName() bool {
+	if o != nil && !IsNil(o.AwsUserName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsUserName gets a reference to the given string and assigns it to the AwsUserName field.
+func (o *RotatedSecretDetailsInfo) SetAwsUserName(v string) {
+	o.AwsUserName = &v
 }
 
 // GetDeletePreviousVersionInDays returns the DeletePreviousVersionInDays field value if set, zero value otherwise.
@@ -767,6 +801,38 @@ func (o *RotatedSecretDetailsInfo) SetServicesDetails(v []WindowsService) {
 	o.ServicesDetails = v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetSkipDryRun() bool {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetSkipDryRunOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretDetailsInfo) SetSkipDryRun(v bool) {
+	o.SkipDryRun = &v
+}
+
 // GetTimeoutSeconds returns the TimeoutSeconds field value if set, zero value otherwise.
 func (o *RotatedSecretDetailsInfo) GetTimeoutSeconds() int64 {
 	if o == nil || IsNil(o.TimeoutSeconds) {
@@ -809,6 +875,9 @@ func (o RotatedSecretDetailsInfo) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsUserName) {
+		toSerialize["aws_user_name"] = o.AwsUserName
+	}
 	if !IsNil(o.DeletePreviousVersionInDays) {
 		toSerialize["delete_previous_version_in_days"] = o.DeletePreviousVersionInDays
 	}
@@ -874,6 +943,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ServicesDetails) {
 		toSerialize["services_details"] = o.ServicesDetails
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.TimeoutSeconds) {
 		toSerialize["timeout_seconds"] = o.TimeoutSeconds

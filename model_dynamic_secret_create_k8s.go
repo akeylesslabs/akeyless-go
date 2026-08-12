@@ -22,6 +22,8 @@ var _ MappedNullable = &DynamicSecretCreateK8s{}
 
 // DynamicSecretCreateK8s dynamicSecretCreateK8s is a command that creates k8s dynamic secret
 type DynamicSecretCreateK8s struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Customize how temporary usernames are generated using go template
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -84,6 +86,8 @@ type DynamicSecretCreateK8s struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -136,6 +140,38 @@ func NewDynamicSecretCreateK8sWithDefaults() *DynamicSecretCreateK8s {
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *DynamicSecretCreateK8s) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateK8s) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *DynamicSecretCreateK8s) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *DynamicSecretCreateK8s) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
@@ -1122,6 +1158,38 @@ func (o *DynamicSecretCreateK8s) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *DynamicSecretCreateK8s) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateK8s) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *DynamicSecretCreateK8s) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *DynamicSecretCreateK8s) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *DynamicSecretCreateK8s) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1324,6 +1392,9 @@ func (o DynamicSecretCreateK8s) MarshalJSON() ([]byte, error) {
 
 func (o DynamicSecretCreateK8s) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.CustomUsernameTemplate) {
 		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
@@ -1414,6 +1485,9 @@ func (o DynamicSecretCreateK8s) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWebProxy) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

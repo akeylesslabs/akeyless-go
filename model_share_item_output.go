@@ -23,6 +23,7 @@ type ShareItemOutput struct {
 	EmailError *map[string]string `json:"email_error,omitempty"`
 	ItemsError []ResponseStopShareItem `json:"items_error,omitempty"`
 	SToken *string `json:"s_token,omitempty"`
+	SharedTokenId *string `json:"shared_token_id,omitempty"`
 	SharedUsers []string `json:"shared_users,omitempty"`
 	SharedUsersFullInfo []SharingItemFullInfo `json:"shared_users_full_info,omitempty"`
 	SharingUrl *string `json:"sharing_url,omitempty"`
@@ -141,6 +142,38 @@ func (o *ShareItemOutput) SetSToken(v string) {
 	o.SToken = &v
 }
 
+// GetSharedTokenId returns the SharedTokenId field value if set, zero value otherwise.
+func (o *ShareItemOutput) GetSharedTokenId() string {
+	if o == nil || IsNil(o.SharedTokenId) {
+		var ret string
+		return ret
+	}
+	return *o.SharedTokenId
+}
+
+// GetSharedTokenIdOk returns a tuple with the SharedTokenId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ShareItemOutput) GetSharedTokenIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SharedTokenId) {
+		return nil, false
+	}
+	return o.SharedTokenId, true
+}
+
+// HasSharedTokenId returns a boolean if a field has been set.
+func (o *ShareItemOutput) HasSharedTokenId() bool {
+	if o != nil && !IsNil(o.SharedTokenId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSharedTokenId gets a reference to the given string and assigns it to the SharedTokenId field.
+func (o *ShareItemOutput) SetSharedTokenId(v string) {
+	o.SharedTokenId = &v
+}
+
 // GetSharedUsers returns the SharedUsers field value if set, zero value otherwise.
 func (o *ShareItemOutput) GetSharedUsers() []string {
 	if o == nil || IsNil(o.SharedUsers) {
@@ -255,6 +288,9 @@ func (o ShareItemOutput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SToken) {
 		toSerialize["s_token"] = o.SToken
+	}
+	if !IsNil(o.SharedTokenId) {
+		toSerialize["shared_token_id"] = o.SharedTokenId
 	}
 	if !IsNil(o.SharedUsers) {
 		toSerialize["shared_users"] = o.SharedUsers

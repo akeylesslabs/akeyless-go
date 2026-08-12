@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | Pointer to **string** |  | [optional] 
 **AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AwsAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
 **AwsAccessSecretKey** | Pointer to **string** | Secret Access Key | [optional] 
 **AwsExternalId** | Pointer to **string** | The AWS External ID associated with the AWS role (relevant only for assume_role mode) | [optional] 
@@ -36,6 +37,7 @@ Name | Type | Description | Notes
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SessionTags** | Pointer to **string** | String of Key value session tags comma separated, relevant only for Assumed Role | [optional] 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -115,6 +117,31 @@ SetAdminRotationIntervalDays sets AdminRotationIntervalDays field to given value
 `func (o *GatewayUpdateProducerAws) HasAdminRotationIntervalDays() bool`
 
 HasAdminRotationIntervalDays returns a boolean if a field has been set.
+
+### GetAraEnabled
+
+`func (o *GatewayUpdateProducerAws) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *GatewayUpdateProducerAws) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *GatewayUpdateProducerAws) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *GatewayUpdateProducerAws) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAwsAccessKeyId
 
@@ -860,6 +887,31 @@ SetSessionTags sets SessionTags field to given value.
 `func (o *GatewayUpdateProducerAws) HasSessionTags() bool`
 
 HasSessionTags returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *GatewayUpdateProducerAws) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *GatewayUpdateProducerAws) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *GatewayUpdateProducerAws) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *GatewayUpdateProducerAws) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTags
 

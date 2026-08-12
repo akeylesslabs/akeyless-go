@@ -24,6 +24,7 @@ type AWSTargetDetails struct {
 	AwsRegion *string `json:"aws_region,omitempty"`
 	AwsSecretAccessKey *string `json:"aws_secret_access_key,omitempty"`
 	AwsSessionToken *string `json:"aws_session_token,omitempty"`
+	AwsUserName *string `json:"aws_user_name,omitempty"`
 	GwCloudIdentityExternalIdOpt *AWSGatewayCloudIdentityExternalIdOpt `json:"gw_cloud_identity_external_id_opt,omitempty"`
 	UseGwCloudIdentity *bool `json:"use_gw_cloud_identity,omitempty"`
 }
@@ -173,6 +174,38 @@ func (o *AWSTargetDetails) SetAwsSessionToken(v string) {
 	o.AwsSessionToken = &v
 }
 
+// GetAwsUserName returns the AwsUserName field value if set, zero value otherwise.
+func (o *AWSTargetDetails) GetAwsUserName() string {
+	if o == nil || IsNil(o.AwsUserName) {
+		var ret string
+		return ret
+	}
+	return *o.AwsUserName
+}
+
+// GetAwsUserNameOk returns a tuple with the AwsUserName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AWSTargetDetails) GetAwsUserNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsUserName) {
+		return nil, false
+	}
+	return o.AwsUserName, true
+}
+
+// HasAwsUserName returns a boolean if a field has been set.
+func (o *AWSTargetDetails) HasAwsUserName() bool {
+	if o != nil && !IsNil(o.AwsUserName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsUserName gets a reference to the given string and assigns it to the AwsUserName field.
+func (o *AWSTargetDetails) SetAwsUserName(v string) {
+	o.AwsUserName = &v
+}
+
 // GetGwCloudIdentityExternalIdOpt returns the GwCloudIdentityExternalIdOpt field value if set, zero value otherwise.
 func (o *AWSTargetDetails) GetGwCloudIdentityExternalIdOpt() AWSGatewayCloudIdentityExternalIdOpt {
 	if o == nil || IsNil(o.GwCloudIdentityExternalIdOpt) {
@@ -258,6 +291,9 @@ func (o AWSTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AwsSessionToken) {
 		toSerialize["aws_session_token"] = o.AwsSessionToken
+	}
+	if !IsNil(o.AwsUserName) {
+		toSerialize["aws_user_name"] = o.AwsUserName
 	}
 	if !IsNil(o.GwCloudIdentityExternalIdOpt) {
 		toSerialize["gw_cloud_identity_external_id_opt"] = o.GwCloudIdentityExternalIdOpt

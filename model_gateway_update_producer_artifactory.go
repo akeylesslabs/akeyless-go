@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayUpdateProducerArtifactory{}
 
 // GatewayUpdateProducerArtifactory gatewayUpdateProducerArtifactory is a command that updates artifactory producer [Deprecated: Use dynamic-secret-update-artifactory command]
 type GatewayUpdateProducerArtifactory struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Artifactory Admin Name
 	ArtifactoryAdminName *string `json:"artifactory-admin-name,omitempty"`
 	// Artifactory Admin password
@@ -50,6 +52,8 @@ type GatewayUpdateProducerArtifactory struct {
 	OutputRule []string `json:"output-rule,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -90,6 +94,38 @@ func NewGatewayUpdateProducerArtifactoryWithDefaults() *GatewayUpdateProducerArt
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerArtifactory) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerArtifactory) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerArtifactory) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayUpdateProducerArtifactory) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetArtifactoryAdminName returns the ArtifactoryAdminName field value if set, zero value otherwise.
@@ -516,6 +552,38 @@ func (o *GatewayUpdateProducerArtifactory) SetProducerEncryptionKeyName(v string
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerArtifactory) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerArtifactory) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerArtifactory) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayUpdateProducerArtifactory) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerArtifactory) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -686,6 +754,9 @@ func (o GatewayUpdateProducerArtifactory) MarshalJSON() ([]byte, error) {
 
 func (o GatewayUpdateProducerArtifactory) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.ArtifactoryAdminName) {
 		toSerialize["artifactory-admin-name"] = o.ArtifactoryAdminName
 	}
@@ -721,6 +792,9 @@ func (o GatewayUpdateProducerArtifactory) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **ApiId** | Pointer to **string** | API ID to rotate | [optional] 
 **ApiKey** | Pointer to **string** | API key to rotate | [optional] 
 **AutoRotate** | Pointer to **string** | Whether to automatically rotate every --rotation-interval days, or disable existing automatic rotation [true/false] | [optional] 
-**AwsRegion** | Pointer to **string** | Aws Region (relevant only for aws) | [optional] [default to "us-east-2"]
+**AwsRegion** | Pointer to **string** | Aws Region (relevant only for aws) | [optional] 
 **CustomPayload** | Pointer to **string** | Secret payload to be sent with rotation request (relevant only for rotator-type&#x3D;custom) | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
 **GcpKey** | Pointer to **string** | Base64-encoded service account private key text | [optional] 
 **GraceRotation** | Pointer to **string** | Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false] | [optional] 
-**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret | [optional] 
+**HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** | The name of a key that used to encrypt the secret value (if empty, the account default protectionKey key will be used) | [optional] 
@@ -32,25 +32,30 @@ Name | Type | Description | Notes
 **RotatorCredsType** | Pointer to **string** | The credentials to connect with use-self-creds/use-target-creds | [optional] [default to "use-self-creds"]
 **RotatorCustomCmd** | Pointer to **string** | \&quot;Custom rotation command (relevant only for ssh target) | [optional] 
 **SamePassword** | Pointer to **string** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] 
-**SecureAccessAllowExternalUser** | Pointer to **bool** | Allow providing external user for a domain users (relevant only for rdp) | [optional] [default to false]
+**SecureAccessAllowExternalUser** | Pointer to **string** | Allow providing external user for a domain users [true/false] | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
-**SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli (relevant only for aws) | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The db schema (relevant only for mssql or postgresql) | [optional] 
 **SecureAccessDisableConcurrentConnections** | Pointer to **bool** | Enable this flag to prevent simultaneous use of the same secret | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **bool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
+**SecureAccessUseInternalSshAccess** | Pointer to **bool** | Use internal SSH Access | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser viaAkeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure) | [optional] [default to false]
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) (relevant only for aws or azure) | [optional] [default to false]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] | [optional] 
+**Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UserAttribute** | Pointer to **string** | LDAP User Attribute, Default value \&quot;cn\&quot; | [optional] [default to "cn"]
@@ -772,20 +777,20 @@ HasSamePassword returns a boolean if a field has been set.
 
 ### GetSecureAccessAllowExternalUser
 
-`func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() bool`
+`func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() string`
 
 GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field if non-nil, zero value otherwise.
 
 ### GetSecureAccessAllowExternalUserOk
 
-`func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUserOk() (*bool, bool)`
+`func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUserOk() (*string, bool)`
 
 GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecureAccessAllowExternalUser
 
-`func (o *UpdateRotatedSecret) SetSecureAccessAllowExternalUser(v bool)`
+`func (o *UpdateRotatedSecret) SetSecureAccessAllowExternalUser(v string)`
 
 SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to given value.
 
@@ -794,6 +799,31 @@ SetSecureAccessAllowExternalUser sets SecureAccessAllowExternalUser field to giv
 `func (o *UpdateRotatedSecret) HasSecureAccessAllowExternalUser() bool`
 
 HasSecureAccessAllowExternalUser returns a boolean if a field has been set.
+
+### GetSecureAccessAllowPortForwading
+
+`func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwading() bool`
+
+GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwadingOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwadingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwading
+
+`func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwading(v bool)`
+
+SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to given value.
+
+### HasSecureAccessAllowPortForwading
+
+`func (o *UpdateRotatedSecret) HasSecureAccessAllowPortForwading() bool`
+
+HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
 
 ### GetSecureAccessAwsAccountId
 
@@ -995,6 +1025,31 @@ SetSecureAccessEnable sets SecureAccessEnable field to given value.
 
 HasSecureAccessEnable returns a boolean if a field has been set.
 
+### GetSecureAccessEnforceHostsRestriction
+
+`func (o *UpdateRotatedSecret) GetSecureAccessEnforceHostsRestriction() bool`
+
+GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field if non-nil, zero value otherwise.
+
+### GetSecureAccessEnforceHostsRestrictionOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool)`
+
+GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessEnforceHostsRestriction
+
+`func (o *UpdateRotatedSecret) SetSecureAccessEnforceHostsRestriction(v bool)`
+
+SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction field to given value.
+
+### HasSecureAccessEnforceHostsRestriction
+
+`func (o *UpdateRotatedSecret) HasSecureAccessEnforceHostsRestriction() bool`
+
+HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+
 ### GetSecureAccessHost
 
 `func (o *UpdateRotatedSecret) GetSecureAccessHost() []string`
@@ -1094,6 +1149,56 @@ SetSecureAccessUrl sets SecureAccessUrl field to given value.
 `func (o *UpdateRotatedSecret) HasSecureAccessUrl() bool`
 
 HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessUseInternalBastion
+
+`func (o *UpdateRotatedSecret) GetSecureAccessUseInternalBastion() bool`
+
+GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field if non-nil, zero value otherwise.
+
+### GetSecureAccessUseInternalBastionOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessUseInternalBastionOk() (*bool, bool)`
+
+GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUseInternalBastion
+
+`func (o *UpdateRotatedSecret) SetSecureAccessUseInternalBastion(v bool)`
+
+SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to given value.
+
+### HasSecureAccessUseInternalBastion
+
+`func (o *UpdateRotatedSecret) HasSecureAccessUseInternalBastion() bool`
+
+HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
+
+### GetSecureAccessUseInternalSshAccess
+
+`func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccess() bool`
+
+GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field if non-nil, zero value otherwise.
+
+### GetSecureAccessUseInternalSshAccessOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccessOk() (*bool, bool)`
+
+GetSecureAccessUseInternalSshAccessOk returns a tuple with the SecureAccessUseInternalSshAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUseInternalSshAccess
+
+`func (o *UpdateRotatedSecret) SetSecureAccessUseInternalSshAccess(v bool)`
+
+SetSecureAccessUseInternalSshAccess sets SecureAccessUseInternalSshAccess field to given value.
+
+### HasSecureAccessUseInternalSshAccess
+
+`func (o *UpdateRotatedSecret) HasSecureAccessUseInternalSshAccess() bool`
+
+HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 
 ### GetSecureAccessWeb
 
@@ -1244,6 +1349,31 @@ SetStorageAccountKeyName sets StorageAccountKeyName field to given value.
 `func (o *UpdateRotatedSecret) HasStorageAccountKeyName() bool`
 
 HasStorageAccountKeyName returns a boolean if a field has been set.
+
+### GetTarget
+
+`func (o *UpdateRotatedSecret) GetTarget() []string`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *UpdateRotatedSecret) GetTargetOk() (*[]string, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *UpdateRotatedSecret) SetTarget(v []string)`
+
+SetTarget sets Target field to given value.
+
+### HasTarget
+
+`func (o *UpdateRotatedSecret) HasTarget() bool`
+
+HasTarget returns a boolean if a field has been set.
 
 ### GetToken
 

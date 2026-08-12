@@ -11,6 +11,23 @@ Name | Type | Description | Notes
 **AdminPwd** | Pointer to **string** |  | [optional] 
 **AdminRotationIntervalDays** | Pointer to **int64** |  | [optional] 
 **AdministrativePort** | Pointer to **string** |  | [optional] 
+**AerospikeAdminUsername** | Pointer to **string** |  | [optional] 
+**AerospikeClientCertificate** | Pointer to **string** |  | [optional] 
+**AerospikeClientId** | Pointer to **string** |  | [optional] 
+**AerospikeClientPrivateKey** | Pointer to **string** |  | [optional] 
+**AerospikeClientSecret** | Pointer to **string** |  | [optional] 
+**AerospikeCloud** | Pointer to **bool** |  | [optional] 
+**AerospikeClusterId** | Pointer to **string** |  | [optional] 
+**AerospikeDbServerName** | Pointer to **string** |  | [optional] 
+**AerospikeEnableMtls** | Pointer to **bool** |  | [optional] 
+**AerospikeHostname** | Pointer to **string** |  | [optional] 
+**AerospikeNamespace** | Pointer to **string** |  | [optional] 
+**AerospikePassword** | Pointer to **string** |  | [optional] 
+**AerospikePort** | Pointer to **string** |  | [optional] 
+**AerospikeRoles** | Pointer to **[]string** |  | [optional] 
+**AerospikeSkipServerNameValidation** | Pointer to **string** |  | [optional] 
+**AerospikeSslConnectionCertificate** | Pointer to **string** |  | [optional] 
+**AerospikeSslConnectionMode** | Pointer to **bool** |  | [optional] 
 **AgenticRules** | Pointer to [**AgenticRules**](AgenticRules.md) |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
 **ApiKeyId** | Pointer to **string** |  | [optional] 
@@ -19,6 +36,7 @@ Name | Type | Description | Notes
 **ArtifactoryBaseUrl** | Pointer to **string** |  | [optional] 
 **ArtifactoryTokenAudience** | Pointer to **string** |  | [optional] 
 **ArtifactoryTokenScope** | Pointer to **string** |  | [optional] 
+**AuthMode** | Pointer to **string** | AuthMode selects how this target authenticates. Empty (default) uses ApiKey as a static bearer token against BaseURL, matching all pre-existing behavior. OpenAIAuthModeChatGPTOAuth instead uses the OAuth* fields below. | [optional] 
 **AuthorizationPort** | Pointer to **string** |  | [optional] 
 **AwsAccessKeyId** | Pointer to **string** |  | [optional] 
 **AwsAccessMode** | Pointer to **string** |  | [optional] 
@@ -31,6 +49,7 @@ Name | Type | Description | Notes
 **AwsTransitiveTagKeys** | Pointer to **string** |  | [optional] 
 **AwsUserConsoleAccess** | Pointer to **bool** |  | [optional] 
 **AwsUserGroups** | Pointer to **string** |  | [optional] 
+**AwsUserName** | Pointer to **string** |  | [optional] 
 **AwsUserPolicies** | Pointer to **string** |  | [optional] 
 **AwsUserProgrammaticAccess** | Pointer to **bool** |  | [optional] 
 **AzureAdministrativeUnit** | Pointer to **string** |  | [optional] 
@@ -205,6 +224,10 @@ Name | Type | Description | Notes
 **MssqlRevocationStatements** | Pointer to **string** |  | [optional] 
 **MysqlCreationStatements** | Pointer to **string** |  | [optional] 
 **MysqlRevocationStatements** | Pointer to **string** |  | [optional] 
+**OauthAccessToken** | Pointer to **string** | OAuthAccessToken is the current ChatGPT-issued access token (the &#x60;tokens.access_token&#x60; field of the customer&#39;s local auth.json). Akeyless refreshes this automatically; do not treat it as long-lived. | [optional] 
+**OauthAccountId** | Pointer to **string** | OAuthAccountID is the ChatGPT workspace/account id (&#x60;tokens.account_id&#x60; in auth.json), required on every request to the ChatGPT backend. | [optional] 
+**OauthLastRefresh** | Pointer to **string** | OAuthLastRefresh is the RFC3339 timestamp of the last successful Akeyless-performed refresh; used as a fallback expiry heuristic when the access token&#39;s JWT exp claim can&#39;t be parsed. | [optional] 
+**OauthRefreshToken** | Pointer to **string** | OAuthRefreshToken mints new access tokens. It rotates on every refresh - Akeyless persists the new value after each successful refresh, so the previous value becomes invalid. | [optional] 
 **OpenaiUrl** | Pointer to **string** |  | [optional] 
 **OracleCreationStatements** | Pointer to **string** |  | [optional] 
 **OracleRevocationStatements** | Pointer to **string** |  | [optional] 
@@ -245,6 +268,7 @@ Name | Type | Description | Notes
 **SfWarehouseName** | Pointer to **string** |  | [optional] 
 **ShouldStop** | Pointer to **string** | TODO delete this after migration | [optional] 
 **SigningAlgorithm** | Pointer to **string** |  | [optional] 
+**SkipDryRun** | Pointer to **bool** |  | [optional] 
 **SkipServerNameValidation** | Pointer to **string** | (Optional) SkipServerNameValidation disables server name verification while still validating the certificate chain. Postgres treats empty as legacy \&quot;skip hostname validation\&quot;; MySQL treats empty as false. | [optional] 
 **SslConnectionCertificate** | Pointer to **string** | (Optional) SSLConnectionCertificate defines the certificate for SSL connection. Must be base64 certificate loaded by UI using file loader field | [optional] 
 **SslConnectionMode** | Pointer to **bool** | (Optional) SSLConnectionMode defines if SSL mode will be used to connect to DB | [optional] 
@@ -472,6 +496,431 @@ SetAdministrativePort sets AdministrativePort field to given value.
 
 HasAdministrativePort returns a boolean if a field has been set.
 
+### GetAerospikeAdminUsername
+
+`func (o *DSProducerDetails) GetAerospikeAdminUsername() string`
+
+GetAerospikeAdminUsername returns the AerospikeAdminUsername field if non-nil, zero value otherwise.
+
+### GetAerospikeAdminUsernameOk
+
+`func (o *DSProducerDetails) GetAerospikeAdminUsernameOk() (*string, bool)`
+
+GetAerospikeAdminUsernameOk returns a tuple with the AerospikeAdminUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeAdminUsername
+
+`func (o *DSProducerDetails) SetAerospikeAdminUsername(v string)`
+
+SetAerospikeAdminUsername sets AerospikeAdminUsername field to given value.
+
+### HasAerospikeAdminUsername
+
+`func (o *DSProducerDetails) HasAerospikeAdminUsername() bool`
+
+HasAerospikeAdminUsername returns a boolean if a field has been set.
+
+### GetAerospikeClientCertificate
+
+`func (o *DSProducerDetails) GetAerospikeClientCertificate() string`
+
+GetAerospikeClientCertificate returns the AerospikeClientCertificate field if non-nil, zero value otherwise.
+
+### GetAerospikeClientCertificateOk
+
+`func (o *DSProducerDetails) GetAerospikeClientCertificateOk() (*string, bool)`
+
+GetAerospikeClientCertificateOk returns a tuple with the AerospikeClientCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeClientCertificate
+
+`func (o *DSProducerDetails) SetAerospikeClientCertificate(v string)`
+
+SetAerospikeClientCertificate sets AerospikeClientCertificate field to given value.
+
+### HasAerospikeClientCertificate
+
+`func (o *DSProducerDetails) HasAerospikeClientCertificate() bool`
+
+HasAerospikeClientCertificate returns a boolean if a field has been set.
+
+### GetAerospikeClientId
+
+`func (o *DSProducerDetails) GetAerospikeClientId() string`
+
+GetAerospikeClientId returns the AerospikeClientId field if non-nil, zero value otherwise.
+
+### GetAerospikeClientIdOk
+
+`func (o *DSProducerDetails) GetAerospikeClientIdOk() (*string, bool)`
+
+GetAerospikeClientIdOk returns a tuple with the AerospikeClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeClientId
+
+`func (o *DSProducerDetails) SetAerospikeClientId(v string)`
+
+SetAerospikeClientId sets AerospikeClientId field to given value.
+
+### HasAerospikeClientId
+
+`func (o *DSProducerDetails) HasAerospikeClientId() bool`
+
+HasAerospikeClientId returns a boolean if a field has been set.
+
+### GetAerospikeClientPrivateKey
+
+`func (o *DSProducerDetails) GetAerospikeClientPrivateKey() string`
+
+GetAerospikeClientPrivateKey returns the AerospikeClientPrivateKey field if non-nil, zero value otherwise.
+
+### GetAerospikeClientPrivateKeyOk
+
+`func (o *DSProducerDetails) GetAerospikeClientPrivateKeyOk() (*string, bool)`
+
+GetAerospikeClientPrivateKeyOk returns a tuple with the AerospikeClientPrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeClientPrivateKey
+
+`func (o *DSProducerDetails) SetAerospikeClientPrivateKey(v string)`
+
+SetAerospikeClientPrivateKey sets AerospikeClientPrivateKey field to given value.
+
+### HasAerospikeClientPrivateKey
+
+`func (o *DSProducerDetails) HasAerospikeClientPrivateKey() bool`
+
+HasAerospikeClientPrivateKey returns a boolean if a field has been set.
+
+### GetAerospikeClientSecret
+
+`func (o *DSProducerDetails) GetAerospikeClientSecret() string`
+
+GetAerospikeClientSecret returns the AerospikeClientSecret field if non-nil, zero value otherwise.
+
+### GetAerospikeClientSecretOk
+
+`func (o *DSProducerDetails) GetAerospikeClientSecretOk() (*string, bool)`
+
+GetAerospikeClientSecretOk returns a tuple with the AerospikeClientSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeClientSecret
+
+`func (o *DSProducerDetails) SetAerospikeClientSecret(v string)`
+
+SetAerospikeClientSecret sets AerospikeClientSecret field to given value.
+
+### HasAerospikeClientSecret
+
+`func (o *DSProducerDetails) HasAerospikeClientSecret() bool`
+
+HasAerospikeClientSecret returns a boolean if a field has been set.
+
+### GetAerospikeCloud
+
+`func (o *DSProducerDetails) GetAerospikeCloud() bool`
+
+GetAerospikeCloud returns the AerospikeCloud field if non-nil, zero value otherwise.
+
+### GetAerospikeCloudOk
+
+`func (o *DSProducerDetails) GetAerospikeCloudOk() (*bool, bool)`
+
+GetAerospikeCloudOk returns a tuple with the AerospikeCloud field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeCloud
+
+`func (o *DSProducerDetails) SetAerospikeCloud(v bool)`
+
+SetAerospikeCloud sets AerospikeCloud field to given value.
+
+### HasAerospikeCloud
+
+`func (o *DSProducerDetails) HasAerospikeCloud() bool`
+
+HasAerospikeCloud returns a boolean if a field has been set.
+
+### GetAerospikeClusterId
+
+`func (o *DSProducerDetails) GetAerospikeClusterId() string`
+
+GetAerospikeClusterId returns the AerospikeClusterId field if non-nil, zero value otherwise.
+
+### GetAerospikeClusterIdOk
+
+`func (o *DSProducerDetails) GetAerospikeClusterIdOk() (*string, bool)`
+
+GetAerospikeClusterIdOk returns a tuple with the AerospikeClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeClusterId
+
+`func (o *DSProducerDetails) SetAerospikeClusterId(v string)`
+
+SetAerospikeClusterId sets AerospikeClusterId field to given value.
+
+### HasAerospikeClusterId
+
+`func (o *DSProducerDetails) HasAerospikeClusterId() bool`
+
+HasAerospikeClusterId returns a boolean if a field has been set.
+
+### GetAerospikeDbServerName
+
+`func (o *DSProducerDetails) GetAerospikeDbServerName() string`
+
+GetAerospikeDbServerName returns the AerospikeDbServerName field if non-nil, zero value otherwise.
+
+### GetAerospikeDbServerNameOk
+
+`func (o *DSProducerDetails) GetAerospikeDbServerNameOk() (*string, bool)`
+
+GetAerospikeDbServerNameOk returns a tuple with the AerospikeDbServerName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeDbServerName
+
+`func (o *DSProducerDetails) SetAerospikeDbServerName(v string)`
+
+SetAerospikeDbServerName sets AerospikeDbServerName field to given value.
+
+### HasAerospikeDbServerName
+
+`func (o *DSProducerDetails) HasAerospikeDbServerName() bool`
+
+HasAerospikeDbServerName returns a boolean if a field has been set.
+
+### GetAerospikeEnableMtls
+
+`func (o *DSProducerDetails) GetAerospikeEnableMtls() bool`
+
+GetAerospikeEnableMtls returns the AerospikeEnableMtls field if non-nil, zero value otherwise.
+
+### GetAerospikeEnableMtlsOk
+
+`func (o *DSProducerDetails) GetAerospikeEnableMtlsOk() (*bool, bool)`
+
+GetAerospikeEnableMtlsOk returns a tuple with the AerospikeEnableMtls field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeEnableMtls
+
+`func (o *DSProducerDetails) SetAerospikeEnableMtls(v bool)`
+
+SetAerospikeEnableMtls sets AerospikeEnableMtls field to given value.
+
+### HasAerospikeEnableMtls
+
+`func (o *DSProducerDetails) HasAerospikeEnableMtls() bool`
+
+HasAerospikeEnableMtls returns a boolean if a field has been set.
+
+### GetAerospikeHostname
+
+`func (o *DSProducerDetails) GetAerospikeHostname() string`
+
+GetAerospikeHostname returns the AerospikeHostname field if non-nil, zero value otherwise.
+
+### GetAerospikeHostnameOk
+
+`func (o *DSProducerDetails) GetAerospikeHostnameOk() (*string, bool)`
+
+GetAerospikeHostnameOk returns a tuple with the AerospikeHostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeHostname
+
+`func (o *DSProducerDetails) SetAerospikeHostname(v string)`
+
+SetAerospikeHostname sets AerospikeHostname field to given value.
+
+### HasAerospikeHostname
+
+`func (o *DSProducerDetails) HasAerospikeHostname() bool`
+
+HasAerospikeHostname returns a boolean if a field has been set.
+
+### GetAerospikeNamespace
+
+`func (o *DSProducerDetails) GetAerospikeNamespace() string`
+
+GetAerospikeNamespace returns the AerospikeNamespace field if non-nil, zero value otherwise.
+
+### GetAerospikeNamespaceOk
+
+`func (o *DSProducerDetails) GetAerospikeNamespaceOk() (*string, bool)`
+
+GetAerospikeNamespaceOk returns a tuple with the AerospikeNamespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeNamespace
+
+`func (o *DSProducerDetails) SetAerospikeNamespace(v string)`
+
+SetAerospikeNamespace sets AerospikeNamespace field to given value.
+
+### HasAerospikeNamespace
+
+`func (o *DSProducerDetails) HasAerospikeNamespace() bool`
+
+HasAerospikeNamespace returns a boolean if a field has been set.
+
+### GetAerospikePassword
+
+`func (o *DSProducerDetails) GetAerospikePassword() string`
+
+GetAerospikePassword returns the AerospikePassword field if non-nil, zero value otherwise.
+
+### GetAerospikePasswordOk
+
+`func (o *DSProducerDetails) GetAerospikePasswordOk() (*string, bool)`
+
+GetAerospikePasswordOk returns a tuple with the AerospikePassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikePassword
+
+`func (o *DSProducerDetails) SetAerospikePassword(v string)`
+
+SetAerospikePassword sets AerospikePassword field to given value.
+
+### HasAerospikePassword
+
+`func (o *DSProducerDetails) HasAerospikePassword() bool`
+
+HasAerospikePassword returns a boolean if a field has been set.
+
+### GetAerospikePort
+
+`func (o *DSProducerDetails) GetAerospikePort() string`
+
+GetAerospikePort returns the AerospikePort field if non-nil, zero value otherwise.
+
+### GetAerospikePortOk
+
+`func (o *DSProducerDetails) GetAerospikePortOk() (*string, bool)`
+
+GetAerospikePortOk returns a tuple with the AerospikePort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikePort
+
+`func (o *DSProducerDetails) SetAerospikePort(v string)`
+
+SetAerospikePort sets AerospikePort field to given value.
+
+### HasAerospikePort
+
+`func (o *DSProducerDetails) HasAerospikePort() bool`
+
+HasAerospikePort returns a boolean if a field has been set.
+
+### GetAerospikeRoles
+
+`func (o *DSProducerDetails) GetAerospikeRoles() []string`
+
+GetAerospikeRoles returns the AerospikeRoles field if non-nil, zero value otherwise.
+
+### GetAerospikeRolesOk
+
+`func (o *DSProducerDetails) GetAerospikeRolesOk() (*[]string, bool)`
+
+GetAerospikeRolesOk returns a tuple with the AerospikeRoles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeRoles
+
+`func (o *DSProducerDetails) SetAerospikeRoles(v []string)`
+
+SetAerospikeRoles sets AerospikeRoles field to given value.
+
+### HasAerospikeRoles
+
+`func (o *DSProducerDetails) HasAerospikeRoles() bool`
+
+HasAerospikeRoles returns a boolean if a field has been set.
+
+### GetAerospikeSkipServerNameValidation
+
+`func (o *DSProducerDetails) GetAerospikeSkipServerNameValidation() string`
+
+GetAerospikeSkipServerNameValidation returns the AerospikeSkipServerNameValidation field if non-nil, zero value otherwise.
+
+### GetAerospikeSkipServerNameValidationOk
+
+`func (o *DSProducerDetails) GetAerospikeSkipServerNameValidationOk() (*string, bool)`
+
+GetAerospikeSkipServerNameValidationOk returns a tuple with the AerospikeSkipServerNameValidation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeSkipServerNameValidation
+
+`func (o *DSProducerDetails) SetAerospikeSkipServerNameValidation(v string)`
+
+SetAerospikeSkipServerNameValidation sets AerospikeSkipServerNameValidation field to given value.
+
+### HasAerospikeSkipServerNameValidation
+
+`func (o *DSProducerDetails) HasAerospikeSkipServerNameValidation() bool`
+
+HasAerospikeSkipServerNameValidation returns a boolean if a field has been set.
+
+### GetAerospikeSslConnectionCertificate
+
+`func (o *DSProducerDetails) GetAerospikeSslConnectionCertificate() string`
+
+GetAerospikeSslConnectionCertificate returns the AerospikeSslConnectionCertificate field if non-nil, zero value otherwise.
+
+### GetAerospikeSslConnectionCertificateOk
+
+`func (o *DSProducerDetails) GetAerospikeSslConnectionCertificateOk() (*string, bool)`
+
+GetAerospikeSslConnectionCertificateOk returns a tuple with the AerospikeSslConnectionCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeSslConnectionCertificate
+
+`func (o *DSProducerDetails) SetAerospikeSslConnectionCertificate(v string)`
+
+SetAerospikeSslConnectionCertificate sets AerospikeSslConnectionCertificate field to given value.
+
+### HasAerospikeSslConnectionCertificate
+
+`func (o *DSProducerDetails) HasAerospikeSslConnectionCertificate() bool`
+
+HasAerospikeSslConnectionCertificate returns a boolean if a field has been set.
+
+### GetAerospikeSslConnectionMode
+
+`func (o *DSProducerDetails) GetAerospikeSslConnectionMode() bool`
+
+GetAerospikeSslConnectionMode returns the AerospikeSslConnectionMode field if non-nil, zero value otherwise.
+
+### GetAerospikeSslConnectionModeOk
+
+`func (o *DSProducerDetails) GetAerospikeSslConnectionModeOk() (*bool, bool)`
+
+GetAerospikeSslConnectionModeOk returns a tuple with the AerospikeSslConnectionMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAerospikeSslConnectionMode
+
+`func (o *DSProducerDetails) SetAerospikeSslConnectionMode(v bool)`
+
+SetAerospikeSslConnectionMode sets AerospikeSslConnectionMode field to given value.
+
+### HasAerospikeSslConnectionMode
+
+`func (o *DSProducerDetails) HasAerospikeSslConnectionMode() bool`
+
+HasAerospikeSslConnectionMode returns a boolean if a field has been set.
+
 ### GetAgenticRules
 
 `func (o *DSProducerDetails) GetAgenticRules() AgenticRules`
@@ -671,6 +1120,31 @@ SetArtifactoryTokenScope sets ArtifactoryTokenScope field to given value.
 `func (o *DSProducerDetails) HasArtifactoryTokenScope() bool`
 
 HasArtifactoryTokenScope returns a boolean if a field has been set.
+
+### GetAuthMode
+
+`func (o *DSProducerDetails) GetAuthMode() string`
+
+GetAuthMode returns the AuthMode field if non-nil, zero value otherwise.
+
+### GetAuthModeOk
+
+`func (o *DSProducerDetails) GetAuthModeOk() (*string, bool)`
+
+GetAuthModeOk returns a tuple with the AuthMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthMode
+
+`func (o *DSProducerDetails) SetAuthMode(v string)`
+
+SetAuthMode sets AuthMode field to given value.
+
+### HasAuthMode
+
+`func (o *DSProducerDetails) HasAuthMode() bool`
+
+HasAuthMode returns a boolean if a field has been set.
 
 ### GetAuthorizationPort
 
@@ -971,6 +1445,31 @@ SetAwsUserGroups sets AwsUserGroups field to given value.
 `func (o *DSProducerDetails) HasAwsUserGroups() bool`
 
 HasAwsUserGroups returns a boolean if a field has been set.
+
+### GetAwsUserName
+
+`func (o *DSProducerDetails) GetAwsUserName() string`
+
+GetAwsUserName returns the AwsUserName field if non-nil, zero value otherwise.
+
+### GetAwsUserNameOk
+
+`func (o *DSProducerDetails) GetAwsUserNameOk() (*string, bool)`
+
+GetAwsUserNameOk returns a tuple with the AwsUserName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsUserName
+
+`func (o *DSProducerDetails) SetAwsUserName(v string)`
+
+SetAwsUserName sets AwsUserName field to given value.
+
+### HasAwsUserName
+
+`func (o *DSProducerDetails) HasAwsUserName() bool`
+
+HasAwsUserName returns a boolean if a field has been set.
 
 ### GetAwsUserPolicies
 
@@ -5322,6 +5821,106 @@ SetMysqlRevocationStatements sets MysqlRevocationStatements field to given value
 
 HasMysqlRevocationStatements returns a boolean if a field has been set.
 
+### GetOauthAccessToken
+
+`func (o *DSProducerDetails) GetOauthAccessToken() string`
+
+GetOauthAccessToken returns the OauthAccessToken field if non-nil, zero value otherwise.
+
+### GetOauthAccessTokenOk
+
+`func (o *DSProducerDetails) GetOauthAccessTokenOk() (*string, bool)`
+
+GetOauthAccessTokenOk returns a tuple with the OauthAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauthAccessToken
+
+`func (o *DSProducerDetails) SetOauthAccessToken(v string)`
+
+SetOauthAccessToken sets OauthAccessToken field to given value.
+
+### HasOauthAccessToken
+
+`func (o *DSProducerDetails) HasOauthAccessToken() bool`
+
+HasOauthAccessToken returns a boolean if a field has been set.
+
+### GetOauthAccountId
+
+`func (o *DSProducerDetails) GetOauthAccountId() string`
+
+GetOauthAccountId returns the OauthAccountId field if non-nil, zero value otherwise.
+
+### GetOauthAccountIdOk
+
+`func (o *DSProducerDetails) GetOauthAccountIdOk() (*string, bool)`
+
+GetOauthAccountIdOk returns a tuple with the OauthAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauthAccountId
+
+`func (o *DSProducerDetails) SetOauthAccountId(v string)`
+
+SetOauthAccountId sets OauthAccountId field to given value.
+
+### HasOauthAccountId
+
+`func (o *DSProducerDetails) HasOauthAccountId() bool`
+
+HasOauthAccountId returns a boolean if a field has been set.
+
+### GetOauthLastRefresh
+
+`func (o *DSProducerDetails) GetOauthLastRefresh() string`
+
+GetOauthLastRefresh returns the OauthLastRefresh field if non-nil, zero value otherwise.
+
+### GetOauthLastRefreshOk
+
+`func (o *DSProducerDetails) GetOauthLastRefreshOk() (*string, bool)`
+
+GetOauthLastRefreshOk returns a tuple with the OauthLastRefresh field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauthLastRefresh
+
+`func (o *DSProducerDetails) SetOauthLastRefresh(v string)`
+
+SetOauthLastRefresh sets OauthLastRefresh field to given value.
+
+### HasOauthLastRefresh
+
+`func (o *DSProducerDetails) HasOauthLastRefresh() bool`
+
+HasOauthLastRefresh returns a boolean if a field has been set.
+
+### GetOauthRefreshToken
+
+`func (o *DSProducerDetails) GetOauthRefreshToken() string`
+
+GetOauthRefreshToken returns the OauthRefreshToken field if non-nil, zero value otherwise.
+
+### GetOauthRefreshTokenOk
+
+`func (o *DSProducerDetails) GetOauthRefreshTokenOk() (*string, bool)`
+
+GetOauthRefreshTokenOk returns a tuple with the OauthRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauthRefreshToken
+
+`func (o *DSProducerDetails) SetOauthRefreshToken(v string)`
+
+SetOauthRefreshToken sets OauthRefreshToken field to given value.
+
+### HasOauthRefreshToken
+
+`func (o *DSProducerDetails) HasOauthRefreshToken() bool`
+
+HasOauthRefreshToken returns a boolean if a field has been set.
+
 ### GetOpenaiUrl
 
 `func (o *DSProducerDetails) GetOpenaiUrl() string`
@@ -6321,6 +6920,31 @@ SetSigningAlgorithm sets SigningAlgorithm field to given value.
 `func (o *DSProducerDetails) HasSigningAlgorithm() bool`
 
 HasSigningAlgorithm returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *DSProducerDetails) GetSkipDryRun() bool`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *DSProducerDetails) GetSkipDryRunOk() (*bool, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *DSProducerDetails) SetSkipDryRun(v bool)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *DSProducerDetails) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetSkipServerNameValidation
 

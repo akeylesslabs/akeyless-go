@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BinaryValue** | Pointer to **bool** | Use this option if the universal secrets value is a base64 encoded binary | [optional] 
 **Description** | Pointer to **string** | Description of the universal secrets | [optional] 
+**GcpProjectId** | Pointer to **string** | The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
@@ -90,6 +91,31 @@ SetDescription sets Description field to given value.
 `func (o *UscCreate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetGcpProjectId
+
+`func (o *UscCreate) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *UscCreate) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *UscCreate) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *UscCreate) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetJson
 

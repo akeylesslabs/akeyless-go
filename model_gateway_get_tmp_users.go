@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayGetTmpUsers{}
 
 // GatewayGetTmpUsers gatewayGetTmpUsers is a command that returns gateway configuration [Deprecated: Use dynamic-secret-tmp-creds-get command]
 type GatewayGetTmpUsers struct {
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
 	InputRule []string `json:"input-rule,omitempty"`
 	// Set output format to JSON
@@ -30,6 +32,8 @@ type GatewayGetTmpUsers struct {
 	Name string `json:"name"`
 	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
 	OutputRule []string `json:"output-rule,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -58,6 +62,38 @@ func NewGatewayGetTmpUsersWithDefaults() *GatewayGetTmpUsers {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayGetTmpUsers) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetTmpUsers) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayGetTmpUsers) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayGetTmpUsers) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -180,6 +216,38 @@ func (o *GatewayGetTmpUsers) SetOutputRule(v []string) {
 	o.OutputRule = v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayGetTmpUsers) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayGetTmpUsers) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayGetTmpUsers) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayGetTmpUsers) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *GatewayGetTmpUsers) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -254,6 +322,9 @@ func (o GatewayGetTmpUsers) MarshalJSON() ([]byte, error) {
 
 func (o GatewayGetTmpUsers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule
 	}
@@ -263,6 +334,9 @@ func (o GatewayGetTmpUsers) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.OutputRule) {
 		toSerialize["output-rule"] = o.OutputRule
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

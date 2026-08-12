@@ -56,7 +56,7 @@ type AuthMethodCreateOIDC struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
-	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]
+	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve
 	RequiredScopes []string `json:"required-scopes,omitempty"`

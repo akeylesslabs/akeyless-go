@@ -191,6 +191,8 @@ docs/CreateESM.md
 docs/CreateESMOutput.md
 docs/CreateEventForwarder.md
 docs/CreateEventForwarderOutput.md
+docs/CreateF5BigIpTarget.md
+docs/CreateF5BigIpTargetOutput.md
 docs/CreateGKETarget.md
 docs/CreateGKETargetOutput.md
 docs/CreateGcpTarget.md
@@ -312,6 +314,7 @@ docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DigiCertTargetDetails.md
 docs/DockerhubTargetDetails.md
+docs/DynamicSecretCreateAerospike.md
 docs/DynamicSecretCreateArtifactory.md
 docs/DynamicSecretCreateAws.md
 docs/DynamicSecretCreateAzure.md
@@ -352,6 +355,7 @@ docs/DynamicSecretProducerInfo.md
 docs/DynamicSecretTmpCredsDelete.md
 docs/DynamicSecretTmpCredsGet.md
 docs/DynamicSecretTmpCredsUpdate.md
+docs/DynamicSecretUpdateAerospike.md
 docs/DynamicSecretUpdateArtifactory.md
 docs/DynamicSecretUpdateAws.md
 docs/DynamicSecretUpdateAzure.md
@@ -429,6 +433,7 @@ docs/ExportClassicKey.md
 docs/ExportClassicKeyOutput.md
 docs/Extension.md
 docs/ExternalKMSKeyId.md
+docs/F5BigIpTargetDetails.md
 docs/FileDownloadInstructions.md
 docs/FileInfo.md
 docs/FolderCreate.md
@@ -723,6 +728,7 @@ docs/K8SAuthsConfigLastChange.md
 docs/K8SAuthsConfigPart.md
 docs/K8SMigration.md
 docs/K8SPayload.md
+docs/KMIPCA.md
 docs/KMIPClient.md
 docs/KMIPClientGetResponse.md
 docs/KMIPClientListResponse.md
@@ -879,11 +885,13 @@ docs/RotateKeyOutput.md
 docs/RotateOidcClientOutput.md
 docs/RotateOidcClientSecret.md
 docs/RotateSecret.md
+docs/RotatedSecretCreateAerospike.md
 docs/RotatedSecretCreateAws.md
 docs/RotatedSecretCreateAzure.md
 docs/RotatedSecretCreateCassandra.md
 docs/RotatedSecretCreateCustom.md
 docs/RotatedSecretCreateDockerhub.md
+docs/RotatedSecretCreateF5BigIp.md
 docs/RotatedSecretCreateGcp.md
 docs/RotatedSecretCreateHanadb.md
 docs/RotatedSecretCreateHashiVault.md
@@ -909,6 +917,7 @@ docs/RotatedSecretGetValue.md
 docs/RotatedSecretList.md
 docs/RotatedSecretOutput.md
 docs/RotatedSecretSync.md
+docs/RotatedSecretUpdateAerospike.md
 docs/RotatedSecretUpdateAws.md
 docs/RotatedSecretUpdateAzure.md
 docs/RotatedSecretUpdateCassandra.md
@@ -1005,6 +1014,7 @@ docs/TargetCreateDB.md
 docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
 docs/TargetCreateEks.md
+docs/TargetCreateF5BigIp.md
 docs/TargetCreateGcp.md
 docs/TargetCreateGemini.md
 docs/TargetCreateGithub.md
@@ -1054,6 +1064,7 @@ docs/TargetUpdateDB.md
 docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
 docs/TargetUpdateEks.md
+docs/TargetUpdateF5BigIp.md
 docs/TargetUpdateGcp.md
 docs/TargetUpdateGemini.md
 docs/TargetUpdateGithub.md
@@ -1141,6 +1152,8 @@ docs/UpdateDockerhubTargetOutput.md
 docs/UpdateEKSTarget.md
 docs/UpdateEKSTargetOutput.md
 docs/UpdateEventForwarder.md
+docs/UpdateF5BigIpTarget.md
+docs/UpdateF5BigIpTargetOutput.md
 docs/UpdateGKETarget.md
 docs/UpdateGKETargetOutput.md
 docs/UpdateGcpTarget.md
@@ -1436,6 +1449,8 @@ model_create_esm.go
 model_create_esm_output.go
 model_create_event_forwarder.go
 model_create_event_forwarder_output.go
+model_create_f5_big_ip_target.go
+model_create_f5_big_ip_target_output.go
 model_create_gcp_target.go
 model_create_gcp_target_output.go
 model_create_github_target.go
@@ -1557,6 +1572,7 @@ model_detokenize_output.go
 model_digi_cert_target_details.go
 model_dockerhub_target_details.go
 model_ds_producer_details.go
+model_dynamic_secret_create_aerospike.go
 model_dynamic_secret_create_artifactory.go
 model_dynamic_secret_create_aws.go
 model_dynamic_secret_create_azure.go
@@ -1597,6 +1613,7 @@ model_dynamic_secret_producer_info.go
 model_dynamic_secret_tmp_creds_delete.go
 model_dynamic_secret_tmp_creds_get.go
 model_dynamic_secret_tmp_creds_update.go
+model_dynamic_secret_update_aerospike.go
 model_dynamic_secret_update_artifactory.go
 model_dynamic_secret_update_aws.go
 model_dynamic_secret_update_azure.go
@@ -1674,6 +1691,7 @@ model_export_classic_key.go
 model_export_classic_key_output.go
 model_extension.go
 model_external_kms_key_id.go
+model_f5_big_ip_target_details.go
 model_file_download_instructions.go
 model_file_info.go
 model_folder_create.go
@@ -2002,6 +2020,7 @@ model_kmip_server_update.go
 model_kmip_server_update_output.go
 model_kmip_set_server_state.go
 model_kmip_set_server_state_output.go
+model_kmipca.go
 model_kube_config_value.go
 model_kubeconfig_cluster.go
 model_kubeconfig_context.go
@@ -2124,11 +2143,13 @@ model_rotate_key_output.go
 model_rotate_oidc_client_output.go
 model_rotate_oidc_client_secret.go
 model_rotate_secret.go
+model_rotated_secret_create_aerospike.go
 model_rotated_secret_create_aws.go
 model_rotated_secret_create_azure.go
 model_rotated_secret_create_cassandra.go
 model_rotated_secret_create_custom.go
 model_rotated_secret_create_dockerhub.go
+model_rotated_secret_create_f5_big_ip.go
 model_rotated_secret_create_gcp.go
 model_rotated_secret_create_hanadb.go
 model_rotated_secret_create_hashi_vault.go
@@ -2154,6 +2175,7 @@ model_rotated_secret_get_value.go
 model_rotated_secret_list.go
 model_rotated_secret_output.go
 model_rotated_secret_sync.go
+model_rotated_secret_update_aerospike.go
 model_rotated_secret_update_aws.go
 model_rotated_secret_update_azure.go
 model_rotated_secret_update_cassandra.go
@@ -2250,6 +2272,7 @@ model_target_create_db.go
 model_target_create_digi_cert.go
 model_target_create_dockerhub.go
 model_target_create_eks.go
+model_target_create_f5_big_ip.go
 model_target_create_gcp.go
 model_target_create_gemini.go
 model_target_create_github.go
@@ -2299,6 +2322,7 @@ model_target_update_db.go
 model_target_update_digi_cert.go
 model_target_update_dockerhub.go
 model_target_update_eks.go
+model_target_update_f5_big_ip.go
 model_target_update_gcp.go
 model_target_update_gemini.go
 model_target_update_github.go
@@ -2386,6 +2410,8 @@ model_update_dockerhub_target_output.go
 model_update_eks_target.go
 model_update_eks_target_output.go
 model_update_event_forwarder.go
+model_update_f5_big_ip_target.go
+model_update_f5_big_ip_target_output.go
 model_update_gcp_target.go
 model_update_gcp_target_output.go
 model_update_github_target.go

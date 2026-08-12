@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **AuthenticationCredentials** | Pointer to **string** | The credentials to connect with use-user-creds/use-target-creds | [optional] [default to "use-user-creds"]
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
@@ -23,7 +24,9 @@ Name | Type | Description | Notes
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
+**RotationStatement** | Pointer to **string** | Snowflake rotation statement | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/password/key] | 
+**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -51,6 +54,31 @@ will change when the set of required properties is changed
 NewRotatedSecretCreateSnowflakeWithDefaults instantiates a new RotatedSecretCreateSnowflake object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAraEnabled
+
+`func (o *RotatedSecretCreateSnowflake) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *RotatedSecretCreateSnowflake) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *RotatedSecretCreateSnowflake) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *RotatedSecretCreateSnowflake) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
 
 ### GetAuthenticationCredentials
 
@@ -522,6 +550,31 @@ SetRotationInterval sets RotationInterval field to given value.
 
 HasRotationInterval returns a boolean if a field has been set.
 
+### GetRotationStatement
+
+`func (o *RotatedSecretCreateSnowflake) GetRotationStatement() string`
+
+GetRotationStatement returns the RotationStatement field if non-nil, zero value otherwise.
+
+### GetRotationStatementOk
+
+`func (o *RotatedSecretCreateSnowflake) GetRotationStatementOk() (*string, bool)`
+
+GetRotationStatementOk returns a tuple with the RotationStatement field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotationStatement
+
+`func (o *RotatedSecretCreateSnowflake) SetRotationStatement(v string)`
+
+SetRotationStatement sets RotationStatement field to given value.
+
+### HasRotationStatement
+
+`func (o *RotatedSecretCreateSnowflake) HasRotationStatement() bool`
+
+HasRotationStatement returns a boolean if a field has been set.
+
 ### GetRotatorType
 
 `func (o *RotatedSecretCreateSnowflake) GetRotatorType() string`
@@ -541,6 +594,31 @@ and a boolean to check if the value has been set.
 
 SetRotatorType sets RotatorType field to given value.
 
+
+### GetSkipDryRun
+
+`func (o *RotatedSecretCreateSnowflake) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *RotatedSecretCreateSnowflake) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *RotatedSecretCreateSnowflake) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *RotatedSecretCreateSnowflake) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTags
 

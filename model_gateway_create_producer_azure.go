@@ -24,6 +24,8 @@ var _ MappedNullable = &GatewayCreateProducerAzure{}
 type GatewayCreateProducerAzure struct {
 	// Azure App Object Id
 	AppObjId *string `json:"app-obj-id,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Azure AD administrative unit (relevant only when azure-user-portal-access=true)
 	AzureAdministrativeUnit *string `json:"azure-administrative-unit,omitempty"`
 	// Azure Client ID
@@ -64,6 +66,8 @@ type GatewayCreateProducerAzure struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -179,6 +183,38 @@ func (o *GatewayCreateProducerAzure) HasAppObjId() bool {
 // SetAppObjId gets a reference to the given string and assigns it to the AppObjId field.
 func (o *GatewayCreateProducerAzure) SetAppObjId(v string) {
 	o.AppObjId = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAzure) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAzure) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *GatewayCreateProducerAzure) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAzureAdministrativeUnit returns the AzureAdministrativeUnit field value if set, zero value otherwise.
@@ -813,6 +849,38 @@ func (o *GatewayCreateProducerAzure) SetSecureAccessWebProxy(v bool) {
 	o.SecureAccessWebProxy = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayCreateProducerAzure) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayCreateProducerAzure) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayCreateProducerAzure) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerAzure) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *GatewayCreateProducerAzure) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1274,6 +1342,9 @@ func (o GatewayCreateProducerAzure) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AppObjId) {
 		toSerialize["app-obj-id"] = o.AppObjId
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AzureAdministrativeUnit) {
 		toSerialize["azure-administrative-unit"] = o.AzureAdministrativeUnit
 	}
@@ -1331,6 +1402,9 @@ func (o GatewayCreateProducerAzure) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessWebProxy) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

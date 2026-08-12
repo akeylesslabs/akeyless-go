@@ -6,6 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to **string** | API key for OpenAI | [optional] 
 **ApiKeyId** | Pointer to **string** | API key ID | [optional] 
+**CodexOauthAccessToken** | Pointer to **string** | Codex OAuth access token (auth.json tokens.access_token), used when codex-oauth-mode&#x3D;chatgpt_oauth | [optional] 
+**CodexOauthAccountId** | Pointer to **string** | Codex OAuth account id (auth.json tokens.account_id), used when codex-oauth-mode&#x3D;chatgpt_oauth | [optional] 
+**CodexOauthMode** | Pointer to **string** | Auth mode: empty (default, static api-key) or chatgpt_oauth | [optional] 
+**CodexOauthRefreshToken** | Pointer to **string** | Codex OAuth refresh token (auth.json tokens.refresh_token), used when codex-oauth-mode&#x3D;chatgpt_oauth | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -86,6 +90,106 @@ SetApiKeyId sets ApiKeyId field to given value.
 `func (o *TargetCreateOpenAI) HasApiKeyId() bool`
 
 HasApiKeyId returns a boolean if a field has been set.
+
+### GetCodexOauthAccessToken
+
+`func (o *TargetCreateOpenAI) GetCodexOauthAccessToken() string`
+
+GetCodexOauthAccessToken returns the CodexOauthAccessToken field if non-nil, zero value otherwise.
+
+### GetCodexOauthAccessTokenOk
+
+`func (o *TargetCreateOpenAI) GetCodexOauthAccessTokenOk() (*string, bool)`
+
+GetCodexOauthAccessTokenOk returns a tuple with the CodexOauthAccessToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCodexOauthAccessToken
+
+`func (o *TargetCreateOpenAI) SetCodexOauthAccessToken(v string)`
+
+SetCodexOauthAccessToken sets CodexOauthAccessToken field to given value.
+
+### HasCodexOauthAccessToken
+
+`func (o *TargetCreateOpenAI) HasCodexOauthAccessToken() bool`
+
+HasCodexOauthAccessToken returns a boolean if a field has been set.
+
+### GetCodexOauthAccountId
+
+`func (o *TargetCreateOpenAI) GetCodexOauthAccountId() string`
+
+GetCodexOauthAccountId returns the CodexOauthAccountId field if non-nil, zero value otherwise.
+
+### GetCodexOauthAccountIdOk
+
+`func (o *TargetCreateOpenAI) GetCodexOauthAccountIdOk() (*string, bool)`
+
+GetCodexOauthAccountIdOk returns a tuple with the CodexOauthAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCodexOauthAccountId
+
+`func (o *TargetCreateOpenAI) SetCodexOauthAccountId(v string)`
+
+SetCodexOauthAccountId sets CodexOauthAccountId field to given value.
+
+### HasCodexOauthAccountId
+
+`func (o *TargetCreateOpenAI) HasCodexOauthAccountId() bool`
+
+HasCodexOauthAccountId returns a boolean if a field has been set.
+
+### GetCodexOauthMode
+
+`func (o *TargetCreateOpenAI) GetCodexOauthMode() string`
+
+GetCodexOauthMode returns the CodexOauthMode field if non-nil, zero value otherwise.
+
+### GetCodexOauthModeOk
+
+`func (o *TargetCreateOpenAI) GetCodexOauthModeOk() (*string, bool)`
+
+GetCodexOauthModeOk returns a tuple with the CodexOauthMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCodexOauthMode
+
+`func (o *TargetCreateOpenAI) SetCodexOauthMode(v string)`
+
+SetCodexOauthMode sets CodexOauthMode field to given value.
+
+### HasCodexOauthMode
+
+`func (o *TargetCreateOpenAI) HasCodexOauthMode() bool`
+
+HasCodexOauthMode returns a boolean if a field has been set.
+
+### GetCodexOauthRefreshToken
+
+`func (o *TargetCreateOpenAI) GetCodexOauthRefreshToken() string`
+
+GetCodexOauthRefreshToken returns the CodexOauthRefreshToken field if non-nil, zero value otherwise.
+
+### GetCodexOauthRefreshTokenOk
+
+`func (o *TargetCreateOpenAI) GetCodexOauthRefreshTokenOk() (*string, bool)`
+
+GetCodexOauthRefreshTokenOk returns a tuple with the CodexOauthRefreshToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCodexOauthRefreshToken
+
+`func (o *TargetCreateOpenAI) SetCodexOauthRefreshToken(v string)`
+
+SetCodexOauthRefreshToken sets CodexOauthRefreshToken field to given value.
+
+### HasCodexOauthRefreshToken
+
+`func (o *TargetCreateOpenAI) HasCodexOauthRefreshToken() bool`
+
+HasCodexOauthRefreshToken returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

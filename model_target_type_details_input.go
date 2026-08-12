@@ -34,6 +34,7 @@ type TargetTypeDetailsInput struct {
 	DigicertTargetDetails *DigiCertTargetDetails `json:"digicert_target_details,omitempty"`
 	DockerhubTargetDetails *DockerhubTargetDetails `json:"dockerhub_target_details,omitempty"`
 	EksTargetDetails *EKSTargetDetails `json:"eks_target_details,omitempty"`
+	F5BigIpTargetDetails *F5BigIpTargetDetails `json:"f5_big_ip_target_details,omitempty"`
 	GcpTargetDetails *GcpTargetDetails `json:"gcp_target_details,omitempty"`
 	GeminiTargetDetails *GeminiTargetDetails `json:"gemini_target_details,omitempty"`
 	GithubTargetDetails *GithubTargetDetails `json:"github_target_details,omitempty"`
@@ -528,6 +529,38 @@ func (o *TargetTypeDetailsInput) HasEksTargetDetails() bool {
 // SetEksTargetDetails gets a reference to the given EKSTargetDetails and assigns it to the EksTargetDetails field.
 func (o *TargetTypeDetailsInput) SetEksTargetDetails(v EKSTargetDetails) {
 	o.EksTargetDetails = &v
+}
+
+// GetF5BigIpTargetDetails returns the F5BigIpTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetF5BigIpTargetDetails() F5BigIpTargetDetails {
+	if o == nil || IsNil(o.F5BigIpTargetDetails) {
+		var ret F5BigIpTargetDetails
+		return ret
+	}
+	return *o.F5BigIpTargetDetails
+}
+
+// GetF5BigIpTargetDetailsOk returns a tuple with the F5BigIpTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetF5BigIpTargetDetailsOk() (*F5BigIpTargetDetails, bool) {
+	if o == nil || IsNil(o.F5BigIpTargetDetails) {
+		return nil, false
+	}
+	return o.F5BigIpTargetDetails, true
+}
+
+// HasF5BigIpTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasF5BigIpTargetDetails() bool {
+	if o != nil && !IsNil(o.F5BigIpTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetF5BigIpTargetDetails gets a reference to the given F5BigIpTargetDetails and assigns it to the F5BigIpTargetDetails field.
+func (o *TargetTypeDetailsInput) SetF5BigIpTargetDetails(v F5BigIpTargetDetails) {
+	o.F5BigIpTargetDetails = &v
 }
 
 // GetGcpTargetDetails returns the GcpTargetDetails field value if set, zero value otherwise.
@@ -1509,6 +1542,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EksTargetDetails) {
 		toSerialize["eks_target_details"] = o.EksTargetDetails
+	}
+	if !IsNil(o.F5BigIpTargetDetails) {
+		toSerialize["f5_big_ip_target_details"] = o.F5BigIpTargetDetails
 	}
 	if !IsNil(o.GcpTargetDetails) {
 		toSerialize["gcp_target_details"] = o.GcpTargetDetails

@@ -41,7 +41,7 @@ type UpdateRotatedSecret struct {
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// Create a new access key without deleting the old key from AWS for backup (relevant only for AWS) [true/false]
 	GraceRotation *string `json:"grace-rotation,omitempty"`
-	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for Secure Remote Access of ssh cert issuer, ldap rotated secret and ldap dynamic secret
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -77,11 +77,13 @@ type UpdateRotatedSecret struct {
 	RotatorCustomCmd *string `json:"rotator-custom-cmd,omitempty"`
 	// Rotate same password for each host from the Linked Target (relevant only for Linked Target)
 	SamePassword *string `json:"same-password,omitempty"`
-	// Allow providing external user for a domain users (relevant only for rdp)
-	SecureAccessAllowExternalUser *bool `json:"secure-access-allow-external-user,omitempty"`
+	// Allow providing external user for a domain users [true/false]
+	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
+	// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
+	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
 	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
-	// The AWS native cli
+	// The AWS native cli (relevant only for aws)
 	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
 	// Deprecated. use secure-access-certificate-issuer
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
@@ -95,6 +97,8 @@ type UpdateRotatedSecret struct {
 	SecureAccessDisableConcurrentConnections *bool `json:"secure-access-disable-concurrent-connections,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
@@ -103,11 +107,15 @@ type UpdateRotatedSecret struct {
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
 	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Deprecated. Use secure-access-use-internal-ssh-access
+	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
+	// Use internal SSH Access
+	SecureAccessUseInternalSshAccess *bool `json:"secure-access-use-internal-ssh-access,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// Secure browser viaAkeyless's Secure Remote Access (SRA) (relevant only for aws or azure)
+	// Secure browser via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
-	// Web-Proxy via Akeyless's Secure Remote Access (SRA) (relevant only for aws or azure)
+	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
@@ -115,6 +123,8 @@ type UpdateRotatedSecret struct {
 	SshUsername *string `json:"ssh-username,omitempty"`
 	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2]
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+	Target []string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -133,8 +143,6 @@ type _UpdateRotatedSecret UpdateRotatedSecret
 // will change when the set of required properties is changed
 func NewUpdateRotatedSecret(name string) *UpdateRotatedSecret {
 	this := UpdateRotatedSecret{}
-	var awsRegion string = "us-east-2"
-	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
 	var json bool = false
@@ -144,14 +152,8 @@ func NewUpdateRotatedSecret(name string) *UpdateRotatedSecret {
 	this.NewMetadata = &newMetadata
 	var rotatorCredsType string = "use-self-creds"
 	this.RotatorCredsType = &rotatorCredsType
-	var secureAccessAllowExternalUser bool = false
-	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
-	var secureAccessWebBrowsing bool = false
-	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
-	var secureAccessWebProxy bool = false
-	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userAttribute string = "cn"
 	this.UserAttribute = &userAttribute
 	return &this
@@ -162,8 +164,6 @@ func NewUpdateRotatedSecret(name string) *UpdateRotatedSecret {
 // but it doesn't guarantee that properties required by API are set
 func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this := UpdateRotatedSecret{}
-	var awsRegion string = "us-east-2"
-	this.AwsRegion = &awsRegion
 	var description string = "default_metadata"
 	this.Description = &description
 	var json bool = false
@@ -172,14 +172,8 @@ func NewUpdateRotatedSecretWithDefaults() *UpdateRotatedSecret {
 	this.NewMetadata = &newMetadata
 	var rotatorCredsType string = "use-self-creds"
 	this.RotatorCredsType = &rotatorCredsType
-	var secureAccessAllowExternalUser bool = false
-	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessWeb bool = false
 	this.SecureAccessWeb = &secureAccessWeb
-	var secureAccessWebBrowsing bool = false
-	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
-	var secureAccessWebProxy bool = false
-	this.SecureAccessWebProxy = &secureAccessWebProxy
 	var userAttribute string = "cn"
 	this.UserAttribute = &userAttribute
 	return &this
@@ -1074,9 +1068,9 @@ func (o *UpdateRotatedSecret) SetSamePassword(v string) {
 }
 
 // GetSecureAccessAllowExternalUser returns the SecureAccessAllowExternalUser field value if set, zero value otherwise.
-func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() bool {
+func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() string {
 	if o == nil || IsNil(o.SecureAccessAllowExternalUser) {
-		var ret bool
+		var ret string
 		return ret
 	}
 	return *o.SecureAccessAllowExternalUser
@@ -1084,7 +1078,7 @@ func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUser() bool {
 
 // GetSecureAccessAllowExternalUserOk returns a tuple with the SecureAccessAllowExternalUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUserOk() (*bool, bool) {
+func (o *UpdateRotatedSecret) GetSecureAccessAllowExternalUserOk() (*string, bool) {
 	if o == nil || IsNil(o.SecureAccessAllowExternalUser) {
 		return nil, false
 	}
@@ -1100,9 +1094,41 @@ func (o *UpdateRotatedSecret) HasSecureAccessAllowExternalUser() bool {
 	return false
 }
 
-// SetSecureAccessAllowExternalUser gets a reference to the given bool and assigns it to the SecureAccessAllowExternalUser field.
-func (o *UpdateRotatedSecret) SetSecureAccessAllowExternalUser(v bool) {
+// SetSecureAccessAllowExternalUser gets a reference to the given string and assigns it to the SecureAccessAllowExternalUser field.
+func (o *UpdateRotatedSecret) SetSecureAccessAllowExternalUser(v string) {
 	o.SecureAccessAllowExternalUser = &v
+}
+
+// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwading() bool {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwading) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowPortForwading
+}
+
+// GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwadingOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwading) {
+		return nil, false
+	}
+	return o.SecureAccessAllowPortForwading, true
+}
+
+// HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessAllowPortForwading() bool {
+	if o != nil && !IsNil(o.SecureAccessAllowPortForwading) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowPortForwading gets a reference to the given bool and assigns it to the SecureAccessAllowPortForwading field.
+func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwading(v bool) {
+	o.SecureAccessAllowPortForwading = &v
 }
 
 // GetSecureAccessAwsAccountId returns the SecureAccessAwsAccountId field value if set, zero value otherwise.
@@ -1361,6 +1387,38 @@ func (o *UpdateRotatedSecret) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *UpdateRotatedSecret) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *UpdateRotatedSecret) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -1487,6 +1545,70 @@ func (o *UpdateRotatedSecret) HasSecureAccessUrl() bool {
 // SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
 func (o *UpdateRotatedSecret) SetSecureAccessUrl(v string) {
 	o.SecureAccessUrl = &v
+}
+
+// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessUseInternalBastion() bool {
+	if o == nil || IsNil(o.SecureAccessUseInternalBastion) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessUseInternalBastion
+}
+
+// GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessUseInternalBastionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessUseInternalBastion) {
+		return nil, false
+	}
+	return o.SecureAccessUseInternalBastion, true
+}
+
+// HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessUseInternalBastion() bool {
+	if o != nil && !IsNil(o.SecureAccessUseInternalBastion) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUseInternalBastion gets a reference to the given bool and assigns it to the SecureAccessUseInternalBastion field.
+func (o *UpdateRotatedSecret) SetSecureAccessUseInternalBastion(v bool) {
+	o.SecureAccessUseInternalBastion = &v
+}
+
+// GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccess() bool {
+	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessUseInternalSshAccess
+}
+
+// GetSecureAccessUseInternalSshAccessOk returns a tuple with the SecureAccessUseInternalSshAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess) {
+		return nil, false
+	}
+	return o.SecureAccessUseInternalSshAccess, true
+}
+
+// HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessUseInternalSshAccess() bool {
+	if o != nil && !IsNil(o.SecureAccessUseInternalSshAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUseInternalSshAccess gets a reference to the given bool and assigns it to the SecureAccessUseInternalSshAccess field.
+func (o *UpdateRotatedSecret) SetSecureAccessUseInternalSshAccess(v bool) {
+	o.SecureAccessUseInternalSshAccess = &v
 }
 
 // GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
@@ -1679,6 +1801,38 @@ func (o *UpdateRotatedSecret) HasStorageAccountKeyName() bool {
 // SetStorageAccountKeyName gets a reference to the given string and assigns it to the StorageAccountKeyName field.
 func (o *UpdateRotatedSecret) SetStorageAccountKeyName(v string) {
 	o.StorageAccountKeyName = &v
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *UpdateRotatedSecret) GetTarget() []string {
+	if o == nil || IsNil(o.Target) {
+		var ret []string
+		return ret
+	}
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateRotatedSecret) GetTargetOk() ([]string, bool) {
+	if o == nil || IsNil(o.Target) {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasTarget() bool {
+	if o != nil && !IsNil(o.Target) {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *UpdateRotatedSecret) SetTarget(v []string) {
+	o.Target = v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -1904,6 +2058,9 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessAllowExternalUser) {
 		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
 	}
+	if !IsNil(o.SecureAccessAllowPortForwading) {
+		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
+	}
 	if !IsNil(o.SecureAccessAwsAccountId) {
 		toSerialize["secure-access-aws-account-id"] = o.SecureAccessAwsAccountId
 	}
@@ -1928,6 +2085,9 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
@@ -1939,6 +2099,12 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessUrl) {
 		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if !IsNil(o.SecureAccessUseInternalBastion) {
+		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion
+	}
+	if !IsNil(o.SecureAccessUseInternalSshAccess) {
+		toSerialize["secure-access-use-internal-ssh-access"] = o.SecureAccessUseInternalSshAccess
 	}
 	if !IsNil(o.SecureAccessWeb) {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
@@ -1957,6 +2123,9 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.StorageAccountKeyName) {
 		toSerialize["storage-account-key-name"] = o.StorageAccountKeyName
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

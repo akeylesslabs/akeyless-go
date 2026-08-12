@@ -32,7 +32,7 @@ type EventForwarderCreateWebhook struct {
 	ClientCertData *string `json:"client-cert-data,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report, secret-sync]
+	// List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report, secret-sync, locked-user, unlocked-user, password-reset]
 	EventTypes []string `json:"event-types,omitempty"`
 	// Rate of periodic runner repetition in hours
 	Every *string `json:"every,omitempty"`

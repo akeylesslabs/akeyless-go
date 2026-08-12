@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **ProducerMetadata** | Pointer to **string** |  | [optional] 
 **ProducerStatus** | Pointer to **string** | RotationStatus defines types of rotation Status | [optional] 
 **ProducerType** | Pointer to **string** |  | [optional] 
+**SkipDryRun** | Pointer to **bool** |  | [optional] 
 **UserTtl** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -232,6 +233,31 @@ SetProducerType sets ProducerType field to given value.
 `func (o *DynamicSecretProducerInfo) HasProducerType() bool`
 
 HasProducerType returns a boolean if a field has been set.
+
+### GetSkipDryRun
+
+`func (o *DynamicSecretProducerInfo) GetSkipDryRun() bool`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *DynamicSecretProducerInfo) GetSkipDryRunOk() (*bool, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *DynamicSecretProducerInfo) SetSkipDryRun(v bool)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *DynamicSecretProducerInfo) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetUserTtl
 

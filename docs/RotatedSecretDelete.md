@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ForceDelete** | Pointer to **bool** | Delete the rotated secret only from Akeyless if failed to delete it from the third-party provider | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewRotatedSecretDeleteWithDefaults instantiates a new RotatedSecretDelete object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetForceDelete
+
+`func (o *RotatedSecretDelete) GetForceDelete() bool`
+
+GetForceDelete returns the ForceDelete field if non-nil, zero value otherwise.
+
+### GetForceDeleteOk
+
+`func (o *RotatedSecretDelete) GetForceDeleteOk() (*bool, bool)`
+
+GetForceDeleteOk returns a tuple with the ForceDelete field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceDelete
+
+`func (o *RotatedSecretDelete) SetForceDelete(v bool)`
+
+SetForceDelete sets ForceDelete field to given value.
+
+### HasForceDelete
+
+`func (o *RotatedSecretDelete) HasForceDelete() bool`
+
+HasForceDelete returns a boolean if a field has been set.
 
 ### GetJson
 

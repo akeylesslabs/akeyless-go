@@ -20,10 +20,7 @@ var _ MappedNullable = &FolderSyncOutput{}
 
 // FolderSyncOutput struct for FolderSyncOutput
 type FolderSyncOutput struct {
-	FailedItems *map[string]string `json:"failed_items,omitempty"`
 	FolderName *string `json:"folder_name,omitempty"`
-	SkippedItems []string `json:"skipped_items,omitempty"`
-	SyncedItems []string `json:"synced_items,omitempty"`
 }
 
 // NewFolderSyncOutput instantiates a new FolderSyncOutput object
@@ -41,38 +38,6 @@ func NewFolderSyncOutput() *FolderSyncOutput {
 func NewFolderSyncOutputWithDefaults() *FolderSyncOutput {
 	this := FolderSyncOutput{}
 	return &this
-}
-
-// GetFailedItems returns the FailedItems field value if set, zero value otherwise.
-func (o *FolderSyncOutput) GetFailedItems() map[string]string {
-	if o == nil || IsNil(o.FailedItems) {
-		var ret map[string]string
-		return ret
-	}
-	return *o.FailedItems
-}
-
-// GetFailedItemsOk returns a tuple with the FailedItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FolderSyncOutput) GetFailedItemsOk() (*map[string]string, bool) {
-	if o == nil || IsNil(o.FailedItems) {
-		return nil, false
-	}
-	return o.FailedItems, true
-}
-
-// HasFailedItems returns a boolean if a field has been set.
-func (o *FolderSyncOutput) HasFailedItems() bool {
-	if o != nil && !IsNil(o.FailedItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetFailedItems gets a reference to the given map[string]string and assigns it to the FailedItems field.
-func (o *FolderSyncOutput) SetFailedItems(v map[string]string) {
-	o.FailedItems = &v
 }
 
 // GetFolderName returns the FolderName field value if set, zero value otherwise.
@@ -107,70 +72,6 @@ func (o *FolderSyncOutput) SetFolderName(v string) {
 	o.FolderName = &v
 }
 
-// GetSkippedItems returns the SkippedItems field value if set, zero value otherwise.
-func (o *FolderSyncOutput) GetSkippedItems() []string {
-	if o == nil || IsNil(o.SkippedItems) {
-		var ret []string
-		return ret
-	}
-	return o.SkippedItems
-}
-
-// GetSkippedItemsOk returns a tuple with the SkippedItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FolderSyncOutput) GetSkippedItemsOk() ([]string, bool) {
-	if o == nil || IsNil(o.SkippedItems) {
-		return nil, false
-	}
-	return o.SkippedItems, true
-}
-
-// HasSkippedItems returns a boolean if a field has been set.
-func (o *FolderSyncOutput) HasSkippedItems() bool {
-	if o != nil && !IsNil(o.SkippedItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetSkippedItems gets a reference to the given []string and assigns it to the SkippedItems field.
-func (o *FolderSyncOutput) SetSkippedItems(v []string) {
-	o.SkippedItems = v
-}
-
-// GetSyncedItems returns the SyncedItems field value if set, zero value otherwise.
-func (o *FolderSyncOutput) GetSyncedItems() []string {
-	if o == nil || IsNil(o.SyncedItems) {
-		var ret []string
-		return ret
-	}
-	return o.SyncedItems
-}
-
-// GetSyncedItemsOk returns a tuple with the SyncedItems field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FolderSyncOutput) GetSyncedItemsOk() ([]string, bool) {
-	if o == nil || IsNil(o.SyncedItems) {
-		return nil, false
-	}
-	return o.SyncedItems, true
-}
-
-// HasSyncedItems returns a boolean if a field has been set.
-func (o *FolderSyncOutput) HasSyncedItems() bool {
-	if o != nil && !IsNil(o.SyncedItems) {
-		return true
-	}
-
-	return false
-}
-
-// SetSyncedItems gets a reference to the given []string and assigns it to the SyncedItems field.
-func (o *FolderSyncOutput) SetSyncedItems(v []string) {
-	o.SyncedItems = v
-}
-
 func (o FolderSyncOutput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -181,17 +82,8 @@ func (o FolderSyncOutput) MarshalJSON() ([]byte, error) {
 
 func (o FolderSyncOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FailedItems) {
-		toSerialize["failed_items"] = o.FailedItems
-	}
 	if !IsNil(o.FolderName) {
 		toSerialize["folder_name"] = o.FolderName
-	}
-	if !IsNil(o.SkippedItems) {
-		toSerialize["skipped_items"] = o.SkippedItems
-	}
-	if !IsNil(o.SyncedItems) {
-		toSerialize["synced_items"] = o.SyncedItems
 	}
 	return toSerialize, nil
 }

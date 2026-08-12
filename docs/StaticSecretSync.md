@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeleteRemote** | Pointer to **bool** | Delete the secret from remote secret manager (for association create/update) | [optional] 
+**Environments** | Pointer to **string** | GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --environments repo1/env1,repo2/env2). | [optional] 
 **FilterSecretValue** | Pointer to **string** | JQ expression to filter or transform the secret value | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Static secret name | 
 **Namespace** | Pointer to **string** | Vault namespace, releavnt only for Hashicorp Vault Target | [optional] 
 **RemoteSecretName** | Pointer to **string** | Remote Secret Name that will be synced on the remote endpoint | [optional] 
+**Repositories** | Pointer to **string** | GitHub repositories to sync to. Relevant only for GitHub targets. Syncs to all repositories defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --repositories repo1,repo2). | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | Pointer to **string** | Universal Secret Connector name, If not provided all attached USC&#39;s will be synced | [optional] 
@@ -57,6 +59,31 @@ SetDeleteRemote sets DeleteRemote field to given value.
 `func (o *StaticSecretSync) HasDeleteRemote() bool`
 
 HasDeleteRemote returns a boolean if a field has been set.
+
+### GetEnvironments
+
+`func (o *StaticSecretSync) GetEnvironments() string`
+
+GetEnvironments returns the Environments field if non-nil, zero value otherwise.
+
+### GetEnvironmentsOk
+
+`func (o *StaticSecretSync) GetEnvironmentsOk() (*string, bool)`
+
+GetEnvironmentsOk returns a tuple with the Environments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironments
+
+`func (o *StaticSecretSync) SetEnvironments(v string)`
+
+SetEnvironments sets Environments field to given value.
+
+### HasEnvironments
+
+`func (o *StaticSecretSync) HasEnvironments() bool`
+
+HasEnvironments returns a boolean if a field has been set.
 
 ### GetFilterSecretValue
 
@@ -177,6 +204,31 @@ SetRemoteSecretName sets RemoteSecretName field to given value.
 `func (o *StaticSecretSync) HasRemoteSecretName() bool`
 
 HasRemoteSecretName returns a boolean if a field has been set.
+
+### GetRepositories
+
+`func (o *StaticSecretSync) GetRepositories() string`
+
+GetRepositories returns the Repositories field if non-nil, zero value otherwise.
+
+### GetRepositoriesOk
+
+`func (o *StaticSecretSync) GetRepositoriesOk() (*string, bool)`
+
+GetRepositoriesOk returns a tuple with the Repositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRepositories
+
+`func (o *StaticSecretSync) SetRepositories(v string)`
+
+SetRepositories sets Repositories field to given value.
+
+### HasRepositories
+
+`func (o *StaticSecretSync) HasRepositories() bool`
+
+HasRepositories returns a boolean if a field has been set.
 
 ### GetToken
 

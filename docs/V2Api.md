@@ -75,6 +75,7 @@ Method | HTTP request | Description
 [**CreateEKSTarget**](V2Api.md#CreateEKSTarget) | **Post** /create-eks-target | 
 [**CreateESM**](V2Api.md#CreateESM) | **Post** /create-esm | 
 [**CreateEventForwarder**](V2Api.md#CreateEventForwarder) | **Post** /create-event-forwarder | 
+[**CreateF5BigIpTarget**](V2Api.md#CreateF5BigIpTarget) | **Post** /create-f5-big-ip-target | 
 [**CreateGKETarget**](V2Api.md#CreateGKETarget) | **Post** /create-gke-target | 
 [**CreateGcpTarget**](V2Api.md#CreateGcpTarget) | **Post** /create-gcp-target | 
 [**CreateGithubTarget**](V2Api.md#CreateGithubTarget) | **Post** /create-github-target | 
@@ -136,6 +137,7 @@ Method | HTTP request | Description
 [**DescribeSubClaims**](V2Api.md#DescribeSubClaims) | **Post** /describe-sub-claims | 
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**DetokenizeBatch**](V2Api.md#DetokenizeBatch) | **Post** /detokenize-batch | 
+[**DynamicSecretCreateAerospike**](V2Api.md#DynamicSecretCreateAerospike) | **Post** /dynamic-secret-create-aerospike | 
 [**DynamicSecretCreateArtifactory**](V2Api.md#DynamicSecretCreateArtifactory) | **Post** /dynamic-secret-create-artifactory | 
 [**DynamicSecretCreateAws**](V2Api.md#DynamicSecretCreateAws) | **Post** /dynamic-secret-create-aws | 
 [**DynamicSecretCreateAzure**](V2Api.md#DynamicSecretCreateAzure) | **Post** /dynamic-secret-create-azure | 
@@ -171,6 +173,7 @@ Method | HTTP request | Description
 [**DynamicSecretTmpCredsDelete**](V2Api.md#DynamicSecretTmpCredsDelete) | **Post** /dynamic-secret-tmp-creds-delete | 
 [**DynamicSecretTmpCredsGet**](V2Api.md#DynamicSecretTmpCredsGet) | **Post** /dynamic-secret-tmp-creds-get | 
 [**DynamicSecretTmpCredsUpdate**](V2Api.md#DynamicSecretTmpCredsUpdate) | **Post** /dynamic-secret-tmp-creds-update | 
+[**DynamicSecretUpdateAerospike**](V2Api.md#DynamicSecretUpdateAerospike) | **Post** /dynamic-secret-update-aerospike | 
 [**DynamicSecretUpdateArtifactory**](V2Api.md#DynamicSecretUpdateArtifactory) | **Post** /dynamic-secret-update-artifactory | 
 [**DynamicSecretUpdateAws**](V2Api.md#DynamicSecretUpdateAws) | **Post** /dynamic-secret-update-aws | 
 [**DynamicSecretUpdateAzure**](V2Api.md#DynamicSecretUpdateAzure) | **Post** /dynamic-secret-update-azure | 
@@ -416,11 +419,13 @@ Method | HTTP request | Description
 [**RotateKey**](V2Api.md#RotateKey) | **Post** /rotate-key | 
 [**RotateOidcClientSecret**](V2Api.md#RotateOidcClientSecret) | **Post** /rotate-oidc-client-secret | 
 [**RotateSecret**](V2Api.md#RotateSecret) | **Post** /gateway-rotate-secret | 
+[**RotatedSecretCreateAerospike**](V2Api.md#RotatedSecretCreateAerospike) | **Post** /rotated-secret-create-aerospike | 
 [**RotatedSecretCreateAws**](V2Api.md#RotatedSecretCreateAws) | **Post** /rotated-secret-create-aws | 
 [**RotatedSecretCreateAzure**](V2Api.md#RotatedSecretCreateAzure) | **Post** /rotated-secret-create-azure | 
 [**RotatedSecretCreateCassandra**](V2Api.md#RotatedSecretCreateCassandra) | **Post** /rotated-secret-create-cassandra | 
 [**RotatedSecretCreateCustom**](V2Api.md#RotatedSecretCreateCustom) | **Post** /rotated-secret-create-custom | 
 [**RotatedSecretCreateDockerhub**](V2Api.md#RotatedSecretCreateDockerhub) | **Post** /rotated-secret-create-dockerhub | 
+[**RotatedSecretCreateF5BigIp**](V2Api.md#RotatedSecretCreateF5BigIp) | **Post** /rotated-secret-create-f5-big-ip | 
 [**RotatedSecretCreateGcp**](V2Api.md#RotatedSecretCreateGcp) | **Post** /rotated-secret-create-gcp | 
 [**RotatedSecretCreateHanadb**](V2Api.md#RotatedSecretCreateHanadb) | **Post** /rotated-secret-create-hanadb | 
 [**RotatedSecretCreateHashiVault**](V2Api.md#RotatedSecretCreateHashiVault) | **Post** /rotated-secret-create-hashi-vault | 
@@ -442,6 +447,7 @@ Method | HTTP request | Description
 [**RotatedSecretGetValue**](V2Api.md#RotatedSecretGetValue) | **Post** /rotated-secret-get-value | 
 [**RotatedSecretList**](V2Api.md#RotatedSecretList) | **Post** /rotated-secret-list | 
 [**RotatedSecretSync**](V2Api.md#RotatedSecretSync) | **Post** /rotated-secret-sync | 
+[**RotatedSecretUpdateAerospike**](V2Api.md#RotatedSecretUpdateAerospike) | **Post** /rotated-secret-update-aerospike | 
 [**RotatedSecretUpdateAws**](V2Api.md#RotatedSecretUpdateAws) | **Post** /rotated-secret-update-aws | 
 [**RotatedSecretUpdateAzure**](V2Api.md#RotatedSecretUpdateAzure) | **Post** /rotated-secret-update-azure | 
 [**RotatedSecretUpdateCassandra**](V2Api.md#RotatedSecretUpdateCassandra) | **Post** /rotated-secret-update-cassandra | 
@@ -489,6 +495,7 @@ Method | HTTP request | Description
 [**TargetCreateDigiCert**](V2Api.md#TargetCreateDigiCert) | **Post** /target-create-digicert | 
 [**TargetCreateDockerhub**](V2Api.md#TargetCreateDockerhub) | **Post** /target-create-dockerhub | 
 [**TargetCreateEks**](V2Api.md#TargetCreateEks) | **Post** /target-create-eks | 
+[**TargetCreateF5BigIp**](V2Api.md#TargetCreateF5BigIp) | **Post** /target-create-f5-big-ip | 
 [**TargetCreateGcp**](V2Api.md#TargetCreateGcp) | **Post** /target-create-gcp | 
 [**TargetCreateGemini**](V2Api.md#TargetCreateGemini) | **Post** /target-create-gemini | 
 [**TargetCreateGithub**](V2Api.md#TargetCreateGithub) | **Post** /target-create-github | 
@@ -532,6 +539,7 @@ Method | HTTP request | Description
 [**TargetUpdateDigiCert**](V2Api.md#TargetUpdateDigiCert) | **Post** /target-update-digicert | 
 [**TargetUpdateDockerhub**](V2Api.md#TargetUpdateDockerhub) | **Post** /target-update-dockerhub | 
 [**TargetUpdateEks**](V2Api.md#TargetUpdateEks) | **Post** /target-update-eks | 
+[**TargetUpdateF5BigIp**](V2Api.md#TargetUpdateF5BigIp) | **Post** /target-update-f5-big-ip | 
 [**TargetUpdateGcp**](V2Api.md#TargetUpdateGcp) | **Post** /target-update-gcp | 
 [**TargetUpdateGemini**](V2Api.md#TargetUpdateGemini) | **Post** /target-update-gemini | 
 [**TargetUpdateGithub**](V2Api.md#TargetUpdateGithub) | **Post** /target-update-github | 
@@ -593,6 +601,7 @@ Method | HTTP request | Description
 [**UpdateDockerhubTarget**](V2Api.md#UpdateDockerhubTarget) | **Post** /update-dockerhub-target | 
 [**UpdateEKSTarget**](V2Api.md#UpdateEKSTarget) | **Post** /update-eks-target | 
 [**UpdateEventForwarder**](V2Api.md#UpdateEventForwarder) | **Post** /update-event-forwarder | 
+[**UpdateF5BigIpTarget**](V2Api.md#UpdateF5BigIpTarget) | **Post** /update-f5-big-ip-target | 
 [**UpdateGKETarget**](V2Api.md#UpdateGKETarget) | **Post** /update-gke-target | 
 [**UpdateGcpTarget**](V2Api.md#UpdateGcpTarget) | **Post** /update-gcp-target | 
 [**UpdateGithubTarget**](V2Api.md#UpdateGithubTarget) | **Post** /update-github-target | 
@@ -5195,6 +5204,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## CreateF5BigIpTarget
+
+> CreateF5BigIpTargetOutput CreateF5BigIpTarget(ctx).CreateF5BigIpTarget(createF5BigIpTarget).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	createF5BigIpTarget := *openapiclient.NewCreateF5BigIpTarget("Name_example", "Url_example", "Username_example") // CreateF5BigIpTarget | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.CreateF5BigIpTarget(context.Background()).CreateF5BigIpTarget(createF5BigIpTarget).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.CreateF5BigIpTarget``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateF5BigIpTarget`: CreateF5BigIpTargetOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.CreateF5BigIpTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateF5BigIpTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createF5BigIpTarget** | [**CreateF5BigIpTarget**](CreateF5BigIpTarget.md) |  | 
+
+### Return type
+
+[**CreateF5BigIpTargetOutput**](CreateF5BigIpTargetOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateGKETarget
 
 > CreateGKETargetOutput CreateGKETarget(ctx).CreateGKETarget(createGKETarget).Execute()
@@ -9099,6 +9172,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DynamicSecretCreateAerospike
+
+> DynamicSecretCreateOutput DynamicSecretCreateAerospike(ctx).DynamicSecretCreateAerospike(dynamicSecretCreateAerospike).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	dynamicSecretCreateAerospike := *openapiclient.NewDynamicSecretCreateAerospike("Name_example") // DynamicSecretCreateAerospike | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.DynamicSecretCreateAerospike(context.Background()).DynamicSecretCreateAerospike(dynamicSecretCreateAerospike).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateAerospike``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DynamicSecretCreateAerospike`: DynamicSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateAerospike`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateAerospikeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dynamicSecretCreateAerospike** | [**DynamicSecretCreateAerospike**](DynamicSecretCreateAerospike.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DynamicSecretCreateArtifactory
 
 > DynamicSecretCreateOutput DynamicSecretCreateArtifactory(ctx).DynamicSecretCreateArtifactory(dynamicSecretCreateArtifactory).Execute()
@@ -11320,6 +11457,70 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateAerospike
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateAerospike(ctx).DynamicSecretUpdateAerospike(dynamicSecretUpdateAerospike).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	dynamicSecretUpdateAerospike := *openapiclient.NewDynamicSecretUpdateAerospike("Name_example") // DynamicSecretUpdateAerospike | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.DynamicSecretUpdateAerospike(context.Background()).DynamicSecretUpdateAerospike(dynamicSecretUpdateAerospike).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateAerospike``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DynamicSecretUpdateAerospike`: DynamicSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateAerospike`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateAerospikeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dynamicSecretUpdateAerospike** | [**DynamicSecretUpdateAerospike**](DynamicSecretUpdateAerospike.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
 
 ### Authorization
 
@@ -26994,6 +27195,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretCreateAerospike
+
+> RotatedSecretCreateOutput RotatedSecretCreateAerospike(ctx).RotatedSecretCreateAerospike(rotatedSecretCreateAerospike).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateAerospike := *openapiclient.NewRotatedSecretCreateAerospike("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateAerospike | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateAerospike(context.Background()).RotatedSecretCreateAerospike(rotatedSecretCreateAerospike).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateAerospike``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateAerospike`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateAerospike`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateAerospikeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateAerospike** | [**RotatedSecretCreateAerospike**](RotatedSecretCreateAerospike.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretCreateAws
 
 > RotatedSecretCreateOutput RotatedSecretCreateAws(ctx).RotatedSecretCreateAws(rotatedSecretCreateAws).Execute()
@@ -27295,6 +27560,70 @@ Other parameters are passed through a pointer to a apiRotatedSecretCreateDockerh
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rotatedSecretCreateDockerhub** | [**RotatedSecretCreateDockerhub**](RotatedSecretCreateDockerhub.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretCreateF5BigIp
+
+> RotatedSecretCreateOutput RotatedSecretCreateF5BigIp(ctx).RotatedSecretCreateF5BigIp(rotatedSecretCreateF5BigIp).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateF5BigIp := *openapiclient.NewRotatedSecretCreateF5BigIp("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateF5BigIp | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateF5BigIp(context.Background()).RotatedSecretCreateF5BigIp(rotatedSecretCreateF5BigIp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateF5BigIp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateF5BigIp`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateF5BigIp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateF5BigIpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateF5BigIp** | [**RotatedSecretCreateF5BigIp**](RotatedSecretCreateF5BigIp.md) |  | 
 
 ### Return type
 
@@ -28643,6 +28972,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateAerospike
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateAerospike(ctx).RotatedSecretUpdateAerospike(rotatedSecretUpdateAerospike).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretUpdateAerospike := *openapiclient.NewRotatedSecretUpdateAerospike("Name_example") // RotatedSecretUpdateAerospike | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretUpdateAerospike(context.Background()).RotatedSecretUpdateAerospike(rotatedSecretUpdateAerospike).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateAerospike``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretUpdateAerospike`: RotatedSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateAerospike`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateAerospikeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretUpdateAerospike** | [**RotatedSecretUpdateAerospike**](RotatedSecretUpdateAerospike.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
 
 ### Authorization
 
@@ -31664,6 +32057,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateF5BigIp
+
+> TargetCreateOutput TargetCreateF5BigIp(ctx).TargetCreateF5BigIp(targetCreateF5BigIp).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateF5BigIp := *openapiclient.NewTargetCreateF5BigIp("Name_example", "Url_example", "Username_example") // TargetCreateF5BigIp | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateF5BigIp(context.Background()).TargetCreateF5BigIp(targetCreateF5BigIp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateF5BigIp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateF5BigIp`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateF5BigIp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateF5BigIpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateF5BigIp** | [**TargetCreateF5BigIp**](TargetCreateF5BigIp.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateGcp
 
 > TargetCreateOutput TargetCreateGcp(ctx).TargetCreateGcp(targetCreateGcp).Execute()
@@ -34397,6 +34854,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateEksRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateEks** | [**TargetUpdateEks**](TargetUpdateEks.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateF5BigIp
+
+> TargetUpdateOutput TargetUpdateF5BigIp(ctx).TargetUpdateF5BigIp(targetUpdateF5BigIp).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateF5BigIp := *openapiclient.NewTargetUpdateF5BigIp("Name_example") // TargetUpdateF5BigIp | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateF5BigIp(context.Background()).TargetUpdateF5BigIp(targetUpdateF5BigIp).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateF5BigIp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateF5BigIp`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateF5BigIp`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateF5BigIpRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateF5BigIp** | [**TargetUpdateF5BigIp**](TargetUpdateF5BigIp.md) |  | 
 
 ### Return type
 
@@ -38305,6 +38826,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateF5BigIpTarget
+
+> UpdateF5BigIpTargetOutput UpdateF5BigIpTarget(ctx).UpdateF5BigIpTarget(updateF5BigIpTarget).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	updateF5BigIpTarget := *openapiclient.NewUpdateF5BigIpTarget("Name_example") // UpdateF5BigIpTarget | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.UpdateF5BigIpTarget(context.Background()).UpdateF5BigIpTarget(updateF5BigIpTarget).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.UpdateF5BigIpTarget``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateF5BigIpTarget`: UpdateF5BigIpTargetOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.UpdateF5BigIpTarget`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateF5BigIpTargetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateF5BigIpTarget** | [**UpdateF5BigIpTarget**](UpdateF5BigIpTarget.md) |  | 
+
+### Return type
+
+[**UpdateF5BigIpTargetOutput**](UpdateF5BigIpTargetOutput.md)
 
 ### Authorization
 

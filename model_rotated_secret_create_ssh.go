@@ -22,6 +22,9 @@ var _ MappedNullable = &RotatedSecretCreateSsh{}
 
 // RotatedSecretCreateSsh struct for RotatedSecretCreateSsh
 type RotatedSecretCreateSsh struct {
+	ProviderType *string `json:"ProviderType,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// The credentials to connect with use-user-creds/use-target-creds
 	AuthenticationCredentials *string `json:"authentication-credentials,omitempty"`
 	AutoRotate *string `json:"auto-rotate,omitempty"`
@@ -29,6 +32,8 @@ type RotatedSecretCreateSsh struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
+	HostProvider *string `json:"host-provider,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
 	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
@@ -74,6 +79,8 @@ type RotatedSecretCreateSsh struct {
 	SecureAccessCertificateIssuer *string `json:"secure-access-certificate-issuer,omitempty"`
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
+	// Enforce connections only to allowed SRA hosts
+	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Default domain name server. i.e. microsoft.com
@@ -84,8 +91,12 @@ type RotatedSecretCreateSsh struct {
 	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
 	// Specify target type. Options are ssh or rdp
 	SecureAccessTargetType *string `json:"secure-access-target-type,omitempty"`
+	// If set, dry-run will be skipped
+	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
+	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
+	Target []string `json:"target,omitempty"`
 	// The target name to associate
 	TargetName string `json:"target-name"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -137,6 +148,70 @@ func NewRotatedSecretCreateSshWithDefaults() *RotatedSecretCreateSsh {
 	var secureAccessTargetType string = "false"
 	this.SecureAccessTargetType = &secureAccessTargetType
 	return &this
+}
+
+// GetProviderType returns the ProviderType field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetProviderType() string {
+	if o == nil || IsNil(o.ProviderType) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderType
+}
+
+// GetProviderTypeOk returns a tuple with the ProviderType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetProviderTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ProviderType) {
+		return nil, false
+	}
+	return o.ProviderType, true
+}
+
+// HasProviderType returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasProviderType() bool {
+	if o != nil && !IsNil(o.ProviderType) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderType gets a reference to the given string and assigns it to the ProviderType field.
+func (o *RotatedSecretCreateSsh) SetProviderType(v string) {
+	o.ProviderType = &v
+}
+
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *RotatedSecretCreateSsh) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
 }
 
 // GetAuthenticationCredentials returns the AuthenticationCredentials field value if set, zero value otherwise.
@@ -265,6 +340,38 @@ func (o *RotatedSecretCreateSsh) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *RotatedSecretCreateSsh) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetHostProvider returns the HostProvider field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetHostProvider() string {
+	if o == nil || IsNil(o.HostProvider) {
+		var ret string
+		return ret
+	}
+	return *o.HostProvider
+}
+
+// GetHostProviderOk returns a tuple with the HostProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetHostProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.HostProvider) {
+		return nil, false
+	}
+	return o.HostProvider, true
+}
+
+// HasHostProvider returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasHostProvider() bool {
+	if o != nil && !IsNil(o.HostProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetHostProvider gets a reference to the given string and assigns it to the HostProvider field.
+func (o *RotatedSecretCreateSsh) SetHostProvider(v string) {
+	o.HostProvider = &v
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -1019,6 +1126,38 @@ func (o *RotatedSecretCreateSsh) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetSecureAccessEnforceHostsRestriction() bool {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessEnforceHostsRestriction
+}
+
+// GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return nil, false
+	}
+	return o.SecureAccessEnforceHostsRestriction, true
+}
+
+// HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasSecureAccessEnforceHostsRestriction() bool {
+	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+func (o *RotatedSecretCreateSsh) SetSecureAccessEnforceHostsRestriction(v bool) {
+	o.SecureAccessEnforceHostsRestriction = &v
+}
+
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
 func (o *RotatedSecretCreateSsh) GetSecureAccessHost() []string {
 	if o == nil || IsNil(o.SecureAccessHost) {
@@ -1179,6 +1318,38 @@ func (o *RotatedSecretCreateSsh) SetSecureAccessTargetType(v string) {
 	o.SecureAccessTargetType = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetSkipDryRun() string {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret string
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetSkipDryRunOk() (*string, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateSsh) SetSkipDryRun(v string) {
+	o.SkipDryRun = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *RotatedSecretCreateSsh) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
@@ -1209,6 +1380,38 @@ func (o *RotatedSecretCreateSsh) HasTags() bool {
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *RotatedSecretCreateSsh) SetTags(v []string) {
 	o.Tags = v
+}
+
+// GetTarget returns the Target field value if set, zero value otherwise.
+func (o *RotatedSecretCreateSsh) GetTarget() []string {
+	if o == nil || IsNil(o.Target) {
+		var ret []string
+		return ret
+	}
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateSsh) GetTargetOk() ([]string, bool) {
+	if o == nil || IsNil(o.Target) {
+		return nil, false
+	}
+	return o.Target, true
+}
+
+// HasTarget returns a boolean if a field has been set.
+func (o *RotatedSecretCreateSsh) HasTarget() bool {
+	if o != nil && !IsNil(o.Target) {
+		return true
+	}
+
+	return false
+}
+
+// SetTarget gets a reference to the given []string and assigns it to the Target field.
+func (o *RotatedSecretCreateSsh) SetTarget(v []string) {
+	o.Target = v
 }
 
 // GetTargetName returns the TargetName field value
@@ -1437,6 +1640,12 @@ func (o RotatedSecretCreateSsh) MarshalJSON() ([]byte, error) {
 
 func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProviderType) {
+		toSerialize["ProviderType"] = o.ProviderType
+	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.AuthenticationCredentials) {
 		toSerialize["authentication-credentials"] = o.AuthenticationCredentials
 	}
@@ -1448,6 +1657,9 @@ func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.HostProvider) {
+		toSerialize["host-provider"] = o.HostProvider
 	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule
@@ -1517,6 +1729,9 @@ func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
+	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
@@ -1532,8 +1747,14 @@ func (o RotatedSecretCreateSsh) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessTargetType) {
 		toSerialize["secure-access-target-type"] = o.SecureAccessTargetType
 	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip_dry_run"] = o.SkipDryRun
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
+	}
+	if !IsNil(o.Target) {
+		toSerialize["target"] = o.Target
 	}
 	toSerialize["target-name"] = o.TargetName
 	if !IsNil(o.Token) {

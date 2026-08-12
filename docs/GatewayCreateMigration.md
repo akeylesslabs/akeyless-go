@@ -43,6 +43,7 @@ Name | Type | Description | Notes
 **ConjurUrl** | Pointer to **string** | Conjur server base URL (relevant only for Conjur migration). If conjur-url is HTTPS and Conjur uses a private CA/self-signed certificate, make the CA bundle available on the Gateway and set CONJUR_SSL_CERT_PATH to its path. | [optional] 
 **ConjurUsername** | Pointer to **string** | Conjur username used to authenticate (relevant only for Conjur migration). | [optional] 
 **DeleteRemote** | Pointer to **bool** | Delete the secret from the remote target as well, relevant only when usc-name is not empty (relevant only for HasiCorp Vault migration) | [optional] 
+**EnablePasswordPolicy** | Pointer to **string** | Enable password policy for rotated secrets created for Local and Domain users (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **ExcludeHosts** | Pointer to **string** | A comma separated list of IPs, CIDR ranges, or DNS names to exclude from the scan | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpKey** | Pointer to **string** | Base64-encoded GCP Service Account private key text with sufficient permissions to Secrets Manager, Minimum required permission is Secret Manager Secret Accessor, e.g. &#39;roles/secretmanager.secretAccessor&#39; (relevant only for GCP migration) | [optional] 
@@ -64,6 +65,7 @@ Name | Type | Description | Notes
 **K8sUrl** | Pointer to **string** | K8s API Server URL, e.g. https://k8s-api.mycompany.com:6443 (relevant only for K8s migration) | [optional] 
 **K8sUsername** | Pointer to **string** | For Password Authentication method K8s Client username with sufficient permission to list and get secrets in the namespace(s) you selected (relevant only for K8s migration with Password Authentication method) | [optional] 
 **Name** | **string** | Migration name | 
+**PasswordLength** | Pointer to **string** | The length of the password to be generated (between 8 and 50). Relevant only for Active Directory migration when enable-password-policy is true. | [optional] 
 **PortRanges** | Pointer to **string** | A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot; | [optional] [default to "443"]
 **ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
 **SiAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] 
@@ -74,6 +76,7 @@ Name | Type | Description | Notes
 **SiUserGroups** | Pointer to **string** | Comma-separated list of groups to migrate users from. If empty, all users from all groups will be migrated (Relevant only for Server Inventory migration) | [optional] 
 **SiUsersIgnore** | Pointer to **string** | Comma-separated list of Local Users which should not be migrated (Relevant only for Server Inventory migration) | [optional] 
 **SiUsersPathTemplate** | **string** | Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration) | 
+**SkipDryRun** | Pointer to **string** | Skip dry-run validation for rotated secrets created for Local and Domain users (Relevant only for Active Directory migration) | [optional] [default to "false"]
 **TargetLocation** | **string** | Target location in Akeyless for imported secrets | 
 **TargetName** | Pointer to **string** | Name of existing target to use to create the migration | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -1076,6 +1079,31 @@ SetDeleteRemote sets DeleteRemote field to given value.
 
 HasDeleteRemote returns a boolean if a field has been set.
 
+### GetEnablePasswordPolicy
+
+`func (o *GatewayCreateMigration) GetEnablePasswordPolicy() string`
+
+GetEnablePasswordPolicy returns the EnablePasswordPolicy field if non-nil, zero value otherwise.
+
+### GetEnablePasswordPolicyOk
+
+`func (o *GatewayCreateMigration) GetEnablePasswordPolicyOk() (*string, bool)`
+
+GetEnablePasswordPolicyOk returns a tuple with the EnablePasswordPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnablePasswordPolicy
+
+`func (o *GatewayCreateMigration) SetEnablePasswordPolicy(v string)`
+
+SetEnablePasswordPolicy sets EnablePasswordPolicy field to given value.
+
+### HasEnablePasswordPolicy
+
+`func (o *GatewayCreateMigration) HasEnablePasswordPolicy() bool`
+
+HasEnablePasswordPolicy returns a boolean if a field has been set.
+
 ### GetExcludeHosts
 
 `func (o *GatewayCreateMigration) GetExcludeHosts() string`
@@ -1591,6 +1619,31 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetPasswordLength
+
+`func (o *GatewayCreateMigration) GetPasswordLength() string`
+
+GetPasswordLength returns the PasswordLength field if non-nil, zero value otherwise.
+
+### GetPasswordLengthOk
+
+`func (o *GatewayCreateMigration) GetPasswordLengthOk() (*string, bool)`
+
+GetPasswordLengthOk returns a tuple with the PasswordLength field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasswordLength
+
+`func (o *GatewayCreateMigration) SetPasswordLength(v string)`
+
+SetPasswordLength sets PasswordLength field to given value.
+
+### HasPasswordLength
+
+`func (o *GatewayCreateMigration) HasPasswordLength() bool`
+
+HasPasswordLength returns a boolean if a field has been set.
+
 ### GetPortRanges
 
 `func (o *GatewayCreateMigration) GetPortRanges() string`
@@ -1830,6 +1883,31 @@ and a boolean to check if the value has been set.
 
 SetSiUsersPathTemplate sets SiUsersPathTemplate field to given value.
 
+
+### GetSkipDryRun
+
+`func (o *GatewayCreateMigration) GetSkipDryRun() string`
+
+GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
+
+### GetSkipDryRunOk
+
+`func (o *GatewayCreateMigration) GetSkipDryRunOk() (*string, bool)`
+
+GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSkipDryRun
+
+`func (o *GatewayCreateMigration) SetSkipDryRun(v string)`
+
+SetSkipDryRun sets SkipDryRun field to given value.
+
+### HasSkipDryRun
+
+`func (o *GatewayCreateMigration) HasSkipDryRun() bool`
+
+HasSkipDryRun returns a boolean if a field has been set.
 
 ### GetTargetLocation
 
