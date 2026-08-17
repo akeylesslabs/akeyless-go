@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
+**KeyAlgorithm** | Pointer to **string** | The key algorithm to generate with when no private key is supplied, leave empty to keep the current algorithm. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521] | [optional] 
 **KeyDataBase64** | Pointer to **string** | Private key file contents encoded using base64 | [optional] 
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
@@ -43,8 +44,13 @@ Name | Type | Description | Notes
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Default domain name server. i.e. microsoft.com | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username | [optional] 
+**SecureAccessSshCreds** | Pointer to **string** | Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret) | [optional] 
 **SecureAccessSshUser** | Pointer to **string** | Override the SSH username as indicated in SSH Certificate Issuer | [optional] 
 **SecureAccessTargetType** | Pointer to **string** | Specify target type. Options are ssh or rdp | [optional] [default to "false"]
+**SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
+**SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
+**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
+**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
 **Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -397,6 +403,31 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretUpdateSsh) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetKeyAlgorithm
+
+`func (o *RotatedSecretUpdateSsh) GetKeyAlgorithm() string`
+
+GetKeyAlgorithm returns the KeyAlgorithm field if non-nil, zero value otherwise.
+
+### GetKeyAlgorithmOk
+
+`func (o *RotatedSecretUpdateSsh) GetKeyAlgorithmOk() (*string, bool)`
+
+GetKeyAlgorithmOk returns a tuple with the KeyAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyAlgorithm
+
+`func (o *RotatedSecretUpdateSsh) SetKeyAlgorithm(v string)`
+
+SetKeyAlgorithm sets KeyAlgorithm field to given value.
+
+### HasKeyAlgorithm
+
+`func (o *RotatedSecretUpdateSsh) HasKeyAlgorithm() bool`
+
+HasKeyAlgorithm returns a boolean if a field has been set.
 
 ### GetKeyDataBase64
 
@@ -1038,6 +1069,31 @@ SetSecureAccessRdpUser sets SecureAccessRdpUser field to given value.
 
 HasSecureAccessRdpUser returns a boolean if a field has been set.
 
+### GetSecureAccessSshCreds
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessSshCreds() string`
+
+GetSecureAccessSshCreds returns the SecureAccessSshCreds field if non-nil, zero value otherwise.
+
+### GetSecureAccessSshCredsOk
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessSshCredsOk() (*string, bool)`
+
+GetSecureAccessSshCredsOk returns a tuple with the SecureAccessSshCreds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessSshCreds
+
+`func (o *RotatedSecretUpdateSsh) SetSecureAccessSshCreds(v string)`
+
+SetSecureAccessSshCreds sets SecureAccessSshCreds field to given value.
+
+### HasSecureAccessSshCreds
+
+`func (o *RotatedSecretUpdateSsh) HasSecureAccessSshCreds() bool`
+
+HasSecureAccessSshCreds returns a boolean if a field has been set.
+
 ### GetSecureAccessSshUser
 
 `func (o *RotatedSecretUpdateSsh) GetSecureAccessSshUser() string`
@@ -1087,6 +1143,106 @@ SetSecureAccessTargetType sets SecureAccessTargetType field to given value.
 `func (o *RotatedSecretUpdateSsh) HasSecureAccessTargetType() bool`
 
 HasSecureAccessTargetType returns a boolean if a field has been set.
+
+### GetSecureAccessUrl
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessUrl() string`
+
+GetSecureAccessUrl returns the SecureAccessUrl field if non-nil, zero value otherwise.
+
+### GetSecureAccessUrlOk
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessUrlOk() (*string, bool)`
+
+GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessUrl
+
+`func (o *RotatedSecretUpdateSsh) SetSecureAccessUrl(v string)`
+
+SetSecureAccessUrl sets SecureAccessUrl field to given value.
+
+### HasSecureAccessUrl
+
+`func (o *RotatedSecretUpdateSsh) HasSecureAccessUrl() bool`
+
+HasSecureAccessUrl returns a boolean if a field has been set.
+
+### GetSecureAccessWeb
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessWeb() bool`
+
+GetSecureAccessWeb returns the SecureAccessWeb field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebOk
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessWebOk() (*bool, bool)`
+
+GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWeb
+
+`func (o *RotatedSecretUpdateSsh) SetSecureAccessWeb(v bool)`
+
+SetSecureAccessWeb sets SecureAccessWeb field to given value.
+
+### HasSecureAccessWeb
+
+`func (o *RotatedSecretUpdateSsh) HasSecureAccessWeb() bool`
+
+HasSecureAccessWeb returns a boolean if a field has been set.
+
+### GetSecureAccessWebBrowsing
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessWebBrowsing() bool`
+
+GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebBrowsingOk
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessWebBrowsingOk() (*bool, bool)`
+
+GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebBrowsing
+
+`func (o *RotatedSecretUpdateSsh) SetSecureAccessWebBrowsing(v bool)`
+
+SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
+
+### HasSecureAccessWebBrowsing
+
+`func (o *RotatedSecretUpdateSsh) HasSecureAccessWebBrowsing() bool`
+
+HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+
+### GetSecureAccessWebProxy
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessWebProxy() bool`
+
+GetSecureAccessWebProxy returns the SecureAccessWebProxy field if non-nil, zero value otherwise.
+
+### GetSecureAccessWebProxyOk
+
+`func (o *RotatedSecretUpdateSsh) GetSecureAccessWebProxyOk() (*bool, bool)`
+
+GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessWebProxy
+
+`func (o *RotatedSecretUpdateSsh) SetSecureAccessWebProxy(v bool)`
+
+SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
+
+### HasSecureAccessWebProxy
+
+`func (o *RotatedSecretUpdateSsh) HasSecureAccessWebProxy() bool`
+
+HasSecureAccessWebProxy returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 

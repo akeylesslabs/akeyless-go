@@ -22,6 +22,8 @@ var _ MappedNullable = &AssocTargetItem{}
 
 // AssocTargetItem assocTargetItem is a command that creates an association between target and item.
 type AssocTargetItem struct {
+	// Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format <type>:<partition>:<name> (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate's partition. Repeat the parameter to bind several profiles.
+	BindSslProfiles []string `json:"bind-ssl-profiles,omitempty"`
 	// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
 	CertificatePath *string `json:"certificate-path,omitempty"`
 	// A path on the target to store the full chain pem file (relevant only for certificate provisioning)
@@ -44,7 +46,7 @@ type AssocTargetItem struct {
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
-	// A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning)
+	// A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP)
 	PostProvisionCommand *string `json:"post-provision-command,omitempty"`
 	// A path on the target to store the private key (relevant only for certificate provisioning)
 	PrivateKeyPath *string `json:"private-key-path,omitempty"`
@@ -109,6 +111,38 @@ func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	var sraAssociation bool = false
 	this.SraAssociation = &sraAssociation
 	return &this
+}
+
+// GetBindSslProfiles returns the BindSslProfiles field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetBindSslProfiles() []string {
+	if o == nil || IsNil(o.BindSslProfiles) {
+		var ret []string
+		return ret
+	}
+	return o.BindSslProfiles
+}
+
+// GetBindSslProfilesOk returns a tuple with the BindSslProfiles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetBindSslProfilesOk() ([]string, bool) {
+	if o == nil || IsNil(o.BindSslProfiles) {
+		return nil, false
+	}
+	return o.BindSslProfiles, true
+}
+
+// HasBindSslProfiles returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasBindSslProfiles() bool {
+	if o != nil && !IsNil(o.BindSslProfiles) {
+		return true
+	}
+
+	return false
+}
+
+// SetBindSslProfiles gets a reference to the given []string and assigns it to the BindSslProfiles field.
+func (o *AssocTargetItem) SetBindSslProfiles(v []string) {
+	o.BindSslProfiles = v
 }
 
 // GetCertificatePath returns the CertificatePath field value if set, zero value otherwise.
@@ -841,6 +875,9 @@ func (o AssocTargetItem) MarshalJSON() ([]byte, error) {
 
 func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BindSslProfiles) {
+		toSerialize["bind-ssl-profiles"] = o.BindSslProfiles
+	}
 	if !IsNil(o.CertificatePath) {
 		toSerialize["certificate-path"] = o.CertificatePath
 	}

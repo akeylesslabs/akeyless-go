@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CertificateTtl** | Pointer to **int64** | Client certificate TTL in days. If unset, the existing client TTL is kept. | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | Pointer to **string** |  | [optional] 
@@ -28,6 +29,31 @@ will change when the set of required properties is changed
 NewKmipRenewClientCertificateWithDefaults instantiates a new KmipRenewClientCertificate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCertificateTtl
+
+`func (o *KmipRenewClientCertificate) GetCertificateTtl() int64`
+
+GetCertificateTtl returns the CertificateTtl field if non-nil, zero value otherwise.
+
+### GetCertificateTtlOk
+
+`func (o *KmipRenewClientCertificate) GetCertificateTtlOk() (*int64, bool)`
+
+GetCertificateTtlOk returns a tuple with the CertificateTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateTtl
+
+`func (o *KmipRenewClientCertificate) SetCertificateTtl(v int64)`
+
+SetCertificateTtl sets CertificateTtl field to given value.
+
+### HasCertificateTtl
+
+`func (o *KmipRenewClientCertificate) HasCertificateTtl() bool`
+
+HasCertificateTtl returns a boolean if a field has been set.
 
 ### GetClientId
 

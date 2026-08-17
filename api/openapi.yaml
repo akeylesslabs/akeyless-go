@@ -10138,6 +10138,32 @@ paths:
             field.
       tags:
       - v2
+  /kmip-get-ca-bundle:
+    post:
+      operationId: kmipGetCABundle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kmipGetCABundle'
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kmipGetCABundleOutput'
+          description: kmipGetCABundleResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
   /kmip-get-client:
     post:
       operationId: kmipDescribeClient
@@ -10180,6 +10206,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/kmipDescribeServerOutput'
           description: kmipDescribeServerResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /kmip-list-cas:
+    post:
+      operationId: kmipListCAs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kmipListCAs'
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kmipListCAsOutput'
+          description: kmipListCAsResponse wraps response body.
         default:
           content:
             application/json:
@@ -10242,7 +10294,7 @@ paths:
             field.
       tags:
       - v2
-  /kmip-renew-client:
+  /kmip-renew-client-certificate:
     post:
       operationId: kmipRenewClientCertificate
       requestBody:
@@ -10284,6 +10336,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/kmipRenewServerCertificateOutput'
           description: kmipRenewServerCertificateResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /kmip-rotate-ca:
+    post:
+      operationId: kmipRotateCA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kmipRotateCA'
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kmipRotateCAOutput'
+          description: kmipRotateCAResponse wraps response body.
         default:
           content:
             application/json:
@@ -10336,6 +10414,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/kmipSetServerStateOutput'
           description: kmipSetServerStateResponse wraps response body.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JSONError'
+          description: |-
+            errorResponse wraps any error to return it as a JSON object with one "error"
+            field.
+      tags:
+      - v2
+  /kmip-sunset-ca:
+    post:
+      operationId: kmipSunsetCA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/kmipSunsetCA'
+        x-go-name: Body
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/kmipSunsetCAOutput'
+          description: kmipSunsetCAResponse wraps response body.
         default:
           content:
             application/json:
@@ -19766,6 +19870,18 @@ components:
           schema:
             $ref: '#/components/schemas/kmipDescribeServerOutput'
       description: kmipDescribeServerResponse wraps response body.
+    kmipGetCABundleResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kmipGetCABundleOutput'
+      description: kmipGetCABundleResponse wraps response body.
+    kmipListCAsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kmipListCAsOutput'
+      description: kmipListCAsResponse wraps response body.
     kmipListClientsResponse:
       content:
         application/json:
@@ -19790,6 +19906,12 @@ components:
           schema:
             $ref: '#/components/schemas/kmipRenewServerCertificateOutput'
       description: kmipRenewServerCertificateResponse wraps response body.
+    kmipRotateCAResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kmipRotateCAOutput'
+      description: kmipRotateCAResponse wraps response body.
     kmipServerSetupResponse:
       content:
         application/json:
@@ -19808,6 +19930,12 @@ components:
           schema:
             $ref: '#/components/schemas/kmipSetServerStateOutput'
       description: kmipSetServerStateResponse wraps response body.
+    kmipSunsetCAResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/kmipSunsetCAOutput'
+      description: kmipSunsetCAResponse wraps response body.
     kubeconfigGenerateResponse:
       content:
         application/json:
@@ -23915,6 +24043,7 @@ components:
         associated_gw_ids:
         - 7
         - 7
+        bookmark_login_url_template: bookmark_login_url_template
         access_info:
           jwt_ttl: 6
           azure_ad_access_rules:
@@ -24057,6 +24186,7 @@ components:
             issuer: issuer
           saml_access_rules:
             unique_identifier: unique_identifier
+            authorized_gw_cluster_name: authorized_gw_cluster_name
             idp_metadata_url: idp_metadata_url
             allowed_redirect_URIs:
             - allowed_redirect_URIs
@@ -24203,6 +24333,12 @@ components:
             $ref: '#/components/schemas/AuthMethodRoleAssociation'
           type: array
           x-go-name: AuthMethodRolesAssoc
+        bookmark_login_url_template:
+          description: |-
+            BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks.
+            SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
+          type: string
+          x-go-name: BookmarkLoginURLTemplate
         client_permissions:
           items:
             type: string
@@ -24381,6 +24517,7 @@ components:
           issuer: issuer
         saml_access_rules:
           unique_identifier: unique_identifier
+          authorized_gw_cluster_name: authorized_gw_cluster_name
           idp_metadata_url: idp_metadata_url
           allowed_redirect_URIs:
           - allowed_redirect_URIs
@@ -34117,6 +34254,7 @@ components:
             next_auto_rotate_type: next_auto_rotate_type
             skip_dry_run: true
             grace_rotation: true
+            key_algorithm: key_algorithm
             rotation_interval_min: true
             delete_previous_version_in_days: 6
             last_rotation_error: last_rotation_error
@@ -35019,6 +35157,7 @@ components:
           next_auto_rotate_type: next_auto_rotate_type
           skip_dry_run: true
           grace_rotation: true
+          key_algorithm: key_algorithm
           rotation_interval_min: true
           delete_previous_version_in_days: 6
           last_rotation_error: last_rotation_error
@@ -36139,6 +36278,58 @@ components:
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    KMIPCAListEntry:
+      example:
+        not_after: 2000-01-23T04:56:07.000+00:00
+        issued_client_count: 1
+        not_before: 2000-01-23T04:56:07.000+00:00
+        certificate:
+        - 0
+        - 0
+        certificate_issue_date: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: id
+        state: state
+        certificate_ttl_in_seconds: 6
+      properties:
+        certificate:
+          items:
+            format: uint8
+            type: integer
+          type: array
+          x-go-name: Certificate
+        certificate_issue_date:
+          format: date-time
+          type: string
+          x-go-name: CertificateIssueDate
+        certificate_ttl_in_seconds:
+          format: int64
+          type: integer
+          x-go-name: CertificateTTLInSeconds
+        created_at:
+          format: date-time
+          type: string
+          x-go-name: CreatedAt
+        id:
+          type: string
+          x-go-name: ID
+        issued_client_count:
+          format: int64
+          type: integer
+          x-go-name: IssuedClientCount
+        not_after:
+          format: date-time
+          type: string
+          x-go-name: NotAfter
+        not_before:
+          format: date-time
+          type: string
+          x-go-name: NotBefore
+        state:
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/gateway/config
     KMIPCAState:
       type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
@@ -37611,6 +37802,7 @@ components:
           associated_gw_ids:
           - 7
           - 7
+          bookmark_login_url_template: bookmark_login_url_template
           access_info:
             jwt_ttl: 6
             azure_ad_access_rules:
@@ -37753,6 +37945,7 @@ components:
               issuer: issuer
             saml_access_rules:
               unique_identifier: unique_identifier
+              authorized_gw_cluster_name: authorized_gw_cluster_name
               idp_metadata_url: idp_metadata_url
               allowed_redirect_URIs:
               - allowed_redirect_URIs
@@ -37997,6 +38190,7 @@ components:
           associated_gw_ids:
           - 7
           - 7
+          bookmark_login_url_template: bookmark_login_url_template
           access_info:
             jwt_ttl: 6
             azure_ad_access_rules:
@@ -38139,6 +38333,7 @@ components:
               issuer: issuer
             saml_access_rules:
               unique_identifier: unique_identifier
+              authorized_gw_cluster_name: authorized_gw_cluster_name
               idp_metadata_url: idp_metadata_url
               allowed_redirect_URIs:
               - allowed_redirect_URIs
@@ -38741,6 +38936,7 @@ components:
               next_auto_rotate_type: next_auto_rotate_type
               skip_dry_run: true
               grace_rotation: true
+              key_algorithm: key_algorithm
               rotation_interval_min: true
               delete_previous_version_in_days: 6
               last_rotation_error: last_rotation_error
@@ -39719,6 +39915,7 @@ components:
               next_auto_rotate_type: next_auto_rotate_type
               skip_dry_run: true
               grace_rotation: true
+              key_algorithm: key_algorithm
               rotation_interval_min: true
               delete_previous_version_in_days: 6
               last_rotation_error: last_rotation_error
@@ -40723,6 +40920,7 @@ components:
               next_auto_rotate_type: next_auto_rotate_type
               skip_dry_run: true
               grace_rotation: true
+              key_algorithm: key_algorithm
               rotation_interval_min: true
               delete_previous_version_in_days: 6
               last_rotation_error: last_rotation_error
@@ -41701,6 +41899,7 @@ components:
               next_auto_rotate_type: next_auto_rotate_type
               skip_dry_run: true
               grace_rotation: true
+              key_algorithm: key_algorithm
               rotation_interval_min: true
               delete_previous_version_in_days: 6
               last_rotation_error: last_rotation_error
@@ -45926,6 +46125,7 @@ components:
         next_auto_rotate_type: next_auto_rotate_type
         skip_dry_run: true
         grace_rotation: true
+        key_algorithm: key_algorithm
         rotation_interval_min: true
         delete_previous_version_in_days: 6
         last_rotation_error: last_rotation_error
@@ -45967,6 +46167,12 @@ components:
             $ref: '#/components/schemas/WindowsService'
           type: array
           x-go-name: IisAppsDetails
+        key_algorithm:
+          description: |-
+            SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart
+            from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521.
+          type: string
+          x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
         last_rotation_error:
           type: string
           x-go-name: LastRotatorError
@@ -46174,6 +46380,7 @@ components:
     SAMLAccessRules:
       example:
         unique_identifier: unique_identifier
+        authorized_gw_cluster_name: authorized_gw_cluster_name
         idp_metadata_url: idp_metadata_url
         allowed_redirect_URIs:
         - allowed_redirect_URIs
@@ -46196,6 +46403,12 @@ components:
             type: string
           type: array
           x-go-name: AllowedRedirectURIs
+        authorized_gw_cluster_name:
+          description: |-
+            AuthorizedGwClusterName binds the access method to a single GW cluster.
+            When empty (or whitespace-only), GW-driven auth is disabled.
+          type: string
+          x-go-name: AuthorizedGwClusterName
         bound_attributes:
           description: The attributes that login is restricted to.
           items:
@@ -46334,6 +46547,12 @@ components:
       format: uint32
       title: SSHCertificateType defines the types of SSH certificates.
       type: integer
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+    SSHKeyAlgorithm:
+      description: |-
+        SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart
+        from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521.
+      type: string
       x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
     SSHTargetDetails:
       example:
@@ -50155,6 +50374,15 @@ components:
         assocTargetItem is a command that creates an association between target
         and item.
       properties:
+        bind-ssl-profiles:
+          description: "Bind the provisioned certificate to an existing client-ssl/server-ssl\
+            \ profile, in the format <type>:<partition>:<name> (relevant only for\
+            \ F5 BIG-IP certificate provisioning). Leave the partition empty to use\
+            \ the certificate's partition. Repeat the parameter to bind several profiles."
+          items:
+            type: string
+          type: array
+          x-go-name: BindSslProfiles
         certificate-path:
           description: A path on the target to store the certificate pem file (relevant
             only for certificate provisioning)
@@ -50211,8 +50439,9 @@ components:
           type: string
           x-go-name: ItemName
         post-provision-command:
-          description: A custom command to run on the remote target after successful
-            provisioning (relevant only for certificate provisioning)
+          description: "A custom command to run on the remote target after successful\
+            \ provisioning (relevant only for SSH and Windows certificate provisioning,\
+            \ not supported for F5 BIG-IP)"
           type: string
           x-go-name: PostProvisionCommand
         private-key-path:
@@ -112512,6 +112741,86 @@ components:
           x-go-name: Root
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipGetCABundle:
+      properties:
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      title: kmipGetCABundle returns the trusted KMIP CA PEM bundle.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipGetCABundleOutput:
+      example:
+        ca_bundle: ca_bundle
+      properties:
+        ca_bundle:
+          type: string
+          x-go-name: CABundle
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipListCAs:
+      properties:
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      title: kmipListCAs lists KMIP CAs known to the gateway.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipListCAsOutput:
+      example:
+        cas:
+        - not_after: 2000-01-23T04:56:07.000+00:00
+          issued_client_count: 1
+          not_before: 2000-01-23T04:56:07.000+00:00
+          certificate:
+          - 0
+          - 0
+          certificate_issue_date: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: id
+          state: state
+          certificate_ttl_in_seconds: 6
+        - not_after: 2000-01-23T04:56:07.000+00:00
+          issued_client_count: 1
+          not_before: 2000-01-23T04:56:07.000+00:00
+          certificate:
+          - 0
+          - 0
+          certificate_issue_date: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: id
+          state: state
+          certificate_ttl_in_seconds: 6
+      properties:
+        cas:
+          items:
+            $ref: '#/components/schemas/KMIPCAListEntry'
+          type: array
+          x-go-name: CAs
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipListClients:
       properties:
         json:
@@ -112573,6 +112882,12 @@ components:
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipRenewClientCertificate:
       properties:
+        certificate-ttl:
+          description: "Client certificate TTL in days. If unset, the existing client\
+            \ TTL is kept."
+          format: int64
+          type: integer
+          x-go-name: CertificateTTL
         client-id:
           type: string
           x-go-name: ClientID
@@ -112639,6 +112954,48 @@ components:
         ca_cert:
           type: string
           x-go-name: CACert
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipRotateCA:
+      properties:
+        certificate-ttl:
+          default: 3650
+          description: New CA certificate TTL in days
+          format: int64
+          type: integer
+          x-go-name: CertificateTTL
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      title: kmipRotateCA rotates the KMIP CA while keeping the previous CA trusted.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipRotateCAOutput:
+      example:
+        ca_bundle: ca_bundle
+        ca_id: ca_id
+        ca_cert: ca_cert
+      properties:
+        ca_bundle:
+          type: string
+          x-go-name: CABundle
+        ca_cert:
+          type: string
+          x-go-name: CACert
+        ca_id:
+          type: string
+          x-go-name: CAID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     kmipServerSetup:
@@ -112752,6 +113109,50 @@ components:
         is_active:
           type: boolean
           x-go-name: IsActive
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipSunsetCA:
+      properties:
+        ca-id:
+          description: CA ID to sunset
+          type: string
+          x-go-name: CAID
+        force:
+          default: false
+          description: Force sunset even if issued clients or recent usage are detected
+          type: boolean
+          x-go-name: Force
+        grace-period:
+          description: Grace period in seconds for recent CA usage checks
+          format: int64
+          type: integer
+          x-go-name: GracePeriod
+        json:
+          default: false
+          description: Set output format to JSON
+          type: boolean
+          x-go-name: Json
+        token:
+          description: Authentication token (see `/auth` and `/configure`)
+          type: string
+          x-go-name: Profile
+        uid-token:
+          description: "The universal identity token, Required only for universal_identity\
+            \ authentication"
+          type: string
+          x-go-name: UIDToken
+      required:
+      - ca-id
+      title: kmipSunsetCA removes a trusted KMIP CA from the trust pool.
+      type: object
+      x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
+    kmipSunsetCAOutput:
+      example:
+        ca_id: ca_id
+      properties:
+        ca_id:
+          type: string
+          x-go-name: CAID
       type: object
       x-go-package: akeyless.io/akeyless-main-repo/go/src/client/commands
     listAcmeAccounts:
@@ -117714,6 +118115,11 @@ components:
         key:
           type: string
           x-go-name: ProtectionKey
+        key-algorithm:
+          description: "The key algorithm to generate with when no private key is\
+            \ supplied. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521]"
+          type: string
+          x-go-name: KeyAlgorithm
         key-data-base64:
           description: Private key file contents encoded using base64
           type: string
@@ -117829,6 +118235,12 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
+        secure-access-ssh-creds:
+          description: "Secret values contains SSH Credentials, either Private Key\
+            \ or Password [password/private-key] (relevant only for Static-Secret\
+            \ or Rotated-secret)"
+          type: string
+          x-go-name: SecureAccessSSHCategory
         secure-access-ssh-user:
           description: Override the SSH username as indicated in SSH Certificate Issuer
           type: string
@@ -117838,6 +118250,25 @@ components:
           description: Specify target type. Options are ssh or rdp
           type: string
           x-go-name: SecureAccessTargetType
+        secure-access-url:
+          description: Destination URL to inject secrets
+          type: string
+          x-go-name: SecureAccessURL
+        secure-access-web:
+          default: true
+          description: Enable Web Secure Remote Access
+          type: boolean
+          x-go-name: SecureAccessWebCategory
+        secure-access-web-browsing:
+          default: false
+          description: Secure browser via Akeyless's Secure Remote Access (SRA)
+          type: boolean
+          x-go-name: SecureAccessIsolated
+        secure-access-web-proxy:
+          default: false
+          description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
+          type: boolean
+          x-go-name: SecureAccessWebProxy
         skip_dry_run:
           description: "If set, dry-run will be skipped"
           type: string
@@ -122118,6 +122549,11 @@ components:
         key:
           type: string
           x-go-name: ProtectionKey
+        key-algorithm:
+          description: "The key algorithm to generate with when no private key is\
+            \ supplied, leave empty to keep the current algorithm. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521]"
+          type: string
+          x-go-name: KeyAlgorithm
         key-data-base64:
           description: Private key file contents encoded using base64
           type: string
@@ -122243,6 +122679,12 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
+        secure-access-ssh-creds:
+          description: "Secret values contains SSH Credentials, either Private Key\
+            \ or Password [password/private-key] (relevant only for Static-Secret\
+            \ or Rotated-secret)"
+          type: string
+          x-go-name: SecureAccessSSHCategory
         secure-access-ssh-user:
           description: Override the SSH username as indicated in SSH Certificate Issuer
           type: string
@@ -122252,6 +122694,25 @@ components:
           description: Specify target type. Options are ssh or rdp
           type: string
           x-go-name: SecureAccessTargetType
+        secure-access-url:
+          description: Destination URL to inject secrets
+          type: string
+          x-go-name: SecureAccessURL
+        secure-access-web:
+          default: true
+          description: Enable Web Secure Remote Access
+          type: boolean
+          x-go-name: SecureAccessWebCategory
+        secure-access-web-browsing:
+          default: false
+          description: Secure browser via Akeyless's Secure Remote Access (SRA)
+          type: boolean
+          x-go-name: SecureAccessIsolated
+        secure-access-web-proxy:
+          default: false
+          description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
+          type: boolean
+          x-go-name: SecureAccessWebProxy
         skip_dry_run:
           description: "If set, dry-run will be skipped"
           type: string

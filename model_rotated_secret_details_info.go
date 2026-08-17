@@ -29,6 +29,8 @@ type RotatedSecretDetailsInfo struct {
 	GraceRotationTiming *string `json:"grace_rotation_timing,omitempty"`
 	GwClusterId *int64 `json:"gw_cluster_id,omitempty"`
 	IisAppsDetails []WindowsService `json:"iis_apps_details,omitempty"`
+	// SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521.
+	KeyAlgorithm *string `json:"key_algorithm,omitempty"`
 	LastRotationError *string `json:"last_rotation_error,omitempty"`
 	ManagedByAkeyless *bool `json:"managed_by_akeyless,omitempty"`
 	MaxVersions *int64 `json:"max_versions,omitempty"`
@@ -351,6 +353,38 @@ func (o *RotatedSecretDetailsInfo) HasIisAppsDetails() bool {
 // SetIisAppsDetails gets a reference to the given []WindowsService and assigns it to the IisAppsDetails field.
 func (o *RotatedSecretDetailsInfo) SetIisAppsDetails(v []WindowsService) {
 	o.IisAppsDetails = v
+}
+
+// GetKeyAlgorithm returns the KeyAlgorithm field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetKeyAlgorithm() string {
+	if o == nil || IsNil(o.KeyAlgorithm) {
+		var ret string
+		return ret
+	}
+	return *o.KeyAlgorithm
+}
+
+// GetKeyAlgorithmOk returns a tuple with the KeyAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetKeyAlgorithmOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyAlgorithm) {
+		return nil, false
+	}
+	return o.KeyAlgorithm, true
+}
+
+// HasKeyAlgorithm returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasKeyAlgorithm() bool {
+	if o != nil && !IsNil(o.KeyAlgorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyAlgorithm gets a reference to the given string and assigns it to the KeyAlgorithm field.
+func (o *RotatedSecretDetailsInfo) SetKeyAlgorithm(v string) {
+	o.KeyAlgorithm = &v
 }
 
 // GetLastRotationError returns the LastRotationError field value if set, zero value otherwise.
@@ -901,6 +935,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IisAppsDetails) {
 		toSerialize["iis_apps_details"] = o.IisAppsDetails
+	}
+	if !IsNil(o.KeyAlgorithm) {
+		toSerialize["key_algorithm"] = o.KeyAlgorithm
 	}
 	if !IsNil(o.LastRotationError) {
 		toSerialize["last_rotation_error"] = o.LastRotationError

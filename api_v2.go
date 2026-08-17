@@ -46583,6 +46583,248 @@ func (a *V2ApiService) KmipDescribeServerExecute(r ApiKmipDescribeServerRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiKmipGetCABundleRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	kmipGetCABundle *KmipGetCABundle
+    body interface{}
+}
+
+func (r ApiKmipGetCABundleRequest) KmipGetCABundle(kmipGetCABundle KmipGetCABundle) ApiKmipGetCABundleRequest {
+	r.kmipGetCABundle = &kmipGetCABundle
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiKmipGetCABundleRequest) Body(body KmipGetCABundle) ApiKmipGetCABundleRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiKmipGetCABundleRequest) Execute() (*KmipGetCABundleOutput, *http.Response, error) {
+	return r.ApiService.KmipGetCABundleExecute(r)
+}
+
+/*
+KmipGetCABundle Method for KmipGetCABundle
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKmipGetCABundleRequest
+*/
+func (a *V2ApiService) KmipGetCABundle(ctx context.Context) ApiKmipGetCABundleRequest {
+	return ApiKmipGetCABundleRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KmipGetCABundleOutput
+func (a *V2ApiService) KmipGetCABundleExecute(r ApiKmipGetCABundleRequest) (*KmipGetCABundleOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KmipGetCABundleOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.KmipGetCABundle")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/kmip-get-ca-bundle"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiKmipListCAsRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	kmipListCAs *KmipListCAs
+    body interface{}
+}
+
+func (r ApiKmipListCAsRequest) KmipListCAs(kmipListCAs KmipListCAs) ApiKmipListCAsRequest {
+	r.kmipListCAs = &kmipListCAs
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiKmipListCAsRequest) Body(body KmipListCAs) ApiKmipListCAsRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiKmipListCAsRequest) Execute() (*KmipListCAsOutput, *http.Response, error) {
+	return r.ApiService.KmipListCAsExecute(r)
+}
+
+/*
+KmipListCAs Method for KmipListCAs
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKmipListCAsRequest
+*/
+func (a *V2ApiService) KmipListCAs(ctx context.Context) ApiKmipListCAsRequest {
+	return ApiKmipListCAsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KmipListCAsOutput
+func (a *V2ApiService) KmipListCAsExecute(r ApiKmipListCAsRequest) (*KmipListCAsOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KmipListCAsOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.KmipListCAs")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/kmip-list-cas"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiKmipListClientsRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -46876,7 +47118,7 @@ func (a *V2ApiService) KmipRenewClientCertificateExecute(r ApiKmipRenewClientCer
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/kmip-renew-client"
+	localVarPath := localBasePath + "/kmip-renew-client-certificate"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -46998,6 +47240,127 @@ func (a *V2ApiService) KmipRenewServerCertificateExecute(r ApiKmipRenewServerCer
 	}
 
 	localVarPath := localBasePath + "/kmip-renew-environment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiKmipRotateCARequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	kmipRotateCA *KmipRotateCA
+    body interface{}
+}
+
+func (r ApiKmipRotateCARequest) KmipRotateCA(kmipRotateCA KmipRotateCA) ApiKmipRotateCARequest {
+	r.kmipRotateCA = &kmipRotateCA
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiKmipRotateCARequest) Body(body KmipRotateCA) ApiKmipRotateCARequest {
+    r.body = body
+    return r
+}
+
+func (r ApiKmipRotateCARequest) Execute() (*KmipRotateCAOutput, *http.Response, error) {
+	return r.ApiService.KmipRotateCAExecute(r)
+}
+
+/*
+KmipRotateCA Method for KmipRotateCA
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKmipRotateCARequest
+*/
+func (a *V2ApiService) KmipRotateCA(ctx context.Context) ApiKmipRotateCARequest {
+	return ApiKmipRotateCARequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KmipRotateCAOutput
+func (a *V2ApiService) KmipRotateCAExecute(r ApiKmipRotateCARequest) (*KmipRotateCAOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KmipRotateCAOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.KmipRotateCA")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/kmip-rotate-ca"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -47361,6 +47724,127 @@ func (a *V2ApiService) KmipSetServerStateExecute(r ApiKmipSetServerStateRequest)
 	}
 
 	localVarPath := localBasePath + "/kmip-set-environment-state"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiKmipSunsetCARequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	kmipSunsetCA *KmipSunsetCA
+    body interface{}
+}
+
+func (r ApiKmipSunsetCARequest) KmipSunsetCA(kmipSunsetCA KmipSunsetCA) ApiKmipSunsetCARequest {
+	r.kmipSunsetCA = &kmipSunsetCA
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiKmipSunsetCARequest) Body(body KmipSunsetCA) ApiKmipSunsetCARequest {
+    r.body = body
+    return r
+}
+
+func (r ApiKmipSunsetCARequest) Execute() (*KmipSunsetCAOutput, *http.Response, error) {
+	return r.ApiService.KmipSunsetCAExecute(r)
+}
+
+/*
+KmipSunsetCA Method for KmipSunsetCA
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKmipSunsetCARequest
+*/
+func (a *V2ApiService) KmipSunsetCA(ctx context.Context) ApiKmipSunsetCARequest {
+	return ApiKmipSunsetCARequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return KmipSunsetCAOutput
+func (a *V2ApiService) KmipSunsetCAExecute(r ApiKmipSunsetCARequest) (*KmipSunsetCAOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KmipSunsetCAOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.KmipSunsetCA")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/kmip-sunset-ca"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

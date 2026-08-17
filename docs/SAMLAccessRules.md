@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AllowedRedirectURIs** | Pointer to **[]string** | Allowed redirect URIs after the authentication | [optional] 
+**AuthorizedGwClusterName** | Pointer to **string** | AuthorizedGwClusterName binds the access method to a single GW cluster. When empty (or whitespace-only), GW-driven auth is disabled. | [optional] 
 **BoundAttributes** | Pointer to [**[]SAMLAttribute**](SAMLAttribute.md) | The attributes that login is restricted to. | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
 **IdpMetadataXml** | Pointer to **string** | IDP metadata XML | [optional] 
@@ -54,6 +55,31 @@ SetAllowedRedirectURIs sets AllowedRedirectURIs field to given value.
 `func (o *SAMLAccessRules) HasAllowedRedirectURIs() bool`
 
 HasAllowedRedirectURIs returns a boolean if a field has been set.
+
+### GetAuthorizedGwClusterName
+
+`func (o *SAMLAccessRules) GetAuthorizedGwClusterName() string`
+
+GetAuthorizedGwClusterName returns the AuthorizedGwClusterName field if non-nil, zero value otherwise.
+
+### GetAuthorizedGwClusterNameOk
+
+`func (o *SAMLAccessRules) GetAuthorizedGwClusterNameOk() (*string, bool)`
+
+GetAuthorizedGwClusterNameOk returns a tuple with the AuthorizedGwClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizedGwClusterName
+
+`func (o *SAMLAccessRules) SetAuthorizedGwClusterName(v string)`
+
+SetAuthorizedGwClusterName sets AuthorizedGwClusterName field to given value.
+
+### HasAuthorizedGwClusterName
+
+`func (o *SAMLAccessRules) HasAuthorizedGwClusterName() bool`
+
+HasAuthorizedGwClusterName returns a boolean if a field has been set.
 
 ### GetBoundAttributes
 

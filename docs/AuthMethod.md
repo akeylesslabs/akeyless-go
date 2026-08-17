@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **AuthMethodId** | Pointer to **int64** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
+**BookmarkLoginUrlTemplate** | Pointer to **string** | BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback. | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
@@ -291,6 +292,31 @@ SetAuthMethodRolesAssoc sets AuthMethodRolesAssoc field to given value.
 `func (o *AuthMethod) HasAuthMethodRolesAssoc() bool`
 
 HasAuthMethodRolesAssoc returns a boolean if a field has been set.
+
+### GetBookmarkLoginUrlTemplate
+
+`func (o *AuthMethod) GetBookmarkLoginUrlTemplate() string`
+
+GetBookmarkLoginUrlTemplate returns the BookmarkLoginUrlTemplate field if non-nil, zero value otherwise.
+
+### GetBookmarkLoginUrlTemplateOk
+
+`func (o *AuthMethod) GetBookmarkLoginUrlTemplateOk() (*string, bool)`
+
+GetBookmarkLoginUrlTemplateOk returns a tuple with the BookmarkLoginUrlTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBookmarkLoginUrlTemplate
+
+`func (o *AuthMethod) SetBookmarkLoginUrlTemplate(v string)`
+
+SetBookmarkLoginUrlTemplate sets BookmarkLoginUrlTemplate field to given value.
+
+### HasBookmarkLoginUrlTemplate
+
+`func (o *AuthMethod) HasBookmarkLoginUrlTemplate() bool`
+
+HasBookmarkLoginUrlTemplate returns a boolean if a field has been set.
 
 ### GetClientPermissions
 

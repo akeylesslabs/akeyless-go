@@ -380,13 +380,17 @@ Method | HTTP request | Description
 [**KmipDeleteServer**](V2Api.md#KmipDeleteServer) | **Delete** /kmip-delete-environment | 
 [**KmipDescribeClient**](V2Api.md#KmipDescribeClient) | **Post** /kmip-get-client | 
 [**KmipDescribeServer**](V2Api.md#KmipDescribeServer) | **Post** /kmip-get-environment | 
+[**KmipGetCABundle**](V2Api.md#KmipGetCABundle) | **Post** /kmip-get-ca-bundle | 
+[**KmipListCAs**](V2Api.md#KmipListCAs) | **Post** /kmip-list-cas | 
 [**KmipListClients**](V2Api.md#KmipListClients) | **Post** /kmip-list-clients | 
 [**KmipMoveServer**](V2Api.md#KmipMoveServer) | **Post** /kmip-move-environment | 
-[**KmipRenewClientCertificate**](V2Api.md#KmipRenewClientCertificate) | **Post** /kmip-renew-client | 
+[**KmipRenewClientCertificate**](V2Api.md#KmipRenewClientCertificate) | **Post** /kmip-renew-client-certificate | 
 [**KmipRenewServerCertificate**](V2Api.md#KmipRenewServerCertificate) | **Post** /kmip-renew-environment | 
+[**KmipRotateCA**](V2Api.md#KmipRotateCA) | **Post** /kmip-rotate-ca | 
 [**KmipServerSetup**](V2Api.md#KmipServerSetup) | **Post** /kmip-create-environment | 
 [**KmipServerUpdate**](V2Api.md#KmipServerUpdate) | **Post** /kmip-server-update | 
 [**KmipSetServerState**](V2Api.md#KmipSetServerState) | **Post** /kmip-set-environment-state | 
+[**KmipSunsetCA**](V2Api.md#KmipSunsetCA) | **Post** /kmip-sunset-ca | 
 [**KubeconfigGenerate**](V2Api.md#KubeconfigGenerate) | **Post** /kubeconfig-generate | 
 [**ListAcmeAccounts**](V2Api.md#ListAcmeAccounts) | **Post** /list-acme-accounts | 
 [**ListAuthMethods**](V2Api.md#ListAuthMethods) | **Post** /list-auth-methods | 
@@ -24711,6 +24715,134 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## KmipGetCABundle
+
+> KmipGetCABundleOutput KmipGetCABundle(ctx).KmipGetCABundle(kmipGetCABundle).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	kmipGetCABundle := *openapiclient.NewKmipGetCABundle() // KmipGetCABundle |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.KmipGetCABundle(context.Background()).KmipGetCABundle(kmipGetCABundle).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipGetCABundle``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KmipGetCABundle`: KmipGetCABundleOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipGetCABundle`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipGetCABundleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kmipGetCABundle** | [**KmipGetCABundle**](KmipGetCABundle.md) |  | 
+
+### Return type
+
+[**KmipGetCABundleOutput**](KmipGetCABundleOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipListCAs
+
+> KmipListCAsOutput KmipListCAs(ctx).KmipListCAs(kmipListCAs).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	kmipListCAs := *openapiclient.NewKmipListCAs() // KmipListCAs |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.KmipListCAs(context.Background()).KmipListCAs(kmipListCAs).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipListCAs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KmipListCAs`: KmipListCAsOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipListCAs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipListCAsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kmipListCAs** | [**KmipListCAs**](KmipListCAs.md) |  | 
+
+### Return type
+
+[**KmipListCAsOutput**](KmipListCAsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## KmipListClients
 
 > KMIPClientListResponse KmipListClients(ctx).KmipListClients(kmipListClients).Execute()
@@ -24967,6 +25099,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## KmipRotateCA
+
+> KmipRotateCAOutput KmipRotateCA(ctx).KmipRotateCA(kmipRotateCA).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	kmipRotateCA := *openapiclient.NewKmipRotateCA() // KmipRotateCA |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.KmipRotateCA(context.Background()).KmipRotateCA(kmipRotateCA).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipRotateCA``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KmipRotateCA`: KmipRotateCAOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipRotateCA`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipRotateCARequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kmipRotateCA** | [**KmipRotateCA**](KmipRotateCA.md) |  | 
+
+### Return type
+
+[**KmipRotateCAOutput**](KmipRotateCAOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## KmipServerSetup
 
 > KMIPEnvironmentCreateResponse KmipServerSetup(ctx).KmipServerSetup(kmipServerSetup).Execute()
@@ -25144,6 +25340,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**KmipSetServerStateOutput**](KmipSetServerStateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## KmipSunsetCA
+
+> KmipSunsetCAOutput KmipSunsetCA(ctx).KmipSunsetCA(kmipSunsetCA).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	kmipSunsetCA := *openapiclient.NewKmipSunsetCA("CaId_example") // KmipSunsetCA |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.KmipSunsetCA(context.Background()).KmipSunsetCA(kmipSunsetCA).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.KmipSunsetCA``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `KmipSunsetCA`: KmipSunsetCAOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.KmipSunsetCA`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiKmipSunsetCARequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kmipSunsetCA** | [**KmipSunsetCA**](KmipSunsetCA.md) |  | 
+
+### Return type
+
+[**KmipSunsetCAOutput**](KmipSunsetCAOutput.md)
 
 ### Authorization
 

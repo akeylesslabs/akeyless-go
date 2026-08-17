@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **GraceRotationTiming** | Pointer to **string** |  | [optional] 
 **GwClusterId** | Pointer to **int64** |  | [optional] 
 **IisAppsDetails** | Pointer to [**[]WindowsService**](WindowsService.md) |  | [optional] 
+**KeyAlgorithm** | Pointer to **string** | SSHKeyAlgorithm identifies the key algorithm an SSH rotated secret uses. Kept apart from Algorithm, which is an encryption-key enum and has no ECDSA-384 or ECDSA-521. | [optional] 
 **LastRotationError** | Pointer to **string** |  | [optional] 
 **ManagedByAkeyless** | Pointer to **bool** |  | [optional] 
 **MaxVersions** | Pointer to **int64** |  | [optional] 
@@ -273,6 +274,31 @@ SetIisAppsDetails sets IisAppsDetails field to given value.
 `func (o *RotatedSecretDetailsInfo) HasIisAppsDetails() bool`
 
 HasIisAppsDetails returns a boolean if a field has been set.
+
+### GetKeyAlgorithm
+
+`func (o *RotatedSecretDetailsInfo) GetKeyAlgorithm() string`
+
+GetKeyAlgorithm returns the KeyAlgorithm field if non-nil, zero value otherwise.
+
+### GetKeyAlgorithmOk
+
+`func (o *RotatedSecretDetailsInfo) GetKeyAlgorithmOk() (*string, bool)`
+
+GetKeyAlgorithmOk returns a tuple with the KeyAlgorithm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyAlgorithm
+
+`func (o *RotatedSecretDetailsInfo) SetKeyAlgorithm(v string)`
+
+SetKeyAlgorithm sets KeyAlgorithm field to given value.
+
+### HasKeyAlgorithm
+
+`func (o *RotatedSecretDetailsInfo) HasKeyAlgorithm() bool`
+
+HasKeyAlgorithm returns a boolean if a field has been set.
 
 ### GetLastRotationError
 

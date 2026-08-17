@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**BindSslProfiles** | Pointer to **[]string** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles. | [optional] 
 **CertificatePath** | Pointer to **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | Pointer to **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
 **DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 **LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
 **MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
-**PostProvisionCommand** | Pointer to **string** | A custom command to run on the remote target after successful provisioning (relevant only for certificate provisioning) | [optional] 
+**PostProvisionCommand** | Pointer to **string** | A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP) | [optional] 
 **PrivateKeyPath** | Pointer to **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **ProtectionLevel** | Pointer to **string** | Protection level of the key [software/hardware] (relevant for gcp targets) | [optional] [default to "software"]
@@ -46,6 +47,31 @@ will change when the set of required properties is changed
 NewAssocTargetItemWithDefaults instantiates a new AssocTargetItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetBindSslProfiles
+
+`func (o *AssocTargetItem) GetBindSslProfiles() []string`
+
+GetBindSslProfiles returns the BindSslProfiles field if non-nil, zero value otherwise.
+
+### GetBindSslProfilesOk
+
+`func (o *AssocTargetItem) GetBindSslProfilesOk() (*[]string, bool)`
+
+GetBindSslProfilesOk returns a tuple with the BindSslProfiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBindSslProfiles
+
+`func (o *AssocTargetItem) SetBindSslProfiles(v []string)`
+
+SetBindSslProfiles sets BindSslProfiles field to given value.
+
+### HasBindSslProfiles
+
+`func (o *AssocTargetItem) HasBindSslProfiles() bool`
+
+HasBindSslProfiles returns a boolean if a field has been set.
 
 ### GetCertificatePath
 

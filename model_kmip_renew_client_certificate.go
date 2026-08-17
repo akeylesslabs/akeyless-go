@@ -20,6 +20,8 @@ var _ MappedNullable = &KmipRenewClientCertificate{}
 
 // KmipRenewClientCertificate struct for KmipRenewClientCertificate
 type KmipRenewClientCertificate struct {
+	// Client certificate TTL in days. If unset, the existing client TTL is kept.
+	CertificateTtl *int64 `json:"certificate-ttl,omitempty"`
 	ClientId *string `json:"client-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
@@ -49,6 +51,38 @@ func NewKmipRenewClientCertificateWithDefaults() *KmipRenewClientCertificate {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetCertificateTtl returns the CertificateTtl field value if set, zero value otherwise.
+func (o *KmipRenewClientCertificate) GetCertificateTtl() int64 {
+	if o == nil || IsNil(o.CertificateTtl) {
+		var ret int64
+		return ret
+	}
+	return *o.CertificateTtl
+}
+
+// GetCertificateTtlOk returns a tuple with the CertificateTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KmipRenewClientCertificate) GetCertificateTtlOk() (*int64, bool) {
+	if o == nil || IsNil(o.CertificateTtl) {
+		return nil, false
+	}
+	return o.CertificateTtl, true
+}
+
+// HasCertificateTtl returns a boolean if a field has been set.
+func (o *KmipRenewClientCertificate) HasCertificateTtl() bool {
+	if o != nil && !IsNil(o.CertificateTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateTtl gets a reference to the given int64 and assigns it to the CertificateTtl field.
+func (o *KmipRenewClientCertificate) SetCertificateTtl(v int64) {
+	o.CertificateTtl = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
@@ -221,6 +255,9 @@ func (o KmipRenewClientCertificate) MarshalJSON() ([]byte, error) {
 
 func (o KmipRenewClientCertificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CertificateTtl) {
+		toSerialize["certificate-ttl"] = o.CertificateTtl
+	}
 	if !IsNil(o.ClientId) {
 		toSerialize["client-id"] = o.ClientId
 	}

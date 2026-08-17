@@ -45,6 +45,8 @@ type RotatedSecretUpdateSsh struct {
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	Key *string `json:"key,omitempty"`
+	// The key algorithm to generate with when no private key is supplied, leave empty to keep the current algorithm. options: [ED25519/RSA2048/RSA3072/RSA4096/ECDSA256/ECDSA384/ECDSA521]
+	KeyAlgorithm *string `json:"key-algorithm,omitempty"`
 	// Private key file contents encoded using base64
 	KeyDataBase64 *string `json:"key-data-base64,omitempty"`
 	// Lock this secret for read/update while an SRA session is active
@@ -95,10 +97,20 @@ type RotatedSecretUpdateSsh struct {
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
 	// Override the RDP Domain username
 	SecureAccessRdpUser *string `json:"secure-access-rdp-user,omitempty"`
+	// Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret)
+	SecureAccessSshCreds *string `json:"secure-access-ssh-creds,omitempty"`
 	// Override the SSH username as indicated in SSH Certificate Issuer
 	SecureAccessSshUser *string `json:"secure-access-ssh-user,omitempty"`
 	// Specify target type. Options are ssh or rdp
 	SecureAccessTargetType *string `json:"secure-access-target-type,omitempty"`
+	// Destination URL to inject secrets
+	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
+	// Enable Web Secure Remote Access
+	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
+	// Secure browser via Akeyless's Secure Remote Access (SRA)
+	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
+	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// If set, dry-run will be skipped
 	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
@@ -136,6 +148,12 @@ func NewRotatedSecretUpdateSsh(name string, rotatorType string) *RotatedSecretUp
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessTargetType string = "false"
 	this.SecureAccessTargetType = &secureAccessTargetType
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -154,6 +172,12 @@ func NewRotatedSecretUpdateSshWithDefaults() *RotatedSecretUpdateSsh {
 	this.SecureAccessAllowExternalUser = &secureAccessAllowExternalUser
 	var secureAccessTargetType string = "false"
 	this.SecureAccessTargetType = &secureAccessTargetType
+	var secureAccessWeb bool = true
+	this.SecureAccessWeb = &secureAccessWeb
+	var secureAccessWebBrowsing bool = false
+	this.SecureAccessWebBrowsing = &secureAccessWebBrowsing
+	var secureAccessWebProxy bool = false
+	this.SecureAccessWebProxy = &secureAccessWebProxy
 	return &this
 }
 
@@ -571,6 +595,38 @@ func (o *RotatedSecretUpdateSsh) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *RotatedSecretUpdateSsh) SetKey(v string) {
 	o.Key = &v
+}
+
+// GetKeyAlgorithm returns the KeyAlgorithm field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateSsh) GetKeyAlgorithm() string {
+	if o == nil || IsNil(o.KeyAlgorithm) {
+		var ret string
+		return ret
+	}
+	return *o.KeyAlgorithm
+}
+
+// GetKeyAlgorithmOk returns a tuple with the KeyAlgorithm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateSsh) GetKeyAlgorithmOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyAlgorithm) {
+		return nil, false
+	}
+	return o.KeyAlgorithm, true
+}
+
+// HasKeyAlgorithm returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateSsh) HasKeyAlgorithm() bool {
+	if o != nil && !IsNil(o.KeyAlgorithm) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyAlgorithm gets a reference to the given string and assigns it to the KeyAlgorithm field.
+func (o *RotatedSecretUpdateSsh) SetKeyAlgorithm(v string) {
+	o.KeyAlgorithm = &v
 }
 
 // GetKeyDataBase64 returns the KeyDataBase64 field value if set, zero value otherwise.
@@ -1389,6 +1445,38 @@ func (o *RotatedSecretUpdateSsh) SetSecureAccessRdpUser(v string) {
 	o.SecureAccessRdpUser = &v
 }
 
+// GetSecureAccessSshCreds returns the SecureAccessSshCreds field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessSshCreds() string {
+	if o == nil || IsNil(o.SecureAccessSshCreds) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessSshCreds
+}
+
+// GetSecureAccessSshCredsOk returns a tuple with the SecureAccessSshCreds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessSshCredsOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessSshCreds) {
+		return nil, false
+	}
+	return o.SecureAccessSshCreds, true
+}
+
+// HasSecureAccessSshCreds returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateSsh) HasSecureAccessSshCreds() bool {
+	if o != nil && !IsNil(o.SecureAccessSshCreds) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessSshCreds gets a reference to the given string and assigns it to the SecureAccessSshCreds field.
+func (o *RotatedSecretUpdateSsh) SetSecureAccessSshCreds(v string) {
+	o.SecureAccessSshCreds = &v
+}
+
 // GetSecureAccessSshUser returns the SecureAccessSshUser field value if set, zero value otherwise.
 func (o *RotatedSecretUpdateSsh) GetSecureAccessSshUser() string {
 	if o == nil || IsNil(o.SecureAccessSshUser) {
@@ -1451,6 +1539,134 @@ func (o *RotatedSecretUpdateSsh) HasSecureAccessTargetType() bool {
 // SetSecureAccessTargetType gets a reference to the given string and assigns it to the SecureAccessTargetType field.
 func (o *RotatedSecretUpdateSsh) SetSecureAccessTargetType(v string) {
 	o.SecureAccessTargetType = &v
+}
+
+// GetSecureAccessUrl returns the SecureAccessUrl field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessUrl() string {
+	if o == nil || IsNil(o.SecureAccessUrl) {
+		var ret string
+		return ret
+	}
+	return *o.SecureAccessUrl
+}
+
+// GetSecureAccessUrlOk returns a tuple with the SecureAccessUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.SecureAccessUrl) {
+		return nil, false
+	}
+	return o.SecureAccessUrl, true
+}
+
+// HasSecureAccessUrl returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateSsh) HasSecureAccessUrl() bool {
+	if o != nil && !IsNil(o.SecureAccessUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessUrl gets a reference to the given string and assigns it to the SecureAccessUrl field.
+func (o *RotatedSecretUpdateSsh) SetSecureAccessUrl(v string) {
+	o.SecureAccessUrl = &v
+}
+
+// GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessWeb() bool {
+	if o == nil || IsNil(o.SecureAccessWeb) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWeb
+}
+
+// GetSecureAccessWebOk returns a tuple with the SecureAccessWeb field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessWebOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessWeb) {
+		return nil, false
+	}
+	return o.SecureAccessWeb, true
+}
+
+// HasSecureAccessWeb returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateSsh) HasSecureAccessWeb() bool {
+	if o != nil && !IsNil(o.SecureAccessWeb) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWeb gets a reference to the given bool and assigns it to the SecureAccessWeb field.
+func (o *RotatedSecretUpdateSsh) SetSecureAccessWeb(v bool) {
+	o.SecureAccessWeb = &v
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessWebBrowsing() bool {
+	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebBrowsing
+}
+
+// GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessWebBrowsingOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+		return nil, false
+	}
+	return o.SecureAccessWebBrowsing, true
+}
+
+// HasSecureAccessWebBrowsing returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateSsh) HasSecureAccessWebBrowsing() bool {
+	if o != nil && !IsNil(o.SecureAccessWebBrowsing) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+func (o *RotatedSecretUpdateSsh) SetSecureAccessWebBrowsing(v bool) {
+	o.SecureAccessWebBrowsing = &v
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessWebProxy() bool {
+	if o == nil || IsNil(o.SecureAccessWebProxy) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessWebProxy
+}
+
+// GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretUpdateSsh) GetSecureAccessWebProxyOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessWebProxy) {
+		return nil, false
+	}
+	return o.SecureAccessWebProxy, true
+}
+
+// HasSecureAccessWebProxy returns a boolean if a field has been set.
+func (o *RotatedSecretUpdateSsh) HasSecureAccessWebProxy() bool {
+	if o != nil && !IsNil(o.SecureAccessWebProxy) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+func (o *RotatedSecretUpdateSsh) SetSecureAccessWebProxy(v bool) {
+	o.SecureAccessWebProxy = &v
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
@@ -1758,6 +1974,9 @@ func (o RotatedSecretUpdateSsh) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.KeyAlgorithm) {
+		toSerialize["key-algorithm"] = o.KeyAlgorithm
+	}
 	if !IsNil(o.KeyDataBase64) {
 		toSerialize["key-data-base64"] = o.KeyDataBase64
 	}
@@ -1832,11 +2051,26 @@ func (o RotatedSecretUpdateSsh) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessRdpUser) {
 		toSerialize["secure-access-rdp-user"] = o.SecureAccessRdpUser
 	}
+	if !IsNil(o.SecureAccessSshCreds) {
+		toSerialize["secure-access-ssh-creds"] = o.SecureAccessSshCreds
+	}
 	if !IsNil(o.SecureAccessSshUser) {
 		toSerialize["secure-access-ssh-user"] = o.SecureAccessSshUser
 	}
 	if !IsNil(o.SecureAccessTargetType) {
 		toSerialize["secure-access-target-type"] = o.SecureAccessTargetType
+	}
+	if !IsNil(o.SecureAccessUrl) {
+		toSerialize["secure-access-url"] = o.SecureAccessUrl
+	}
+	if !IsNil(o.SecureAccessWeb) {
+		toSerialize["secure-access-web"] = o.SecureAccessWeb
+	}
+	if !IsNil(o.SecureAccessWebBrowsing) {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	}
+	if !IsNil(o.SecureAccessWebProxy) {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if !IsNil(o.SkipDryRun) {
 		toSerialize["skip_dry_run"] = o.SkipDryRun

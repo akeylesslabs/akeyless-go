@@ -31,6 +31,8 @@ type AuthMethod struct {
 	AuthMethodId *int64 `json:"auth_method_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodRolesAssoc []AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
+	// BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
+	BookmarkLoginUrlTemplate *string `json:"bookmark_login_url_template,omitempty"`
 	ClientPermissions []string `json:"client_permissions,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
@@ -378,6 +380,38 @@ func (o *AuthMethod) SetAuthMethodRolesAssoc(v []AuthMethodRoleAssociation) {
 	o.AuthMethodRolesAssoc = v
 }
 
+// GetBookmarkLoginUrlTemplate returns the BookmarkLoginUrlTemplate field value if set, zero value otherwise.
+func (o *AuthMethod) GetBookmarkLoginUrlTemplate() string {
+	if o == nil || IsNil(o.BookmarkLoginUrlTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.BookmarkLoginUrlTemplate
+}
+
+// GetBookmarkLoginUrlTemplateOk returns a tuple with the BookmarkLoginUrlTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetBookmarkLoginUrlTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.BookmarkLoginUrlTemplate) {
+		return nil, false
+	}
+	return o.BookmarkLoginUrlTemplate, true
+}
+
+// HasBookmarkLoginUrlTemplate returns a boolean if a field has been set.
+func (o *AuthMethod) HasBookmarkLoginUrlTemplate() bool {
+	if o != nil && !IsNil(o.BookmarkLoginUrlTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetBookmarkLoginUrlTemplate gets a reference to the given string and assigns it to the BookmarkLoginUrlTemplate field.
+func (o *AuthMethod) SetBookmarkLoginUrlTemplate(v string) {
+	o.BookmarkLoginUrlTemplate = &v
+}
+
 // GetClientPermissions returns the ClientPermissions field value if set, zero value otherwise.
 func (o *AuthMethod) GetClientPermissions() []string {
 	if o == nil || IsNil(o.ClientPermissions) {
@@ -673,6 +707,9 @@ func (o AuthMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AuthMethodRolesAssoc) {
 		toSerialize["auth_method_roles_assoc"] = o.AuthMethodRolesAssoc
+	}
+	if !IsNil(o.BookmarkLoginUrlTemplate) {
+		toSerialize["bookmark_login_url_template"] = o.BookmarkLoginUrlTemplate
 	}
 	if !IsNil(o.ClientPermissions) {
 		toSerialize["client_permissions"] = o.ClientPermissions
