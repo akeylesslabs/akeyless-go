@@ -28,6 +28,10 @@ type DynamicSecretCreateGke struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
+	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	// Turns on AI Quorum checks for this item.
+	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
 	// GKE Service Account key file path
 	GkeAccountKey *string `json:"gke-account-key,omitempty"`
 	// GKE cluster CA certificate
@@ -204,6 +208,70 @@ func (o *DynamicSecretCreateGke) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DynamicSecretCreateGke) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+func (o *DynamicSecretCreateGke) GetEnableAgenticRuntimeAuthority() bool {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAgenticRuntimeAuthority
+}
+
+// GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateGke) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		return nil, false
+	}
+	return o.EnableAgenticRuntimeAuthority, true
+}
+
+// HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+func (o *DynamicSecretCreateGke) HasEnableAgenticRuntimeAuthority() bool {
+	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+func (o *DynamicSecretCreateGke) SetEnableAgenticRuntimeAuthority(v bool) {
+	o.EnableAgenticRuntimeAuthority = &v
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+func (o *DynamicSecretCreateGke) GetEnableAiQuorum() bool {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAiQuorum
+}
+
+// GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateGke) GetEnableAiQuorumOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		return nil, false
+	}
+	return o.EnableAiQuorum, true
+}
+
+// HasEnableAiQuorum returns a boolean if a field has been set.
+func (o *DynamicSecretCreateGke) HasEnableAiQuorum() bool {
+	if o != nil && !IsNil(o.EnableAiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+func (o *DynamicSecretCreateGke) SetEnableAiQuorum(v bool) {
+	o.EnableAiQuorum = &v
 }
 
 // GetGkeAccountKey returns the GkeAccountKey field value if set, zero value otherwise.
@@ -984,6 +1052,12 @@ func (o DynamicSecretCreateGke) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnableAgenticRuntimeAuthority) {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	}
+	if !IsNil(o.EnableAiQuorum) {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
 	}
 	if !IsNil(o.GkeAccountKey) {
 		toSerialize["gke-account-key"] = o.GkeAccountKey

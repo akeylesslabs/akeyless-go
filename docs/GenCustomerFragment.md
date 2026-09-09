@@ -5,11 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**HsmKeyLabel** | Pointer to **string** | The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments) | [optional] 
+**HsmKeyLabel** | Pointer to **string** | The label of the hsm key to use for customer fragment operations (relevant for hsm wrap customer fragments) | [optional] 
+**HsmProvider** | Pointer to **string** | The HSM provider to use for hsm wrap customer fragments | [optional] [default to "pkcs11"]
+**HsmWrapAlg** | Pointer to **string** | The HSM wrap algorithm to use for hsm_wrap_encrypt  default for hsm_wrap_encrypt: rsa-oaep-sha256 | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Metadata** | Pointer to **string** | Deprecated - use description | [optional] 
 **Name** | Pointer to **string** | Customer fragment name | [optional] 
-**Type** | Pointer to **string** | Customer fragment type [standard/hsm_wrapped/hsm_secured] | [optional] [default to "standard"]
+**Type** | Pointer to **string** | Customer fragment type [standard/hsm_wrap_hmac/hsm_wrap_encrypt/hsm_secured] | [optional] [default to "standard"]
 
 ## Methods
 
@@ -79,6 +81,56 @@ SetHsmKeyLabel sets HsmKeyLabel field to given value.
 `func (o *GenCustomerFragment) HasHsmKeyLabel() bool`
 
 HasHsmKeyLabel returns a boolean if a field has been set.
+
+### GetHsmProvider
+
+`func (o *GenCustomerFragment) GetHsmProvider() string`
+
+GetHsmProvider returns the HsmProvider field if non-nil, zero value otherwise.
+
+### GetHsmProviderOk
+
+`func (o *GenCustomerFragment) GetHsmProviderOk() (*string, bool)`
+
+GetHsmProviderOk returns a tuple with the HsmProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHsmProvider
+
+`func (o *GenCustomerFragment) SetHsmProvider(v string)`
+
+SetHsmProvider sets HsmProvider field to given value.
+
+### HasHsmProvider
+
+`func (o *GenCustomerFragment) HasHsmProvider() bool`
+
+HasHsmProvider returns a boolean if a field has been set.
+
+### GetHsmWrapAlg
+
+`func (o *GenCustomerFragment) GetHsmWrapAlg() string`
+
+GetHsmWrapAlg returns the HsmWrapAlg field if non-nil, zero value otherwise.
+
+### GetHsmWrapAlgOk
+
+`func (o *GenCustomerFragment) GetHsmWrapAlgOk() (*string, bool)`
+
+GetHsmWrapAlgOk returns a tuple with the HsmWrapAlg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHsmWrapAlg
+
+`func (o *GenCustomerFragment) SetHsmWrapAlg(v string)`
+
+SetHsmWrapAlg sets HsmWrapAlg field to given value.
+
+### HasHsmWrapAlg
+
+`func (o *GenCustomerFragment) HasHsmWrapAlg() bool`
+
+HasHsmWrapAlg returns a boolean if a field has been set.
 
 ### GetJson
 

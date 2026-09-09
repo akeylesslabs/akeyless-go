@@ -50,6 +50,8 @@ type UpdateAccountSettings struct {
 	DynamicSecretMaxTtlEnable *string `json:"dynamic-secret-max-ttl-enable,omitempty"`
 	// Enable AI insights [true/false]
 	EnableAiInsights *string `json:"enable-ai-insights,omitempty"`
+	// Enable AI Quorum checks account-wide [true/false]
+	EnableAiQuorum *string `json:"enable-ai-quorum,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified. [true/false]
 	EnableDefaultCertificateExpirationEvent *string `json:"enable-default-certificate-expiration-event,omitempty"`
 	// Enable sharing items [true/false]
@@ -628,6 +630,38 @@ func (o *UpdateAccountSettings) HasEnableAiInsights() bool {
 // SetEnableAiInsights gets a reference to the given string and assigns it to the EnableAiInsights field.
 func (o *UpdateAccountSettings) SetEnableAiInsights(v string) {
 	o.EnableAiInsights = &v
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetEnableAiQuorum() string {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		var ret string
+		return ret
+	}
+	return *o.EnableAiQuorum
+}
+
+// GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetEnableAiQuorumOk() (*string, bool) {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		return nil, false
+	}
+	return o.EnableAiQuorum, true
+}
+
+// HasEnableAiQuorum returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasEnableAiQuorum() bool {
+	if o != nil && !IsNil(o.EnableAiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiQuorum gets a reference to the given string and assigns it to the EnableAiQuorum field.
+func (o *UpdateAccountSettings) SetEnableAiQuorum(v string) {
+	o.EnableAiQuorum = &v
 }
 
 // GetEnableDefaultCertificateExpirationEvent returns the EnableDefaultCertificateExpirationEvent field value if set, zero value otherwise.
@@ -1868,6 +1902,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableAiInsights) {
 		toSerialize["enable-ai-insights"] = o.EnableAiInsights
+	}
+	if !IsNil(o.EnableAiQuorum) {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
 	}
 	if !IsNil(o.EnableDefaultCertificateExpirationEvent) {
 		toSerialize["enable-default-certificate-expiration-event"] = o.EnableDefaultCertificateExpirationEvent

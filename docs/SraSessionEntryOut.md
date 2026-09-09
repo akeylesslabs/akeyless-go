@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **StartTime** | Pointer to **time.Time** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **TargetHost** | Pointer to **string** |  | [optional] 
+**TargetId** | Pointer to **int64** |  | [optional] 
+**TargetName** | Pointer to **string** |  | [optional] 
+**TargetType** | Pointer to **string** |  | [optional] 
 **Ttl** | Pointer to **string** |  | [optional] 
 **UserIdentifier** | Pointer to **string** |  | [optional] 
 
@@ -363,6 +366,81 @@ SetTargetHost sets TargetHost field to given value.
 `func (o *SraSessionEntryOut) HasTargetHost() bool`
 
 HasTargetHost returns a boolean if a field has been set.
+
+### GetTargetId
+
+`func (o *SraSessionEntryOut) GetTargetId() int64`
+
+GetTargetId returns the TargetId field if non-nil, zero value otherwise.
+
+### GetTargetIdOk
+
+`func (o *SraSessionEntryOut) GetTargetIdOk() (*int64, bool)`
+
+GetTargetIdOk returns a tuple with the TargetId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetId
+
+`func (o *SraSessionEntryOut) SetTargetId(v int64)`
+
+SetTargetId sets TargetId field to given value.
+
+### HasTargetId
+
+`func (o *SraSessionEntryOut) HasTargetId() bool`
+
+HasTargetId returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *SraSessionEntryOut) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *SraSessionEntryOut) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *SraSessionEntryOut) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *SraSessionEntryOut) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
+
+### GetTargetType
+
+`func (o *SraSessionEntryOut) GetTargetType() string`
+
+GetTargetType returns the TargetType field if non-nil, zero value otherwise.
+
+### GetTargetTypeOk
+
+`func (o *SraSessionEntryOut) GetTargetTypeOk() (*string, bool)`
+
+GetTargetTypeOk returns a tuple with the TargetType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetType
+
+`func (o *SraSessionEntryOut) SetTargetType(v string)`
+
+SetTargetType sets TargetType field to given value.
+
+### HasTargetType
+
+`func (o *SraSessionEntryOut) HasTargetType() bool`
+
+HasTargetType returns a boolean if a field has been set.
 
 ### GetTtl
 

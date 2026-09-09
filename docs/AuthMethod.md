@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **AuthMethodId** | Pointer to **int64** |  | [optional] 
 **AuthMethodName** | Pointer to **string** |  | [optional] 
 **AuthMethodRolesAssoc** | Pointer to [**[]AuthMethodRoleAssociation**](AuthMethodRoleAssociation.md) |  | [optional] 
-**BookmarkLoginUrlTemplate** | Pointer to **string** | BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback. | [optional] 
+**BookmarkLoginUrlTemplate** | Pointer to **string** | BookmarkLoginURLTemplate is an OIDC/SAML login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback. | [optional] 
 **ClientPermissions** | Pointer to **[]string** |  | [optional] 
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 

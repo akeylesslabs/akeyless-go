@@ -110,6 +110,8 @@ type CreatePKICertIssuer struct {
 	ServerFlag *bool `json:"server-flag,omitempty"`
 	// A key to sign the certificate with, required in Private CA mode
 	SignerKeyName *string `json:"signer-key-name,omitempty"`
+	// If set, separates the leaf certificate from the certificate chain.
+	SplitCertificateChain *bool `json:"split-certificate-chain,omitempty"`
 	// A comma-separated list of street addresses that will be set in the issued certificate
 	StreetAddress *string `json:"street-address,omitempty"`
 	// List of the tags attached to this key
@@ -1559,6 +1561,38 @@ func (o *CreatePKICertIssuer) SetSignerKeyName(v string) {
 	o.SignerKeyName = &v
 }
 
+// GetSplitCertificateChain returns the SplitCertificateChain field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetSplitCertificateChain() bool {
+	if o == nil || IsNil(o.SplitCertificateChain) {
+		var ret bool
+		return ret
+	}
+	return *o.SplitCertificateChain
+}
+
+// GetSplitCertificateChainOk returns a tuple with the SplitCertificateChain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetSplitCertificateChainOk() (*bool, bool) {
+	if o == nil || IsNil(o.SplitCertificateChain) {
+		return nil, false
+	}
+	return o.SplitCertificateChain, true
+}
+
+// HasSplitCertificateChain returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasSplitCertificateChain() bool {
+	if o != nil && !IsNil(o.SplitCertificateChain) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCertificateChain gets a reference to the given bool and assigns it to the SplitCertificateChain field.
+func (o *CreatePKICertIssuer) SetSplitCertificateChain(v bool) {
+	o.SplitCertificateChain = &v
+}
+
 // GetStreetAddress returns the StreetAddress field value if set, zero value otherwise.
 func (o *CreatePKICertIssuer) GetStreetAddress() string {
 	if o == nil || IsNil(o.StreetAddress) {
@@ -1850,6 +1884,9 @@ func (o CreatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SignerKeyName) {
 		toSerialize["signer-key-name"] = o.SignerKeyName
+	}
+	if !IsNil(o.SplitCertificateChain) {
+		toSerialize["split-certificate-chain"] = o.SplitCertificateChain
 	}
 	if !IsNil(o.StreetAddress) {
 		toSerialize["street-address"] = o.StreetAddress

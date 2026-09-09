@@ -1152,6 +1152,130 @@ func (a *V2ApiService) AuthExecute(r ApiAuthRequest) (*AuthOutput, *http.Respons
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiAuthMethodCreateAliCloudRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	authMethodCreateAliCloud *AuthMethodCreateAliCloud
+    body interface{}
+}
+
+func (r ApiAuthMethodCreateAliCloudRequest) AuthMethodCreateAliCloud(authMethodCreateAliCloud AuthMethodCreateAliCloud) ApiAuthMethodCreateAliCloudRequest {
+	r.authMethodCreateAliCloud = &authMethodCreateAliCloud
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiAuthMethodCreateAliCloudRequest) Body(body AuthMethodCreateAliCloud) ApiAuthMethodCreateAliCloudRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiAuthMethodCreateAliCloudRequest) Execute() (*AuthMethodCreateOutput, *http.Response, error) {
+	return r.ApiService.AuthMethodCreateAliCloudExecute(r)
+}
+
+/*
+AuthMethodCreateAliCloud Method for AuthMethodCreateAliCloud
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthMethodCreateAliCloudRequest
+*/
+func (a *V2ApiService) AuthMethodCreateAliCloud(ctx context.Context) ApiAuthMethodCreateAliCloudRequest {
+	return ApiAuthMethodCreateAliCloudRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AuthMethodCreateOutput
+func (a *V2ApiService) AuthMethodCreateAliCloudExecute(r ApiAuthMethodCreateAliCloudRequest) (*AuthMethodCreateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthMethodCreateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.AuthMethodCreateAliCloud")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/auth-method-create-alicloud"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiAuthMethodCreateApiKeyRequest struct {
 	ctx context.Context
 	ApiService *V2ApiService
@@ -3188,6 +3312,130 @@ func (a *V2ApiService) AuthMethodListExecute(r ApiAuthMethodListRequest) (*ListA
 	}
 
 	localVarPath := localBasePath + "/auth-method-list"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.body == nil {
+		return localVarReturnValue, nil, reportError("Body() is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+			var v JSONError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAuthMethodUpdateAliCloudRequest struct {
+	ctx context.Context
+	ApiService *V2ApiService
+	authMethodUpdateAliCloud *AuthMethodUpdateAliCloud
+    body interface{}
+}
+
+func (r ApiAuthMethodUpdateAliCloudRequest) AuthMethodUpdateAliCloud(authMethodUpdateAliCloud AuthMethodUpdateAliCloud) ApiAuthMethodUpdateAliCloudRequest {
+	r.authMethodUpdateAliCloud = &authMethodUpdateAliCloud
+	return r
+}
+
+
+    // Body sets the body payload for the API call.
+func (r ApiAuthMethodUpdateAliCloudRequest) Body(body AuthMethodUpdateAliCloud) ApiAuthMethodUpdateAliCloudRequest {
+    r.body = body
+    return r
+}
+
+func (r ApiAuthMethodUpdateAliCloudRequest) Execute() (*AuthMethodUpdateOutput, *http.Response, error) {
+	return r.ApiService.AuthMethodUpdateAliCloudExecute(r)
+}
+
+/*
+AuthMethodUpdateAliCloud Method for AuthMethodUpdateAliCloud
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthMethodUpdateAliCloudRequest
+*/
+func (a *V2ApiService) AuthMethodUpdateAliCloud(ctx context.Context) ApiAuthMethodUpdateAliCloudRequest {
+	return ApiAuthMethodUpdateAliCloudRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AuthMethodUpdateOutput
+func (a *V2ApiService) AuthMethodUpdateAliCloudExecute(r ApiAuthMethodUpdateAliCloudRequest) (*AuthMethodUpdateOutput, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AuthMethodUpdateOutput
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "V2ApiService.AuthMethodUpdateAliCloud")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/auth-method-update-alicloud"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

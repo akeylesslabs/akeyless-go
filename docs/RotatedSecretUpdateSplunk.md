@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **ExpirationDate** | Pointer to **string** | Token expiration date in YYYY-MM-DD format (relevant only for rotator-type&#x3D;token when manual rotation is selected). Time will be set to 00:00 UTC. | [optional] 
 **HecToken** | Pointer to **string** | For rotator-type&#x3D;hec-token, optionally set/replace the stored HEC token value. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
@@ -18,12 +20,15 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
+**LockOnRead** | Pointer to **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | Pointer to **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
+**RotateOnUnlock** | Pointer to **string** | Rotate this secret after it is unlocked | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
@@ -231,6 +236,56 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateSplunk) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *RotatedSecretUpdateSplunk) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateSplunk) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateSplunk) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateSplunk) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *RotatedSecretUpdateSplunk) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateSplunk) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *RotatedSecretUpdateSplunk) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
+
 ### GetExpirationDate
 
 `func (o *RotatedSecretUpdateSplunk) GetExpirationDate() string`
@@ -406,6 +461,56 @@ SetKey sets Key field to given value.
 
 HasKey returns a boolean if a field has been set.
 
+### GetLockOnRead
+
+`func (o *RotatedSecretUpdateSplunk) GetLockOnRead() string`
+
+GetLockOnRead returns the LockOnRead field if non-nil, zero value otherwise.
+
+### GetLockOnReadOk
+
+`func (o *RotatedSecretUpdateSplunk) GetLockOnReadOk() (*string, bool)`
+
+GetLockOnReadOk returns a tuple with the LockOnRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOnRead
+
+`func (o *RotatedSecretUpdateSplunk) SetLockOnRead(v string)`
+
+SetLockOnRead sets LockOnRead field to given value.
+
+### HasLockOnRead
+
+`func (o *RotatedSecretUpdateSplunk) HasLockOnRead() bool`
+
+HasLockOnRead returns a boolean if a field has been set.
+
+### GetLockTtl
+
+`func (o *RotatedSecretUpdateSplunk) GetLockTtl() string`
+
+GetLockTtl returns the LockTtl field if non-nil, zero value otherwise.
+
+### GetLockTtlOk
+
+`func (o *RotatedSecretUpdateSplunk) GetLockTtlOk() (*string, bool)`
+
+GetLockTtlOk returns a tuple with the LockTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockTtl
+
+`func (o *RotatedSecretUpdateSplunk) SetLockTtl(v string)`
+
+SetLockTtl sets LockTtl field to given value.
+
+### HasLockTtl
+
+`func (o *RotatedSecretUpdateSplunk) HasLockTtl() bool`
+
+HasLockTtl returns a boolean if a field has been set.
+
 ### GetMaxVersions
 
 `func (o *RotatedSecretUpdateSplunk) GetMaxVersions() string`
@@ -550,6 +655,31 @@ SetRmTag sets RmTag field to given value.
 `func (o *RotatedSecretUpdateSplunk) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateSplunk) GetRotateOnUnlock() string`
+
+GetRotateOnUnlock returns the RotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetRotateOnUnlockOk
+
+`func (o *RotatedSecretUpdateSplunk) GetRotateOnUnlockOk() (*string, bool)`
+
+GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateSplunk) SetRotateOnUnlock(v string)`
+
+SetRotateOnUnlock sets RotateOnUnlock field to given value.
+
+### HasRotateOnUnlock
+
+`func (o *RotatedSecretUpdateSplunk) HasRotateOnUnlock() bool`
+
+HasRotateOnUnlock returns a boolean if a field has been set.
 
 ### GetRotationEventIn
 

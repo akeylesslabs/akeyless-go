@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** | Enabled is a pointer so rules persisted before this field existed (nil) keep enforcing, rather than silently switching off. | [optional] 
 **InputRules** | Pointer to [**[]AgenticRule**](AgenticRule.md) |  | [optional] 
 **OutputRules** | Pointer to [**[]AgenticRule**](AgenticRule.md) |  | [optional] 
+**QuorumEnabled** | Pointer to **bool** | QuorumEnabled asks for this item&#39;s policy decisions to be evaluated by every model configured on the gateway rather than the Default alone.  Also a pointer, but with the opposite nil meaning to Enabled above: nil is OFF. Enabled defaults on because it governs rules that were already being enforced before the field existed, whereas quorum is new behavior that multiplies latency and denies fail-closed - an item that never asked for it must not acquire it by upgrade. | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetOutputRules sets OutputRules field to given value.
 `func (o *AgenticRules) HasOutputRules() bool`
 
 HasOutputRules returns a boolean if a field has been set.
+
+### GetQuorumEnabled
+
+`func (o *AgenticRules) GetQuorumEnabled() bool`
+
+GetQuorumEnabled returns the QuorumEnabled field if non-nil, zero value otherwise.
+
+### GetQuorumEnabledOk
+
+`func (o *AgenticRules) GetQuorumEnabledOk() (*bool, bool)`
+
+GetQuorumEnabledOk returns a tuple with the QuorumEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQuorumEnabled
+
+`func (o *AgenticRules) SetQuorumEnabled(v bool)`
+
+SetQuorumEnabled sets QuorumEnabled field to given value.
+
+### HasQuorumEnabled
+
+`func (o *AgenticRules) HasQuorumEnabled() bool`
+
+HasQuorumEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

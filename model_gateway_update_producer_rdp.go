@@ -27,10 +27,16 @@ type GatewayUpdateProducerRdp struct {
 	AllowUserExtendSession *int64 `json:"allow-user-extend-session,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
 	AraEnabled *bool `json:"ara-enabled,omitempty"`
+	// Block access to the parent target when using a linked target [true/false]. Empty keeps the existing value on update
+	BlockParentTargetAccess *string `json:"block-parent-target-access,omitempty"`
 	// Customize how temporary usernames are generated using go template
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
+	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
+	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	// Turns on AI Quorum checks for this item.
+	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
 	// For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only=true)
 	FixedUserClaimKeyname *string `json:"fixed-user-claim-keyname,omitempty"`
 	// Allow access using externally (IdP) provided username [true/false]
@@ -248,6 +254,38 @@ func (o *GatewayUpdateProducerRdp) SetAraEnabled(v bool) {
 	o.AraEnabled = &v
 }
 
+// GetBlockParentTargetAccess returns the BlockParentTargetAccess field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRdp) GetBlockParentTargetAccess() string {
+	if o == nil || IsNil(o.BlockParentTargetAccess) {
+		var ret string
+		return ret
+	}
+	return *o.BlockParentTargetAccess
+}
+
+// GetBlockParentTargetAccessOk returns a tuple with the BlockParentTargetAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRdp) GetBlockParentTargetAccessOk() (*string, bool) {
+	if o == nil || IsNil(o.BlockParentTargetAccess) {
+		return nil, false
+	}
+	return o.BlockParentTargetAccess, true
+}
+
+// HasBlockParentTargetAccess returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRdp) HasBlockParentTargetAccess() bool {
+	if o != nil && !IsNil(o.BlockParentTargetAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockParentTargetAccess gets a reference to the given string and assigns it to the BlockParentTargetAccess field.
+func (o *GatewayUpdateProducerRdp) SetBlockParentTargetAccess(v string) {
+	o.BlockParentTargetAccess = &v
+}
+
 // GetCustomUsernameTemplate returns the CustomUsernameTemplate field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerRdp) GetCustomUsernameTemplate() string {
 	if o == nil || IsNil(o.CustomUsernameTemplate) {
@@ -310,6 +348,70 @@ func (o *GatewayUpdateProducerRdp) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayUpdateProducerRdp) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
+}
+
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRdp) GetEnableAgenticRuntimeAuthority() bool {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAgenticRuntimeAuthority
+}
+
+// GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRdp) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		return nil, false
+	}
+	return o.EnableAgenticRuntimeAuthority, true
+}
+
+// HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRdp) HasEnableAgenticRuntimeAuthority() bool {
+	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+func (o *GatewayUpdateProducerRdp) SetEnableAgenticRuntimeAuthority(v bool) {
+	o.EnableAgenticRuntimeAuthority = &v
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerRdp) GetEnableAiQuorum() bool {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAiQuorum
+}
+
+// GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerRdp) GetEnableAiQuorumOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		return nil, false
+	}
+	return o.EnableAiQuorum, true
+}
+
+// HasEnableAiQuorum returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerRdp) HasEnableAiQuorum() bool {
+	if o != nil && !IsNil(o.EnableAiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+func (o *GatewayUpdateProducerRdp) SetEnableAiQuorum(v bool) {
+	o.EnableAiQuorum = &v
 }
 
 // GetFixedUserClaimKeyname returns the FixedUserClaimKeyname field value if set, zero value otherwise.
@@ -1539,11 +1641,20 @@ func (o GatewayUpdateProducerRdp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AraEnabled) {
 		toSerialize["ara-enabled"] = o.AraEnabled
 	}
+	if !IsNil(o.BlockParentTargetAccess) {
+		toSerialize["block-parent-target-access"] = o.BlockParentTargetAccess
+	}
 	if !IsNil(o.CustomUsernameTemplate) {
 		toSerialize["custom-username-template"] = o.CustomUsernameTemplate
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
+	}
+	if !IsNil(o.EnableAgenticRuntimeAuthority) {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	}
+	if !IsNil(o.EnableAiQuorum) {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
 	}
 	if !IsNil(o.FixedUserClaimKeyname) {
 		toSerialize["fixed-user-claim-keyname"] = o.FixedUserClaimKeyname

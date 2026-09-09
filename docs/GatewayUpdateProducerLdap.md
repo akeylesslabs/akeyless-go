@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **BindDnPassword** | Pointer to **string** | Bind DN Password | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **ExternalUsername** | Pointer to **string** | Externally provided username [true/false] | [optional] [default to "false"]
 **FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for external-username&#x3D;true) | [optional] [default to "ext_username"]
 **GroupDn** | Pointer to **string** | Group DN which the temporary user should be added | [optional] 
@@ -215,6 +217,56 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayUpdateProducerLdap) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *GatewayUpdateProducerLdap) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *GatewayUpdateProducerLdap) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *GatewayUpdateProducerLdap) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *GatewayUpdateProducerLdap) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *GatewayUpdateProducerLdap) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *GatewayUpdateProducerLdap) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *GatewayUpdateProducerLdap) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *GatewayUpdateProducerLdap) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
 
 ### GetExternalUsername
 

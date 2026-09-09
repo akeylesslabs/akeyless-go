@@ -48,6 +48,7 @@ Name | Type | Description | Notes
 **RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
 **RequireCn** | Pointer to **bool** |  | [optional] 
 **ServerFlag** | Pointer to **bool** |  | [optional] 
+**SplitCertificateChain** | Pointer to **bool** | SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain. | [optional] 
 **StreetAddress** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -1168,6 +1169,31 @@ SetServerFlag sets ServerFlag field to given value.
 `func (o *PKICertificateIssueDetails) HasServerFlag() bool`
 
 HasServerFlag returns a boolean if a field has been set.
+
+### GetSplitCertificateChain
+
+`func (o *PKICertificateIssueDetails) GetSplitCertificateChain() bool`
+
+GetSplitCertificateChain returns the SplitCertificateChain field if non-nil, zero value otherwise.
+
+### GetSplitCertificateChainOk
+
+`func (o *PKICertificateIssueDetails) GetSplitCertificateChainOk() (*bool, bool)`
+
+GetSplitCertificateChainOk returns a tuple with the SplitCertificateChain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplitCertificateChain
+
+`func (o *PKICertificateIssueDetails) SetSplitCertificateChain(v bool)`
+
+SetSplitCertificateChain sets SplitCertificateChain field to given value.
+
+### HasSplitCertificateChain
+
+`func (o *PKICertificateIssueDetails) HasSplitCertificateChain() bool`
+
+HasSplitCertificateChain returns a boolean if a field has been set.
 
 ### GetStreetAddress
 

@@ -44,12 +44,18 @@ type UpdateZeroSSLTarget struct {
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Lock this secret after each successful value read
+	LockOnRead *string `json:"lock-on-read,omitempty"`
+	// Lock TTL in minutes
+	LockTtl *string `json:"lock-ttl,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Target name
 	Name string `json:"name"`
 	// New target name
 	NewName *string `json:"new-name,omitempty"`
+	// Rotate this secret after it is unlocked
+	RotateOnUnlock *string `json:"rotate-on-unlock,omitempty"`
 	// Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h.
 	Timeout *string `json:"timeout,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -416,6 +422,70 @@ func (o *UpdateZeroSSLTarget) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *UpdateZeroSSLTarget) GetLockOnRead() string {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret string
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateZeroSSLTarget) GetLockOnReadOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *UpdateZeroSSLTarget) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given string and assigns it to the LockOnRead field.
+func (o *UpdateZeroSSLTarget) SetLockOnRead(v string) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *UpdateZeroSSLTarget) GetLockTtl() string {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret string
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateZeroSSLTarget) GetLockTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *UpdateZeroSSLTarget) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given string and assigns it to the LockTtl field.
+func (o *UpdateZeroSSLTarget) SetLockTtl(v string) {
+	o.LockTtl = &v
+}
+
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
 func (o *UpdateZeroSSLTarget) GetMaxVersions() string {
 	if o == nil || IsNil(o.MaxVersions) {
@@ -502,6 +572,38 @@ func (o *UpdateZeroSSLTarget) HasNewName() bool {
 // SetNewName gets a reference to the given string and assigns it to the NewName field.
 func (o *UpdateZeroSSLTarget) SetNewName(v string) {
 	o.NewName = &v
+}
+
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *UpdateZeroSSLTarget) GetRotateOnUnlock() string {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret string
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateZeroSSLTarget) GetRotateOnUnlockOk() (*string, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *UpdateZeroSSLTarget) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given string and assigns it to the RotateOnUnlock field.
+func (o *UpdateZeroSSLTarget) SetRotateOnUnlock(v string) {
+	o.RotateOnUnlock = &v
 }
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
@@ -667,12 +769,21 @@ func (o UpdateZeroSSLTarget) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock-on-read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock-ttl"] = o.LockTtl
+	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate-on-unlock"] = o.RotateOnUnlock
 	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout

@@ -31,6 +31,10 @@ type RotatedSecretCreateGcp struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
+	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	// Turns on AI Quorum checks for this item.
+	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
 	// Base64-encoded service account private key text
 	GcpKey *string `json:"gcp-key,omitempty"`
 	// The email of the gcp service account to rotate
@@ -52,6 +56,10 @@ type RotatedSecretCreateGcp struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	Key *string `json:"key,omitempty"`
+	// Lock this secret after each successful value read
+	LockOnRead *string `json:"lock-on-read,omitempty"`
+	// Lock TTL in minutes
+	LockTtl *string `json:"lock-ttl,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Rotated secret name
@@ -60,6 +68,8 @@ type RotatedSecretCreateGcp struct {
 	OutputRule []string `json:"output-rule,omitempty"`
 	// The length of the password to be generated
 	PasswordLength *string `json:"password-length,omitempty"`
+	// Rotate this secret after it is unlocked
+	RotateOnUnlock *string `json:"rotate-on-unlock,omitempty"`
 	// How many days before the rotation of the item would you like to be notified
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
@@ -273,6 +283,70 @@ func (o *RotatedSecretCreateGcp) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *RotatedSecretCreateGcp) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+func (o *RotatedSecretCreateGcp) GetEnableAgenticRuntimeAuthority() bool {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAgenticRuntimeAuthority
+}
+
+// GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateGcp) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		return nil, false
+	}
+	return o.EnableAgenticRuntimeAuthority, true
+}
+
+// HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+func (o *RotatedSecretCreateGcp) HasEnableAgenticRuntimeAuthority() bool {
+	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+func (o *RotatedSecretCreateGcp) SetEnableAgenticRuntimeAuthority(v bool) {
+	o.EnableAgenticRuntimeAuthority = &v
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+func (o *RotatedSecretCreateGcp) GetEnableAiQuorum() bool {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAiQuorum
+}
+
+// GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateGcp) GetEnableAiQuorumOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		return nil, false
+	}
+	return o.EnableAiQuorum, true
+}
+
+// HasEnableAiQuorum returns a boolean if a field has been set.
+func (o *RotatedSecretCreateGcp) HasEnableAiQuorum() bool {
+	if o != nil && !IsNil(o.EnableAiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+func (o *RotatedSecretCreateGcp) SetEnableAiQuorum(v bool) {
+	o.EnableAiQuorum = &v
 }
 
 // GetGcpKey returns the GcpKey field value if set, zero value otherwise.
@@ -627,6 +701,70 @@ func (o *RotatedSecretCreateGcp) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *RotatedSecretCreateGcp) GetLockOnRead() string {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret string
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateGcp) GetLockOnReadOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *RotatedSecretCreateGcp) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given string and assigns it to the LockOnRead field.
+func (o *RotatedSecretCreateGcp) SetLockOnRead(v string) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *RotatedSecretCreateGcp) GetLockTtl() string {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret string
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateGcp) GetLockTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *RotatedSecretCreateGcp) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given string and assigns it to the LockTtl field.
+func (o *RotatedSecretCreateGcp) SetLockTtl(v string) {
+	o.LockTtl = &v
+}
+
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
 func (o *RotatedSecretCreateGcp) GetMaxVersions() string {
 	if o == nil || IsNil(o.MaxVersions) {
@@ -745,6 +883,38 @@ func (o *RotatedSecretCreateGcp) HasPasswordLength() bool {
 // SetPasswordLength gets a reference to the given string and assigns it to the PasswordLength field.
 func (o *RotatedSecretCreateGcp) SetPasswordLength(v string) {
 	o.PasswordLength = &v
+}
+
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *RotatedSecretCreateGcp) GetRotateOnUnlock() string {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret string
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretCreateGcp) GetRotateOnUnlockOk() (*string, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *RotatedSecretCreateGcp) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given string and assigns it to the RotateOnUnlock field.
+func (o *RotatedSecretCreateGcp) SetRotateOnUnlock(v string) {
+	o.RotateOnUnlock = &v
 }
 
 // GetRotationEventIn returns the RotationEventIn field value if set, zero value otherwise.
@@ -1172,6 +1342,12 @@ func (o RotatedSecretCreateGcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.EnableAgenticRuntimeAuthority) {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	}
+	if !IsNil(o.EnableAiQuorum) {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
+	}
 	if !IsNil(o.GcpKey) {
 		toSerialize["gcp-key"] = o.GcpKey
 	}
@@ -1205,6 +1381,12 @@ func (o RotatedSecretCreateGcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock-on-read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock-ttl"] = o.LockTtl
+	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
 	}
@@ -1214,6 +1396,9 @@ func (o RotatedSecretCreateGcp) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PasswordLength) {
 		toSerialize["password-length"] = o.PasswordLength
+	}
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate-on-unlock"] = o.RotateOnUnlock
 	}
 	if !IsNil(o.RotationEventIn) {
 		toSerialize["rotation-event-in"] = o.RotationEventIn

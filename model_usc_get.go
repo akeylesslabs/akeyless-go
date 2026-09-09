@@ -22,7 +22,7 @@ var _ MappedNullable = &UscGet{}
 
 // UscGet uscGet is a command that gets the value and internal details of a secret from a Universal Secrets Connector
 type UscGet struct {
-	// GCP Project ID (Relevant only for GCP targets)
+	// The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope.
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`

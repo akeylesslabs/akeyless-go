@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **ExplicitlySetSa** | Pointer to **string** | If set, explicitly provide the storage account details [true/false] | [optional] [default to "false"]
 **GraceRotation** | Pointer to **string** | Enable graceful rotation (keep both versions temporarily). When enabled, a new secret version is created while the previous version is kept for the grace period, so both versions exist for a limited time. [true/false] | [optional] 
 **GraceRotationHour** | Pointer to **int32** | The Hour of the grace rotation in UTC | [optional] 
@@ -24,6 +26,8 @@ Name | Type | Description | Notes
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
+**LockOnRead** | Pointer to **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | Pointer to **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -34,6 +38,7 @@ Name | Type | Description | Notes
 **ResourceName** | Pointer to **string** | The name of the storage account (only relevant when explicitly-set-sa&#x3D;true) | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
+**RotateOnUnlock** | Pointer to **string** | Rotate this secret after it is unlocked | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
@@ -296,6 +301,56 @@ SetDescription sets Description field to given value.
 `func (o *RotatedSecretUpdateAzure) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateAzure) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *RotatedSecretUpdateAzure) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateAzure) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateAzure) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateAzure) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *RotatedSecretUpdateAzure) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateAzure) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *RotatedSecretUpdateAzure) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
 
 ### GetExplicitlySetSa
 
@@ -572,6 +627,56 @@ SetLockDuringSraSession sets LockDuringSraSession field to given value.
 
 HasLockDuringSraSession returns a boolean if a field has been set.
 
+### GetLockOnRead
+
+`func (o *RotatedSecretUpdateAzure) GetLockOnRead() string`
+
+GetLockOnRead returns the LockOnRead field if non-nil, zero value otherwise.
+
+### GetLockOnReadOk
+
+`func (o *RotatedSecretUpdateAzure) GetLockOnReadOk() (*string, bool)`
+
+GetLockOnReadOk returns a tuple with the LockOnRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOnRead
+
+`func (o *RotatedSecretUpdateAzure) SetLockOnRead(v string)`
+
+SetLockOnRead sets LockOnRead field to given value.
+
+### HasLockOnRead
+
+`func (o *RotatedSecretUpdateAzure) HasLockOnRead() bool`
+
+HasLockOnRead returns a boolean if a field has been set.
+
+### GetLockTtl
+
+`func (o *RotatedSecretUpdateAzure) GetLockTtl() string`
+
+GetLockTtl returns the LockTtl field if non-nil, zero value otherwise.
+
+### GetLockTtlOk
+
+`func (o *RotatedSecretUpdateAzure) GetLockTtlOk() (*string, bool)`
+
+GetLockTtlOk returns a tuple with the LockTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockTtl
+
+`func (o *RotatedSecretUpdateAzure) SetLockTtl(v string)`
+
+SetLockTtl sets LockTtl field to given value.
+
+### HasLockTtl
+
+`func (o *RotatedSecretUpdateAzure) HasLockTtl() bool`
+
+HasLockTtl returns a boolean if a field has been set.
+
 ### GetMaxVersions
 
 `func (o *RotatedSecretUpdateAzure) GetMaxVersions() string`
@@ -816,6 +921,31 @@ SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
 `func (o *RotatedSecretUpdateAzure) HasRotateAfterDisconnect() bool`
 
 HasRotateAfterDisconnect returns a boolean if a field has been set.
+
+### GetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateAzure) GetRotateOnUnlock() string`
+
+GetRotateOnUnlock returns the RotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetRotateOnUnlockOk
+
+`func (o *RotatedSecretUpdateAzure) GetRotateOnUnlockOk() (*string, bool)`
+
+GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateAzure) SetRotateOnUnlock(v string)`
+
+SetRotateOnUnlock sets RotateOnUnlock field to given value.
+
+### HasRotateOnUnlock
+
+`func (o *RotatedSecretUpdateAzure) HasRotateOnUnlock() bool`
+
+HasRotateOnUnlock returns a boolean if a field has been set.
 
 ### GetRotationEventIn
 

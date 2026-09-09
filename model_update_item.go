@@ -27,6 +27,8 @@ type UpdateItem struct {
 	Accessibility *string `json:"accessibility,omitempty"`
 	// List of the new tags that will be attached to this item
 	AddTag []string `json:"add-tag,omitempty"`
+	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
+	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	CertificateFormat *string `json:"certificate-format,omitempty"`
@@ -36,18 +38,28 @@ type UpdateItem struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
+	// EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
+	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	// Turns on AI Quorum checks for this item.
+	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only.
 	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`
 	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
 	HostProvider *string `json:"host-provider,omitempty"`
+	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input)
+	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
 	ItemCustomFields *map[string]string `json:"item-custom-fields,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Lock this secret for read/update while an SRA session is active
 	LockDuringSraSession *string `json:"lock-during-sra-session,omitempty"`
+	// Lock this secret after each successful value read
+	LockOnRead *string `json:"lock-on-read,omitempty"`
+	// Lock TTL in minutes
+	LockTtl *string `json:"lock-ttl,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Current item name
@@ -56,10 +68,14 @@ type UpdateItem struct {
 	NewMetadata *string `json:"new-metadata,omitempty"`
 	// New item name
 	NewName *string `json:"new-name,omitempty"`
+	// Agentic output rule in name=...,rule=... format (e.g. name=rule1,rule=Mask secrets)
+	OutputRule []string `json:"output-rule,omitempty"`
 	// List of the existent tags that will be removed from this item
 	RmTag []string `json:"rm-tag,omitempty"`
 	// StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect.
 	RotateAfterDisconnect *string `json:"rotate-after-disconnect,omitempty"`
+	// Rotate this secret after it is unlocked
+	RotateOnUnlock *string `json:"rotate-on-unlock,omitempty"`
 	// List of the new hosts that will be attached to SRA servers host
 	SecureAccessAddHost []string `json:"secure-access-add-host,omitempty"`
 	// Allow providing external user for a domain users [true/false]
@@ -265,6 +281,38 @@ func (o *UpdateItem) SetAddTag(v []string) {
 	o.AddTag = v
 }
 
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+func (o *UpdateItem) GetAraEnabled() bool {
+	if o == nil || IsNil(o.AraEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AraEnabled
+}
+
+// GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetAraEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AraEnabled) {
+		return nil, false
+	}
+	return o.AraEnabled, true
+}
+
+// HasAraEnabled returns a boolean if a field has been set.
+func (o *UpdateItem) HasAraEnabled() bool {
+	if o != nil && !IsNil(o.AraEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+func (o *UpdateItem) SetAraEnabled(v bool) {
+	o.AraEnabled = &v
+}
+
 // GetCertFileData returns the CertFileData field value if set, zero value otherwise.
 func (o *UpdateItem) GetCertFileData() string {
 	if o == nil || IsNil(o.CertFileData) {
@@ -425,6 +473,70 @@ func (o *UpdateItem) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+func (o *UpdateItem) GetEnableAgenticRuntimeAuthority() bool {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAgenticRuntimeAuthority
+}
+
+// GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		return nil, false
+	}
+	return o.EnableAgenticRuntimeAuthority, true
+}
+
+// HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+func (o *UpdateItem) HasEnableAgenticRuntimeAuthority() bool {
+	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+func (o *UpdateItem) SetEnableAgenticRuntimeAuthority(v bool) {
+	o.EnableAgenticRuntimeAuthority = &v
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+func (o *UpdateItem) GetEnableAiQuorum() bool {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAiQuorum
+}
+
+// GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetEnableAiQuorumOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		return nil, false
+	}
+	return o.EnableAiQuorum, true
+}
+
+// HasEnableAiQuorum returns a boolean if a field has been set.
+func (o *UpdateItem) HasEnableAiQuorum() bool {
+	if o != nil && !IsNil(o.EnableAiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+func (o *UpdateItem) SetEnableAiQuorum(v bool) {
+	o.EnableAiQuorum = &v
+}
+
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
 func (o *UpdateItem) GetExpirationEventIn() []string {
 	if o == nil || IsNil(o.ExpirationEventIn) {
@@ -521,6 +633,38 @@ func (o *UpdateItem) SetHostProvider(v string) {
 	o.HostProvider = &v
 }
 
+// GetInputRule returns the InputRule field value if set, zero value otherwise.
+func (o *UpdateItem) GetInputRule() []string {
+	if o == nil || IsNil(o.InputRule) {
+		var ret []string
+		return ret
+	}
+	return o.InputRule
+}
+
+// GetInputRuleOk returns a tuple with the InputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetInputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.InputRule) {
+		return nil, false
+	}
+	return o.InputRule, true
+}
+
+// HasInputRule returns a boolean if a field has been set.
+func (o *UpdateItem) HasInputRule() bool {
+	if o != nil && !IsNil(o.InputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetInputRule gets a reference to the given []string and assigns it to the InputRule field.
+func (o *UpdateItem) SetInputRule(v []string) {
+	o.InputRule = v
+}
+
 // GetItemCustomFields returns the ItemCustomFields field value if set, zero value otherwise.
 func (o *UpdateItem) GetItemCustomFields() map[string]string {
 	if o == nil || IsNil(o.ItemCustomFields) {
@@ -615,6 +759,70 @@ func (o *UpdateItem) HasLockDuringSraSession() bool {
 // SetLockDuringSraSession gets a reference to the given string and assigns it to the LockDuringSraSession field.
 func (o *UpdateItem) SetLockDuringSraSession(v string) {
 	o.LockDuringSraSession = &v
+}
+
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *UpdateItem) GetLockOnRead() string {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret string
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetLockOnReadOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *UpdateItem) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given string and assigns it to the LockOnRead field.
+func (o *UpdateItem) SetLockOnRead(v string) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *UpdateItem) GetLockTtl() string {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret string
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetLockTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *UpdateItem) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given string and assigns it to the LockTtl field.
+func (o *UpdateItem) SetLockTtl(v string) {
+	o.LockTtl = &v
 }
 
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
@@ -737,6 +945,38 @@ func (o *UpdateItem) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetOutputRule returns the OutputRule field value if set, zero value otherwise.
+func (o *UpdateItem) GetOutputRule() []string {
+	if o == nil || IsNil(o.OutputRule) {
+		var ret []string
+		return ret
+	}
+	return o.OutputRule
+}
+
+// GetOutputRuleOk returns a tuple with the OutputRule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetOutputRuleOk() ([]string, bool) {
+	if o == nil || IsNil(o.OutputRule) {
+		return nil, false
+	}
+	return o.OutputRule, true
+}
+
+// HasOutputRule returns a boolean if a field has been set.
+func (o *UpdateItem) HasOutputRule() bool {
+	if o != nil && !IsNil(o.OutputRule) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputRule gets a reference to the given []string and assigns it to the OutputRule field.
+func (o *UpdateItem) SetOutputRule(v []string) {
+	o.OutputRule = v
+}
+
 // GetRmTag returns the RmTag field value if set, zero value otherwise.
 func (o *UpdateItem) GetRmTag() []string {
 	if o == nil || IsNil(o.RmTag) {
@@ -799,6 +1039,38 @@ func (o *UpdateItem) HasRotateAfterDisconnect() bool {
 // SetRotateAfterDisconnect gets a reference to the given string and assigns it to the RotateAfterDisconnect field.
 func (o *UpdateItem) SetRotateAfterDisconnect(v string) {
 	o.RotateAfterDisconnect = &v
+}
+
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *UpdateItem) GetRotateOnUnlock() string {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret string
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateItem) GetRotateOnUnlockOk() (*string, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *UpdateItem) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given string and assigns it to the RotateOnUnlock field.
+func (o *UpdateItem) SetRotateOnUnlock(v string) {
+	o.RotateOnUnlock = &v
 }
 
 // GetSecureAccessAddHost returns the SecureAccessAddHost field value if set, zero value otherwise.
@@ -1972,6 +2244,9 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddTag) {
 		toSerialize["add-tag"] = o.AddTag
 	}
+	if !IsNil(o.AraEnabled) {
+		toSerialize["ara-enabled"] = o.AraEnabled
+	}
 	if !IsNil(o.CertFileData) {
 		toSerialize["cert-file-data"] = o.CertFileData
 	}
@@ -1987,6 +2262,12 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.EnableAgenticRuntimeAuthority) {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	}
+	if !IsNil(o.EnableAiQuorum) {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
+	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
 	}
@@ -1996,6 +2277,9 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HostProvider) {
 		toSerialize["host-provider"] = o.HostProvider
 	}
+	if !IsNil(o.InputRule) {
+		toSerialize["input-rule"] = o.InputRule
+	}
 	if !IsNil(o.ItemCustomFields) {
 		toSerialize["item-custom-fields"] = o.ItemCustomFields
 	}
@@ -2004,6 +2288,12 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LockDuringSraSession) {
 		toSerialize["lock-during-sra-session"] = o.LockDuringSraSession
+	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock-on-read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock-ttl"] = o.LockTtl
 	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
@@ -2015,11 +2305,17 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
 	}
+	if !IsNil(o.OutputRule) {
+		toSerialize["output-rule"] = o.OutputRule
+	}
 	if !IsNil(o.RmTag) {
 		toSerialize["rm-tag"] = o.RmTag
 	}
 	if !IsNil(o.RotateAfterDisconnect) {
 		toSerialize["rotate-after-disconnect"] = o.RotateAfterDisconnect
+	}
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate-on-unlock"] = o.RotateOnUnlock
 	}
 	if !IsNil(o.SecureAccessAddHost) {
 		toSerialize["secure-access-add-host"] = o.SecureAccessAddHost

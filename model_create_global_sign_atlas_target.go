@@ -34,6 +34,10 @@ type CreateGlobalSignAtlasTarget struct {
 	Json *bool `json:"json,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Lock this secret after each successful value read
+	LockOnRead *string `json:"lock-on-read,omitempty"`
+	// Lock TTL in minutes
+	LockTtl *string `json:"lock-ttl,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Mutual TLS Certificate contents of the GlobalSign Atlas account encoded in base64, either mtls-cert-file-path or mtls-cert-data-base64 must be supplied
@@ -42,6 +46,8 @@ type CreateGlobalSignAtlasTarget struct {
 	MtlsKeyDataBase64 *string `json:"mtls-key-data-base64,omitempty"`
 	// Target name
 	Name string `json:"name"`
+	// Rotate this secret after it is unlocked
+	RotateOnUnlock *string `json:"rotate-on-unlock,omitempty"`
 	// Timeout waiting for certificate validation in Duration format (1h - 1 Hour, 20m - 20 Minutes, 33m3s - 33 Minutes and 3 Seconds), maximum 1h.
 	Timeout *string `json:"timeout,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -256,6 +262,70 @@ func (o *CreateGlobalSignAtlasTarget) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *CreateGlobalSignAtlasTarget) GetLockOnRead() string {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret string
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGlobalSignAtlasTarget) GetLockOnReadOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *CreateGlobalSignAtlasTarget) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given string and assigns it to the LockOnRead field.
+func (o *CreateGlobalSignAtlasTarget) SetLockOnRead(v string) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *CreateGlobalSignAtlasTarget) GetLockTtl() string {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret string
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGlobalSignAtlasTarget) GetLockTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *CreateGlobalSignAtlasTarget) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given string and assigns it to the LockTtl field.
+func (o *CreateGlobalSignAtlasTarget) SetLockTtl(v string) {
+	o.LockTtl = &v
+}
+
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
 func (o *CreateGlobalSignAtlasTarget) GetMaxVersions() string {
 	if o == nil || IsNil(o.MaxVersions) {
@@ -374,6 +444,38 @@ func (o *CreateGlobalSignAtlasTarget) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *CreateGlobalSignAtlasTarget) SetName(v string) {
 	o.Name = v
+}
+
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *CreateGlobalSignAtlasTarget) GetRotateOnUnlock() string {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret string
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateGlobalSignAtlasTarget) GetRotateOnUnlockOk() (*string, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *CreateGlobalSignAtlasTarget) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given string and assigns it to the RotateOnUnlock field.
+func (o *CreateGlobalSignAtlasTarget) SetRotateOnUnlock(v string) {
+	o.RotateOnUnlock = &v
 }
 
 // GetTimeout returns the Timeout field value if set, zero value otherwise.
@@ -496,6 +598,12 @@ func (o CreateGlobalSignAtlasTarget) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock-on-read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock-ttl"] = o.LockTtl
+	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
 	}
@@ -506,6 +614,9 @@ func (o CreateGlobalSignAtlasTarget) ToMap() (map[string]interface{}, error) {
 		toSerialize["mtls-key-data-base64"] = o.MtlsKeyDataBase64
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate-on-unlock"] = o.RotateOnUnlock
+	}
 	if !IsNil(o.Timeout) {
 		toSerialize["timeout"] = o.Timeout
 	}

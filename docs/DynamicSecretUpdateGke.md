@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **GkeAccountKey** | Pointer to **string** | GKE Service Account key file path | [optional] 
 **GkeClusterCert** | Pointer to **string** | GKE cluster CA certificate | [optional] 
 **GkeClusterEndpoint** | Pointer to **string** | GKE cluster URL endpoint | [optional] 
@@ -126,6 +128,56 @@ SetDescription sets Description field to given value.
 `func (o *DynamicSecretUpdateGke) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *DynamicSecretUpdateGke) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *DynamicSecretUpdateGke) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *DynamicSecretUpdateGke) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *DynamicSecretUpdateGke) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *DynamicSecretUpdateGke) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *DynamicSecretUpdateGke) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *DynamicSecretUpdateGke) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *DynamicSecretUpdateGke) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
 
 ### GetGkeAccountKey
 

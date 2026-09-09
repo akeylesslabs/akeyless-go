@@ -24,6 +24,7 @@ type UscSyncInfo struct {
 	JqSecretFilter *string `json:"jq_secret_filter,omitempty"`
 	LastError *string `json:"last_error,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
+	Project *string `json:"project,omitempty"`
 	SecretId *string `json:"secret_id,omitempty"`
 	SecretName *string `json:"secret_name,omitempty"`
 	SelectedEnvironments *string `json:"selected_environments,omitempty"`
@@ -175,6 +176,38 @@ func (o *UscSyncInfo) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *UscSyncInfo) GetProject() string {
+	if o == nil || IsNil(o.Project) {
+		var ret string
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscSyncInfo) GetProjectOk() (*string, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *UscSyncInfo) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given string and assigns it to the Project field.
+func (o *UscSyncInfo) SetProject(v string) {
+	o.Project = &v
+}
+
 // GetSecretId returns the SecretId field value if set, zero value otherwise.
 func (o *UscSyncInfo) GetSecretId() string {
 	if o == nil || IsNil(o.SecretId) {
@@ -324,6 +357,9 @@ func (o UscSyncInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
 	}
 	if !IsNil(o.SecretId) {
 		toSerialize["secret_id"] = o.SecretId

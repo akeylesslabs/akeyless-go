@@ -23,6 +23,7 @@ type AuthMethodAccessInfo struct {
 	AccessExpires *int64 `json:"access_expires,omitempty"`
 	// for accounts where AccessId holds encrypted email this field will hold generated AccessId, for accounts based on regular AccessId it will be equal to accessId itself
 	AccessIdAlias *string `json:"access_id_alias,omitempty"`
+	AlicloudAccessRules *AliCloudAccessRules `json:"alicloud_access_rules,omitempty"`
 	AllowedClientType []string `json:"allowed_client_type,omitempty"`
 	ApiKeyAccessRules *APIKeyAccessRules `json:"api_key_access_rules,omitempty"`
 	AuditLogsClaims []string `json:"audit_logs_claims,omitempty"`
@@ -132,6 +133,38 @@ func (o *AuthMethodAccessInfo) HasAccessIdAlias() bool {
 // SetAccessIdAlias gets a reference to the given string and assigns it to the AccessIdAlias field.
 func (o *AuthMethodAccessInfo) SetAccessIdAlias(v string) {
 	o.AccessIdAlias = &v
+}
+
+// GetAlicloudAccessRules returns the AlicloudAccessRules field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetAlicloudAccessRules() AliCloudAccessRules {
+	if o == nil || IsNil(o.AlicloudAccessRules) {
+		var ret AliCloudAccessRules
+		return ret
+	}
+	return *o.AlicloudAccessRules
+}
+
+// GetAlicloudAccessRulesOk returns a tuple with the AlicloudAccessRules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetAlicloudAccessRulesOk() (*AliCloudAccessRules, bool) {
+	if o == nil || IsNil(o.AlicloudAccessRules) {
+		return nil, false
+	}
+	return o.AlicloudAccessRules, true
+}
+
+// HasAlicloudAccessRules returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasAlicloudAccessRules() bool {
+	if o != nil && !IsNil(o.AlicloudAccessRules) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudAccessRules gets a reference to the given AliCloudAccessRules and assigns it to the AlicloudAccessRules field.
+func (o *AuthMethodAccessInfo) SetAlicloudAccessRules(v AliCloudAccessRules) {
+	o.AlicloudAccessRules = &v
 }
 
 // GetAllowedClientType returns the AllowedClientType field value if set, zero value otherwise.
@@ -949,6 +982,9 @@ func (o AuthMethodAccessInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccessIdAlias) {
 		toSerialize["access_id_alias"] = o.AccessIdAlias
+	}
+	if !IsNil(o.AlicloudAccessRules) {
+		toSerialize["alicloud_access_rules"] = o.AlicloudAccessRules
 	}
 	if !IsNil(o.AllowedClientType) {
 		toSerialize["allowed_client_type"] = o.AllowedClientType

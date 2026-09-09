@@ -24,14 +24,22 @@ type GetCertificateValue struct {
 	CertIssuerName *string `json:"cert-issuer-name,omitempty"`
 	// Certificate display ID
 	DisplayId *string `json:"display-id,omitempty"`
+	// Format to download the certificate in [pem/pfx/jks], pfx/jks require a password
+	Format *string `json:"format,omitempty"`
 	// Retrieve the Secret value without checking the Gateway's cache [true/false]. This flag is only relevant when using the RestAPI
 	IgnoreCache *string `json:"ignore-cache,omitempty"`
+	// If set, includes the private key in the pfx/jks file, only relevant when format is pfx or jks
+	IncludePrivateKey *bool `json:"include-private-key,omitempty"`
 	// Token for getting the issued certificate
 	IssuanceToken *string `json:"issuance-token,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// If set, downloads only the leaf certificate instead of the full chain, only available for certificates issued with split certificate chain enabled
+	LeafOnly *bool `json:"leaf-only,omitempty"`
 	// Certificate name
 	Name *string `json:"name,omitempty"`
+	// Password to protect the pfx/jks file, required when format is pfx or jks
+	Password *string `json:"password,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -46,6 +54,8 @@ type GetCertificateValue struct {
 // will change when the set of required properties is changed
 func NewGetCertificateValue() *GetCertificateValue {
 	this := GetCertificateValue{}
+	var format string = "pem"
+	this.Format = &format
 	var ignoreCache string = "false"
 	this.IgnoreCache = &ignoreCache
 	var json bool = false
@@ -58,6 +68,8 @@ func NewGetCertificateValue() *GetCertificateValue {
 // but it doesn't guarantee that properties required by API are set
 func NewGetCertificateValueWithDefaults() *GetCertificateValue {
 	this := GetCertificateValue{}
+	var format string = "pem"
+	this.Format = &format
 	var ignoreCache string = "false"
 	this.IgnoreCache = &ignoreCache
 	var json bool = false
@@ -129,6 +141,38 @@ func (o *GetCertificateValue) SetDisplayId(v string) {
 	o.DisplayId = &v
 }
 
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetFormat() string {
+	if o == nil || IsNil(o.Format) {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetFormatOk() (*string, bool) {
+	if o == nil || IsNil(o.Format) {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasFormat() bool {
+	if o != nil && !IsNil(o.Format) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *GetCertificateValue) SetFormat(v string) {
+	o.Format = &v
+}
+
 // GetIgnoreCache returns the IgnoreCache field value if set, zero value otherwise.
 func (o *GetCertificateValue) GetIgnoreCache() string {
 	if o == nil || IsNil(o.IgnoreCache) {
@@ -159,6 +203,38 @@ func (o *GetCertificateValue) HasIgnoreCache() bool {
 // SetIgnoreCache gets a reference to the given string and assigns it to the IgnoreCache field.
 func (o *GetCertificateValue) SetIgnoreCache(v string) {
 	o.IgnoreCache = &v
+}
+
+// GetIncludePrivateKey returns the IncludePrivateKey field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetIncludePrivateKey() bool {
+	if o == nil || IsNil(o.IncludePrivateKey) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludePrivateKey
+}
+
+// GetIncludePrivateKeyOk returns a tuple with the IncludePrivateKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetIncludePrivateKeyOk() (*bool, bool) {
+	if o == nil || IsNil(o.IncludePrivateKey) {
+		return nil, false
+	}
+	return o.IncludePrivateKey, true
+}
+
+// HasIncludePrivateKey returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasIncludePrivateKey() bool {
+	if o != nil && !IsNil(o.IncludePrivateKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludePrivateKey gets a reference to the given bool and assigns it to the IncludePrivateKey field.
+func (o *GetCertificateValue) SetIncludePrivateKey(v bool) {
+	o.IncludePrivateKey = &v
 }
 
 // GetIssuanceToken returns the IssuanceToken field value if set, zero value otherwise.
@@ -225,6 +301,38 @@ func (o *GetCertificateValue) SetJson(v bool) {
 	o.Json = &v
 }
 
+// GetLeafOnly returns the LeafOnly field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetLeafOnly() bool {
+	if o == nil || IsNil(o.LeafOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.LeafOnly
+}
+
+// GetLeafOnlyOk returns a tuple with the LeafOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetLeafOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.LeafOnly) {
+		return nil, false
+	}
+	return o.LeafOnly, true
+}
+
+// HasLeafOnly returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasLeafOnly() bool {
+	if o != nil && !IsNil(o.LeafOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetLeafOnly gets a reference to the given bool and assigns it to the LeafOnly field.
+func (o *GetCertificateValue) SetLeafOnly(v bool) {
+	o.LeafOnly = &v
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *GetCertificateValue) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -255,6 +363,38 @@ func (o *GetCertificateValue) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *GetCertificateValue) SetName(v string) {
 	o.Name = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *GetCertificateValue) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValue) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *GetCertificateValue) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *GetCertificateValue) SetPassword(v string) {
+	o.Password = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -369,8 +509,14 @@ func (o GetCertificateValue) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DisplayId) {
 		toSerialize["display-id"] = o.DisplayId
 	}
+	if !IsNil(o.Format) {
+		toSerialize["format"] = o.Format
+	}
 	if !IsNil(o.IgnoreCache) {
 		toSerialize["ignore-cache"] = o.IgnoreCache
+	}
+	if !IsNil(o.IncludePrivateKey) {
+		toSerialize["include-private-key"] = o.IncludePrivateKey
 	}
 	if !IsNil(o.IssuanceToken) {
 		toSerialize["issuance-token"] = o.IssuanceToken
@@ -378,8 +524,14 @@ func (o GetCertificateValue) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
+	if !IsNil(o.LeafOnly) {
+		toSerialize["leaf-only"] = o.LeafOnly
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

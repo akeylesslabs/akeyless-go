@@ -24,6 +24,8 @@ var _ MappedNullable = &CreateRole{}
 type CreateRole struct {
 	// Allow this role to view analytics. Currently only 'none', 'own', 'all' values are supported, allowing associated auth methods to view reports produced by the same auth methods.
 	AnalyticsAccess *string `json:"analytics-access,omitempty"`
+	// Allow this role to approve Access Requests for items. Currently only 'none', 'scoped' and 'all' values are supported. The tier controls how broadly the approver may list Auth Methods; neither tier lets them grant permissions they do not already hold on the requested item or target.
+	ApproveAccessRequest *string `json:"approve-access-request,omitempty"`
 	// Allow this role to view Agentic Runtime Authority Dashboard. Currently only 'none', 'scoped', 'all' values are supported.
 	AraReportsAccess *string `json:"ara-reports-access,omitempty"`
 	// Allow this role to view audit logs. Currently only 'none', 'own', 'scoped' and 'all' values are supported, allowing associated auth methods to view audit logs produced by the same auth methods.
@@ -56,6 +58,8 @@ type CreateRole struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Allow this role to force-unlock locked secrets. Currently only 'none', 'scoped' and 'all' values are supported.
+	UnlockSecrets *string `json:"unlock-secrets,omitempty"`
 	// Allow this role to view Usage Report. Currently only 'none' and 'all' values are supported.
 	UsageReportsAccess *string `json:"usage-reports-access,omitempty"`
 }
@@ -114,6 +118,38 @@ func (o *CreateRole) HasAnalyticsAccess() bool {
 // SetAnalyticsAccess gets a reference to the given string and assigns it to the AnalyticsAccess field.
 func (o *CreateRole) SetAnalyticsAccess(v string) {
 	o.AnalyticsAccess = &v
+}
+
+// GetApproveAccessRequest returns the ApproveAccessRequest field value if set, zero value otherwise.
+func (o *CreateRole) GetApproveAccessRequest() string {
+	if o == nil || IsNil(o.ApproveAccessRequest) {
+		var ret string
+		return ret
+	}
+	return *o.ApproveAccessRequest
+}
+
+// GetApproveAccessRequestOk returns a tuple with the ApproveAccessRequest field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetApproveAccessRequestOk() (*string, bool) {
+	if o == nil || IsNil(o.ApproveAccessRequest) {
+		return nil, false
+	}
+	return o.ApproveAccessRequest, true
+}
+
+// HasApproveAccessRequest returns a boolean if a field has been set.
+func (o *CreateRole) HasApproveAccessRequest() bool {
+	if o != nil && !IsNil(o.ApproveAccessRequest) {
+		return true
+	}
+
+	return false
+}
+
+// SetApproveAccessRequest gets a reference to the given string and assigns it to the ApproveAccessRequest field.
+func (o *CreateRole) SetApproveAccessRequest(v string) {
+	o.ApproveAccessRequest = &v
 }
 
 // GetAraReportsAccess returns the AraReportsAccess field value if set, zero value otherwise.
@@ -620,6 +656,38 @@ func (o *CreateRole) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUnlockSecrets returns the UnlockSecrets field value if set, zero value otherwise.
+func (o *CreateRole) GetUnlockSecrets() string {
+	if o == nil || IsNil(o.UnlockSecrets) {
+		var ret string
+		return ret
+	}
+	return *o.UnlockSecrets
+}
+
+// GetUnlockSecretsOk returns a tuple with the UnlockSecrets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateRole) GetUnlockSecretsOk() (*string, bool) {
+	if o == nil || IsNil(o.UnlockSecrets) {
+		return nil, false
+	}
+	return o.UnlockSecrets, true
+}
+
+// HasUnlockSecrets returns a boolean if a field has been set.
+func (o *CreateRole) HasUnlockSecrets() bool {
+	if o != nil && !IsNil(o.UnlockSecrets) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlockSecrets gets a reference to the given string and assigns it to the UnlockSecrets field.
+func (o *CreateRole) SetUnlockSecrets(v string) {
+	o.UnlockSecrets = &v
+}
+
 // GetUsageReportsAccess returns the UsageReportsAccess field value if set, zero value otherwise.
 func (o *CreateRole) GetUsageReportsAccess() string {
 	if o == nil || IsNil(o.UsageReportsAccess) {
@@ -664,6 +732,9 @@ func (o CreateRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AnalyticsAccess) {
 		toSerialize["analytics-access"] = o.AnalyticsAccess
+	}
+	if !IsNil(o.ApproveAccessRequest) {
+		toSerialize["approve-access-request"] = o.ApproveAccessRequest
 	}
 	if !IsNil(o.AraReportsAccess) {
 		toSerialize["ara-reports-access"] = o.AraReportsAccess
@@ -710,6 +781,9 @@ func (o CreateRole) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UnlockSecrets) {
+		toSerialize["unlock-secrets"] = o.UnlockSecrets
 	}
 	if !IsNil(o.UsageReportsAccess) {
 		toSerialize["usage-reports-access"] = o.UsageReportsAccess

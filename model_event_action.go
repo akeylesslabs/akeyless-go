@@ -30,6 +30,8 @@ type EventAction struct {
 	Json *bool `json:"json,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
+	// The access TTL in minutes granted by the approver, overriding the requested one
+	TtlInMin *int64 `json:"ttl-in-min,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
 }
@@ -171,6 +173,38 @@ func (o *EventAction) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetTtlInMin returns the TtlInMin field value if set, zero value otherwise.
+func (o *EventAction) GetTtlInMin() int64 {
+	if o == nil || IsNil(o.TtlInMin) {
+		var ret int64
+		return ret
+	}
+	return *o.TtlInMin
+}
+
+// GetTtlInMinOk returns a tuple with the TtlInMin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventAction) GetTtlInMinOk() (*int64, bool) {
+	if o == nil || IsNil(o.TtlInMin) {
+		return nil, false
+	}
+	return o.TtlInMin, true
+}
+
+// HasTtlInMin returns a boolean if a field has been set.
+func (o *EventAction) HasTtlInMin() bool {
+	if o != nil && !IsNil(o.TtlInMin) {
+		return true
+	}
+
+	return false
+}
+
+// SetTtlInMin gets a reference to the given int64 and assigns it to the TtlInMin field.
+func (o *EventAction) SetTtlInMin(v int64) {
+	o.TtlInMin = &v
+}
+
 // GetUidToken returns the UidToken field value if set, zero value otherwise.
 func (o *EventAction) GetUidToken() string {
 	if o == nil || IsNil(o.UidToken) {
@@ -220,6 +254,9 @@ func (o EventAction) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.TtlInMin) {
+		toSerialize["ttl-in-min"] = o.TtlInMin
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken

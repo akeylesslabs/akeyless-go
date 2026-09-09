@@ -38,6 +38,10 @@ type UpdateWindowsTarget struct {
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
 	// The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)
 	Key *string `json:"key,omitempty"`
+	// Lock this secret after each successful value read
+	LockOnRead *string `json:"lock-on-read,omitempty"`
+	// Lock TTL in minutes
+	LockTtl *string `json:"lock-ttl,omitempty"`
 	// Set the maximum number of versions, limited by the account settings defaults.
 	MaxVersions *string `json:"max-versions,omitempty"`
 	// Target name
@@ -50,6 +54,8 @@ type UpdateWindowsTarget struct {
 	Password string `json:"password"`
 	// Server WinRM port
 	Port *string `json:"port,omitempty"`
+	// Rotate this secret after it is unlocked
+	RotateOnUnlock *string `json:"rotate-on-unlock,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -353,6 +359,70 @@ func (o *UpdateWindowsTarget) SetKey(v string) {
 	o.Key = &v
 }
 
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *UpdateWindowsTarget) GetLockOnRead() string {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret string
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWindowsTarget) GetLockOnReadOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *UpdateWindowsTarget) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given string and assigns it to the LockOnRead field.
+func (o *UpdateWindowsTarget) SetLockOnRead(v string) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *UpdateWindowsTarget) GetLockTtl() string {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret string
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWindowsTarget) GetLockTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *UpdateWindowsTarget) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given string and assigns it to the LockTtl field.
+func (o *UpdateWindowsTarget) SetLockTtl(v string) {
+	o.LockTtl = &v
+}
+
 // GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
 func (o *UpdateWindowsTarget) GetMaxVersions() string {
 	if o == nil || IsNil(o.MaxVersions) {
@@ -527,6 +597,38 @@ func (o *UpdateWindowsTarget) HasPort() bool {
 // SetPort gets a reference to the given string and assigns it to the Port field.
 func (o *UpdateWindowsTarget) SetPort(v string) {
 	o.Port = &v
+}
+
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *UpdateWindowsTarget) GetRotateOnUnlock() string {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret string
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateWindowsTarget) GetRotateOnUnlockOk() (*string, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *UpdateWindowsTarget) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given string and assigns it to the RotateOnUnlock field.
+func (o *UpdateWindowsTarget) SetRotateOnUnlock(v string) {
+	o.RotateOnUnlock = &v
 }
 
 // GetToken returns the Token field value if set, zero value otherwise.
@@ -713,6 +815,12 @@ func (o UpdateWindowsTarget) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Key) {
 		toSerialize["key"] = o.Key
 	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock-on-read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock-ttl"] = o.LockTtl
+	}
 	if !IsNil(o.MaxVersions) {
 		toSerialize["max-versions"] = o.MaxVersions
 	}
@@ -726,6 +834,9 @@ func (o UpdateWindowsTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize["password"] = o.Password
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate-on-unlock"] = o.RotateOnUnlock
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

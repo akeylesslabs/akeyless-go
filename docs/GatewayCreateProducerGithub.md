@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **GithubAppId** | Pointer to **int64** | Github app id | [optional] 
 **GithubAppPrivateKey** | Pointer to **string** | App private key | [optional] 
 **GithubBaseUrl** | Pointer to **string** | Base URL | [optional] [default to "https://api.github.com/"]
@@ -94,6 +96,56 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayCreateProducerGithub) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *GatewayCreateProducerGithub) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *GatewayCreateProducerGithub) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *GatewayCreateProducerGithub) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *GatewayCreateProducerGithub) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *GatewayCreateProducerGithub) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *GatewayCreateProducerGithub) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *GatewayCreateProducerGithub) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *GatewayCreateProducerGithub) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
 
 ### GetGithubAppId
 

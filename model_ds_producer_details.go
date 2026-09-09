@@ -86,6 +86,7 @@ type DSProducerDetails struct {
 	AzureUserProgrammaticAccess *bool `json:"azure_user_programmatic_access,omitempty"`
 	AzureUserRolesTemplateId *string `json:"azure_user_roles_template_id,omitempty"`
 	AzureUsername *string `json:"azure_username,omitempty"`
+	BlockParentTargetAccess *bool `json:"block_parent_target_access,omitempty"`
 	CassandraCreationStatements *string `json:"cassandra_creation_statements,omitempty"`
 	ChefOrganizations *string `json:"chef_organizations,omitempty"`
 	ChefServerAccessMode *string `json:"chef_server_access_mode,omitempty"`
@@ -2416,6 +2417,38 @@ func (o *DSProducerDetails) HasAzureUsername() bool {
 // SetAzureUsername gets a reference to the given string and assigns it to the AzureUsername field.
 func (o *DSProducerDetails) SetAzureUsername(v string) {
 	o.AzureUsername = &v
+}
+
+// GetBlockParentTargetAccess returns the BlockParentTargetAccess field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetBlockParentTargetAccess() bool {
+	if o == nil || IsNil(o.BlockParentTargetAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.BlockParentTargetAccess
+}
+
+// GetBlockParentTargetAccessOk returns a tuple with the BlockParentTargetAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetBlockParentTargetAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.BlockParentTargetAccess) {
+		return nil, false
+	}
+	return o.BlockParentTargetAccess, true
+}
+
+// HasBlockParentTargetAccess returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasBlockParentTargetAccess() bool {
+	if o != nil && !IsNil(o.BlockParentTargetAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockParentTargetAccess gets a reference to the given bool and assigns it to the BlockParentTargetAccess field.
+func (o *DSProducerDetails) SetBlockParentTargetAccess(v bool) {
+	o.BlockParentTargetAccess = &v
 }
 
 // GetCassandraCreationStatements returns the CassandraCreationStatements field value if set, zero value otherwise.
@@ -10075,6 +10108,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AzureUsername) {
 		toSerialize["azure_username"] = o.AzureUsername
+	}
+	if !IsNil(o.BlockParentTargetAccess) {
+		toSerialize["block_parent_target_access"] = o.BlockParentTargetAccess
 	}
 	if !IsNil(o.CassandraCreationStatements) {
 		toSerialize["cassandra_creation_statements"] = o.CassandraCreationStatements

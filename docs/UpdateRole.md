@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AnalyticsAccess** | Pointer to **string** | Allow this role to view analytics. Currently only &#39;none&#39;, &#39;own&#39;, &#39;all&#39; values are supported, allowing associated auth methods to view reports produced by the same auth methods. | [optional] 
+**ApproveAccessRequest** | Pointer to **string** | Allow this role to approve Access Requests for items. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported. The tier controls how broadly the approver may list Auth Methods; neither tier lets them grant permissions they do not already hold on the requested item or target. | [optional] 
 **AraReportsAccess** | Pointer to **string** | Allow this role to view Agentic Runtime Authority Dashboard. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported. | [optional] 
 **AuditAccess** | Pointer to **string** | Allow this role to view audit logs. Currently only &#39;none&#39;, &#39;own&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported, allowing associated auth methods to view audit logs produced by the same auth methods. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **SraReportsAccess** | Pointer to **string** | Allow this role to view SRA Clusters. Currently only &#39;none&#39;, &#39;scoped&#39;, &#39;all&#39; values are supported. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
+**UnlockSecrets** | Pointer to **string** | Allow this role to force-unlock locked secrets. Currently only &#39;none&#39;, &#39;scoped&#39; and &#39;all&#39; values are supported. | [optional] 
 **UsageReportsAccess** | Pointer to **string** | Allow this role to view Usage Report. Currently only &#39;none&#39; and &#39;all&#39; values are supported. | [optional] 
 
 ## Methods
@@ -66,6 +68,31 @@ SetAnalyticsAccess sets AnalyticsAccess field to given value.
 `func (o *UpdateRole) HasAnalyticsAccess() bool`
 
 HasAnalyticsAccess returns a boolean if a field has been set.
+
+### GetApproveAccessRequest
+
+`func (o *UpdateRole) GetApproveAccessRequest() string`
+
+GetApproveAccessRequest returns the ApproveAccessRequest field if non-nil, zero value otherwise.
+
+### GetApproveAccessRequestOk
+
+`func (o *UpdateRole) GetApproveAccessRequestOk() (*string, bool)`
+
+GetApproveAccessRequestOk returns a tuple with the ApproveAccessRequest field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApproveAccessRequest
+
+`func (o *UpdateRole) SetApproveAccessRequest(v string)`
+
+SetApproveAccessRequest sets ApproveAccessRequest field to given value.
+
+### HasApproveAccessRequest
+
+`func (o *UpdateRole) HasApproveAccessRequest() bool`
+
+HasApproveAccessRequest returns a boolean if a field has been set.
 
 ### GetAraReportsAccess
 
@@ -461,6 +488,31 @@ SetUidToken sets UidToken field to given value.
 `func (o *UpdateRole) HasUidToken() bool`
 
 HasUidToken returns a boolean if a field has been set.
+
+### GetUnlockSecrets
+
+`func (o *UpdateRole) GetUnlockSecrets() string`
+
+GetUnlockSecrets returns the UnlockSecrets field if non-nil, zero value otherwise.
+
+### GetUnlockSecretsOk
+
+`func (o *UpdateRole) GetUnlockSecretsOk() (*string, bool)`
+
+GetUnlockSecretsOk returns a tuple with the UnlockSecrets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnlockSecrets
+
+`func (o *UpdateRole) SetUnlockSecrets(v string)`
+
+SetUnlockSecrets sets UnlockSecrets field to given value.
+
+### HasUnlockSecrets
+
+`func (o *UpdateRole) HasUnlockSecrets() bool`
+
+HasUnlockSecrets returns a boolean if a field has been set.
 
 ### GetUsageReportsAccess
 

@@ -22,6 +22,7 @@ var _ MappedNullable = &MigrationStatusReplyObj{}
 type MigrationStatusReplyObj struct {
 	Certificates *MigrationItems `json:"certificates,omitempty"`
 	Computers *int64 `json:"computers,omitempty"`
+	DownloadReport *MigrationDownloadReport `json:"download_report,omitempty"`
 	DurationTime *string `json:"duration_time,omitempty"`
 	Error *string `json:"error,omitempty"`
 	LastStatusMessage *string `json:"last_status_message,omitempty"`
@@ -118,6 +119,38 @@ func (o *MigrationStatusReplyObj) HasComputers() bool {
 // SetComputers gets a reference to the given int64 and assigns it to the Computers field.
 func (o *MigrationStatusReplyObj) SetComputers(v int64) {
 	o.Computers = &v
+}
+
+// GetDownloadReport returns the DownloadReport field value if set, zero value otherwise.
+func (o *MigrationStatusReplyObj) GetDownloadReport() MigrationDownloadReport {
+	if o == nil || IsNil(o.DownloadReport) {
+		var ret MigrationDownloadReport
+		return ret
+	}
+	return *o.DownloadReport
+}
+
+// GetDownloadReportOk returns a tuple with the DownloadReport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationStatusReplyObj) GetDownloadReportOk() (*MigrationDownloadReport, bool) {
+	if o == nil || IsNil(o.DownloadReport) {
+		return nil, false
+	}
+	return o.DownloadReport, true
+}
+
+// HasDownloadReport returns a boolean if a field has been set.
+func (o *MigrationStatusReplyObj) HasDownloadReport() bool {
+	if o != nil && !IsNil(o.DownloadReport) {
+		return true
+	}
+
+	return false
+}
+
+// SetDownloadReport gets a reference to the given MigrationDownloadReport and assigns it to the DownloadReport field.
+func (o *MigrationStatusReplyObj) SetDownloadReport(v MigrationDownloadReport) {
+	o.DownloadReport = &v
 }
 
 // GetDurationTime returns the DurationTime field value if set, zero value otherwise.
@@ -615,6 +648,9 @@ func (o MigrationStatusReplyObj) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Computers) {
 		toSerialize["computers"] = o.Computers
+	}
+	if !IsNil(o.DownloadReport) {
+		toSerialize["download_report"] = o.DownloadReport
 	}
 	if !IsNil(o.DurationTime) {
 		toSerialize["duration_time"] = o.DurationTime

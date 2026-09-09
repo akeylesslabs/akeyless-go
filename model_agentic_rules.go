@@ -24,6 +24,8 @@ type AgenticRules struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	InputRules []AgenticRule `json:"input_rules,omitempty"`
 	OutputRules []AgenticRule `json:"output_rules,omitempty"`
+	// QuorumEnabled asks for this item's policy decisions to be evaluated by every model configured on the gateway rather than the Default alone.  Also a pointer, but with the opposite nil meaning to Enabled above: nil is OFF. Enabled defaults on because it governs rules that were already being enforced before the field existed, whereas quorum is new behavior that multiplies latency and denies fail-closed - an item that never asked for it must not acquire it by upgrade.
+	QuorumEnabled *bool `json:"quorum_enabled,omitempty"`
 }
 
 // NewAgenticRules instantiates a new AgenticRules object
@@ -139,6 +141,38 @@ func (o *AgenticRules) SetOutputRules(v []AgenticRule) {
 	o.OutputRules = v
 }
 
+// GetQuorumEnabled returns the QuorumEnabled field value if set, zero value otherwise.
+func (o *AgenticRules) GetQuorumEnabled() bool {
+	if o == nil || IsNil(o.QuorumEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.QuorumEnabled
+}
+
+// GetQuorumEnabledOk returns a tuple with the QuorumEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticRules) GetQuorumEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.QuorumEnabled) {
+		return nil, false
+	}
+	return o.QuorumEnabled, true
+}
+
+// HasQuorumEnabled returns a boolean if a field has been set.
+func (o *AgenticRules) HasQuorumEnabled() bool {
+	if o != nil && !IsNil(o.QuorumEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetQuorumEnabled gets a reference to the given bool and assigns it to the QuorumEnabled field.
+func (o *AgenticRules) SetQuorumEnabled(v bool) {
+	o.QuorumEnabled = &v
+}
+
 func (o AgenticRules) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -157,6 +191,9 @@ func (o AgenticRules) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OutputRules) {
 		toSerialize["output_rules"] = o.OutputRules
+	}
+	if !IsNil(o.QuorumEnabled) {
+		toSerialize["quorum_enabled"] = o.QuorumEnabled
 	}
 	return toSerialize, nil
 }

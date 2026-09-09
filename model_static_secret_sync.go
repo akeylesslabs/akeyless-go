@@ -28,6 +28,8 @@ type StaticSecretSync struct {
 	Environments *string `json:"environments,omitempty"`
 	// JQ expression to filter or transform the secret value
 	FilterSecretValue *string `json:"filter-secret-value,omitempty"`
+	// GCP project to sync the secret to. Relevant only for GCP USCs; must be a project available on the USC
+	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Static secret name
@@ -164,6 +166,38 @@ func (o *StaticSecretSync) HasFilterSecretValue() bool {
 // SetFilterSecretValue gets a reference to the given string and assigns it to the FilterSecretValue field.
 func (o *StaticSecretSync) SetFilterSecretValue(v string) {
 	o.FilterSecretValue = &v
+}
+
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+func (o *StaticSecretSync) GetGcpProjectId() string {
+	if o == nil || IsNil(o.GcpProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.GcpProjectId
+}
+
+// GetGcpProjectIdOk returns a tuple with the GcpProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticSecretSync) GetGcpProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpProjectId) {
+		return nil, false
+	}
+	return o.GcpProjectId, true
+}
+
+// HasGcpProjectId returns a boolean if a field has been set.
+func (o *StaticSecretSync) HasGcpProjectId() bool {
+	if o != nil && !IsNil(o.GcpProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
+func (o *StaticSecretSync) SetGcpProjectId(v string) {
+	o.GcpProjectId = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -432,6 +466,9 @@ func (o StaticSecretSync) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FilterSecretValue) {
 		toSerialize["filter-secret-value"] = o.FilterSecretValue
+	}
+	if !IsNil(o.GcpProjectId) {
+		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

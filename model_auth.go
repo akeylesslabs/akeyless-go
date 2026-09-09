@@ -24,7 +24,7 @@ type Auth struct {
 	AccessId *string `json:"access-id,omitempty"`
 	// Access key (relevant only for access-type=access_key)
 	AccessKey *string `json:"access-key,omitempty"`
-	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/universal_identity/jwt/gcp/cert/oci/kerberos)
+	// Access Type (access_key/password/saml/ldap/k8s/azure_ad/oidc/aws_iam/alicloud/universal_identity/jwt/gcp/cert/oci/kerberos)
 	AccessType *string `json:"access-type,omitempty"`
 	// Account id (relevant only for access-type=password where the email address is associated with more than one account)
 	AccountId *string `json:"account-id,omitempty"`
@@ -38,7 +38,7 @@ type Auth struct {
 	CertChallenge *string `json:"cert-challenge,omitempty"`
 	// Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type=cert)
 	CertData *string `json:"cert-data,omitempty"`
-	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,gcp)
+	// The cloud identity (relevant only for access-type=azure_ad,aws_iam,alicloud,gcp,oci)
 	CloudId *string `json:"cloud-id,omitempty"`
 	Debug *bool `json:"debug,omitempty"`
 	// Disable the FAST negotiation in the Kerberos authentication method

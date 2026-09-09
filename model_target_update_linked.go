@@ -24,6 +24,8 @@ var _ MappedNullable = &TargetUpdateLinked{}
 type TargetUpdateLinked struct {
 	// A comma seperated list of new server hosts and server descriptions joined by semicolon ';' that will be added to the Linked Target hosts.
 	AddHosts *string `json:"add-hosts,omitempty"`
+	// Protection from accidental deletion of this object [true/false]
+	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// A comma seperated list of server hosts and server descriptions joined by semicolon ';' (i.e. 'server-dev.com;My Dev server,server-prod.com;My Prod server description')
@@ -32,6 +34,12 @@ type TargetUpdateLinked struct {
 	Json *bool `json:"json,omitempty"`
 	// Whether to keep previous version [true/false]. If not set, use default according to account settings
 	KeepPrevVersion *string `json:"keep-prev-version,omitempty"`
+	// Lock this secret after each successful value read
+	LockOnRead *string `json:"lock-on-read,omitempty"`
+	// Lock TTL in minutes
+	LockTtl *string `json:"lock-ttl,omitempty"`
+	// Set the maximum number of versions, limited by the account settings defaults.
+	MaxVersions *string `json:"max-versions,omitempty"`
 	// Linked Target name
 	Name string `json:"name"`
 	// New Linked Target name
@@ -40,6 +48,8 @@ type TargetUpdateLinked struct {
 	ParentTargetName *string `json:"parent-target-name,omitempty"`
 	// Comma separated list of existing hosts that will be removed from Linked Target hosts.
 	RmHosts *string `json:"rm-hosts,omitempty"`
+	// Rotate this secret after it is unlocked
+	RotateOnUnlock *string `json:"rotate-on-unlock,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Specifies the hosts type, relevant only when working without parent target
@@ -102,6 +112,38 @@ func (o *TargetUpdateLinked) HasAddHosts() bool {
 // SetAddHosts gets a reference to the given string and assigns it to the AddHosts field.
 func (o *TargetUpdateLinked) SetAddHosts(v string) {
 	o.AddHosts = &v
+}
+
+// GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
+func (o *TargetUpdateLinked) GetDeleteProtection() string {
+	if o == nil || IsNil(o.DeleteProtection) {
+		var ret string
+		return ret
+	}
+	return *o.DeleteProtection
+}
+
+// GetDeleteProtectionOk returns a tuple with the DeleteProtection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateLinked) GetDeleteProtectionOk() (*string, bool) {
+	if o == nil || IsNil(o.DeleteProtection) {
+		return nil, false
+	}
+	return o.DeleteProtection, true
+}
+
+// HasDeleteProtection returns a boolean if a field has been set.
+func (o *TargetUpdateLinked) HasDeleteProtection() bool {
+	if o != nil && !IsNil(o.DeleteProtection) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
+func (o *TargetUpdateLinked) SetDeleteProtection(v string) {
+	o.DeleteProtection = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -232,6 +274,102 @@ func (o *TargetUpdateLinked) SetKeepPrevVersion(v string) {
 	o.KeepPrevVersion = &v
 }
 
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *TargetUpdateLinked) GetLockOnRead() string {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret string
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateLinked) GetLockOnReadOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *TargetUpdateLinked) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given string and assigns it to the LockOnRead field.
+func (o *TargetUpdateLinked) SetLockOnRead(v string) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *TargetUpdateLinked) GetLockTtl() string {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret string
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateLinked) GetLockTtlOk() (*string, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *TargetUpdateLinked) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given string and assigns it to the LockTtl field.
+func (o *TargetUpdateLinked) SetLockTtl(v string) {
+	o.LockTtl = &v
+}
+
+// GetMaxVersions returns the MaxVersions field value if set, zero value otherwise.
+func (o *TargetUpdateLinked) GetMaxVersions() string {
+	if o == nil || IsNil(o.MaxVersions) {
+		var ret string
+		return ret
+	}
+	return *o.MaxVersions
+}
+
+// GetMaxVersionsOk returns a tuple with the MaxVersions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateLinked) GetMaxVersionsOk() (*string, bool) {
+	if o == nil || IsNil(o.MaxVersions) {
+		return nil, false
+	}
+	return o.MaxVersions, true
+}
+
+// HasMaxVersions returns a boolean if a field has been set.
+func (o *TargetUpdateLinked) HasMaxVersions() bool {
+	if o != nil && !IsNil(o.MaxVersions) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxVersions gets a reference to the given string and assigns it to the MaxVersions field.
+func (o *TargetUpdateLinked) SetMaxVersions(v string) {
+	o.MaxVersions = &v
+}
+
 // GetName returns the Name field value
 func (o *TargetUpdateLinked) GetName() string {
 	if o == nil {
@@ -352,6 +490,38 @@ func (o *TargetUpdateLinked) SetRmHosts(v string) {
 	o.RmHosts = &v
 }
 
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *TargetUpdateLinked) GetRotateOnUnlock() string {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret string
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateLinked) GetRotateOnUnlockOk() (*string, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *TargetUpdateLinked) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given string and assigns it to the RotateOnUnlock field.
+func (o *TargetUpdateLinked) SetRotateOnUnlock(v string) {
+	o.RotateOnUnlock = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *TargetUpdateLinked) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -461,6 +631,9 @@ func (o TargetUpdateLinked) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddHosts) {
 		toSerialize["add-hosts"] = o.AddHosts
 	}
+	if !IsNil(o.DeleteProtection) {
+		toSerialize["delete_protection"] = o.DeleteProtection
+	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -473,6 +646,15 @@ func (o TargetUpdateLinked) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KeepPrevVersion) {
 		toSerialize["keep-prev-version"] = o.KeepPrevVersion
 	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock-on-read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock-ttl"] = o.LockTtl
+	}
+	if !IsNil(o.MaxVersions) {
+		toSerialize["max-versions"] = o.MaxVersions
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
@@ -482,6 +664,9 @@ func (o TargetUpdateLinked) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RmHosts) {
 		toSerialize["rm-hosts"] = o.RmHosts
+	}
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate-on-unlock"] = o.RotateOnUnlock
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

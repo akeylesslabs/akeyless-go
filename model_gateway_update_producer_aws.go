@@ -49,6 +49,10 @@ type GatewayUpdateProducerAws struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Automatic admin credentials rotation
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
+	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
+	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	// Turns on AI Quorum checks for this item.
+	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
 	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
@@ -616,6 +620,70 @@ func (o *GatewayUpdateProducerAws) HasEnableAdminRotation() bool {
 // SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
 func (o *GatewayUpdateProducerAws) SetEnableAdminRotation(v bool) {
 	o.EnableAdminRotation = &v
+}
+
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerAws) GetEnableAgenticRuntimeAuthority() bool {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAgenticRuntimeAuthority
+}
+
+// GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerAws) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+		return nil, false
+	}
+	return o.EnableAgenticRuntimeAuthority, true
+}
+
+// HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerAws) HasEnableAgenticRuntimeAuthority() bool {
+	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+func (o *GatewayUpdateProducerAws) SetEnableAgenticRuntimeAuthority(v bool) {
+	o.EnableAgenticRuntimeAuthority = &v
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerAws) GetEnableAiQuorum() bool {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableAiQuorum
+}
+
+// GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerAws) GetEnableAiQuorumOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableAiQuorum) {
+		return nil, false
+	}
+	return o.EnableAiQuorum, true
+}
+
+// HasEnableAiQuorum returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerAws) HasEnableAiQuorum() bool {
+	if o != nil && !IsNil(o.EnableAiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+func (o *GatewayUpdateProducerAws) SetEnableAiQuorum(v bool) {
+	o.EnableAiQuorum = &v
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -1621,6 +1689,12 @@ func (o GatewayUpdateProducerAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableAdminRotation) {
 		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation
+	}
+	if !IsNil(o.EnableAgenticRuntimeAuthority) {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	}
+	if !IsNil(o.EnableAiQuorum) {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
 	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule

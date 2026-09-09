@@ -34,6 +34,9 @@ type SraSessionEntryOut struct {
 	StartTime *time.Time `json:"start_time,omitempty"`
 	Status *string `json:"status,omitempty"`
 	TargetHost *string `json:"target_host,omitempty"`
+	TargetId *int64 `json:"target_id,omitempty"`
+	TargetName *string `json:"target_name,omitempty"`
+	TargetType *string `json:"target_type,omitempty"`
 	Ttl *string `json:"ttl,omitempty"`
 	UserIdentifier *string `json:"user_identifier,omitempty"`
 }
@@ -471,6 +474,102 @@ func (o *SraSessionEntryOut) SetTargetHost(v string) {
 	o.TargetHost = &v
 }
 
+// GetTargetId returns the TargetId field value if set, zero value otherwise.
+func (o *SraSessionEntryOut) GetTargetId() int64 {
+	if o == nil || IsNil(o.TargetId) {
+		var ret int64
+		return ret
+	}
+	return *o.TargetId
+}
+
+// GetTargetIdOk returns a tuple with the TargetId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SraSessionEntryOut) GetTargetIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.TargetId) {
+		return nil, false
+	}
+	return o.TargetId, true
+}
+
+// HasTargetId returns a boolean if a field has been set.
+func (o *SraSessionEntryOut) HasTargetId() bool {
+	if o != nil && !IsNil(o.TargetId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetId gets a reference to the given int64 and assigns it to the TargetId field.
+func (o *SraSessionEntryOut) SetTargetId(v int64) {
+	o.TargetId = &v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *SraSessionEntryOut) GetTargetName() string {
+	if o == nil || IsNil(o.TargetName) {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SraSessionEntryOut) GetTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetName) {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *SraSessionEntryOut) HasTargetName() bool {
+	if o != nil && !IsNil(o.TargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *SraSessionEntryOut) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
+// GetTargetType returns the TargetType field value if set, zero value otherwise.
+func (o *SraSessionEntryOut) GetTargetType() string {
+	if o == nil || IsNil(o.TargetType) {
+		var ret string
+		return ret
+	}
+	return *o.TargetType
+}
+
+// GetTargetTypeOk returns a tuple with the TargetType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SraSessionEntryOut) GetTargetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetType) {
+		return nil, false
+	}
+	return o.TargetType, true
+}
+
+// HasTargetType returns a boolean if a field has been set.
+func (o *SraSessionEntryOut) HasTargetType() bool {
+	if o != nil && !IsNil(o.TargetType) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetType gets a reference to the given string and assigns it to the TargetType field.
+func (o *SraSessionEntryOut) SetTargetType(v string) {
+	o.TargetType = &v
+}
+
 // GetTtl returns the Ttl field value if set, zero value otherwise.
 func (o *SraSessionEntryOut) GetTtl() string {
 	if o == nil || IsNil(o.Ttl) {
@@ -583,6 +682,15 @@ func (o SraSessionEntryOut) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TargetHost) {
 		toSerialize["target_host"] = o.TargetHost
+	}
+	if !IsNil(o.TargetId) {
+		toSerialize["target_id"] = o.TargetId
+	}
+	if !IsNil(o.TargetName) {
+		toSerialize["target_name"] = o.TargetName
+	}
+	if !IsNil(o.TargetType) {
+		toSerialize["target_type"] = o.TargetType
 	}
 	if !IsNil(o.Ttl) {
 		toSerialize["ttl"] = o.Ttl

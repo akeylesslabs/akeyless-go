@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificates** | Pointer to [**MigrationItems**](MigrationItems.md) |  | [optional] 
 **Computers** | Pointer to **int64** |  | [optional] 
+**DownloadReport** | Pointer to [**MigrationDownloadReport**](MigrationDownloadReport.md) |  | [optional] 
 **DurationTime** | Pointer to **string** |  | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
 **LastStatusMessage** | Pointer to **string** |  | [optional] 
@@ -90,6 +91,31 @@ SetComputers sets Computers field to given value.
 `func (o *MigrationStatusReplyObj) HasComputers() bool`
 
 HasComputers returns a boolean if a field has been set.
+
+### GetDownloadReport
+
+`func (o *MigrationStatusReplyObj) GetDownloadReport() MigrationDownloadReport`
+
+GetDownloadReport returns the DownloadReport field if non-nil, zero value otherwise.
+
+### GetDownloadReportOk
+
+`func (o *MigrationStatusReplyObj) GetDownloadReportOk() (*MigrationDownloadReport, bool)`
+
+GetDownloadReportOk returns a tuple with the DownloadReport field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDownloadReport
+
+`func (o *MigrationStatusReplyObj) SetDownloadReport(v MigrationDownloadReport)`
+
+SetDownloadReport sets DownloadReport field to given value.
+
+### HasDownloadReport
+
+`func (o *MigrationStatusReplyObj) HasDownloadReport() bool`
+
+HasDownloadReport returns a boolean if a field has been set.
 
 ### GetDurationTime
 

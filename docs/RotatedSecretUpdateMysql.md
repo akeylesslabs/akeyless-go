@@ -10,12 +10,16 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
+**LockOnRead** | Pointer to **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | Pointer to **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
@@ -23,6 +27,7 @@ Name | Type | Description | Notes
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
+**RotateOnUnlock** | Pointer to **string** | Rotate this secret after it is unlocked | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
@@ -211,6 +216,56 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateMysql) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *RotatedSecretUpdateMysql) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateMysql) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateMysql) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateMysql) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *RotatedSecretUpdateMysql) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateMysql) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *RotatedSecretUpdateMysql) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
+
 ### GetInputRule
 
 `func (o *RotatedSecretUpdateMysql) GetInputRule() []string`
@@ -360,6 +415,56 @@ SetLockDuringSraSession sets LockDuringSraSession field to given value.
 `func (o *RotatedSecretUpdateMysql) HasLockDuringSraSession() bool`
 
 HasLockDuringSraSession returns a boolean if a field has been set.
+
+### GetLockOnRead
+
+`func (o *RotatedSecretUpdateMysql) GetLockOnRead() string`
+
+GetLockOnRead returns the LockOnRead field if non-nil, zero value otherwise.
+
+### GetLockOnReadOk
+
+`func (o *RotatedSecretUpdateMysql) GetLockOnReadOk() (*string, bool)`
+
+GetLockOnReadOk returns a tuple with the LockOnRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOnRead
+
+`func (o *RotatedSecretUpdateMysql) SetLockOnRead(v string)`
+
+SetLockOnRead sets LockOnRead field to given value.
+
+### HasLockOnRead
+
+`func (o *RotatedSecretUpdateMysql) HasLockOnRead() bool`
+
+HasLockOnRead returns a boolean if a field has been set.
+
+### GetLockTtl
+
+`func (o *RotatedSecretUpdateMysql) GetLockTtl() string`
+
+GetLockTtl returns the LockTtl field if non-nil, zero value otherwise.
+
+### GetLockTtlOk
+
+`func (o *RotatedSecretUpdateMysql) GetLockTtlOk() (*string, bool)`
+
+GetLockTtlOk returns a tuple with the LockTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockTtl
+
+`func (o *RotatedSecretUpdateMysql) SetLockTtl(v string)`
+
+SetLockTtl sets LockTtl field to given value.
+
+### HasLockTtl
+
+`func (o *RotatedSecretUpdateMysql) HasLockTtl() bool`
+
+HasLockTtl returns a boolean if a field has been set.
 
 ### GetMaxVersions
 
@@ -530,6 +635,31 @@ SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
 `func (o *RotatedSecretUpdateMysql) HasRotateAfterDisconnect() bool`
 
 HasRotateAfterDisconnect returns a boolean if a field has been set.
+
+### GetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateMysql) GetRotateOnUnlock() string`
+
+GetRotateOnUnlock returns the RotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetRotateOnUnlockOk
+
+`func (o *RotatedSecretUpdateMysql) GetRotateOnUnlockOk() (*string, bool)`
+
+GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateMysql) SetRotateOnUnlock(v string)`
+
+SetRotateOnUnlock sets RotateOnUnlock field to given value.
+
+### HasRotateOnUnlock
+
+`func (o *RotatedSecretUpdateMysql) HasRotateOnUnlock() bool`
+
+HasRotateOnUnlock returns a boolean if a field has been set.
 
 ### GetRotatedPassword
 

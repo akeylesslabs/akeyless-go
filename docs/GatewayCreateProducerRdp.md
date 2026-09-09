@@ -7,8 +7,11 @@ Name | Type | Description | Notes
 **ProviderType** | Pointer to **string** |  | [optional] 
 **AllowUserExtendSession** | Pointer to **int64** | AllowUserExtendSession | [optional] 
 **AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**BlockParentTargetAccess** | Pointer to **string** | Block access to the parent target when using a linked target [true/false]. Empty keeps the existing value on update | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **FixedUserClaimKeyname** | Pointer to **string** | For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only&#x3D;true) | [optional] [default to "ext_username"]
 **FixedUserOnly** | Pointer to **string** | Allow access using externally (IdP) provided username [true/false] | [optional] [default to "false"]
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
@@ -141,6 +144,31 @@ SetAraEnabled sets AraEnabled field to given value.
 
 HasAraEnabled returns a boolean if a field has been set.
 
+### GetBlockParentTargetAccess
+
+`func (o *GatewayCreateProducerRdp) GetBlockParentTargetAccess() string`
+
+GetBlockParentTargetAccess returns the BlockParentTargetAccess field if non-nil, zero value otherwise.
+
+### GetBlockParentTargetAccessOk
+
+`func (o *GatewayCreateProducerRdp) GetBlockParentTargetAccessOk() (*string, bool)`
+
+GetBlockParentTargetAccessOk returns a tuple with the BlockParentTargetAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockParentTargetAccess
+
+`func (o *GatewayCreateProducerRdp) SetBlockParentTargetAccess(v string)`
+
+SetBlockParentTargetAccess sets BlockParentTargetAccess field to given value.
+
+### HasBlockParentTargetAccess
+
+`func (o *GatewayCreateProducerRdp) HasBlockParentTargetAccess() bool`
+
+HasBlockParentTargetAccess returns a boolean if a field has been set.
+
 ### GetCustomUsernameTemplate
 
 `func (o *GatewayCreateProducerRdp) GetCustomUsernameTemplate() string`
@@ -190,6 +218,56 @@ SetDeleteProtection sets DeleteProtection field to given value.
 `func (o *GatewayCreateProducerRdp) HasDeleteProtection() bool`
 
 HasDeleteProtection returns a boolean if a field has been set.
+
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *GatewayCreateProducerRdp) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *GatewayCreateProducerRdp) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *GatewayCreateProducerRdp) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *GatewayCreateProducerRdp) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *GatewayCreateProducerRdp) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *GatewayCreateProducerRdp) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *GatewayCreateProducerRdp) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *GatewayCreateProducerRdp) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
 
 ### GetFixedUserClaimKeyname
 

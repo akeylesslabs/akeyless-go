@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AccountDefaultKeyName** | Pointer to **string** | AccountDefaultKeyName is the name of the DFC key item configured as the default key This is here simply for the response to include the item name in addition to the display ID so the client can properly show this to the user. It will not be saved to the DB, only the AccountDefaultKeyItemID will. | [optional] 
 **AccountFileBytesUsed** | Pointer to **int64** | AccountFileBytesUsed tracks active + pending file-item plain bytes for quota enforcement. | [optional] 
 **AiInsights** | Pointer to [**AiInsightsSetting**](AiInsightsSetting.md) |  | [optional] 
+**AiQuorum** | Pointer to [**AiQuorumSetting**](AiQuorumSetting.md) |  | [optional] 
 **AllowAutoFill** | Pointer to **bool** |  | [optional] 
 **AllowPasskeys** | Pointer to **bool** |  | [optional] 
 **AllowedClientTypes** | Pointer to [**AllowedClientType**](AllowedClientType.md) |  | [optional] 
@@ -155,6 +156,31 @@ SetAiInsights sets AiInsights field to given value.
 `func (o *AccountGeneralSettings) HasAiInsights() bool`
 
 HasAiInsights returns a boolean if a field has been set.
+
+### GetAiQuorum
+
+`func (o *AccountGeneralSettings) GetAiQuorum() AiQuorumSetting`
+
+GetAiQuorum returns the AiQuorum field if non-nil, zero value otherwise.
+
+### GetAiQuorumOk
+
+`func (o *AccountGeneralSettings) GetAiQuorumOk() (*AiQuorumSetting, bool)`
+
+GetAiQuorumOk returns a tuple with the AiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiQuorum
+
+`func (o *AccountGeneralSettings) SetAiQuorum(v AiQuorumSetting)`
+
+SetAiQuorum sets AiQuorum field to given value.
+
+### HasAiQuorum
+
+`func (o *AccountGeneralSettings) HasAiQuorum() bool`
+
+HasAiQuorum returns a boolean if a field has been set.
 
 ### GetAllowAutoFill
 

@@ -7,23 +7,31 @@ Name | Type | Description | Notes
 **ProviderType** | Pointer to **string** |  | [optional] 
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
+**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
 **CertificateFormat** | Pointer to **string** |  | [optional] 
 **ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only. | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
+**InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **LockDuringSraSession** | Pointer to **string** | Lock this secret for read/update while an SRA session is active | [optional] 
+**LockOnRead** | Pointer to **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | Pointer to **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Current item name | 
 **NewMetadata** | Pointer to **string** | Deprecated - use description | [optional] [default to "default_metadata"]
 **NewName** | Pointer to **string** | New item name | [optional] 
+**OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
 **RotateAfterDisconnect** | Pointer to **string** | StringOrBool accepts JSON strings, booleans, and numbers for backward compatibility with older SDK versions that send boolean values for rotate-after-disconnect. | [optional] 
+**RotateOnUnlock** | Pointer to **string** | Rotate this secret after it is unlocked | [optional] 
 **SecureAccessAddHost** | Pointer to **[]string** | List of the new hosts that will be attached to SRA servers host | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **string** | Allow providing external user for a domain users [true/false] | [optional] 
 **SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
@@ -155,6 +163,31 @@ SetAddTag sets AddTag field to given value.
 
 HasAddTag returns a boolean if a field has been set.
 
+### GetAraEnabled
+
+`func (o *UpdateItem) GetAraEnabled() bool`
+
+GetAraEnabled returns the AraEnabled field if non-nil, zero value otherwise.
+
+### GetAraEnabledOk
+
+`func (o *UpdateItem) GetAraEnabledOk() (*bool, bool)`
+
+GetAraEnabledOk returns a tuple with the AraEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAraEnabled
+
+`func (o *UpdateItem) SetAraEnabled(v bool)`
+
+SetAraEnabled sets AraEnabled field to given value.
+
+### HasAraEnabled
+
+`func (o *UpdateItem) HasAraEnabled() bool`
+
+HasAraEnabled returns a boolean if a field has been set.
+
 ### GetCertFileData
 
 `func (o *UpdateItem) GetCertFileData() string`
@@ -280,6 +313,56 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *UpdateItem) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *UpdateItem) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *UpdateItem) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *UpdateItem) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *UpdateItem) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *UpdateItem) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *UpdateItem) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *UpdateItem) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
+
 ### GetExpirationEventIn
 
 `func (o *UpdateItem) GetExpirationEventIn() []string`
@@ -355,6 +438,31 @@ SetHostProvider sets HostProvider field to given value.
 
 HasHostProvider returns a boolean if a field has been set.
 
+### GetInputRule
+
+`func (o *UpdateItem) GetInputRule() []string`
+
+GetInputRule returns the InputRule field if non-nil, zero value otherwise.
+
+### GetInputRuleOk
+
+`func (o *UpdateItem) GetInputRuleOk() (*[]string, bool)`
+
+GetInputRuleOk returns a tuple with the InputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInputRule
+
+`func (o *UpdateItem) SetInputRule(v []string)`
+
+SetInputRule sets InputRule field to given value.
+
+### HasInputRule
+
+`func (o *UpdateItem) HasInputRule() bool`
+
+HasInputRule returns a boolean if a field has been set.
+
 ### GetItemCustomFields
 
 `func (o *UpdateItem) GetItemCustomFields() map[string]string`
@@ -429,6 +537,56 @@ SetLockDuringSraSession sets LockDuringSraSession field to given value.
 `func (o *UpdateItem) HasLockDuringSraSession() bool`
 
 HasLockDuringSraSession returns a boolean if a field has been set.
+
+### GetLockOnRead
+
+`func (o *UpdateItem) GetLockOnRead() string`
+
+GetLockOnRead returns the LockOnRead field if non-nil, zero value otherwise.
+
+### GetLockOnReadOk
+
+`func (o *UpdateItem) GetLockOnReadOk() (*string, bool)`
+
+GetLockOnReadOk returns a tuple with the LockOnRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOnRead
+
+`func (o *UpdateItem) SetLockOnRead(v string)`
+
+SetLockOnRead sets LockOnRead field to given value.
+
+### HasLockOnRead
+
+`func (o *UpdateItem) HasLockOnRead() bool`
+
+HasLockOnRead returns a boolean if a field has been set.
+
+### GetLockTtl
+
+`func (o *UpdateItem) GetLockTtl() string`
+
+GetLockTtl returns the LockTtl field if non-nil, zero value otherwise.
+
+### GetLockTtlOk
+
+`func (o *UpdateItem) GetLockTtlOk() (*string, bool)`
+
+GetLockTtlOk returns a tuple with the LockTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockTtl
+
+`func (o *UpdateItem) SetLockTtl(v string)`
+
+SetLockTtl sets LockTtl field to given value.
+
+### HasLockTtl
+
+`func (o *UpdateItem) HasLockTtl() bool`
+
+HasLockTtl returns a boolean if a field has been set.
 
 ### GetMaxVersions
 
@@ -525,6 +683,31 @@ SetNewName sets NewName field to given value.
 
 HasNewName returns a boolean if a field has been set.
 
+### GetOutputRule
+
+`func (o *UpdateItem) GetOutputRule() []string`
+
+GetOutputRule returns the OutputRule field if non-nil, zero value otherwise.
+
+### GetOutputRuleOk
+
+`func (o *UpdateItem) GetOutputRuleOk() (*[]string, bool)`
+
+GetOutputRuleOk returns a tuple with the OutputRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputRule
+
+`func (o *UpdateItem) SetOutputRule(v []string)`
+
+SetOutputRule sets OutputRule field to given value.
+
+### HasOutputRule
+
+`func (o *UpdateItem) HasOutputRule() bool`
+
+HasOutputRule returns a boolean if a field has been set.
+
 ### GetRmTag
 
 `func (o *UpdateItem) GetRmTag() []string`
@@ -574,6 +757,31 @@ SetRotateAfterDisconnect sets RotateAfterDisconnect field to given value.
 `func (o *UpdateItem) HasRotateAfterDisconnect() bool`
 
 HasRotateAfterDisconnect returns a boolean if a field has been set.
+
+### GetRotateOnUnlock
+
+`func (o *UpdateItem) GetRotateOnUnlock() string`
+
+GetRotateOnUnlock returns the RotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetRotateOnUnlockOk
+
+`func (o *UpdateItem) GetRotateOnUnlockOk() (*string, bool)`
+
+GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateOnUnlock
+
+`func (o *UpdateItem) SetRotateOnUnlock(v string)`
+
+SetRotateOnUnlock sets RotateOnUnlock field to given value.
+
+### HasRotateOnUnlock
+
+`func (o *UpdateItem) HasRotateOnUnlock() bool`
+
+HasRotateOnUnlock returns a boolean if a field has been set.
 
 ### GetSecureAccessAddHost
 

@@ -37,6 +37,7 @@ type ConfigHash struct {
 	ProducersStatus *string `json:"producers_status,omitempty"`
 	Rotators interface{} `json:"rotators,omitempty"`
 	Saml *string `json:"saml,omitempty"`
+	SamlSp *string `json:"saml_sp,omitempty"`
 	UniversalIdentity *string `json:"universal_identity,omitempty"`
 }
 
@@ -603,6 +604,38 @@ func (o *ConfigHash) SetSaml(v string) {
 	o.Saml = &v
 }
 
+// GetSamlSp returns the SamlSp field value if set, zero value otherwise.
+func (o *ConfigHash) GetSamlSp() string {
+	if o == nil || IsNil(o.SamlSp) {
+		var ret string
+		return ret
+	}
+	return *o.SamlSp
+}
+
+// GetSamlSpOk returns a tuple with the SamlSp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConfigHash) GetSamlSpOk() (*string, bool) {
+	if o == nil || IsNil(o.SamlSp) {
+		return nil, false
+	}
+	return o.SamlSp, true
+}
+
+// HasSamlSp returns a boolean if a field has been set.
+func (o *ConfigHash) HasSamlSp() bool {
+	if o != nil && !IsNil(o.SamlSp) {
+		return true
+	}
+
+	return false
+}
+
+// SetSamlSp gets a reference to the given string and assigns it to the SamlSp field.
+func (o *ConfigHash) SetSamlSp(v string) {
+	o.SamlSp = &v
+}
+
 // GetUniversalIdentity returns the UniversalIdentity field value if set, zero value otherwise.
 func (o *ConfigHash) GetUniversalIdentity() string {
 	if o == nil || IsNil(o.UniversalIdentity) {
@@ -695,6 +728,9 @@ func (o ConfigHash) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Saml) {
 		toSerialize["saml"] = o.Saml
+	}
+	if !IsNil(o.SamlSp) {
+		toSerialize["saml_sp"] = o.SamlSp
 	}
 	if !IsNil(o.UniversalIdentity) {
 		toSerialize["universal_identity"] = o.UniversalIdentity

@@ -31,6 +31,7 @@ type SecretInfo struct {
 	Location interface{} `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Namespace *string `json:"namespace,omitempty"`
+	Project *string `json:"project,omitempty"`
 	Region *string `json:"region,omitempty"`
 	SecretId *string `json:"secret_id,omitempty"`
 	Status *bool `json:"status,omitempty"`
@@ -380,6 +381,38 @@ func (o *SecretInfo) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *SecretInfo) GetProject() string {
+	if o == nil || IsNil(o.Project) {
+		var ret string
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SecretInfo) GetProjectOk() (*string, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *SecretInfo) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given string and assigns it to the Project field.
+func (o *SecretInfo) SetProject(v string) {
+	o.Project = &v
+}
+
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *SecretInfo) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -707,6 +740,9 @@ func (o SecretInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
+	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region

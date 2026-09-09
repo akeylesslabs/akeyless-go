@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertificatePem** | Pointer to **string** |  | [optional] 
+**EncodedCertificate** | Pointer to **string** |  | [optional] 
 **PrivateKeyPem** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetCertificatePem sets CertificatePem field to given value.
 `func (o *GetCertificateValueOutput) HasCertificatePem() bool`
 
 HasCertificatePem returns a boolean if a field has been set.
+
+### GetEncodedCertificate
+
+`func (o *GetCertificateValueOutput) GetEncodedCertificate() string`
+
+GetEncodedCertificate returns the EncodedCertificate field if non-nil, zero value otherwise.
+
+### GetEncodedCertificateOk
+
+`func (o *GetCertificateValueOutput) GetEncodedCertificateOk() (*string, bool)`
+
+GetEncodedCertificateOk returns a tuple with the EncodedCertificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEncodedCertificate
+
+`func (o *GetCertificateValueOutput) SetEncodedCertificate(v string)`
+
+SetEncodedCertificate sets EncodedCertificate field to given value.
+
+### HasEncodedCertificate
+
+`func (o *GetCertificateValueOutput) HasEncodedCertificate() bool`
+
+HasEncodedCertificate returns a boolean if a field has been set.
 
 ### GetPrivateKeyPem
 

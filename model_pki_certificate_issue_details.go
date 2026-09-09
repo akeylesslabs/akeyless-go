@@ -72,6 +72,8 @@ type PKICertificateIssueDetails struct {
 	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
 	RequireCn *bool `json:"require_cn,omitempty"`
 	ServerFlag *bool `json:"server_flag,omitempty"`
+	// SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain.
+	SplitCertificateChain *bool `json:"split_certificate_chain,omitempty"`
 	StreetAddress []string `json:"street_address,omitempty"`
 }
 
@@ -1500,6 +1502,38 @@ func (o *PKICertificateIssueDetails) SetServerFlag(v bool) {
 	o.ServerFlag = &v
 }
 
+// GetSplitCertificateChain returns the SplitCertificateChain field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetSplitCertificateChain() bool {
+	if o == nil || IsNil(o.SplitCertificateChain) {
+		var ret bool
+		return ret
+	}
+	return *o.SplitCertificateChain
+}
+
+// GetSplitCertificateChainOk returns a tuple with the SplitCertificateChain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetSplitCertificateChainOk() (*bool, bool) {
+	if o == nil || IsNil(o.SplitCertificateChain) {
+		return nil, false
+	}
+	return o.SplitCertificateChain, true
+}
+
+// HasSplitCertificateChain returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasSplitCertificateChain() bool {
+	if o != nil && !IsNil(o.SplitCertificateChain) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCertificateChain gets a reference to the given bool and assigns it to the SplitCertificateChain field.
+func (o *PKICertificateIssueDetails) SetSplitCertificateChain(v bool) {
+	o.SplitCertificateChain = &v
+}
+
 // GetStreetAddress returns the StreetAddress field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetStreetAddress() []string {
 	if o == nil || IsNil(o.StreetAddress) {
@@ -1673,6 +1707,9 @@ func (o PKICertificateIssueDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ServerFlag) {
 		toSerialize["server_flag"] = o.ServerFlag
+	}
+	if !IsNil(o.SplitCertificateChain) {
+		toSerialize["split_certificate_chain"] = o.SplitCertificateChain
 	}
 	if !IsNil(o.StreetAddress) {
 		toSerialize["street_address"] = o.StreetAddress

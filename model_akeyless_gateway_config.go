@@ -38,6 +38,7 @@ type AkeylessGatewayConfig struct {
 	Producers *ProducersConfigPart `json:"producers,omitempty"`
 	Rotators *RotatorsConfigPart `json:"rotators,omitempty"`
 	Saml *DefaultConfigPart `json:"saml,omitempty"`
+	SamlSp *SamlSpConfigPart `json:"saml_sp,omitempty"`
 	Version *int32 `json:"version,omitempty"`
 }
 
@@ -634,6 +635,38 @@ func (o *AkeylessGatewayConfig) SetSaml(v DefaultConfigPart) {
 	o.Saml = &v
 }
 
+// GetSamlSp returns the SamlSp field value if set, zero value otherwise.
+func (o *AkeylessGatewayConfig) GetSamlSp() SamlSpConfigPart {
+	if o == nil || IsNil(o.SamlSp) {
+		var ret SamlSpConfigPart
+		return ret
+	}
+	return *o.SamlSp
+}
+
+// GetSamlSpOk returns a tuple with the SamlSp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AkeylessGatewayConfig) GetSamlSpOk() (*SamlSpConfigPart, bool) {
+	if o == nil || IsNil(o.SamlSp) {
+		return nil, false
+	}
+	return o.SamlSp, true
+}
+
+// HasSamlSp returns a boolean if a field has been set.
+func (o *AkeylessGatewayConfig) HasSamlSp() bool {
+	if o != nil && !IsNil(o.SamlSp) {
+		return true
+	}
+
+	return false
+}
+
+// SetSamlSp gets a reference to the given SamlSpConfigPart and assigns it to the SamlSp field.
+func (o *AkeylessGatewayConfig) SetSamlSp(v SamlSpConfigPart) {
+	o.SamlSp = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *AkeylessGatewayConfig) GetVersion() int32 {
 	if o == nil || IsNil(o.Version) {
@@ -729,6 +762,9 @@ func (o AkeylessGatewayConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Saml) {
 		toSerialize["saml"] = o.Saml
+	}
+	if !IsNil(o.SamlSp) {
+		toSerialize["saml_sp"] = o.SamlSp
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

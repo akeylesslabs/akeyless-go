@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **DeleteRemote** | Pointer to **bool** | Delete the secret from remote secret manager (for association create/update) | [optional] 
 **Environments** | Pointer to **string** | GitHub environments to sync to. Relevant only for GitHub targets. Syncs to all environments defined on the selected USC by default, or to one or more specific repositories associated with that USC item when specified (e.g. --environments repo1/env1,repo2/env2). | [optional] 
 **FilterSecretValue** | Pointer to **string** | JQ expression to filter or transform the secret value | [optional] 
+**GcpProjectId** | Pointer to **string** | GCP project to sync the secret to. Relevant only for GCP USCs; must be a project available on the USC | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Rotated secret name | 
 **Namespace** | Pointer to **string** | Vault namespace, releavnt only for Hashicorp Vault Target | [optional] 
@@ -109,6 +110,31 @@ SetFilterSecretValue sets FilterSecretValue field to given value.
 `func (o *RotatedSecretSync) HasFilterSecretValue() bool`
 
 HasFilterSecretValue returns a boolean if a field has been set.
+
+### GetGcpProjectId
+
+`func (o *RotatedSecretSync) GetGcpProjectId() string`
+
+GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
+
+### GetGcpProjectIdOk
+
+`func (o *RotatedSecretSync) GetGcpProjectIdOk() (*string, bool)`
+
+GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpProjectId
+
+`func (o *RotatedSecretSync) SetGcpProjectId(v string)`
+
+SetGcpProjectId sets GcpProjectId field to given value.
+
+### HasGcpProjectId
+
+`func (o *RotatedSecretSync) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 ### GetJson
 

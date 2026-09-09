@@ -32,9 +32,13 @@ type ItemGeneralInfo struct {
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	ImporterInfo *ImporterInfo `json:"importer_info,omitempty"`
 	IssuerOverviewInfo *IssuerOverviewInfo `json:"issuer_overview_info,omitempty"`
+	LockOnRead *bool `json:"lock_on_read,omitempty"`
+	LockTtl *int64 `json:"lock_ttl,omitempty"`
 	NextRotationEvents []NextAutoRotationEvent `json:"next_rotation_events,omitempty"`
 	OidcClientInfo *OidcClientInfo `json:"oidc_client_info,omitempty"`
 	PasswordPolicy *PasswordPolicyInfo `json:"password_policy,omitempty"`
+	PendingRotateOnUnlock *bool `json:"pending_rotate_on_unlock,omitempty"`
+	RotateOnUnlock *bool `json:"rotate_on_unlock,omitempty"`
 	RotatedSecretDetails *RotatedSecretDetailsInfo `json:"rotated_secret_details,omitempty"`
 	SecureRemoteAccessDetails *SecureRemoteAccess `json:"secure_remote_access_details,omitempty"`
 	StaticSecretInfo *StaticSecretDetailsInfo `json:"static_secret_info,omitempty"`
@@ -442,6 +446,70 @@ func (o *ItemGeneralInfo) SetIssuerOverviewInfo(v IssuerOverviewInfo) {
 	o.IssuerOverviewInfo = &v
 }
 
+// GetLockOnRead returns the LockOnRead field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetLockOnRead() bool {
+	if o == nil || IsNil(o.LockOnRead) {
+		var ret bool
+		return ret
+	}
+	return *o.LockOnRead
+}
+
+// GetLockOnReadOk returns a tuple with the LockOnRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetLockOnReadOk() (*bool, bool) {
+	if o == nil || IsNil(o.LockOnRead) {
+		return nil, false
+	}
+	return o.LockOnRead, true
+}
+
+// HasLockOnRead returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasLockOnRead() bool {
+	if o != nil && !IsNil(o.LockOnRead) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOnRead gets a reference to the given bool and assigns it to the LockOnRead field.
+func (o *ItemGeneralInfo) SetLockOnRead(v bool) {
+	o.LockOnRead = &v
+}
+
+// GetLockTtl returns the LockTtl field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetLockTtl() int64 {
+	if o == nil || IsNil(o.LockTtl) {
+		var ret int64
+		return ret
+	}
+	return *o.LockTtl
+}
+
+// GetLockTtlOk returns a tuple with the LockTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetLockTtlOk() (*int64, bool) {
+	if o == nil || IsNil(o.LockTtl) {
+		return nil, false
+	}
+	return o.LockTtl, true
+}
+
+// HasLockTtl returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasLockTtl() bool {
+	if o != nil && !IsNil(o.LockTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockTtl gets a reference to the given int64 and assigns it to the LockTtl field.
+func (o *ItemGeneralInfo) SetLockTtl(v int64) {
+	o.LockTtl = &v
+}
+
 // GetNextRotationEvents returns the NextRotationEvents field value if set, zero value otherwise.
 func (o *ItemGeneralInfo) GetNextRotationEvents() []NextAutoRotationEvent {
 	if o == nil || IsNil(o.NextRotationEvents) {
@@ -536,6 +604,70 @@ func (o *ItemGeneralInfo) HasPasswordPolicy() bool {
 // SetPasswordPolicy gets a reference to the given PasswordPolicyInfo and assigns it to the PasswordPolicy field.
 func (o *ItemGeneralInfo) SetPasswordPolicy(v PasswordPolicyInfo) {
 	o.PasswordPolicy = &v
+}
+
+// GetPendingRotateOnUnlock returns the PendingRotateOnUnlock field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetPendingRotateOnUnlock() bool {
+	if o == nil || IsNil(o.PendingRotateOnUnlock) {
+		var ret bool
+		return ret
+	}
+	return *o.PendingRotateOnUnlock
+}
+
+// GetPendingRotateOnUnlockOk returns a tuple with the PendingRotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetPendingRotateOnUnlockOk() (*bool, bool) {
+	if o == nil || IsNil(o.PendingRotateOnUnlock) {
+		return nil, false
+	}
+	return o.PendingRotateOnUnlock, true
+}
+
+// HasPendingRotateOnUnlock returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasPendingRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.PendingRotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetPendingRotateOnUnlock gets a reference to the given bool and assigns it to the PendingRotateOnUnlock field.
+func (o *ItemGeneralInfo) SetPendingRotateOnUnlock(v bool) {
+	o.PendingRotateOnUnlock = &v
+}
+
+// GetRotateOnUnlock returns the RotateOnUnlock field value if set, zero value otherwise.
+func (o *ItemGeneralInfo) GetRotateOnUnlock() bool {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		var ret bool
+		return ret
+	}
+	return *o.RotateOnUnlock
+}
+
+// GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ItemGeneralInfo) GetRotateOnUnlockOk() (*bool, bool) {
+	if o == nil || IsNil(o.RotateOnUnlock) {
+		return nil, false
+	}
+	return o.RotateOnUnlock, true
+}
+
+// HasRotateOnUnlock returns a boolean if a field has been set.
+func (o *ItemGeneralInfo) HasRotateOnUnlock() bool {
+	if o != nil && !IsNil(o.RotateOnUnlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetRotateOnUnlock gets a reference to the given bool and assigns it to the RotateOnUnlock field.
+func (o *ItemGeneralInfo) SetRotateOnUnlock(v bool) {
+	o.RotateOnUnlock = &v
 }
 
 // GetRotatedSecretDetails returns the RotatedSecretDetails field value if set, zero value otherwise.
@@ -712,6 +844,12 @@ func (o ItemGeneralInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IssuerOverviewInfo) {
 		toSerialize["issuer_overview_info"] = o.IssuerOverviewInfo
 	}
+	if !IsNil(o.LockOnRead) {
+		toSerialize["lock_on_read"] = o.LockOnRead
+	}
+	if !IsNil(o.LockTtl) {
+		toSerialize["lock_ttl"] = o.LockTtl
+	}
 	if !IsNil(o.NextRotationEvents) {
 		toSerialize["next_rotation_events"] = o.NextRotationEvents
 	}
@@ -720,6 +858,12 @@ func (o ItemGeneralInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PasswordPolicy) {
 		toSerialize["password_policy"] = o.PasswordPolicy
+	}
+	if !IsNil(o.PendingRotateOnUnlock) {
+		toSerialize["pending_rotate_on_unlock"] = o.PendingRotateOnUnlock
+	}
+	if !IsNil(o.RotateOnUnlock) {
+		toSerialize["rotate_on_unlock"] = o.RotateOnUnlock
 	}
 	if !IsNil(o.RotatedSecretDetails) {
 		toSerialize["rotated_secret_details"] = o.RotatedSecretDetails

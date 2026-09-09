@@ -68,6 +68,7 @@ Name | Type | Description | Notes
 **AzureUserProgrammaticAccess** | Pointer to **bool** |  | [optional] 
 **AzureUserRolesTemplateId** | Pointer to **string** |  | [optional] 
 **AzureUsername** | Pointer to **string** |  | [optional] 
+**BlockParentTargetAccess** | Pointer to **bool** |  | [optional] 
 **CassandraCreationStatements** | Pointer to **string** |  | [optional] 
 **ChefOrganizations** | Pointer to **string** |  | [optional] 
 **ChefServerAccessMode** | Pointer to **string** |  | [optional] 
@@ -1920,6 +1921,31 @@ SetAzureUsername sets AzureUsername field to given value.
 `func (o *DSProducerDetails) HasAzureUsername() bool`
 
 HasAzureUsername returns a boolean if a field has been set.
+
+### GetBlockParentTargetAccess
+
+`func (o *DSProducerDetails) GetBlockParentTargetAccess() bool`
+
+GetBlockParentTargetAccess returns the BlockParentTargetAccess field if non-nil, zero value otherwise.
+
+### GetBlockParentTargetAccessOk
+
+`func (o *DSProducerDetails) GetBlockParentTargetAccessOk() (*bool, bool)`
+
+GetBlockParentTargetAccessOk returns a tuple with the BlockParentTargetAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlockParentTargetAccess
+
+`func (o *DSProducerDetails) SetBlockParentTargetAccess(v bool)`
+
+SetBlockParentTargetAccess sets BlockParentTargetAccess field to given value.
+
+### HasBlockParentTargetAccess
+
+`func (o *DSProducerDetails) HasBlockParentTargetAccess() bool`
+
+HasBlockParentTargetAccess returns a boolean if a field has been set.
 
 ### GetCassandraCreationStatements
 

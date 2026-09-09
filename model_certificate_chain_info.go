@@ -39,8 +39,12 @@ type CertificateChainInfo struct {
 	ExpirationEvents []CertificateExpirationEvent `json:"expiration_events,omitempty"`
 	ExternalCaId *NullString `json:"external_ca_id,omitempty"`
 	IssuanceStatus *string `json:"issuance_status,omitempty"`
+	// LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled.
+	LeafCertificatePem *string `json:"leaf_certificate_pem,omitempty"`
 	NotBefore *time.Time `json:"not_before,omitempty"`
 	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
+	// SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain).
+	SplitCertificateChain *bool `json:"split_certificate_chain,omitempty"`
 }
 
 // NewCertificateChainInfo instantiates a new CertificateChainInfo object
@@ -604,6 +608,38 @@ func (o *CertificateChainInfo) SetIssuanceStatus(v string) {
 	o.IssuanceStatus = &v
 }
 
+// GetLeafCertificatePem returns the LeafCertificatePem field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetLeafCertificatePem() string {
+	if o == nil || IsNil(o.LeafCertificatePem) {
+		var ret string
+		return ret
+	}
+	return *o.LeafCertificatePem
+}
+
+// GetLeafCertificatePemOk returns a tuple with the LeafCertificatePem field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetLeafCertificatePemOk() (*string, bool) {
+	if o == nil || IsNil(o.LeafCertificatePem) {
+		return nil, false
+	}
+	return o.LeafCertificatePem, true
+}
+
+// HasLeafCertificatePem returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasLeafCertificatePem() bool {
+	if o != nil && !IsNil(o.LeafCertificatePem) {
+		return true
+	}
+
+	return false
+}
+
+// SetLeafCertificatePem gets a reference to the given string and assigns it to the LeafCertificatePem field.
+func (o *CertificateChainInfo) SetLeafCertificatePem(v string) {
+	o.LeafCertificatePem = &v
+}
+
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise.
 func (o *CertificateChainInfo) GetNotBefore() time.Time {
 	if o == nil || IsNil(o.NotBefore) {
@@ -668,6 +704,38 @@ func (o *CertificateChainInfo) SetRenewBeforeExpirationInDays(v int64) {
 	o.RenewBeforeExpirationInDays = &v
 }
 
+// GetSplitCertificateChain returns the SplitCertificateChain field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetSplitCertificateChain() bool {
+	if o == nil || IsNil(o.SplitCertificateChain) {
+		var ret bool
+		return ret
+	}
+	return *o.SplitCertificateChain
+}
+
+// GetSplitCertificateChainOk returns a tuple with the SplitCertificateChain field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetSplitCertificateChainOk() (*bool, bool) {
+	if o == nil || IsNil(o.SplitCertificateChain) {
+		return nil, false
+	}
+	return o.SplitCertificateChain, true
+}
+
+// HasSplitCertificateChain returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasSplitCertificateChain() bool {
+	if o != nil && !IsNil(o.SplitCertificateChain) {
+		return true
+	}
+
+	return false
+}
+
+// SetSplitCertificateChain gets a reference to the given bool and assigns it to the SplitCertificateChain field.
+func (o *CertificateChainInfo) SetSplitCertificateChain(v bool) {
+	o.SplitCertificateChain = &v
+}
+
 func (o CertificateChainInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -729,11 +797,17 @@ func (o CertificateChainInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IssuanceStatus) {
 		toSerialize["issuance_status"] = o.IssuanceStatus
 	}
+	if !IsNil(o.LeafCertificatePem) {
+		toSerialize["leaf_certificate_pem"] = o.LeafCertificatePem
+	}
 	if !IsNil(o.NotBefore) {
 		toSerialize["not_before"] = o.NotBefore
 	}
 	if !IsNil(o.RenewBeforeExpirationInDays) {
 		toSerialize["renew_before_expiration_in_days"] = o.RenewBeforeExpirationInDays
+	}
+	if !IsNil(o.SplitCertificateChain) {
+		toSerialize["split_certificate_chain"] = o.SplitCertificateChain
 	}
 	return toSerialize, nil
 }

@@ -27,6 +27,7 @@ type AccountGeneralSettings struct {
 	// AccountFileBytesUsed tracks active + pending file-item plain bytes for quota enforcement.
 	AccountFileBytesUsed *int64 `json:"account_file_bytes_used,omitempty"`
 	AiInsights *AiInsightsSetting `json:"ai_insights,omitempty"`
+	AiQuorum *AiQuorumSetting `json:"ai_quorum,omitempty"`
 	AllowAutoFill *bool `json:"allow_auto_fill,omitempty"`
 	AllowPasskeys *bool `json:"allow_passkeys,omitempty"`
 	AllowedClientTypes *AllowedClientType `json:"allowed_client_types,omitempty"`
@@ -202,6 +203,38 @@ func (o *AccountGeneralSettings) HasAiInsights() bool {
 // SetAiInsights gets a reference to the given AiInsightsSetting and assigns it to the AiInsights field.
 func (o *AccountGeneralSettings) SetAiInsights(v AiInsightsSetting) {
 	o.AiInsights = &v
+}
+
+// GetAiQuorum returns the AiQuorum field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetAiQuorum() AiQuorumSetting {
+	if o == nil || IsNil(o.AiQuorum) {
+		var ret AiQuorumSetting
+		return ret
+	}
+	return *o.AiQuorum
+}
+
+// GetAiQuorumOk returns a tuple with the AiQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetAiQuorumOk() (*AiQuorumSetting, bool) {
+	if o == nil || IsNil(o.AiQuorum) {
+		return nil, false
+	}
+	return o.AiQuorum, true
+}
+
+// HasAiQuorum returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasAiQuorum() bool {
+	if o != nil && !IsNil(o.AiQuorum) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiQuorum gets a reference to the given AiQuorumSetting and assigns it to the AiQuorum field.
+func (o *AccountGeneralSettings) SetAiQuorum(v AiQuorumSetting) {
+	o.AiQuorum = &v
 }
 
 // GetAllowAutoFill returns the AllowAutoFill field value if set, zero value otherwise.
@@ -1121,6 +1154,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiInsights) {
 		toSerialize["ai_insights"] = o.AiInsights
+	}
+	if !IsNil(o.AiQuorum) {
+		toSerialize["ai_quorum"] = o.AiQuorum
 	}
 	if !IsNil(o.AllowAutoFill) {
 		toSerialize["allow_auto_fill"] = o.AllowAutoFill

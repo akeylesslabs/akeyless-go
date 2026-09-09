@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**AssocRoleAuthMethod**](V2Api.md#AssocRoleAuthMethod) | **Post** /assoc-role-am | 
 [**AssocTargetItem**](V2Api.md#AssocTargetItem) | **Post** /assoc-target-item | 
 [**Auth**](V2Api.md#Auth) | **Post** /auth | 
+[**AuthMethodCreateAliCloud**](V2Api.md#AuthMethodCreateAliCloud) | **Post** /auth-method-create-alicloud | 
 [**AuthMethodCreateApiKey**](V2Api.md#AuthMethodCreateApiKey) | **Post** /auth-method-create-api-key | 
 [**AuthMethodCreateAwsIam**](V2Api.md#AuthMethodCreateAwsIam) | **Post** /auth-method-create-aws-iam | 
 [**AuthMethodCreateAzureAD**](V2Api.md#AuthMethodCreateAzureAD) | **Post** /auth-method-create-azure-ad | 
@@ -30,6 +31,7 @@ Method | HTTP request | Description
 [**AuthMethodDelete**](V2Api.md#AuthMethodDelete) | **Post** /auth-method-delete | 
 [**AuthMethodGet**](V2Api.md#AuthMethodGet) | **Post** /auth-method-get | 
 [**AuthMethodList**](V2Api.md#AuthMethodList) | **Post** /auth-method-list | 
+[**AuthMethodUpdateAliCloud**](V2Api.md#AuthMethodUpdateAliCloud) | **Post** /auth-method-update-alicloud | 
 [**AuthMethodUpdateApiKey**](V2Api.md#AuthMethodUpdateApiKey) | **Post** /auth-method-update-api-key | 
 [**AuthMethodUpdateAwsIam**](V2Api.md#AuthMethodUpdateAwsIam) | **Post** /auth-method-update-aws-iam | 
 [**AuthMethodUpdateAzureAD**](V2Api.md#AuthMethodUpdateAzureAD) | **Post** /auth-method-update-azure-ad | 
@@ -1240,6 +1242,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## AuthMethodCreateAliCloud
+
+> AuthMethodCreateOutput AuthMethodCreateAliCloud(ctx).AuthMethodCreateAliCloud(authMethodCreateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	authMethodCreateAliCloud := *openapiclient.NewAuthMethodCreateAliCloud("Name_example") // AuthMethodCreateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AuthMethodCreateAliCloud(context.Background()).AuthMethodCreateAliCloud(authMethodCreateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AuthMethodCreateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthMethodCreateAliCloud`: AuthMethodCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AuthMethodCreateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthMethodCreateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authMethodCreateAliCloud** | [**AuthMethodCreateAliCloud**](AuthMethodCreateAliCloud.md) |  | 
+
+### Return type
+
+[**AuthMethodCreateOutput**](AuthMethodCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## AuthMethodCreateApiKey
 
 > AuthMethodCreateOutput AuthMethodCreateApiKey(ctx).AuthMethodCreateApiKey(authMethodCreateApiKey).Execute()
@@ -2313,6 +2379,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListAuthMethodsOutput**](ListAuthMethodsOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## AuthMethodUpdateAliCloud
+
+> AuthMethodUpdateOutput AuthMethodUpdateAliCloud(ctx).AuthMethodUpdateAliCloud(authMethodUpdateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	authMethodUpdateAliCloud := *openapiclient.NewAuthMethodUpdateAliCloud("Name_example") // AuthMethodUpdateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.AuthMethodUpdateAliCloud(context.Background()).AuthMethodUpdateAliCloud(authMethodUpdateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.AuthMethodUpdateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthMethodUpdateAliCloud`: AuthMethodUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.AuthMethodUpdateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiAuthMethodUpdateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authMethodUpdateAliCloud** | [**AuthMethodUpdateAliCloud**](AuthMethodUpdateAliCloud.md) |  | 
+
+### Return type
+
+[**AuthMethodUpdateOutput**](AuthMethodUpdateOutput.md)
 
 ### Authorization
 

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Producers** | Pointer to [**ProducersConfigPart**](ProducersConfigPart.md) |  | [optional] 
 **Rotators** | Pointer to [**RotatorsConfigPart**](RotatorsConfigPart.md) |  | [optional] 
 **Saml** | Pointer to [**DefaultConfigPart**](DefaultConfigPart.md) |  | [optional] 
+**SamlSp** | Pointer to [**SamlSpConfigPart**](SamlSpConfigPart.md) |  | [optional] 
 **Version** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -492,6 +493,31 @@ SetSaml sets Saml field to given value.
 `func (o *AkeylessGatewayConfig) HasSaml() bool`
 
 HasSaml returns a boolean if a field has been set.
+
+### GetSamlSp
+
+`func (o *AkeylessGatewayConfig) GetSamlSp() SamlSpConfigPart`
+
+GetSamlSp returns the SamlSp field if non-nil, zero value otherwise.
+
+### GetSamlSpOk
+
+`func (o *AkeylessGatewayConfig) GetSamlSpOk() (*SamlSpConfigPart, bool)`
+
+GetSamlSpOk returns a tuple with the SamlSp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlSp
+
+`func (o *AkeylessGatewayConfig) SetSamlSp(v SamlSpConfigPart)`
+
+SetSamlSp sets SamlSp field to given value.
+
+### HasSamlSp
+
+`func (o *AkeylessGatewayConfig) HasSamlSp() bool`
+
+HasSamlSp returns a boolean if a field has been set.
 
 ### GetVersion
 

@@ -10,17 +10,22 @@ Name | Type | Description | Notes
 **AutoRotate** | Pointer to **string** |  | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
+**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeepPrevVersion** | Pointer to **string** | Whether to keep previous version [true/false]. If not set, use default according to account settings | [optional] 
 **Key** | Pointer to **string** |  | [optional] 
+**LockOnRead** | Pointer to **string** | Lock this secret after each successful value read | [optional] 
+**LockTtl** | Pointer to **string** | Lock TTL in minutes | [optional] 
 **MaxVersions** | Pointer to **string** | Set the maximum number of versions, limited by the account settings defaults. | [optional] 
 **Name** | **string** | Rotated secret name | 
 **NewName** | Pointer to **string** | New item name | [optional] 
 **OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
 **RmTag** | Pointer to **[]string** | List of the existent tags that will be removed from this item | [optional] 
+**RotateOnUnlock** | Pointer to **string** | Rotate this secret after it is unlocked | [optional] 
 **RotatedPassword** | Pointer to **string** | rotated-username password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotatedUsername** | Pointer to **string** | username to be rotated, if selected use-self-creds at rotator-creds-type, this username will try to rotate it&#39;s own password, if use-target-creds is selected, target credentials will be use to rotate the rotated-password (relevant only for rotator-type&#x3D;password) | [optional] 
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
@@ -203,6 +208,56 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateCassandra) GetEnableAgenticRuntimeAuthority() bool`
+
+GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field if non-nil, zero value otherwise.
+
+### GetEnableAgenticRuntimeAuthorityOk
+
+`func (o *RotatedSecretUpdateCassandra) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool)`
+
+GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateCassandra) SetEnableAgenticRuntimeAuthority(v bool)`
+
+SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to given value.
+
+### HasEnableAgenticRuntimeAuthority
+
+`func (o *RotatedSecretUpdateCassandra) HasEnableAgenticRuntimeAuthority() bool`
+
+HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateCassandra) GetEnableAiQuorum() bool`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *RotatedSecretUpdateCassandra) GetEnableAiQuorumOk() (*bool, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *RotatedSecretUpdateCassandra) SetEnableAiQuorum(v bool)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *RotatedSecretUpdateCassandra) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
+
 ### GetInputRule
 
 `func (o *RotatedSecretUpdateCassandra) GetInputRule() []string`
@@ -327,6 +382,56 @@ SetKey sets Key field to given value.
 `func (o *RotatedSecretUpdateCassandra) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### GetLockOnRead
+
+`func (o *RotatedSecretUpdateCassandra) GetLockOnRead() string`
+
+GetLockOnRead returns the LockOnRead field if non-nil, zero value otherwise.
+
+### GetLockOnReadOk
+
+`func (o *RotatedSecretUpdateCassandra) GetLockOnReadOk() (*string, bool)`
+
+GetLockOnReadOk returns a tuple with the LockOnRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOnRead
+
+`func (o *RotatedSecretUpdateCassandra) SetLockOnRead(v string)`
+
+SetLockOnRead sets LockOnRead field to given value.
+
+### HasLockOnRead
+
+`func (o *RotatedSecretUpdateCassandra) HasLockOnRead() bool`
+
+HasLockOnRead returns a boolean if a field has been set.
+
+### GetLockTtl
+
+`func (o *RotatedSecretUpdateCassandra) GetLockTtl() string`
+
+GetLockTtl returns the LockTtl field if non-nil, zero value otherwise.
+
+### GetLockTtlOk
+
+`func (o *RotatedSecretUpdateCassandra) GetLockTtlOk() (*string, bool)`
+
+GetLockTtlOk returns a tuple with the LockTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockTtl
+
+`func (o *RotatedSecretUpdateCassandra) SetLockTtl(v string)`
+
+SetLockTtl sets LockTtl field to given value.
+
+### HasLockTtl
+
+`func (o *RotatedSecretUpdateCassandra) HasLockTtl() bool`
+
+HasLockTtl returns a boolean if a field has been set.
 
 ### GetMaxVersions
 
@@ -472,6 +577,31 @@ SetRmTag sets RmTag field to given value.
 `func (o *RotatedSecretUpdateCassandra) HasRmTag() bool`
 
 HasRmTag returns a boolean if a field has been set.
+
+### GetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateCassandra) GetRotateOnUnlock() string`
+
+GetRotateOnUnlock returns the RotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetRotateOnUnlockOk
+
+`func (o *RotatedSecretUpdateCassandra) GetRotateOnUnlockOk() (*string, bool)`
+
+GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateOnUnlock
+
+`func (o *RotatedSecretUpdateCassandra) SetRotateOnUnlock(v string)`
+
+SetRotateOnUnlock sets RotateOnUnlock field to given value.
+
+### HasRotateOnUnlock
+
+`func (o *RotatedSecretUpdateCassandra) HasRotateOnUnlock() bool`
+
+HasRotateOnUnlock returns a boolean if a field has been set.
 
 ### GetRotatedPassword
 

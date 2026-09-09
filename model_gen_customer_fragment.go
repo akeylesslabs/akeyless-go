@@ -22,15 +22,19 @@ var _ MappedNullable = &GenCustomerFragment{}
 type GenCustomerFragment struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// The label of the hsm key to use for customer fragment operations (relevant for hsm_wrapped/hsm_protected customer fragments)
+	// The label of the hsm key to use for customer fragment operations (relevant for hsm wrap customer fragments)
 	HsmKeyLabel *string `json:"hsm-key-label,omitempty"`
+	// The HSM provider to use for hsm wrap customer fragments
+	HsmProvider *string `json:"hsm-provider,omitempty"`
+	// The HSM wrap algorithm to use for hsm_wrap_encrypt  default for hsm_wrap_encrypt: rsa-oaep-sha256
+	HsmWrapAlg *string `json:"hsm-wrap-alg,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// Deprecated - use description
 	Metadata *string `json:"metadata,omitempty"`
 	// Customer fragment name
 	Name *string `json:"name,omitempty"`
-	// Customer fragment type [standard/hsm_wrapped/hsm_secured]
+	// Customer fragment type [standard/hsm_wrap_hmac/hsm_wrap_encrypt/hsm_secured]
 	Type *string `json:"type,omitempty"`
 }
 
@@ -40,6 +44,8 @@ type GenCustomerFragment struct {
 // will change when the set of required properties is changed
 func NewGenCustomerFragment() *GenCustomerFragment {
 	this := GenCustomerFragment{}
+	var hsmProvider string = "pkcs11"
+	this.HsmProvider = &hsmProvider
 	var json bool = false
 	this.Json = &json
 	var type_ string = "standard"
@@ -52,6 +58,8 @@ func NewGenCustomerFragment() *GenCustomerFragment {
 // but it doesn't guarantee that properties required by API are set
 func NewGenCustomerFragmentWithDefaults() *GenCustomerFragment {
 	this := GenCustomerFragment{}
+	var hsmProvider string = "pkcs11"
+	this.HsmProvider = &hsmProvider
 	var json bool = false
 	this.Json = &json
 	var type_ string = "standard"
@@ -121,6 +129,70 @@ func (o *GenCustomerFragment) HasHsmKeyLabel() bool {
 // SetHsmKeyLabel gets a reference to the given string and assigns it to the HsmKeyLabel field.
 func (o *GenCustomerFragment) SetHsmKeyLabel(v string) {
 	o.HsmKeyLabel = &v
+}
+
+// GetHsmProvider returns the HsmProvider field value if set, zero value otherwise.
+func (o *GenCustomerFragment) GetHsmProvider() string {
+	if o == nil || IsNil(o.HsmProvider) {
+		var ret string
+		return ret
+	}
+	return *o.HsmProvider
+}
+
+// GetHsmProviderOk returns a tuple with the HsmProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenCustomerFragment) GetHsmProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.HsmProvider) {
+		return nil, false
+	}
+	return o.HsmProvider, true
+}
+
+// HasHsmProvider returns a boolean if a field has been set.
+func (o *GenCustomerFragment) HasHsmProvider() bool {
+	if o != nil && !IsNil(o.HsmProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetHsmProvider gets a reference to the given string and assigns it to the HsmProvider field.
+func (o *GenCustomerFragment) SetHsmProvider(v string) {
+	o.HsmProvider = &v
+}
+
+// GetHsmWrapAlg returns the HsmWrapAlg field value if set, zero value otherwise.
+func (o *GenCustomerFragment) GetHsmWrapAlg() string {
+	if o == nil || IsNil(o.HsmWrapAlg) {
+		var ret string
+		return ret
+	}
+	return *o.HsmWrapAlg
+}
+
+// GetHsmWrapAlgOk returns a tuple with the HsmWrapAlg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GenCustomerFragment) GetHsmWrapAlgOk() (*string, bool) {
+	if o == nil || IsNil(o.HsmWrapAlg) {
+		return nil, false
+	}
+	return o.HsmWrapAlg, true
+}
+
+// HasHsmWrapAlg returns a boolean if a field has been set.
+func (o *GenCustomerFragment) HasHsmWrapAlg() bool {
+	if o != nil && !IsNil(o.HsmWrapAlg) {
+		return true
+	}
+
+	return false
+}
+
+// SetHsmWrapAlg gets a reference to the given string and assigns it to the HsmWrapAlg field.
+func (o *GenCustomerFragment) SetHsmWrapAlg(v string) {
+	o.HsmWrapAlg = &v
 }
 
 // GetJson returns the Json field value if set, zero value otherwise.
@@ -266,6 +338,12 @@ func (o GenCustomerFragment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HsmKeyLabel) {
 		toSerialize["hsm-key-label"] = o.HsmKeyLabel
+	}
+	if !IsNil(o.HsmProvider) {
+		toSerialize["hsm-provider"] = o.HsmProvider
+	}
+	if !IsNil(o.HsmWrapAlg) {
+		toSerialize["hsm-wrap-alg"] = o.HsmWrapAlg
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **DynamicSecretMaxTtl** | Pointer to **int64** | Set the maximum ttl for dynamic secrets | [optional] 
 **DynamicSecretMaxTtlEnable** | Pointer to **string** | Set a maximum ttl for dynamic secrets [true/false] | [optional] 
 **EnableAiInsights** | Pointer to **string** | Enable AI insights [true/false] | [optional] 
+**EnableAiQuorum** | Pointer to **string** | Enable AI Quorum checks account-wide [true/false] | [optional] 
 **EnableDefaultCertificateExpirationEvent** | Pointer to **string** | How many days before the expiration of the certificate would you like to be notified. [true/false] | [optional] 
 **EnableItemSharing** | Pointer to **string** | Enable sharing items [true/false] | [optional] 
 **EnablePasswordExpiration** | Pointer to **string** | Enable password expiration policy [true/false] | [optional] 
@@ -450,6 +451,31 @@ SetEnableAiInsights sets EnableAiInsights field to given value.
 `func (o *UpdateAccountSettings) HasEnableAiInsights() bool`
 
 HasEnableAiInsights returns a boolean if a field has been set.
+
+### GetEnableAiQuorum
+
+`func (o *UpdateAccountSettings) GetEnableAiQuorum() string`
+
+GetEnableAiQuorum returns the EnableAiQuorum field if non-nil, zero value otherwise.
+
+### GetEnableAiQuorumOk
+
+`func (o *UpdateAccountSettings) GetEnableAiQuorumOk() (*string, bool)`
+
+GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableAiQuorum
+
+`func (o *UpdateAccountSettings) SetEnableAiQuorum(v string)`
+
+SetEnableAiQuorum sets EnableAiQuorum field to given value.
+
+### HasEnableAiQuorum
+
+`func (o *UpdateAccountSettings) HasEnableAiQuorum() bool`
+
+HasEnableAiQuorum returns a boolean if a field has been set.
 
 ### GetEnableDefaultCertificateExpirationEvent
 

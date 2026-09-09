@@ -22,6 +22,8 @@ var _ MappedNullable = &LockingInfo{}
 type LockingInfo struct {
 	Actions []string `json:"actions,omitempty"`
 	ExpireAt *int64 `json:"expire_at,omitempty"`
+	LockOrigin *string `json:"lock_origin,omitempty"`
+	LockedAt *int64 `json:"locked_at,omitempty"`
 	LockedBy *string `json:"locked_by,omitempty"`
 	UniqueIdentifier *string `json:"unique_identifier,omitempty"`
 }
@@ -107,6 +109,70 @@ func (o *LockingInfo) SetExpireAt(v int64) {
 	o.ExpireAt = &v
 }
 
+// GetLockOrigin returns the LockOrigin field value if set, zero value otherwise.
+func (o *LockingInfo) GetLockOrigin() string {
+	if o == nil || IsNil(o.LockOrigin) {
+		var ret string
+		return ret
+	}
+	return *o.LockOrigin
+}
+
+// GetLockOriginOk returns a tuple with the LockOrigin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LockingInfo) GetLockOriginOk() (*string, bool) {
+	if o == nil || IsNil(o.LockOrigin) {
+		return nil, false
+	}
+	return o.LockOrigin, true
+}
+
+// HasLockOrigin returns a boolean if a field has been set.
+func (o *LockingInfo) HasLockOrigin() bool {
+	if o != nil && !IsNil(o.LockOrigin) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockOrigin gets a reference to the given string and assigns it to the LockOrigin field.
+func (o *LockingInfo) SetLockOrigin(v string) {
+	o.LockOrigin = &v
+}
+
+// GetLockedAt returns the LockedAt field value if set, zero value otherwise.
+func (o *LockingInfo) GetLockedAt() int64 {
+	if o == nil || IsNil(o.LockedAt) {
+		var ret int64
+		return ret
+	}
+	return *o.LockedAt
+}
+
+// GetLockedAtOk returns a tuple with the LockedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LockingInfo) GetLockedAtOk() (*int64, bool) {
+	if o == nil || IsNil(o.LockedAt) {
+		return nil, false
+	}
+	return o.LockedAt, true
+}
+
+// HasLockedAt returns a boolean if a field has been set.
+func (o *LockingInfo) HasLockedAt() bool {
+	if o != nil && !IsNil(o.LockedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockedAt gets a reference to the given int64 and assigns it to the LockedAt field.
+func (o *LockingInfo) SetLockedAt(v int64) {
+	o.LockedAt = &v
+}
+
 // GetLockedBy returns the LockedBy field value if set, zero value otherwise.
 func (o *LockingInfo) GetLockedBy() string {
 	if o == nil || IsNil(o.LockedBy) {
@@ -186,6 +252,12 @@ func (o LockingInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ExpireAt) {
 		toSerialize["expire_at"] = o.ExpireAt
+	}
+	if !IsNil(o.LockOrigin) {
+		toSerialize["lock_origin"] = o.LockOrigin
+	}
+	if !IsNil(o.LockedAt) {
+		toSerialize["locked_at"] = o.LockedAt
 	}
 	if !IsNil(o.LockedBy) {
 		toSerialize["locked_by"] = o.LockedBy

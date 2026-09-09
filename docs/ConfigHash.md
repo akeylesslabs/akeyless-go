@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **ProducersStatus** | Pointer to **string** |  | [optional] 
 **Rotators** | Pointer to **interface{}** |  | [optional] 
 **Saml** | Pointer to **string** |  | [optional] 
+**SamlSp** | Pointer to **string** |  | [optional] 
 **UniversalIdentity** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -486,6 +487,31 @@ SetSaml sets Saml field to given value.
 `func (o *ConfigHash) HasSaml() bool`
 
 HasSaml returns a boolean if a field has been set.
+
+### GetSamlSp
+
+`func (o *ConfigHash) GetSamlSp() string`
+
+GetSamlSp returns the SamlSp field if non-nil, zero value otherwise.
+
+### GetSamlSpOk
+
+`func (o *ConfigHash) GetSamlSpOk() (*string, bool)`
+
+GetSamlSpOk returns a tuple with the SamlSp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSamlSp
+
+`func (o *ConfigHash) SetSamlSp(v string)`
+
+SetSamlSp sets SamlSp field to given value.
+
+### HasSamlSp
+
+`func (o *ConfigHash) HasSamlSp() bool`
+
+HasSamlSp returns a boolean if a field has been set.
 
 ### GetUniversalIdentity
 

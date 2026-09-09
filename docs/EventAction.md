@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **EventId** | **int64** | The Event ID | 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
+**TtlInMin** | Pointer to **int64** | The access TTL in minutes granted by the approver, overriding the requested one | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 
 ## Methods
@@ -118,6 +119,31 @@ SetToken sets Token field to given value.
 `func (o *EventAction) HasToken() bool`
 
 HasToken returns a boolean if a field has been set.
+
+### GetTtlInMin
+
+`func (o *EventAction) GetTtlInMin() int64`
+
+GetTtlInMin returns the TtlInMin field if non-nil, zero value otherwise.
+
+### GetTtlInMinOk
+
+`func (o *EventAction) GetTtlInMinOk() (*int64, bool)`
+
+GetTtlInMinOk returns a tuple with the TtlInMin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTtlInMin
+
+`func (o *EventAction) SetTtlInMin(v int64)`
+
+SetTtlInMin sets TtlInMin field to given value.
+
+### HasTtlInMin
+
+`func (o *EventAction) HasTtlInMin() bool`
+
+HasTtlInMin returns a boolean if a field has been set.
 
 ### GetUidToken
 

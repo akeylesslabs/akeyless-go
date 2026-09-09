@@ -26,6 +26,12 @@ type CustomerFragmentConfig struct {
 	KeyLabel *string `json:"key_label,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Value *string `json:"value,omitempty"`
+	// WrapAlg selects the HSM wrap algorithm for hsm_wrap_encrypt (e.g. rsa-oaep-sha256, aes-gcm, aes-cbc, aes-cbc-pad). RSA uses only WrapAlg; AES modes may require WrapIV and/or WrapTag.
+	WrapAlg *string `json:"wrap_alg,omitempty"`
+	// WrapIV is the base64 IV for AES modes that require it (GCM/CBC). Empty for RSA and modes without IV metadata.
+	WrapIv *string `json:"wrap_iv,omitempty"`
+	// WrapTag is the base64 auth tag for AES-GCM only. Empty for RSA and other modes.
+	WrapTag *string `json:"wrap_tag,omitempty"`
 }
 
 // NewCustomerFragmentConfig instantiates a new CustomerFragmentConfig object
@@ -237,6 +243,102 @@ func (o *CustomerFragmentConfig) SetValue(v string) {
 	o.Value = &v
 }
 
+// GetWrapAlg returns the WrapAlg field value if set, zero value otherwise.
+func (o *CustomerFragmentConfig) GetWrapAlg() string {
+	if o == nil || IsNil(o.WrapAlg) {
+		var ret string
+		return ret
+	}
+	return *o.WrapAlg
+}
+
+// GetWrapAlgOk returns a tuple with the WrapAlg field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerFragmentConfig) GetWrapAlgOk() (*string, bool) {
+	if o == nil || IsNil(o.WrapAlg) {
+		return nil, false
+	}
+	return o.WrapAlg, true
+}
+
+// HasWrapAlg returns a boolean if a field has been set.
+func (o *CustomerFragmentConfig) HasWrapAlg() bool {
+	if o != nil && !IsNil(o.WrapAlg) {
+		return true
+	}
+
+	return false
+}
+
+// SetWrapAlg gets a reference to the given string and assigns it to the WrapAlg field.
+func (o *CustomerFragmentConfig) SetWrapAlg(v string) {
+	o.WrapAlg = &v
+}
+
+// GetWrapIv returns the WrapIv field value if set, zero value otherwise.
+func (o *CustomerFragmentConfig) GetWrapIv() string {
+	if o == nil || IsNil(o.WrapIv) {
+		var ret string
+		return ret
+	}
+	return *o.WrapIv
+}
+
+// GetWrapIvOk returns a tuple with the WrapIv field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerFragmentConfig) GetWrapIvOk() (*string, bool) {
+	if o == nil || IsNil(o.WrapIv) {
+		return nil, false
+	}
+	return o.WrapIv, true
+}
+
+// HasWrapIv returns a boolean if a field has been set.
+func (o *CustomerFragmentConfig) HasWrapIv() bool {
+	if o != nil && !IsNil(o.WrapIv) {
+		return true
+	}
+
+	return false
+}
+
+// SetWrapIv gets a reference to the given string and assigns it to the WrapIv field.
+func (o *CustomerFragmentConfig) SetWrapIv(v string) {
+	o.WrapIv = &v
+}
+
+// GetWrapTag returns the WrapTag field value if set, zero value otherwise.
+func (o *CustomerFragmentConfig) GetWrapTag() string {
+	if o == nil || IsNil(o.WrapTag) {
+		var ret string
+		return ret
+	}
+	return *o.WrapTag
+}
+
+// GetWrapTagOk returns a tuple with the WrapTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomerFragmentConfig) GetWrapTagOk() (*string, bool) {
+	if o == nil || IsNil(o.WrapTag) {
+		return nil, false
+	}
+	return o.WrapTag, true
+}
+
+// HasWrapTag returns a boolean if a field has been set.
+func (o *CustomerFragmentConfig) HasWrapTag() bool {
+	if o != nil && !IsNil(o.WrapTag) {
+		return true
+	}
+
+	return false
+}
+
+// SetWrapTag gets a reference to the given string and assigns it to the WrapTag field.
+func (o *CustomerFragmentConfig) SetWrapTag(v string) {
+	o.WrapTag = &v
+}
+
 func (o CustomerFragmentConfig) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -264,6 +366,15 @@ func (o CustomerFragmentConfig) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.WrapAlg) {
+		toSerialize["wrap_alg"] = o.WrapAlg
+	}
+	if !IsNil(o.WrapIv) {
+		toSerialize["wrap_iv"] = o.WrapIv
+	}
+	if !IsNil(o.WrapTag) {
+		toSerialize["wrap_tag"] = o.WrapTag
 	}
 	return toSerialize, nil
 }

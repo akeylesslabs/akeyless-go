@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Actions** | Pointer to **[]string** |  | [optional] 
 **ExpireAt** | Pointer to **int64** |  | [optional] 
+**LockOrigin** | Pointer to **string** |  | [optional] 
+**LockedAt** | Pointer to **int64** |  | [optional] 
 **LockedBy** | Pointer to **string** |  | [optional] 
 **UniqueIdentifier** | Pointer to **string** |  | [optional] 
 
@@ -77,6 +79,56 @@ SetExpireAt sets ExpireAt field to given value.
 `func (o *LockingInfo) HasExpireAt() bool`
 
 HasExpireAt returns a boolean if a field has been set.
+
+### GetLockOrigin
+
+`func (o *LockingInfo) GetLockOrigin() string`
+
+GetLockOrigin returns the LockOrigin field if non-nil, zero value otherwise.
+
+### GetLockOriginOk
+
+`func (o *LockingInfo) GetLockOriginOk() (*string, bool)`
+
+GetLockOriginOk returns a tuple with the LockOrigin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOrigin
+
+`func (o *LockingInfo) SetLockOrigin(v string)`
+
+SetLockOrigin sets LockOrigin field to given value.
+
+### HasLockOrigin
+
+`func (o *LockingInfo) HasLockOrigin() bool`
+
+HasLockOrigin returns a boolean if a field has been set.
+
+### GetLockedAt
+
+`func (o *LockingInfo) GetLockedAt() int64`
+
+GetLockedAt returns the LockedAt field if non-nil, zero value otherwise.
+
+### GetLockedAtOk
+
+`func (o *LockingInfo) GetLockedAtOk() (*int64, bool)`
+
+GetLockedAtOk returns a tuple with the LockedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockedAt
+
+`func (o *LockingInfo) SetLockedAt(v int64)`
+
+SetLockedAt sets LockedAt field to given value.
+
+### HasLockedAt
+
+`func (o *LockingInfo) HasLockedAt() bool`
+
+HasLockedAt returns a boolean if a field has been set.
 
 ### GetLockedBy
 

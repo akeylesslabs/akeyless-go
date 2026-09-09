@@ -31,7 +31,7 @@ type AuthMethod struct {
 	AuthMethodId *int64 `json:"auth_method_id,omitempty"`
 	AuthMethodName *string `json:"auth_method_name,omitempty"`
 	AuthMethodRolesAssoc []AuthMethodRoleAssociation `json:"auth_method_roles_assoc,omitempty"`
-	// BookmarkLoginURLTemplate is an OIDC login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
+	// BookmarkLoginURLTemplate is an OIDC/SAML login URL template for console bookmarks. SaaS-owned methods use {redirect_uri} for client substitution; AuthViaGw embeds the GW console callback.
 	BookmarkLoginUrlTemplate *string `json:"bookmark_login_url_template,omitempty"`
 	ClientPermissions []string `json:"client_permissions,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`

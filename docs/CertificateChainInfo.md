@@ -21,8 +21,10 @@ Name | Type | Description | Notes
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **ExternalCaId** | Pointer to [**NullString**](NullString.md) |  | [optional] 
 **IssuanceStatus** | Pointer to **string** |  | [optional] 
+**LeafCertificatePem** | Pointer to **string** | LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled. | [optional] 
 **NotBefore** | Pointer to **time.Time** |  | [optional] 
 **RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
+**SplitCertificateChain** | Pointer to **bool** | SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain). | [optional] 
 
 ## Methods
 
@@ -468,6 +470,31 @@ SetIssuanceStatus sets IssuanceStatus field to given value.
 
 HasIssuanceStatus returns a boolean if a field has been set.
 
+### GetLeafCertificatePem
+
+`func (o *CertificateChainInfo) GetLeafCertificatePem() string`
+
+GetLeafCertificatePem returns the LeafCertificatePem field if non-nil, zero value otherwise.
+
+### GetLeafCertificatePemOk
+
+`func (o *CertificateChainInfo) GetLeafCertificatePemOk() (*string, bool)`
+
+GetLeafCertificatePemOk returns a tuple with the LeafCertificatePem field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLeafCertificatePem
+
+`func (o *CertificateChainInfo) SetLeafCertificatePem(v string)`
+
+SetLeafCertificatePem sets LeafCertificatePem field to given value.
+
+### HasLeafCertificatePem
+
+`func (o *CertificateChainInfo) HasLeafCertificatePem() bool`
+
+HasLeafCertificatePem returns a boolean if a field has been set.
+
 ### GetNotBefore
 
 `func (o *CertificateChainInfo) GetNotBefore() time.Time`
@@ -517,6 +544,31 @@ SetRenewBeforeExpirationInDays sets RenewBeforeExpirationInDays field to given v
 `func (o *CertificateChainInfo) HasRenewBeforeExpirationInDays() bool`
 
 HasRenewBeforeExpirationInDays returns a boolean if a field has been set.
+
+### GetSplitCertificateChain
+
+`func (o *CertificateChainInfo) GetSplitCertificateChain() bool`
+
+GetSplitCertificateChain returns the SplitCertificateChain field if non-nil, zero value otherwise.
+
+### GetSplitCertificateChainOk
+
+`func (o *CertificateChainInfo) GetSplitCertificateChainOk() (*bool, bool)`
+
+GetSplitCertificateChainOk returns a tuple with the SplitCertificateChain field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSplitCertificateChain
+
+`func (o *CertificateChainInfo) SetSplitCertificateChain(v bool)`
+
+SetSplitCertificateChain sets SplitCertificateChain field to given value.
+
+### HasSplitCertificateChain
+
+`func (o *CertificateChainInfo) HasSplitCertificateChain() bool`
+
+HasSplitCertificateChain returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

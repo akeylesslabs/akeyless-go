@@ -16,9 +16,13 @@ Name | Type | Description | Notes
 **ExpirationEvents** | Pointer to [**[]CertificateExpirationEvent**](CertificateExpirationEvent.md) |  | [optional] 
 **ImporterInfo** | Pointer to [**ImporterInfo**](ImporterInfo.md) |  | [optional] 
 **IssuerOverviewInfo** | Pointer to [**IssuerOverviewInfo**](IssuerOverviewInfo.md) |  | [optional] 
+**LockOnRead** | Pointer to **bool** |  | [optional] 
+**LockTtl** | Pointer to **int64** |  | [optional] 
 **NextRotationEvents** | Pointer to [**[]NextAutoRotationEvent**](NextAutoRotationEvent.md) |  | [optional] 
 **OidcClientInfo** | Pointer to [**OidcClientInfo**](OidcClientInfo.md) |  | [optional] 
 **PasswordPolicy** | Pointer to [**PasswordPolicyInfo**](PasswordPolicyInfo.md) |  | [optional] 
+**PendingRotateOnUnlock** | Pointer to **bool** |  | [optional] 
+**RotateOnUnlock** | Pointer to **bool** |  | [optional] 
 **RotatedSecretDetails** | Pointer to [**RotatedSecretDetailsInfo**](RotatedSecretDetailsInfo.md) |  | [optional] 
 **SecureRemoteAccessDetails** | Pointer to [**SecureRemoteAccess**](SecureRemoteAccess.md) |  | [optional] 
 **StaticSecretInfo** | Pointer to [**StaticSecretDetailsInfo**](StaticSecretDetailsInfo.md) |  | [optional] 
@@ -343,6 +347,56 @@ SetIssuerOverviewInfo sets IssuerOverviewInfo field to given value.
 
 HasIssuerOverviewInfo returns a boolean if a field has been set.
 
+### GetLockOnRead
+
+`func (o *ItemGeneralInfo) GetLockOnRead() bool`
+
+GetLockOnRead returns the LockOnRead field if non-nil, zero value otherwise.
+
+### GetLockOnReadOk
+
+`func (o *ItemGeneralInfo) GetLockOnReadOk() (*bool, bool)`
+
+GetLockOnReadOk returns a tuple with the LockOnRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockOnRead
+
+`func (o *ItemGeneralInfo) SetLockOnRead(v bool)`
+
+SetLockOnRead sets LockOnRead field to given value.
+
+### HasLockOnRead
+
+`func (o *ItemGeneralInfo) HasLockOnRead() bool`
+
+HasLockOnRead returns a boolean if a field has been set.
+
+### GetLockTtl
+
+`func (o *ItemGeneralInfo) GetLockTtl() int64`
+
+GetLockTtl returns the LockTtl field if non-nil, zero value otherwise.
+
+### GetLockTtlOk
+
+`func (o *ItemGeneralInfo) GetLockTtlOk() (*int64, bool)`
+
+GetLockTtlOk returns a tuple with the LockTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockTtl
+
+`func (o *ItemGeneralInfo) SetLockTtl(v int64)`
+
+SetLockTtl sets LockTtl field to given value.
+
+### HasLockTtl
+
+`func (o *ItemGeneralInfo) HasLockTtl() bool`
+
+HasLockTtl returns a boolean if a field has been set.
+
 ### GetNextRotationEvents
 
 `func (o *ItemGeneralInfo) GetNextRotationEvents() []NextAutoRotationEvent`
@@ -417,6 +471,56 @@ SetPasswordPolicy sets PasswordPolicy field to given value.
 `func (o *ItemGeneralInfo) HasPasswordPolicy() bool`
 
 HasPasswordPolicy returns a boolean if a field has been set.
+
+### GetPendingRotateOnUnlock
+
+`func (o *ItemGeneralInfo) GetPendingRotateOnUnlock() bool`
+
+GetPendingRotateOnUnlock returns the PendingRotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetPendingRotateOnUnlockOk
+
+`func (o *ItemGeneralInfo) GetPendingRotateOnUnlockOk() (*bool, bool)`
+
+GetPendingRotateOnUnlockOk returns a tuple with the PendingRotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingRotateOnUnlock
+
+`func (o *ItemGeneralInfo) SetPendingRotateOnUnlock(v bool)`
+
+SetPendingRotateOnUnlock sets PendingRotateOnUnlock field to given value.
+
+### HasPendingRotateOnUnlock
+
+`func (o *ItemGeneralInfo) HasPendingRotateOnUnlock() bool`
+
+HasPendingRotateOnUnlock returns a boolean if a field has been set.
+
+### GetRotateOnUnlock
+
+`func (o *ItemGeneralInfo) GetRotateOnUnlock() bool`
+
+GetRotateOnUnlock returns the RotateOnUnlock field if non-nil, zero value otherwise.
+
+### GetRotateOnUnlockOk
+
+`func (o *ItemGeneralInfo) GetRotateOnUnlockOk() (*bool, bool)`
+
+GetRotateOnUnlockOk returns a tuple with the RotateOnUnlock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRotateOnUnlock
+
+`func (o *ItemGeneralInfo) SetRotateOnUnlock(v bool)`
+
+SetRotateOnUnlock sets RotateOnUnlock field to given value.
+
+### HasRotateOnUnlock
+
+`func (o *ItemGeneralInfo) HasRotateOnUnlock() bool`
+
+HasRotateOnUnlock returns a boolean if a field has been set.
 
 ### GetRotatedSecretDetails
 

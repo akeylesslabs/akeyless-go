@@ -21,6 +21,7 @@ var _ MappedNullable = &GetCertificateValueOutput{}
 // GetCertificateValueOutput struct for GetCertificateValueOutput
 type GetCertificateValueOutput struct {
 	CertificatePem *string `json:"certificate_pem,omitempty"`
+	EncodedCertificate *string `json:"encoded_certificate,omitempty"`
 	PrivateKeyPem *string `json:"private_key_pem,omitempty"`
 }
 
@@ -73,6 +74,38 @@ func (o *GetCertificateValueOutput) SetCertificatePem(v string) {
 	o.CertificatePem = &v
 }
 
+// GetEncodedCertificate returns the EncodedCertificate field value if set, zero value otherwise.
+func (o *GetCertificateValueOutput) GetEncodedCertificate() string {
+	if o == nil || IsNil(o.EncodedCertificate) {
+		var ret string
+		return ret
+	}
+	return *o.EncodedCertificate
+}
+
+// GetEncodedCertificateOk returns a tuple with the EncodedCertificate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetCertificateValueOutput) GetEncodedCertificateOk() (*string, bool) {
+	if o == nil || IsNil(o.EncodedCertificate) {
+		return nil, false
+	}
+	return o.EncodedCertificate, true
+}
+
+// HasEncodedCertificate returns a boolean if a field has been set.
+func (o *GetCertificateValueOutput) HasEncodedCertificate() bool {
+	if o != nil && !IsNil(o.EncodedCertificate) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncodedCertificate gets a reference to the given string and assigns it to the EncodedCertificate field.
+func (o *GetCertificateValueOutput) SetEncodedCertificate(v string) {
+	o.EncodedCertificate = &v
+}
+
 // GetPrivateKeyPem returns the PrivateKeyPem field value if set, zero value otherwise.
 func (o *GetCertificateValueOutput) GetPrivateKeyPem() string {
 	if o == nil || IsNil(o.PrivateKeyPem) {
@@ -117,6 +150,9 @@ func (o GetCertificateValueOutput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CertificatePem) {
 		toSerialize["certificate_pem"] = o.CertificatePem
+	}
+	if !IsNil(o.EncodedCertificate) {
+		toSerialize["encoded_certificate"] = o.EncodedCertificate
 	}
 	if !IsNil(o.PrivateKeyPem) {
 		toSerialize["private_key_pem"] = o.PrivateKeyPem

@@ -32,11 +32,11 @@ type CreateUSC struct {
 	EnvironmentNames *string `json:"environment-names,omitempty"`
 	// GCP Folder ID (Relevant only for GCP targets with folder scope)
 	GcpFolderId *string `json:"gcp-folder-id,omitempty"`
-	// GCP Organization ID (Relevant only for GCP targets)
+	// GCP Organization ID (Relevant only for GCP targets with folder or organization scope)
 	GcpOrganizationId *string `json:"gcp-organization-id,omitempty"`
-	// GCP Project ID (Relevant only for GCP targets)
+	// GCP Project ID to manage secrets in (Relevant only for GCP targets with project scope). If empty, the project is taken from the target.
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
-	// The gcp usc scope [ project / organization / folder]
+	// The GCP USC scope [project/folder/organization]. With folder/organization, all projects under the folder/org are manageable. Relevant only for GCP targets. Defaults to project when empty.
 	GcpScope *string `json:"gcp-scope,omitempty"`
 	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. Required when listing with object-type=regional-secrets.
 	GcpSmRegions *string `json:"gcp-sm-regions,omitempty"`

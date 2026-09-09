@@ -6,10 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CertIssuerName** | Pointer to **string** | The parent PKI Certificate Issuer&#39;s name of the certificate, required when used with display-id and token | [optional] 
 **DisplayId** | Pointer to **string** | Certificate display ID | [optional] 
+**Format** | Pointer to **string** | Format to download the certificate in [pem/pfx/jks], pfx/jks require a password | [optional] [default to "pem"]
 **IgnoreCache** | Pointer to **string** | Retrieve the Secret value without checking the Gateway&#39;s cache [true/false]. This flag is only relevant when using the RestAPI | [optional] [default to "false"]
+**IncludePrivateKey** | Pointer to **bool** | If set, includes the private key in the pfx/jks file, only relevant when format is pfx or jks | [optional] 
 **IssuanceToken** | Pointer to **string** | Token for getting the issued certificate | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**LeafOnly** | Pointer to **bool** | If set, downloads only the leaf certificate instead of the full chain, only available for certificates issued with split certificate chain enabled | [optional] 
 **Name** | Pointer to **string** | Certificate name | [optional] 
+**Password** | Pointer to **string** | Password to protect the pfx/jks file, required when format is pfx or jks | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **Version** | Pointer to **int32** | Certificate version | [optional] 
@@ -83,6 +87,31 @@ SetDisplayId sets DisplayId field to given value.
 
 HasDisplayId returns a boolean if a field has been set.
 
+### GetFormat
+
+`func (o *GetCertificateValue) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *GetCertificateValue) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *GetCertificateValue) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *GetCertificateValue) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
+
 ### GetIgnoreCache
 
 `func (o *GetCertificateValue) GetIgnoreCache() string`
@@ -107,6 +136,31 @@ SetIgnoreCache sets IgnoreCache field to given value.
 `func (o *GetCertificateValue) HasIgnoreCache() bool`
 
 HasIgnoreCache returns a boolean if a field has been set.
+
+### GetIncludePrivateKey
+
+`func (o *GetCertificateValue) GetIncludePrivateKey() bool`
+
+GetIncludePrivateKey returns the IncludePrivateKey field if non-nil, zero value otherwise.
+
+### GetIncludePrivateKeyOk
+
+`func (o *GetCertificateValue) GetIncludePrivateKeyOk() (*bool, bool)`
+
+GetIncludePrivateKeyOk returns a tuple with the IncludePrivateKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludePrivateKey
+
+`func (o *GetCertificateValue) SetIncludePrivateKey(v bool)`
+
+SetIncludePrivateKey sets IncludePrivateKey field to given value.
+
+### HasIncludePrivateKey
+
+`func (o *GetCertificateValue) HasIncludePrivateKey() bool`
+
+HasIncludePrivateKey returns a boolean if a field has been set.
 
 ### GetIssuanceToken
 
@@ -158,6 +212,31 @@ SetJson sets Json field to given value.
 
 HasJson returns a boolean if a field has been set.
 
+### GetLeafOnly
+
+`func (o *GetCertificateValue) GetLeafOnly() bool`
+
+GetLeafOnly returns the LeafOnly field if non-nil, zero value otherwise.
+
+### GetLeafOnlyOk
+
+`func (o *GetCertificateValue) GetLeafOnlyOk() (*bool, bool)`
+
+GetLeafOnlyOk returns a tuple with the LeafOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLeafOnly
+
+`func (o *GetCertificateValue) SetLeafOnly(v bool)`
+
+SetLeafOnly sets LeafOnly field to given value.
+
+### HasLeafOnly
+
+`func (o *GetCertificateValue) HasLeafOnly() bool`
+
+HasLeafOnly returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *GetCertificateValue) GetName() string`
@@ -182,6 +261,31 @@ SetName sets Name field to given value.
 `func (o *GetCertificateValue) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetPassword
+
+`func (o *GetCertificateValue) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *GetCertificateValue) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *GetCertificateValue) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *GetCertificateValue) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 ### GetToken
 

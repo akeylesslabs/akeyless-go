@@ -33,7 +33,10 @@ docs/AgenticRule.md
 docs/AgenticRules.md
 docs/AiInsightsConfigPart.md
 docs/AiInsightsSetting.md
+docs/AiModelEntry.md
+docs/AiQuorumSetting.md
 docs/AkeylessGatewayConfig.md
+docs/AliCloudAccessRules.md
 docs/AliasDetails.md
 docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
@@ -51,6 +54,7 @@ docs/AuthExpirationEvent.md
 docs/AuthMethod.md
 docs/AuthMethodAccessInfo.md
 docs/AuthMethodAdditionalData.md
+docs/AuthMethodCreateAliCloud.md
 docs/AuthMethodCreateApiKey.md
 docs/AuthMethodCreateAwsIam.md
 docs/AuthMethodCreateAzureAD.md
@@ -71,6 +75,7 @@ docs/AuthMethodDeleteOutput.md
 docs/AuthMethodGet.md
 docs/AuthMethodList.md
 docs/AuthMethodRoleAssociation.md
+docs/AuthMethodUpdateAliCloud.md
 docs/AuthMethodUpdateApiKey.md
 docs/AuthMethodUpdateAwsIam.md
 docs/AuthMethodUpdateAzureAD.md
@@ -815,6 +820,10 @@ docs/LockingInfo.md
 docs/LogForwardingConfigPart.md
 docs/LogstashLogForwardingConfig.md
 docs/LogzIoLogForwardingConfig.md
+docs/MigrationDownloadJob.md
+docs/MigrationDownloadReport.md
+docs/MigrationDownloadSecret.md
+docs/MigrationDownloadSummary.md
 docs/MigrationGeneral.md
 docs/MigrationItems.md
 docs/MigrationStatus.md
@@ -960,6 +969,7 @@ docs/SAMLAttribute.md
 docs/SSHCertificateIssueDetails.md
 docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
+docs/SamlSpConfigPart.md
 docs/ScanResults.md
 docs/SecretInfo.md
 docs/SecretSyncOutput.md
@@ -1294,7 +1304,10 @@ model_agentic_rule.go
 model_agentic_rules.go
 model_ai_insights_config_part.go
 model_ai_insights_setting.go
+model_ai_model_entry.go
+model_ai_quorum_setting.go
 model_akeyless_gateway_config.go
+model_ali_cloud_access_rules.go
 model_alias_details.go
 model_alias_details_output.go
 model_all_analytics_data.go
@@ -1313,6 +1326,7 @@ model_auth_expiration_event.go
 model_auth_method.go
 model_auth_method_access_info.go
 model_auth_method_additional_data.go
+model_auth_method_create_ali_cloud.go
 model_auth_method_create_api_key.go
 model_auth_method_create_aws_iam.go
 model_auth_method_create_azure_ad.go
@@ -1333,6 +1347,7 @@ model_auth_method_delete_output.go
 model_auth_method_get.go
 model_auth_method_list.go
 model_auth_method_role_association.go
+model_auth_method_update_ali_cloud.go
 model_auth_method_update_api_key.go
 model_auth_method_update_aws_iam.go
 model_auth_method_update_azure_ad.go
@@ -2082,6 +2097,10 @@ model_locking_info.go
 model_log_forwarding_config_part.go
 model_logstash_log_forwarding_config.go
 model_logz_io_log_forwarding_config.go
+model_migration_download_job.go
+model_migration_download_report.go
+model_migration_download_secret.go
+model_migration_download_summary.go
 model_migration_general.go
 model_migration_items.go
 model_migration_status.go
@@ -2225,6 +2244,7 @@ model_runtime_authority_command.go
 model_salesforce_target_details.go
 model_saml_access_rules.go
 model_saml_attribute.go
+model_saml_sp_config_part.go
 model_scan_results.go
 model_secret_info.go
 model_secret_sync_output.go

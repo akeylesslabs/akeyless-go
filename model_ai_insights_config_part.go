@@ -18,12 +18,16 @@ import (
 // checks if the AiInsightsConfigPart type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AiInsightsConfigPart{}
 
-// AiInsightsConfigPart struct for AiInsightsConfigPart
+// AiInsightsConfigPart TargetId/TargetName/Model predate multi-model support and are retained for backward compatibility in both directions - they mirror the Default entry on write, and are adopted as a synthesized Default entry on read when Models is empty. See EffectiveModels and syncLegacyFields in types_ai_insights_config.go, where all the model-list behavior lives.
 type AiInsightsConfigPart struct {
 	Enable *bool `json:"enable,omitempty"`
 	Model *string `json:"model,omitempty"`
+	// Models holds every configured model, in whatever order and with whatever Default flag was stored - it is NOT canonicalized on write, so nothing may assume the Default sits at index 0. Empty on configs written before multi-model support. Never read it directly: use EffectiveModels for the list as stored (which also handles the legacy case), or PolicyModels for exactly one Default in row 1 followed by the Quorum models.
+	Models []AiModelEntry `json:"models,omitempty"`
 	TargetId *int64 `json:"target_id,omitempty"`
 	TargetName *string `json:"target_name,omitempty"`
+	// Version is an optimistic-concurrency token, bumped by gator on every accepted write.  Every mutation of this part is a read-modify-write across the network (the gateway reads the whole part, edits one entry, writes it back), and the write replaces the part wholesale. Without a token, two admins adding a quorum model at the same time silently lose one of the two - which, since the list must always carry exactly one Default, can also change which model serves every other AI feature.  Zero means \"unversioned\": a client that predates this field, whose write gator accepts rather than rejecting outright. See updateGatewayAiInsightsConfig.
+	Version *int64 `json:"version,omitempty"`
 }
 
 // NewAiInsightsConfigPart instantiates a new AiInsightsConfigPart object
@@ -107,6 +111,38 @@ func (o *AiInsightsConfigPart) SetModel(v string) {
 	o.Model = &v
 }
 
+// GetModels returns the Models field value if set, zero value otherwise.
+func (o *AiInsightsConfigPart) GetModels() []AiModelEntry {
+	if o == nil || IsNil(o.Models) {
+		var ret []AiModelEntry
+		return ret
+	}
+	return o.Models
+}
+
+// GetModelsOk returns a tuple with the Models field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AiInsightsConfigPart) GetModelsOk() ([]AiModelEntry, bool) {
+	if o == nil || IsNil(o.Models) {
+		return nil, false
+	}
+	return o.Models, true
+}
+
+// HasModels returns a boolean if a field has been set.
+func (o *AiInsightsConfigPart) HasModels() bool {
+	if o != nil && !IsNil(o.Models) {
+		return true
+	}
+
+	return false
+}
+
+// SetModels gets a reference to the given []AiModelEntry and assigns it to the Models field.
+func (o *AiInsightsConfigPart) SetModels(v []AiModelEntry) {
+	o.Models = v
+}
+
 // GetTargetId returns the TargetId field value if set, zero value otherwise.
 func (o *AiInsightsConfigPart) GetTargetId() int64 {
 	if o == nil || IsNil(o.TargetId) {
@@ -171,6 +207,38 @@ func (o *AiInsightsConfigPart) SetTargetName(v string) {
 	o.TargetName = &v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *AiInsightsConfigPart) GetVersion() int64 {
+	if o == nil || IsNil(o.Version) {
+		var ret int64
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AiInsightsConfigPart) GetVersionOk() (*int64, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *AiInsightsConfigPart) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int64 and assigns it to the Version field.
+func (o *AiInsightsConfigPart) SetVersion(v int64) {
+	o.Version = &v
+}
+
 func (o AiInsightsConfigPart) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -187,11 +255,17 @@ func (o AiInsightsConfigPart) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Model) {
 		toSerialize["model"] = o.Model
 	}
+	if !IsNil(o.Models) {
+		toSerialize["models"] = o.Models
+	}
 	if !IsNil(o.TargetId) {
 		toSerialize["target_id"] = o.TargetId
 	}
 	if !IsNil(o.TargetName) {
 		toSerialize["target_name"] = o.TargetName
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

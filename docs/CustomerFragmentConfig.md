@@ -10,6 +10,9 @@ Name | Type | Description | Notes
 **KeyLabel** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
+**WrapAlg** | Pointer to **string** | WrapAlg selects the HSM wrap algorithm for hsm_wrap_encrypt (e.g. rsa-oaep-sha256, aes-gcm, aes-cbc, aes-cbc-pad). RSA uses only WrapAlg; AES modes may require WrapIV and/or WrapTag. | [optional] 
+**WrapIv** | Pointer to **string** | WrapIV is the base64 IV for AES modes that require it (GCM/CBC). Empty for RSA and modes without IV metadata. | [optional] 
+**WrapTag** | Pointer to **string** | WrapTag is the base64 auth tag for AES-GCM only. Empty for RSA and other modes. | [optional] 
 
 ## Methods
 
@@ -179,6 +182,81 @@ SetValue sets Value field to given value.
 `func (o *CustomerFragmentConfig) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### GetWrapAlg
+
+`func (o *CustomerFragmentConfig) GetWrapAlg() string`
+
+GetWrapAlg returns the WrapAlg field if non-nil, zero value otherwise.
+
+### GetWrapAlgOk
+
+`func (o *CustomerFragmentConfig) GetWrapAlgOk() (*string, bool)`
+
+GetWrapAlgOk returns a tuple with the WrapAlg field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWrapAlg
+
+`func (o *CustomerFragmentConfig) SetWrapAlg(v string)`
+
+SetWrapAlg sets WrapAlg field to given value.
+
+### HasWrapAlg
+
+`func (o *CustomerFragmentConfig) HasWrapAlg() bool`
+
+HasWrapAlg returns a boolean if a field has been set.
+
+### GetWrapIv
+
+`func (o *CustomerFragmentConfig) GetWrapIv() string`
+
+GetWrapIv returns the WrapIv field if non-nil, zero value otherwise.
+
+### GetWrapIvOk
+
+`func (o *CustomerFragmentConfig) GetWrapIvOk() (*string, bool)`
+
+GetWrapIvOk returns a tuple with the WrapIv field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWrapIv
+
+`func (o *CustomerFragmentConfig) SetWrapIv(v string)`
+
+SetWrapIv sets WrapIv field to given value.
+
+### HasWrapIv
+
+`func (o *CustomerFragmentConfig) HasWrapIv() bool`
+
+HasWrapIv returns a boolean if a field has been set.
+
+### GetWrapTag
+
+`func (o *CustomerFragmentConfig) GetWrapTag() string`
+
+GetWrapTag returns the WrapTag field if non-nil, zero value otherwise.
+
+### GetWrapTagOk
+
+`func (o *CustomerFragmentConfig) GetWrapTagOk() (*string, bool)`
+
+GetWrapTagOk returns a tuple with the WrapTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWrapTag
+
+`func (o *CustomerFragmentConfig) SetWrapTag(v string)`
+
+SetWrapTag sets WrapTag field to given value.
+
+### HasWrapTag
+
+`func (o *CustomerFragmentConfig) HasWrapTag() bool`
+
+HasWrapTag returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

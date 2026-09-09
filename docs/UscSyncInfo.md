@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **JqSecretFilter** | Pointer to **string** |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
 **Namespace** | Pointer to **string** |  | [optional] 
+**Project** | Pointer to **string** |  | [optional] 
 **SecretId** | Pointer to **string** |  | [optional] 
 **SecretName** | Pointer to **string** |  | [optional] 
 **SelectedEnvironments** | Pointer to **string** |  | [optional] 
@@ -131,6 +132,31 @@ SetNamespace sets Namespace field to given value.
 `func (o *UscSyncInfo) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### GetProject
+
+`func (o *UscSyncInfo) GetProject() string`
+
+GetProject returns the Project field if non-nil, zero value otherwise.
+
+### GetProjectOk
+
+`func (o *UscSyncInfo) GetProjectOk() (*string, bool)`
+
+GetProjectOk returns a tuple with the Project field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProject
+
+`func (o *UscSyncInfo) SetProject(v string)`
+
+SetProject sets Project field to given value.
+
+### HasProject
+
+`func (o *UscSyncInfo) HasProject() bool`
+
+HasProject returns a boolean if a field has been set.
 
 ### GetSecretId
 
