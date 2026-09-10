@@ -142637,8 +142637,8 @@ components:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/external-secrets-manager/base
         page-size:
-          description: "Optional: number of items requested per response (Azure KV).\
-            \ When set, response may include next_token"
+          description: "Optional: number of items requested per response. When set,\
+            \ response may include next_token"
           format: int64
           type: integer
           x-go-name: PageSize
@@ -142647,6 +142647,10 @@ components:
             \ --page-size call"
           type: string
           x-go-name: PageToken
+        search:
+          description: Search query used to match secret names and paths.
+          type: string
+          x-go-name: Search
         token:
           description: Authentication token (see `/auth` and `/configure`)
           type: string

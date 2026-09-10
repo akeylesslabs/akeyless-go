@@ -27,10 +27,12 @@ type UscList struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	ObjectType *string `json:"object-type,omitempty"`
-	// Optional: number of items requested per response (Azure KV). When set, response may include next_token
+	// Optional: number of items requested per response. When set, response may include next_token
 	PageSize *int64 `json:"page-size,omitempty"`
 	// Optional: continuation token returned by a previous usc list --page-size call
 	PageToken *string `json:"page-token,omitempty"`
+	// Search query used to match secret names and paths.
+	Search *string `json:"search,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -223,6 +225,38 @@ func (o *UscList) SetPageToken(v string) {
 	o.PageToken = &v
 }
 
+// GetSearch returns the Search field value if set, zero value otherwise.
+func (o *UscList) GetSearch() string {
+	if o == nil || IsNil(o.Search) {
+		var ret string
+		return ret
+	}
+	return *o.Search
+}
+
+// GetSearchOk returns a tuple with the Search field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetSearchOk() (*string, bool) {
+	if o == nil || IsNil(o.Search) {
+		return nil, false
+	}
+	return o.Search, true
+}
+
+// HasSearch returns a boolean if a field has been set.
+func (o *UscList) HasSearch() bool {
+	if o != nil && !IsNil(o.Search) {
+		return true
+	}
+
+	return false
+}
+
+// SetSearch gets a reference to the given string and assigns it to the Search field.
+func (o *UscList) SetSearch(v string) {
+	o.Search = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UscList) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -335,6 +369,9 @@ func (o UscList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PageToken) {
 		toSerialize["page-token"] = o.PageToken
+	}
+	if !IsNil(o.Search) {
+		toSerialize["search"] = o.Search
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

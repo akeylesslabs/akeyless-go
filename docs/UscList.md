@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **GcpProjectId** | Pointer to **string** | The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **ObjectType** | Pointer to **string** |  | [optional] 
-**PageSize** | Pointer to **int64** | Optional: number of items requested per response (Azure KV). When set, response may include next_token | [optional] 
+**PageSize** | Pointer to **int64** | Optional: number of items requested per response. When set, response may include next_token | [optional] 
 **PageToken** | Pointer to **string** | Optional: continuation token returned by a previous usc list --page-size call | [optional] 
+**Search** | Pointer to **string** | Search query used to match secret names and paths. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UscName** | **string** | Name of the Universal Secrets Connector item | 
@@ -156,6 +157,31 @@ SetPageToken sets PageToken field to given value.
 `func (o *UscList) HasPageToken() bool`
 
 HasPageToken returns a boolean if a field has been set.
+
+### GetSearch
+
+`func (o *UscList) GetSearch() string`
+
+GetSearch returns the Search field if non-nil, zero value otherwise.
+
+### GetSearchOk
+
+`func (o *UscList) GetSearchOk() (*string, bool)`
+
+GetSearchOk returns a tuple with the Search field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearch
+
+`func (o *UscList) SetSearch(v string)`
+
+SetSearch sets Search field to given value.
+
+### HasSearch
+
+`func (o *UscList) HasSearch() bool`
+
+HasSearch returns a boolean if a field has been set.
 
 ### GetToken
 
