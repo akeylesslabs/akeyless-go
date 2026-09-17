@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **SplunkToken** | Pointer to **string** | For rotator-type&#x3D;token, optionally set/replace the stored Splunk authentication token value. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TokenOwner** | Pointer to **string** | For rotator-type&#x3D;token, specify the Splunk username that the new token should be issued for. (Splunk 10 requires name&#x3D;&lt;token-owner&gt; when creating auth tokens.) | [optional] 
@@ -758,20 +758,20 @@ HasRotationInterval returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *RotatedSecretUpdateSplunk) GetSkipDryRun() string`
+`func (o *RotatedSecretUpdateSplunk) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *RotatedSecretUpdateSplunk) GetSkipDryRunOk() (*string, bool)`
+`func (o *RotatedSecretUpdateSplunk) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *RotatedSecretUpdateSplunk) SetSkipDryRun(v string)`
+`func (o *RotatedSecretUpdateSplunk) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

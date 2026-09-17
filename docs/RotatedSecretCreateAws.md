@@ -40,7 +40,7 @@ Name | Type | Description | Notes
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -961,20 +961,20 @@ HasSecureAccessEnable returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *RotatedSecretCreateAws) GetSkipDryRun() string`
+`func (o *RotatedSecretCreateAws) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *RotatedSecretCreateAws) GetSkipDryRunOk() (*string, bool)`
+`func (o *RotatedSecretCreateAws) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *RotatedSecretCreateAws) SetSkipDryRun(v string)`
+`func (o *RotatedSecretCreateAws) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

@@ -74,8 +74,8 @@ type RotatedSecretUpdateSplunk struct {
 	RotationEventIn []string `json:"rotation-event-in,omitempty"`
 	RotationHour *int32 `json:"rotation-hour,omitempty"`
 	RotationInterval *string `json:"rotation-interval,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// For rotator-type=token, optionally set/replace the stored Splunk authentication token value.
 	SplunkToken *string `json:"splunk-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -1014,9 +1014,9 @@ func (o *RotatedSecretUpdateSplunk) SetRotationInterval(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretUpdateSplunk) GetSkipDryRun() string {
+func (o *RotatedSecretUpdateSplunk) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1024,7 +1024,7 @@ func (o *RotatedSecretUpdateSplunk) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretUpdateSplunk) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretUpdateSplunk) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1040,8 +1040,8 @@ func (o *RotatedSecretUpdateSplunk) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretUpdateSplunk) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateSplunk) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1394,7 +1394,7 @@ func (o RotatedSecretUpdateSplunk) ToMap() (map[string]interface{}, error) {
 		toSerialize["rotation-interval"] = o.RotationInterval
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.SplunkToken) {
 		toSerialize["splunk-token"] = o.SplunkToken

@@ -54,8 +54,8 @@ type GatewayCreateProducerCustom struct {
 	RevokeSyncUrl string `json:"revoke-sync-url"`
 	// URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate
 	RotateSyncUrl *string `json:"rotate-sync-url,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Maximum allowed time in seconds for the webhook to return the results
@@ -595,9 +595,9 @@ func (o *GatewayCreateProducerCustom) SetRotateSyncUrl(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *GatewayCreateProducerCustom) GetSkipDryRun() string {
+func (o *GatewayCreateProducerCustom) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -605,7 +605,7 @@ func (o *GatewayCreateProducerCustom) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerCustom) GetSkipDryRunOk() (*string, bool) {
+func (o *GatewayCreateProducerCustom) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -621,8 +621,8 @@ func (o *GatewayCreateProducerCustom) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *GatewayCreateProducerCustom) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerCustom) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -839,7 +839,7 @@ func (o GatewayCreateProducerCustom) ToMap() (map[string]interface{}, error) {
 		toSerialize["rotate-sync-url"] = o.RotateSyncUrl
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

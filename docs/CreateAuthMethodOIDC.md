@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GatewayUrl** | Pointer to **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **Issuer** | Pointer to **string** | Issuer URL | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -347,6 +348,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodOIDC) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGatewayUrl
+
+`func (o *CreateAuthMethodOIDC) GetGatewayUrl() string`
+
+GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
+
+### GetGatewayUrlOk
+
+`func (o *CreateAuthMethodOIDC) GetGatewayUrlOk() (*string, bool)`
+
+GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayUrl
+
+`func (o *CreateAuthMethodOIDC) SetGatewayUrl(v string)`
+
+SetGatewayUrl sets GatewayUrl field to given value.
+
+### HasGatewayUrl
+
+`func (o *CreateAuthMethodOIDC) HasGatewayUrl() bool`
+
+HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetGwBoundIps
 

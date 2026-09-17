@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Dynamic secret name | 
 **OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **PasswordLength** | Pointer to **string** | The length of the password to be generated | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -368,20 +368,20 @@ HasPasswordLength returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *DynamicSecretCreateAerospike) GetSkipDryRun() string`
+`func (o *DynamicSecretCreateAerospike) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *DynamicSecretCreateAerospike) GetSkipDryRunOk() (*string, bool)`
+`func (o *DynamicSecretCreateAerospike) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *DynamicSecretCreateAerospike) SetSkipDryRun(v string)`
+`func (o *DynamicSecretCreateAerospike) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

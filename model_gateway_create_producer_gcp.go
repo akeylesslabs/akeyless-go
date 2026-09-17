@@ -74,8 +74,8 @@ type GatewayCreateProducerGcp struct {
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
 	// The type of the GCP service account. Options [fixed, dynamic] (Relevant only when --access-type=sa)
 	ServiceAccountType *string `json:"service-account-type,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -989,9 +989,9 @@ func (o *GatewayCreateProducerGcp) SetServiceAccountType(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *GatewayCreateProducerGcp) GetSkipDryRun() string {
+func (o *GatewayCreateProducerGcp) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -999,7 +999,7 @@ func (o *GatewayCreateProducerGcp) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerGcp) GetSkipDryRunOk() (*string, bool) {
+func (o *GatewayCreateProducerGcp) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1015,8 +1015,8 @@ func (o *GatewayCreateProducerGcp) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *GatewayCreateProducerGcp) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerGcp) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1270,7 +1270,7 @@ func (o GatewayCreateProducerGcp) ToMap() (map[string]interface{}, error) {
 		toSerialize["service-account-type"] = o.ServiceAccountType
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

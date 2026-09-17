@@ -34,10 +34,14 @@ type SystemAccessCredentialsReplyObj struct {
 	// RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery.
 	RecoveryKeyId *string `json:"recovery_key_id,omitempty"`
 	RequiredMfa *string `json:"required_mfa,omitempty"`
+	// SubClaims carries the IdP-verified RBAC claims for offline placeholder creds (empty UAM JWT); parsed from the ID token at callback time.
+	SubClaims *map[string][]string `json:"sub_claims,omitempty"`
 	// Credentials tmp token
 	Token *string `json:"token,omitempty"`
 	// Temporary credentials for accessing the UAM service
 	UamCreds *string `json:"uam_creds,omitempty"`
+	// UniqueId is set only on Gateway-minted offline placeholder creds (empty UAM JWT), carrying the IdP unique identifier so usage-time RBAC can resolve identity.
+	UniqueId *string `json:"unique_id,omitempty"`
 }
 
 // NewSystemAccessCredentialsReplyObj instantiates a new SystemAccessCredentialsReplyObj object
@@ -313,6 +317,38 @@ func (o *SystemAccessCredentialsReplyObj) SetRequiredMfa(v string) {
 	o.RequiredMfa = &v
 }
 
+// GetSubClaims returns the SubClaims field value if set, zero value otherwise.
+func (o *SystemAccessCredentialsReplyObj) GetSubClaims() map[string][]string {
+	if o == nil || IsNil(o.SubClaims) {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.SubClaims
+}
+
+// GetSubClaimsOk returns a tuple with the SubClaims field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemAccessCredentialsReplyObj) GetSubClaimsOk() (*map[string][]string, bool) {
+	if o == nil || IsNil(o.SubClaims) {
+		return nil, false
+	}
+	return o.SubClaims, true
+}
+
+// HasSubClaims returns a boolean if a field has been set.
+func (o *SystemAccessCredentialsReplyObj) HasSubClaims() bool {
+	if o != nil && !IsNil(o.SubClaims) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubClaims gets a reference to the given map[string][]string and assigns it to the SubClaims field.
+func (o *SystemAccessCredentialsReplyObj) SetSubClaims(v map[string][]string) {
+	o.SubClaims = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *SystemAccessCredentialsReplyObj) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -377,6 +413,38 @@ func (o *SystemAccessCredentialsReplyObj) SetUamCreds(v string) {
 	o.UamCreds = &v
 }
 
+// GetUniqueId returns the UniqueId field value if set, zero value otherwise.
+func (o *SystemAccessCredentialsReplyObj) GetUniqueId() string {
+	if o == nil || IsNil(o.UniqueId) {
+		var ret string
+		return ret
+	}
+	return *o.UniqueId
+}
+
+// GetUniqueIdOk returns a tuple with the UniqueId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemAccessCredentialsReplyObj) GetUniqueIdOk() (*string, bool) {
+	if o == nil || IsNil(o.UniqueId) {
+		return nil, false
+	}
+	return o.UniqueId, true
+}
+
+// HasUniqueId returns a boolean if a field has been set.
+func (o *SystemAccessCredentialsReplyObj) HasUniqueId() bool {
+	if o != nil && !IsNil(o.UniqueId) {
+		return true
+	}
+
+	return false
+}
+
+// SetUniqueId gets a reference to the given string and assigns it to the UniqueId field.
+func (o *SystemAccessCredentialsReplyObj) SetUniqueId(v string) {
+	o.UniqueId = &v
+}
+
 func (o SystemAccessCredentialsReplyObj) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -411,11 +479,17 @@ func (o SystemAccessCredentialsReplyObj) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.RequiredMfa) {
 		toSerialize["required_mfa"] = o.RequiredMfa
 	}
+	if !IsNil(o.SubClaims) {
+		toSerialize["sub_claims"] = o.SubClaims
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}
 	if !IsNil(o.UamCreds) {
 		toSerialize["uam_creds"] = o.UamCreds
+	}
+	if !IsNil(o.UniqueId) {
+		toSerialize["unique_id"] = o.UniqueId
 	}
 	return toSerialize, nil
 }

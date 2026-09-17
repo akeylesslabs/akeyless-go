@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -677,20 +677,20 @@ HasSecureAccessWeb returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *GatewayUpdateProducerEks) GetSkipDryRun() string`
+`func (o *GatewayUpdateProducerEks) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *GatewayUpdateProducerEks) GetSkipDryRunOk() (*string, bool)`
+`func (o *GatewayUpdateProducerEks) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *GatewayUpdateProducerEks) SetSkipDryRun(v string)`
+`func (o *GatewayUpdateProducerEks) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

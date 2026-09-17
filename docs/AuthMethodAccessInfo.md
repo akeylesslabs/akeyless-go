@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **CertAccessRules** | Pointer to [**CertAccessRules**](CertAccessRules.md) |  | [optional] 
 **CidrWhitelist** | Pointer to **string** |  | [optional] 
 **EmailPassAccessRules** | Pointer to [**EmailPassAccessRules**](EmailPassAccessRules.md) |  | [optional] 
+**EnforceClientType** | Pointer to **bool** | EnforceClientType mirrors the SaaS Auth client-type enforcement decision (GwAuthEligibilityReply.EnforceClientType) captured online, so Gateway-owned offline auth and cached-creds usage honor the same enforce flag SaaS uses (see base_access.AuthenticateClientType). When false, client-type mismatches are not rejected. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true the role associated with this auth method must include sub claims | [optional] 
 **GcpAccessRules** | Pointer to [**GCPAccessRules**](GCPAccessRules.md) |  | [optional] 
 **GwCidrWhitelist** | Pointer to **string** |  | [optional] 
@@ -326,6 +327,31 @@ SetEmailPassAccessRules sets EmailPassAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasEmailPassAccessRules() bool`
 
 HasEmailPassAccessRules returns a boolean if a field has been set.
+
+### GetEnforceClientType
+
+`func (o *AuthMethodAccessInfo) GetEnforceClientType() bool`
+
+GetEnforceClientType returns the EnforceClientType field if non-nil, zero value otherwise.
+
+### GetEnforceClientTypeOk
+
+`func (o *AuthMethodAccessInfo) GetEnforceClientTypeOk() (*bool, bool)`
+
+GetEnforceClientTypeOk returns a tuple with the EnforceClientType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnforceClientType
+
+`func (o *AuthMethodAccessInfo) SetEnforceClientType(v bool)`
+
+SetEnforceClientType sets EnforceClientType field to given value.
+
+### HasEnforceClientType
+
+`func (o *AuthMethodAccessInfo) HasEnforceClientType() bool`
+
+HasEnforceClientType returns a boolean if a field has been set.
 
 ### GetForceSubClaims
 

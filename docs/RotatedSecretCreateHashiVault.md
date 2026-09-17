@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **RotationEventIn** | Pointer to **[]string** | How many days before the rotation of the item would you like to be notified | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -550,20 +550,20 @@ HasRotationInterval returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *RotatedSecretCreateHashiVault) GetSkipDryRun() string`
+`func (o *RotatedSecretCreateHashiVault) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *RotatedSecretCreateHashiVault) GetSkipDryRunOk() (*string, bool)`
+`func (o *RotatedSecretCreateHashiVault) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *RotatedSecretCreateHashiVault) SetSkipDryRun(v string)`
+`func (o *RotatedSecretCreateHashiVault) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

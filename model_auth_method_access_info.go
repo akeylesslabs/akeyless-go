@@ -32,6 +32,8 @@ type AuthMethodAccessInfo struct {
 	CertAccessRules *CertAccessRules `json:"cert_access_rules,omitempty"`
 	CidrWhitelist *string `json:"cidr_whitelist,omitempty"`
 	EmailPassAccessRules *EmailPassAccessRules `json:"email_pass_access_rules,omitempty"`
+	// EnforceClientType mirrors the SaaS Auth client-type enforcement decision (GwAuthEligibilityReply.EnforceClientType) captured online, so Gateway-owned offline auth and cached-creds usage honor the same enforce flag SaaS uses (see base_access.AuthenticateClientType). When false, client-type mismatches are not rejected.
+	EnforceClientType *bool `json:"enforce_client_type,omitempty"`
 	// if true the role associated with this auth method must include sub claims
 	ForceSubClaims *bool `json:"force_sub_claims,omitempty"`
 	GcpAccessRules *GCPAccessRules `json:"gcp_access_rules,omitempty"`
@@ -421,6 +423,38 @@ func (o *AuthMethodAccessInfo) HasEmailPassAccessRules() bool {
 // SetEmailPassAccessRules gets a reference to the given EmailPassAccessRules and assigns it to the EmailPassAccessRules field.
 func (o *AuthMethodAccessInfo) SetEmailPassAccessRules(v EmailPassAccessRules) {
 	o.EmailPassAccessRules = &v
+}
+
+// GetEnforceClientType returns the EnforceClientType field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetEnforceClientType() bool {
+	if o == nil || IsNil(o.EnforceClientType) {
+		var ret bool
+		return ret
+	}
+	return *o.EnforceClientType
+}
+
+// GetEnforceClientTypeOk returns a tuple with the EnforceClientType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetEnforceClientTypeOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnforceClientType) {
+		return nil, false
+	}
+	return o.EnforceClientType, true
+}
+
+// HasEnforceClientType returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasEnforceClientType() bool {
+	if o != nil && !IsNil(o.EnforceClientType) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnforceClientType gets a reference to the given bool and assigns it to the EnforceClientType field.
+func (o *AuthMethodAccessInfo) SetEnforceClientType(v bool) {
+	o.EnforceClientType = &v
 }
 
 // GetForceSubClaims returns the ForceSubClaims field value if set, zero value otherwise.
@@ -1009,6 +1043,9 @@ func (o AuthMethodAccessInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EmailPassAccessRules) {
 		toSerialize["email_pass_access_rules"] = o.EmailPassAccessRules
+	}
+	if !IsNil(o.EnforceClientType) {
+		toSerialize["enforce_client_type"] = o.EnforceClientType
 	}
 	if !IsNil(o.ForceSubClaims) {
 		toSerialize["force_sub_claims"] = o.ForceSubClaims

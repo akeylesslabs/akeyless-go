@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **RotationInterval** | Pointer to **string** |  | [optional] 
 **RotationStatement** | Pointer to **string** | Snowflake rotation statement | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/password/key] | 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -727,20 +727,20 @@ SetRotatorType sets RotatorType field to given value.
 
 ### GetSkipDryRun
 
-`func (o *RotatedSecretCreateSnowflake) GetSkipDryRun() string`
+`func (o *RotatedSecretCreateSnowflake) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *RotatedSecretCreateSnowflake) GetSkipDryRunOk() (*string, bool)`
+`func (o *RotatedSecretCreateSnowflake) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *RotatedSecretCreateSnowflake) SetSkipDryRun(v string)`
+`func (o *RotatedSecretCreateSnowflake) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

@@ -24396,6 +24396,7 @@ components:
             - bound_resource_providers
             - bound_resource_providers
             jwks_uri: jwks_uri
+          enforce_client_type: true
           oci_access_rules:
             tenant_ocid: tenant_ocid
             group_ocids:
@@ -24751,6 +24752,7 @@ components:
           - bound_resource_providers
           - bound_resource_providers
           jwks_uri: jwks_uri
+        enforce_client_type: true
         oci_access_rules:
           tenant_ocid: tenant_ocid
           group_ocids:
@@ -25029,6 +25031,15 @@ components:
           x-go-name: CIDRWhitelist
         email_pass_access_rules:
           $ref: '#/components/schemas/EmailPassAccessRules'
+        enforce_client_type:
+          description: |-
+            EnforceClientType mirrors the SaaS Auth client-type enforcement decision
+            (GwAuthEligibilityReply.EnforceClientType) captured online, so Gateway-owned
+            offline auth and cached-creds usage honor the same enforce flag SaaS uses
+            (see base_access.AuthenticateClientType). When false, client-type mismatches
+            are not rejected.
+          type: boolean
+          x-go-name: EnforceClientType
         force_sub_claims:
           description: if true the role associated with this auth method must include
             sub claims
@@ -25200,7 +25211,12 @@ components:
         expiration: expiration
         creds:
           auth_creds: auth_creds
+          sub_claims:
+            key:
+            - sub_claims
+            - sub_claims
           uam_creds: uam_creds
+          unique_id: unique_id
           recovery_key_id: recovery_key_id
           kfm_creds: kfm_creds
           csrf_token: csrf_token
@@ -38305,6 +38321,7 @@ components:
               - bound_resource_providers
               - bound_resource_providers
               jwks_uri: jwks_uri
+            enforce_client_type: true
             oci_access_rules:
               tenant_ocid: tenant_ocid
               group_ocids:
@@ -38717,6 +38734,7 @@ components:
               - bound_resource_providers
               - bound_resource_providers
               jwks_uri: jwks_uri
+            enforce_client_type: true
             oci_access_rules:
               tenant_ocid: tenant_ocid
               group_ocids:
@@ -48612,7 +48630,12 @@ components:
     SystemAccessCredentialsReplyObj:
       example:
         auth_creds: auth_creds
+        sub_claims:
+          key:
+          - sub_claims
+          - sub_claims
         uam_creds: uam_creds
+        unique_id: unique_id
         recovery_key_id: recovery_key_id
         kfm_creds: kfm_creds
         csrf_token: csrf_token
@@ -48655,6 +48678,16 @@ components:
         required_mfa:
           type: string
           x-go-package: akeyless.io/akeyless-main-repo/go/src/infra/types
+        sub_claims:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          description: |-
+            SubClaims carries the IdP-verified RBAC claims for offline placeholder creds
+            (empty UAM JWT); parsed from the ID token at callback time.
+          type: object
+          x-go-name: SubClaims
         token:
           description: Credentials tmp token
           type: string
@@ -48663,6 +48696,12 @@ components:
           description: Temporary credentials for accessing the UAM service
           type: string
           x-go-name: UAMAccessCredentials
+        unique_id:
+          description: |-
+            UniqueId is set only on Gateway-minted offline placeholder creds (empty UAM JWT),
+            carrying the IdP unique identifier so usage-time RBAC can resolve identity.
+          type: string
+          x-go-name: UniqueId
       title: "Combination of three temporary credentials signed by Auth for accessing\
         \ Auth, UAM and KFMs instances."
       type: object
@@ -52875,6 +52914,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -53190,6 +53234,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -55095,6 +55144,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -55410,6 +55464,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -57686,6 +57745,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -57849,6 +57913,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -63391,9 +63460,9 @@ components:
           description: The length of the password to be generated
           type: string
           x-go-name: PasswordLengthInput
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         target-name:
           type: string
@@ -63522,9 +63591,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -63728,9 +63797,9 @@ components:
             \ only for Assumed Role"
           type: string
           x-go-name: SessionTags
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -63910,9 +63979,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -64077,9 +64146,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -64227,15 +64296,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
+          x-go-name: SkipDryRun
         skip-ssl:
           default: true
           description: Skip SSL
           type: boolean
           x-go-name: SkipSSL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
-          x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
           items:
@@ -64378,9 +64447,9 @@ components:
             https://webhook.example.com/sync/rotate
           type: string
           x-go-name: RotateSyncURL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -64495,9 +64564,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -64650,9 +64719,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -64824,9 +64893,9 @@ components:
             \ (Relevant only when --access-type=sa)"
           type: string
           x-go-name: ServiceAccountType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -64944,9 +65013,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -65080,9 +65149,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -65227,9 +65296,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -65383,9 +65452,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -65551,9 +65620,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -65768,9 +65837,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -65953,9 +66022,9 @@ components:
           description: Required when the Dynamic Secret is used for a domain user
           type: string
           x-go-name: SecureAccessDomain
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -66185,9 +66254,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -66384,9 +66453,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -66581,9 +66650,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -66714,9 +66783,9 @@ components:
           description: Project ID
           type: string
           x-go-name: OpenAIProjectID
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -66881,9 +66950,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -67538,9 +67607,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -67710,9 +67779,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -67890,9 +67959,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -68111,9 +68180,9 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -68267,9 +68336,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -68442,9 +68511,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -68604,9 +68673,9 @@ components:
           description: User role
           type: string
           x-go-name: Role
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -68763,9 +68832,9 @@ components:
           description: Signer key name
           type: string
           x-go-name: SignerKeyName
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         store-private-key:
           description: Store private key
@@ -69020,9 +69089,9 @@ components:
           description: Revoke All Temp Creds
           type: boolean
           x-go-name: RevokeAll
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         soft-delete:
           description: Soft Delete
@@ -69090,9 +69159,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -69161,9 +69230,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tmp-creds-id:
           description: Tmp Creds ID
@@ -69261,9 +69330,9 @@ components:
           description: The length of the password to be generated
           type: string
           x-go-name: PasswordLengthInput
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         target-name:
           type: string
@@ -69396,9 +69465,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -69606,9 +69675,9 @@ components:
             \ only for Assumed Role"
           type: string
           x-go-name: SessionTags
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -69792,9 +69861,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -69963,9 +70032,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -70117,15 +70186,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
+          x-go-name: SkipDryRun
         skip-ssl:
           default: true
           description: Skip SSL
           type: boolean
           x-go-name: SkipSSL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
-          x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
           items:
@@ -70272,9 +70341,9 @@ components:
             https://webhook.example.com/sync/rotate
           type: string
           x-go-name: RotateSyncURL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -70393,9 +70462,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -70552,9 +70621,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -70730,9 +70799,9 @@ components:
             \ (Relevant only when --access-type=sa)"
           type: string
           x-go-name: ServiceAccountType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -70854,9 +70923,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -70994,9 +71063,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -71145,9 +71214,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -71305,9 +71374,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -71477,9 +71546,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -71698,9 +71767,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -71887,9 +71956,9 @@ components:
           description: Required when the Dynamic Secret is used for a domain user
           type: string
           x-go-name: SecureAccessDomain
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -72123,9 +72192,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -72326,9 +72395,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -72527,9 +72596,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -72664,9 +72733,9 @@ components:
           description: Project ID
           type: string
           x-go-name: OpenAIProjectID
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -72835,9 +72904,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -73496,9 +73565,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -73672,9 +73741,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -73856,9 +73925,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -74081,9 +74150,9 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -74241,9 +74310,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -74420,9 +74489,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -74586,9 +74655,9 @@ components:
           description: User role
           type: string
           x-go-name: Role
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -74749,9 +74818,9 @@ components:
           description: Signer key name
           type: string
           x-go-name: SignerKeyName
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         store-private-key:
           description: Store private key
@@ -77646,9 +77715,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -78291,9 +78360,9 @@ components:
             \ only for Assumed Role"
           type: string
           x-go-name: SessionTags
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -78911,9 +78980,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -79516,9 +79585,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -80104,15 +80173,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
+          x-go-name: SkipDryRun
         skip-ssl:
           default: true
           description: Skip SSL
           type: boolean
           x-go-name: SkipSSL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
-          x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
           items:
@@ -80695,9 +80764,9 @@ components:
             https://webhook.example.com/sync/rotate
           type: string
           x-go-name: RotateSyncURL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -81248,9 +81317,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -81842,9 +81911,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -82454,9 +82523,9 @@ components:
             \ (Relevant only when --access-type=sa)"
           type: string
           x-go-name: ServiceAccountType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -83012,9 +83081,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -83609,9 +83678,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -84219,9 +84288,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -84859,9 +84928,9 @@ components:
           description: Required when the Dynamic Secret is used for a domain user
           type: string
           x-go-name: SecureAccessDomain
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -85515,9 +85584,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -86167,9 +86236,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -86802,9 +86871,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -87467,9 +87536,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -88076,9 +88145,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -88729,9 +88798,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -89339,9 +89408,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -89957,9 +90026,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -90617,9 +90686,9 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -91211,9 +91280,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -91824,9 +91893,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -92424,9 +92493,9 @@ components:
           description: User role
           type: string
           x-go-name: Role
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -93021,9 +93090,9 @@ components:
           description: Signer key name
           type: string
           x-go-name: SignerKeyName
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         store-private-key:
           description: Store private key
@@ -93736,9 +93805,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -94068,9 +94137,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -94150,9 +94219,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -95426,9 +95495,9 @@ components:
           description: Revoke All Temp Creds
           type: boolean
           x-go-name: RevokeAll
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         soft-delete:
           description: Soft Delete
@@ -95496,9 +95565,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -95594,9 +95663,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -97338,9 +97407,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -97987,9 +98056,9 @@ components:
             \ only for Assumed Role"
           type: string
           x-go-name: SessionTags
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -98611,9 +98680,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -99220,9 +99289,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -99812,15 +99881,15 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
+          x-go-name: SkipDryRun
         skip-ssl:
           default: true
           description: Skip SSL
           type: boolean
           x-go-name: SkipSSL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
-          x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
           items:
@@ -100407,9 +100476,9 @@ components:
             https://webhook.example.com/sync/rotate
           type: string
           x-go-name: RotateSyncURL
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -100964,9 +101033,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -101562,9 +101631,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -102178,9 +102247,9 @@ components:
             \ (Relevant only when --access-type=sa)"
           type: string
           x-go-name: ServiceAccountType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -102740,9 +102809,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -103341,9 +103410,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -103949,9 +104018,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -104593,9 +104662,9 @@ components:
           description: Required when the Dynamic Secret is used for a domain user
           type: string
           x-go-name: SecureAccessDomain
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -105253,9 +105322,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -105909,9 +105978,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -106548,9 +106617,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -107217,9 +107286,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -107830,9 +107899,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -108487,9 +108556,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -109101,9 +109170,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -109723,9 +109792,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -110387,9 +110456,9 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -110985,9 +111054,9 @@ components:
           description: Dynamic producer encryption key
           type: string
           x-go-name: ProducerEncryptionKey
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -111602,9 +111671,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         ssl:
           default: false
@@ -112206,9 +112275,9 @@ components:
           description: User role
           type: string
           x-go-name: Role
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -112807,9 +112876,9 @@ components:
           description: Signer key name
           type: string
           x-go-name: SignerKeyName
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         store-private-key:
           description: Store private key
@@ -113568,9 +113637,9 @@ components:
             type: string
           type: array
           x-go-name: OutputRules
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tmp-creds-id:
           description: Tmp Creds ID
@@ -117292,9 +117361,9 @@ components:
           description: "The rotator type. options: [target/password]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -117521,9 +117590,9 @@ components:
           description: "Enable/Disable secure remote access [true/false]"
           type: string
           x-go-name: SecureAccessEnabled
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -117774,9 +117843,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         storage-account-key-name:
           description: "The name of the storage account key to rotate [key1/key2/kerb1/kerb2]\
@@ -117957,9 +118026,9 @@ components:
           description: "The rotator type. options: [target/password]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -118203,9 +118272,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -118374,9 +118443,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -118546,9 +118615,9 @@ components:
           description: "The rotator type. options: [target/password]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -118743,9 +118812,9 @@ components:
           description: "The rotator type. options: [target/service-account-rotator]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -118916,9 +118985,9 @@ components:
           description: "The rotator type. options: [target/password]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -119069,9 +119138,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -119308,9 +119377,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -119538,9 +119607,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -119756,9 +119825,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -119970,9 +120039,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -120143,9 +120212,9 @@ components:
           description: "The rotator type. options: [target/api-key]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -120348,9 +120417,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -120575,9 +120644,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -120748,9 +120817,9 @@ components:
           description: "The rotator type. options: [target/password]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -120948,9 +121017,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -121135,9 +121204,9 @@ components:
           description: "The rotator type. options: [target/password/key]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -121332,9 +121401,9 @@ components:
           description: "The rotator type. options: [target/password/token/hec-token]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         splunk-token:
           description: "Current Splunk authentication token to store (relevant only\
@@ -121628,9 +121697,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -121870,9 +121939,9 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         tags:
           description: Add tags attached to this object
@@ -122294,9 +122363,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -122529,9 +122598,9 @@ components:
           description: "Enable/Disable secure remote access [true/false]"
           type: string
           x-go-name: SecureAccessEnabled
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -122788,9 +122857,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         storage-account-key-name:
           description: "The name of the storage account key to rotate [key1/key2/kerb1/kerb2]\
@@ -122977,9 +123046,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -123233,9 +123302,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         target:
           description: "A list of targets to be associated with an SRA item, To specify\
@@ -123414,9 +123483,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -123620,9 +123689,9 @@ components:
           description: "The rotator type. options: [target/service-account-rotator]"
           type: string
           x-go-name: RotatorType
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -123800,9 +123869,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -123963,9 +124032,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -124209,9 +124278,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         target:
           description: "A list of targets to be associated with an SRA item, To specify\
@@ -124445,9 +124514,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -124669,9 +124738,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -124889,9 +124958,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -125067,9 +125136,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -125278,9 +125347,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -125511,9 +125580,9 @@ components:
           description: Enable Web Secure Remote Access
           type: boolean
           x-go-name: SecureAccessWebCategory
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -125690,9 +125759,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -125896,9 +125965,9 @@ components:
             type: string
           type: array
           x-go-name: SecureAccessHost
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -126089,9 +126158,9 @@ components:
           description: Snowflake rotation statement
           type: string
           x-go-name: RotationStatement
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         token:
           description: Authentication token (see `/auth` and `/configure`)
@@ -126276,9 +126345,9 @@ components:
         rotation-interval:
           type: string
           x-go-name: RotationInterval
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         splunk-token:
           description: "For rotator-type=token, optionally set/replace the stored\
@@ -126583,9 +126652,9 @@ components:
           description: Web-Proxy via Akeyless's Secure Remote Access (SRA)
           type: boolean
           x-go-name: SecureAccessWebProxy
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         target:
           description: "A list of targets to be associated with an SRA item, To specify\
@@ -126836,9 +126905,9 @@ components:
           description: Override the RDP Domain username
           type: string
           x-go-name: SecureAccessOverrideUser
-        skip_dry_run:
-          description: "If set, dry-run will be skipped"
-          type: string
+        skip-dry-run:
+          description: "If set, dry-run will be skipped [true/false]"
+          type: boolean
           x-go-name: SkipDryRun
         target:
           description: "A list of targets to be associated with an SRA item, To specify\
@@ -137384,6 +137453,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to
@@ -137537,6 +137611,11 @@ components:
           description: "if true: enforce role-association must include sub claims"
           type: boolean
           x-go-name: ForceSubClaims
+        gateway-url:
+          description: Akeyless Gateway URL (Configuration Management port). Relevant
+            only when working with Gateway mode
+          type: string
+          x-go-name: GatewayUrl
         gw-bound-ips:
           description: A CIDR whitelist with the GW IPs that the access is restricted
             to

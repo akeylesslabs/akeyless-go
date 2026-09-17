@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **RedshiftUsername** | Pointer to **string** | Redshift Username | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
@@ -604,20 +604,20 @@ HasSecureAccessHost returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *DynamicSecretUpdateRedshift) GetSkipDryRun() string`
+`func (o *DynamicSecretUpdateRedshift) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *DynamicSecretUpdateRedshift) GetSkipDryRunOk() (*string, bool)`
+`func (o *DynamicSecretUpdateRedshift) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *DynamicSecretUpdateRedshift) SetSkipDryRun(v string)`
+`func (o *DynamicSecretUpdateRedshift) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

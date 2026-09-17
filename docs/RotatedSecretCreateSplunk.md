@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
 **RotatorType** | **string** | The rotator type. options: [target/password/token/hec-token] | 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **SplunkToken** | Pointer to **string** | Current Splunk authentication token to store (relevant only for rotator-type&#x3D;token). If not provided, a new token will be created in Splunk. | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | **string** | The target name to associate | 
@@ -755,20 +755,20 @@ SetRotatorType sets RotatorType field to given value.
 
 ### GetSkipDryRun
 
-`func (o *RotatedSecretCreateSplunk) GetSkipDryRun() string`
+`func (o *RotatedSecretCreateSplunk) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *RotatedSecretCreateSplunk) GetSkipDryRunOk() (*string, bool)`
+`func (o *RotatedSecretCreateSplunk) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *RotatedSecretCreateSplunk) SetSkipDryRun(v string)`
+`func (o *RotatedSecretCreateSplunk) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

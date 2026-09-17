@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **PrivateKey** | Pointer to **string** | RSA Private key (base64 encoded) | [optional] 
 **PrivateKeyPassphrase** | Pointer to **string** | The Private key passphrase | [optional] 
 **Role** | Pointer to **string** | User role | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -552,20 +552,20 @@ HasRole returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *GatewayCreateProducerSnowflake) GetSkipDryRun() string`
+`func (o *GatewayCreateProducerSnowflake) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *GatewayCreateProducerSnowflake) GetSkipDryRunOk() (*string, bool)`
+`func (o *GatewayCreateProducerSnowflake) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *GatewayCreateProducerSnowflake) SetSkipDryRun(v string)`
+`func (o *GatewayCreateProducerSnowflake) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

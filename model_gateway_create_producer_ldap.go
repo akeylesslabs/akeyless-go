@@ -79,8 +79,8 @@ type GatewayCreateProducerLdap struct {
 	SecureAccessRdGatewayServer *string `json:"secure-access-rd-gateway-server,omitempty"`
 	// Required when the Dynamic Secret is used for a domain user
 	SecureAccessRdpDomain *string `json:"secure-access-rdp-domain,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
@@ -1065,9 +1065,9 @@ func (o *GatewayCreateProducerLdap) SetSecureAccessRdpDomain(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *GatewayCreateProducerLdap) GetSkipDryRun() string {
+func (o *GatewayCreateProducerLdap) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1075,7 +1075,7 @@ func (o *GatewayCreateProducerLdap) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerLdap) GetSkipDryRunOk() (*string, bool) {
+func (o *GatewayCreateProducerLdap) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1091,8 +1091,8 @@ func (o *GatewayCreateProducerLdap) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *GatewayCreateProducerLdap) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerLdap) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1608,7 +1608,7 @@ func (o GatewayCreateProducerLdap) ToMap() (map[string]interface{}, error) {
 		toSerialize["secure-access-rdp-domain"] = o.SecureAccessRdpDomain
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

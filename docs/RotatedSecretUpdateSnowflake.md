@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationInterval** | Pointer to **string** |  | [optional] 
 **RotationStatement** | Pointer to **string** | Snowflake rotation statement | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UseCapitalLetters** | Pointer to **string** | Specifies whether the generated temporary password must contain at least one uppercase character from the ISO basic Latin alphabet (A to Z). [true/false] | [optional] 
@@ -808,20 +808,20 @@ HasRotationStatement returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *RotatedSecretUpdateSnowflake) GetSkipDryRun() string`
+`func (o *RotatedSecretUpdateSnowflake) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *RotatedSecretUpdateSnowflake) GetSkipDryRunOk() (*string, bool)`
+`func (o *RotatedSecretUpdateSnowflake) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *RotatedSecretUpdateSnowflake) SetSkipDryRun(v string)`
+`func (o *RotatedSecretUpdateSnowflake) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

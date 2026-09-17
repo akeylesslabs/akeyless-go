@@ -84,8 +84,8 @@ type RotatedSecretUpdateGcp struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The rotator type. options: [target/service-account-rotator]
 	RotatorType string `json:"rotator-type"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -1173,9 +1173,9 @@ func (o *RotatedSecretUpdateGcp) SetRotatorType(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretUpdateGcp) GetSkipDryRun() string {
+func (o *RotatedSecretUpdateGcp) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1183,7 +1183,7 @@ func (o *RotatedSecretUpdateGcp) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretUpdateGcp) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretUpdateGcp) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1199,8 +1199,8 @@ func (o *RotatedSecretUpdateGcp) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretUpdateGcp) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateGcp) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1502,7 +1502,7 @@ func (o RotatedSecretUpdateGcp) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["rotator-type"] = o.RotatorType
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

@@ -40,6 +40,8 @@ type AuthMethodCreateSAML struct {
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// if true: enforce role-association must include sub claims
 	ForceSubClaims *bool `json:"force-sub-claims,omitempty"`
+	// Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode
+	GatewayUrl *string `json:"gateway-url,omitempty"`
 	// A CIDR whitelist with the GW IPs that the access is restricted to
 	GwBoundIps []string `json:"gw-bound-ips,omitempty"`
 	// IDP metadata url
@@ -385,6 +387,38 @@ func (o *AuthMethodCreateSAML) HasForceSubClaims() bool {
 // SetForceSubClaims gets a reference to the given bool and assigns it to the ForceSubClaims field.
 func (o *AuthMethodCreateSAML) SetForceSubClaims(v bool) {
 	o.ForceSubClaims = &v
+}
+
+// GetGatewayUrl returns the GatewayUrl field value if set, zero value otherwise.
+func (o *AuthMethodCreateSAML) GetGatewayUrl() string {
+	if o == nil || IsNil(o.GatewayUrl) {
+		var ret string
+		return ret
+	}
+	return *o.GatewayUrl
+}
+
+// GetGatewayUrlOk returns a tuple with the GatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateSAML) GetGatewayUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.GatewayUrl) {
+		return nil, false
+	}
+	return o.GatewayUrl, true
+}
+
+// HasGatewayUrl returns a boolean if a field has been set.
+func (o *AuthMethodCreateSAML) HasGatewayUrl() bool {
+	if o != nil && !IsNil(o.GatewayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewayUrl gets a reference to the given string and assigns it to the GatewayUrl field.
+func (o *AuthMethodCreateSAML) SetGatewayUrl(v string) {
+	o.GatewayUrl = &v
 }
 
 // GetGwBoundIps returns the GwBoundIps field value if set, zero value otherwise.
@@ -791,6 +825,9 @@ func (o AuthMethodCreateSAML) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ForceSubClaims) {
 		toSerialize["force-sub-claims"] = o.ForceSubClaims
+	}
+	if !IsNil(o.GatewayUrl) {
+		toSerialize["gateway-url"] = o.GatewayUrl
 	}
 	if !IsNil(o.GwBoundIps) {
 		toSerialize["gw-bound-ips"] = o.GwBoundIps

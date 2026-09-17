@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **ProjectId** | Pointer to **string** | Project ID | [optional] 
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Name of existing target to use in producer creation | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -365,20 +365,20 @@ HasProjectId returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *DynamicSecretCreateOpenAI) GetSkipDryRun() string`
+`func (o *DynamicSecretCreateOpenAI) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *DynamicSecretCreateOpenAI) GetSkipDryRunOk() (*string, bool)`
+`func (o *DynamicSecretCreateOpenAI) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *DynamicSecretCreateOpenAI) SetSkipDryRun(v string)`
+`func (o *DynamicSecretCreateOpenAI) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

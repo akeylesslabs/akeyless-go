@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts) | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SkipDryRun** | Pointer to **string** | If set, dry-run will be skipped | [optional] 
+**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Ssl** | Pointer to **bool** | Enable/Disable SSL [true/false] | [optional] [default to false]
 **SslCertificate** | Pointer to **string** | SSL connection certificate | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
@@ -761,20 +761,20 @@ HasSecureAccessWeb returns a boolean if a field has been set.
 
 ### GetSkipDryRun
 
-`func (o *GatewayCreateProducerMySQL) GetSkipDryRun() string`
+`func (o *GatewayCreateProducerMySQL) GetSkipDryRun() bool`
 
 GetSkipDryRun returns the SkipDryRun field if non-nil, zero value otherwise.
 
 ### GetSkipDryRunOk
 
-`func (o *GatewayCreateProducerMySQL) GetSkipDryRunOk() (*string, bool)`
+`func (o *GatewayCreateProducerMySQL) GetSkipDryRunOk() (*bool, bool)`
 
 GetSkipDryRunOk returns a tuple with the SkipDryRun field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSkipDryRun
 
-`func (o *GatewayCreateProducerMySQL) SetSkipDryRun(v string)`
+`func (o *GatewayCreateProducerMySQL) SetSkipDryRun(v bool)`
 
 SetSkipDryRun sets SkipDryRun field to given value.
 

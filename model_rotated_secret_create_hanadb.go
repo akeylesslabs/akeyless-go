@@ -66,8 +66,8 @@ type RotatedSecretCreateHanadb struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The rotator type. options: [target/password]
 	RotatorType string `json:"rotator-type"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// The target name to associate
@@ -868,9 +868,9 @@ func (o *RotatedSecretCreateHanadb) SetRotatorType(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretCreateHanadb) GetSkipDryRun() string {
+func (o *RotatedSecretCreateHanadb) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -878,7 +878,7 @@ func (o *RotatedSecretCreateHanadb) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretCreateHanadb) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretCreateHanadb) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -894,8 +894,8 @@ func (o *RotatedSecretCreateHanadb) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretCreateHanadb) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateHanadb) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1226,7 +1226,7 @@ func (o RotatedSecretCreateHanadb) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["rotator-type"] = o.RotatorType
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

@@ -105,8 +105,8 @@ type RotatedSecretUpdateCustom struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
 	// Maximum allowed time in seconds for the custom rotator to return the results
@@ -1573,9 +1573,9 @@ func (o *RotatedSecretUpdateCustom) SetSecureAccessWebProxy(v bool) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretUpdateCustom) GetSkipDryRun() string {
+func (o *RotatedSecretUpdateCustom) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1583,7 +1583,7 @@ func (o *RotatedSecretUpdateCustom) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretUpdateCustom) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretUpdateCustom) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1599,8 +1599,8 @@ func (o *RotatedSecretUpdateCustom) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretUpdateCustom) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateCustom) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -2001,7 +2001,7 @@ func (o RotatedSecretUpdateCustom) ToMap() (map[string]interface{}, error) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Target) {
 		toSerialize["target"] = o.Target

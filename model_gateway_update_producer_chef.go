@@ -56,10 +56,10 @@ type GatewayUpdateProducerChef struct {
 	PasswordLength *string `json:"password-length,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Skip SSL
 	SkipSsl *bool `json:"skip-ssl,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -647,6 +647,38 @@ func (o *GatewayUpdateProducerChef) SetProducerEncryptionKeyName(v string) {
 	o.ProducerEncryptionKeyName = &v
 }
 
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+func (o *GatewayUpdateProducerChef) GetSkipDryRun() bool {
+	if o == nil || IsNil(o.SkipDryRun) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipDryRun
+}
+
+// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateProducerChef) GetSkipDryRunOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipDryRun) {
+		return nil, false
+	}
+	return o.SkipDryRun, true
+}
+
+// HasSkipDryRun returns a boolean if a field has been set.
+func (o *GatewayUpdateProducerChef) HasSkipDryRun() bool {
+	if o != nil && !IsNil(o.SkipDryRun) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *GatewayUpdateProducerChef) SetSkipDryRun(v bool) {
+	o.SkipDryRun = &v
+}
+
 // GetSkipSsl returns the SkipSsl field value if set, zero value otherwise.
 func (o *GatewayUpdateProducerChef) GetSkipSsl() bool {
 	if o == nil || IsNil(o.SkipSsl) {
@@ -677,38 +709,6 @@ func (o *GatewayUpdateProducerChef) HasSkipSsl() bool {
 // SetSkipSsl gets a reference to the given bool and assigns it to the SkipSsl field.
 func (o *GatewayUpdateProducerChef) SetSkipSsl(v bool) {
 	o.SkipSsl = &v
-}
-
-// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerChef) GetSkipDryRun() string {
-	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
-		return ret
-	}
-	return *o.SkipDryRun
-}
-
-// GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerChef) GetSkipDryRunOk() (*string, bool) {
-	if o == nil || IsNil(o.SkipDryRun) {
-		return nil, false
-	}
-	return o.SkipDryRun, true
-}
-
-// HasSkipDryRun returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerChef) HasSkipDryRun() bool {
-	if o != nil && !IsNil(o.SkipDryRun) {
-		return true
-	}
-
-	return false
-}
-
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *GatewayUpdateProducerChef) SetSkipDryRun(v string) {
-	o.SkipDryRun = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -1058,11 +1058,11 @@ func (o GatewayUpdateProducerChef) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProducerEncryptionKeyName) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
+	if !IsNil(o.SkipDryRun) {
+		toSerialize["skip-dry-run"] = o.SkipDryRun
+	}
 	if !IsNil(o.SkipSsl) {
 		toSerialize["skip-ssl"] = o.SkipSsl
-	}
-	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

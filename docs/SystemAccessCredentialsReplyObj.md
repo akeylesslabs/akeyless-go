@@ -12,8 +12,10 @@ Name | Type | Description | Notes
 **NeedMfaAppFirstConfig** | Pointer to **bool** | If the user didn&#39;t complete to configure the MFA app | [optional] 
 **RecoveryKeyId** | Pointer to **string** | RecoveryKeyID identifies the DPoP-bound recovery key for WebUI session recovery. | [optional] 
 **RequiredMfa** | Pointer to **string** |  | [optional] 
+**SubClaims** | Pointer to **map[string][]string** | SubClaims carries the IdP-verified RBAC claims for offline placeholder creds (empty UAM JWT); parsed from the ID token at callback time. | [optional] 
 **Token** | Pointer to **string** | Credentials tmp token | [optional] 
 **UamCreds** | Pointer to **string** | Temporary credentials for accessing the UAM service | [optional] 
+**UniqueId** | Pointer to **string** | UniqueId is set only on Gateway-minted offline placeholder creds (empty UAM JWT), carrying the IdP unique identifier so usage-time RBAC can resolve identity. | [optional] 
 
 ## Methods
 
@@ -234,6 +236,31 @@ SetRequiredMfa sets RequiredMfa field to given value.
 
 HasRequiredMfa returns a boolean if a field has been set.
 
+### GetSubClaims
+
+`func (o *SystemAccessCredentialsReplyObj) GetSubClaims() map[string][]string`
+
+GetSubClaims returns the SubClaims field if non-nil, zero value otherwise.
+
+### GetSubClaimsOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetSubClaimsOk() (*map[string][]string, bool)`
+
+GetSubClaimsOk returns a tuple with the SubClaims field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubClaims
+
+`func (o *SystemAccessCredentialsReplyObj) SetSubClaims(v map[string][]string)`
+
+SetSubClaims sets SubClaims field to given value.
+
+### HasSubClaims
+
+`func (o *SystemAccessCredentialsReplyObj) HasSubClaims() bool`
+
+HasSubClaims returns a boolean if a field has been set.
+
 ### GetToken
 
 `func (o *SystemAccessCredentialsReplyObj) GetToken() string`
@@ -283,6 +310,31 @@ SetUamCreds sets UamCreds field to given value.
 `func (o *SystemAccessCredentialsReplyObj) HasUamCreds() bool`
 
 HasUamCreds returns a boolean if a field has been set.
+
+### GetUniqueId
+
+`func (o *SystemAccessCredentialsReplyObj) GetUniqueId() string`
+
+GetUniqueId returns the UniqueId field if non-nil, zero value otherwise.
+
+### GetUniqueIdOk
+
+`func (o *SystemAccessCredentialsReplyObj) GetUniqueIdOk() (*string, bool)`
+
+GetUniqueIdOk returns a tuple with the UniqueId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUniqueId
+
+`func (o *SystemAccessCredentialsReplyObj) SetUniqueId(v string)`
+
+SetUniqueId sets UniqueId field to given value.
+
+### HasUniqueId
+
+`func (o *SystemAccessCredentialsReplyObj) HasUniqueId() bool`
+
+HasUniqueId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

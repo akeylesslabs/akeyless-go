@@ -74,8 +74,8 @@ type RotatedSecretCreateSplunk struct {
 	RotationInterval *string `json:"rotation-interval,omitempty"`
 	// The rotator type. options: [target/password/token/hec-token]
 	RotatorType string `json:"rotator-type"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Current Splunk authentication token to store (relevant only for rotator-type=token). If not provided, a new token will be created in Splunk.
 	SplunkToken *string `json:"splunk-token,omitempty"`
 	// Add tags attached to this object
@@ -1008,9 +1008,9 @@ func (o *RotatedSecretCreateSplunk) SetRotatorType(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretCreateSplunk) GetSkipDryRun() string {
+func (o *RotatedSecretCreateSplunk) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1018,7 +1018,7 @@ func (o *RotatedSecretCreateSplunk) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretCreateSplunk) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretCreateSplunk) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1034,8 +1034,8 @@ func (o *RotatedSecretCreateSplunk) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretCreateSplunk) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretCreateSplunk) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1442,7 +1442,7 @@ func (o RotatedSecretCreateSplunk) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["rotator-type"] = o.RotatorType
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.SplunkToken) {
 		toSerialize["splunk-token"] = o.SplunkToken

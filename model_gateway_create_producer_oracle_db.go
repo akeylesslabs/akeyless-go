@@ -74,8 +74,8 @@ type GatewayCreateProducerOracleDb struct {
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -964,9 +964,9 @@ func (o *GatewayCreateProducerOracleDb) SetSecureAccessWeb(v bool) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *GatewayCreateProducerOracleDb) GetSkipDryRun() string {
+func (o *GatewayCreateProducerOracleDb) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -974,7 +974,7 @@ func (o *GatewayCreateProducerOracleDb) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerOracleDb) GetSkipDryRunOk() (*string, bool) {
+func (o *GatewayCreateProducerOracleDb) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -990,8 +990,8 @@ func (o *GatewayCreateProducerOracleDb) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *GatewayCreateProducerOracleDb) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerOracleDb) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1370,7 +1370,7 @@ func (o GatewayCreateProducerOracleDb) ToMap() (map[string]interface{}, error) {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

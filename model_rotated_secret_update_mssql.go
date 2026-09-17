@@ -90,8 +90,8 @@ type RotatedSecretUpdateMssql struct {
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -1286,9 +1286,9 @@ func (o *RotatedSecretUpdateMssql) SetSecureAccessWeb(v bool) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretUpdateMssql) GetSkipDryRun() string {
+func (o *RotatedSecretUpdateMssql) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1296,7 +1296,7 @@ func (o *RotatedSecretUpdateMssql) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretUpdateMssql) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretUpdateMssql) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1312,8 +1312,8 @@ func (o *RotatedSecretUpdateMssql) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretUpdateMssql) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateMssql) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1626,7 +1626,7 @@ func (o RotatedSecretUpdateMssql) ToMap() (map[string]interface{}, error) {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

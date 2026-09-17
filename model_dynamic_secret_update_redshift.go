@@ -66,8 +66,8 @@ type DynamicSecretUpdateRedshift struct {
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Target DB servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// Add tags attached to this object
@@ -826,9 +826,9 @@ func (o *DynamicSecretUpdateRedshift) SetSecureAccessHost(v []string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *DynamicSecretUpdateRedshift) GetSkipDryRun() string {
+func (o *DynamicSecretUpdateRedshift) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -836,7 +836,7 @@ func (o *DynamicSecretUpdateRedshift) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DynamicSecretUpdateRedshift) GetSkipDryRunOk() (*string, bool) {
+func (o *DynamicSecretUpdateRedshift) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -852,8 +852,8 @@ func (o *DynamicSecretUpdateRedshift) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *DynamicSecretUpdateRedshift) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *DynamicSecretUpdateRedshift) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1252,7 +1252,7 @@ func (o DynamicSecretUpdateRedshift) ToMap() (map[string]interface{}, error) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Ssl) {
 		toSerialize["ssl"] = o.Ssl

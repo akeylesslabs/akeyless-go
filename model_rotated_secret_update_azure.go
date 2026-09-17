@@ -106,8 +106,8 @@ type RotatedSecretUpdateAzure struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// The name of the storage account key to rotate [key1/key2/kerb1/kerb2] (relevat to azure-storage-account)
 	StorageAccountKeyName *string `json:"storage-account-key-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -1574,9 +1574,9 @@ func (o *RotatedSecretUpdateAzure) SetSecureAccessWebProxy(v bool) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *RotatedSecretUpdateAzure) GetSkipDryRun() string {
+func (o *RotatedSecretUpdateAzure) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -1584,7 +1584,7 @@ func (o *RotatedSecretUpdateAzure) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RotatedSecretUpdateAzure) GetSkipDryRunOk() (*string, bool) {
+func (o *RotatedSecretUpdateAzure) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -1600,8 +1600,8 @@ func (o *RotatedSecretUpdateAzure) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *RotatedSecretUpdateAzure) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *RotatedSecretUpdateAzure) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -2002,7 +2002,7 @@ func (o RotatedSecretUpdateAzure) ToMap() (map[string]interface{}, error) {
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.StorageAccountKeyName) {
 		toSerialize["storage-account-key-name"] = o.StorageAccountKeyName

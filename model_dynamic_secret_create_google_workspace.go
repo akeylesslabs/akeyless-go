@@ -69,8 +69,8 @@ type DynamicSecretCreateGoogleWorkspace struct {
 	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
 	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Name of existing target to use in dynamic secret creation
@@ -906,9 +906,9 @@ func (o *DynamicSecretCreateGoogleWorkspace) SetSecureAccessWebProxy(v bool) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *DynamicSecretCreateGoogleWorkspace) GetSkipDryRun() string {
+func (o *DynamicSecretCreateGoogleWorkspace) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -916,7 +916,7 @@ func (o *DynamicSecretCreateGoogleWorkspace) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DynamicSecretCreateGoogleWorkspace) GetSkipDryRunOk() (*string, bool) {
+func (o *DynamicSecretCreateGoogleWorkspace) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -932,8 +932,8 @@ func (o *DynamicSecretCreateGoogleWorkspace) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *DynamicSecretCreateGoogleWorkspace) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *DynamicSecretCreateGoogleWorkspace) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1177,7 +1177,7 @@ func (o DynamicSecretCreateGoogleWorkspace) ToMap() (map[string]interface{}, err
 		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

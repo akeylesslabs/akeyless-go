@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Auth Method description | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the auth method would you like to be notified. | [optional] 
 **ForceSubClaims** | Pointer to **bool** | if true: enforce role-association must include sub claims | [optional] 
+**GatewayUrl** | Pointer to **string** | Akeyless Gateway URL (Configuration Management port). Relevant only when working with Gateway mode | [optional] 
 **GwBoundIps** | Pointer to **[]string** | A CIDR whitelist with the GW IPs that the access is restricted to | [optional] 
 **IdpMetadataUrl** | Pointer to **string** | IDP metadata url | [optional] 
 **IdpMetadataXmlData** | Pointer to **string** | IDP metadata xml data | [optional] 
@@ -269,6 +270,31 @@ SetForceSubClaims sets ForceSubClaims field to given value.
 `func (o *CreateAuthMethodSAML) HasForceSubClaims() bool`
 
 HasForceSubClaims returns a boolean if a field has been set.
+
+### GetGatewayUrl
+
+`func (o *CreateAuthMethodSAML) GetGatewayUrl() string`
+
+GetGatewayUrl returns the GatewayUrl field if non-nil, zero value otherwise.
+
+### GetGatewayUrlOk
+
+`func (o *CreateAuthMethodSAML) GetGatewayUrlOk() (*string, bool)`
+
+GetGatewayUrlOk returns a tuple with the GatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewayUrl
+
+`func (o *CreateAuthMethodSAML) SetGatewayUrl(v string)`
+
+SetGatewayUrl sets GatewayUrl field to given value.
+
+### HasGatewayUrl
+
+`func (o *CreateAuthMethodSAML) HasGatewayUrl() bool`
+
+HasGatewayUrl returns a boolean if a field has been set.
 
 ### GetGwBoundIps
 

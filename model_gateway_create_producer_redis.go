@@ -54,8 +54,8 @@ type GatewayCreateProducerRedis struct {
 	Port *string `json:"port,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// If set, dry-run will be skipped
-	SkipDryRun *string `json:"skip_dry_run,omitempty"`
+	// If set, dry-run will be skipped [true/false]
+	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
 	// Enable/Disable SSL [true/false]
 	Ssl *bool `json:"ssl,omitempty"`
 	// SSL CA certificate in base64 encoding generated from a trusted Certificate Authority (CA)
@@ -626,9 +626,9 @@ func (o *GatewayCreateProducerRedis) SetProducerEncryptionKeyName(v string) {
 }
 
 // GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
-func (o *GatewayCreateProducerRedis) GetSkipDryRun() string {
+func (o *GatewayCreateProducerRedis) GetSkipDryRun() bool {
 	if o == nil || IsNil(o.SkipDryRun) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.SkipDryRun
@@ -636,7 +636,7 @@ func (o *GatewayCreateProducerRedis) GetSkipDryRun() string {
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GatewayCreateProducerRedis) GetSkipDryRunOk() (*string, bool) {
+func (o *GatewayCreateProducerRedis) GetSkipDryRunOk() (*bool, bool) {
 	if o == nil || IsNil(o.SkipDryRun) {
 		return nil, false
 	}
@@ -652,8 +652,8 @@ func (o *GatewayCreateProducerRedis) HasSkipDryRun() bool {
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given string and assigns it to the SkipDryRun field.
-func (o *GatewayCreateProducerRedis) SetSkipDryRun(v string) {
+// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+func (o *GatewayCreateProducerRedis) SetSkipDryRun(v bool) {
 	o.SkipDryRun = &v
 }
 
@@ -1098,7 +1098,7 @@ func (o GatewayCreateProducerRedis) ToMap() (map[string]interface{}, error) {
 		toSerialize["producer-encryption-key-name"] = o.ProducerEncryptionKeyName
 	}
 	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip_dry_run"] = o.SkipDryRun
+		toSerialize["skip-dry-run"] = o.SkipDryRun
 	}
 	if !IsNil(o.Ssl) {
 		toSerialize["ssl"] = o.Ssl
