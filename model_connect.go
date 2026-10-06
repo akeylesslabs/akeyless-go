@@ -42,6 +42,8 @@ type Connect struct {
 	Justification *string `json:"justification,omitempty"`
 	// The Secret name (for database and AWS producers - producer name)
 	Name *string `json:"name,omitempty"`
+	// For how long to grant the requested access, in minutes
+	RequestedTtl *int64 `json:"requested-ttl,omitempty"`
 	// The Bastion API path
 	SraCtrlPath *string `json:"sra-ctrl-path,omitempty"`
 	// The Bastion API Port
@@ -485,6 +487,38 @@ func (o *Connect) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Connect) SetName(v string) {
 	o.Name = &v
+}
+
+// GetRequestedTtl returns the RequestedTtl field value if set, zero value otherwise.
+func (o *Connect) GetRequestedTtl() int64 {
+	if o == nil || IsNil(o.RequestedTtl) {
+		var ret int64
+		return ret
+	}
+	return *o.RequestedTtl
+}
+
+// GetRequestedTtlOk returns a tuple with the RequestedTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Connect) GetRequestedTtlOk() (*int64, bool) {
+	if o == nil || IsNil(o.RequestedTtl) {
+		return nil, false
+	}
+	return o.RequestedTtl, true
+}
+
+// HasRequestedTtl returns a boolean if a field has been set.
+func (o *Connect) HasRequestedTtl() bool {
+	if o != nil && !IsNil(o.RequestedTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedTtl gets a reference to the given int64 and assigns it to the RequestedTtl field.
+func (o *Connect) SetRequestedTtl(v int64) {
+	o.RequestedTtl = &v
 }
 
 // GetSraCtrlPath returns the SraCtrlPath field value if set, zero value otherwise.
@@ -948,6 +982,9 @@ func (o Connect) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.RequestedTtl) {
+		toSerialize["requested-ttl"] = o.RequestedTtl
 	}
 	if !IsNil(o.SraCtrlPath) {
 		toSerialize["sra-ctrl-path"] = o.SraCtrlPath

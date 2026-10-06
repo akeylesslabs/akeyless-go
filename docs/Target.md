@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **CreationDate** | Pointer to **time.Time** |  | [optional] 
 **DeleteProtection** | Pointer to **bool** |  | [optional] 
 **IsAccessRequestEnabled** | Pointer to **bool** |  | [optional] 
+**LastAccessRequestStatus** | Pointer to **string** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **LockingInfo** | Pointer to [**LockingInfo**](LockingInfo.md) |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
@@ -270,6 +271,31 @@ SetIsAccessRequestEnabled sets IsAccessRequestEnabled field to given value.
 `func (o *Target) HasIsAccessRequestEnabled() bool`
 
 HasIsAccessRequestEnabled returns a boolean if a field has been set.
+
+### GetLastAccessRequestStatus
+
+`func (o *Target) GetLastAccessRequestStatus() string`
+
+GetLastAccessRequestStatus returns the LastAccessRequestStatus field if non-nil, zero value otherwise.
+
+### GetLastAccessRequestStatusOk
+
+`func (o *Target) GetLastAccessRequestStatusOk() (*string, bool)`
+
+GetLastAccessRequestStatusOk returns a tuple with the LastAccessRequestStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAccessRequestStatus
+
+`func (o *Target) SetLastAccessRequestStatus(v string)`
+
+SetLastAccessRequestStatus sets LastAccessRequestStatus field to given value.
+
+### HasLastAccessRequestStatus
+
+`func (o *Target) HasLastAccessRequestStatus() bool`
+
+HasLastAccessRequestStatus returns a boolean if a field has been set.
 
 ### GetLastVersion
 

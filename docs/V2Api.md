@@ -49,6 +49,7 @@ Method | HTTP request | Description
 [**CalcPasswordSecurityInfo**](V2Api.md#CalcPasswordSecurityInfo) | **Post** /calc-password-security-info | 
 [**CertificateDiscovery**](V2Api.md#CertificateDiscovery) | **Post** /certificate-discovery | 
 [**ChangeAdminAccountPassword**](V2Api.md#ChangeAdminAccountPassword) | **Post** /change-admin-account-password | 
+[**ClientEvent**](V2Api.md#ClientEvent) | **Post** /client-event | 
 [**Configure**](V2Api.md#Configure) | **Post** /configure | 
 [**Connect**](V2Api.md#Connect) | **Post** /connect | 
 [**CreateAWSTarget**](V2Api.md#CreateAWSTarget) | **Post** /create-aws-target | 
@@ -341,6 +342,7 @@ Method | HTTP request | Description
 [**GenerateAcmeEab**](V2Api.md#GenerateAcmeEab) | **Post** /generate-acme-eab | 
 [**GenerateCA**](V2Api.md#GenerateCA) | **Post** /generate-ca | 
 [**GenerateCsr**](V2Api.md#GenerateCsr) | **Post** /generate-csr | 
+[**GenerateIntermediateCA**](V2Api.md#GenerateIntermediateCA) | **Post** /generate-intermediate-ca | 
 [**GetAccountLogo**](V2Api.md#GetAccountLogo) | **Post** /get-account-logo | 
 [**GetAccountSettings**](V2Api.md#GetAccountSettings) | **Post** /get-account-settings | 
 [**GetAnalyticsData**](V2Api.md#GetAnalyticsData) | **Post** /get-analytics-data | 
@@ -401,7 +403,7 @@ Method | HTTP request | Description
 [**ListItems**](V2Api.md#ListItems) | **Post** /list-items | 
 [**ListRoles**](V2Api.md#ListRoles) | **Post** /list-roles | 
 [**ListSRABastions**](V2Api.md#ListSRABastions) | **Post** /list-sra-bastions | 
-[**ListSRASessions**](V2Api.md#ListSRASessions) | **Post** /list-sra-sessions | 
+[**ListSRASessions**](V2Api.md#ListSRASessions) | **Post** /list-sra-sessions | Lists SRA sessions.
 [**ListSharedItems**](V2Api.md#ListSharedItems) | **Post** /list-shared-items | 
 [**ListTargets**](V2Api.md#ListTargets) | **Post** /list-targets | 
 [**LockItem**](V2Api.md#LockItem) | **Post** /lock-item | 
@@ -439,6 +441,7 @@ Method | HTTP request | Description
 [**RotatedSecretCreateMongodb**](V2Api.md#RotatedSecretCreateMongodb) | **Post** /rotated-secret-create-mongodb | 
 [**RotatedSecretCreateMssql**](V2Api.md#RotatedSecretCreateMssql) | **Post** /rotated-secret-create-mssql | 
 [**RotatedSecretCreateMysql**](V2Api.md#RotatedSecretCreateMysql) | **Post** /rotated-secret-create-mysql | 
+[**RotatedSecretCreateOkta**](V2Api.md#RotatedSecretCreateOkta) | **Post** /rotated-secret-create-okta | 
 [**RotatedSecretCreateOpenAI**](V2Api.md#RotatedSecretCreateOpenAI) | **Post** /rotated-secret-create-openai | 
 [**RotatedSecretCreateOracledb**](V2Api.md#RotatedSecretCreateOracledb) | **Post** /rotated-secret-create-oracledb | 
 [**RotatedSecretCreatePostgresql**](V2Api.md#RotatedSecretCreatePostgresql) | **Post** /rotated-secret-create-postgresql | 
@@ -466,6 +469,7 @@ Method | HTTP request | Description
 [**RotatedSecretUpdateMongodb**](V2Api.md#RotatedSecretUpdateMongodb) | **Post** /rotated-secret-update-mongodb | 
 [**RotatedSecretUpdateMssql**](V2Api.md#RotatedSecretUpdateMssql) | **Post** /rotated-secret-update-mssql | 
 [**RotatedSecretUpdateMysql**](V2Api.md#RotatedSecretUpdateMysql) | **Post** /rotated-secret-update-mysql | 
+[**RotatedSecretUpdateOkta**](V2Api.md#RotatedSecretUpdateOkta) | **Post** /rotated-secret-update-okta | 
 [**RotatedSecretUpdateOpenAI**](V2Api.md#RotatedSecretUpdateOpenAI) | **Post** /rotated-secret-update-openai | 
 [**RotatedSecretUpdateOracledb**](V2Api.md#RotatedSecretUpdateOracledb) | **Post** /rotated-secret-update-oracledb | 
 [**RotatedSecretUpdatePostgresql**](V2Api.md#RotatedSecretUpdatePostgresql) | **Post** /rotated-secret-update-postgresql | 
@@ -3531,6 +3535,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 **interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ClientEvent
+
+> ClientEventOutput ClientEvent(ctx).ClientEvent(clientEvent).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	clientEvent := *openapiclient.NewClientEvent() // ClientEvent | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.ClientEvent(context.Background()).ClientEvent(clientEvent).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.ClientEvent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ClientEvent`: ClientEventOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.ClientEvent`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiClientEventRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clientEvent** | [**ClientEvent**](ClientEvent.md) |  | 
+
+### Return type
+
+[**ClientEventOutput**](ClientEventOutput.md)
 
 ### Authorization
 
@@ -22226,6 +22294,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GenerateIntermediateCA
+
+> GenerateIntermediateCAOutput GenerateIntermediateCA(ctx).GenerateIntermediateCA(generateIntermediateCA).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	generateIntermediateCA := *openapiclient.NewGenerateIntermediateCA("Name_example") // GenerateIntermediateCA | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.GenerateIntermediateCA(context.Background()).GenerateIntermediateCA(generateIntermediateCA).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GenerateIntermediateCA``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GenerateIntermediateCA`: GenerateIntermediateCAOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.GenerateIntermediateCA`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGenerateIntermediateCARequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **generateIntermediateCA** | [**GenerateIntermediateCA**](GenerateIntermediateCA.md) |  | 
+
+### Return type
+
+[**GenerateIntermediateCAOutput**](GenerateIntermediateCAOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAccountLogo
 
 > map[string]string GetAccountLogo(ctx).Execute()
@@ -26060,6 +26192,8 @@ No authorization required
 
 > ListSraSessionsOutput ListSRASessions(ctx).ListSRASessions(listSRASessions).Execute()
 
+Lists SRA sessions.
+
 
 
 ### Example
@@ -28481,6 +28615,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretCreateOkta
+
+> RotatedSecretCreateOutput RotatedSecretCreateOkta(ctx).RotatedSecretCreateOkta(rotatedSecretCreateOkta).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateOkta := *openapiclient.NewRotatedSecretCreateOkta("Name_example", "TargetName_example") // RotatedSecretCreateOkta | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateOkta(context.Background()).RotatedSecretCreateOkta(rotatedSecretCreateOkta).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateOkta``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateOkta`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateOkta`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateOktaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateOkta** | [**RotatedSecretCreateOkta**](RotatedSecretCreateOkta.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretCreateOpenAI
 
 > RotatedSecretCreateOutput RotatedSecretCreateOpenAI(ctx).RotatedSecretCreateOpenAI(rotatedSecretCreateOpenAI).Execute()
@@ -30190,6 +30388,70 @@ Other parameters are passed through a pointer to a apiRotatedSecretUpdateMysqlRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rotatedSecretUpdateMysql** | [**RotatedSecretUpdateMysql**](RotatedSecretUpdateMysql.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretUpdateOkta
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateOkta(ctx).RotatedSecretUpdateOkta(rotatedSecretUpdateOkta).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretUpdateOkta := *openapiclient.NewRotatedSecretUpdateOkta("Name_example") // RotatedSecretUpdateOkta | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretUpdateOkta(context.Background()).RotatedSecretUpdateOkta(rotatedSecretUpdateOkta).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateOkta``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretUpdateOkta`: RotatedSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateOkta`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateOktaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretUpdateOkta** | [**RotatedSecretUpdateOkta**](RotatedSecretUpdateOkta.md) |  | 
 
 ### Return type
 

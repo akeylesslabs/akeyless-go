@@ -205,6 +205,7 @@ Name | Type | Description | Notes
 **LdapUrl** | Pointer to **string** |  | [optional] 
 **LdapUserAttr** | Pointer to **string** |  | [optional] 
 **LdapUserDn** | Pointer to **string** |  | [optional] 
+**LdapUsername** | Pointer to **string** |  | [optional] 
 **Metadata** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPrivateKey** | Pointer to **string** |  | [optional] 
 **MongodbAtlasApiPublicKey** | Pointer to **string** |  | [optional] 
@@ -5346,6 +5347,31 @@ SetLdapUserDn sets LdapUserDn field to given value.
 `func (o *DSProducerDetails) HasLdapUserDn() bool`
 
 HasLdapUserDn returns a boolean if a field has been set.
+
+### GetLdapUsername
+
+`func (o *DSProducerDetails) GetLdapUsername() string`
+
+GetLdapUsername returns the LdapUsername field if non-nil, zero value otherwise.
+
+### GetLdapUsernameOk
+
+`func (o *DSProducerDetails) GetLdapUsernameOk() (*string, bool)`
+
+GetLdapUsernameOk returns a tuple with the LdapUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapUsername
+
+`func (o *DSProducerDetails) SetLdapUsername(v string)`
+
+SetLdapUsername sets LdapUsername field to given value.
+
+### HasLdapUsername
+
+`func (o *DSProducerDetails) HasLdapUsername() bool`
+
+HasLdapUsername returns a boolean if a field has been set.
 
 ### GetMetadata
 

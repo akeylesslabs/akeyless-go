@@ -56,6 +56,8 @@ type CreateLdapTarget struct {
 	TokenExpiration *string `json:"token-expiration,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain.
+	Username *string `json:"username,omitempty"`
 }
 
 type _CreateLdapTarget CreateLdapTarget
@@ -601,6 +603,38 @@ func (o *CreateLdapTarget) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *CreateLdapTarget) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateLdapTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *CreateLdapTarget) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *CreateLdapTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o CreateLdapTarget) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -653,6 +687,9 @@ func (o CreateLdapTarget) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
 }

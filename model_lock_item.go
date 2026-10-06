@@ -26,7 +26,7 @@ type LockItem struct {
 	Actions *string `json:"actions,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
-	// Lock TTL in minutes
+	// Lock TTL in minutes.
 	LockTtl *int64 `json:"lock-ttl,omitempty"`
 	// Item name
 	Name string `json:"name"`

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Item name | 
+**RequestedTtl** | Pointer to **int64** | Requested access TTL in minutes. Allowed range is 1 to 1440. Defaults to 60 when omitted. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | **string** | Item type | 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -146,6 +147,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetRequestedTtl
+
+`func (o *RequestAccess) GetRequestedTtl() int64`
+
+GetRequestedTtl returns the RequestedTtl field if non-nil, zero value otherwise.
+
+### GetRequestedTtlOk
+
+`func (o *RequestAccess) GetRequestedTtlOk() (*int64, bool)`
+
+GetRequestedTtlOk returns a tuple with the RequestedTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedTtl
+
+`func (o *RequestAccess) SetRequestedTtl(v int64)`
+
+SetRequestedTtl sets RequestedTtl field to given value.
+
+### HasRequestedTtl
+
+`func (o *RequestAccess) HasRequestedTtl() bool`
+
+HasRequestedTtl returns a boolean if a field has been set.
 
 ### GetToken
 

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BindSslProfiles** | Pointer to **[]string** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. Repeat the parameter to bind several profiles. | [optional] 
+**BindSslProfiles** | Pointer to **[]string** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles. | [optional] 
+**CertificateFormat** | Pointer to **string** | The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning) | [optional] [default to "pem"]
 **CertificatePath** | Pointer to **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | Pointer to **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
 **DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
 **MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
+**PfxPassword** | Pointer to **string** | Password used to protect the provisioned PFX file. Required when --certificate-format&#x3D;pfx (relevant only for certificate provisioning) | [optional] 
 **PostProvisionCommand** | Pointer to **string** | A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP) | [optional] 
 **PrivateKeyPath** | Pointer to **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
@@ -72,6 +74,31 @@ SetBindSslProfiles sets BindSslProfiles field to given value.
 `func (o *AssocTargetItem) HasBindSslProfiles() bool`
 
 HasBindSslProfiles returns a boolean if a field has been set.
+
+### GetCertificateFormat
+
+`func (o *AssocTargetItem) GetCertificateFormat() string`
+
+GetCertificateFormat returns the CertificateFormat field if non-nil, zero value otherwise.
+
+### GetCertificateFormatOk
+
+`func (o *AssocTargetItem) GetCertificateFormatOk() (*string, bool)`
+
+GetCertificateFormatOk returns a tuple with the CertificateFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateFormat
+
+`func (o *AssocTargetItem) SetCertificateFormat(v string)`
+
+SetCertificateFormat sets CertificateFormat field to given value.
+
+### HasCertificateFormat
+
+`func (o *AssocTargetItem) HasCertificateFormat() bool`
+
+HasCertificateFormat returns a boolean if a field has been set.
 
 ### GetCertificatePath
 
@@ -342,6 +369,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetPfxPassword
+
+`func (o *AssocTargetItem) GetPfxPassword() string`
+
+GetPfxPassword returns the PfxPassword field if non-nil, zero value otherwise.
+
+### GetPfxPasswordOk
+
+`func (o *AssocTargetItem) GetPfxPasswordOk() (*string, bool)`
+
+GetPfxPasswordOk returns a tuple with the PfxPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPfxPassword
+
+`func (o *AssocTargetItem) SetPfxPassword(v string)`
+
+SetPfxPassword sets PfxPassword field to given value.
+
+### HasPfxPassword
+
+`func (o *AssocTargetItem) HasPfxPassword() bool`
+
+HasPfxPassword returns a boolean if a field has been set.
 
 ### GetPostProvisionCommand
 

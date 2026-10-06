@@ -47,6 +47,8 @@ Name | Type | Description | Notes
 **Province** | Pointer to **[]string** |  | [optional] 
 **RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
 **RequireCn** | Pointer to **bool** |  | [optional] 
+**ScepChallengeMode** | Pointer to **string** | ScepChallengeMode is the SCEP challenge mode. Stage 1 supports only \&quot;static\&quot;. | [optional] 
+**ScepEnabled** | Pointer to **bool** | ScepEnabled turns on SCEP enrollment for this dedicated PKI issuer. | [optional] 
 **ServerFlag** | Pointer to **bool** |  | [optional] 
 **SplitCertificateChain** | Pointer to **bool** | SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain. | [optional] 
 **StreetAddress** | Pointer to **[]string** |  | [optional] 
@@ -1144,6 +1146,56 @@ SetRequireCn sets RequireCn field to given value.
 `func (o *PKICertificateIssueDetails) HasRequireCn() bool`
 
 HasRequireCn returns a boolean if a field has been set.
+
+### GetScepChallengeMode
+
+`func (o *PKICertificateIssueDetails) GetScepChallengeMode() string`
+
+GetScepChallengeMode returns the ScepChallengeMode field if non-nil, zero value otherwise.
+
+### GetScepChallengeModeOk
+
+`func (o *PKICertificateIssueDetails) GetScepChallengeModeOk() (*string, bool)`
+
+GetScepChallengeModeOk returns a tuple with the ScepChallengeMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScepChallengeMode
+
+`func (o *PKICertificateIssueDetails) SetScepChallengeMode(v string)`
+
+SetScepChallengeMode sets ScepChallengeMode field to given value.
+
+### HasScepChallengeMode
+
+`func (o *PKICertificateIssueDetails) HasScepChallengeMode() bool`
+
+HasScepChallengeMode returns a boolean if a field has been set.
+
+### GetScepEnabled
+
+`func (o *PKICertificateIssueDetails) GetScepEnabled() bool`
+
+GetScepEnabled returns the ScepEnabled field if non-nil, zero value otherwise.
+
+### GetScepEnabledOk
+
+`func (o *PKICertificateIssueDetails) GetScepEnabledOk() (*bool, bool)`
+
+GetScepEnabledOk returns a tuple with the ScepEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScepEnabled
+
+`func (o *PKICertificateIssueDetails) SetScepEnabled(v bool)`
+
+SetScepEnabled sets ScepEnabled field to given value.
+
+### HasScepEnabled
+
+`func (o *PKICertificateIssueDetails) HasScepEnabled() bool`
+
+HasScepEnabled returns a boolean if a field has been set.
 
 ### GetServerFlag
 

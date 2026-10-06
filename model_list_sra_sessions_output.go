@@ -20,8 +20,11 @@ var _ MappedNullable = &ListSraSessionsOutput{}
 
 // ListSraSessionsOutput struct for ListSraSessionsOutput
 type ListSraSessionsOutput struct {
+	// Gateways whose sessions the caller may see in full. Omitted when the request asks for own sessions only, and when it carries a pagination token
 	AllowedGateways []GatewayNameInfo `json:"allowed_gateways,omitempty"`
+	// Cursor for the following page, sent back as the pagination token. Empty when the result set is exhausted, so stop when it is empty rather than waiting for the field to disappear
 	NextPage *string `json:"next_page,omitempty"`
+	// The requested page of sessions, newest first by start time then session id
 	Sessions []SraSessionEntryOut `json:"sessions,omitempty"`
 }
 

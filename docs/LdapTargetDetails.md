@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **LdapCertificate** | Pointer to **string** |  | [optional] 
 **LdapTokenExpiration** | Pointer to **string** |  | [optional] 
 **LdapUrl** | Pointer to **string** |  | [optional] 
+**LdapUsername** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -205,6 +206,31 @@ SetLdapUrl sets LdapUrl field to given value.
 `func (o *LdapTargetDetails) HasLdapUrl() bool`
 
 HasLdapUrl returns a boolean if a field has been set.
+
+### GetLdapUsername
+
+`func (o *LdapTargetDetails) GetLdapUsername() string`
+
+GetLdapUsername returns the LdapUsername field if non-nil, zero value otherwise.
+
+### GetLdapUsernameOk
+
+`func (o *LdapTargetDetails) GetLdapUsernameOk() (*string, bool)`
+
+GetLdapUsernameOk returns a tuple with the LdapUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLdapUsername
+
+`func (o *LdapTargetDetails) SetLdapUsername(v string)`
+
+SetLdapUsername sets LdapUsername field to given value.
+
+### HasLdapUsername
+
+`func (o *LdapTargetDetails) HasLdapUsername() bool`
+
+HasLdapUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

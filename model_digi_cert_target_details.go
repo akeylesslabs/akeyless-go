@@ -27,9 +27,17 @@ type DigiCertTargetDetails struct {
 	// ACMEChallengeType defines ACME challenge type for Let's Encrypt
 	ChallengeType *string `json:"challenge_type,omitempty"`
 	DigicertDirectoryType *string `json:"digicert_directory_type,omitempty"`
+	// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
+	DnsPropagationWait *int64 `json:"dns_propagation_wait,omitempty"`
+	// Custom recursive DNS resolvers (ip:port) for propagation checks.
+	DnsResolvers []string `json:"dns_resolvers,omitempty"`
+	// Skip authoritative nameserver propagation pre-check.
+	DnsSkipPrecheck *bool `json:"dns_skip_precheck,omitempty"`
 	// Name of DNS target (transient field - not stored in DB). Used by CLI to pass DNS target name to SDK for creating target_object_assoc. Retrieved from target_object_assoc when reading target. Required when ChallengeType is dns.
 	DnsTargetName *string `json:"dns_target_name,omitempty"`
 	DnsTargetType *string `json:"dns_target_type,omitempty"`
+	// A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years.
+	DnsTimeout *int64 `json:"dns_timeout,omitempty"`
 	// Cloudflare zone identifier. Required when DNSTargetType is Cloudflare.
 	DnsZone *string `json:"dns_zone,omitempty"`
 	// External Account Binding HMAC key. Required until ACME account is bootstrapped on first issuance.
@@ -193,6 +201,102 @@ func (o *DigiCertTargetDetails) SetDigicertDirectoryType(v string) {
 	o.DigicertDirectoryType = &v
 }
 
+// GetDnsPropagationWait returns the DnsPropagationWait field value if set, zero value otherwise.
+func (o *DigiCertTargetDetails) GetDnsPropagationWait() int64 {
+	if o == nil || IsNil(o.DnsPropagationWait) {
+		var ret int64
+		return ret
+	}
+	return *o.DnsPropagationWait
+}
+
+// GetDnsPropagationWaitOk returns a tuple with the DnsPropagationWait field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigiCertTargetDetails) GetDnsPropagationWaitOk() (*int64, bool) {
+	if o == nil || IsNil(o.DnsPropagationWait) {
+		return nil, false
+	}
+	return o.DnsPropagationWait, true
+}
+
+// HasDnsPropagationWait returns a boolean if a field has been set.
+func (o *DigiCertTargetDetails) HasDnsPropagationWait() bool {
+	if o != nil && !IsNil(o.DnsPropagationWait) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsPropagationWait gets a reference to the given int64 and assigns it to the DnsPropagationWait field.
+func (o *DigiCertTargetDetails) SetDnsPropagationWait(v int64) {
+	o.DnsPropagationWait = &v
+}
+
+// GetDnsResolvers returns the DnsResolvers field value if set, zero value otherwise.
+func (o *DigiCertTargetDetails) GetDnsResolvers() []string {
+	if o == nil || IsNil(o.DnsResolvers) {
+		var ret []string
+		return ret
+	}
+	return o.DnsResolvers
+}
+
+// GetDnsResolversOk returns a tuple with the DnsResolvers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigiCertTargetDetails) GetDnsResolversOk() ([]string, bool) {
+	if o == nil || IsNil(o.DnsResolvers) {
+		return nil, false
+	}
+	return o.DnsResolvers, true
+}
+
+// HasDnsResolvers returns a boolean if a field has been set.
+func (o *DigiCertTargetDetails) HasDnsResolvers() bool {
+	if o != nil && !IsNil(o.DnsResolvers) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsResolvers gets a reference to the given []string and assigns it to the DnsResolvers field.
+func (o *DigiCertTargetDetails) SetDnsResolvers(v []string) {
+	o.DnsResolvers = v
+}
+
+// GetDnsSkipPrecheck returns the DnsSkipPrecheck field value if set, zero value otherwise.
+func (o *DigiCertTargetDetails) GetDnsSkipPrecheck() bool {
+	if o == nil || IsNil(o.DnsSkipPrecheck) {
+		var ret bool
+		return ret
+	}
+	return *o.DnsSkipPrecheck
+}
+
+// GetDnsSkipPrecheckOk returns a tuple with the DnsSkipPrecheck field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigiCertTargetDetails) GetDnsSkipPrecheckOk() (*bool, bool) {
+	if o == nil || IsNil(o.DnsSkipPrecheck) {
+		return nil, false
+	}
+	return o.DnsSkipPrecheck, true
+}
+
+// HasDnsSkipPrecheck returns a boolean if a field has been set.
+func (o *DigiCertTargetDetails) HasDnsSkipPrecheck() bool {
+	if o != nil && !IsNil(o.DnsSkipPrecheck) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsSkipPrecheck gets a reference to the given bool and assigns it to the DnsSkipPrecheck field.
+func (o *DigiCertTargetDetails) SetDnsSkipPrecheck(v bool) {
+	o.DnsSkipPrecheck = &v
+}
+
 // GetDnsTargetName returns the DnsTargetName field value if set, zero value otherwise.
 func (o *DigiCertTargetDetails) GetDnsTargetName() string {
 	if o == nil || IsNil(o.DnsTargetName) {
@@ -255,6 +359,38 @@ func (o *DigiCertTargetDetails) HasDnsTargetType() bool {
 // SetDnsTargetType gets a reference to the given string and assigns it to the DnsTargetType field.
 func (o *DigiCertTargetDetails) SetDnsTargetType(v string) {
 	o.DnsTargetType = &v
+}
+
+// GetDnsTimeout returns the DnsTimeout field value if set, zero value otherwise.
+func (o *DigiCertTargetDetails) GetDnsTimeout() int64 {
+	if o == nil || IsNil(o.DnsTimeout) {
+		var ret int64
+		return ret
+	}
+	return *o.DnsTimeout
+}
+
+// GetDnsTimeoutOk returns a tuple with the DnsTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigiCertTargetDetails) GetDnsTimeoutOk() (*int64, bool) {
+	if o == nil || IsNil(o.DnsTimeout) {
+		return nil, false
+	}
+	return o.DnsTimeout, true
+}
+
+// HasDnsTimeout returns a boolean if a field has been set.
+func (o *DigiCertTargetDetails) HasDnsTimeout() bool {
+	if o != nil && !IsNil(o.DnsTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsTimeout gets a reference to the given int64 and assigns it to the DnsTimeout field.
+func (o *DigiCertTargetDetails) SetDnsTimeout(v int64) {
+	o.DnsTimeout = &v
 }
 
 // GetDnsZone returns the DnsZone field value if set, zero value otherwise.
@@ -535,11 +671,23 @@ func (o DigiCertTargetDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DigicertDirectoryType) {
 		toSerialize["digicert_directory_type"] = o.DigicertDirectoryType
 	}
+	if !IsNil(o.DnsPropagationWait) {
+		toSerialize["dns_propagation_wait"] = o.DnsPropagationWait
+	}
+	if !IsNil(o.DnsResolvers) {
+		toSerialize["dns_resolvers"] = o.DnsResolvers
+	}
+	if !IsNil(o.DnsSkipPrecheck) {
+		toSerialize["dns_skip_precheck"] = o.DnsSkipPrecheck
+	}
 	if !IsNil(o.DnsTargetName) {
 		toSerialize["dns_target_name"] = o.DnsTargetName
 	}
 	if !IsNil(o.DnsTargetType) {
 		toSerialize["dns_target_type"] = o.DnsTargetType
+	}
+	if !IsNil(o.DnsTimeout) {
+		toSerialize["dns_timeout"] = o.DnsTimeout
 	}
 	if !IsNil(o.DnsZone) {
 		toSerialize["dns_zone"] = o.DnsZone

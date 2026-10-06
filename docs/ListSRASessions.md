@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **ResourceType** | Pointer to **[]string** | session resource type. In case it is empty, all resources type will be returned. options: [mysql, k8s, ssh, mongodb, mssql, postgres, aws, eks, gke, rdp] | [optional] 
 **StatusType** | Pointer to **[]string** | session status type. In case it is empty, only active sessions will be returned. options: [connecting, connected, failed, completed, terminated] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -53,6 +54,31 @@ SetJson sets Json field to given value.
 `func (o *ListSRASessions) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetPaginationToken
+
+`func (o *ListSRASessions) GetPaginationToken() string`
+
+GetPaginationToken returns the PaginationToken field if non-nil, zero value otherwise.
+
+### GetPaginationTokenOk
+
+`func (o *ListSRASessions) GetPaginationTokenOk() (*string, bool)`
+
+GetPaginationTokenOk returns a tuple with the PaginationToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaginationToken
+
+`func (o *ListSRASessions) SetPaginationToken(v string)`
+
+SetPaginationToken sets PaginationToken field to given value.
+
+### HasPaginationToken
+
+`func (o *ListSRASessions) HasPaginationToken() bool`
+
+HasPaginationToken returns a boolean if a field has been set.
 
 ### GetResourceType
 

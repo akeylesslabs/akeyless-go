@@ -7,7 +7,11 @@ Name | Type | Description | Notes
 **AcmeChallenge** | Pointer to **string** | ACME challenge type. Options: [dns] | [optional] [default to "dns"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**DnsPropagationWait** | Pointer to **string** | Fixed wait after TXT publish (e.g. 30s, 2m). If omitted with pre-check on, no extra sleep (polling only). If omitted with --dns-skip-precheck, gateway uses 30s. DNS challenge only | [optional] 
+**DnsResolvers** | Pointer to **[]string** | Custom DNS resolvers (ip:port) for DNS-01. Repeat for multiple. If omitted, Lego uses /etc/resolv.conf or Google Public DNS. DNS challenge only | [optional] 
+**DnsSkipPrecheck** | Pointer to **bool** | Skip DNS TXT pre-check before CA validation. If --dns-propagation-wait is omitted and this flag is set, gateway waits 30s before CA validation. DNS challenge only | [optional] 
 **DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when challenge type is dns. Supported providers: AWS, Azure, GCP, Cloudflare | [optional] 
+**DnsTimeout** | Pointer to **string** | Per-query DNS lookup timeout during pre-check (e.g. 10s), not total poll time. If omitted with pre-check on, Lego library default applies (10s per query on Linux). Ignored when --dns-skip-precheck is set. DNS challenge only | [optional] 
 **DnsZone** | Pointer to **string** | Cloudflare DNS zone identifier. Required when DNS credentials target is Cloudflare | [optional] 
 **EabHmacKey** | Pointer to **string** | External Account Binding HMAC key (required for ACME account bootstrap on create) | [optional] 
 **EabKeyId** | Pointer to **string** | External Account Binding key identifier (required for ACME account bootstrap on create) | [optional] 
@@ -121,6 +125,81 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetDnsPropagationWait
+
+`func (o *TargetCreateGoogleTrust) GetDnsPropagationWait() string`
+
+GetDnsPropagationWait returns the DnsPropagationWait field if non-nil, zero value otherwise.
+
+### GetDnsPropagationWaitOk
+
+`func (o *TargetCreateGoogleTrust) GetDnsPropagationWaitOk() (*string, bool)`
+
+GetDnsPropagationWaitOk returns a tuple with the DnsPropagationWait field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsPropagationWait
+
+`func (o *TargetCreateGoogleTrust) SetDnsPropagationWait(v string)`
+
+SetDnsPropagationWait sets DnsPropagationWait field to given value.
+
+### HasDnsPropagationWait
+
+`func (o *TargetCreateGoogleTrust) HasDnsPropagationWait() bool`
+
+HasDnsPropagationWait returns a boolean if a field has been set.
+
+### GetDnsResolvers
+
+`func (o *TargetCreateGoogleTrust) GetDnsResolvers() []string`
+
+GetDnsResolvers returns the DnsResolvers field if non-nil, zero value otherwise.
+
+### GetDnsResolversOk
+
+`func (o *TargetCreateGoogleTrust) GetDnsResolversOk() (*[]string, bool)`
+
+GetDnsResolversOk returns a tuple with the DnsResolvers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsResolvers
+
+`func (o *TargetCreateGoogleTrust) SetDnsResolvers(v []string)`
+
+SetDnsResolvers sets DnsResolvers field to given value.
+
+### HasDnsResolvers
+
+`func (o *TargetCreateGoogleTrust) HasDnsResolvers() bool`
+
+HasDnsResolvers returns a boolean if a field has been set.
+
+### GetDnsSkipPrecheck
+
+`func (o *TargetCreateGoogleTrust) GetDnsSkipPrecheck() bool`
+
+GetDnsSkipPrecheck returns the DnsSkipPrecheck field if non-nil, zero value otherwise.
+
+### GetDnsSkipPrecheckOk
+
+`func (o *TargetCreateGoogleTrust) GetDnsSkipPrecheckOk() (*bool, bool)`
+
+GetDnsSkipPrecheckOk returns a tuple with the DnsSkipPrecheck field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsSkipPrecheck
+
+`func (o *TargetCreateGoogleTrust) SetDnsSkipPrecheck(v bool)`
+
+SetDnsSkipPrecheck sets DnsSkipPrecheck field to given value.
+
+### HasDnsSkipPrecheck
+
+`func (o *TargetCreateGoogleTrust) HasDnsSkipPrecheck() bool`
+
+HasDnsSkipPrecheck returns a boolean if a field has been set.
+
 ### GetDnsTargetCreds
 
 `func (o *TargetCreateGoogleTrust) GetDnsTargetCreds() string`
@@ -145,6 +224,31 @@ SetDnsTargetCreds sets DnsTargetCreds field to given value.
 `func (o *TargetCreateGoogleTrust) HasDnsTargetCreds() bool`
 
 HasDnsTargetCreds returns a boolean if a field has been set.
+
+### GetDnsTimeout
+
+`func (o *TargetCreateGoogleTrust) GetDnsTimeout() string`
+
+GetDnsTimeout returns the DnsTimeout field if non-nil, zero value otherwise.
+
+### GetDnsTimeoutOk
+
+`func (o *TargetCreateGoogleTrust) GetDnsTimeoutOk() (*string, bool)`
+
+GetDnsTimeoutOk returns a tuple with the DnsTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsTimeout
+
+`func (o *TargetCreateGoogleTrust) SetDnsTimeout(v string)`
+
+SetDnsTimeout sets DnsTimeout field to given value.
+
+### HasDnsTimeout
+
+`func (o *TargetCreateGoogleTrust) HasDnsTimeout() bool`
+
+HasDnsTimeout returns a boolean if a field has been set.
 
 ### GetDnsZone
 

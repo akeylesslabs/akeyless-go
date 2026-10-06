@@ -32,6 +32,8 @@ type RequestAccess struct {
 	Json *bool `json:"json,omitempty"`
 	// Item name
 	Name string `json:"name"`
+	// Requested access TTL in minutes. Allowed range is 1 to 1440. Defaults to 60 when omitted.
+	RequestedTtl *int64 `json:"requested_ttl,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// Item type
@@ -210,6 +212,38 @@ func (o *RequestAccess) SetName(v string) {
 	o.Name = v
 }
 
+// GetRequestedTtl returns the RequestedTtl field value if set, zero value otherwise.
+func (o *RequestAccess) GetRequestedTtl() int64 {
+	if o == nil || IsNil(o.RequestedTtl) {
+		var ret int64
+		return ret
+	}
+	return *o.RequestedTtl
+}
+
+// GetRequestedTtlOk returns a tuple with the RequestedTtl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RequestAccess) GetRequestedTtlOk() (*int64, bool) {
+	if o == nil || IsNil(o.RequestedTtl) {
+		return nil, false
+	}
+	return o.RequestedTtl, true
+}
+
+// HasRequestedTtl returns a boolean if a field has been set.
+func (o *RequestAccess) HasRequestedTtl() bool {
+	if o != nil && !IsNil(o.RequestedTtl) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedTtl gets a reference to the given int64 and assigns it to the RequestedTtl field.
+func (o *RequestAccess) SetRequestedTtl(v int64) {
+	o.RequestedTtl = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *RequestAccess) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -319,6 +353,9 @@ func (o RequestAccess) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.RequestedTtl) {
+		toSerialize["requested_ttl"] = o.RequestedTtl
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}

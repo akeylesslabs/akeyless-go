@@ -7,7 +7,11 @@ Name | Type | Description | Notes
 **AcmeChallenge** | Pointer to **string** |  | [optional] [default to "http"]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
+**DnsPropagationWait** | Pointer to **string** | Fixed wait after TXT publish (e.g. 30s, 2m). If omitted with pre-check on, no extra sleep (polling only). If omitted with --dns-skip-precheck, gateway uses 30s. DNS challenge only | [optional] 
+**DnsResolvers** | Pointer to **[]string** | Custom DNS resolvers (ip:port) for DNS-01. Repeat for multiple. If omitted, Lego uses /etc/resolv.conf or Google Public DNS. DNS challenge only | [optional] 
+**DnsSkipPrecheck** | Pointer to **bool** | Skip DNS TXT pre-check before CA validation. If --dns-propagation-wait is omitted and this flag is set, gateway waits 30s before CA validation. DNS challenge only | [optional] 
 **DnsTargetCreds** | Pointer to **string** | Name of existing cloud target for DNS credentials. Required when acme-challenge&#x3D;dns. Supported: AWS, Azure, GCP, Cloudflare targets | [optional] 
+**DnsTimeout** | Pointer to **string** | Per-query DNS lookup timeout during pre-check (e.g. 10s), not total poll time. If omitted with pre-check on, Lego library default applies (10s per query on Linux). Ignored when --dns-skip-precheck is set. DNS challenge only | [optional] 
 **DnsZone** | Pointer to **string** | Cloudflare DNS zone identifier. Required when dns-target-creds points to Cloudflare target | [optional] 
 **Email** | **string** | Email address for ACME account registration | 
 **GcpProject** | Pointer to **string** | GCP Cloud DNS: Project ID. Optional - can be derived from service account | [optional] 
@@ -121,6 +125,81 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetDnsPropagationWait
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsPropagationWait() string`
+
+GetDnsPropagationWait returns the DnsPropagationWait field if non-nil, zero value otherwise.
+
+### GetDnsPropagationWaitOk
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsPropagationWaitOk() (*string, bool)`
+
+GetDnsPropagationWaitOk returns a tuple with the DnsPropagationWait field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsPropagationWait
+
+`func (o *TargetUpdateLetsEncrypt) SetDnsPropagationWait(v string)`
+
+SetDnsPropagationWait sets DnsPropagationWait field to given value.
+
+### HasDnsPropagationWait
+
+`func (o *TargetUpdateLetsEncrypt) HasDnsPropagationWait() bool`
+
+HasDnsPropagationWait returns a boolean if a field has been set.
+
+### GetDnsResolvers
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsResolvers() []string`
+
+GetDnsResolvers returns the DnsResolvers field if non-nil, zero value otherwise.
+
+### GetDnsResolversOk
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsResolversOk() (*[]string, bool)`
+
+GetDnsResolversOk returns a tuple with the DnsResolvers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsResolvers
+
+`func (o *TargetUpdateLetsEncrypt) SetDnsResolvers(v []string)`
+
+SetDnsResolvers sets DnsResolvers field to given value.
+
+### HasDnsResolvers
+
+`func (o *TargetUpdateLetsEncrypt) HasDnsResolvers() bool`
+
+HasDnsResolvers returns a boolean if a field has been set.
+
+### GetDnsSkipPrecheck
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsSkipPrecheck() bool`
+
+GetDnsSkipPrecheck returns the DnsSkipPrecheck field if non-nil, zero value otherwise.
+
+### GetDnsSkipPrecheckOk
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsSkipPrecheckOk() (*bool, bool)`
+
+GetDnsSkipPrecheckOk returns a tuple with the DnsSkipPrecheck field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsSkipPrecheck
+
+`func (o *TargetUpdateLetsEncrypt) SetDnsSkipPrecheck(v bool)`
+
+SetDnsSkipPrecheck sets DnsSkipPrecheck field to given value.
+
+### HasDnsSkipPrecheck
+
+`func (o *TargetUpdateLetsEncrypt) HasDnsSkipPrecheck() bool`
+
+HasDnsSkipPrecheck returns a boolean if a field has been set.
+
 ### GetDnsTargetCreds
 
 `func (o *TargetUpdateLetsEncrypt) GetDnsTargetCreds() string`
@@ -145,6 +224,31 @@ SetDnsTargetCreds sets DnsTargetCreds field to given value.
 `func (o *TargetUpdateLetsEncrypt) HasDnsTargetCreds() bool`
 
 HasDnsTargetCreds returns a boolean if a field has been set.
+
+### GetDnsTimeout
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsTimeout() string`
+
+GetDnsTimeout returns the DnsTimeout field if non-nil, zero value otherwise.
+
+### GetDnsTimeoutOk
+
+`func (o *TargetUpdateLetsEncrypt) GetDnsTimeoutOk() (*string, bool)`
+
+GetDnsTimeoutOk returns a tuple with the DnsTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsTimeout
+
+`func (o *TargetUpdateLetsEncrypt) SetDnsTimeout(v string)`
+
+SetDnsTimeout sets DnsTimeout field to given value.
+
+### HasDnsTimeout
+
+`func (o *TargetUpdateLetsEncrypt) HasDnsTimeout() bool`
+
+HasDnsTimeout returns a boolean if a field has been set.
 
 ### GetDnsZone
 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Justification** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** | The Secret name (for database and AWS producers - producer name) | [optional] 
+**RequestedTtl** | Pointer to **int64** | For how long to grant the requested access, in minutes | [optional] 
 **SraCtrlPath** | Pointer to **string** | The Bastion API path | [optional] 
 **SraCtrlPort** | Pointer to **string** | The Bastion API Port | [optional] [default to "9900"]
 **SraCtrlProto** | Pointer to **string** | The SRA API protocol | [optional] [default to "http"]
@@ -348,6 +349,31 @@ SetName sets Name field to given value.
 `func (o *Connect) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetRequestedTtl
+
+`func (o *Connect) GetRequestedTtl() int64`
+
+GetRequestedTtl returns the RequestedTtl field if non-nil, zero value otherwise.
+
+### GetRequestedTtlOk
+
+`func (o *Connect) GetRequestedTtlOk() (*int64, bool)`
+
+GetRequestedTtlOk returns a tuple with the RequestedTtl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedTtl
+
+`func (o *Connect) SetRequestedTtl(v int64)`
+
+SetRequestedTtl sets RequestedTtl field to given value.
+
+### HasRequestedTtl
+
+`func (o *Connect) HasRequestedTtl() bool`
+
+HasRequestedTtl returns a boolean if a field has been set.
 
 ### GetSraCtrlPath
 

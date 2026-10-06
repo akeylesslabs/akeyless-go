@@ -18,10 +18,12 @@ import (
 // checks if the ListSRASessions type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ListSRASessions{}
 
-// ListSRASessions listSRASessions is a command that returns sra sessions of the given user
+// ListSRASessions listSRASessions is a command that returns the sra sessions the caller is entitled to see
 type ListSRASessions struct {
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Next page reference
+	PaginationToken *string `json:"pagination-token,omitempty"`
 	// session resource type. In case it is empty, all resources type will be returned. options: [mysql, k8s, ssh, mongodb, mssql, postgres, aws, eks, gke, rdp]
 	ResourceType []string `json:"resource-type,omitempty"`
 	// session status type. In case it is empty, only active sessions will be returned. options: [connecting, connected, failed, completed, terminated]
@@ -83,6 +85,38 @@ func (o *ListSRASessions) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *ListSRASessions) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
+func (o *ListSRASessions) GetPaginationToken() string {
+	if o == nil || IsNil(o.PaginationToken) {
+		var ret string
+		return ret
+	}
+	return *o.PaginationToken
+}
+
+// GetPaginationTokenOk returns a tuple with the PaginationToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ListSRASessions) GetPaginationTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.PaginationToken) {
+		return nil, false
+	}
+	return o.PaginationToken, true
+}
+
+// HasPaginationToken returns a boolean if a field has been set.
+func (o *ListSRASessions) HasPaginationToken() bool {
+	if o != nil && !IsNil(o.PaginationToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaginationToken gets a reference to the given string and assigns it to the PaginationToken field.
+func (o *ListSRASessions) SetPaginationToken(v string) {
+	o.PaginationToken = &v
 }
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise.
@@ -225,6 +259,9 @@ func (o ListSRASessions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.PaginationToken) {
+		toSerialize["pagination-token"] = o.PaginationToken
 	}
 	if !IsNil(o.ResourceType) {
 		toSerialize["resource-type"] = o.ResourceType

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **TokenExpiration** | Pointer to **string** | Token expiration | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UpdateVersion** | Pointer to **bool** | Deprecated | [optional] 
+**Username** | Pointer to **string** | Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain. | [optional] 
 
 ## Methods
 
@@ -523,6 +524,31 @@ SetUpdateVersion sets UpdateVersion field to given value.
 `func (o *UpdateLdapTarget) HasUpdateVersion() bool`
 
 HasUpdateVersion returns a boolean if a field has been set.
+
+### GetUsername
+
+`func (o *UpdateLdapTarget) GetUsername() string`
+
+GetUsername returns the Username field if non-nil, zero value otherwise.
+
+### GetUsernameOk
+
+`func (o *UpdateLdapTarget) GetUsernameOk() (*string, bool)`
+
+GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsername
+
+`func (o *UpdateLdapTarget) SetUsername(v string)`
+
+SetUsername sets Username field to given value.
+
+### HasUsername
+
+`func (o *UpdateLdapTarget) HasUsername() bool`
+
+HasUsername returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

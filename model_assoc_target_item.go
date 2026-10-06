@@ -22,8 +22,10 @@ var _ MappedNullable = &AssocTargetItem{}
 
 // AssocTargetItem assocTargetItem is a command that creates an association between target and item.
 type AssocTargetItem struct {
-	// Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format <type>:<partition>:<name> (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate's partition. Repeat the parameter to bind several profiles.
+	// Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format <type>:<partition>:<name> (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate's partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles.
 	BindSslProfiles []string `json:"bind-ssl-profiles,omitempty"`
+	// The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)
+	CertificateFormat *string `json:"certificate-format,omitempty"`
 	// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
 	CertificatePath *string `json:"certificate-path,omitempty"`
 	// A path on the target to store the full chain pem file (relevant only for certificate provisioning)
@@ -46,6 +48,8 @@ type AssocTargetItem struct {
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
+	// Password used to protect the provisioned PFX file. Required when --certificate-format=pfx (relevant only for certificate provisioning)
+	PfxPassword *string `json:"pfx-password,omitempty"`
 	// A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP)
 	PostProvisionCommand *string `json:"post-provision-command,omitempty"`
 	// A path on the target to store the private key (relevant only for certificate provisioning)
@@ -80,6 +84,8 @@ type _AssocTargetItem AssocTargetItem
 // will change when the set of required properties is changed
 func NewAssocTargetItem(name string, targetName string) *AssocTargetItem {
 	this := AssocTargetItem{}
+	var certificateFormat string = "pem"
+	this.CertificateFormat = &certificateFormat
 	var disablePreviousKeyVersion bool = false
 	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
 	var json bool = false
@@ -100,6 +106,8 @@ func NewAssocTargetItem(name string, targetName string) *AssocTargetItem {
 // but it doesn't guarantee that properties required by API are set
 func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this := AssocTargetItem{}
+	var certificateFormat string = "pem"
+	this.CertificateFormat = &certificateFormat
 	var disablePreviousKeyVersion bool = false
 	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
 	var json bool = false
@@ -143,6 +151,38 @@ func (o *AssocTargetItem) HasBindSslProfiles() bool {
 // SetBindSslProfiles gets a reference to the given []string and assigns it to the BindSslProfiles field.
 func (o *AssocTargetItem) SetBindSslProfiles(v []string) {
 	o.BindSslProfiles = v
+}
+
+// GetCertificateFormat returns the CertificateFormat field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetCertificateFormat() string {
+	if o == nil || IsNil(o.CertificateFormat) {
+		var ret string
+		return ret
+	}
+	return *o.CertificateFormat
+}
+
+// GetCertificateFormatOk returns a tuple with the CertificateFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetCertificateFormatOk() (*string, bool) {
+	if o == nil || IsNil(o.CertificateFormat) {
+		return nil, false
+	}
+	return o.CertificateFormat, true
+}
+
+// HasCertificateFormat returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasCertificateFormat() bool {
+	if o != nil && !IsNil(o.CertificateFormat) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateFormat gets a reference to the given string and assigns it to the CertificateFormat field.
+func (o *AssocTargetItem) SetCertificateFormat(v string) {
+	o.CertificateFormat = &v
 }
 
 // GetCertificatePath returns the CertificatePath field value if set, zero value otherwise.
@@ -487,6 +527,38 @@ func (o *AssocTargetItem) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *AssocTargetItem) SetName(v string) {
 	o.Name = v
+}
+
+// GetPfxPassword returns the PfxPassword field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetPfxPassword() string {
+	if o == nil || IsNil(o.PfxPassword) {
+		var ret string
+		return ret
+	}
+	return *o.PfxPassword
+}
+
+// GetPfxPasswordOk returns a tuple with the PfxPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetPfxPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.PfxPassword) {
+		return nil, false
+	}
+	return o.PfxPassword, true
+}
+
+// HasPfxPassword returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasPfxPassword() bool {
+	if o != nil && !IsNil(o.PfxPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetPfxPassword gets a reference to the given string and assigns it to the PfxPassword field.
+func (o *AssocTargetItem) SetPfxPassword(v string) {
+	o.PfxPassword = &v
 }
 
 // GetPostProvisionCommand returns the PostProvisionCommand field value if set, zero value otherwise.
@@ -878,6 +950,9 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BindSslProfiles) {
 		toSerialize["bind-ssl-profiles"] = o.BindSslProfiles
 	}
+	if !IsNil(o.CertificateFormat) {
+		toSerialize["certificate-format"] = o.CertificateFormat
+	}
 	if !IsNil(o.CertificatePath) {
 		toSerialize["certificate-path"] = o.CertificatePath
 	}
@@ -909,6 +984,9 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 		toSerialize["multi-region"] = o.MultiRegion
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.PfxPassword) {
+		toSerialize["pfx-password"] = o.PfxPassword
+	}
 	if !IsNil(o.PostProvisionCommand) {
 		toSerialize["post-provision-command"] = o.PostProvisionCommand
 	}

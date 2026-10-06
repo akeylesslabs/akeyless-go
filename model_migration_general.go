@@ -13,6 +13,7 @@ package akeyless
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the MigrationGeneral type satisfies the MappedNullable interface at compile time
@@ -22,10 +23,13 @@ var _ MappedNullable = &MigrationGeneral{}
 type MigrationGeneral struct {
 	Id *string `json:"id,omitempty"`
 	LastMigration *string `json:"last_migration,omitempty"`
+	LastModified *time.Time `json:"last_modified,omitempty"`
+	Message *string `json:"message,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NewName *string `json:"new_name,omitempty"`
 	Prefix *string `json:"prefix,omitempty"`
 	ProtectionKey *string `json:"protection_key,omitempty"`
+	Schedule *string `json:"schedule,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Type *string `json:"type,omitempty"`
 }
@@ -109,6 +113,70 @@ func (o *MigrationGeneral) HasLastMigration() bool {
 // SetLastMigration gets a reference to the given string and assigns it to the LastMigration field.
 func (o *MigrationGeneral) SetLastMigration(v string) {
 	o.LastMigration = &v
+}
+
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetLastModified() time.Time {
+	if o == nil || IsNil(o.LastModified) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModified
+}
+
+// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetLastModifiedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastModified) {
+		return nil, false
+	}
+	return o.LastModified, true
+}
+
+// HasLastModified returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasLastModified() bool {
+	if o != nil && !IsNil(o.LastModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModified gets a reference to the given time.Time and assigns it to the LastModified field.
+func (o *MigrationGeneral) SetLastModified(v time.Time) {
+	o.LastModified = &v
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *MigrationGeneral) SetMessage(v string) {
+	o.Message = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -239,6 +307,38 @@ func (o *MigrationGeneral) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
+// GetSchedule returns the Schedule field value if set, zero value otherwise.
+func (o *MigrationGeneral) GetSchedule() string {
+	if o == nil || IsNil(o.Schedule) {
+		var ret string
+		return ret
+	}
+	return *o.Schedule
+}
+
+// GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MigrationGeneral) GetScheduleOk() (*string, bool) {
+	if o == nil || IsNil(o.Schedule) {
+		return nil, false
+	}
+	return o.Schedule, true
+}
+
+// HasSchedule returns a boolean if a field has been set.
+func (o *MigrationGeneral) HasSchedule() bool {
+	if o != nil && !IsNil(o.Schedule) {
+		return true
+	}
+
+	return false
+}
+
+// SetSchedule gets a reference to the given string and assigns it to the Schedule field.
+func (o *MigrationGeneral) SetSchedule(v string) {
+	o.Schedule = &v
+}
+
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *MigrationGeneral) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -319,6 +419,12 @@ func (o MigrationGeneral) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastMigration) {
 		toSerialize["last_migration"] = o.LastMigration
 	}
+	if !IsNil(o.LastModified) {
+		toSerialize["last_modified"] = o.LastModified
+	}
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -330,6 +436,9 @@ func (o MigrationGeneral) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProtectionKey) {
 		toSerialize["protection_key"] = o.ProtectionKey
+	}
+	if !IsNil(o.Schedule) {
+		toSerialize["schedule"] = o.Schedule
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

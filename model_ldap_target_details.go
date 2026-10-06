@@ -27,6 +27,7 @@ type LdapTargetDetails struct {
 	LdapCertificate *string `json:"ldap_certificate,omitempty"`
 	LdapTokenExpiration *string `json:"ldap_token_expiration,omitempty"`
 	LdapUrl *string `json:"ldap_url,omitempty"`
+	LdapUsername *string `json:"ldap_username,omitempty"`
 }
 
 // NewLdapTargetDetails instantiates a new LdapTargetDetails object
@@ -270,6 +271,38 @@ func (o *LdapTargetDetails) SetLdapUrl(v string) {
 	o.LdapUrl = &v
 }
 
+// GetLdapUsername returns the LdapUsername field value if set, zero value otherwise.
+func (o *LdapTargetDetails) GetLdapUsername() string {
+	if o == nil || IsNil(o.LdapUsername) {
+		var ret string
+		return ret
+	}
+	return *o.LdapUsername
+}
+
+// GetLdapUsernameOk returns a tuple with the LdapUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LdapTargetDetails) GetLdapUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.LdapUsername) {
+		return nil, false
+	}
+	return o.LdapUsername, true
+}
+
+// HasLdapUsername returns a boolean if a field has been set.
+func (o *LdapTargetDetails) HasLdapUsername() bool {
+	if o != nil && !IsNil(o.LdapUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetLdapUsername gets a reference to the given string and assigns it to the LdapUsername field.
+func (o *LdapTargetDetails) SetLdapUsername(v string) {
+	o.LdapUsername = &v
+}
+
 func (o LdapTargetDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -300,6 +333,9 @@ func (o LdapTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LdapUrl) {
 		toSerialize["ldap_url"] = o.LdapUrl
+	}
+	if !IsNil(o.LdapUsername) {
+		toSerialize["ldap_username"] = o.LdapUsername
 	}
 	return toSerialize, nil
 }

@@ -135,6 +135,8 @@ docs/ClassicKeyDetailsInfo.md
 docs/ClassicKeyStatusInfo.md
 docs/ClassicKeyTargetInfo.md
 docs/ClientData.md
+docs/ClientEvent.md
+docs/ClientEventOutput.md
 docs/ClientUsageInfo.md
 docs/ClientsUsageReport.md
 docs/CloudflareTargetDetails.md
@@ -654,6 +656,8 @@ docs/GenerateCA.md
 docs/GenerateCAOutput.md
 docs/GenerateCsr.md
 docs/GenerateCsrOutput.md
+docs/GenerateIntermediateCA.md
+docs/GenerateIntermediateCAOutput.md
 docs/GetAccountSettings.md
 docs/GetAccountSettingsCommandOutput.md
 docs/GetAnalyticsData.md
@@ -718,6 +722,7 @@ docs/HuaweiAccessRules.md
 docs/ImportPasswords.md
 docs/ImportPasswordsOutput.md
 docs/ImporterInfo.md
+docs/InjectorCertificateEvent.md
 docs/IssuerOverviewInfo.md
 docs/Item.md
 docs/ItemCustomFieldsDetails.md
@@ -917,6 +922,7 @@ docs/RotatedSecretCreateLdap.md
 docs/RotatedSecretCreateMongodb.md
 docs/RotatedSecretCreateMssql.md
 docs/RotatedSecretCreateMysql.md
+docs/RotatedSecretCreateOkta.md
 docs/RotatedSecretCreateOpenAI.md
 docs/RotatedSecretCreateOracledb.md
 docs/RotatedSecretCreateOutput.md
@@ -948,6 +954,7 @@ docs/RotatedSecretUpdateLdap.md
 docs/RotatedSecretUpdateMongodb.md
 docs/RotatedSecretUpdateMssql.md
 docs/RotatedSecretUpdateMysql.md
+docs/RotatedSecretUpdateOkta.md
 docs/RotatedSecretUpdateOpenAI.md
 docs/RotatedSecretUpdateOracledb.md
 docs/RotatedSecretUpdateOutput.md
@@ -1412,6 +1419,8 @@ model_classic_key_details_info.go
 model_classic_key_status_info.go
 model_classic_key_target_info.go
 model_client_data.go
+model_client_event.go
+model_client_event_output.go
 model_client_usage_info.go
 model_clients_usage_report.go
 model_cloudflare_target_details.go
@@ -1930,6 +1939,8 @@ model_generate_ca.go
 model_generate_ca_output.go
 model_generate_csr.go
 model_generate_csr_output.go
+model_generate_intermediate_ca.go
+model_generate_intermediate_ca_output.go
 model_get_account_settings.go
 model_get_account_settings_command_output.go
 model_get_analytics_data.go
@@ -1995,6 +2006,7 @@ model_huawei_access_rules.go
 model_import_passwords.go
 model_import_passwords_output.go
 model_importer_info.go
+model_injector_certificate_event.go
 model_issuer_overview_info.go
 model_item.go
 model_item_custom_fields_details.go
@@ -2194,6 +2206,7 @@ model_rotated_secret_create_ldap.go
 model_rotated_secret_create_mongodb.go
 model_rotated_secret_create_mssql.go
 model_rotated_secret_create_mysql.go
+model_rotated_secret_create_okta.go
 model_rotated_secret_create_open_ai.go
 model_rotated_secret_create_oracledb.go
 model_rotated_secret_create_output.go
@@ -2225,6 +2238,7 @@ model_rotated_secret_update_ldap.go
 model_rotated_secret_update_mongodb.go
 model_rotated_secret_update_mssql.go
 model_rotated_secret_update_mysql.go
+model_rotated_secret_update_okta.go
 model_rotated_secret_update_open_ai.go
 model_rotated_secret_update_oracledb.go
 model_rotated_secret_update_output.go

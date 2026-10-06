@@ -31,6 +31,7 @@ type Target struct {
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	DeleteProtection *bool `json:"delete_protection,omitempty"`
 	IsAccessRequestEnabled *bool `json:"is_access_request_enabled,omitempty"`
+	LastAccessRequestStatus *string `json:"last_access_request_status,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	LockingInfo *LockingInfo `json:"locking_info,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
@@ -349,6 +350,38 @@ func (o *Target) HasIsAccessRequestEnabled() bool {
 // SetIsAccessRequestEnabled gets a reference to the given bool and assigns it to the IsAccessRequestEnabled field.
 func (o *Target) SetIsAccessRequestEnabled(v bool) {
 	o.IsAccessRequestEnabled = &v
+}
+
+// GetLastAccessRequestStatus returns the LastAccessRequestStatus field value if set, zero value otherwise.
+func (o *Target) GetLastAccessRequestStatus() string {
+	if o == nil || IsNil(o.LastAccessRequestStatus) {
+		var ret string
+		return ret
+	}
+	return *o.LastAccessRequestStatus
+}
+
+// GetLastAccessRequestStatusOk returns a tuple with the LastAccessRequestStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Target) GetLastAccessRequestStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.LastAccessRequestStatus) {
+		return nil, false
+	}
+	return o.LastAccessRequestStatus, true
+}
+
+// HasLastAccessRequestStatus returns a boolean if a field has been set.
+func (o *Target) HasLastAccessRequestStatus() bool {
+	if o != nil && !IsNil(o.LastAccessRequestStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAccessRequestStatus gets a reference to the given string and assigns it to the LastAccessRequestStatus field.
+func (o *Target) SetLastAccessRequestStatus(v string) {
+	o.LastAccessRequestStatus = &v
 }
 
 // GetLastVersion returns the LastVersion field value if set, zero value otherwise.
@@ -803,6 +836,9 @@ func (o Target) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsAccessRequestEnabled) {
 		toSerialize["is_access_request_enabled"] = o.IsAccessRequestEnabled
+	}
+	if !IsNil(o.LastAccessRequestStatus) {
+		toSerialize["last_access_request_status"] = o.LastAccessRequestStatus
 	}
 	if !IsNil(o.LastVersion) {
 		toSerialize["last_version"] = o.LastVersion

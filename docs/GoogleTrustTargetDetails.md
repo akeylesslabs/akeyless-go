@@ -8,8 +8,12 @@ Name | Type | Description | Notes
 **AccountUrl** | Pointer to **string** | ACME Account URL (returned after registration with Google Trust Services) Used to retrieve existing account instead of re-registering | [optional] 
 **AcmeEnvironment** | Pointer to **string** | ACMEEnvironment defines Let&#39;s Encrypt ACME directory environment | [optional] 
 **ChallengeType** | Pointer to **string** | ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt | [optional] 
+**DnsPropagationWait** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
+**DnsResolvers** | Pointer to **[]string** | Custom recursive DNS resolvers (ip:port) for propagation checks. | [optional] 
+**DnsSkipPrecheck** | Pointer to **bool** | Skip authoritative nameserver propagation pre-check. | [optional] 
 **DnsTargetName** | Pointer to **string** | Name of DNS target (transient field - not stored in DB) Used by CLI to pass DNS target name to SDK for creating target_object_assoc Retrieved from target_object_assoc when reading target Required when ChallengeType is \&quot;dns\&quot; | [optional] 
 **DnsTargetType** | Pointer to **string** |  | [optional] 
+**DnsTimeout** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
 **DnsZone** | Pointer to **string** | Cloudflare zone identifier Required when DNSTargetType is Cloudflare | [optional] 
 **EabHmacKey** | Pointer to **string** | External Account Binding HMAC key (required for ACME account bootstrap on target creation) Not persisted after bootstrap | [optional] 
 **EabKeyId** | Pointer to **string** | External Account Binding key identifier (required for ACME account bootstrap on target creation) Not persisted after bootstrap | [optional] 
@@ -138,6 +142,81 @@ SetChallengeType sets ChallengeType field to given value.
 
 HasChallengeType returns a boolean if a field has been set.
 
+### GetDnsPropagationWait
+
+`func (o *GoogleTrustTargetDetails) GetDnsPropagationWait() int64`
+
+GetDnsPropagationWait returns the DnsPropagationWait field if non-nil, zero value otherwise.
+
+### GetDnsPropagationWaitOk
+
+`func (o *GoogleTrustTargetDetails) GetDnsPropagationWaitOk() (*int64, bool)`
+
+GetDnsPropagationWaitOk returns a tuple with the DnsPropagationWait field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsPropagationWait
+
+`func (o *GoogleTrustTargetDetails) SetDnsPropagationWait(v int64)`
+
+SetDnsPropagationWait sets DnsPropagationWait field to given value.
+
+### HasDnsPropagationWait
+
+`func (o *GoogleTrustTargetDetails) HasDnsPropagationWait() bool`
+
+HasDnsPropagationWait returns a boolean if a field has been set.
+
+### GetDnsResolvers
+
+`func (o *GoogleTrustTargetDetails) GetDnsResolvers() []string`
+
+GetDnsResolvers returns the DnsResolvers field if non-nil, zero value otherwise.
+
+### GetDnsResolversOk
+
+`func (o *GoogleTrustTargetDetails) GetDnsResolversOk() (*[]string, bool)`
+
+GetDnsResolversOk returns a tuple with the DnsResolvers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsResolvers
+
+`func (o *GoogleTrustTargetDetails) SetDnsResolvers(v []string)`
+
+SetDnsResolvers sets DnsResolvers field to given value.
+
+### HasDnsResolvers
+
+`func (o *GoogleTrustTargetDetails) HasDnsResolvers() bool`
+
+HasDnsResolvers returns a boolean if a field has been set.
+
+### GetDnsSkipPrecheck
+
+`func (o *GoogleTrustTargetDetails) GetDnsSkipPrecheck() bool`
+
+GetDnsSkipPrecheck returns the DnsSkipPrecheck field if non-nil, zero value otherwise.
+
+### GetDnsSkipPrecheckOk
+
+`func (o *GoogleTrustTargetDetails) GetDnsSkipPrecheckOk() (*bool, bool)`
+
+GetDnsSkipPrecheckOk returns a tuple with the DnsSkipPrecheck field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsSkipPrecheck
+
+`func (o *GoogleTrustTargetDetails) SetDnsSkipPrecheck(v bool)`
+
+SetDnsSkipPrecheck sets DnsSkipPrecheck field to given value.
+
+### HasDnsSkipPrecheck
+
+`func (o *GoogleTrustTargetDetails) HasDnsSkipPrecheck() bool`
+
+HasDnsSkipPrecheck returns a boolean if a field has been set.
+
 ### GetDnsTargetName
 
 `func (o *GoogleTrustTargetDetails) GetDnsTargetName() string`
@@ -187,6 +266,31 @@ SetDnsTargetType sets DnsTargetType field to given value.
 `func (o *GoogleTrustTargetDetails) HasDnsTargetType() bool`
 
 HasDnsTargetType returns a boolean if a field has been set.
+
+### GetDnsTimeout
+
+`func (o *GoogleTrustTargetDetails) GetDnsTimeout() int64`
+
+GetDnsTimeout returns the DnsTimeout field if non-nil, zero value otherwise.
+
+### GetDnsTimeoutOk
+
+`func (o *GoogleTrustTargetDetails) GetDnsTimeoutOk() (*int64, bool)`
+
+GetDnsTimeoutOk returns a tuple with the DnsTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsTimeout
+
+`func (o *GoogleTrustTargetDetails) SetDnsTimeout(v int64)`
+
+SetDnsTimeout sets DnsTimeout field to given value.
+
+### HasDnsTimeout
+
+`func (o *GoogleTrustTargetDetails) HasDnsTimeout() bool`
+
+HasDnsTimeout returns a boolean if a field has been set.
 
 ### GetDnsZone
 

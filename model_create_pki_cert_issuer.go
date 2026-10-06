@@ -68,6 +68,8 @@ type CreatePKICertIssuer struct {
 	DisableWildcards *bool `json:"disable-wildcards,omitempty"`
 	// If set, the cert issuer will support the acme protocol
 	EnableAcme *bool `json:"enable-acme,omitempty"`
+	// If set, the cert issuer will support the scep protocol
+	EnableScep *bool `json:"enable-scep,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME
@@ -104,6 +106,10 @@ type CreatePKICertIssuer struct {
 	ProtectCertificates *bool `json:"protect-certificates,omitempty"`
 	// A comma-separated list of provinces that will be set in the issued certificate
 	Province *string `json:"province,omitempty"`
+	// SCEP challenge type. Only static is supported in this stage
+	ScepChallengeType *string `json:"scep-challenge-type,omitempty"`
+	// SCEP static challenge password. Request-only; never returned by Describe
+	ScepPassword *string `json:"scep-password,omitempty"`
 	// Number of days before expiration to renew certificates
 	ScheduledRenew *int64 `json:"scheduled-renew,omitempty"`
 	// If set, certificates will be flagged for server auth use
@@ -897,6 +903,38 @@ func (o *CreatePKICertIssuer) SetEnableAcme(v bool) {
 	o.EnableAcme = &v
 }
 
+// GetEnableScep returns the EnableScep field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetEnableScep() bool {
+	if o == nil || IsNil(o.EnableScep) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableScep
+}
+
+// GetEnableScepOk returns a tuple with the EnableScep field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetEnableScepOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableScep) {
+		return nil, false
+	}
+	return o.EnableScep, true
+}
+
+// HasEnableScep returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasEnableScep() bool {
+	if o != nil && !IsNil(o.EnableScep) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableScep gets a reference to the given bool and assigns it to the EnableScep field.
+func (o *CreatePKICertIssuer) SetEnableScep(v bool) {
+	o.EnableScep = &v
+}
+
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
 func (o *CreatePKICertIssuer) GetExpirationEventIn() []string {
 	if o == nil || IsNil(o.ExpirationEventIn) {
@@ -1465,6 +1503,70 @@ func (o *CreatePKICertIssuer) SetProvince(v string) {
 	o.Province = &v
 }
 
+// GetScepChallengeType returns the ScepChallengeType field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetScepChallengeType() string {
+	if o == nil || IsNil(o.ScepChallengeType) {
+		var ret string
+		return ret
+	}
+	return *o.ScepChallengeType
+}
+
+// GetScepChallengeTypeOk returns a tuple with the ScepChallengeType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetScepChallengeTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ScepChallengeType) {
+		return nil, false
+	}
+	return o.ScepChallengeType, true
+}
+
+// HasScepChallengeType returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasScepChallengeType() bool {
+	if o != nil && !IsNil(o.ScepChallengeType) {
+		return true
+	}
+
+	return false
+}
+
+// SetScepChallengeType gets a reference to the given string and assigns it to the ScepChallengeType field.
+func (o *CreatePKICertIssuer) SetScepChallengeType(v string) {
+	o.ScepChallengeType = &v
+}
+
+// GetScepPassword returns the ScepPassword field value if set, zero value otherwise.
+func (o *CreatePKICertIssuer) GetScepPassword() string {
+	if o == nil || IsNil(o.ScepPassword) {
+		var ret string
+		return ret
+	}
+	return *o.ScepPassword
+}
+
+// GetScepPasswordOk returns a tuple with the ScepPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreatePKICertIssuer) GetScepPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.ScepPassword) {
+		return nil, false
+	}
+	return o.ScepPassword, true
+}
+
+// HasScepPassword returns a boolean if a field has been set.
+func (o *CreatePKICertIssuer) HasScepPassword() bool {
+	if o != nil && !IsNil(o.ScepPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetScepPassword gets a reference to the given string and assigns it to the ScepPassword field.
+func (o *CreatePKICertIssuer) SetScepPassword(v string) {
+	o.ScepPassword = &v
+}
+
 // GetScheduledRenew returns the ScheduledRenew field value if set, zero value otherwise.
 func (o *CreatePKICertIssuer) GetScheduledRenew() int64 {
 	if o == nil || IsNil(o.ScheduledRenew) {
@@ -1824,6 +1926,9 @@ func (o CreatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableAcme) {
 		toSerialize["enable-acme"] = o.EnableAcme
 	}
+	if !IsNil(o.EnableScep) {
+		toSerialize["enable-scep"] = o.EnableScep
+	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
 	}
@@ -1875,6 +1980,12 @@ func (o CreatePKICertIssuer) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Province) {
 		toSerialize["province"] = o.Province
+	}
+	if !IsNil(o.ScepChallengeType) {
+		toSerialize["scep-challenge-type"] = o.ScepChallengeType
+	}
+	if !IsNil(o.ScepPassword) {
+		toSerialize["scep-password"] = o.ScepPassword
 	}
 	if !IsNil(o.ScheduledRenew) {
 		toSerialize["scheduled-renew"] = o.ScheduledRenew

@@ -238,6 +238,7 @@ type DSProducerDetails struct {
 	LdapUrl *string `json:"ldap_url,omitempty"`
 	LdapUserAttr *string `json:"ldap_user_attr,omitempty"`
 	LdapUserDn *string `json:"ldap_user_dn,omitempty"`
+	LdapUsername *string `json:"ldap_username,omitempty"`
 	Metadata *string `json:"metadata,omitempty"`
 	MongodbAtlasApiPrivateKey *string `json:"mongodb_atlas_api_private_key,omitempty"`
 	MongodbAtlasApiPublicKey *string `json:"mongodb_atlas_api_public_key,omitempty"`
@@ -6803,6 +6804,38 @@ func (o *DSProducerDetails) SetLdapUserDn(v string) {
 	o.LdapUserDn = &v
 }
 
+// GetLdapUsername returns the LdapUsername field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetLdapUsername() string {
+	if o == nil || IsNil(o.LdapUsername) {
+		var ret string
+		return ret
+	}
+	return *o.LdapUsername
+}
+
+// GetLdapUsernameOk returns a tuple with the LdapUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetLdapUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.LdapUsername) {
+		return nil, false
+	}
+	return o.LdapUsername, true
+}
+
+// HasLdapUsername returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasLdapUsername() bool {
+	if o != nil && !IsNil(o.LdapUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetLdapUsername gets a reference to the given string and assigns it to the LdapUsername field.
+func (o *DSProducerDetails) SetLdapUsername(v string) {
+	o.LdapUsername = &v
+}
+
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetMetadata() string {
 	if o == nil || IsNil(o.Metadata) {
@@ -10519,6 +10552,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LdapUserDn) {
 		toSerialize["ldap_user_dn"] = o.LdapUserDn
+	}
+	if !IsNil(o.LdapUsername) {
+		toSerialize["ldap_username"] = o.LdapUsername
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata

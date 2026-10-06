@@ -6,10 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **LastMigration** | Pointer to **string** |  | [optional] 
+**LastModified** | Pointer to **time.Time** |  | [optional] 
+**Message** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **NewName** | Pointer to **string** |  | [optional] 
 **Prefix** | Pointer to **string** |  | [optional] 
 **ProtectionKey** | Pointer to **string** |  | [optional] 
+**Schedule** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
@@ -81,6 +84,56 @@ SetLastMigration sets LastMigration field to given value.
 `func (o *MigrationGeneral) HasLastMigration() bool`
 
 HasLastMigration returns a boolean if a field has been set.
+
+### GetLastModified
+
+`func (o *MigrationGeneral) GetLastModified() time.Time`
+
+GetLastModified returns the LastModified field if non-nil, zero value otherwise.
+
+### GetLastModifiedOk
+
+`func (o *MigrationGeneral) GetLastModifiedOk() (*time.Time, bool)`
+
+GetLastModifiedOk returns a tuple with the LastModified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastModified
+
+`func (o *MigrationGeneral) SetLastModified(v time.Time)`
+
+SetLastModified sets LastModified field to given value.
+
+### HasLastModified
+
+`func (o *MigrationGeneral) HasLastModified() bool`
+
+HasLastModified returns a boolean if a field has been set.
+
+### GetMessage
+
+`func (o *MigrationGeneral) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *MigrationGeneral) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *MigrationGeneral) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *MigrationGeneral) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
 
 ### GetName
 
@@ -181,6 +234,31 @@ SetProtectionKey sets ProtectionKey field to given value.
 `func (o *MigrationGeneral) HasProtectionKey() bool`
 
 HasProtectionKey returns a boolean if a field has been set.
+
+### GetSchedule
+
+`func (o *MigrationGeneral) GetSchedule() string`
+
+GetSchedule returns the Schedule field if non-nil, zero value otherwise.
+
+### GetScheduleOk
+
+`func (o *MigrationGeneral) GetScheduleOk() (*string, bool)`
+
+GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedule
+
+`func (o *MigrationGeneral) SetSchedule(v string)`
+
+SetSchedule sets Schedule field to given value.
+
+### HasSchedule
+
+`func (o *MigrationGeneral) HasSchedule() bool`
+
+HasSchedule returns a boolean if a field has been set.
 
 ### GetStatus
 

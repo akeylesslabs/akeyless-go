@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **ItemTargetsAssoc** | Pointer to [**[]ItemTargetAssociation**](ItemTargetAssociation.md) |  | [optional] 
 **ItemType** | Pointer to **string** |  | [optional] 
 **ItemVersions** | Pointer to [**[]ItemVersion**](ItemVersion.md) |  | [optional] 
+**LastAccessRequestStatus** | Pointer to **string** |  | [optional] 
 **LastRotationDate** | Pointer to **time.Time** |  | [optional] 
 **LastVersion** | Pointer to **int32** |  | [optional] 
 **LinkedDetails** | Pointer to [**LinkedDetails**](LinkedDetails.md) |  | [optional] 
@@ -843,6 +844,31 @@ SetItemVersions sets ItemVersions field to given value.
 `func (o *Item) HasItemVersions() bool`
 
 HasItemVersions returns a boolean if a field has been set.
+
+### GetLastAccessRequestStatus
+
+`func (o *Item) GetLastAccessRequestStatus() string`
+
+GetLastAccessRequestStatus returns the LastAccessRequestStatus field if non-nil, zero value otherwise.
+
+### GetLastAccessRequestStatusOk
+
+`func (o *Item) GetLastAccessRequestStatusOk() (*string, bool)`
+
+GetLastAccessRequestStatusOk returns a tuple with the LastAccessRequestStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAccessRequestStatus
+
+`func (o *Item) SetLastAccessRequestStatus(v string)`
+
+SetLastAccessRequestStatus sets LastAccessRequestStatus field to given value.
+
+### HasLastAccessRequestStatus
+
+`func (o *Item) HasLastAccessRequestStatus() bool`
+
+HasLastAccessRequestStatus returns a boolean if a field has been set.
 
 ### GetLastRotationDate
 

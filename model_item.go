@@ -53,6 +53,7 @@ type Item struct {
 	ItemTargetsAssoc []ItemTargetAssociation `json:"item_targets_assoc,omitempty"`
 	ItemType *string `json:"item_type,omitempty"`
 	ItemVersions []ItemVersion `json:"item_versions,omitempty"`
+	LastAccessRequestStatus *string `json:"last_access_request_status,omitempty"`
 	LastRotationDate *time.Time `json:"last_rotation_date,omitempty"`
 	LastVersion *int32 `json:"last_version,omitempty"`
 	LinkedDetails *LinkedDetails `json:"linked_details,omitempty"`
@@ -1079,6 +1080,38 @@ func (o *Item) SetItemVersions(v []ItemVersion) {
 	o.ItemVersions = v
 }
 
+// GetLastAccessRequestStatus returns the LastAccessRequestStatus field value if set, zero value otherwise.
+func (o *Item) GetLastAccessRequestStatus() string {
+	if o == nil || IsNil(o.LastAccessRequestStatus) {
+		var ret string
+		return ret
+	}
+	return *o.LastAccessRequestStatus
+}
+
+// GetLastAccessRequestStatusOk returns a tuple with the LastAccessRequestStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Item) GetLastAccessRequestStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.LastAccessRequestStatus) {
+		return nil, false
+	}
+	return o.LastAccessRequestStatus, true
+}
+
+// HasLastAccessRequestStatus returns a boolean if a field has been set.
+func (o *Item) HasLastAccessRequestStatus() bool {
+	if o != nil && !IsNil(o.LastAccessRequestStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAccessRequestStatus gets a reference to the given string and assigns it to the LastAccessRequestStatus field.
+func (o *Item) SetLastAccessRequestStatus(v string) {
+	o.LastAccessRequestStatus = &v
+}
+
 // GetLastRotationDate returns the LastRotationDate field value if set, zero value otherwise.
 func (o *Item) GetLastRotationDate() time.Time {
 	if o == nil || IsNil(o.LastRotationDate) {
@@ -1629,6 +1662,9 @@ func (o Item) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ItemVersions) {
 		toSerialize["item_versions"] = o.ItemVersions
+	}
+	if !IsNil(o.LastAccessRequestStatus) {
+		toSerialize["last_access_request_status"] = o.LastAccessRequestStatus
 	}
 	if !IsNil(o.LastRotationDate) {
 		toSerialize["last_rotation_date"] = o.LastRotationDate

@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **DestinationPath** | Pointer to **string** | A path in which to save generated certificates | [optional] 
 **DisableWildcards** | Pointer to **bool** | If set, generation of wildcard certificates will be disabled. | [optional] 
 **EnableAcme** | Pointer to **bool** | If set, the cert issuer will support the acme protocol | [optional] 
+**EnableScep** | Pointer to **bool** | If set, the cert issuer will support the scep protocol | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GwClusterUrl** | Pointer to **string** | The GW cluster URL to issue the certificate from. Required in Public CA mode, to allow CRLs on private CA, or to enable ACME | [optional] 
 **IsCa** | Pointer to **bool** | If set, the basic constraints extension will be added to certificate | [optional] 
@@ -45,6 +46,8 @@ Name | Type | Description | Notes
 **PostalCode** | Pointer to **string** | A comma-separated list of postal codes that will be set in the issued certificate | [optional] 
 **ProtectCertificates** | Pointer to **bool** | Whether to protect generated certificates from deletion | [optional] 
 **Province** | Pointer to **string** | A comma-separated list of provinces that will be set in the issued certificate | [optional] 
+**ScepChallengeType** | Pointer to **string** | SCEP challenge type. Only static is supported in this stage | [optional] 
+**ScepPassword** | Pointer to **string** | SCEP static challenge password. Request-only; never returned by Describe | [optional] 
 **ScheduledRenew** | Pointer to **int64** | Number of days before expiration to renew certificates | [optional] 
 **ServerFlag** | Pointer to **bool** | If set, certificates will be flagged for server auth use | [optional] 
 **SignerKeyName** | Pointer to **string** | A key to sign the certificate with, required in Private CA mode | [optional] 
@@ -649,6 +652,31 @@ SetEnableAcme sets EnableAcme field to given value.
 
 HasEnableAcme returns a boolean if a field has been set.
 
+### GetEnableScep
+
+`func (o *CreatePKICertIssuer) GetEnableScep() bool`
+
+GetEnableScep returns the EnableScep field if non-nil, zero value otherwise.
+
+### GetEnableScepOk
+
+`func (o *CreatePKICertIssuer) GetEnableScepOk() (*bool, bool)`
+
+GetEnableScepOk returns a tuple with the EnableScep field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableScep
+
+`func (o *CreatePKICertIssuer) SetEnableScep(v bool)`
+
+SetEnableScep sets EnableScep field to given value.
+
+### HasEnableScep
+
+`func (o *CreatePKICertIssuer) HasEnableScep() bool`
+
+HasEnableScep returns a boolean if a field has been set.
+
 ### GetExpirationEventIn
 
 `func (o *CreatePKICertIssuer) GetExpirationEventIn() []string`
@@ -1093,6 +1121,56 @@ SetProvince sets Province field to given value.
 `func (o *CreatePKICertIssuer) HasProvince() bool`
 
 HasProvince returns a boolean if a field has been set.
+
+### GetScepChallengeType
+
+`func (o *CreatePKICertIssuer) GetScepChallengeType() string`
+
+GetScepChallengeType returns the ScepChallengeType field if non-nil, zero value otherwise.
+
+### GetScepChallengeTypeOk
+
+`func (o *CreatePKICertIssuer) GetScepChallengeTypeOk() (*string, bool)`
+
+GetScepChallengeTypeOk returns a tuple with the ScepChallengeType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScepChallengeType
+
+`func (o *CreatePKICertIssuer) SetScepChallengeType(v string)`
+
+SetScepChallengeType sets ScepChallengeType field to given value.
+
+### HasScepChallengeType
+
+`func (o *CreatePKICertIssuer) HasScepChallengeType() bool`
+
+HasScepChallengeType returns a boolean if a field has been set.
+
+### GetScepPassword
+
+`func (o *CreatePKICertIssuer) GetScepPassword() string`
+
+GetScepPassword returns the ScepPassword field if non-nil, zero value otherwise.
+
+### GetScepPasswordOk
+
+`func (o *CreatePKICertIssuer) GetScepPasswordOk() (*string, bool)`
+
+GetScepPasswordOk returns a tuple with the ScepPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScepPassword
+
+`func (o *CreatePKICertIssuer) SetScepPassword(v string)`
+
+SetScepPassword sets ScepPassword field to given value.
+
+### HasScepPassword
+
+`func (o *CreatePKICertIssuer) HasScepPassword() bool`
+
+HasScepPassword returns a boolean if a field has been set.
 
 ### GetScheduledRenew
 

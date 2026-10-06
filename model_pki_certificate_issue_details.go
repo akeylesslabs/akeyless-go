@@ -71,6 +71,10 @@ type PKICertificateIssueDetails struct {
 	Province []string `json:"province,omitempty"`
 	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
 	RequireCn *bool `json:"require_cn,omitempty"`
+	// ScepChallengeMode is the SCEP challenge mode. Stage 1 supports only \"static\".
+	ScepChallengeMode *string `json:"scep_challenge_mode,omitempty"`
+	// ScepEnabled turns on SCEP enrollment for this dedicated PKI issuer.
+	ScepEnabled *bool `json:"scep_enabled,omitempty"`
 	ServerFlag *bool `json:"server_flag,omitempty"`
 	// SplitCertificateChain, when enabled, separates the leaf certificate from the certificate chain.
 	SplitCertificateChain *bool `json:"split_certificate_chain,omitempty"`
@@ -1470,6 +1474,70 @@ func (o *PKICertificateIssueDetails) SetRequireCn(v bool) {
 	o.RequireCn = &v
 }
 
+// GetScepChallengeMode returns the ScepChallengeMode field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetScepChallengeMode() string {
+	if o == nil || IsNil(o.ScepChallengeMode) {
+		var ret string
+		return ret
+	}
+	return *o.ScepChallengeMode
+}
+
+// GetScepChallengeModeOk returns a tuple with the ScepChallengeMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetScepChallengeModeOk() (*string, bool) {
+	if o == nil || IsNil(o.ScepChallengeMode) {
+		return nil, false
+	}
+	return o.ScepChallengeMode, true
+}
+
+// HasScepChallengeMode returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasScepChallengeMode() bool {
+	if o != nil && !IsNil(o.ScepChallengeMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetScepChallengeMode gets a reference to the given string and assigns it to the ScepChallengeMode field.
+func (o *PKICertificateIssueDetails) SetScepChallengeMode(v string) {
+	o.ScepChallengeMode = &v
+}
+
+// GetScepEnabled returns the ScepEnabled field value if set, zero value otherwise.
+func (o *PKICertificateIssueDetails) GetScepEnabled() bool {
+	if o == nil || IsNil(o.ScepEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.ScepEnabled
+}
+
+// GetScepEnabledOk returns a tuple with the ScepEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PKICertificateIssueDetails) GetScepEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.ScepEnabled) {
+		return nil, false
+	}
+	return o.ScepEnabled, true
+}
+
+// HasScepEnabled returns a boolean if a field has been set.
+func (o *PKICertificateIssueDetails) HasScepEnabled() bool {
+	if o != nil && !IsNil(o.ScepEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetScepEnabled gets a reference to the given bool and assigns it to the ScepEnabled field.
+func (o *PKICertificateIssueDetails) SetScepEnabled(v bool) {
+	o.ScepEnabled = &v
+}
+
 // GetServerFlag returns the ServerFlag field value if set, zero value otherwise.
 func (o *PKICertificateIssueDetails) GetServerFlag() bool {
 	if o == nil || IsNil(o.ServerFlag) {
@@ -1704,6 +1772,12 @@ func (o PKICertificateIssueDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RequireCn) {
 		toSerialize["require_cn"] = o.RequireCn
+	}
+	if !IsNil(o.ScepChallengeMode) {
+		toSerialize["scep_challenge_mode"] = o.ScepChallengeMode
+	}
+	if !IsNil(o.ScepEnabled) {
+		toSerialize["scep_enabled"] = o.ScepEnabled
 	}
 	if !IsNil(o.ServerFlag) {
 		toSerialize["server_flag"] = o.ServerFlag

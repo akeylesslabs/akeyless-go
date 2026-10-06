@@ -62,6 +62,8 @@ type UpdateLdapTarget struct {
 	UidToken *string `json:"uid-token,omitempty"`
 	// Deprecated
 	UpdateVersion *bool `json:"update-version,omitempty"`
+	// Username returned for Rotated Secrets. Use the format required by your application, such as sAMAccountName, with or without the domain.
+	Username *string `json:"username,omitempty"`
 }
 
 type _UpdateLdapTarget UpdateLdapTarget
@@ -699,6 +701,38 @@ func (o *UpdateLdapTarget) SetUpdateVersion(v bool) {
 	o.UpdateVersion = &v
 }
 
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *UpdateLdapTarget) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateLdapTarget) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *UpdateLdapTarget) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *UpdateLdapTarget) SetUsername(v string) {
+	o.Username = &v
+}
+
 func (o UpdateLdapTarget) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -760,6 +794,9 @@ func (o UpdateLdapTarget) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UpdateVersion) {
 		toSerialize["update-version"] = o.UpdateVersion
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
 }
