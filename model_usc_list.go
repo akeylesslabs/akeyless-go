@@ -22,6 +22,8 @@ var _ MappedNullable = &UscList{}
 
 // UscList uscList is a command that lists the secrets of a Universal Secrets Connector
 type UscList struct {
+	// The AWS account ID to list secrets from. Required when the connector spans multiple account IDs.
+	AwsAccountId *string `json:"aws-account-id,omitempty"`
 	// The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope.
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
@@ -31,6 +33,8 @@ type UscList struct {
 	PageSize *int64 `json:"page-size,omitempty"`
 	// Optional: continuation token returned by a previous usc list --page-size call
 	PageToken *string `json:"page-token,omitempty"`
+	// The AWS region to list secrets from (AWS only). If empty, the target's region is used.
+	Region *string `json:"region,omitempty"`
 	// Search query used to match secret names and paths.
 	Search *string `json:"search,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -63,6 +67,38 @@ func NewUscListWithDefaults() *UscList {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise.
+func (o *UscList) GetAwsAccountId() string {
+	if o == nil || IsNil(o.AwsAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsAccountId
+}
+
+// GetAwsAccountIdOk returns a tuple with the AwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetAwsAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsAccountId) {
+		return nil, false
+	}
+	return o.AwsAccountId, true
+}
+
+// HasAwsAccountId returns a boolean if a field has been set.
+func (o *UscList) HasAwsAccountId() bool {
+	if o != nil && !IsNil(o.AwsAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
+func (o *UscList) SetAwsAccountId(v string) {
+	o.AwsAccountId = &v
 }
 
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
@@ -225,6 +261,38 @@ func (o *UscList) SetPageToken(v string) {
 	o.PageToken = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *UscList) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscList) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *UscList) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *UscList) SetRegion(v string) {
+	o.Region = &v
+}
+
 // GetSearch returns the Search field value if set, zero value otherwise.
 func (o *UscList) GetSearch() string {
 	if o == nil || IsNil(o.Search) {
@@ -355,6 +423,9 @@ func (o UscList) MarshalJSON() ([]byte, error) {
 
 func (o UscList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsAccountId) {
+		toSerialize["aws-account-id"] = o.AwsAccountId
+	}
 	if !IsNil(o.GcpProjectId) {
 		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
@@ -369,6 +440,9 @@ func (o UscList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PageToken) {
 		toSerialize["page-token"] = o.PageToken
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	if !IsNil(o.Search) {
 		toSerialize["search"] = o.Search

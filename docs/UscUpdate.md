@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | Pointer to **string** | The AWS account ID that contains the secret. Required when the connector spans multiple account IDs. | [optional] 
 **BinaryValue** | Pointer to **bool** | Use this option if the universal secrets value is a base64 encoded binary | [optional] 
 **Description** | Pointer to **string** | Description of the universal secrets | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 **PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
+**Region** | Pointer to **string** | The AWS region that contains the secret (AWS only). If empty, uses the target region. | [optional] 
 **RemoteSecretActivationDate** | Pointer to **string** | Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **RemoteSecretExpires** | Pointer to **string** | Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to update | 
@@ -39,6 +41,31 @@ will change when the set of required properties is changed
 NewUscUpdateWithDefaults instantiates a new UscUpdate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsAccountId
+
+`func (o *UscUpdate) GetAwsAccountId() string`
+
+GetAwsAccountId returns the AwsAccountId field if non-nil, zero value otherwise.
+
+### GetAwsAccountIdOk
+
+`func (o *UscUpdate) GetAwsAccountIdOk() (*string, bool)`
+
+GetAwsAccountIdOk returns a tuple with the AwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccountId
+
+`func (o *UscUpdate) SetAwsAccountId(v string)`
+
+SetAwsAccountId sets AwsAccountId field to given value.
+
+### HasAwsAccountId
+
+`func (o *UscUpdate) HasAwsAccountId() bool`
+
+HasAwsAccountId returns a boolean if a field has been set.
 
 ### GetBinaryValue
 
@@ -189,6 +216,31 @@ SetPfxPassword sets PfxPassword field to given value.
 `func (o *UscUpdate) HasPfxPassword() bool`
 
 HasPfxPassword returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *UscUpdate) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *UscUpdate) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *UscUpdate) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *UscUpdate) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetRemoteSecretActivationDate
 

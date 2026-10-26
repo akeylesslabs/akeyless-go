@@ -85,12 +85,14 @@ type UpdateRotatedSecret struct {
 	SamePassword *string `json:"same-password,omitempty"`
 	// Allow providing external user for a domain users [true/false]
 	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
+	// Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.
+	SecureAccessAllowPortForwading NullableBool `json:"secure-access-allow-port-forwading,omitempty"`
 	// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
-	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	SecureAccessAllowPortForwarding NullableBool `json:"secure-access-allow-port-forwarding,omitempty"`
 	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
 	// The AWS native cli (relevant only for aws)
-	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	SecureAccessAwsNativeCli NullableBool `json:"secure-access-aws-native-cli,omitempty"`
 	// Deprecated. use secure-access-certificate-issuer
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	// Path to the SSH Certificate Issuer for your Akeyless Secure Access
@@ -104,7 +106,7 @@ type UpdateRotatedSecret struct {
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Enforce connections only to allowed SRA hosts
-	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
+	SecureAccessEnforceHostsRestriction NullableBool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
 	// Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret)
@@ -114,15 +116,15 @@ type UpdateRotatedSecret struct {
 	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	// Deprecated. Use secure-access-use-internal-ssh-access
-	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
+	SecureAccessUseInternalBastion NullableBool `json:"secure-access-use-internal-bastion,omitempty"`
 	// Use internal SSH Access
-	SecureAccessUseInternalSshAccess *bool `json:"secure-access-use-internal-ssh-access,omitempty"`
+	SecureAccessUseInternalSshAccess NullableBool `json:"secure-access-use-internal-ssh-access,omitempty"`
 	// Enable Web Secure Remote Access
 	SecureAccessWeb *bool `json:"secure-access-web,omitempty"`
 	// Secure browser via Akeyless's Secure Remote Access (SRA)
-	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	SecureAccessWebBrowsing NullableBool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
-	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	SecureAccessWebProxy NullableBool `json:"secure-access-web-proxy,omitempty"`
 	// Deprecated: use RotatedPassword
 	SshPassword *string `json:"ssh-password,omitempty"`
 	// Deprecated: use RotatedUser
@@ -1201,36 +1203,88 @@ func (o *UpdateRotatedSecret) SetSecureAccessAllowExternalUser(v string) {
 	o.SecureAccessAllowExternalUser = &v
 }
 
-// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
+// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwading() bool {
-	if o == nil || IsNil(o.SecureAccessAllowPortForwading) {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwading.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessAllowPortForwading
+	return *o.SecureAccessAllowPortForwading.Get()
 }
 
 // GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwadingOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessAllowPortForwading) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessAllowPortForwading, true
+	return o.SecureAccessAllowPortForwading.Get(), o.SecureAccessAllowPortForwading.IsSet()
 }
 
 // HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessAllowPortForwading() bool {
-	if o != nil && !IsNil(o.SecureAccessAllowPortForwading) {
+	if o != nil && o.SecureAccessAllowPortForwading.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessAllowPortForwading gets a reference to the given bool and assigns it to the SecureAccessAllowPortForwading field.
+// SetSecureAccessAllowPortForwading gets a reference to the given NullableBool and assigns it to the SecureAccessAllowPortForwading field.
 func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwading(v bool) {
-	o.SecureAccessAllowPortForwading = &v
+	o.SecureAccessAllowPortForwading.Set(&v)
+}
+// SetSecureAccessAllowPortForwadingNil sets the value for SecureAccessAllowPortForwading to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwadingNil() {
+	o.SecureAccessAllowPortForwading.Set(nil)
+}
+
+// UnsetSecureAccessAllowPortForwading ensures that no value is present for SecureAccessAllowPortForwading, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessAllowPortForwading() {
+	o.SecureAccessAllowPortForwading.Unset()
+}
+
+// GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwarding() bool {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwarding.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowPortForwarding.Get()
+}
+
+// GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwardingOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SecureAccessAllowPortForwarding.Get(), o.SecureAccessAllowPortForwarding.IsSet()
+}
+
+// HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
+func (o *UpdateRotatedSecret) HasSecureAccessAllowPortForwarding() bool {
+	if o != nil && o.SecureAccessAllowPortForwarding.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowPortForwarding gets a reference to the given NullableBool and assigns it to the SecureAccessAllowPortForwarding field.
+func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwarding(v bool) {
+	o.SecureAccessAllowPortForwarding.Set(&v)
+}
+// SetSecureAccessAllowPortForwardingNil sets the value for SecureAccessAllowPortForwarding to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwardingNil() {
+	o.SecureAccessAllowPortForwarding.Set(nil)
+}
+
+// UnsetSecureAccessAllowPortForwarding ensures that no value is present for SecureAccessAllowPortForwarding, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessAllowPortForwarding() {
+	o.SecureAccessAllowPortForwarding.Unset()
 }
 
 // GetSecureAccessAwsAccountId returns the SecureAccessAwsAccountId field value if set, zero value otherwise.
@@ -1265,36 +1319,46 @@ func (o *UpdateRotatedSecret) SetSecureAccessAwsAccountId(v string) {
 	o.SecureAccessAwsAccountId = &v
 }
 
-// GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field value if set, zero value otherwise.
+// GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessAwsNativeCli() bool {
-	if o == nil || IsNil(o.SecureAccessAwsNativeCli) {
+	if o == nil || IsNil(o.SecureAccessAwsNativeCli.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessAwsNativeCli
+	return *o.SecureAccessAwsNativeCli.Get()
 }
 
 // GetSecureAccessAwsNativeCliOk returns a tuple with the SecureAccessAwsNativeCli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessAwsNativeCliOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessAwsNativeCli) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessAwsNativeCli, true
+	return o.SecureAccessAwsNativeCli.Get(), o.SecureAccessAwsNativeCli.IsSet()
 }
 
 // HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessAwsNativeCli() bool {
-	if o != nil && !IsNil(o.SecureAccessAwsNativeCli) {
+	if o != nil && o.SecureAccessAwsNativeCli.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessAwsNativeCli gets a reference to the given bool and assigns it to the SecureAccessAwsNativeCli field.
+// SetSecureAccessAwsNativeCli gets a reference to the given NullableBool and assigns it to the SecureAccessAwsNativeCli field.
 func (o *UpdateRotatedSecret) SetSecureAccessAwsNativeCli(v bool) {
-	o.SecureAccessAwsNativeCli = &v
+	o.SecureAccessAwsNativeCli.Set(&v)
+}
+// SetSecureAccessAwsNativeCliNil sets the value for SecureAccessAwsNativeCli to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessAwsNativeCliNil() {
+	o.SecureAccessAwsNativeCli.Set(nil)
+}
+
+// UnsetSecureAccessAwsNativeCli ensures that no value is present for SecureAccessAwsNativeCli, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessAwsNativeCli() {
+	o.SecureAccessAwsNativeCli.Unset()
 }
 
 // GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
@@ -1489,36 +1553,46 @@ func (o *UpdateRotatedSecret) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
-// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessEnforceHostsRestriction() bool {
-	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessEnforceHostsRestriction
+	return *o.SecureAccessEnforceHostsRestriction.Get()
 }
 
 // GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessEnforceHostsRestriction, true
+	return o.SecureAccessEnforceHostsRestriction.Get(), o.SecureAccessEnforceHostsRestriction.IsSet()
 }
 
 // HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessEnforceHostsRestriction() bool {
-	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+	if o != nil && o.SecureAccessEnforceHostsRestriction.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given NullableBool and assigns it to the SecureAccessEnforceHostsRestriction field.
 func (o *UpdateRotatedSecret) SetSecureAccessEnforceHostsRestriction(v bool) {
-	o.SecureAccessEnforceHostsRestriction = &v
+	o.SecureAccessEnforceHostsRestriction.Set(&v)
+}
+// SetSecureAccessEnforceHostsRestrictionNil sets the value for SecureAccessEnforceHostsRestriction to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessEnforceHostsRestrictionNil() {
+	o.SecureAccessEnforceHostsRestriction.Set(nil)
+}
+
+// UnsetSecureAccessEnforceHostsRestriction ensures that no value is present for SecureAccessEnforceHostsRestriction, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessEnforceHostsRestriction() {
+	o.SecureAccessEnforceHostsRestriction.Unset()
 }
 
 // GetSecureAccessHost returns the SecureAccessHost field value if set, zero value otherwise.
@@ -1649,68 +1723,88 @@ func (o *UpdateRotatedSecret) SetSecureAccessUrl(v string) {
 	o.SecureAccessUrl = &v
 }
 
-// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise.
+// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessUseInternalBastion() bool {
-	if o == nil || IsNil(o.SecureAccessUseInternalBastion) {
+	if o == nil || IsNil(o.SecureAccessUseInternalBastion.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessUseInternalBastion
+	return *o.SecureAccessUseInternalBastion.Get()
 }
 
 // GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessUseInternalBastionOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessUseInternalBastion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessUseInternalBastion, true
+	return o.SecureAccessUseInternalBastion.Get(), o.SecureAccessUseInternalBastion.IsSet()
 }
 
 // HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessUseInternalBastion() bool {
-	if o != nil && !IsNil(o.SecureAccessUseInternalBastion) {
+	if o != nil && o.SecureAccessUseInternalBastion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessUseInternalBastion gets a reference to the given bool and assigns it to the SecureAccessUseInternalBastion field.
+// SetSecureAccessUseInternalBastion gets a reference to the given NullableBool and assigns it to the SecureAccessUseInternalBastion field.
 func (o *UpdateRotatedSecret) SetSecureAccessUseInternalBastion(v bool) {
-	o.SecureAccessUseInternalBastion = &v
+	o.SecureAccessUseInternalBastion.Set(&v)
+}
+// SetSecureAccessUseInternalBastionNil sets the value for SecureAccessUseInternalBastion to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessUseInternalBastionNil() {
+	o.SecureAccessUseInternalBastion.Set(nil)
 }
 
-// GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field value if set, zero value otherwise.
+// UnsetSecureAccessUseInternalBastion ensures that no value is present for SecureAccessUseInternalBastion, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessUseInternalBastion() {
+	o.SecureAccessUseInternalBastion.Unset()
+}
+
+// GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccess() bool {
-	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess) {
+	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessUseInternalSshAccess
+	return *o.SecureAccessUseInternalSshAccess.Get()
 }
 
 // GetSecureAccessUseInternalSshAccessOk returns a tuple with the SecureAccessUseInternalSshAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessUseInternalSshAccess, true
+	return o.SecureAccessUseInternalSshAccess.Get(), o.SecureAccessUseInternalSshAccess.IsSet()
 }
 
 // HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessUseInternalSshAccess() bool {
-	if o != nil && !IsNil(o.SecureAccessUseInternalSshAccess) {
+	if o != nil && o.SecureAccessUseInternalSshAccess.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessUseInternalSshAccess gets a reference to the given bool and assigns it to the SecureAccessUseInternalSshAccess field.
+// SetSecureAccessUseInternalSshAccess gets a reference to the given NullableBool and assigns it to the SecureAccessUseInternalSshAccess field.
 func (o *UpdateRotatedSecret) SetSecureAccessUseInternalSshAccess(v bool) {
-	o.SecureAccessUseInternalSshAccess = &v
+	o.SecureAccessUseInternalSshAccess.Set(&v)
+}
+// SetSecureAccessUseInternalSshAccessNil sets the value for SecureAccessUseInternalSshAccess to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessUseInternalSshAccessNil() {
+	o.SecureAccessUseInternalSshAccess.Set(nil)
+}
+
+// UnsetSecureAccessUseInternalSshAccess ensures that no value is present for SecureAccessUseInternalSshAccess, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessUseInternalSshAccess() {
+	o.SecureAccessUseInternalSshAccess.Unset()
 }
 
 // GetSecureAccessWeb returns the SecureAccessWeb field value if set, zero value otherwise.
@@ -1745,68 +1839,88 @@ func (o *UpdateRotatedSecret) SetSecureAccessWeb(v bool) {
 	o.SecureAccessWeb = &v
 }
 
-// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessWebBrowsing() bool {
-	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+	if o == nil || IsNil(o.SecureAccessWebBrowsing.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessWebBrowsing
+	return *o.SecureAccessWebBrowsing.Get()
 }
 
 // GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessWebBrowsingOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessWebBrowsing, true
+	return o.SecureAccessWebBrowsing.Get(), o.SecureAccessWebBrowsing.IsSet()
 }
 
 // HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessWebBrowsing() bool {
-	if o != nil && !IsNil(o.SecureAccessWebBrowsing) {
+	if o != nil && o.SecureAccessWebBrowsing.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+// SetSecureAccessWebBrowsing gets a reference to the given NullableBool and assigns it to the SecureAccessWebBrowsing field.
 func (o *UpdateRotatedSecret) SetSecureAccessWebBrowsing(v bool) {
-	o.SecureAccessWebBrowsing = &v
+	o.SecureAccessWebBrowsing.Set(&v)
+}
+// SetSecureAccessWebBrowsingNil sets the value for SecureAccessWebBrowsing to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessWebBrowsingNil() {
+	o.SecureAccessWebBrowsing.Set(nil)
 }
 
-// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+// UnsetSecureAccessWebBrowsing ensures that no value is present for SecureAccessWebBrowsing, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessWebBrowsing() {
+	o.SecureAccessWebBrowsing.Unset()
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateRotatedSecret) GetSecureAccessWebProxy() bool {
-	if o == nil || IsNil(o.SecureAccessWebProxy) {
+	if o == nil || IsNil(o.SecureAccessWebProxy.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessWebProxy
+	return *o.SecureAccessWebProxy.Get()
 }
 
 // GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateRotatedSecret) GetSecureAccessWebProxyOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessWebProxy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessWebProxy, true
+	return o.SecureAccessWebProxy.Get(), o.SecureAccessWebProxy.IsSet()
 }
 
 // HasSecureAccessWebProxy returns a boolean if a field has been set.
 func (o *UpdateRotatedSecret) HasSecureAccessWebProxy() bool {
-	if o != nil && !IsNil(o.SecureAccessWebProxy) {
+	if o != nil && o.SecureAccessWebProxy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+// SetSecureAccessWebProxy gets a reference to the given NullableBool and assigns it to the SecureAccessWebProxy field.
 func (o *UpdateRotatedSecret) SetSecureAccessWebProxy(v bool) {
-	o.SecureAccessWebProxy = &v
+	o.SecureAccessWebProxy.Set(&v)
+}
+// SetSecureAccessWebProxyNil sets the value for SecureAccessWebProxy to be an explicit nil
+func (o *UpdateRotatedSecret) SetSecureAccessWebProxyNil() {
+	o.SecureAccessWebProxy.Set(nil)
+}
+
+// UnsetSecureAccessWebProxy ensures that no value is present for SecureAccessWebProxy, not even an explicit nil
+func (o *UpdateRotatedSecret) UnsetSecureAccessWebProxy() {
+	o.SecureAccessWebProxy.Unset()
 }
 
 // GetSshPassword returns the SshPassword field value if set, zero value otherwise.
@@ -2169,14 +2283,17 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessAllowExternalUser) {
 		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
 	}
-	if !IsNil(o.SecureAccessAllowPortForwading) {
-		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
+	if o.SecureAccessAllowPortForwading.IsSet() {
+		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading.Get()
+	}
+	if o.SecureAccessAllowPortForwarding.IsSet() {
+		toSerialize["secure-access-allow-port-forwarding"] = o.SecureAccessAllowPortForwarding.Get()
 	}
 	if !IsNil(o.SecureAccessAwsAccountId) {
 		toSerialize["secure-access-aws-account-id"] = o.SecureAccessAwsAccountId
 	}
-	if !IsNil(o.SecureAccessAwsNativeCli) {
-		toSerialize["secure-access-aws-native-cli"] = o.SecureAccessAwsNativeCli
+	if o.SecureAccessAwsNativeCli.IsSet() {
+		toSerialize["secure-access-aws-native-cli"] = o.SecureAccessAwsNativeCli.Get()
 	}
 	if !IsNil(o.SecureAccessBastionIssuer) {
 		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer
@@ -2196,8 +2313,8 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
-	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
-		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	if o.SecureAccessEnforceHostsRestriction.IsSet() {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction.Get()
 	}
 	if !IsNil(o.SecureAccessHost) {
 		toSerialize["secure-access-host"] = o.SecureAccessHost
@@ -2211,20 +2328,20 @@ func (o UpdateRotatedSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessUrl) {
 		toSerialize["secure-access-url"] = o.SecureAccessUrl
 	}
-	if !IsNil(o.SecureAccessUseInternalBastion) {
-		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion
+	if o.SecureAccessUseInternalBastion.IsSet() {
+		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion.Get()
 	}
-	if !IsNil(o.SecureAccessUseInternalSshAccess) {
-		toSerialize["secure-access-use-internal-ssh-access"] = o.SecureAccessUseInternalSshAccess
+	if o.SecureAccessUseInternalSshAccess.IsSet() {
+		toSerialize["secure-access-use-internal-ssh-access"] = o.SecureAccessUseInternalSshAccess.Get()
 	}
 	if !IsNil(o.SecureAccessWeb) {
 		toSerialize["secure-access-web"] = o.SecureAccessWeb
 	}
-	if !IsNil(o.SecureAccessWebBrowsing) {
-		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	if o.SecureAccessWebBrowsing.IsSet() {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing.Get()
 	}
-	if !IsNil(o.SecureAccessWebProxy) {
-		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	if o.SecureAccessWebProxy.IsSet() {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy.Get()
 	}
 	if !IsNil(o.SshPassword) {
 		toSerialize["ssh-password"] = o.SshPassword

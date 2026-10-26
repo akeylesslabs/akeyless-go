@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AppObjId** | Pointer to **string** | Azure App Object Id | [optional] 
-**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | Pointer to **NullableBool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AzureAdministrativeUnit** | Pointer to **string** | Azure AD administrative unit (relevant only when azure-user-portal-access&#x3D;true) | [optional] 
 **AzureClientId** | Pointer to **string** | Azure Client ID | [optional] 
 **AzureClientSecret** | Pointer to **string** | Azure Client Secret | [optional] 
 **AzureTenantId** | Pointer to **string** | Azure Tenant ID | [optional] 
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
-**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **NullableBool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **NullableBool** | Turns on AI Quorum checks for this item. | [optional] 
 **FixedUserClaimKeyname** | Pointer to **string** | FixedUserClaimKeyname | [optional] [default to "false"]
 **FixedUserOnly** | Pointer to **bool** | Fixed user | [optional] [default to false]
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to true]
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
-**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | Pointer to **NullableBool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -114,6 +114,16 @@ SetAraEnabled sets AraEnabled field to given value.
 
 HasAraEnabled returns a boolean if a field has been set.
 
+### SetAraEnabledNil
+
+`func (o *GatewayUpdateProducerAzure) SetAraEnabledNil(b bool)`
+
+ SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+
+### UnsetAraEnabled
+`func (o *GatewayUpdateProducerAzure) UnsetAraEnabled()`
+
+UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
 ### GetAzureAdministrativeUnit
 
 `func (o *GatewayUpdateProducerAzure) GetAzureAdministrativeUnit() string`
@@ -289,6 +299,16 @@ SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to giv
 
 HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 
+### SetEnableAgenticRuntimeAuthorityNil
+
+`func (o *GatewayUpdateProducerAzure) SetEnableAgenticRuntimeAuthorityNil(b bool)`
+
+ SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+
+### UnsetEnableAgenticRuntimeAuthority
+`func (o *GatewayUpdateProducerAzure) UnsetEnableAgenticRuntimeAuthority()`
+
+UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
 ### GetEnableAiQuorum
 
 `func (o *GatewayUpdateProducerAzure) GetEnableAiQuorum() bool`
@@ -314,6 +334,16 @@ SetEnableAiQuorum sets EnableAiQuorum field to given value.
 
 HasEnableAiQuorum returns a boolean if a field has been set.
 
+### SetEnableAiQuorumNil
+
+`func (o *GatewayUpdateProducerAzure) SetEnableAiQuorumNil(b bool)`
+
+ SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+
+### UnsetEnableAiQuorum
+`func (o *GatewayUpdateProducerAzure) UnsetEnableAiQuorum()`
+
+UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
 ### GetFixedUserClaimKeyname
 
 `func (o *GatewayUpdateProducerAzure) GetFixedUserClaimKeyname() string`
@@ -709,6 +739,16 @@ SetSkipDryRun sets SkipDryRun field to given value.
 
 HasSkipDryRun returns a boolean if a field has been set.
 
+### SetSkipDryRunNil
+
+`func (o *GatewayUpdateProducerAzure) SetSkipDryRunNil(b bool)`
+
+ SetSkipDryRunNil sets the value for SkipDryRun to be an explicit nil
+
+### UnsetSkipDryRun
+`func (o *GatewayUpdateProducerAzure) UnsetSkipDryRun()`
+
+UnsetSkipDryRun ensures that no value is present for SkipDryRun, not even an explicit nil
 ### GetTags
 
 `func (o *GatewayUpdateProducerAzure) GetTags() []string`

@@ -28,7 +28,7 @@ type UpdateItem struct {
 	// List of the new tags that will be attached to this item
 	AddTag []string `json:"add-tag,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
-	AraEnabled *bool `json:"ara-enabled,omitempty"`
+	AraEnabled NullableBool `json:"ara-enabled,omitempty"`
 	// PEM Certificate in a Base64 format. Used for updating RSA keys' certificates.
 	CertFileData *string `json:"cert-file-data,omitempty"`
 	CertificateFormat *string `json:"certificate-format,omitempty"`
@@ -39,9 +39,9 @@ type UpdateItem struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
-	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	EnableAgenticRuntimeAuthority NullableBool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
-	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
+	EnableAiQuorum NullableBool `json:"enable-ai-quorum,omitempty"`
 	// How many days before the expiration of the certificate would you like to be notified.
 	ExpirationEventIn []string `json:"expiration-event-in,omitempty"`
 	// GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only.
@@ -80,14 +80,16 @@ type UpdateItem struct {
 	SecureAccessAddHost []string `json:"secure-access-add-host,omitempty"`
 	// Allow providing external user for a domain users [true/false]
 	SecureAccessAllowExternalUser *string `json:"secure-access-allow-external-user,omitempty"`
+	// Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.
+	SecureAccessAllowPortForwading NullableBool `json:"secure-access-allow-port-forwading,omitempty"`
 	// Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret)
-	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	SecureAccessAllowPortForwarding NullableBool `json:"secure-access-allow-port-forwarding,omitempty"`
 	// Bastion's SSH control API endpoint. E.g. https://my.sra-server:9900 (relevant only for ssh cert issuer)
 	SecureAccessApi *string `json:"secure-access-api,omitempty"`
 	// The AWS account id (relevant only for aws)
 	SecureAccessAwsAccountId *string `json:"secure-access-aws-account-id,omitempty"`
 	// The AWS native cli (relevant only for aws)
-	SecureAccessAwsNativeCli *bool `json:"secure-access-aws-native-cli,omitempty"`
+	SecureAccessAwsNativeCli NullableBool `json:"secure-access-aws-native-cli,omitempty"`
 	// The AWS region (relevant only for aws)
 	SecureAccessAwsRegion *string `json:"secure-access-aws-region,omitempty"`
 	// Deprecated. use secure-access-api
@@ -109,7 +111,7 @@ type UpdateItem struct {
 	// Enable/Disable secure remote access [true/false]
 	SecureAccessEnable *string `json:"secure-access-enable,omitempty"`
 	// Enforce connections only to allowed SRA hosts
-	SecureAccessEnforceHostsRestriction *bool `json:"secure-access-enforce-hosts-restriction,omitempty"`
+	SecureAccessEnforceHostsRestriction NullableBool `json:"secure-access-enforce-hosts-restriction,omitempty"`
 	SecureAccessGateway *string `json:"secure-access-gateway,omitempty"`
 	// Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers)
 	SecureAccessHost []string `json:"secure-access-host,omitempty"`
@@ -130,13 +132,13 @@ type UpdateItem struct {
 	// Destination URL to inject secrets
 	SecureAccessUrl *string `json:"secure-access-url,omitempty"`
 	// Deprecated. Use secure-access-use-internal-ssh-access
-	SecureAccessUseInternalBastion *bool `json:"secure-access-use-internal-bastion,omitempty"`
+	SecureAccessUseInternalBastion NullableBool `json:"secure-access-use-internal-bastion,omitempty"`
 	// Use internal SSH Access
-	SecureAccessUseInternalSshAccess *bool `json:"secure-access-use-internal-ssh-access,omitempty"`
+	SecureAccessUseInternalSshAccess NullableBool `json:"secure-access-use-internal-ssh-access,omitempty"`
 	// Secure browser via Akeyless's Secure Remote Access (SRA)
-	SecureAccessWebBrowsing *bool `json:"secure-access-web-browsing,omitempty"`
+	SecureAccessWebBrowsing NullableBool `json:"secure-access-web-browsing,omitempty"`
 	// Web-Proxy via Akeyless's Secure Remote Access (SRA)
-	SecureAccessWebProxy *bool `json:"secure-access-web-proxy,omitempty"`
+	SecureAccessWebProxy NullableBool `json:"secure-access-web-proxy,omitempty"`
 	// A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times
 	Target []string `json:"target,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -281,36 +283,46 @@ func (o *UpdateItem) SetAddTag(v []string) {
 	o.AddTag = v
 }
 
-// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetAraEnabled() bool {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil || IsNil(o.AraEnabled.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AraEnabled
+	return *o.AraEnabled.Get()
 }
 
 // GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetAraEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AraEnabled, true
+	return o.AraEnabled.Get(), o.AraEnabled.IsSet()
 }
 
 // HasAraEnabled returns a boolean if a field has been set.
 func (o *UpdateItem) HasAraEnabled() bool {
-	if o != nil && !IsNil(o.AraEnabled) {
+	if o != nil && o.AraEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+// SetAraEnabled gets a reference to the given NullableBool and assigns it to the AraEnabled field.
 func (o *UpdateItem) SetAraEnabled(v bool) {
-	o.AraEnabled = &v
+	o.AraEnabled.Set(&v)
+}
+// SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+func (o *UpdateItem) SetAraEnabledNil() {
+	o.AraEnabled.Set(nil)
+}
+
+// UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
+func (o *UpdateItem) UnsetAraEnabled() {
+	o.AraEnabled.Unset()
 }
 
 // GetCertFileData returns the CertFileData field value if set, zero value otherwise.
@@ -473,68 +485,88 @@ func (o *UpdateItem) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetEnableAgenticRuntimeAuthority() bool {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAgenticRuntimeAuthority
+	return *o.EnableAgenticRuntimeAuthority.Get()
 }
 
 // GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAgenticRuntimeAuthority, true
+	return o.EnableAgenticRuntimeAuthority.Get(), o.EnableAgenticRuntimeAuthority.IsSet()
 }
 
 // HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 func (o *UpdateItem) HasEnableAgenticRuntimeAuthority() bool {
-	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o != nil && o.EnableAgenticRuntimeAuthority.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+// SetEnableAgenticRuntimeAuthority gets a reference to the given NullableBool and assigns it to the EnableAgenticRuntimeAuthority field.
 func (o *UpdateItem) SetEnableAgenticRuntimeAuthority(v bool) {
-	o.EnableAgenticRuntimeAuthority = &v
+	o.EnableAgenticRuntimeAuthority.Set(&v)
+}
+// SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+func (o *UpdateItem) SetEnableAgenticRuntimeAuthorityNil() {
+	o.EnableAgenticRuntimeAuthority.Set(nil)
 }
 
-// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+// UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
+func (o *UpdateItem) UnsetEnableAgenticRuntimeAuthority() {
+	o.EnableAgenticRuntimeAuthority.Unset()
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetEnableAiQuorum() bool {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil || IsNil(o.EnableAiQuorum.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAiQuorum
+	return *o.EnableAiQuorum.Get()
 }
 
 // GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetEnableAiQuorumOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAiQuorum, true
+	return o.EnableAiQuorum.Get(), o.EnableAiQuorum.IsSet()
 }
 
 // HasEnableAiQuorum returns a boolean if a field has been set.
 func (o *UpdateItem) HasEnableAiQuorum() bool {
-	if o != nil && !IsNil(o.EnableAiQuorum) {
+	if o != nil && o.EnableAiQuorum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+// SetEnableAiQuorum gets a reference to the given NullableBool and assigns it to the EnableAiQuorum field.
 func (o *UpdateItem) SetEnableAiQuorum(v bool) {
-	o.EnableAiQuorum = &v
+	o.EnableAiQuorum.Set(&v)
+}
+// SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+func (o *UpdateItem) SetEnableAiQuorumNil() {
+	o.EnableAiQuorum.Set(nil)
+}
+
+// UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
+func (o *UpdateItem) UnsetEnableAiQuorum() {
+	o.EnableAiQuorum.Unset()
 }
 
 // GetExpirationEventIn returns the ExpirationEventIn field value if set, zero value otherwise.
@@ -1137,36 +1169,88 @@ func (o *UpdateItem) SetSecureAccessAllowExternalUser(v string) {
 	o.SecureAccessAllowExternalUser = &v
 }
 
-// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise.
+// GetSecureAccessAllowPortForwading returns the SecureAccessAllowPortForwading field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessAllowPortForwading() bool {
-	if o == nil || IsNil(o.SecureAccessAllowPortForwading) {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwading.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessAllowPortForwading
+	return *o.SecureAccessAllowPortForwading.Get()
 }
 
 // GetSecureAccessAllowPortForwadingOk returns a tuple with the SecureAccessAllowPortForwading field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessAllowPortForwadingOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessAllowPortForwading) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessAllowPortForwading, true
+	return o.SecureAccessAllowPortForwading.Get(), o.SecureAccessAllowPortForwading.IsSet()
 }
 
 // HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessAllowPortForwading() bool {
-	if o != nil && !IsNil(o.SecureAccessAllowPortForwading) {
+	if o != nil && o.SecureAccessAllowPortForwading.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessAllowPortForwading gets a reference to the given bool and assigns it to the SecureAccessAllowPortForwading field.
+// SetSecureAccessAllowPortForwading gets a reference to the given NullableBool and assigns it to the SecureAccessAllowPortForwading field.
 func (o *UpdateItem) SetSecureAccessAllowPortForwading(v bool) {
-	o.SecureAccessAllowPortForwading = &v
+	o.SecureAccessAllowPortForwading.Set(&v)
+}
+// SetSecureAccessAllowPortForwadingNil sets the value for SecureAccessAllowPortForwading to be an explicit nil
+func (o *UpdateItem) SetSecureAccessAllowPortForwadingNil() {
+	o.SecureAccessAllowPortForwading.Set(nil)
+}
+
+// UnsetSecureAccessAllowPortForwading ensures that no value is present for SecureAccessAllowPortForwading, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessAllowPortForwading() {
+	o.SecureAccessAllowPortForwading.Unset()
+}
+
+// GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UpdateItem) GetSecureAccessAllowPortForwarding() bool {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwarding.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowPortForwarding.Get()
+}
+
+// GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UpdateItem) GetSecureAccessAllowPortForwardingOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SecureAccessAllowPortForwarding.Get(), o.SecureAccessAllowPortForwarding.IsSet()
+}
+
+// HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
+func (o *UpdateItem) HasSecureAccessAllowPortForwarding() bool {
+	if o != nil && o.SecureAccessAllowPortForwarding.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowPortForwarding gets a reference to the given NullableBool and assigns it to the SecureAccessAllowPortForwarding field.
+func (o *UpdateItem) SetSecureAccessAllowPortForwarding(v bool) {
+	o.SecureAccessAllowPortForwarding.Set(&v)
+}
+// SetSecureAccessAllowPortForwardingNil sets the value for SecureAccessAllowPortForwarding to be an explicit nil
+func (o *UpdateItem) SetSecureAccessAllowPortForwardingNil() {
+	o.SecureAccessAllowPortForwarding.Set(nil)
+}
+
+// UnsetSecureAccessAllowPortForwarding ensures that no value is present for SecureAccessAllowPortForwarding, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessAllowPortForwarding() {
+	o.SecureAccessAllowPortForwarding.Unset()
 }
 
 // GetSecureAccessApi returns the SecureAccessApi field value if set, zero value otherwise.
@@ -1233,36 +1317,46 @@ func (o *UpdateItem) SetSecureAccessAwsAccountId(v string) {
 	o.SecureAccessAwsAccountId = &v
 }
 
-// GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field value if set, zero value otherwise.
+// GetSecureAccessAwsNativeCli returns the SecureAccessAwsNativeCli field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessAwsNativeCli() bool {
-	if o == nil || IsNil(o.SecureAccessAwsNativeCli) {
+	if o == nil || IsNil(o.SecureAccessAwsNativeCli.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessAwsNativeCli
+	return *o.SecureAccessAwsNativeCli.Get()
 }
 
 // GetSecureAccessAwsNativeCliOk returns a tuple with the SecureAccessAwsNativeCli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessAwsNativeCliOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessAwsNativeCli) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessAwsNativeCli, true
+	return o.SecureAccessAwsNativeCli.Get(), o.SecureAccessAwsNativeCli.IsSet()
 }
 
 // HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessAwsNativeCli() bool {
-	if o != nil && !IsNil(o.SecureAccessAwsNativeCli) {
+	if o != nil && o.SecureAccessAwsNativeCli.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessAwsNativeCli gets a reference to the given bool and assigns it to the SecureAccessAwsNativeCli field.
+// SetSecureAccessAwsNativeCli gets a reference to the given NullableBool and assigns it to the SecureAccessAwsNativeCli field.
 func (o *UpdateItem) SetSecureAccessAwsNativeCli(v bool) {
-	o.SecureAccessAwsNativeCli = &v
+	o.SecureAccessAwsNativeCli.Set(&v)
+}
+// SetSecureAccessAwsNativeCliNil sets the value for SecureAccessAwsNativeCli to be an explicit nil
+func (o *UpdateItem) SetSecureAccessAwsNativeCliNil() {
+	o.SecureAccessAwsNativeCli.Set(nil)
+}
+
+// UnsetSecureAccessAwsNativeCli ensures that no value is present for SecureAccessAwsNativeCli, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessAwsNativeCli() {
+	o.SecureAccessAwsNativeCli.Unset()
 }
 
 // GetSecureAccessAwsRegion returns the SecureAccessAwsRegion field value if set, zero value otherwise.
@@ -1585,36 +1679,46 @@ func (o *UpdateItem) SetSecureAccessEnable(v string) {
 	o.SecureAccessEnable = &v
 }
 
-// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise.
+// GetSecureAccessEnforceHostsRestriction returns the SecureAccessEnforceHostsRestriction field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessEnforceHostsRestriction() bool {
-	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessEnforceHostsRestriction
+	return *o.SecureAccessEnforceHostsRestriction.Get()
 }
 
 // GetSecureAccessEnforceHostsRestrictionOk returns a tuple with the SecureAccessEnforceHostsRestriction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessEnforceHostsRestrictionOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessEnforceHostsRestriction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessEnforceHostsRestriction, true
+	return o.SecureAccessEnforceHostsRestriction.Get(), o.SecureAccessEnforceHostsRestriction.IsSet()
 }
 
 // HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessEnforceHostsRestriction() bool {
-	if o != nil && !IsNil(o.SecureAccessEnforceHostsRestriction) {
+	if o != nil && o.SecureAccessEnforceHostsRestriction.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessEnforceHostsRestriction gets a reference to the given bool and assigns it to the SecureAccessEnforceHostsRestriction field.
+// SetSecureAccessEnforceHostsRestriction gets a reference to the given NullableBool and assigns it to the SecureAccessEnforceHostsRestriction field.
 func (o *UpdateItem) SetSecureAccessEnforceHostsRestriction(v bool) {
-	o.SecureAccessEnforceHostsRestriction = &v
+	o.SecureAccessEnforceHostsRestriction.Set(&v)
+}
+// SetSecureAccessEnforceHostsRestrictionNil sets the value for SecureAccessEnforceHostsRestriction to be an explicit nil
+func (o *UpdateItem) SetSecureAccessEnforceHostsRestrictionNil() {
+	o.SecureAccessEnforceHostsRestriction.Set(nil)
+}
+
+// UnsetSecureAccessEnforceHostsRestriction ensures that no value is present for SecureAccessEnforceHostsRestriction, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessEnforceHostsRestriction() {
+	o.SecureAccessEnforceHostsRestriction.Unset()
 }
 
 // GetSecureAccessGateway returns the SecureAccessGateway field value if set, zero value otherwise.
@@ -1937,132 +2041,172 @@ func (o *UpdateItem) SetSecureAccessUrl(v string) {
 	o.SecureAccessUrl = &v
 }
 
-// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise.
+// GetSecureAccessUseInternalBastion returns the SecureAccessUseInternalBastion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessUseInternalBastion() bool {
-	if o == nil || IsNil(o.SecureAccessUseInternalBastion) {
+	if o == nil || IsNil(o.SecureAccessUseInternalBastion.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessUseInternalBastion
+	return *o.SecureAccessUseInternalBastion.Get()
 }
 
 // GetSecureAccessUseInternalBastionOk returns a tuple with the SecureAccessUseInternalBastion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessUseInternalBastionOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessUseInternalBastion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessUseInternalBastion, true
+	return o.SecureAccessUseInternalBastion.Get(), o.SecureAccessUseInternalBastion.IsSet()
 }
 
 // HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessUseInternalBastion() bool {
-	if o != nil && !IsNil(o.SecureAccessUseInternalBastion) {
+	if o != nil && o.SecureAccessUseInternalBastion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessUseInternalBastion gets a reference to the given bool and assigns it to the SecureAccessUseInternalBastion field.
+// SetSecureAccessUseInternalBastion gets a reference to the given NullableBool and assigns it to the SecureAccessUseInternalBastion field.
 func (o *UpdateItem) SetSecureAccessUseInternalBastion(v bool) {
-	o.SecureAccessUseInternalBastion = &v
+	o.SecureAccessUseInternalBastion.Set(&v)
+}
+// SetSecureAccessUseInternalBastionNil sets the value for SecureAccessUseInternalBastion to be an explicit nil
+func (o *UpdateItem) SetSecureAccessUseInternalBastionNil() {
+	o.SecureAccessUseInternalBastion.Set(nil)
 }
 
-// GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field value if set, zero value otherwise.
+// UnsetSecureAccessUseInternalBastion ensures that no value is present for SecureAccessUseInternalBastion, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessUseInternalBastion() {
+	o.SecureAccessUseInternalBastion.Unset()
+}
+
+// GetSecureAccessUseInternalSshAccess returns the SecureAccessUseInternalSshAccess field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessUseInternalSshAccess() bool {
-	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess) {
+	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessUseInternalSshAccess
+	return *o.SecureAccessUseInternalSshAccess.Get()
 }
 
 // GetSecureAccessUseInternalSshAccessOk returns a tuple with the SecureAccessUseInternalSshAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessUseInternalSshAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessUseInternalSshAccess) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessUseInternalSshAccess, true
+	return o.SecureAccessUseInternalSshAccess.Get(), o.SecureAccessUseInternalSshAccess.IsSet()
 }
 
 // HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessUseInternalSshAccess() bool {
-	if o != nil && !IsNil(o.SecureAccessUseInternalSshAccess) {
+	if o != nil && o.SecureAccessUseInternalSshAccess.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessUseInternalSshAccess gets a reference to the given bool and assigns it to the SecureAccessUseInternalSshAccess field.
+// SetSecureAccessUseInternalSshAccess gets a reference to the given NullableBool and assigns it to the SecureAccessUseInternalSshAccess field.
 func (o *UpdateItem) SetSecureAccessUseInternalSshAccess(v bool) {
-	o.SecureAccessUseInternalSshAccess = &v
+	o.SecureAccessUseInternalSshAccess.Set(&v)
+}
+// SetSecureAccessUseInternalSshAccessNil sets the value for SecureAccessUseInternalSshAccess to be an explicit nil
+func (o *UpdateItem) SetSecureAccessUseInternalSshAccessNil() {
+	o.SecureAccessUseInternalSshAccess.Set(nil)
 }
 
-// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise.
+// UnsetSecureAccessUseInternalSshAccess ensures that no value is present for SecureAccessUseInternalSshAccess, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessUseInternalSshAccess() {
+	o.SecureAccessUseInternalSshAccess.Unset()
+}
+
+// GetSecureAccessWebBrowsing returns the SecureAccessWebBrowsing field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessWebBrowsing() bool {
-	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+	if o == nil || IsNil(o.SecureAccessWebBrowsing.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessWebBrowsing
+	return *o.SecureAccessWebBrowsing.Get()
 }
 
 // GetSecureAccessWebBrowsingOk returns a tuple with the SecureAccessWebBrowsing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessWebBrowsingOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessWebBrowsing) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessWebBrowsing, true
+	return o.SecureAccessWebBrowsing.Get(), o.SecureAccessWebBrowsing.IsSet()
 }
 
 // HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessWebBrowsing() bool {
-	if o != nil && !IsNil(o.SecureAccessWebBrowsing) {
+	if o != nil && o.SecureAccessWebBrowsing.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessWebBrowsing gets a reference to the given bool and assigns it to the SecureAccessWebBrowsing field.
+// SetSecureAccessWebBrowsing gets a reference to the given NullableBool and assigns it to the SecureAccessWebBrowsing field.
 func (o *UpdateItem) SetSecureAccessWebBrowsing(v bool) {
-	o.SecureAccessWebBrowsing = &v
+	o.SecureAccessWebBrowsing.Set(&v)
+}
+// SetSecureAccessWebBrowsingNil sets the value for SecureAccessWebBrowsing to be an explicit nil
+func (o *UpdateItem) SetSecureAccessWebBrowsingNil() {
+	o.SecureAccessWebBrowsing.Set(nil)
 }
 
-// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise.
+// UnsetSecureAccessWebBrowsing ensures that no value is present for SecureAccessWebBrowsing, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessWebBrowsing() {
+	o.SecureAccessWebBrowsing.Unset()
+}
+
+// GetSecureAccessWebProxy returns the SecureAccessWebProxy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateItem) GetSecureAccessWebProxy() bool {
-	if o == nil || IsNil(o.SecureAccessWebProxy) {
+	if o == nil || IsNil(o.SecureAccessWebProxy.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SecureAccessWebProxy
+	return *o.SecureAccessWebProxy.Get()
 }
 
 // GetSecureAccessWebProxyOk returns a tuple with the SecureAccessWebProxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateItem) GetSecureAccessWebProxyOk() (*bool, bool) {
-	if o == nil || IsNil(o.SecureAccessWebProxy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecureAccessWebProxy, true
+	return o.SecureAccessWebProxy.Get(), o.SecureAccessWebProxy.IsSet()
 }
 
 // HasSecureAccessWebProxy returns a boolean if a field has been set.
 func (o *UpdateItem) HasSecureAccessWebProxy() bool {
-	if o != nil && !IsNil(o.SecureAccessWebProxy) {
+	if o != nil && o.SecureAccessWebProxy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecureAccessWebProxy gets a reference to the given bool and assigns it to the SecureAccessWebProxy field.
+// SetSecureAccessWebProxy gets a reference to the given NullableBool and assigns it to the SecureAccessWebProxy field.
 func (o *UpdateItem) SetSecureAccessWebProxy(v bool) {
-	o.SecureAccessWebProxy = &v
+	o.SecureAccessWebProxy.Set(&v)
+}
+// SetSecureAccessWebProxyNil sets the value for SecureAccessWebProxy to be an explicit nil
+func (o *UpdateItem) SetSecureAccessWebProxyNil() {
+	o.SecureAccessWebProxy.Set(nil)
+}
+
+// UnsetSecureAccessWebProxy ensures that no value is present for SecureAccessWebProxy, not even an explicit nil
+func (o *UpdateItem) UnsetSecureAccessWebProxy() {
+	o.SecureAccessWebProxy.Unset()
 }
 
 // GetTarget returns the Target field value if set, zero value otherwise.
@@ -2244,8 +2388,8 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AddTag) {
 		toSerialize["add-tag"] = o.AddTag
 	}
-	if !IsNil(o.AraEnabled) {
-		toSerialize["ara-enabled"] = o.AraEnabled
+	if o.AraEnabled.IsSet() {
+		toSerialize["ara-enabled"] = o.AraEnabled.Get()
 	}
 	if !IsNil(o.CertFileData) {
 		toSerialize["cert-file-data"] = o.CertFileData
@@ -2262,11 +2406,11 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.EnableAgenticRuntimeAuthority) {
-		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	if o.EnableAgenticRuntimeAuthority.IsSet() {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority.Get()
 	}
-	if !IsNil(o.EnableAiQuorum) {
-		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
+	if o.EnableAiQuorum.IsSet() {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum.Get()
 	}
 	if !IsNil(o.ExpirationEventIn) {
 		toSerialize["expiration-event-in"] = o.ExpirationEventIn
@@ -2323,8 +2467,11 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessAllowExternalUser) {
 		toSerialize["secure-access-allow-external-user"] = o.SecureAccessAllowExternalUser
 	}
-	if !IsNil(o.SecureAccessAllowPortForwading) {
-		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
+	if o.SecureAccessAllowPortForwading.IsSet() {
+		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading.Get()
+	}
+	if o.SecureAccessAllowPortForwarding.IsSet() {
+		toSerialize["secure-access-allow-port-forwarding"] = o.SecureAccessAllowPortForwarding.Get()
 	}
 	if !IsNil(o.SecureAccessApi) {
 		toSerialize["secure-access-api"] = o.SecureAccessApi
@@ -2332,8 +2479,8 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessAwsAccountId) {
 		toSerialize["secure-access-aws-account-id"] = o.SecureAccessAwsAccountId
 	}
-	if !IsNil(o.SecureAccessAwsNativeCli) {
-		toSerialize["secure-access-aws-native-cli"] = o.SecureAccessAwsNativeCli
+	if o.SecureAccessAwsNativeCli.IsSet() {
+		toSerialize["secure-access-aws-native-cli"] = o.SecureAccessAwsNativeCli.Get()
 	}
 	if !IsNil(o.SecureAccessAwsRegion) {
 		toSerialize["secure-access-aws-region"] = o.SecureAccessAwsRegion
@@ -2365,8 +2512,8 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessEnable) {
 		toSerialize["secure-access-enable"] = o.SecureAccessEnable
 	}
-	if !IsNil(o.SecureAccessEnforceHostsRestriction) {
-		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction
+	if o.SecureAccessEnforceHostsRestriction.IsSet() {
+		toSerialize["secure-access-enforce-hosts-restriction"] = o.SecureAccessEnforceHostsRestriction.Get()
 	}
 	if !IsNil(o.SecureAccessGateway) {
 		toSerialize["secure-access-gateway"] = o.SecureAccessGateway
@@ -2398,17 +2545,17 @@ func (o UpdateItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecureAccessUrl) {
 		toSerialize["secure-access-url"] = o.SecureAccessUrl
 	}
-	if !IsNil(o.SecureAccessUseInternalBastion) {
-		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion
+	if o.SecureAccessUseInternalBastion.IsSet() {
+		toSerialize["secure-access-use-internal-bastion"] = o.SecureAccessUseInternalBastion.Get()
 	}
-	if !IsNil(o.SecureAccessUseInternalSshAccess) {
-		toSerialize["secure-access-use-internal-ssh-access"] = o.SecureAccessUseInternalSshAccess
+	if o.SecureAccessUseInternalSshAccess.IsSet() {
+		toSerialize["secure-access-use-internal-ssh-access"] = o.SecureAccessUseInternalSshAccess.Get()
 	}
-	if !IsNil(o.SecureAccessWebBrowsing) {
-		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing
+	if o.SecureAccessWebBrowsing.IsSet() {
+		toSerialize["secure-access-web-browsing"] = o.SecureAccessWebBrowsing.Get()
 	}
-	if !IsNil(o.SecureAccessWebProxy) {
-		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy
+	if o.SecureAccessWebProxy.IsSet() {
+		toSerialize["secure-access-web-proxy"] = o.SecureAccessWebProxy.Get()
 	}
 	if !IsNil(o.Target) {
 		toSerialize["target"] = o.Target

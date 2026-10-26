@@ -22,6 +22,8 @@ var _ MappedNullable = &UscUpdate{}
 
 // UscUpdate uscUpdate is a command that updates a secret in a Universal Secrets Connector
 type UscUpdate struct {
+	// The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.
+	AwsAccountId *string `json:"aws-account-id,omitempty"`
 	// Use this option if the universal secrets value is a base64 encoded binary
 	BinaryValue *bool `json:"binary-value,omitempty"`
 	// Description of the universal secrets
@@ -33,6 +35,8 @@ type UscUpdate struct {
 	ObjectType *string `json:"object-type,omitempty"`
 	// Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)
 	PfxPassword *string `json:"pfx-password,omitempty"`
+	// The AWS region that contains the secret (AWS only). If empty, uses the target region.
+	Region *string `json:"region,omitempty"`
 	// Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
 	RemoteSecretActivationDate *string `json:"remote-secret-activation-date,omitempty"`
 	// Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ
@@ -79,6 +83,38 @@ func NewUscUpdateWithDefaults() *UscUpdate {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise.
+func (o *UscUpdate) GetAwsAccountId() string {
+	if o == nil || IsNil(o.AwsAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsAccountId
+}
+
+// GetAwsAccountIdOk returns a tuple with the AwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetAwsAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsAccountId) {
+		return nil, false
+	}
+	return o.AwsAccountId, true
+}
+
+// HasAwsAccountId returns a boolean if a field has been set.
+func (o *UscUpdate) HasAwsAccountId() bool {
+	if o != nil && !IsNil(o.AwsAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
+func (o *UscUpdate) SetAwsAccountId(v string) {
+	o.AwsAccountId = &v
 }
 
 // GetBinaryValue returns the BinaryValue field value if set, zero value otherwise.
@@ -271,6 +307,38 @@ func (o *UscUpdate) HasPfxPassword() bool {
 // SetPfxPassword gets a reference to the given string and assigns it to the PfxPassword field.
 func (o *UscUpdate) SetPfxPassword(v string) {
 	o.PfxPassword = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *UscUpdate) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscUpdate) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *UscUpdate) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *UscUpdate) SetRegion(v string) {
+	o.Region = &v
 }
 
 // GetRemoteSecretActivationDate returns the RemoteSecretActivationDate field value if set, zero value otherwise.
@@ -579,6 +647,9 @@ func (o UscUpdate) MarshalJSON() ([]byte, error) {
 
 func (o UscUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsAccountId) {
+		toSerialize["aws-account-id"] = o.AwsAccountId
+	}
 	if !IsNil(o.BinaryValue) {
 		toSerialize["binary-value"] = o.BinaryValue
 	}
@@ -596,6 +667,9 @@ func (o UscUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PfxPassword) {
 		toSerialize["pfx-password"] = o.PfxPassword
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	if !IsNil(o.RemoteSecretActivationDate) {
 		toSerialize["remote-secret-activation-date"] = o.RemoteSecretActivationDate

@@ -68,6 +68,7 @@ Name | Type | Description | Notes
 **PasswordLength** | Pointer to **string** | The length of the password to be generated (between 8 and 50). Relevant only for Active Directory migration when enable-password-policy is true. | [optional] 
 **PortRanges** | Pointer to **string** | A comma separated list of port ranges Examples: \&quot;80,443\&quot; or \&quot;80,443,8080-8090\&quot; or \&quot;443\&quot; | [optional] [default to "443"]
 **ProtectionKey** | Pointer to **string** | The name of the key that protects the classic key value (if empty, the account default key will be used) | [optional] 
+**ScheduleSync** | Pointer to **NullableString** | Runs the migration automatically on the specified schedule in UTC. Accepts standard cron syntax. Limited to at most once every 24 hours. | [optional] 
 **SiAutoRotate** | Pointer to **string** | Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration) | [optional] 
 **SiRotationHour** | Pointer to **int32** | The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration) | [optional] 
 **SiRotationInterval** | Pointer to **int32** | The number of days to wait between every automatic rotation [1-365] (Relevant only for Server Inventory migration) | [optional] 
@@ -1694,6 +1695,41 @@ SetProtectionKey sets ProtectionKey field to given value.
 
 HasProtectionKey returns a boolean if a field has been set.
 
+### GetScheduleSync
+
+`func (o *GatewayCreateMigration) GetScheduleSync() string`
+
+GetScheduleSync returns the ScheduleSync field if non-nil, zero value otherwise.
+
+### GetScheduleSyncOk
+
+`func (o *GatewayCreateMigration) GetScheduleSyncOk() (*string, bool)`
+
+GetScheduleSyncOk returns a tuple with the ScheduleSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScheduleSync
+
+`func (o *GatewayCreateMigration) SetScheduleSync(v string)`
+
+SetScheduleSync sets ScheduleSync field to given value.
+
+### HasScheduleSync
+
+`func (o *GatewayCreateMigration) HasScheduleSync() bool`
+
+HasScheduleSync returns a boolean if a field has been set.
+
+### SetScheduleSyncNil
+
+`func (o *GatewayCreateMigration) SetScheduleSyncNil(b bool)`
+
+ SetScheduleSyncNil sets the value for ScheduleSync to be an explicit nil
+
+### UnsetScheduleSync
+`func (o *GatewayCreateMigration) UnsetScheduleSync()`
+
+UnsetScheduleSync ensures that no value is present for ScheduleSync, not even an explicit nil
 ### GetSiAutoRotate
 
 `func (o *GatewayCreateMigration) GetSiAutoRotate() string`

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | Pointer to **string** |  | [optional] 
 **AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
-**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | Pointer to **NullableBool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AwsAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
 **AwsAccessSecretKey** | Pointer to **string** | Secret Access Key | [optional] 
 **AwsExternalId** | Pointer to **string** | The AWS External ID associated with the AWS role (relevant only for assume_role mode) | [optional] 
@@ -18,8 +18,8 @@ Name | Type | Description | Notes
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
-**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **NullableBool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **NullableBool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 **SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] [default to false]
 **SessionTags** | Pointer to **string** | String of Key value session tags comma separated, relevant only for Assumed Role | [optional] 
-**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | Pointer to **NullableBool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -144,6 +144,16 @@ SetAraEnabled sets AraEnabled field to given value.
 
 HasAraEnabled returns a boolean if a field has been set.
 
+### SetAraEnabledNil
+
+`func (o *GatewayCreateProducerAws) SetAraEnabledNil(b bool)`
+
+ SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+
+### UnsetAraEnabled
+`func (o *GatewayCreateProducerAws) UnsetAraEnabled()`
+
+UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
 ### GetAwsAccessKeyId
 
 `func (o *GatewayCreateProducerAws) GetAwsAccessKeyId() string`
@@ -444,6 +454,16 @@ SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to giv
 
 HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 
+### SetEnableAgenticRuntimeAuthorityNil
+
+`func (o *GatewayCreateProducerAws) SetEnableAgenticRuntimeAuthorityNil(b bool)`
+
+ SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+
+### UnsetEnableAgenticRuntimeAuthority
+`func (o *GatewayCreateProducerAws) UnsetEnableAgenticRuntimeAuthority()`
+
+UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
 ### GetEnableAiQuorum
 
 `func (o *GatewayCreateProducerAws) GetEnableAiQuorum() bool`
@@ -469,6 +489,16 @@ SetEnableAiQuorum sets EnableAiQuorum field to given value.
 
 HasEnableAiQuorum returns a boolean if a field has been set.
 
+### SetEnableAiQuorumNil
+
+`func (o *GatewayCreateProducerAws) SetEnableAiQuorumNil(b bool)`
+
+ SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+
+### UnsetEnableAiQuorum
+`func (o *GatewayCreateProducerAws) UnsetEnableAiQuorum()`
+
+UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
 ### GetInputRule
 
 `func (o *GatewayCreateProducerAws) GetInputRule() []string`
@@ -939,6 +969,16 @@ SetSkipDryRun sets SkipDryRun field to given value.
 
 HasSkipDryRun returns a boolean if a field has been set.
 
+### SetSkipDryRunNil
+
+`func (o *GatewayCreateProducerAws) SetSkipDryRunNil(b bool)`
+
+ SetSkipDryRunNil sets the value for SkipDryRun to be an explicit nil
+
+### UnsetSkipDryRun
+`func (o *GatewayCreateProducerAws) UnsetSkipDryRun()`
+
+UnsetSkipDryRun ensures that no value is present for SkipDryRun, not even an explicit nil
 ### GetTags
 
 `func (o *GatewayCreateProducerAws) GetTags() []string`

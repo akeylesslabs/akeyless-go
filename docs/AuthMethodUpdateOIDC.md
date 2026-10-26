@@ -26,6 +26,10 @@ Name | Type | Description | Notes
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **RequiredScopes** | Pointer to **[]string** | RequiredScopes is a list of required scopes that the oidc method will request from the oidc provider and the user must approve | [optional] 
 **RequiredScopesPrefix** | Pointer to **string** | RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures&#39; Application ID URI) | [optional] 
+**ScimBearerAccessId** | Pointer to **string** | Access ID of the API Key auth method the IdP uses as the SCIM bearer | [optional] 
+**ScimEnabled** | Pointer to **string** | Enable SCIM provisioning for this auth method [true/false] | [optional] 
+**ScimEndpoint** | Pointer to **string** | Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway | [optional] 
+**ScimGatewayUrl** | Pointer to **string** | URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint | [optional] 
 **SubclaimsDelimiters** | Pointer to **[]string** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -594,6 +598,106 @@ SetRequiredScopesPrefix sets RequiredScopesPrefix field to given value.
 `func (o *AuthMethodUpdateOIDC) HasRequiredScopesPrefix() bool`
 
 HasRequiredScopesPrefix returns a boolean if a field has been set.
+
+### GetScimBearerAccessId
+
+`func (o *AuthMethodUpdateOIDC) GetScimBearerAccessId() string`
+
+GetScimBearerAccessId returns the ScimBearerAccessId field if non-nil, zero value otherwise.
+
+### GetScimBearerAccessIdOk
+
+`func (o *AuthMethodUpdateOIDC) GetScimBearerAccessIdOk() (*string, bool)`
+
+GetScimBearerAccessIdOk returns a tuple with the ScimBearerAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimBearerAccessId
+
+`func (o *AuthMethodUpdateOIDC) SetScimBearerAccessId(v string)`
+
+SetScimBearerAccessId sets ScimBearerAccessId field to given value.
+
+### HasScimBearerAccessId
+
+`func (o *AuthMethodUpdateOIDC) HasScimBearerAccessId() bool`
+
+HasScimBearerAccessId returns a boolean if a field has been set.
+
+### GetScimEnabled
+
+`func (o *AuthMethodUpdateOIDC) GetScimEnabled() string`
+
+GetScimEnabled returns the ScimEnabled field if non-nil, zero value otherwise.
+
+### GetScimEnabledOk
+
+`func (o *AuthMethodUpdateOIDC) GetScimEnabledOk() (*string, bool)`
+
+GetScimEnabledOk returns a tuple with the ScimEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimEnabled
+
+`func (o *AuthMethodUpdateOIDC) SetScimEnabled(v string)`
+
+SetScimEnabled sets ScimEnabled field to given value.
+
+### HasScimEnabled
+
+`func (o *AuthMethodUpdateOIDC) HasScimEnabled() bool`
+
+HasScimEnabled returns a boolean if a field has been set.
+
+### GetScimEndpoint
+
+`func (o *AuthMethodUpdateOIDC) GetScimEndpoint() string`
+
+GetScimEndpoint returns the ScimEndpoint field if non-nil, zero value otherwise.
+
+### GetScimEndpointOk
+
+`func (o *AuthMethodUpdateOIDC) GetScimEndpointOk() (*string, bool)`
+
+GetScimEndpointOk returns a tuple with the ScimEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimEndpoint
+
+`func (o *AuthMethodUpdateOIDC) SetScimEndpoint(v string)`
+
+SetScimEndpoint sets ScimEndpoint field to given value.
+
+### HasScimEndpoint
+
+`func (o *AuthMethodUpdateOIDC) HasScimEndpoint() bool`
+
+HasScimEndpoint returns a boolean if a field has been set.
+
+### GetScimGatewayUrl
+
+`func (o *AuthMethodUpdateOIDC) GetScimGatewayUrl() string`
+
+GetScimGatewayUrl returns the ScimGatewayUrl field if non-nil, zero value otherwise.
+
+### GetScimGatewayUrlOk
+
+`func (o *AuthMethodUpdateOIDC) GetScimGatewayUrlOk() (*string, bool)`
+
+GetScimGatewayUrlOk returns a tuple with the ScimGatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimGatewayUrl
+
+`func (o *AuthMethodUpdateOIDC) SetScimGatewayUrl(v string)`
+
+SetScimGatewayUrl sets ScimGatewayUrl field to given value.
+
+### HasScimGatewayUrl
+
+`func (o *AuthMethodUpdateOIDC) HasScimGatewayUrl() bool`
+
+HasScimGatewayUrl returns a boolean if a field has been set.
 
 ### GetSubclaimsDelimiters
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | Pointer to **NullableBool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **EksAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
 **EksAssumeRole** | Pointer to **string** | IAM assume role | [optional] 
@@ -13,22 +13,23 @@ Name | Type | Description | Notes
 **EksClusterName** | Pointer to **string** | EKS cluster name | [optional] 
 **EksRegion** | Pointer to **string** | Region | [optional] [default to "us-east-2"]
 **EksSecretAccessKey** | Pointer to **string** | Secret Access Key | [optional] 
-**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **NullableBool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **NullableBool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Name** | **string** | Dynamic secret name | 
 **OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** | Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead. | [optional] 
+**SecureAccessAllowPortForwarding** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessClusterEndpoint** | Pointer to **string** | The K8s cluster endpoint URL | [optional] 
 **SecureAccessDelay** | Pointer to **int64** | The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | Pointer to **NullableBool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TargetName** | Pointer to **string** | Target name | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -79,6 +80,16 @@ SetAraEnabled sets AraEnabled field to given value.
 
 HasAraEnabled returns a boolean if a field has been set.
 
+### SetAraEnabledNil
+
+`func (o *GatewayCreateProducerEks) SetAraEnabledNil(b bool)`
+
+ SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+
+### UnsetAraEnabled
+`func (o *GatewayCreateProducerEks) UnsetAraEnabled()`
+
+UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
 ### GetDeleteProtection
 
 `func (o *GatewayCreateProducerEks) GetDeleteProtection() string`
@@ -304,6 +315,16 @@ SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to giv
 
 HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 
+### SetEnableAgenticRuntimeAuthorityNil
+
+`func (o *GatewayCreateProducerEks) SetEnableAgenticRuntimeAuthorityNil(b bool)`
+
+ SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+
+### UnsetEnableAgenticRuntimeAuthority
+`func (o *GatewayCreateProducerEks) UnsetEnableAgenticRuntimeAuthority()`
+
+UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
 ### GetEnableAiQuorum
 
 `func (o *GatewayCreateProducerEks) GetEnableAiQuorum() bool`
@@ -329,6 +350,16 @@ SetEnableAiQuorum sets EnableAiQuorum field to given value.
 
 HasEnableAiQuorum returns a boolean if a field has been set.
 
+### SetEnableAiQuorumNil
+
+`func (o *GatewayCreateProducerEks) SetEnableAiQuorumNil(b bool)`
+
+ SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+
+### UnsetEnableAiQuorum
+`func (o *GatewayCreateProducerEks) UnsetEnableAiQuorum()`
+
+UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
 ### GetInputRule
 
 `func (o *GatewayCreateProducerEks) GetInputRule() []string`
@@ -498,6 +529,31 @@ SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to g
 `func (o *GatewayCreateProducerEks) HasSecureAccessAllowPortForwading() bool`
 
 HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+
+### GetSecureAccessAllowPortForwarding
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessAllowPortForwarding() bool`
+
+GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwardingOk
+
+`func (o *GatewayCreateProducerEks) GetSecureAccessAllowPortForwardingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwarding
+
+`func (o *GatewayCreateProducerEks) SetSecureAccessAllowPortForwarding(v bool)`
+
+SetSecureAccessAllowPortForwarding sets SecureAccessAllowPortForwarding field to given value.
+
+### HasSecureAccessAllowPortForwarding
+
+`func (o *GatewayCreateProducerEks) HasSecureAccessAllowPortForwarding() bool`
+
+HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
 
 ### GetSecureAccessBastionIssuer
 
@@ -674,6 +730,16 @@ SetSkipDryRun sets SkipDryRun field to given value.
 
 HasSkipDryRun returns a boolean if a field has been set.
 
+### SetSkipDryRunNil
+
+`func (o *GatewayCreateProducerEks) SetSkipDryRunNil(b bool)`
+
+ SetSkipDryRunNil sets the value for SkipDryRun to be an explicit nil
+
+### UnsetSkipDryRun
+`func (o *GatewayCreateProducerEks) UnsetSkipDryRun()`
+
+UnsetSkipDryRun ensures that no value is present for SkipDryRun, not even an explicit nil
 ### GetTags
 
 `func (o *GatewayCreateProducerEks) GetTags() []string`

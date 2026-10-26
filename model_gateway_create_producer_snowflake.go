@@ -29,7 +29,7 @@ type GatewayCreateProducerSnowflake struct {
 	// Database Username
 	AccountUsername *string `json:"account-username,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
-	AraEnabled *bool `json:"ara-enabled,omitempty"`
+	AraEnabled NullableBool `json:"ara-enabled,omitempty"`
 	// The authentication mode for the temporary user [password/key]
 	AuthMode *string `json:"auth-mode,omitempty"`
 	// Customize how temporary usernames are generated using go template
@@ -39,9 +39,9 @@ type GatewayCreateProducerSnowflake struct {
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
-	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	EnableAgenticRuntimeAuthority NullableBool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
-	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
+	EnableAiQuorum NullableBool `json:"enable-ai-quorum,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
 	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
@@ -62,7 +62,7 @@ type GatewayCreateProducerSnowflake struct {
 	// User role
 	Role *string `json:"role,omitempty"`
 	// If set, dry-run will be skipped [true/false]
-	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
+	SkipDryRun NullableBool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Target name
@@ -212,36 +212,46 @@ func (o *GatewayCreateProducerSnowflake) SetAccountUsername(v string) {
 	o.AccountUsername = &v
 }
 
-// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayCreateProducerSnowflake) GetAraEnabled() bool {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil || IsNil(o.AraEnabled.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AraEnabled
+	return *o.AraEnabled.Get()
 }
 
 // GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayCreateProducerSnowflake) GetAraEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AraEnabled, true
+	return o.AraEnabled.Get(), o.AraEnabled.IsSet()
 }
 
 // HasAraEnabled returns a boolean if a field has been set.
 func (o *GatewayCreateProducerSnowflake) HasAraEnabled() bool {
-	if o != nil && !IsNil(o.AraEnabled) {
+	if o != nil && o.AraEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+// SetAraEnabled gets a reference to the given NullableBool and assigns it to the AraEnabled field.
 func (o *GatewayCreateProducerSnowflake) SetAraEnabled(v bool) {
-	o.AraEnabled = &v
+	o.AraEnabled.Set(&v)
+}
+// SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+func (o *GatewayCreateProducerSnowflake) SetAraEnabledNil() {
+	o.AraEnabled.Set(nil)
+}
+
+// UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
+func (o *GatewayCreateProducerSnowflake) UnsetAraEnabled() {
+	o.AraEnabled.Unset()
 }
 
 // GetAuthMode returns the AuthMode field value if set, zero value otherwise.
@@ -372,68 +382,88 @@ func (o *GatewayCreateProducerSnowflake) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
 }
 
-// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayCreateProducerSnowflake) GetEnableAgenticRuntimeAuthority() bool {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAgenticRuntimeAuthority
+	return *o.EnableAgenticRuntimeAuthority.Get()
 }
 
 // GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayCreateProducerSnowflake) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAgenticRuntimeAuthority, true
+	return o.EnableAgenticRuntimeAuthority.Get(), o.EnableAgenticRuntimeAuthority.IsSet()
 }
 
 // HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 func (o *GatewayCreateProducerSnowflake) HasEnableAgenticRuntimeAuthority() bool {
-	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o != nil && o.EnableAgenticRuntimeAuthority.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+// SetEnableAgenticRuntimeAuthority gets a reference to the given NullableBool and assigns it to the EnableAgenticRuntimeAuthority field.
 func (o *GatewayCreateProducerSnowflake) SetEnableAgenticRuntimeAuthority(v bool) {
-	o.EnableAgenticRuntimeAuthority = &v
+	o.EnableAgenticRuntimeAuthority.Set(&v)
+}
+// SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+func (o *GatewayCreateProducerSnowflake) SetEnableAgenticRuntimeAuthorityNil() {
+	o.EnableAgenticRuntimeAuthority.Set(nil)
 }
 
-// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+// UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
+func (o *GatewayCreateProducerSnowflake) UnsetEnableAgenticRuntimeAuthority() {
+	o.EnableAgenticRuntimeAuthority.Unset()
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayCreateProducerSnowflake) GetEnableAiQuorum() bool {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil || IsNil(o.EnableAiQuorum.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAiQuorum
+	return *o.EnableAiQuorum.Get()
 }
 
 // GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayCreateProducerSnowflake) GetEnableAiQuorumOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAiQuorum, true
+	return o.EnableAiQuorum.Get(), o.EnableAiQuorum.IsSet()
 }
 
 // HasEnableAiQuorum returns a boolean if a field has been set.
 func (o *GatewayCreateProducerSnowflake) HasEnableAiQuorum() bool {
-	if o != nil && !IsNil(o.EnableAiQuorum) {
+	if o != nil && o.EnableAiQuorum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+// SetEnableAiQuorum gets a reference to the given NullableBool and assigns it to the EnableAiQuorum field.
 func (o *GatewayCreateProducerSnowflake) SetEnableAiQuorum(v bool) {
-	o.EnableAiQuorum = &v
+	o.EnableAiQuorum.Set(&v)
+}
+// SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+func (o *GatewayCreateProducerSnowflake) SetEnableAiQuorumNil() {
+	o.EnableAiQuorum.Set(nil)
+}
+
+// UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
+func (o *GatewayCreateProducerSnowflake) UnsetEnableAiQuorum() {
+	o.EnableAiQuorum.Unset()
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -748,36 +778,46 @@ func (o *GatewayCreateProducerSnowflake) SetRole(v string) {
 	o.Role = &v
 }
 
-// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayCreateProducerSnowflake) GetSkipDryRun() bool {
-	if o == nil || IsNil(o.SkipDryRun) {
+	if o == nil || IsNil(o.SkipDryRun.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SkipDryRun
+	return *o.SkipDryRun.Get()
 }
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayCreateProducerSnowflake) GetSkipDryRunOk() (*bool, bool) {
-	if o == nil || IsNil(o.SkipDryRun) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SkipDryRun, true
+	return o.SkipDryRun.Get(), o.SkipDryRun.IsSet()
 }
 
 // HasSkipDryRun returns a boolean if a field has been set.
 func (o *GatewayCreateProducerSnowflake) HasSkipDryRun() bool {
-	if o != nil && !IsNil(o.SkipDryRun) {
+	if o != nil && o.SkipDryRun.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+// SetSkipDryRun gets a reference to the given NullableBool and assigns it to the SkipDryRun field.
 func (o *GatewayCreateProducerSnowflake) SetSkipDryRun(v bool) {
-	o.SkipDryRun = &v
+	o.SkipDryRun.Set(&v)
+}
+// SetSkipDryRunNil sets the value for SkipDryRun to be an explicit nil
+func (o *GatewayCreateProducerSnowflake) SetSkipDryRunNil() {
+	o.SkipDryRun.Set(nil)
+}
+
+// UnsetSkipDryRun ensures that no value is present for SkipDryRun, not even an explicit nil
+func (o *GatewayCreateProducerSnowflake) UnsetSkipDryRun() {
+	o.SkipDryRun.Unset()
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -1119,8 +1159,8 @@ func (o GatewayCreateProducerSnowflake) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.AccountUsername) {
 		toSerialize["account-username"] = o.AccountUsername
 	}
-	if !IsNil(o.AraEnabled) {
-		toSerialize["ara-enabled"] = o.AraEnabled
+	if o.AraEnabled.IsSet() {
+		toSerialize["ara-enabled"] = o.AraEnabled.Get()
 	}
 	if !IsNil(o.AuthMode) {
 		toSerialize["auth-mode"] = o.AuthMode
@@ -1134,11 +1174,11 @@ func (o GatewayCreateProducerSnowflake) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
 	}
-	if !IsNil(o.EnableAgenticRuntimeAuthority) {
-		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	if o.EnableAgenticRuntimeAuthority.IsSet() {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority.Get()
 	}
-	if !IsNil(o.EnableAiQuorum) {
-		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
+	if o.EnableAiQuorum.IsSet() {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum.Get()
 	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule
@@ -1168,8 +1208,8 @@ func (o GatewayCreateProducerSnowflake) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip-dry-run"] = o.SkipDryRun
+	if o.SkipDryRun.IsSet() {
+		toSerialize["skip-dry-run"] = o.SkipDryRun.Get()
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

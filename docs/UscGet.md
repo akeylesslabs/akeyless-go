@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | Pointer to **string** | The AWS account ID that contains the secret. Required when the connector spans multiple account IDs. | [optional] 
 **GcpProjectId** | Pointer to **string** | The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
+**Region** | Pointer to **string** | The AWS region that contains the secret (AWS only). If empty, uses the target region. | [optional] 
 **SecretId** | **string** | The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector | 
 **SelectedRepositories** | Pointer to **string** | GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -33,6 +35,31 @@ will change when the set of required properties is changed
 NewUscGetWithDefaults instantiates a new UscGet object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsAccountId
+
+`func (o *UscGet) GetAwsAccountId() string`
+
+GetAwsAccountId returns the AwsAccountId field if non-nil, zero value otherwise.
+
+### GetAwsAccountIdOk
+
+`func (o *UscGet) GetAwsAccountIdOk() (*string, bool)`
+
+GetAwsAccountIdOk returns a tuple with the AwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccountId
+
+`func (o *UscGet) SetAwsAccountId(v string)`
+
+SetAwsAccountId sets AwsAccountId field to given value.
+
+### HasAwsAccountId
+
+`func (o *UscGet) HasAwsAccountId() bool`
+
+HasAwsAccountId returns a boolean if a field has been set.
 
 ### GetGcpProjectId
 
@@ -133,6 +160,31 @@ SetObjectType sets ObjectType field to given value.
 `func (o *UscGet) HasObjectType() bool`
 
 HasObjectType returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *UscGet) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *UscGet) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *UscGet) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *UscGet) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetSecretId
 

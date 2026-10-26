@@ -22,6 +22,8 @@ var _ MappedNullable = &UscGet{}
 
 // UscGet uscGet is a command that gets the value and internal details of a secret from a Universal Secrets Connector
 type UscGet struct {
+	// The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.
+	AwsAccountId *string `json:"aws-account-id,omitempty"`
 	// The GCP project the secret resides in (GCP only). Used when getting a secret by name in a connector that spans multiple projects or uses folder/organization scope.
 	GcpProjectId *string `json:"gcp-project-id,omitempty"`
 	// Set output format to JSON
@@ -29,6 +31,8 @@ type UscGet struct {
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
 	ObjectType *string `json:"object-type,omitempty"`
+	// The AWS region that contains the secret (AWS only). If empty, uses the target region.
+	Region *string `json:"region,omitempty"`
 	// The secret id (or name, for AWS, Azure, K8s or Hashi vault targets) to get from the Universal Secrets Connector
 	SecretId string `json:"secret-id"`
 	// GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured.
@@ -66,6 +70,38 @@ func NewUscGetWithDefaults() *UscGet {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise.
+func (o *UscGet) GetAwsAccountId() string {
+	if o == nil || IsNil(o.AwsAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsAccountId
+}
+
+// GetAwsAccountIdOk returns a tuple with the AwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGet) GetAwsAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsAccountId) {
+		return nil, false
+	}
+	return o.AwsAccountId, true
+}
+
+// HasAwsAccountId returns a boolean if a field has been set.
+func (o *UscGet) HasAwsAccountId() bool {
+	if o != nil && !IsNil(o.AwsAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
+func (o *UscGet) SetAwsAccountId(v string) {
+	o.AwsAccountId = &v
 }
 
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
@@ -194,6 +230,38 @@ func (o *UscGet) HasObjectType() bool {
 // SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
 func (o *UscGet) SetObjectType(v string) {
 	o.ObjectType = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *UscGet) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscGet) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *UscGet) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *UscGet) SetRegion(v string) {
+	o.Region = &v
 }
 
 // GetSecretId returns the SecretId field value
@@ -382,6 +450,9 @@ func (o UscGet) MarshalJSON() ([]byte, error) {
 
 func (o UscGet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsAccountId) {
+		toSerialize["aws-account-id"] = o.AwsAccountId
+	}
 	if !IsNil(o.GcpProjectId) {
 		toSerialize["gcp-project-id"] = o.GcpProjectId
 	}
@@ -393,6 +464,9 @@ func (o UscGet) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ObjectType) {
 		toSerialize["object-type"] = o.ObjectType
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	toSerialize["secret-id"] = o.SecretId
 	if !IsNil(o.SelectedRepositories) {

@@ -21,7 +21,8 @@ Name | Type | Description | Notes
 **NewName** | Pointer to **string** | Dynamic secret name | [optional] 
 **OutputRule** | Pointer to **[]string** | Agentic output rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Mask secrets) | [optional] 
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
-**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **bool** | Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead. | [optional] 
+**SecureAccessAllowPortForwarding** | Pointer to **bool** | Enable Port forwarding while using CLI access | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessClusterEndpoint** | Pointer to **string** | The K8s cluster endpoint URL | [optional] 
@@ -498,6 +499,31 @@ SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to g
 `func (o *DynamicSecretUpdateGke) HasSecureAccessAllowPortForwading() bool`
 
 HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
+
+### GetSecureAccessAllowPortForwarding
+
+`func (o *DynamicSecretUpdateGke) GetSecureAccessAllowPortForwarding() bool`
+
+GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwardingOk
+
+`func (o *DynamicSecretUpdateGke) GetSecureAccessAllowPortForwardingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwarding
+
+`func (o *DynamicSecretUpdateGke) SetSecureAccessAllowPortForwarding(v bool)`
+
+SetSecureAccessAllowPortForwarding sets SecureAccessAllowPortForwarding field to given value.
+
+### HasSecureAccessAllowPortForwarding
+
+`func (o *DynamicSecretUpdateGke) HasSecureAccessAllowPortForwarding() bool`
+
+HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
 
 ### GetSecureAccessBastionIssuer
 

@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **ProductTypes** | Pointer to **[]string** | List of product types this auth method will be in use of | [optional] 
 **RulesType** | Pointer to **string** |  | [optional] 
 **SamlAccessRules** | Pointer to [**SAMLAccessRules**](SAMLAccessRules.md) |  | [optional] 
+**Scim** | Pointer to [**ScimSettings**](ScimSettings.md) |  | [optional] 
 **SubClaimsDelimiters** | Pointer to **[]string** |  | [optional] 
 **UidExpirationEvents** | Pointer to [**[]UidExpirationEvent**](UidExpirationEvent.md) | Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds. | [optional] 
 **UniversalIdentityAccessRules** | Pointer to [**UniversalIdentityAccessRules**](UniversalIdentityAccessRules.md) |  | [optional] 
@@ -702,6 +703,31 @@ SetSamlAccessRules sets SamlAccessRules field to given value.
 `func (o *AuthMethodAccessInfo) HasSamlAccessRules() bool`
 
 HasSamlAccessRules returns a boolean if a field has been set.
+
+### GetScim
+
+`func (o *AuthMethodAccessInfo) GetScim() ScimSettings`
+
+GetScim returns the Scim field if non-nil, zero value otherwise.
+
+### GetScimOk
+
+`func (o *AuthMethodAccessInfo) GetScimOk() (*ScimSettings, bool)`
+
+GetScimOk returns a tuple with the Scim field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScim
+
+`func (o *AuthMethodAccessInfo) SetScim(v ScimSettings)`
+
+SetScim sets Scim field to given value.
+
+### HasScim
+
+`func (o *AuthMethodAccessInfo) HasScim() bool`
+
+HasScim returns a boolean if a field has been set.
 
 ### GetSubClaimsDelimiters
 

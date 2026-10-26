@@ -24,8 +24,12 @@ var _ MappedNullable = &AssocTargetItem{}
 type AssocTargetItem struct {
 	// Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format <type>:<partition>:<name> (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate's partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles.
 	BindSslProfiles []string `json:"bind-ssl-profiles,omitempty"`
+	// The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning)
+	CertificateArn *string `json:"certificate-arn,omitempty"`
 	// The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)
 	CertificateFormat *string `json:"certificate-format,omitempty"`
+	// The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning)
+	CertificateName *string `json:"certificate-name,omitempty"`
 	// A path on the target to store the certificate pem file (relevant only for certificate provisioning)
 	CertificatePath *string `json:"certificate-path,omitempty"`
 	// A path on the target to store the full chain pem file (relevant only for certificate provisioning)
@@ -34,16 +38,24 @@ type AssocTargetItem struct {
 	DisablePreviousKeyVersion *bool `json:"disable-previous-key-version,omitempty"`
 	// The external key name to associate with the classic key (Relevant only for Classic Key AWS/Azure/GCP targets)
 	ExternalKeyName *string `json:"external-key-name,omitempty"`
+	// Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning)
+	F5SaveConfig *bool `json:"f5-save-config,omitempty"`
+	// Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning)
+	F5SyncDeviceGroup *string `json:"f5-sync-device-group,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
 	// A list of allowed operations for the key (required for azure targets)
 	KeyOperations []string `json:"key-operations,omitempty"`
+	// The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning)
+	KeyVault *string `json:"key-vault,omitempty"`
 	// Keyring name of the GCP KMS (required for gcp targets)
 	KeyringName *string `json:"keyring-name,omitempty"`
 	// Algorithm of the key in GCP KMS (required for gcp targets)
 	KmsAlgorithm *string `json:"kms-algorithm,omitempty"`
 	// Location id of the GCP KMS (required for gcp targets)
 	LocationId *string `json:"location-id,omitempty"`
+	// The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning)
+	LocationScope *string `json:"location-scope,omitempty"`
 	// Set to 'true' to create a multi-region managed key. (Relevant only for Classic Key AWS targets)
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
@@ -88,6 +100,8 @@ func NewAssocTargetItem(name string, targetName string) *AssocTargetItem {
 	this.CertificateFormat = &certificateFormat
 	var disablePreviousKeyVersion bool = false
 	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
+	var f5SaveConfig bool = false
+	this.F5SaveConfig = &f5SaveConfig
 	var json bool = false
 	this.Json = &json
 	var multiRegion string = "false"
@@ -110,6 +124,8 @@ func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this.CertificateFormat = &certificateFormat
 	var disablePreviousKeyVersion bool = false
 	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
+	var f5SaveConfig bool = false
+	this.F5SaveConfig = &f5SaveConfig
 	var json bool = false
 	this.Json = &json
 	var multiRegion string = "false"
@@ -153,6 +169,38 @@ func (o *AssocTargetItem) SetBindSslProfiles(v []string) {
 	o.BindSslProfiles = v
 }
 
+// GetCertificateArn returns the CertificateArn field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetCertificateArn() string {
+	if o == nil || IsNil(o.CertificateArn) {
+		var ret string
+		return ret
+	}
+	return *o.CertificateArn
+}
+
+// GetCertificateArnOk returns a tuple with the CertificateArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetCertificateArnOk() (*string, bool) {
+	if o == nil || IsNil(o.CertificateArn) {
+		return nil, false
+	}
+	return o.CertificateArn, true
+}
+
+// HasCertificateArn returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasCertificateArn() bool {
+	if o != nil && !IsNil(o.CertificateArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateArn gets a reference to the given string and assigns it to the CertificateArn field.
+func (o *AssocTargetItem) SetCertificateArn(v string) {
+	o.CertificateArn = &v
+}
+
 // GetCertificateFormat returns the CertificateFormat field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetCertificateFormat() string {
 	if o == nil || IsNil(o.CertificateFormat) {
@@ -183,6 +231,38 @@ func (o *AssocTargetItem) HasCertificateFormat() bool {
 // SetCertificateFormat gets a reference to the given string and assigns it to the CertificateFormat field.
 func (o *AssocTargetItem) SetCertificateFormat(v string) {
 	o.CertificateFormat = &v
+}
+
+// GetCertificateName returns the CertificateName field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetCertificateName() string {
+	if o == nil || IsNil(o.CertificateName) {
+		var ret string
+		return ret
+	}
+	return *o.CertificateName
+}
+
+// GetCertificateNameOk returns a tuple with the CertificateName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetCertificateNameOk() (*string, bool) {
+	if o == nil || IsNil(o.CertificateName) {
+		return nil, false
+	}
+	return o.CertificateName, true
+}
+
+// HasCertificateName returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasCertificateName() bool {
+	if o != nil && !IsNil(o.CertificateName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificateName gets a reference to the given string and assigns it to the CertificateName field.
+func (o *AssocTargetItem) SetCertificateName(v string) {
+	o.CertificateName = &v
 }
 
 // GetCertificatePath returns the CertificatePath field value if set, zero value otherwise.
@@ -313,6 +393,70 @@ func (o *AssocTargetItem) SetExternalKeyName(v string) {
 	o.ExternalKeyName = &v
 }
 
+// GetF5SaveConfig returns the F5SaveConfig field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetF5SaveConfig() bool {
+	if o == nil || IsNil(o.F5SaveConfig) {
+		var ret bool
+		return ret
+	}
+	return *o.F5SaveConfig
+}
+
+// GetF5SaveConfigOk returns a tuple with the F5SaveConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetF5SaveConfigOk() (*bool, bool) {
+	if o == nil || IsNil(o.F5SaveConfig) {
+		return nil, false
+	}
+	return o.F5SaveConfig, true
+}
+
+// HasF5SaveConfig returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasF5SaveConfig() bool {
+	if o != nil && !IsNil(o.F5SaveConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetF5SaveConfig gets a reference to the given bool and assigns it to the F5SaveConfig field.
+func (o *AssocTargetItem) SetF5SaveConfig(v bool) {
+	o.F5SaveConfig = &v
+}
+
+// GetF5SyncDeviceGroup returns the F5SyncDeviceGroup field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetF5SyncDeviceGroup() string {
+	if o == nil || IsNil(o.F5SyncDeviceGroup) {
+		var ret string
+		return ret
+	}
+	return *o.F5SyncDeviceGroup
+}
+
+// GetF5SyncDeviceGroupOk returns a tuple with the F5SyncDeviceGroup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetF5SyncDeviceGroupOk() (*string, bool) {
+	if o == nil || IsNil(o.F5SyncDeviceGroup) {
+		return nil, false
+	}
+	return o.F5SyncDeviceGroup, true
+}
+
+// HasF5SyncDeviceGroup returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasF5SyncDeviceGroup() bool {
+	if o != nil && !IsNil(o.F5SyncDeviceGroup) {
+		return true
+	}
+
+	return false
+}
+
+// SetF5SyncDeviceGroup gets a reference to the given string and assigns it to the F5SyncDeviceGroup field.
+func (o *AssocTargetItem) SetF5SyncDeviceGroup(v string) {
+	o.F5SyncDeviceGroup = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -375,6 +519,38 @@ func (o *AssocTargetItem) HasKeyOperations() bool {
 // SetKeyOperations gets a reference to the given []string and assigns it to the KeyOperations field.
 func (o *AssocTargetItem) SetKeyOperations(v []string) {
 	o.KeyOperations = v
+}
+
+// GetKeyVault returns the KeyVault field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetKeyVault() string {
+	if o == nil || IsNil(o.KeyVault) {
+		var ret string
+		return ret
+	}
+	return *o.KeyVault
+}
+
+// GetKeyVaultOk returns a tuple with the KeyVault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetKeyVaultOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyVault) {
+		return nil, false
+	}
+	return o.KeyVault, true
+}
+
+// HasKeyVault returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasKeyVault() bool {
+	if o != nil && !IsNil(o.KeyVault) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyVault gets a reference to the given string and assigns it to the KeyVault field.
+func (o *AssocTargetItem) SetKeyVault(v string) {
+	o.KeyVault = &v
 }
 
 // GetKeyringName returns the KeyringName field value if set, zero value otherwise.
@@ -471,6 +647,38 @@ func (o *AssocTargetItem) HasLocationId() bool {
 // SetLocationId gets a reference to the given string and assigns it to the LocationId field.
 func (o *AssocTargetItem) SetLocationId(v string) {
 	o.LocationId = &v
+}
+
+// GetLocationScope returns the LocationScope field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetLocationScope() string {
+	if o == nil || IsNil(o.LocationScope) {
+		var ret string
+		return ret
+	}
+	return *o.LocationScope
+}
+
+// GetLocationScopeOk returns a tuple with the LocationScope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetLocationScopeOk() (*string, bool) {
+	if o == nil || IsNil(o.LocationScope) {
+		return nil, false
+	}
+	return o.LocationScope, true
+}
+
+// HasLocationScope returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasLocationScope() bool {
+	if o != nil && !IsNil(o.LocationScope) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocationScope gets a reference to the given string and assigns it to the LocationScope field.
+func (o *AssocTargetItem) SetLocationScope(v string) {
+	o.LocationScope = &v
 }
 
 // GetMultiRegion returns the MultiRegion field value if set, zero value otherwise.
@@ -950,8 +1158,14 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BindSslProfiles) {
 		toSerialize["bind-ssl-profiles"] = o.BindSslProfiles
 	}
+	if !IsNil(o.CertificateArn) {
+		toSerialize["certificate-arn"] = o.CertificateArn
+	}
 	if !IsNil(o.CertificateFormat) {
 		toSerialize["certificate-format"] = o.CertificateFormat
+	}
+	if !IsNil(o.CertificateName) {
+		toSerialize["certificate-name"] = o.CertificateName
 	}
 	if !IsNil(o.CertificatePath) {
 		toSerialize["certificate-path"] = o.CertificatePath
@@ -965,11 +1179,20 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalKeyName) {
 		toSerialize["external-key-name"] = o.ExternalKeyName
 	}
+	if !IsNil(o.F5SaveConfig) {
+		toSerialize["f5-save-config"] = o.F5SaveConfig
+	}
+	if !IsNil(o.F5SyncDeviceGroup) {
+		toSerialize["f5-sync-device-group"] = o.F5SyncDeviceGroup
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
 	}
 	if !IsNil(o.KeyOperations) {
 		toSerialize["key-operations"] = o.KeyOperations
+	}
+	if !IsNil(o.KeyVault) {
+		toSerialize["key-vault"] = o.KeyVault
 	}
 	if !IsNil(o.KeyringName) {
 		toSerialize["keyring-name"] = o.KeyringName
@@ -979,6 +1202,9 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LocationId) {
 		toSerialize["location-id"] = o.LocationId
+	}
+	if !IsNil(o.LocationScope) {
+		toSerialize["location-scope"] = o.LocationScope
 	}
 	if !IsNil(o.MultiRegion) {
 		toSerialize["multi-region"] = o.MultiRegion

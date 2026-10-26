@@ -64,6 +64,14 @@ type AuthMethodCreateOIDC struct {
 	RequiredScopes []string `json:"required-scopes,omitempty"`
 	// RequiredScopesPrefix is a a prefix to add to all required-scopes when requesting them from the oidc server (for example, azures' Application ID URI)
 	RequiredScopesPrefix *string `json:"required-scopes-prefix,omitempty"`
+	// Access ID of the API Key auth method the IdP uses as the SCIM bearer
+	ScimBearerAccessId *string `json:"scim-bearer-access-id,omitempty"`
+	// Enable SCIM provisioning for this auth method [true/false]
+	ScimEnabled *string `json:"scim-enabled,omitempty"`
+	// Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway
+	ScimEndpoint *string `json:"scim-endpoint,omitempty"`
+	// URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint
+	ScimGatewayUrl *string `json:"scim-gateway-url,omitempty"`
 	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
 	SubclaimsDelimiters []string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -771,6 +779,134 @@ func (o *AuthMethodCreateOIDC) SetRequiredScopesPrefix(v string) {
 	o.RequiredScopesPrefix = &v
 }
 
+// GetScimBearerAccessId returns the ScimBearerAccessId field value if set, zero value otherwise.
+func (o *AuthMethodCreateOIDC) GetScimBearerAccessId() string {
+	if o == nil || IsNil(o.ScimBearerAccessId) {
+		var ret string
+		return ret
+	}
+	return *o.ScimBearerAccessId
+}
+
+// GetScimBearerAccessIdOk returns a tuple with the ScimBearerAccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateOIDC) GetScimBearerAccessIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimBearerAccessId) {
+		return nil, false
+	}
+	return o.ScimBearerAccessId, true
+}
+
+// HasScimBearerAccessId returns a boolean if a field has been set.
+func (o *AuthMethodCreateOIDC) HasScimBearerAccessId() bool {
+	if o != nil && !IsNil(o.ScimBearerAccessId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimBearerAccessId gets a reference to the given string and assigns it to the ScimBearerAccessId field.
+func (o *AuthMethodCreateOIDC) SetScimBearerAccessId(v string) {
+	o.ScimBearerAccessId = &v
+}
+
+// GetScimEnabled returns the ScimEnabled field value if set, zero value otherwise.
+func (o *AuthMethodCreateOIDC) GetScimEnabled() string {
+	if o == nil || IsNil(o.ScimEnabled) {
+		var ret string
+		return ret
+	}
+	return *o.ScimEnabled
+}
+
+// GetScimEnabledOk returns a tuple with the ScimEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateOIDC) GetScimEnabledOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimEnabled) {
+		return nil, false
+	}
+	return o.ScimEnabled, true
+}
+
+// HasScimEnabled returns a boolean if a field has been set.
+func (o *AuthMethodCreateOIDC) HasScimEnabled() bool {
+	if o != nil && !IsNil(o.ScimEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimEnabled gets a reference to the given string and assigns it to the ScimEnabled field.
+func (o *AuthMethodCreateOIDC) SetScimEnabled(v string) {
+	o.ScimEnabled = &v
+}
+
+// GetScimEndpoint returns the ScimEndpoint field value if set, zero value otherwise.
+func (o *AuthMethodCreateOIDC) GetScimEndpoint() string {
+	if o == nil || IsNil(o.ScimEndpoint) {
+		var ret string
+		return ret
+	}
+	return *o.ScimEndpoint
+}
+
+// GetScimEndpointOk returns a tuple with the ScimEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateOIDC) GetScimEndpointOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimEndpoint) {
+		return nil, false
+	}
+	return o.ScimEndpoint, true
+}
+
+// HasScimEndpoint returns a boolean if a field has been set.
+func (o *AuthMethodCreateOIDC) HasScimEndpoint() bool {
+	if o != nil && !IsNil(o.ScimEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimEndpoint gets a reference to the given string and assigns it to the ScimEndpoint field.
+func (o *AuthMethodCreateOIDC) SetScimEndpoint(v string) {
+	o.ScimEndpoint = &v
+}
+
+// GetScimGatewayUrl returns the ScimGatewayUrl field value if set, zero value otherwise.
+func (o *AuthMethodCreateOIDC) GetScimGatewayUrl() string {
+	if o == nil || IsNil(o.ScimGatewayUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ScimGatewayUrl
+}
+
+// GetScimGatewayUrlOk returns a tuple with the ScimGatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateOIDC) GetScimGatewayUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimGatewayUrl) {
+		return nil, false
+	}
+	return o.ScimGatewayUrl, true
+}
+
+// HasScimGatewayUrl returns a boolean if a field has been set.
+func (o *AuthMethodCreateOIDC) HasScimGatewayUrl() bool {
+	if o != nil && !IsNil(o.ScimGatewayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimGatewayUrl gets a reference to the given string and assigns it to the ScimGatewayUrl field.
+func (o *AuthMethodCreateOIDC) SetScimGatewayUrl(v string) {
+	o.ScimGatewayUrl = &v
+}
+
 // GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
 func (o *AuthMethodCreateOIDC) GetSubclaimsDelimiters() []string {
 	if o == nil || IsNil(o.SubclaimsDelimiters) {
@@ -961,6 +1097,18 @@ func (o AuthMethodCreateOIDC) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RequiredScopesPrefix) {
 		toSerialize["required-scopes-prefix"] = o.RequiredScopesPrefix
+	}
+	if !IsNil(o.ScimBearerAccessId) {
+		toSerialize["scim-bearer-access-id"] = o.ScimBearerAccessId
+	}
+	if !IsNil(o.ScimEnabled) {
+		toSerialize["scim-enabled"] = o.ScimEnabled
+	}
+	if !IsNil(o.ScimEndpoint) {
+		toSerialize["scim-endpoint"] = o.ScimEndpoint
+	}
+	if !IsNil(o.ScimGatewayUrl) {
+		toSerialize["scim-gateway-url"] = o.ScimGatewayUrl
 	}
 	if !IsNil(o.SubclaimsDelimiters) {
 		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters

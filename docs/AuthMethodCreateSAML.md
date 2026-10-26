@@ -21,6 +21,10 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
+**ScimBearerAccessId** | Pointer to **string** | Access ID of the API Key auth method the IdP uses as the SCIM bearer | [optional] 
+**ScimEnabled** | Pointer to **string** | Enable SCIM provisioning for this auth method [true/false] | [optional] 
+**ScimEndpoint** | Pointer to **string** | Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway | [optional] 
+**ScimGatewayUrl** | Pointer to **string** | URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint | [optional] 
 **SubclaimsDelimiters** | Pointer to **[]string** | A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT) | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -465,6 +469,106 @@ SetProductType sets ProductType field to given value.
 `func (o *AuthMethodCreateSAML) HasProductType() bool`
 
 HasProductType returns a boolean if a field has been set.
+
+### GetScimBearerAccessId
+
+`func (o *AuthMethodCreateSAML) GetScimBearerAccessId() string`
+
+GetScimBearerAccessId returns the ScimBearerAccessId field if non-nil, zero value otherwise.
+
+### GetScimBearerAccessIdOk
+
+`func (o *AuthMethodCreateSAML) GetScimBearerAccessIdOk() (*string, bool)`
+
+GetScimBearerAccessIdOk returns a tuple with the ScimBearerAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimBearerAccessId
+
+`func (o *AuthMethodCreateSAML) SetScimBearerAccessId(v string)`
+
+SetScimBearerAccessId sets ScimBearerAccessId field to given value.
+
+### HasScimBearerAccessId
+
+`func (o *AuthMethodCreateSAML) HasScimBearerAccessId() bool`
+
+HasScimBearerAccessId returns a boolean if a field has been set.
+
+### GetScimEnabled
+
+`func (o *AuthMethodCreateSAML) GetScimEnabled() string`
+
+GetScimEnabled returns the ScimEnabled field if non-nil, zero value otherwise.
+
+### GetScimEnabledOk
+
+`func (o *AuthMethodCreateSAML) GetScimEnabledOk() (*string, bool)`
+
+GetScimEnabledOk returns a tuple with the ScimEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimEnabled
+
+`func (o *AuthMethodCreateSAML) SetScimEnabled(v string)`
+
+SetScimEnabled sets ScimEnabled field to given value.
+
+### HasScimEnabled
+
+`func (o *AuthMethodCreateSAML) HasScimEnabled() bool`
+
+HasScimEnabled returns a boolean if a field has been set.
+
+### GetScimEndpoint
+
+`func (o *AuthMethodCreateSAML) GetScimEndpoint() string`
+
+GetScimEndpoint returns the ScimEndpoint field if non-nil, zero value otherwise.
+
+### GetScimEndpointOk
+
+`func (o *AuthMethodCreateSAML) GetScimEndpointOk() (*string, bool)`
+
+GetScimEndpointOk returns a tuple with the ScimEndpoint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimEndpoint
+
+`func (o *AuthMethodCreateSAML) SetScimEndpoint(v string)`
+
+SetScimEndpoint sets ScimEndpoint field to given value.
+
+### HasScimEndpoint
+
+`func (o *AuthMethodCreateSAML) HasScimEndpoint() bool`
+
+HasScimEndpoint returns a boolean if a field has been set.
+
+### GetScimGatewayUrl
+
+`func (o *AuthMethodCreateSAML) GetScimGatewayUrl() string`
+
+GetScimGatewayUrl returns the ScimGatewayUrl field if non-nil, zero value otherwise.
+
+### GetScimGatewayUrlOk
+
+`func (o *AuthMethodCreateSAML) GetScimGatewayUrlOk() (*string, bool)`
+
+GetScimGatewayUrlOk returns a tuple with the ScimGatewayUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScimGatewayUrl
+
+`func (o *AuthMethodCreateSAML) SetScimGatewayUrl(v string)`
+
+SetScimGatewayUrl sets ScimGatewayUrl field to given value.
+
+### HasScimGatewayUrl
+
+`func (o *AuthMethodCreateSAML) HasScimGatewayUrl() bool`
+
+HasScimGatewayUrl returns a boolean if a field has been set.
 
 ### GetSubclaimsDelimiters
 

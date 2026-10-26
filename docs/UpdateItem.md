@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **ProviderType** | Pointer to **string** |  | [optional] 
 **Accessibility** | Pointer to **string** | for personal password manager | [optional] [default to "regular"]
 **AddTag** | Pointer to **[]string** | List of the new tags that will be attached to this item | [optional] 
-**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
+**AraEnabled** | Pointer to **NullableBool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag. | [optional] 
 **CertFileData** | Pointer to **string** | PEM Certificate in a Base64 format. Used for updating RSA keys&#39; certificates. | [optional] 
 **CertificateFormat** | Pointer to **string** |  | [optional] 
 **ChangeEvent** | Pointer to **string** | Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] [default to "default_metadata"]
-**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
-**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **NullableBool** | EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working. | [optional] 
+**EnableAiQuorum** | Pointer to **NullableBool** | Turns on AI Quorum checks for this item. | [optional] 
 **ExpirationEventIn** | Pointer to **[]string** | How many days before the expiration of the certificate would you like to be notified. | [optional] 
 **GcpSmRegions** | Pointer to **string** | GCP Secret Manager regions to query for regional secrets (comma-separated, e.g., us-east1,us-west1). Max 12 regions. USC with GCP targets only. | [optional] 
 **HostProvider** | Pointer to **string** | Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items. | [optional] 
@@ -34,10 +34,11 @@ Name | Type | Description | Notes
 **RotateOnUnlock** | Pointer to **string** | Rotate this secret after it is unlocked | [optional] 
 **SecureAccessAddHost** | Pointer to **[]string** | List of the new hosts that will be attached to SRA servers host | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **string** | Allow providing external user for a domain users [true/false] | [optional] 
-**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **NullableBool** | Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead. | [optional] 
+**SecureAccessAllowPortForwarding** | Pointer to **NullableBool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
 **SecureAccessApi** | Pointer to **string** | Bastion&#39;s SSH control API endpoint. E.g. https://my.sra-server:9900 (relevant only for ssh cert issuer) | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
-**SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli (relevant only for aws) | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **NullableBool** | The AWS native cli (relevant only for aws) | [optional] 
 **SecureAccessAwsRegion** | Pointer to **string** | The AWS region (relevant only for aws) | [optional] 
 **SecureAccessBastionApi** | Pointer to **string** | Deprecated. use secure-access-api | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
@@ -48,7 +49,7 @@ Name | Type | Description | Notes
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The DB schema (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
-**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **NullableBool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessGateway** | Pointer to **string** |  | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdGatewayServer** | Pointer to **string** | RD Gateway server (relevant only for rdp) | [optional] 
@@ -59,10 +60,10 @@ Name | Type | Description | Notes
 **SecureAccessSshCreds** | Pointer to **string** | Secret values contains SSH Credentials, either Private Key or Password [password/private-key] (relevant only for Static-Secret or Rotated-secret) | [optional] 
 **SecureAccessSshCredsUser** | Pointer to **string** | SSH username to connect to target server, must be in &#39;Allowed Users&#39; list (relevant only for ssh cert issuer) | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
-**SecureAccessUseInternalBastion** | Pointer to **bool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
-**SecureAccessUseInternalSshAccess** | Pointer to **bool** | Use internal SSH Access | [optional] 
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **NullableBool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
+**SecureAccessUseInternalSshAccess** | Pointer to **NullableBool** | Use internal SSH Access | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **NullableBool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**SecureAccessWebProxy** | Pointer to **NullableBool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
 **Target** | Pointer to **[]string** | A list of targets to be associated with an SRA item, To specify multiple targets use argument multiple times | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -188,6 +189,16 @@ SetAraEnabled sets AraEnabled field to given value.
 
 HasAraEnabled returns a boolean if a field has been set.
 
+### SetAraEnabledNil
+
+`func (o *UpdateItem) SetAraEnabledNil(b bool)`
+
+ SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+
+### UnsetAraEnabled
+`func (o *UpdateItem) UnsetAraEnabled()`
+
+UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
 ### GetCertFileData
 
 `func (o *UpdateItem) GetCertFileData() string`
@@ -338,6 +349,16 @@ SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to giv
 
 HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 
+### SetEnableAgenticRuntimeAuthorityNil
+
+`func (o *UpdateItem) SetEnableAgenticRuntimeAuthorityNil(b bool)`
+
+ SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+
+### UnsetEnableAgenticRuntimeAuthority
+`func (o *UpdateItem) UnsetEnableAgenticRuntimeAuthority()`
+
+UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
 ### GetEnableAiQuorum
 
 `func (o *UpdateItem) GetEnableAiQuorum() bool`
@@ -363,6 +384,16 @@ SetEnableAiQuorum sets EnableAiQuorum field to given value.
 
 HasEnableAiQuorum returns a boolean if a field has been set.
 
+### SetEnableAiQuorumNil
+
+`func (o *UpdateItem) SetEnableAiQuorumNil(b bool)`
+
+ SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+
+### UnsetEnableAiQuorum
+`func (o *UpdateItem) UnsetEnableAiQuorum()`
+
+UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
 ### GetExpirationEventIn
 
 `func (o *UpdateItem) GetExpirationEventIn() []string`
@@ -858,6 +889,51 @@ SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to g
 
 HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
 
+### SetSecureAccessAllowPortForwadingNil
+
+`func (o *UpdateItem) SetSecureAccessAllowPortForwadingNil(b bool)`
+
+ SetSecureAccessAllowPortForwadingNil sets the value for SecureAccessAllowPortForwading to be an explicit nil
+
+### UnsetSecureAccessAllowPortForwading
+`func (o *UpdateItem) UnsetSecureAccessAllowPortForwading()`
+
+UnsetSecureAccessAllowPortForwading ensures that no value is present for SecureAccessAllowPortForwading, not even an explicit nil
+### GetSecureAccessAllowPortForwarding
+
+`func (o *UpdateItem) GetSecureAccessAllowPortForwarding() bool`
+
+GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwardingOk
+
+`func (o *UpdateItem) GetSecureAccessAllowPortForwardingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwarding
+
+`func (o *UpdateItem) SetSecureAccessAllowPortForwarding(v bool)`
+
+SetSecureAccessAllowPortForwarding sets SecureAccessAllowPortForwarding field to given value.
+
+### HasSecureAccessAllowPortForwarding
+
+`func (o *UpdateItem) HasSecureAccessAllowPortForwarding() bool`
+
+HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
+
+### SetSecureAccessAllowPortForwardingNil
+
+`func (o *UpdateItem) SetSecureAccessAllowPortForwardingNil(b bool)`
+
+ SetSecureAccessAllowPortForwardingNil sets the value for SecureAccessAllowPortForwarding to be an explicit nil
+
+### UnsetSecureAccessAllowPortForwarding
+`func (o *UpdateItem) UnsetSecureAccessAllowPortForwarding()`
+
+UnsetSecureAccessAllowPortForwarding ensures that no value is present for SecureAccessAllowPortForwarding, not even an explicit nil
 ### GetSecureAccessApi
 
 `func (o *UpdateItem) GetSecureAccessApi() string`
@@ -933,6 +1009,16 @@ SetSecureAccessAwsNativeCli sets SecureAccessAwsNativeCli field to given value.
 
 HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
 
+### SetSecureAccessAwsNativeCliNil
+
+`func (o *UpdateItem) SetSecureAccessAwsNativeCliNil(b bool)`
+
+ SetSecureAccessAwsNativeCliNil sets the value for SecureAccessAwsNativeCli to be an explicit nil
+
+### UnsetSecureAccessAwsNativeCli
+`func (o *UpdateItem) UnsetSecureAccessAwsNativeCli()`
+
+UnsetSecureAccessAwsNativeCli ensures that no value is present for SecureAccessAwsNativeCli, not even an explicit nil
 ### GetSecureAccessAwsRegion
 
 `func (o *UpdateItem) GetSecureAccessAwsRegion() string`
@@ -1208,6 +1294,16 @@ SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction 
 
 HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
 
+### SetSecureAccessEnforceHostsRestrictionNil
+
+`func (o *UpdateItem) SetSecureAccessEnforceHostsRestrictionNil(b bool)`
+
+ SetSecureAccessEnforceHostsRestrictionNil sets the value for SecureAccessEnforceHostsRestriction to be an explicit nil
+
+### UnsetSecureAccessEnforceHostsRestriction
+`func (o *UpdateItem) UnsetSecureAccessEnforceHostsRestriction()`
+
+UnsetSecureAccessEnforceHostsRestriction ensures that no value is present for SecureAccessEnforceHostsRestriction, not even an explicit nil
 ### GetSecureAccessGateway
 
 `func (o *UpdateItem) GetSecureAccessGateway() string`
@@ -1483,6 +1579,16 @@ SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to g
 
 HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
 
+### SetSecureAccessUseInternalBastionNil
+
+`func (o *UpdateItem) SetSecureAccessUseInternalBastionNil(b bool)`
+
+ SetSecureAccessUseInternalBastionNil sets the value for SecureAccessUseInternalBastion to be an explicit nil
+
+### UnsetSecureAccessUseInternalBastion
+`func (o *UpdateItem) UnsetSecureAccessUseInternalBastion()`
+
+UnsetSecureAccessUseInternalBastion ensures that no value is present for SecureAccessUseInternalBastion, not even an explicit nil
 ### GetSecureAccessUseInternalSshAccess
 
 `func (o *UpdateItem) GetSecureAccessUseInternalSshAccess() bool`
@@ -1508,6 +1614,16 @@ SetSecureAccessUseInternalSshAccess sets SecureAccessUseInternalSshAccess field 
 
 HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 
+### SetSecureAccessUseInternalSshAccessNil
+
+`func (o *UpdateItem) SetSecureAccessUseInternalSshAccessNil(b bool)`
+
+ SetSecureAccessUseInternalSshAccessNil sets the value for SecureAccessUseInternalSshAccess to be an explicit nil
+
+### UnsetSecureAccessUseInternalSshAccess
+`func (o *UpdateItem) UnsetSecureAccessUseInternalSshAccess()`
+
+UnsetSecureAccessUseInternalSshAccess ensures that no value is present for SecureAccessUseInternalSshAccess, not even an explicit nil
 ### GetSecureAccessWebBrowsing
 
 `func (o *UpdateItem) GetSecureAccessWebBrowsing() bool`
@@ -1533,6 +1649,16 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
+### SetSecureAccessWebBrowsingNil
+
+`func (o *UpdateItem) SetSecureAccessWebBrowsingNil(b bool)`
+
+ SetSecureAccessWebBrowsingNil sets the value for SecureAccessWebBrowsing to be an explicit nil
+
+### UnsetSecureAccessWebBrowsing
+`func (o *UpdateItem) UnsetSecureAccessWebBrowsing()`
+
+UnsetSecureAccessWebBrowsing ensures that no value is present for SecureAccessWebBrowsing, not even an explicit nil
 ### GetSecureAccessWebProxy
 
 `func (o *UpdateItem) GetSecureAccessWebProxy() bool`
@@ -1558,6 +1684,16 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
 
+### SetSecureAccessWebProxyNil
+
+`func (o *UpdateItem) SetSecureAccessWebProxyNil(b bool)`
+
+ SetSecureAccessWebProxyNil sets the value for SecureAccessWebProxy to be an explicit nil
+
+### UnsetSecureAccessWebProxy
+`func (o *UpdateItem) UnsetSecureAccessWebProxy()`
+
+UnsetSecureAccessWebProxy ensures that no value is present for SecureAccessWebProxy, not even an explicit nil
 ### GetTarget
 
 `func (o *UpdateItem) GetTarget() []string`

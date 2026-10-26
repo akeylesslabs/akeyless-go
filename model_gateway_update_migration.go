@@ -153,6 +153,8 @@ type GatewayUpdateMigration struct {
 	PortRanges *string `json:"port-ranges,omitempty"`
 	// The name of the key that protects the classic key value (if empty, the account default key will be used)
 	ProtectionKey *string `json:"protection-key,omitempty"`
+	// Runs the migration automatically on the specified schedule in UTC. Accepts standard cron syntax. Limited to at most once every 24 hours.
+	ScheduleSync NullableString `json:"schedule-sync,omitempty"`
 	// Enable/Disable automatic/recurrent rotation for migrated secrets. Default is false: only manual rotation is allowed for migrated secrets. If set to true, this command should be combined with --si-rotation-interval and --si-rotation-hour parameters (Relevant only for Server Inventory migration)
 	SiAutoRotate *string `json:"si-auto-rotate,omitempty"`
 	// The hour of the scheduled rotation in UTC (Relevant only for Server Inventory migration)
@@ -2368,6 +2370,48 @@ func (o *GatewayUpdateMigration) SetProtectionKey(v string) {
 	o.ProtectionKey = &v
 }
 
+// GetScheduleSync returns the ScheduleSync field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GatewayUpdateMigration) GetScheduleSync() string {
+	if o == nil || IsNil(o.ScheduleSync.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ScheduleSync.Get()
+}
+
+// GetScheduleSyncOk returns a tuple with the ScheduleSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GatewayUpdateMigration) GetScheduleSyncOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ScheduleSync.Get(), o.ScheduleSync.IsSet()
+}
+
+// HasScheduleSync returns a boolean if a field has been set.
+func (o *GatewayUpdateMigration) HasScheduleSync() bool {
+	if o != nil && o.ScheduleSync.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetScheduleSync gets a reference to the given NullableString and assigns it to the ScheduleSync field.
+func (o *GatewayUpdateMigration) SetScheduleSync(v string) {
+	o.ScheduleSync.Set(&v)
+}
+// SetScheduleSyncNil sets the value for ScheduleSync to be an explicit nil
+func (o *GatewayUpdateMigration) SetScheduleSyncNil() {
+	o.ScheduleSync.Set(nil)
+}
+
+// UnsetScheduleSync ensures that no value is present for ScheduleSync, not even an explicit nil
+func (o *GatewayUpdateMigration) UnsetScheduleSync() {
+	o.ScheduleSync.Unset()
+}
+
 // GetSiAutoRotate returns the SiAutoRotate field value if set, zero value otherwise.
 func (o *GatewayUpdateMigration) GetSiAutoRotate() string {
 	if o == nil || IsNil(o.SiAutoRotate) {
@@ -3029,6 +3073,9 @@ func (o GatewayUpdateMigration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProtectionKey) {
 		toSerialize["protection-key"] = o.ProtectionKey
+	}
+	if o.ScheduleSync.IsSet() {
+		toSerialize["schedule-sync"] = o.ScheduleSync.Get()
 	}
 	if !IsNil(o.SiAutoRotate) {
 		toSerialize["si-auto-rotate"] = o.SiAutoRotate

@@ -26,7 +26,7 @@ type CreateSecret struct {
 	// for personal password manager
 	Accessibility *string `json:"accessibility,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
-	AraEnabled *bool `json:"ara-enabled,omitempty"`
+	AraEnabled NullableBool `json:"ara-enabled,omitempty"`
 	// Trigger an event when a secret value changed [true/false] (Relevant only for Static Secret)
 	ChangeEvent *string `json:"change-event,omitempty"`
 	// For Password Management use, additional fields
@@ -36,9 +36,9 @@ type CreateSecret struct {
 	// Description of the object
 	Description *string `json:"description,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled. Both set the same field; --ara-enabled shipped first and stays as an undocumented alias so existing scripts and the Terraform provider keep working.
-	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	EnableAgenticRuntimeAuthority NullableBool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
-	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
+	EnableAiQuorum NullableBool `json:"enable-ai-quorum,omitempty"`
 	// Secret format [text/json/key-value] (relevant only for type 'generic')
 	Format *string `json:"format,omitempty"`
 	// Host provider type [explicit/target], Default Host provider is explicit, Relevant only for SRA items.
@@ -219,36 +219,46 @@ func (o *CreateSecret) SetAccessibility(v string) {
 	o.Accessibility = &v
 }
 
-// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSecret) GetAraEnabled() bool {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil || IsNil(o.AraEnabled.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AraEnabled
+	return *o.AraEnabled.Get()
 }
 
 // GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSecret) GetAraEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AraEnabled, true
+	return o.AraEnabled.Get(), o.AraEnabled.IsSet()
 }
 
 // HasAraEnabled returns a boolean if a field has been set.
 func (o *CreateSecret) HasAraEnabled() bool {
-	if o != nil && !IsNil(o.AraEnabled) {
+	if o != nil && o.AraEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+// SetAraEnabled gets a reference to the given NullableBool and assigns it to the AraEnabled field.
 func (o *CreateSecret) SetAraEnabled(v bool) {
-	o.AraEnabled = &v
+	o.AraEnabled.Set(&v)
+}
+// SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+func (o *CreateSecret) SetAraEnabledNil() {
+	o.AraEnabled.Set(nil)
+}
+
+// UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
+func (o *CreateSecret) UnsetAraEnabled() {
+	o.AraEnabled.Unset()
 }
 
 // GetChangeEvent returns the ChangeEvent field value if set, zero value otherwise.
@@ -379,68 +389,88 @@ func (o *CreateSecret) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSecret) GetEnableAgenticRuntimeAuthority() bool {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAgenticRuntimeAuthority
+	return *o.EnableAgenticRuntimeAuthority.Get()
 }
 
 // GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSecret) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAgenticRuntimeAuthority, true
+	return o.EnableAgenticRuntimeAuthority.Get(), o.EnableAgenticRuntimeAuthority.IsSet()
 }
 
 // HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 func (o *CreateSecret) HasEnableAgenticRuntimeAuthority() bool {
-	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o != nil && o.EnableAgenticRuntimeAuthority.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+// SetEnableAgenticRuntimeAuthority gets a reference to the given NullableBool and assigns it to the EnableAgenticRuntimeAuthority field.
 func (o *CreateSecret) SetEnableAgenticRuntimeAuthority(v bool) {
-	o.EnableAgenticRuntimeAuthority = &v
+	o.EnableAgenticRuntimeAuthority.Set(&v)
+}
+// SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+func (o *CreateSecret) SetEnableAgenticRuntimeAuthorityNil() {
+	o.EnableAgenticRuntimeAuthority.Set(nil)
 }
 
-// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+// UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
+func (o *CreateSecret) UnsetEnableAgenticRuntimeAuthority() {
+	o.EnableAgenticRuntimeAuthority.Unset()
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSecret) GetEnableAiQuorum() bool {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil || IsNil(o.EnableAiQuorum.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAiQuorum
+	return *o.EnableAiQuorum.Get()
 }
 
 // GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSecret) GetEnableAiQuorumOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAiQuorum, true
+	return o.EnableAiQuorum.Get(), o.EnableAiQuorum.IsSet()
 }
 
 // HasEnableAiQuorum returns a boolean if a field has been set.
 func (o *CreateSecret) HasEnableAiQuorum() bool {
-	if o != nil && !IsNil(o.EnableAiQuorum) {
+	if o != nil && o.EnableAiQuorum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+// SetEnableAiQuorum gets a reference to the given NullableBool and assigns it to the EnableAiQuorum field.
 func (o *CreateSecret) SetEnableAiQuorum(v bool) {
-	o.EnableAiQuorum = &v
+	o.EnableAiQuorum.Set(&v)
+}
+// SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+func (o *CreateSecret) SetEnableAiQuorumNil() {
+	o.EnableAiQuorum.Set(nil)
+}
+
+// UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
+func (o *CreateSecret) UnsetEnableAiQuorum() {
+	o.EnableAiQuorum.Unset()
 }
 
 // GetFormat returns the Format field value if set, zero value otherwise.
@@ -1563,8 +1593,8 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Accessibility) {
 		toSerialize["accessibility"] = o.Accessibility
 	}
-	if !IsNil(o.AraEnabled) {
-		toSerialize["ara-enabled"] = o.AraEnabled
+	if o.AraEnabled.IsSet() {
+		toSerialize["ara-enabled"] = o.AraEnabled.Get()
 	}
 	if !IsNil(o.ChangeEvent) {
 		toSerialize["change-event"] = o.ChangeEvent
@@ -1578,11 +1608,11 @@ func (o CreateSecret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.EnableAgenticRuntimeAuthority) {
-		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	if o.EnableAgenticRuntimeAuthority.IsSet() {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority.Get()
 	}
-	if !IsNil(o.EnableAiQuorum) {
-		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
+	if o.EnableAiQuorum.IsSet() {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum.Get()
 	}
 	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format

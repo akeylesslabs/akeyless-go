@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdminRotationIntervalDays** | Pointer to **int64** | Define rotation interval in days | [optional] 
-**AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
+**AraEnabled** | Pointer to **NullableBool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **CreateSyncUrl** | **string** | URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create | 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **EnableAdminRotation** | Pointer to **bool** | Should admin credentials be rotated | [optional] [default to false]
-**EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
-**EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
+**EnableAgenticRuntimeAuthority** | Pointer to **NullableBool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
+**EnableAiQuorum** | Pointer to **NullableBool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
 **ItemCustomFields** | Pointer to **map[string]string** | Additional custom fields to associate with the item | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **ProducerEncryptionKeyName** | Pointer to **string** | Dynamic producer encryption key | [optional] 
 **RevokeSyncUrl** | **string** | URL of an endpoint that implements /sync/revoke method, for example https://webhook.example.com/sync/revoke | 
 **RotateSyncUrl** | Pointer to **string** | URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate | [optional] 
-**SkipDryRun** | Pointer to **bool** | If set, dry-run will be skipped [true/false] | [optional] 
+**SkipDryRun** | Pointer to **NullableBool** | If set, dry-run will be skipped [true/false] | [optional] 
 **Tags** | Pointer to **[]string** | Add tags attached to this object | [optional] 
 **TimeoutSec** | Pointer to **int64** | Maximum allowed time in seconds for the webhook to return the results | [optional] [default to 60]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -96,6 +96,16 @@ SetAraEnabled sets AraEnabled field to given value.
 
 HasAraEnabled returns a boolean if a field has been set.
 
+### SetAraEnabledNil
+
+`func (o *GatewayCreateProducerCustom) SetAraEnabledNil(b bool)`
+
+ SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+
+### UnsetAraEnabled
+`func (o *GatewayCreateProducerCustom) UnsetAraEnabled()`
+
+UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
 ### GetCreateSyncUrl
 
 `func (o *GatewayCreateProducerCustom) GetCreateSyncUrl() string`
@@ -191,6 +201,16 @@ SetEnableAgenticRuntimeAuthority sets EnableAgenticRuntimeAuthority field to giv
 
 HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 
+### SetEnableAgenticRuntimeAuthorityNil
+
+`func (o *GatewayCreateProducerCustom) SetEnableAgenticRuntimeAuthorityNil(b bool)`
+
+ SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+
+### UnsetEnableAgenticRuntimeAuthority
+`func (o *GatewayCreateProducerCustom) UnsetEnableAgenticRuntimeAuthority()`
+
+UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
 ### GetEnableAiQuorum
 
 `func (o *GatewayCreateProducerCustom) GetEnableAiQuorum() bool`
@@ -216,6 +236,16 @@ SetEnableAiQuorum sets EnableAiQuorum field to given value.
 
 HasEnableAiQuorum returns a boolean if a field has been set.
 
+### SetEnableAiQuorumNil
+
+`func (o *GatewayCreateProducerCustom) SetEnableAiQuorumNil(b bool)`
+
+ SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+
+### UnsetEnableAiQuorum
+`func (o *GatewayCreateProducerCustom) UnsetEnableAiQuorum()`
+
+UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
 ### GetInputRule
 
 `func (o *GatewayCreateProducerCustom) GetInputRule() []string`
@@ -456,6 +486,16 @@ SetSkipDryRun sets SkipDryRun field to given value.
 
 HasSkipDryRun returns a boolean if a field has been set.
 
+### SetSkipDryRunNil
+
+`func (o *GatewayCreateProducerCustom) SetSkipDryRunNil(b bool)`
+
+ SetSkipDryRunNil sets the value for SkipDryRun to be an explicit nil
+
+### UnsetSkipDryRun
+`func (o *GatewayCreateProducerCustom) UnsetSkipDryRun()`
+
+UnsetSkipDryRun ensures that no value is present for SkipDryRun, not even an explicit nil
 ### GetTags
 
 `func (o *GatewayCreateProducerCustom) GetTags() []string`

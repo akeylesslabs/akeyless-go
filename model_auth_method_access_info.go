@@ -50,6 +50,7 @@ type AuthMethodAccessInfo struct {
 	ProductTypes []string `json:"product_types,omitempty"`
 	RulesType *string `json:"rules_type,omitempty"`
 	SamlAccessRules *SAMLAccessRules `json:"saml_access_rules,omitempty"`
+	Scim *ScimSettings `json:"scim,omitempty"`
 	SubClaimsDelimiters []string `json:"sub_claims_delimiters,omitempty"`
 	// Relevant only for Universal Identity auth methods: token about-to-expire notification thresholds.
 	UidExpirationEvents []UidExpirationEvent `json:"uid_expiration_events,omitempty"`
@@ -905,6 +906,38 @@ func (o *AuthMethodAccessInfo) SetSamlAccessRules(v SAMLAccessRules) {
 	o.SamlAccessRules = &v
 }
 
+// GetScim returns the Scim field value if set, zero value otherwise.
+func (o *AuthMethodAccessInfo) GetScim() ScimSettings {
+	if o == nil || IsNil(o.Scim) {
+		var ret ScimSettings
+		return ret
+	}
+	return *o.Scim
+}
+
+// GetScimOk returns a tuple with the Scim field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodAccessInfo) GetScimOk() (*ScimSettings, bool) {
+	if o == nil || IsNil(o.Scim) {
+		return nil, false
+	}
+	return o.Scim, true
+}
+
+// HasScim returns a boolean if a field has been set.
+func (o *AuthMethodAccessInfo) HasScim() bool {
+	if o != nil && !IsNil(o.Scim) {
+		return true
+	}
+
+	return false
+}
+
+// SetScim gets a reference to the given ScimSettings and assigns it to the Scim field.
+func (o *AuthMethodAccessInfo) SetScim(v ScimSettings) {
+	o.Scim = &v
+}
+
 // GetSubClaimsDelimiters returns the SubClaimsDelimiters field value if set, zero value otherwise.
 func (o *AuthMethodAccessInfo) GetSubClaimsDelimiters() []string {
 	if o == nil || IsNil(o.SubClaimsDelimiters) {
@@ -1088,6 +1121,9 @@ func (o AuthMethodAccessInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SamlAccessRules) {
 		toSerialize["saml_access_rules"] = o.SamlAccessRules
+	}
+	if !IsNil(o.Scim) {
+		toSerialize["scim"] = o.Scim
 	}
 	if !IsNil(o.SubClaimsDelimiters) {
 		toSerialize["sub_claims_delimiters"] = o.SubClaimsDelimiters

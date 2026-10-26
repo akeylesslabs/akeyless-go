@@ -58,8 +58,10 @@ type DynamicSecretCreateEks struct {
 	OutputRule []string `json:"output-rule,omitempty"`
 	// Dynamic producer encryption key
 	ProducerEncryptionKeyName *string `json:"producer-encryption-key-name,omitempty"`
-	// Enable Port forwarding while using CLI access
+	// Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead.
 	SecureAccessAllowPortForwading *bool `json:"secure-access-allow-port-forwading,omitempty"`
+	// Enable Port forwarding while using CLI access
+	SecureAccessAllowPortForwarding *bool `json:"secure-access-allow-port-forwarding,omitempty"`
 	// Deprecated. use secure-access-certificate-issuer
 	SecureAccessBastionIssuer *string `json:"secure-access-bastion-issuer,omitempty"`
 	// Path to the SSH Certificate Issuer for your Akeyless Secure Access
@@ -722,6 +724,38 @@ func (o *DynamicSecretCreateEks) SetSecureAccessAllowPortForwading(v bool) {
 	o.SecureAccessAllowPortForwading = &v
 }
 
+// GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field value if set, zero value otherwise.
+func (o *DynamicSecretCreateEks) GetSecureAccessAllowPortForwarding() bool {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwarding) {
+		var ret bool
+		return ret
+	}
+	return *o.SecureAccessAllowPortForwarding
+}
+
+// GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DynamicSecretCreateEks) GetSecureAccessAllowPortForwardingOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecureAccessAllowPortForwarding) {
+		return nil, false
+	}
+	return o.SecureAccessAllowPortForwarding, true
+}
+
+// HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
+func (o *DynamicSecretCreateEks) HasSecureAccessAllowPortForwarding() bool {
+	if o != nil && !IsNil(o.SecureAccessAllowPortForwarding) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecureAccessAllowPortForwarding gets a reference to the given bool and assigns it to the SecureAccessAllowPortForwarding field.
+func (o *DynamicSecretCreateEks) SetSecureAccessAllowPortForwarding(v bool) {
+	o.SecureAccessAllowPortForwarding = &v
+}
+
 // GetSecureAccessBastionIssuer returns the SecureAccessBastionIssuer field value if set, zero value otherwise.
 func (o *DynamicSecretCreateEks) GetSecureAccessBastionIssuer() string {
 	if o == nil || IsNil(o.SecureAccessBastionIssuer) {
@@ -1170,6 +1204,9 @@ func (o DynamicSecretCreateEks) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecureAccessAllowPortForwading) {
 		toSerialize["secure-access-allow-port-forwading"] = o.SecureAccessAllowPortForwading
+	}
+	if !IsNil(o.SecureAccessAllowPortForwarding) {
+		toSerialize["secure-access-allow-port-forwarding"] = o.SecureAccessAllowPortForwarding
 	}
 	if !IsNil(o.SecureAccessBastionIssuer) {
 		toSerialize["secure-access-bastion-issuer"] = o.SecureAccessBastionIssuer

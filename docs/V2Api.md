@@ -359,6 +359,7 @@ Method | HTTP request | Description
 [**GetRole**](V2Api.md#GetRole) | **Post** /get-role | 
 [**GetRotatedSecretValue**](V2Api.md#GetRotatedSecretValue) | **Post** /get-rotated-secret-value | 
 [**GetSSHCertificate**](V2Api.md#GetSSHCertificate) | **Post** /get-ssh-certificate | 
+[**GetScimStatus**](V2Api.md#GetScimStatus) | **Post** /get-scim-status | 
 [**GetSecretValue**](V2Api.md#GetSecretValue) | **Post** /get-secret-value | 
 [**GetTags**](V2Api.md#GetTags) | **Post** /get-tags | 
 [**GetTarget**](V2Api.md#GetTarget) | **Post** /get-target | 
@@ -428,6 +429,7 @@ Method | HTTP request | Description
 [**RotateOidcClientSecret**](V2Api.md#RotateOidcClientSecret) | **Post** /rotate-oidc-client-secret | 
 [**RotateSecret**](V2Api.md#RotateSecret) | **Post** /gateway-rotate-secret | 
 [**RotatedSecretCreateAerospike**](V2Api.md#RotatedSecretCreateAerospike) | **Post** /rotated-secret-create-aerospike | 
+[**RotatedSecretCreateAliCloud**](V2Api.md#RotatedSecretCreateAliCloud) | **Post** /rotated-secret-create-alicloud | 
 [**RotatedSecretCreateAws**](V2Api.md#RotatedSecretCreateAws) | **Post** /rotated-secret-create-aws | 
 [**RotatedSecretCreateAzure**](V2Api.md#RotatedSecretCreateAzure) | **Post** /rotated-secret-create-azure | 
 [**RotatedSecretCreateCassandra**](V2Api.md#RotatedSecretCreateCassandra) | **Post** /rotated-secret-create-cassandra | 
@@ -457,6 +459,7 @@ Method | HTTP request | Description
 [**RotatedSecretList**](V2Api.md#RotatedSecretList) | **Post** /rotated-secret-list | 
 [**RotatedSecretSync**](V2Api.md#RotatedSecretSync) | **Post** /rotated-secret-sync | 
 [**RotatedSecretUpdateAerospike**](V2Api.md#RotatedSecretUpdateAerospike) | **Post** /rotated-secret-update-aerospike | 
+[**RotatedSecretUpdateAliCloud**](V2Api.md#RotatedSecretUpdateAliCloud) | **Post** /rotated-secret-update-alicloud | 
 [**RotatedSecretUpdateAws**](V2Api.md#RotatedSecretUpdateAws) | **Post** /rotated-secret-update-aws | 
 [**RotatedSecretUpdateAzure**](V2Api.md#RotatedSecretUpdateAzure) | **Post** /rotated-secret-update-azure | 
 [**RotatedSecretUpdateCassandra**](V2Api.md#RotatedSecretUpdateCassandra) | **Post** /rotated-secret-update-cassandra | 
@@ -494,6 +497,7 @@ Method | HTTP request | Description
 [**StaticSecretDeleteSync**](V2Api.md#StaticSecretDeleteSync) | **Post** /static-secret-delete-sync | 
 [**StaticSecretSync**](V2Api.md#StaticSecretSync) | **Post** /static-secret-sync | 
 [**TargetCreateAerospike**](V2Api.md#TargetCreateAerospike) | **Post** /target-create-aerospike | 
+[**TargetCreateAliCloud**](V2Api.md#TargetCreateAliCloud) | **Post** /target-create-alicloud | 
 [**TargetCreateAnthropic**](V2Api.md#TargetCreateAnthropic) | **Post** /target-create-anthropic | 
 [**TargetCreateArtifactory**](V2Api.md#TargetCreateArtifactory) | **Post** /target-create-artifactory | 
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
@@ -538,6 +542,7 @@ Method | HTTP request | Description
 [**TargetGetDetails**](V2Api.md#TargetGetDetails) | **Post** /target-get-details | 
 [**TargetList**](V2Api.md#TargetList) | **Post** /target-list | 
 [**TargetUpdateAerospike**](V2Api.md#TargetUpdateAerospike) | **Post** /target-update-aerospike | 
+[**TargetUpdateAliCloud**](V2Api.md#TargetUpdateAliCloud) | **Post** /target-update-alicloud | 
 [**TargetUpdateAnthropic**](V2Api.md#TargetUpdateAnthropic) | **Post** /target-update-anthropic | 
 [**TargetUpdateArtifactory**](V2Api.md#TargetUpdateArtifactory) | **Post** /target-update-artifactory | 
 [**TargetUpdateAws**](V2Api.md#TargetUpdateAws) | **Post** /target-update-aws | 
@@ -23377,6 +23382,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetScimStatus
+
+> ScimStatus GetScimStatus(ctx).GetScimStatus(getScimStatus).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	getScimStatus := *openapiclient.NewGetScimStatus("Name_example") // GetScimStatus | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.GetScimStatus(context.Background()).GetScimStatus(getScimStatus).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.GetScimStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetScimStatus`: ScimStatus
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.GetScimStatus`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetScimStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **getScimStatus** | [**GetScimStatus**](GetScimStatus.md) |  | 
+
+### Return type
+
+[**ScimStatus**](ScimStatus.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetSecretValue
 
 > map[string]interface{} GetSecretValue(ctx).GetSecretValue(getSecretValue).Execute()
@@ -27783,6 +27852,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretCreateAliCloud
+
+> RotatedSecretCreateOutput RotatedSecretCreateAliCloud(ctx).RotatedSecretCreateAliCloud(rotatedSecretCreateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretCreateAliCloud := *openapiclient.NewRotatedSecretCreateAliCloud("Name_example", "RotatorType_example", "TargetName_example") // RotatedSecretCreateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretCreateAliCloud(context.Background()).RotatedSecretCreateAliCloud(rotatedSecretCreateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretCreateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretCreateAliCloud`: RotatedSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretCreateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretCreateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretCreateAliCloud** | [**RotatedSecretCreateAliCloud**](RotatedSecretCreateAliCloud.md) |  | 
+
+### Return type
+
+[**RotatedSecretCreateOutput**](RotatedSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretCreateAws
 
 > RotatedSecretCreateOutput RotatedSecretCreateAws(ctx).RotatedSecretCreateAws(rotatedSecretCreateAws).Execute()
@@ -29639,6 +29772,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretUpdateAliCloud
+
+> RotatedSecretUpdateOutput RotatedSecretUpdateAliCloud(ctx).RotatedSecretUpdateAliCloud(rotatedSecretUpdateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretUpdateAliCloud := *openapiclient.NewRotatedSecretUpdateAliCloud("Name_example") // RotatedSecretUpdateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretUpdateAliCloud(context.Background()).RotatedSecretUpdateAliCloud(rotatedSecretUpdateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretUpdateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretUpdateAliCloud`: RotatedSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretUpdateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretUpdateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretUpdateAliCloud** | [**RotatedSecretUpdateAliCloud**](RotatedSecretUpdateAliCloud.md) |  | 
+
+### Return type
+
+[**RotatedSecretUpdateOutput**](RotatedSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretUpdateAws
 
 > RotatedSecretUpdateOutput RotatedSecretUpdateAws(ctx).RotatedSecretUpdateAws(rotatedSecretUpdateAws).Execute()
@@ -31049,7 +31246,7 @@ No authorization required
 
 ## RuntimeAuthority
 
-> RuntimeAuthority(ctx).RuntimeAuthorityCommand(runtimeAuthorityCommand).Execute()
+> []int32 RuntimeAuthority(ctx).RuntimeAuthorityCommand(runtimeAuthorityCommand).Execute()
 
 
 
@@ -31070,11 +31267,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.V2Api.RuntimeAuthority(context.Background()).RuntimeAuthorityCommand(runtimeAuthorityCommand).Execute()
+	resp, r, err := apiClient.V2Api.RuntimeAuthority(context.Background()).RuntimeAuthorityCommand(runtimeAuthorityCommand).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RuntimeAuthority``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `RuntimeAuthority`: []int32
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RuntimeAuthority`: %v\n", resp)
 }
 ```
 
@@ -31093,7 +31292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**[]int32**
 
 ### Authorization
 
@@ -31986,6 +32185,70 @@ Other parameters are passed through a pointer to a apiTargetCreateAerospikeReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateAerospike** | [**TargetCreateAerospike**](TargetCreateAerospike.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateAliCloud
+
+> TargetCreateOutput TargetCreateAliCloud(ctx).TargetCreateAliCloud(targetCreateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateAliCloud := *openapiclient.NewTargetCreateAliCloud("Name_example") // TargetCreateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateAliCloud(context.Background()).TargetCreateAliCloud(targetCreateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateAliCloud`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateAliCloud** | [**TargetCreateAliCloud**](TargetCreateAliCloud.md) |  | 
 
 ### Return type
 
@@ -34802,6 +35065,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateAerospikeReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateAerospike** | [**TargetUpdateAerospike**](TargetUpdateAerospike.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateAliCloud
+
+> TargetUpdateOutput TargetUpdateAliCloud(ctx).TargetUpdateAliCloud(targetUpdateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateAliCloud := *openapiclient.NewTargetUpdateAliCloud("Name_example") // TargetUpdateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateAliCloud(context.Background()).TargetUpdateAliCloud(targetUpdateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateAliCloud`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateAliCloud** | [**TargetUpdateAliCloud**](TargetUpdateAliCloud.md) |  | 
 
 ### Return type
 

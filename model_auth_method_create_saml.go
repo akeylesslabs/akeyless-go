@@ -56,6 +56,14 @@ type AuthMethodCreateSAML struct {
 	Name string `json:"name"`
 	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
+	// Access ID of the API Key auth method the IdP uses as the SCIM bearer
+	ScimBearerAccessId *string `json:"scim-bearer-access-id,omitempty"`
+	// Enable SCIM provisioning for this auth method [true/false]
+	ScimEnabled *string `json:"scim-enabled,omitempty"`
+	// Where the IdP reaches the SCIM endpoint [public/private]. public is served by Akeyless, private by your own Akeyless Gateway
+	ScimEndpoint *string `json:"scim-endpoint,omitempty"`
+	// URL of the Akeyless Gateway that serves the SCIM endpoint to the IdP, for example https://gateway.example.com:8000. Required for the private endpoint
+	ScimGatewayUrl *string `json:"scim-gateway-url,omitempty"`
 	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
 	SubclaimsDelimiters []string `json:"subclaims-delimiters,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -637,6 +645,134 @@ func (o *AuthMethodCreateSAML) SetProductType(v []string) {
 	o.ProductType = v
 }
 
+// GetScimBearerAccessId returns the ScimBearerAccessId field value if set, zero value otherwise.
+func (o *AuthMethodCreateSAML) GetScimBearerAccessId() string {
+	if o == nil || IsNil(o.ScimBearerAccessId) {
+		var ret string
+		return ret
+	}
+	return *o.ScimBearerAccessId
+}
+
+// GetScimBearerAccessIdOk returns a tuple with the ScimBearerAccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateSAML) GetScimBearerAccessIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimBearerAccessId) {
+		return nil, false
+	}
+	return o.ScimBearerAccessId, true
+}
+
+// HasScimBearerAccessId returns a boolean if a field has been set.
+func (o *AuthMethodCreateSAML) HasScimBearerAccessId() bool {
+	if o != nil && !IsNil(o.ScimBearerAccessId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimBearerAccessId gets a reference to the given string and assigns it to the ScimBearerAccessId field.
+func (o *AuthMethodCreateSAML) SetScimBearerAccessId(v string) {
+	o.ScimBearerAccessId = &v
+}
+
+// GetScimEnabled returns the ScimEnabled field value if set, zero value otherwise.
+func (o *AuthMethodCreateSAML) GetScimEnabled() string {
+	if o == nil || IsNil(o.ScimEnabled) {
+		var ret string
+		return ret
+	}
+	return *o.ScimEnabled
+}
+
+// GetScimEnabledOk returns a tuple with the ScimEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateSAML) GetScimEnabledOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimEnabled) {
+		return nil, false
+	}
+	return o.ScimEnabled, true
+}
+
+// HasScimEnabled returns a boolean if a field has been set.
+func (o *AuthMethodCreateSAML) HasScimEnabled() bool {
+	if o != nil && !IsNil(o.ScimEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimEnabled gets a reference to the given string and assigns it to the ScimEnabled field.
+func (o *AuthMethodCreateSAML) SetScimEnabled(v string) {
+	o.ScimEnabled = &v
+}
+
+// GetScimEndpoint returns the ScimEndpoint field value if set, zero value otherwise.
+func (o *AuthMethodCreateSAML) GetScimEndpoint() string {
+	if o == nil || IsNil(o.ScimEndpoint) {
+		var ret string
+		return ret
+	}
+	return *o.ScimEndpoint
+}
+
+// GetScimEndpointOk returns a tuple with the ScimEndpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateSAML) GetScimEndpointOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimEndpoint) {
+		return nil, false
+	}
+	return o.ScimEndpoint, true
+}
+
+// HasScimEndpoint returns a boolean if a field has been set.
+func (o *AuthMethodCreateSAML) HasScimEndpoint() bool {
+	if o != nil && !IsNil(o.ScimEndpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimEndpoint gets a reference to the given string and assigns it to the ScimEndpoint field.
+func (o *AuthMethodCreateSAML) SetScimEndpoint(v string) {
+	o.ScimEndpoint = &v
+}
+
+// GetScimGatewayUrl returns the ScimGatewayUrl field value if set, zero value otherwise.
+func (o *AuthMethodCreateSAML) GetScimGatewayUrl() string {
+	if o == nil || IsNil(o.ScimGatewayUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ScimGatewayUrl
+}
+
+// GetScimGatewayUrlOk returns a tuple with the ScimGatewayUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateSAML) GetScimGatewayUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimGatewayUrl) {
+		return nil, false
+	}
+	return o.ScimGatewayUrl, true
+}
+
+// HasScimGatewayUrl returns a boolean if a field has been set.
+func (o *AuthMethodCreateSAML) HasScimGatewayUrl() bool {
+	if o != nil && !IsNil(o.ScimGatewayUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimGatewayUrl gets a reference to the given string and assigns it to the ScimGatewayUrl field.
+func (o *AuthMethodCreateSAML) SetScimGatewayUrl(v string) {
+	o.ScimGatewayUrl = &v
+}
+
 // GetSubclaimsDelimiters returns the SubclaimsDelimiters field value if set, zero value otherwise.
 func (o *AuthMethodCreateSAML) GetSubclaimsDelimiters() []string {
 	if o == nil || IsNil(o.SubclaimsDelimiters) {
@@ -847,6 +983,18 @@ func (o AuthMethodCreateSAML) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.ProductType) {
 		toSerialize["product-type"] = o.ProductType
+	}
+	if !IsNil(o.ScimBearerAccessId) {
+		toSerialize["scim-bearer-access-id"] = o.ScimBearerAccessId
+	}
+	if !IsNil(o.ScimEnabled) {
+		toSerialize["scim-enabled"] = o.ScimEnabled
+	}
+	if !IsNil(o.ScimEndpoint) {
+		toSerialize["scim-endpoint"] = o.ScimEndpoint
+	}
+	if !IsNil(o.ScimGatewayUrl) {
+		toSerialize["scim-gateway-url"] = o.ScimGatewayUrl
 	}
 	if !IsNil(o.SubclaimsDelimiters) {
 		toSerialize["subclaims-delimiters"] = o.SubclaimsDelimiters

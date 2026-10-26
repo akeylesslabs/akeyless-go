@@ -42,6 +42,8 @@ type AccountGeneralSettings struct {
 	EmailCustomization *EmailCustomization `json:"email_customization,omitempty"`
 	EnableRequestForAccess *bool `json:"enable_request_for_access,omitempty"`
 	EnableSearchHistory *bool `json:"enable_search_history,omitempty"`
+	// EventForwarderAllowedEmailDomains lists extra recipient domains for email event forwarders. The signup email domain is always allowed as well. Account-settings updates leave this field unchanged.
+	EventForwarderAllowedEmailDomains []string `json:"event_forwarder_allowed_email_domains,omitempty"`
 	HidePersonalFolder *bool `json:"hide_personal_folder,omitempty"`
 	HideSecretRevealCopy *bool `json:"hide_secret_reveal_copy,omitempty"`
 	HideStaticPassword *bool `json:"hide_static_password,omitempty"`
@@ -685,6 +687,38 @@ func (o *AccountGeneralSettings) SetEnableSearchHistory(v bool) {
 	o.EnableSearchHistory = &v
 }
 
+// GetEventForwarderAllowedEmailDomains returns the EventForwarderAllowedEmailDomains field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetEventForwarderAllowedEmailDomains() []string {
+	if o == nil || IsNil(o.EventForwarderAllowedEmailDomains) {
+		var ret []string
+		return ret
+	}
+	return o.EventForwarderAllowedEmailDomains
+}
+
+// GetEventForwarderAllowedEmailDomainsOk returns a tuple with the EventForwarderAllowedEmailDomains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetEventForwarderAllowedEmailDomainsOk() ([]string, bool) {
+	if o == nil || IsNil(o.EventForwarderAllowedEmailDomains) {
+		return nil, false
+	}
+	return o.EventForwarderAllowedEmailDomains, true
+}
+
+// HasEventForwarderAllowedEmailDomains returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasEventForwarderAllowedEmailDomains() bool {
+	if o != nil && !IsNil(o.EventForwarderAllowedEmailDomains) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventForwarderAllowedEmailDomains gets a reference to the given []string and assigns it to the EventForwarderAllowedEmailDomains field.
+func (o *AccountGeneralSettings) SetEventForwarderAllowedEmailDomains(v []string) {
+	o.EventForwarderAllowedEmailDomains = v
+}
+
 // GetHidePersonalFolder returns the HidePersonalFolder field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetHidePersonalFolder() bool {
 	if o == nil || IsNil(o.HidePersonalFolder) {
@@ -1199,6 +1233,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableSearchHistory) {
 		toSerialize["enable_search_history"] = o.EnableSearchHistory
+	}
+	if !IsNil(o.EventForwarderAllowedEmailDomains) {
+		toSerialize["event_forwarder_allowed_email_domains"] = o.EventForwarderAllowedEmailDomains
 	}
 	if !IsNil(o.HidePersonalFolder) {
 		toSerialize["hide_personal_folder"] = o.HidePersonalFolder

@@ -21,6 +21,7 @@ var _ MappedNullable = &TargetTypeDetailsInput{}
 // TargetTypeDetailsInput struct for TargetTypeDetailsInput
 type TargetTypeDetailsInput struct {
 	AerospikeTargetDetails *AerospikeTargetDetails `json:"aerospike_target_details,omitempty"`
+	AlicloudTargetDetails *AliCloudTargetDetails `json:"alicloud_target_details,omitempty"`
 	AnthropicTargetDetails *AnthropicTargetDetails `json:"anthropic_target_details,omitempty"`
 	ArtifactoryTargetDetails *ArtifactoryTargetDetails `json:"artifactory_target_details,omitempty"`
 	AwsTargetDetails *AWSTargetDetails `json:"aws_target_details,omitempty"`
@@ -113,6 +114,38 @@ func (o *TargetTypeDetailsInput) HasAerospikeTargetDetails() bool {
 // SetAerospikeTargetDetails gets a reference to the given AerospikeTargetDetails and assigns it to the AerospikeTargetDetails field.
 func (o *TargetTypeDetailsInput) SetAerospikeTargetDetails(v AerospikeTargetDetails) {
 	o.AerospikeTargetDetails = &v
+}
+
+// GetAlicloudTargetDetails returns the AlicloudTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAlicloudTargetDetails() AliCloudTargetDetails {
+	if o == nil || IsNil(o.AlicloudTargetDetails) {
+		var ret AliCloudTargetDetails
+		return ret
+	}
+	return *o.AlicloudTargetDetails
+}
+
+// GetAlicloudTargetDetailsOk returns a tuple with the AlicloudTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAlicloudTargetDetailsOk() (*AliCloudTargetDetails, bool) {
+	if o == nil || IsNil(o.AlicloudTargetDetails) {
+		return nil, false
+	}
+	return o.AlicloudTargetDetails, true
+}
+
+// HasAlicloudTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAlicloudTargetDetails() bool {
+	if o != nil && !IsNil(o.AlicloudTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudTargetDetails gets a reference to the given AliCloudTargetDetails and assigns it to the AlicloudTargetDetails field.
+func (o *TargetTypeDetailsInput) SetAlicloudTargetDetails(v AliCloudTargetDetails) {
+	o.AlicloudTargetDetails = &v
 }
 
 // GetAnthropicTargetDetails returns the AnthropicTargetDetails field value if set, zero value otherwise.
@@ -1503,6 +1536,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AerospikeTargetDetails) {
 		toSerialize["aerospike_target_details"] = o.AerospikeTargetDetails
+	}
+	if !IsNil(o.AlicloudTargetDetails) {
+		toSerialize["alicloud_target_details"] = o.AlicloudTargetDetails
 	}
 	if !IsNil(o.AnthropicTargetDetails) {
 		toSerialize["anthropic_target_details"] = o.AnthropicTargetDetails

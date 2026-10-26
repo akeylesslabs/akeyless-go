@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **EmailCustomization** | Pointer to [**EmailCustomization**](EmailCustomization.md) |  | [optional] 
 **EnableRequestForAccess** | Pointer to **bool** |  | [optional] 
 **EnableSearchHistory** | Pointer to **bool** |  | [optional] 
+**EventForwarderAllowedEmailDomains** | Pointer to **[]string** | EventForwarderAllowedEmailDomains lists extra recipient domains for email event forwarders. The signup email domain is always allowed as well. Account-settings updates leave this field unchanged. | [optional] 
 **HidePersonalFolder** | Pointer to **bool** |  | [optional] 
 **HideSecretRevealCopy** | Pointer to **bool** |  | [optional] 
 **HideStaticPassword** | Pointer to **bool** |  | [optional] 
@@ -531,6 +532,31 @@ SetEnableSearchHistory sets EnableSearchHistory field to given value.
 `func (o *AccountGeneralSettings) HasEnableSearchHistory() bool`
 
 HasEnableSearchHistory returns a boolean if a field has been set.
+
+### GetEventForwarderAllowedEmailDomains
+
+`func (o *AccountGeneralSettings) GetEventForwarderAllowedEmailDomains() []string`
+
+GetEventForwarderAllowedEmailDomains returns the EventForwarderAllowedEmailDomains field if non-nil, zero value otherwise.
+
+### GetEventForwarderAllowedEmailDomainsOk
+
+`func (o *AccountGeneralSettings) GetEventForwarderAllowedEmailDomainsOk() (*[]string, bool)`
+
+GetEventForwarderAllowedEmailDomainsOk returns a tuple with the EventForwarderAllowedEmailDomains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventForwarderAllowedEmailDomains
+
+`func (o *AccountGeneralSettings) SetEventForwarderAllowedEmailDomains(v []string)`
+
+SetEventForwarderAllowedEmailDomains sets EventForwarderAllowedEmailDomains field to given value.
+
+### HasEventForwarderAllowedEmailDomains
+
+`func (o *AccountGeneralSettings) HasEventForwarderAllowedEmailDomains() bool`
+
+HasEventForwarderAllowedEmailDomains returns a boolean if a field has been set.
 
 ### GetHidePersonalFolder
 

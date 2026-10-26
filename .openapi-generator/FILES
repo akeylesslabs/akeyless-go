@@ -37,6 +37,7 @@ docs/AiModelEntry.md
 docs/AiQuorumSetting.md
 docs/AkeylessGatewayConfig.md
 docs/AliCloudAccessRules.md
+docs/AliCloudTargetDetails.md
 docs/AliasDetails.md
 docs/AliasDetailsOutput.md
 docs/AllAnalyticsData.md
@@ -684,6 +685,7 @@ docs/GetRole.md
 docs/GetRotatedSecretValue.md
 docs/GetSSHCertificate.md
 docs/GetSSHCertificateOutput.md
+docs/GetScimStatus.md
 docs/GetSecretValue.md
 docs/GetTags.md
 docs/GetTarget.md
@@ -698,6 +700,7 @@ docs/GlobalSignGCCTargetDetails.md
 docs/GodaddyTargetDetails.md
 docs/GoogleChronicleForwardingConfig.md
 docs/GoogleTrustTargetDetails.md
+docs/GrantedRole.md
 docs/GrokTargetDetails.md
 docs/Group.md
 docs/GwClusterIdentity.md
@@ -909,6 +912,7 @@ docs/RotateOidcClientOutput.md
 docs/RotateOidcClientSecret.md
 docs/RotateSecret.md
 docs/RotatedSecretCreateAerospike.md
+docs/RotatedSecretCreateAliCloud.md
 docs/RotatedSecretCreateAws.md
 docs/RotatedSecretCreateAzure.md
 docs/RotatedSecretCreateCassandra.md
@@ -942,6 +946,7 @@ docs/RotatedSecretList.md
 docs/RotatedSecretOutput.md
 docs/RotatedSecretSync.md
 docs/RotatedSecretUpdateAerospike.md
+docs/RotatedSecretUpdateAliCloud.md
 docs/RotatedSecretUpdateAws.md
 docs/RotatedSecretUpdateAzure.md
 docs/RotatedSecretUpdateCassandra.md
@@ -978,6 +983,8 @@ docs/SSHTargetDetails.md
 docs/SalesforceTargetDetails.md
 docs/SamlSpConfigPart.md
 docs/ScanResults.md
+docs/ScimSettings.md
+docs/ScimStatus.md
 docs/SecretInfo.md
 docs/SecretSyncOutput.md
 docs/SectigoTargetDetails.md
@@ -1029,6 +1036,7 @@ docs/SystemAccessCredentialsReplyObj.md
 docs/SystemAccessCredsSettings.md
 docs/Target.md
 docs/TargetCreateAerospike.md
+docs/TargetCreateAliCloud.md
 docs/TargetCreateAnthropic.md
 docs/TargetCreateArtifactory.md
 docs/TargetCreateAws.md
@@ -1079,6 +1087,7 @@ docs/TargetList.md
 docs/TargetNameWithHosts.md
 docs/TargetTypeDetailsInput.md
 docs/TargetUpdateAerospike.md
+docs/TargetUpdateAliCloud.md
 docs/TargetUpdateAnthropic.md
 docs/TargetUpdateArtifactory.md
 docs/TargetUpdateAws.md
@@ -1315,6 +1324,7 @@ model_ai_model_entry.go
 model_ai_quorum_setting.go
 model_akeyless_gateway_config.go
 model_ali_cloud_access_rules.go
+model_ali_cloud_target_details.go
 model_alias_details.go
 model_alias_details_output.go
 model_all_analytics_data.go
@@ -1965,6 +1975,7 @@ model_get_role.go
 model_get_rotated_secret_value.go
 model_get_rsa_public.go
 model_get_rsa_public_output.go
+model_get_scim_status.go
 model_get_secret_value.go
 model_get_ssh_certificate.go
 model_get_ssh_certificate_output.go
@@ -1982,6 +1993,7 @@ model_global_sign_gcc_target_details.go
 model_godaddy_target_details.go
 model_google_chronicle_forwarding_config.go
 model_google_trust_target_details.go
+model_granted_role.go
 model_grok_target_details.go
 model_group.go
 model_gw_cluster_identity.go
@@ -2193,6 +2205,7 @@ model_rotate_oidc_client_output.go
 model_rotate_oidc_client_secret.go
 model_rotate_secret.go
 model_rotated_secret_create_aerospike.go
+model_rotated_secret_create_ali_cloud.go
 model_rotated_secret_create_aws.go
 model_rotated_secret_create_azure.go
 model_rotated_secret_create_cassandra.go
@@ -2226,6 +2239,7 @@ model_rotated_secret_list.go
 model_rotated_secret_output.go
 model_rotated_secret_sync.go
 model_rotated_secret_update_aerospike.go
+model_rotated_secret_update_ali_cloud.go
 model_rotated_secret_update_aws.go
 model_rotated_secret_update_azure.go
 model_rotated_secret_update_cassandra.go
@@ -2260,6 +2274,8 @@ model_saml_access_rules.go
 model_saml_attribute.go
 model_saml_sp_config_part.go
 model_scan_results.go
+model_scim_settings.go
+model_scim_status.go
 model_secret_info.go
 model_secret_sync_output.go
 model_sectigo_target_details.go
@@ -2313,6 +2329,7 @@ model_system_access_credentials_reply_obj.go
 model_system_access_creds_settings.go
 model_target.go
 model_target_create_aerospike.go
+model_target_create_ali_cloud.go
 model_target_create_anthropic.go
 model_target_create_artifactory.go
 model_target_create_aws.go
@@ -2363,6 +2380,7 @@ model_target_list.go
 model_target_name_with_hosts.go
 model_target_type_details_input.go
 model_target_update_aerospike.go
+model_target_update_ali_cloud.go
 model_target_update_anthropic.go
 model_target_update_artifactory.go
 model_target_update_aws.go

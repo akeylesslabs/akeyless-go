@@ -25,7 +25,7 @@ type GatewayUpdateProducerCustom struct {
 	// Define rotation interval in days
 	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
-	AraEnabled *bool `json:"ara-enabled,omitempty"`
+	AraEnabled NullableBool `json:"ara-enabled,omitempty"`
 	// URL of an endpoint that implements /sync/create method, for example https://webhook.example.com/sync/create
 	CreateSyncUrl string `json:"create-sync-url"`
 	// Protection from accidental deletion of this object [true/false]
@@ -33,9 +33,9 @@ type GatewayUpdateProducerCustom struct {
 	// Should admin credentials be rotated
 	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
-	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
+	EnableAgenticRuntimeAuthority NullableBool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
-	EnableAiQuorum *bool `json:"enable-ai-quorum,omitempty"`
+	EnableAiQuorum NullableBool `json:"enable-ai-quorum,omitempty"`
 	// Agentic input rule in name=...,rule=... format (e.g. name=rule1,rule=Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout).
 	InputRule []string `json:"input-rule,omitempty"`
 	// Additional custom fields to associate with the item
@@ -57,7 +57,7 @@ type GatewayUpdateProducerCustom struct {
 	// URL of an endpoint that implements /sync/rotate method, for example https://webhook.example.com/sync/rotate
 	RotateSyncUrl *string `json:"rotate-sync-url,omitempty"`
 	// If set, dry-run will be skipped [true/false]
-	SkipDryRun *bool `json:"skip-dry-run,omitempty"`
+	SkipDryRun NullableBool `json:"skip-dry-run,omitempty"`
 	// Add tags attached to this object
 	Tags []string `json:"tags,omitempty"`
 	// Maximum allowed time in seconds for the webhook to return the results
@@ -140,36 +140,46 @@ func (o *GatewayUpdateProducerCustom) SetAdminRotationIntervalDays(v int64) {
 	o.AdminRotationIntervalDays = &v
 }
 
-// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
+// GetAraEnabled returns the AraEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayUpdateProducerCustom) GetAraEnabled() bool {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil || IsNil(o.AraEnabled.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AraEnabled
+	return *o.AraEnabled.Get()
 }
 
 // GetAraEnabledOk returns a tuple with the AraEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayUpdateProducerCustom) GetAraEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.AraEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AraEnabled, true
+	return o.AraEnabled.Get(), o.AraEnabled.IsSet()
 }
 
 // HasAraEnabled returns a boolean if a field has been set.
 func (o *GatewayUpdateProducerCustom) HasAraEnabled() bool {
-	if o != nil && !IsNil(o.AraEnabled) {
+	if o != nil && o.AraEnabled.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAraEnabled gets a reference to the given bool and assigns it to the AraEnabled field.
+// SetAraEnabled gets a reference to the given NullableBool and assigns it to the AraEnabled field.
 func (o *GatewayUpdateProducerCustom) SetAraEnabled(v bool) {
-	o.AraEnabled = &v
+	o.AraEnabled.Set(&v)
+}
+// SetAraEnabledNil sets the value for AraEnabled to be an explicit nil
+func (o *GatewayUpdateProducerCustom) SetAraEnabledNil() {
+	o.AraEnabled.Set(nil)
+}
+
+// UnsetAraEnabled ensures that no value is present for AraEnabled, not even an explicit nil
+func (o *GatewayUpdateProducerCustom) UnsetAraEnabled() {
+	o.AraEnabled.Unset()
 }
 
 // GetCreateSyncUrl returns the CreateSyncUrl field value
@@ -260,68 +270,88 @@ func (o *GatewayUpdateProducerCustom) SetEnableAdminRotation(v bool) {
 	o.EnableAdminRotation = &v
 }
 
-// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
+// GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayUpdateProducerCustom) GetEnableAgenticRuntimeAuthority() bool {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAgenticRuntimeAuthority
+	return *o.EnableAgenticRuntimeAuthority.Get()
 }
 
 // GetEnableAgenticRuntimeAuthorityOk returns a tuple with the EnableAgenticRuntimeAuthority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayUpdateProducerCustom) GetEnableAgenticRuntimeAuthorityOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAgenticRuntimeAuthority, true
+	return o.EnableAgenticRuntimeAuthority.Get(), o.EnableAgenticRuntimeAuthority.IsSet()
 }
 
 // HasEnableAgenticRuntimeAuthority returns a boolean if a field has been set.
 func (o *GatewayUpdateProducerCustom) HasEnableAgenticRuntimeAuthority() bool {
-	if o != nil && !IsNil(o.EnableAgenticRuntimeAuthority) {
+	if o != nil && o.EnableAgenticRuntimeAuthority.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAgenticRuntimeAuthority gets a reference to the given bool and assigns it to the EnableAgenticRuntimeAuthority field.
+// SetEnableAgenticRuntimeAuthority gets a reference to the given NullableBool and assigns it to the EnableAgenticRuntimeAuthority field.
 func (o *GatewayUpdateProducerCustom) SetEnableAgenticRuntimeAuthority(v bool) {
-	o.EnableAgenticRuntimeAuthority = &v
+	o.EnableAgenticRuntimeAuthority.Set(&v)
+}
+// SetEnableAgenticRuntimeAuthorityNil sets the value for EnableAgenticRuntimeAuthority to be an explicit nil
+func (o *GatewayUpdateProducerCustom) SetEnableAgenticRuntimeAuthorityNil() {
+	o.EnableAgenticRuntimeAuthority.Set(nil)
 }
 
-// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise.
+// UnsetEnableAgenticRuntimeAuthority ensures that no value is present for EnableAgenticRuntimeAuthority, not even an explicit nil
+func (o *GatewayUpdateProducerCustom) UnsetEnableAgenticRuntimeAuthority() {
+	o.EnableAgenticRuntimeAuthority.Unset()
+}
+
+// GetEnableAiQuorum returns the EnableAiQuorum field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayUpdateProducerCustom) GetEnableAiQuorum() bool {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil || IsNil(o.EnableAiQuorum.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableAiQuorum
+	return *o.EnableAiQuorum.Get()
 }
 
 // GetEnableAiQuorumOk returns a tuple with the EnableAiQuorum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayUpdateProducerCustom) GetEnableAiQuorumOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAiQuorum) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableAiQuorum, true
+	return o.EnableAiQuorum.Get(), o.EnableAiQuorum.IsSet()
 }
 
 // HasEnableAiQuorum returns a boolean if a field has been set.
 func (o *GatewayUpdateProducerCustom) HasEnableAiQuorum() bool {
-	if o != nil && !IsNil(o.EnableAiQuorum) {
+	if o != nil && o.EnableAiQuorum.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableAiQuorum gets a reference to the given bool and assigns it to the EnableAiQuorum field.
+// SetEnableAiQuorum gets a reference to the given NullableBool and assigns it to the EnableAiQuorum field.
 func (o *GatewayUpdateProducerCustom) SetEnableAiQuorum(v bool) {
-	o.EnableAiQuorum = &v
+	o.EnableAiQuorum.Set(&v)
+}
+// SetEnableAiQuorumNil sets the value for EnableAiQuorum to be an explicit nil
+func (o *GatewayUpdateProducerCustom) SetEnableAiQuorumNil() {
+	o.EnableAiQuorum.Set(nil)
+}
+
+// UnsetEnableAiQuorum ensures that no value is present for EnableAiQuorum, not even an explicit nil
+func (o *GatewayUpdateProducerCustom) UnsetEnableAiQuorum() {
+	o.EnableAiQuorum.Unset()
 }
 
 // GetInputRule returns the InputRule field value if set, zero value otherwise.
@@ -628,36 +658,46 @@ func (o *GatewayUpdateProducerCustom) SetRotateSyncUrl(v string) {
 	o.RotateSyncUrl = &v
 }
 
-// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise.
+// GetSkipDryRun returns the SkipDryRun field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GatewayUpdateProducerCustom) GetSkipDryRun() bool {
-	if o == nil || IsNil(o.SkipDryRun) {
+	if o == nil || IsNil(o.SkipDryRun.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.SkipDryRun
+	return *o.SkipDryRun.Get()
 }
 
 // GetSkipDryRunOk returns a tuple with the SkipDryRun field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GatewayUpdateProducerCustom) GetSkipDryRunOk() (*bool, bool) {
-	if o == nil || IsNil(o.SkipDryRun) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SkipDryRun, true
+	return o.SkipDryRun.Get(), o.SkipDryRun.IsSet()
 }
 
 // HasSkipDryRun returns a boolean if a field has been set.
 func (o *GatewayUpdateProducerCustom) HasSkipDryRun() bool {
-	if o != nil && !IsNil(o.SkipDryRun) {
+	if o != nil && o.SkipDryRun.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSkipDryRun gets a reference to the given bool and assigns it to the SkipDryRun field.
+// SetSkipDryRun gets a reference to the given NullableBool and assigns it to the SkipDryRun field.
 func (o *GatewayUpdateProducerCustom) SetSkipDryRun(v bool) {
-	o.SkipDryRun = &v
+	o.SkipDryRun.Set(&v)
+}
+// SetSkipDryRunNil sets the value for SkipDryRun to be an explicit nil
+func (o *GatewayUpdateProducerCustom) SetSkipDryRunNil() {
+	o.SkipDryRun.Set(nil)
+}
+
+// UnsetSkipDryRun ensures that no value is present for SkipDryRun, not even an explicit nil
+func (o *GatewayUpdateProducerCustom) UnsetSkipDryRun() {
+	o.SkipDryRun.Unset()
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
@@ -833,8 +873,8 @@ func (o GatewayUpdateProducerCustom) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdminRotationIntervalDays) {
 		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
 	}
-	if !IsNil(o.AraEnabled) {
-		toSerialize["ara-enabled"] = o.AraEnabled
+	if o.AraEnabled.IsSet() {
+		toSerialize["ara-enabled"] = o.AraEnabled.Get()
 	}
 	toSerialize["create-sync-url"] = o.CreateSyncUrl
 	if !IsNil(o.DeleteProtection) {
@@ -843,11 +883,11 @@ func (o GatewayUpdateProducerCustom) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnableAdminRotation) {
 		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation
 	}
-	if !IsNil(o.EnableAgenticRuntimeAuthority) {
-		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority
+	if o.EnableAgenticRuntimeAuthority.IsSet() {
+		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority.Get()
 	}
-	if !IsNil(o.EnableAiQuorum) {
-		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum
+	if o.EnableAiQuorum.IsSet() {
+		toSerialize["enable-ai-quorum"] = o.EnableAiQuorum.Get()
 	}
 	if !IsNil(o.InputRule) {
 		toSerialize["input-rule"] = o.InputRule
@@ -875,8 +915,8 @@ func (o GatewayUpdateProducerCustom) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RotateSyncUrl) {
 		toSerialize["rotate-sync-url"] = o.RotateSyncUrl
 	}
-	if !IsNil(o.SkipDryRun) {
-		toSerialize["skip-dry-run"] = o.SkipDryRun
+	if o.SkipDryRun.IsSet() {
+		toSerialize["skip-dry-run"] = o.SkipDryRun.Get()
 	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags

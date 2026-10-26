@@ -48,7 +48,7 @@ type EventForwarderUpdateEmail struct {
 	Name string `json:"name"`
 	// New EventForwarder name
 	NewName *string `json:"new-name,omitempty"`
-	// Override Akeyless default URL with your Gateway url (port 18888)
+	// Override the Akeyless event link with the cluster URL of an active gateway in this account
 	OverrideUrl *string `json:"override-url,omitempty"`
 	// Targets Event sources
 	TargetsEventSourceLocations []string `json:"targets-event-source-locations,omitempty"`

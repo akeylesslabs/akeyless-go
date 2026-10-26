@@ -22,6 +22,8 @@ var _ MappedNullable = &UscDelete{}
 
 // UscDelete uscDelete is a command that deletes a secret from a Universal Secrets Connector
 type UscDelete struct {
+	// The AWS account ID that contains the secret. Required when the connector spans multiple account IDs.
+	AwsAccountId *string `json:"aws-account-id,omitempty"`
 	// Force delete objects that are soft deleted by default (relavent only for Azure target)
 	ForceDelete *bool `json:"force-delete,omitempty"`
 	// Set output format to JSON
@@ -29,6 +31,8 @@ type UscDelete struct {
 	// The namespace (relevant for Hashi vault target)
 	Namespace *string `json:"namespace,omitempty"`
 	ObjectType *string `json:"object-type,omitempty"`
+	// The AWS region that contains the secret (AWS only). If empty, uses the target region.
+	Region *string `json:"region,omitempty"`
 	// The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete
 	SecretId string `json:"secret-id"`
 	// GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured.
@@ -64,6 +68,38 @@ func NewUscDeleteWithDefaults() *UscDelete {
 	var json bool = false
 	this.Json = &json
 	return &this
+}
+
+// GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise.
+func (o *UscDelete) GetAwsAccountId() string {
+	if o == nil || IsNil(o.AwsAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsAccountId
+}
+
+// GetAwsAccountIdOk returns a tuple with the AwsAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscDelete) GetAwsAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsAccountId) {
+		return nil, false
+	}
+	return o.AwsAccountId, true
+}
+
+// HasAwsAccountId returns a boolean if a field has been set.
+func (o *UscDelete) HasAwsAccountId() bool {
+	if o != nil && !IsNil(o.AwsAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
+func (o *UscDelete) SetAwsAccountId(v string) {
+	o.AwsAccountId = &v
 }
 
 // GetForceDelete returns the ForceDelete field value if set, zero value otherwise.
@@ -192,6 +228,38 @@ func (o *UscDelete) HasObjectType() bool {
 // SetObjectType gets a reference to the given string and assigns it to the ObjectType field.
 func (o *UscDelete) SetObjectType(v string) {
 	o.ObjectType = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *UscDelete) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UscDelete) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *UscDelete) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *UscDelete) SetRegion(v string) {
+	o.Region = &v
 }
 
 // GetSecretId returns the SecretId field value
@@ -348,6 +416,9 @@ func (o UscDelete) MarshalJSON() ([]byte, error) {
 
 func (o UscDelete) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsAccountId) {
+		toSerialize["aws-account-id"] = o.AwsAccountId
+	}
 	if !IsNil(o.ForceDelete) {
 		toSerialize["force-delete"] = o.ForceDelete
 	}
@@ -359,6 +430,9 @@ func (o UscDelete) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ObjectType) {
 		toSerialize["object-type"] = o.ObjectType
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	toSerialize["secret-id"] = o.SecretId
 	if !IsNil(o.SelectedRepositories) {

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | Pointer to **string** | The AWS account ID to create the secret in. Required when the connector spans multiple account IDs. | [optional] 
 **BinaryValue** | Pointer to **bool** | Use this option if the universal secrets value is a base64 encoded binary | [optional] 
 **Description** | Pointer to **string** | Description of the universal secrets | [optional] 
 **GcpProjectId** | Pointer to **string** | The GCP project to create the secret in (GCP only). Required when the connector spans multiple projects or uses folder/organization scope. | [optional] 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
 **PfxPassword** | Pointer to **string** | Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates) | [optional] 
-**Region** | Pointer to **string** | Optional, create secret in a specific region (GCP only). If empty, a global secret will be created (provider default). | [optional] 
+**Region** | Pointer to **string** | AWS Organization scope region or GCP regional secret location. GCP creates a global secret when empty. | [optional] 
 **RemoteSecretActivationDate** | Pointer to **string** | Activation date for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **RemoteSecretExpires** | Pointer to **string** | Expiration time for the secret on the remote endpoint, in UTC format: YYYY-MM-DDTHH:MM:SSZ | [optional] 
 **SecretName** | **string** | Name for the new universal secrets | 
@@ -41,6 +42,31 @@ will change when the set of required properties is changed
 NewUscCreateWithDefaults instantiates a new UscCreate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsAccountId
+
+`func (o *UscCreate) GetAwsAccountId() string`
+
+GetAwsAccountId returns the AwsAccountId field if non-nil, zero value otherwise.
+
+### GetAwsAccountIdOk
+
+`func (o *UscCreate) GetAwsAccountIdOk() (*string, bool)`
+
+GetAwsAccountIdOk returns a tuple with the AwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccountId
+
+`func (o *UscCreate) SetAwsAccountId(v string)`
+
+SetAwsAccountId sets AwsAccountId field to given value.
+
+### HasAwsAccountId
+
+`func (o *UscCreate) HasAwsAccountId() bool`
+
+HasAwsAccountId returns a boolean if a field has been set.
 
 ### GetBinaryValue
 

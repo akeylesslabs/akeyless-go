@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AerospikeTargetDetails** | Pointer to [**AerospikeTargetDetails**](AerospikeTargetDetails.md) |  | [optional] 
+**AlicloudTargetDetails** | Pointer to [**AliCloudTargetDetails**](AliCloudTargetDetails.md) |  | [optional] 
 **AnthropicTargetDetails** | Pointer to [**AnthropicTargetDetails**](AnthropicTargetDetails.md) |  | [optional] 
 **ArtifactoryTargetDetails** | Pointer to [**ArtifactoryTargetDetails**](ArtifactoryTargetDetails.md) |  | [optional] 
 **AwsTargetDetails** | Pointer to [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 
@@ -92,6 +93,31 @@ SetAerospikeTargetDetails sets AerospikeTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasAerospikeTargetDetails() bool`
 
 HasAerospikeTargetDetails returns a boolean if a field has been set.
+
+### GetAlicloudTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetAlicloudTargetDetails() AliCloudTargetDetails`
+
+GetAlicloudTargetDetails returns the AlicloudTargetDetails field if non-nil, zero value otherwise.
+
+### GetAlicloudTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetAlicloudTargetDetailsOk() (*AliCloudTargetDetails, bool)`
+
+GetAlicloudTargetDetailsOk returns a tuple with the AlicloudTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetAlicloudTargetDetails(v AliCloudTargetDetails)`
+
+SetAlicloudTargetDetails sets AlicloudTargetDetails field to given value.
+
+### HasAlicloudTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasAlicloudTargetDetails() bool`
+
+HasAlicloudTargetDetails returns a boolean if a field has been set.
 
 ### GetAnthropicTargetDetails
 

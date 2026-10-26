@@ -24,12 +24,21 @@ type Group struct {
 	AccountId *string `json:"account_id,omitempty"`
 	CreationDate *time.Time `json:"creation_date,omitempty"`
 	Description *string `json:"description,omitempty"`
+	// GrantedRoles are the roles a member of this group gets at login, through the group's akeyless_groups claim. Read-only, and filled only for the SCIM bearer that owns the group: a group name on its own says nothing about the access it carries, which is what a reviewer certifying the entitlement has to judge.
+	GrantedRoles []GrantedRole `json:"granted_roles,omitempty"`
+	// GrantedRolesKnown is set when GrantedRoles was computed, so an empty list means \"grants no role\" rather than \"not computed\" (another caller, or an older UAM).
+	GrantedRolesKnown *bool `json:"granted_roles_known,omitempty"`
 	GroupAlias *string `json:"group_alias,omitempty"`
 	GroupId *string `json:"group_id,omitempty"`
 	GroupName *string `json:"group_name,omitempty"`
 	IsSubclaimsWithOperator *bool `json:"is_subclaims_with_operator,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
+	ScimExternalId *string `json:"scim_external_id,omitempty"`
+	ScimManaged *bool `json:"scim_managed,omitempty"`
+	ScimProvisionedAccessId *string `json:"scim_provisioned_access_id,omitempty"`
 	UserAssignments []AccessPermissionAssignment `json:"user_assignments,omitempty"`
+	// Version identifies the member assignments this group was read with. Pass it back as UpdateGroupInput.ExpectedVersion to make the update conditional.
+	Version *string `json:"version,omitempty"`
 }
 
 // NewGroup instantiates a new Group object
@@ -143,6 +152,70 @@ func (o *Group) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Group) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetGrantedRoles returns the GrantedRoles field value if set, zero value otherwise.
+func (o *Group) GetGrantedRoles() []GrantedRole {
+	if o == nil || IsNil(o.GrantedRoles) {
+		var ret []GrantedRole
+		return ret
+	}
+	return o.GrantedRoles
+}
+
+// GetGrantedRolesOk returns a tuple with the GrantedRoles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetGrantedRolesOk() ([]GrantedRole, bool) {
+	if o == nil || IsNil(o.GrantedRoles) {
+		return nil, false
+	}
+	return o.GrantedRoles, true
+}
+
+// HasGrantedRoles returns a boolean if a field has been set.
+func (o *Group) HasGrantedRoles() bool {
+	if o != nil && !IsNil(o.GrantedRoles) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantedRoles gets a reference to the given []GrantedRole and assigns it to the GrantedRoles field.
+func (o *Group) SetGrantedRoles(v []GrantedRole) {
+	o.GrantedRoles = v
+}
+
+// GetGrantedRolesKnown returns the GrantedRolesKnown field value if set, zero value otherwise.
+func (o *Group) GetGrantedRolesKnown() bool {
+	if o == nil || IsNil(o.GrantedRolesKnown) {
+		var ret bool
+		return ret
+	}
+	return *o.GrantedRolesKnown
+}
+
+// GetGrantedRolesKnownOk returns a tuple with the GrantedRolesKnown field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetGrantedRolesKnownOk() (*bool, bool) {
+	if o == nil || IsNil(o.GrantedRolesKnown) {
+		return nil, false
+	}
+	return o.GrantedRolesKnown, true
+}
+
+// HasGrantedRolesKnown returns a boolean if a field has been set.
+func (o *Group) HasGrantedRolesKnown() bool {
+	if o != nil && !IsNil(o.GrantedRolesKnown) {
+		return true
+	}
+
+	return false
+}
+
+// SetGrantedRolesKnown gets a reference to the given bool and assigns it to the GrantedRolesKnown field.
+func (o *Group) SetGrantedRolesKnown(v bool) {
+	o.GrantedRolesKnown = &v
 }
 
 // GetGroupAlias returns the GroupAlias field value if set, zero value otherwise.
@@ -305,6 +378,102 @@ func (o *Group) SetModificationDate(v time.Time) {
 	o.ModificationDate = &v
 }
 
+// GetScimExternalId returns the ScimExternalId field value if set, zero value otherwise.
+func (o *Group) GetScimExternalId() string {
+	if o == nil || IsNil(o.ScimExternalId) {
+		var ret string
+		return ret
+	}
+	return *o.ScimExternalId
+}
+
+// GetScimExternalIdOk returns a tuple with the ScimExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetScimExternalIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimExternalId) {
+		return nil, false
+	}
+	return o.ScimExternalId, true
+}
+
+// HasScimExternalId returns a boolean if a field has been set.
+func (o *Group) HasScimExternalId() bool {
+	if o != nil && !IsNil(o.ScimExternalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimExternalId gets a reference to the given string and assigns it to the ScimExternalId field.
+func (o *Group) SetScimExternalId(v string) {
+	o.ScimExternalId = &v
+}
+
+// GetScimManaged returns the ScimManaged field value if set, zero value otherwise.
+func (o *Group) GetScimManaged() bool {
+	if o == nil || IsNil(o.ScimManaged) {
+		var ret bool
+		return ret
+	}
+	return *o.ScimManaged
+}
+
+// GetScimManagedOk returns a tuple with the ScimManaged field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetScimManagedOk() (*bool, bool) {
+	if o == nil || IsNil(o.ScimManaged) {
+		return nil, false
+	}
+	return o.ScimManaged, true
+}
+
+// HasScimManaged returns a boolean if a field has been set.
+func (o *Group) HasScimManaged() bool {
+	if o != nil && !IsNil(o.ScimManaged) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimManaged gets a reference to the given bool and assigns it to the ScimManaged field.
+func (o *Group) SetScimManaged(v bool) {
+	o.ScimManaged = &v
+}
+
+// GetScimProvisionedAccessId returns the ScimProvisionedAccessId field value if set, zero value otherwise.
+func (o *Group) GetScimProvisionedAccessId() string {
+	if o == nil || IsNil(o.ScimProvisionedAccessId) {
+		var ret string
+		return ret
+	}
+	return *o.ScimProvisionedAccessId
+}
+
+// GetScimProvisionedAccessIdOk returns a tuple with the ScimProvisionedAccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetScimProvisionedAccessIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimProvisionedAccessId) {
+		return nil, false
+	}
+	return o.ScimProvisionedAccessId, true
+}
+
+// HasScimProvisionedAccessId returns a boolean if a field has been set.
+func (o *Group) HasScimProvisionedAccessId() bool {
+	if o != nil && !IsNil(o.ScimProvisionedAccessId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimProvisionedAccessId gets a reference to the given string and assigns it to the ScimProvisionedAccessId field.
+func (o *Group) SetScimProvisionedAccessId(v string) {
+	o.ScimProvisionedAccessId = &v
+}
+
 // GetUserAssignments returns the UserAssignments field value if set, zero value otherwise.
 func (o *Group) GetUserAssignments() []AccessPermissionAssignment {
 	if o == nil || IsNil(o.UserAssignments) {
@@ -337,6 +506,38 @@ func (o *Group) SetUserAssignments(v []AccessPermissionAssignment) {
 	o.UserAssignments = v
 }
 
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *Group) GetVersion() string {
+	if o == nil || IsNil(o.Version) {
+		var ret string
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Group) GetVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.Version) {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *Group) HasVersion() bool {
+	if o != nil && !IsNil(o.Version) {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given string and assigns it to the Version field.
+func (o *Group) SetVersion(v string) {
+	o.Version = &v
+}
+
 func (o Group) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -356,6 +557,12 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.GrantedRoles) {
+		toSerialize["granted_roles"] = o.GrantedRoles
+	}
+	if !IsNil(o.GrantedRolesKnown) {
+		toSerialize["granted_roles_known"] = o.GrantedRolesKnown
+	}
 	if !IsNil(o.GroupAlias) {
 		toSerialize["group_alias"] = o.GroupAlias
 	}
@@ -371,8 +578,20 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ModificationDate) {
 		toSerialize["modification_date"] = o.ModificationDate
 	}
+	if !IsNil(o.ScimExternalId) {
+		toSerialize["scim_external_id"] = o.ScimExternalId
+	}
+	if !IsNil(o.ScimManaged) {
+		toSerialize["scim_managed"] = o.ScimManaged
+	}
+	if !IsNil(o.ScimProvisionedAccessId) {
+		toSerialize["scim_provisioned_access_id"] = o.ScimProvisionedAccessId
+	}
 	if !IsNil(o.UserAssignments) {
 		toSerialize["user_assignments"] = o.UserAssignments
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsOrganizationId** | Pointer to **string** | The AWS Organization ID to use for a multi-account connector. Requires a target in the AWS Management Account or a delegated administrator account. | [optional] 
 **AzureKvName** | Pointer to **string** | Azure Key Vault name (Relevant only for Azure targets) | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the Universal Secrets Connector | [optional] 
@@ -48,6 +49,31 @@ will change when the set of required properties is changed
 NewCreateUSCWithDefaults instantiates a new CreateUSC object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsOrganizationId
+
+`func (o *CreateUSC) GetAwsOrganizationId() string`
+
+GetAwsOrganizationId returns the AwsOrganizationId field if non-nil, zero value otherwise.
+
+### GetAwsOrganizationIdOk
+
+`func (o *CreateUSC) GetAwsOrganizationIdOk() (*string, bool)`
+
+GetAwsOrganizationIdOk returns a tuple with the AwsOrganizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsOrganizationId
+
+`func (o *CreateUSC) SetAwsOrganizationId(v string)`
+
+SetAwsOrganizationId sets AwsOrganizationId field to given value.
+
+### HasAwsOrganizationId
+
+`func (o *CreateUSC) HasAwsOrganizationId() bool`
+
+HasAwsOrganizationId returns a boolean if a field has been set.
 
 ### GetAzureKvName
 

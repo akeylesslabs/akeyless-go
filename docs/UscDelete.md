@@ -4,10 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | Pointer to **string** | The AWS account ID that contains the secret. Required when the connector spans multiple account IDs. | [optional] 
 **ForceDelete** | Pointer to **bool** | Force delete objects that are soft deleted by default (relavent only for Azure target) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **Namespace** | Pointer to **string** | The namespace (relevant for Hashi vault target) | [optional] 
 **ObjectType** | Pointer to **string** |  | [optional] 
+**Region** | Pointer to **string** | The AWS region that contains the secret (AWS only). If empty, uses the target region. | [optional] 
 **SecretId** | **string** | The universal secrets id (or name, for AWS, Azure, K8s or Hashi vault targets) to delete | 
 **SelectedRepositories** | Pointer to **string** | GitHub selected repositories. For repository scope: repo name. For repository-environment scope: repo/env (format: repo-name/env-name). Required when multiple repos/envs configured. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -32,6 +34,31 @@ will change when the set of required properties is changed
 NewUscDeleteWithDefaults instantiates a new UscDelete object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsAccountId
+
+`func (o *UscDelete) GetAwsAccountId() string`
+
+GetAwsAccountId returns the AwsAccountId field if non-nil, zero value otherwise.
+
+### GetAwsAccountIdOk
+
+`func (o *UscDelete) GetAwsAccountIdOk() (*string, bool)`
+
+GetAwsAccountIdOk returns a tuple with the AwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccountId
+
+`func (o *UscDelete) SetAwsAccountId(v string)`
+
+SetAwsAccountId sets AwsAccountId field to given value.
+
+### HasAwsAccountId
+
+`func (o *UscDelete) HasAwsAccountId() bool`
+
+HasAwsAccountId returns a boolean if a field has been set.
 
 ### GetForceDelete
 
@@ -132,6 +159,31 @@ SetObjectType sets ObjectType field to given value.
 `func (o *UscDelete) HasObjectType() bool`
 
 HasObjectType returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *UscDelete) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *UscDelete) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *UscDelete) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *UscDelete) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetSecretId
 

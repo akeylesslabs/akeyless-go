@@ -22,6 +22,8 @@ var _ MappedNullable = &AuthMethodUpdateOutput{}
 type AuthMethodUpdateOutput struct {
 	Name *string `json:"name,omitempty"`
 	PrvKey *string `json:"prv_key,omitempty"`
+	// SCIM Base URL the IdP calls, set when SCIM flags were given
+	ScimBaseUrl *string `json:"scim_base_url,omitempty"`
 }
 
 // NewAuthMethodUpdateOutput instantiates a new AuthMethodUpdateOutput object
@@ -105,6 +107,38 @@ func (o *AuthMethodUpdateOutput) SetPrvKey(v string) {
 	o.PrvKey = &v
 }
 
+// GetScimBaseUrl returns the ScimBaseUrl field value if set, zero value otherwise.
+func (o *AuthMethodUpdateOutput) GetScimBaseUrl() string {
+	if o == nil || IsNil(o.ScimBaseUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ScimBaseUrl
+}
+
+// GetScimBaseUrlOk returns a tuple with the ScimBaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodUpdateOutput) GetScimBaseUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ScimBaseUrl) {
+		return nil, false
+	}
+	return o.ScimBaseUrl, true
+}
+
+// HasScimBaseUrl returns a boolean if a field has been set.
+func (o *AuthMethodUpdateOutput) HasScimBaseUrl() bool {
+	if o != nil && !IsNil(o.ScimBaseUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetScimBaseUrl gets a reference to the given string and assigns it to the ScimBaseUrl field.
+func (o *AuthMethodUpdateOutput) SetScimBaseUrl(v string) {
+	o.ScimBaseUrl = &v
+}
+
 func (o AuthMethodUpdateOutput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -120,6 +154,9 @@ func (o AuthMethodUpdateOutput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PrvKey) {
 		toSerialize["prv_key"] = o.PrvKey
+	}
+	if !IsNil(o.ScimBaseUrl) {
+		toSerialize["scim_base_url"] = o.ScimBaseUrl
 	}
 	return toSerialize, nil
 }

@@ -5,16 +5,22 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindSslProfiles** | Pointer to **[]string** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles. | [optional] 
+**CertificateArn** | Pointer to **string** | The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning) | [optional] 
 **CertificateFormat** | Pointer to **string** | The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning) | [optional] [default to "pem"]
+**CertificateName** | Pointer to **string** | The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning) | [optional] 
 **CertificatePath** | Pointer to **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | Pointer to **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
 **DisablePreviousKeyVersion** | Pointer to **bool** | Automatically disable previous key version (required for azure targets) | [optional] [default to false]
 **ExternalKeyName** | Pointer to **string** | The external key name to associate with the classic key (Relevant only for Classic Key AWS/Azure/GCP targets) | [optional] 
+**F5SaveConfig** | Pointer to **bool** | Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning) | [optional] [default to false]
+**F5SyncDeviceGroup** | Pointer to **string** | Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
+**KeyVault** | Pointer to **string** | The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning) | [optional] 
 **KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
 **KmsAlgorithm** | Pointer to **string** | Algorithm of the key in GCP KMS (required for gcp targets) | [optional] 
 **LocationId** | Pointer to **string** | Location id of the GCP KMS (required for gcp targets) | [optional] 
+**LocationScope** | Pointer to **string** | The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning) | [optional] 
 **MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
 **PfxPassword** | Pointer to **string** | Password used to protect the provisioned PFX file. Required when --certificate-format&#x3D;pfx (relevant only for certificate provisioning) | [optional] 
@@ -75,6 +81,31 @@ SetBindSslProfiles sets BindSslProfiles field to given value.
 
 HasBindSslProfiles returns a boolean if a field has been set.
 
+### GetCertificateArn
+
+`func (o *AssocTargetItem) GetCertificateArn() string`
+
+GetCertificateArn returns the CertificateArn field if non-nil, zero value otherwise.
+
+### GetCertificateArnOk
+
+`func (o *AssocTargetItem) GetCertificateArnOk() (*string, bool)`
+
+GetCertificateArnOk returns a tuple with the CertificateArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateArn
+
+`func (o *AssocTargetItem) SetCertificateArn(v string)`
+
+SetCertificateArn sets CertificateArn field to given value.
+
+### HasCertificateArn
+
+`func (o *AssocTargetItem) HasCertificateArn() bool`
+
+HasCertificateArn returns a boolean if a field has been set.
+
 ### GetCertificateFormat
 
 `func (o *AssocTargetItem) GetCertificateFormat() string`
@@ -99,6 +130,31 @@ SetCertificateFormat sets CertificateFormat field to given value.
 `func (o *AssocTargetItem) HasCertificateFormat() bool`
 
 HasCertificateFormat returns a boolean if a field has been set.
+
+### GetCertificateName
+
+`func (o *AssocTargetItem) GetCertificateName() string`
+
+GetCertificateName returns the CertificateName field if non-nil, zero value otherwise.
+
+### GetCertificateNameOk
+
+`func (o *AssocTargetItem) GetCertificateNameOk() (*string, bool)`
+
+GetCertificateNameOk returns a tuple with the CertificateName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificateName
+
+`func (o *AssocTargetItem) SetCertificateName(v string)`
+
+SetCertificateName sets CertificateName field to given value.
+
+### HasCertificateName
+
+`func (o *AssocTargetItem) HasCertificateName() bool`
+
+HasCertificateName returns a boolean if a field has been set.
 
 ### GetCertificatePath
 
@@ -200,6 +256,56 @@ SetExternalKeyName sets ExternalKeyName field to given value.
 
 HasExternalKeyName returns a boolean if a field has been set.
 
+### GetF5SaveConfig
+
+`func (o *AssocTargetItem) GetF5SaveConfig() bool`
+
+GetF5SaveConfig returns the F5SaveConfig field if non-nil, zero value otherwise.
+
+### GetF5SaveConfigOk
+
+`func (o *AssocTargetItem) GetF5SaveConfigOk() (*bool, bool)`
+
+GetF5SaveConfigOk returns a tuple with the F5SaveConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetF5SaveConfig
+
+`func (o *AssocTargetItem) SetF5SaveConfig(v bool)`
+
+SetF5SaveConfig sets F5SaveConfig field to given value.
+
+### HasF5SaveConfig
+
+`func (o *AssocTargetItem) HasF5SaveConfig() bool`
+
+HasF5SaveConfig returns a boolean if a field has been set.
+
+### GetF5SyncDeviceGroup
+
+`func (o *AssocTargetItem) GetF5SyncDeviceGroup() string`
+
+GetF5SyncDeviceGroup returns the F5SyncDeviceGroup field if non-nil, zero value otherwise.
+
+### GetF5SyncDeviceGroupOk
+
+`func (o *AssocTargetItem) GetF5SyncDeviceGroupOk() (*string, bool)`
+
+GetF5SyncDeviceGroupOk returns a tuple with the F5SyncDeviceGroup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetF5SyncDeviceGroup
+
+`func (o *AssocTargetItem) SetF5SyncDeviceGroup(v string)`
+
+SetF5SyncDeviceGroup sets F5SyncDeviceGroup field to given value.
+
+### HasF5SyncDeviceGroup
+
+`func (o *AssocTargetItem) HasF5SyncDeviceGroup() bool`
+
+HasF5SyncDeviceGroup returns a boolean if a field has been set.
+
 ### GetJson
 
 `func (o *AssocTargetItem) GetJson() bool`
@@ -249,6 +355,31 @@ SetKeyOperations sets KeyOperations field to given value.
 `func (o *AssocTargetItem) HasKeyOperations() bool`
 
 HasKeyOperations returns a boolean if a field has been set.
+
+### GetKeyVault
+
+`func (o *AssocTargetItem) GetKeyVault() string`
+
+GetKeyVault returns the KeyVault field if non-nil, zero value otherwise.
+
+### GetKeyVaultOk
+
+`func (o *AssocTargetItem) GetKeyVaultOk() (*string, bool)`
+
+GetKeyVaultOk returns a tuple with the KeyVault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyVault
+
+`func (o *AssocTargetItem) SetKeyVault(v string)`
+
+SetKeyVault sets KeyVault field to given value.
+
+### HasKeyVault
+
+`func (o *AssocTargetItem) HasKeyVault() bool`
+
+HasKeyVault returns a boolean if a field has been set.
 
 ### GetKeyringName
 
@@ -324,6 +455,31 @@ SetLocationId sets LocationId field to given value.
 `func (o *AssocTargetItem) HasLocationId() bool`
 
 HasLocationId returns a boolean if a field has been set.
+
+### GetLocationScope
+
+`func (o *AssocTargetItem) GetLocationScope() string`
+
+GetLocationScope returns the LocationScope field if non-nil, zero value otherwise.
+
+### GetLocationScopeOk
+
+`func (o *AssocTargetItem) GetLocationScopeOk() (*string, bool)`
+
+GetLocationScopeOk returns a tuple with the LocationScope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLocationScope
+
+`func (o *AssocTargetItem) SetLocationScope(v string)`
+
+SetLocationScope sets LocationScope field to given value.
+
+### HasLocationScope
+
+`func (o *AssocTargetItem) HasLocationScope() bool`
+
+HasLocationScope returns a boolean if a field has been set.
 
 ### GetMultiRegion
 

@@ -22,6 +22,8 @@ var _ MappedNullable = &CreateUSC{}
 
 // CreateUSC CreateUSC is a command that creates a Universal Secrets Connector
 type CreateUSC struct {
+	// The AWS Organization ID to use for a multi-account connector. Requires a target in the AWS Management Account or a delegated administrator account.
+	AwsOrganizationId *string `json:"aws-organization-id,omitempty"`
 	// Azure Key Vault name (Relevant only for Azure targets)
 	AzureKvName *string `json:"azure-kv-name,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
@@ -112,6 +114,38 @@ func NewCreateUSCWithDefaults() *CreateUSC {
 	var usePrefixAsFilter string = "false"
 	this.UsePrefixAsFilter = &usePrefixAsFilter
 	return &this
+}
+
+// GetAwsOrganizationId returns the AwsOrganizationId field value if set, zero value otherwise.
+func (o *CreateUSC) GetAwsOrganizationId() string {
+	if o == nil || IsNil(o.AwsOrganizationId) {
+		var ret string
+		return ret
+	}
+	return *o.AwsOrganizationId
+}
+
+// GetAwsOrganizationIdOk returns a tuple with the AwsOrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateUSC) GetAwsOrganizationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsOrganizationId) {
+		return nil, false
+	}
+	return o.AwsOrganizationId, true
+}
+
+// HasAwsOrganizationId returns a boolean if a field has been set.
+func (o *CreateUSC) HasAwsOrganizationId() bool {
+	if o != nil && !IsNil(o.AwsOrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsOrganizationId gets a reference to the given string and assigns it to the AwsOrganizationId field.
+func (o *CreateUSC) SetAwsOrganizationId(v string) {
+	o.AwsOrganizationId = &v
 }
 
 // GetAzureKvName returns the AzureKvName field value if set, zero value otherwise.
@@ -908,6 +942,9 @@ func (o CreateUSC) MarshalJSON() ([]byte, error) {
 
 func (o CreateUSC) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AwsOrganizationId) {
+		toSerialize["aws-organization-id"] = o.AwsOrganizationId
+	}
 	if !IsNil(o.AzureKvName) {
 		toSerialize["azure-kv-name"] = o.AzureKvName
 	}

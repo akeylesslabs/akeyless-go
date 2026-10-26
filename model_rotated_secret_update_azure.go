@@ -28,7 +28,7 @@ type RotatedSecretUpdateAzure struct {
 	ApiId *string `json:"api-id,omitempty"`
 	// API key to rotate (relevant only for rotator-type=api-key)
 	ApiKey *string `json:"api-key,omitempty"`
-	// Id of the azure app that hold the serect to be rotated (relevant only for rotator-type=api-key & authentication-credentials=use-target-creds)
+	// Id of the azure app that hold the serect to be rotated (relevant only for rotator-type=api-key)
 	ApplicationId *string `json:"application-id,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. When false, user-defined input/output rules are stored but not enforced; the base security validation still runs.  AraEnabled is tri-state (nil/true/false), not a plain bool: it self-encodes its wire value (see akl.OptionalBool) so an explicit false survives the curl-proxy relay instead of being dropped like a default-false bool flag.
 	AraEnabled *bool `json:"ara-enabled,omitempty"`

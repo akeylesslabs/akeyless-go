@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AwsAccountId** | Pointer to **string** | The AWS account ID to list secrets from. Required when the connector spans multiple account IDs. | [optional] 
 **GcpProjectId** | Pointer to **string** | The GCP project to list secrets from (GCP only). Required when the connector spans multiple projects or uses folder/organization scope. | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **ObjectType** | Pointer to **string** |  | [optional] 
 **PageSize** | Pointer to **int64** | Optional: number of items requested per response. When set, response may include next_token | [optional] 
 **PageToken** | Pointer to **string** | Optional: continuation token returned by a previous usc list --page-size call | [optional] 
+**Region** | Pointer to **string** | The AWS region to list secrets from (AWS only). If empty, the target&#39;s region is used. | [optional] 
 **Search** | Pointer to **string** | Search query used to match secret names and paths. | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
@@ -32,6 +34,31 @@ will change when the set of required properties is changed
 NewUscListWithDefaults instantiates a new UscList object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAwsAccountId
+
+`func (o *UscList) GetAwsAccountId() string`
+
+GetAwsAccountId returns the AwsAccountId field if non-nil, zero value otherwise.
+
+### GetAwsAccountIdOk
+
+`func (o *UscList) GetAwsAccountIdOk() (*string, bool)`
+
+GetAwsAccountIdOk returns a tuple with the AwsAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsAccountId
+
+`func (o *UscList) SetAwsAccountId(v string)`
+
+SetAwsAccountId sets AwsAccountId field to given value.
+
+### HasAwsAccountId
+
+`func (o *UscList) HasAwsAccountId() bool`
+
+HasAwsAccountId returns a boolean if a field has been set.
 
 ### GetGcpProjectId
 
@@ -157,6 +184,31 @@ SetPageToken sets PageToken field to given value.
 `func (o *UscList) HasPageToken() bool`
 
 HasPageToken returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *UscList) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *UscList) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *UscList) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *UscList) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetSearch
 

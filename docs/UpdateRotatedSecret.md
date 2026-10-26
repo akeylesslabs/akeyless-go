@@ -36,25 +36,26 @@ Name | Type | Description | Notes
 **RotatorCustomCmd** | Pointer to **string** | \&quot;Custom rotation command (relevant only for ssh target) | [optional] 
 **SamePassword** | Pointer to **string** | Rotate same password for each host from the Linked Target (relevant only for Linked Target) | [optional] 
 **SecureAccessAllowExternalUser** | Pointer to **string** | Allow providing external user for a domain users [true/false] | [optional] 
-**SecureAccessAllowPortForwading** | Pointer to **bool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
+**SecureAccessAllowPortForwading** | Pointer to **NullableBool** | Deprecated: old misspelled param, kept for backwards-compatibility. Hidden from help; use secure-access-allow-port-forwarding instead. | [optional] 
+**SecureAccessAllowPortForwarding** | Pointer to **NullableBool** | Enable Port forwarding while using CLI access (relevant only for EKS/GKE/K8s Dynamic-Secret) | [optional] 
 **SecureAccessAwsAccountId** | Pointer to **string** | The AWS account id (relevant only for aws) | [optional] 
-**SecureAccessAwsNativeCli** | Pointer to **bool** | The AWS native cli (relevant only for aws) | [optional] 
+**SecureAccessAwsNativeCli** | Pointer to **NullableBool** | The AWS native cli (relevant only for aws) | [optional] 
 **SecureAccessBastionIssuer** | Pointer to **string** | Deprecated. use secure-access-certificate-issuer | [optional] 
 **SecureAccessCertificateIssuer** | Pointer to **string** | Path to the SSH Certificate Issuer for your Akeyless Secure Access | [optional] 
 **SecureAccessDbName** | Pointer to **string** | The DB name (relevant only for DB Dynamic-Secret) | [optional] 
 **SecureAccessDbSchema** | Pointer to **string** | The db schema (relevant only for mssql or postgresql) | [optional] 
 **SecureAccessDisableConcurrentConnections** | Pointer to **bool** | Enable this flag to prevent simultaneous use of the same secret | [optional] 
 **SecureAccessEnable** | Pointer to **string** | Enable/Disable secure remote access [true/false] | [optional] 
-**SecureAccessEnforceHostsRestriction** | Pointer to **bool** | Enforce connections only to allowed SRA hosts | [optional] 
+**SecureAccessEnforceHostsRestriction** | Pointer to **NullableBool** | Enforce connections only to allowed SRA hosts | [optional] 
 **SecureAccessHost** | Pointer to **[]string** | Target servers for connections (In case of Linked Target association, host(s) will inherit Linked Target hosts - Relevant only for Dynamic Secrets/producers) | [optional] 
 **SecureAccessRdpDomain** | Pointer to **string** | Required when the Dynamic Secret is used for a domain user (relevant only for RDP Dynamic-Secret) | [optional] 
 **SecureAccessRdpUser** | Pointer to **string** | Override the RDP Domain username (relevant only for rdp) | [optional] 
 **SecureAccessUrl** | Pointer to **string** | Destination URL to inject secrets | [optional] 
-**SecureAccessUseInternalBastion** | Pointer to **bool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
-**SecureAccessUseInternalSshAccess** | Pointer to **bool** | Use internal SSH Access | [optional] 
+**SecureAccessUseInternalBastion** | Pointer to **NullableBool** | Deprecated. Use secure-access-use-internal-ssh-access | [optional] 
+**SecureAccessUseInternalSshAccess** | Pointer to **NullableBool** | Use internal SSH Access | [optional] 
 **SecureAccessWeb** | Pointer to **bool** | Enable Web Secure Remote Access | [optional] [default to false]
-**SecureAccessWebBrowsing** | Pointer to **bool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
-**SecureAccessWebProxy** | Pointer to **bool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**SecureAccessWebBrowsing** | Pointer to **NullableBool** | Secure browser via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
+**SecureAccessWebProxy** | Pointer to **NullableBool** | Web-Proxy via Akeyless&#39;s Secure Remote Access (SRA) | [optional] 
 **SshPassword** | Pointer to **string** | Deprecated: use RotatedPassword | [optional] 
 **SshUsername** | Pointer to **string** | Deprecated: use RotatedUser | [optional] 
 **StorageAccountKeyName** | Pointer to **string** | The name of the storage account key to rotate [key1/key2/kerb1/kerb2] | [optional] 
@@ -903,6 +904,51 @@ SetSecureAccessAllowPortForwading sets SecureAccessAllowPortForwading field to g
 
 HasSecureAccessAllowPortForwading returns a boolean if a field has been set.
 
+### SetSecureAccessAllowPortForwadingNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwadingNil(b bool)`
+
+ SetSecureAccessAllowPortForwadingNil sets the value for SecureAccessAllowPortForwading to be an explicit nil
+
+### UnsetSecureAccessAllowPortForwading
+`func (o *UpdateRotatedSecret) UnsetSecureAccessAllowPortForwading()`
+
+UnsetSecureAccessAllowPortForwading ensures that no value is present for SecureAccessAllowPortForwading, not even an explicit nil
+### GetSecureAccessAllowPortForwarding
+
+`func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwarding() bool`
+
+GetSecureAccessAllowPortForwarding returns the SecureAccessAllowPortForwarding field if non-nil, zero value otherwise.
+
+### GetSecureAccessAllowPortForwardingOk
+
+`func (o *UpdateRotatedSecret) GetSecureAccessAllowPortForwardingOk() (*bool, bool)`
+
+GetSecureAccessAllowPortForwardingOk returns a tuple with the SecureAccessAllowPortForwarding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecureAccessAllowPortForwarding
+
+`func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwarding(v bool)`
+
+SetSecureAccessAllowPortForwarding sets SecureAccessAllowPortForwarding field to given value.
+
+### HasSecureAccessAllowPortForwarding
+
+`func (o *UpdateRotatedSecret) HasSecureAccessAllowPortForwarding() bool`
+
+HasSecureAccessAllowPortForwarding returns a boolean if a field has been set.
+
+### SetSecureAccessAllowPortForwardingNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessAllowPortForwardingNil(b bool)`
+
+ SetSecureAccessAllowPortForwardingNil sets the value for SecureAccessAllowPortForwarding to be an explicit nil
+
+### UnsetSecureAccessAllowPortForwarding
+`func (o *UpdateRotatedSecret) UnsetSecureAccessAllowPortForwarding()`
+
+UnsetSecureAccessAllowPortForwarding ensures that no value is present for SecureAccessAllowPortForwarding, not even an explicit nil
 ### GetSecureAccessAwsAccountId
 
 `func (o *UpdateRotatedSecret) GetSecureAccessAwsAccountId() string`
@@ -953,6 +999,16 @@ SetSecureAccessAwsNativeCli sets SecureAccessAwsNativeCli field to given value.
 
 HasSecureAccessAwsNativeCli returns a boolean if a field has been set.
 
+### SetSecureAccessAwsNativeCliNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessAwsNativeCliNil(b bool)`
+
+ SetSecureAccessAwsNativeCliNil sets the value for SecureAccessAwsNativeCli to be an explicit nil
+
+### UnsetSecureAccessAwsNativeCli
+`func (o *UpdateRotatedSecret) UnsetSecureAccessAwsNativeCli()`
+
+UnsetSecureAccessAwsNativeCli ensures that no value is present for SecureAccessAwsNativeCli, not even an explicit nil
 ### GetSecureAccessBastionIssuer
 
 `func (o *UpdateRotatedSecret) GetSecureAccessBastionIssuer() string`
@@ -1128,6 +1184,16 @@ SetSecureAccessEnforceHostsRestriction sets SecureAccessEnforceHostsRestriction 
 
 HasSecureAccessEnforceHostsRestriction returns a boolean if a field has been set.
 
+### SetSecureAccessEnforceHostsRestrictionNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessEnforceHostsRestrictionNil(b bool)`
+
+ SetSecureAccessEnforceHostsRestrictionNil sets the value for SecureAccessEnforceHostsRestriction to be an explicit nil
+
+### UnsetSecureAccessEnforceHostsRestriction
+`func (o *UpdateRotatedSecret) UnsetSecureAccessEnforceHostsRestriction()`
+
+UnsetSecureAccessEnforceHostsRestriction ensures that no value is present for SecureAccessEnforceHostsRestriction, not even an explicit nil
 ### GetSecureAccessHost
 
 `func (o *UpdateRotatedSecret) GetSecureAccessHost() []string`
@@ -1253,6 +1319,16 @@ SetSecureAccessUseInternalBastion sets SecureAccessUseInternalBastion field to g
 
 HasSecureAccessUseInternalBastion returns a boolean if a field has been set.
 
+### SetSecureAccessUseInternalBastionNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessUseInternalBastionNil(b bool)`
+
+ SetSecureAccessUseInternalBastionNil sets the value for SecureAccessUseInternalBastion to be an explicit nil
+
+### UnsetSecureAccessUseInternalBastion
+`func (o *UpdateRotatedSecret) UnsetSecureAccessUseInternalBastion()`
+
+UnsetSecureAccessUseInternalBastion ensures that no value is present for SecureAccessUseInternalBastion, not even an explicit nil
 ### GetSecureAccessUseInternalSshAccess
 
 `func (o *UpdateRotatedSecret) GetSecureAccessUseInternalSshAccess() bool`
@@ -1278,6 +1354,16 @@ SetSecureAccessUseInternalSshAccess sets SecureAccessUseInternalSshAccess field 
 
 HasSecureAccessUseInternalSshAccess returns a boolean if a field has been set.
 
+### SetSecureAccessUseInternalSshAccessNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessUseInternalSshAccessNil(b bool)`
+
+ SetSecureAccessUseInternalSshAccessNil sets the value for SecureAccessUseInternalSshAccess to be an explicit nil
+
+### UnsetSecureAccessUseInternalSshAccess
+`func (o *UpdateRotatedSecret) UnsetSecureAccessUseInternalSshAccess()`
+
+UnsetSecureAccessUseInternalSshAccess ensures that no value is present for SecureAccessUseInternalSshAccess, not even an explicit nil
 ### GetSecureAccessWeb
 
 `func (o *UpdateRotatedSecret) GetSecureAccessWeb() bool`
@@ -1328,6 +1414,16 @@ SetSecureAccessWebBrowsing sets SecureAccessWebBrowsing field to given value.
 
 HasSecureAccessWebBrowsing returns a boolean if a field has been set.
 
+### SetSecureAccessWebBrowsingNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessWebBrowsingNil(b bool)`
+
+ SetSecureAccessWebBrowsingNil sets the value for SecureAccessWebBrowsing to be an explicit nil
+
+### UnsetSecureAccessWebBrowsing
+`func (o *UpdateRotatedSecret) UnsetSecureAccessWebBrowsing()`
+
+UnsetSecureAccessWebBrowsing ensures that no value is present for SecureAccessWebBrowsing, not even an explicit nil
 ### GetSecureAccessWebProxy
 
 `func (o *UpdateRotatedSecret) GetSecureAccessWebProxy() bool`
@@ -1353,6 +1449,16 @@ SetSecureAccessWebProxy sets SecureAccessWebProxy field to given value.
 
 HasSecureAccessWebProxy returns a boolean if a field has been set.
 
+### SetSecureAccessWebProxyNil
+
+`func (o *UpdateRotatedSecret) SetSecureAccessWebProxyNil(b bool)`
+
+ SetSecureAccessWebProxyNil sets the value for SecureAccessWebProxy to be an explicit nil
+
+### UnsetSecureAccessWebProxy
+`func (o *UpdateRotatedSecret) UnsetSecureAccessWebProxy()`
+
+UnsetSecureAccessWebProxy ensures that no value is present for SecureAccessWebProxy, not even an explicit nil
 ### GetSshPassword
 
 `func (o *UpdateRotatedSecret) GetSshPassword() string`
