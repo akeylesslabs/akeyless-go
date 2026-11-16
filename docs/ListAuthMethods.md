@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Filter** | Pointer to **string** | Filter by auth method name or part of it | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**Owner** | Pointer to **string** | Filter by auth method owner or part of it | [optional] 
 **PaginationToken** | Pointer to **string** | Next page reference | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **Type** | Pointer to **[]string** | The Auth method types list of the requested method. In case it is empty, all types of auth methods will be returned. options: [api_key, azure_ad, oauth2/jwt, saml2, ldap, aws_iam, alicloud, oidc, universal_identity, gcp, k8s, cert] | [optional] 
@@ -79,6 +80,31 @@ SetJson sets Json field to given value.
 `func (o *ListAuthMethods) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *ListAuthMethods) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *ListAuthMethods) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *ListAuthMethods) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *ListAuthMethods) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 ### GetPaginationToken
 

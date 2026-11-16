@@ -30,6 +30,7 @@ type ProvisionCertificate struct {
 	Json *bool `json:"json,omitempty"`
 	// Certificate name
 	Name string `json:"name"`
+	TargetName *string `json:"target-name,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -47,6 +48,8 @@ func NewProvisionCertificate(name string) *ProvisionCertificate {
 	var json bool = false
 	this.Json = &json
 	this.Name = name
+	var targetName string = "all targets associated with the certificate)"
+	this.TargetName = &targetName
 	return &this
 }
 
@@ -57,6 +60,8 @@ func NewProvisionCertificateWithDefaults() *ProvisionCertificate {
 	this := ProvisionCertificate{}
 	var json bool = false
 	this.Json = &json
+	var targetName string = "all targets associated with the certificate)"
+	this.TargetName = &targetName
 	return &this
 }
 
@@ -180,6 +185,38 @@ func (o *ProvisionCertificate) SetName(v string) {
 	o.Name = v
 }
 
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *ProvisionCertificate) GetTargetName() string {
+	if o == nil || IsNil(o.TargetName) {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisionCertificate) GetTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetName) {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *ProvisionCertificate) HasTargetName() bool {
+	if o != nil && !IsNil(o.TargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *ProvisionCertificate) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *ProvisionCertificate) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -264,6 +301,9 @@ func (o ProvisionCertificate) ToMap() (map[string]interface{}, error) {
 		toSerialize["json"] = o.Json
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.TargetName) {
+		toSerialize["target-name"] = o.TargetName
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}

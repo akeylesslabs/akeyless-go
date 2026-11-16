@@ -6,8 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FailMessage** | Pointer to **string** |  | [optional] 
 **SuccessMessage** | Pointer to **string** |  | [optional] 
+**AssociationId** | Pointer to **string** | AssociationID and TargetName identify the row of a Results entry. | [optional] 
 **HostNames** | Pointer to **[]string** |  | [optional] 
 **ProvisionedAt** | Pointer to **time.Time** |  | [optional] 
+**Results** | Pointer to [**[]ProvisionCertificateOutput**](ProvisionCertificateOutput.md) | Results holds one entry per row. It is set only when several rows were handled; the top-level fields then summarize them. | [optional] 
+**TargetName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -78,6 +81,31 @@ SetSuccessMessage sets SuccessMessage field to given value.
 
 HasSuccessMessage returns a boolean if a field has been set.
 
+### GetAssociationId
+
+`func (o *ProvisionCertificateOutput) GetAssociationId() string`
+
+GetAssociationId returns the AssociationId field if non-nil, zero value otherwise.
+
+### GetAssociationIdOk
+
+`func (o *ProvisionCertificateOutput) GetAssociationIdOk() (*string, bool)`
+
+GetAssociationIdOk returns a tuple with the AssociationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociationId
+
+`func (o *ProvisionCertificateOutput) SetAssociationId(v string)`
+
+SetAssociationId sets AssociationId field to given value.
+
+### HasAssociationId
+
+`func (o *ProvisionCertificateOutput) HasAssociationId() bool`
+
+HasAssociationId returns a boolean if a field has been set.
+
 ### GetHostNames
 
 `func (o *ProvisionCertificateOutput) GetHostNames() []string`
@@ -127,6 +155,56 @@ SetProvisionedAt sets ProvisionedAt field to given value.
 `func (o *ProvisionCertificateOutput) HasProvisionedAt() bool`
 
 HasProvisionedAt returns a boolean if a field has been set.
+
+### GetResults
+
+`func (o *ProvisionCertificateOutput) GetResults() []ProvisionCertificateOutput`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *ProvisionCertificateOutput) GetResultsOk() (*[]ProvisionCertificateOutput, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *ProvisionCertificateOutput) SetResults(v []ProvisionCertificateOutput)`
+
+SetResults sets Results field to given value.
+
+### HasResults
+
+`func (o *ProvisionCertificateOutput) HasResults() bool`
+
+HasResults returns a boolean if a field has been set.
+
+### GetTargetName
+
+`func (o *ProvisionCertificateOutput) GetTargetName() string`
+
+GetTargetName returns the TargetName field if non-nil, zero value otherwise.
+
+### GetTargetNameOk
+
+`func (o *ProvisionCertificateOutput) GetTargetNameOk() (*string, bool)`
+
+GetTargetNameOk returns a tuple with the TargetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTargetName
+
+`func (o *ProvisionCertificateOutput) SetTargetName(v string)`
+
+SetTargetName sets TargetName field to given value.
+
+### HasTargetName
+
+`func (o *ProvisionCertificateOutput) HasTargetName() bool`
+
+HasTargetName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

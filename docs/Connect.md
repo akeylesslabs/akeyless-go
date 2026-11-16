@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Helper** | Pointer to **map[string]interface{}** |  | [optional] 
-**RcFileOverride** | Pointer to **string** | used to override .akeyless-connect.rc in tests | [optional] 
+**RcFileOverride** | Pointer to **string** | test only: the rc file to read instead of the home rc files | [optional] 
 **BastionCtrlPath** | Pointer to **string** | Deprecated. use bastion-ctrl-path | [optional] 
 **BastionCtrlPort** | Pointer to **string** | Deprecated. use sra-ctrl-port | [optional] 
 **BastionCtrlProto** | Pointer to **string** | Deprecated. use sra-ctrl-proto | [optional] 

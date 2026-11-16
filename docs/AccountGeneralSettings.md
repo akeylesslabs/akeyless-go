@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **PasswordScore** | Pointer to [**PasswordScoreSetting**](PasswordScoreSetting.md) |  | [optional] 
 **PersonalFolderGlobalMapping** | Pointer to [**PersonalFolderGlobalMappingSettings**](PersonalFolderGlobalMappingSettings.md) |  | [optional] 
 **ProtectItemsByDefault** | Pointer to **bool** |  | [optional] 
+**RequireAuthMethodOwner** | Pointer to **bool** | RequireAuthMethodOwner makes an owner mandatory when creating auth methods and on general-info updates of auth methods (see AuthMethodGeneralInfoUpdateModes). | [optional] 
 **RotationSecretMaxInterval** | Pointer to [**RotationSecretMaxInterval**](RotationSecretMaxInterval.md) |  | [optional] 
 **SharingPolicy** | Pointer to [**SharingPolicyInfo**](SharingPolicyInfo.md) |  | [optional] 
 
@@ -857,6 +858,31 @@ SetProtectItemsByDefault sets ProtectItemsByDefault field to given value.
 `func (o *AccountGeneralSettings) HasProtectItemsByDefault() bool`
 
 HasProtectItemsByDefault returns a boolean if a field has been set.
+
+### GetRequireAuthMethodOwner
+
+`func (o *AccountGeneralSettings) GetRequireAuthMethodOwner() bool`
+
+GetRequireAuthMethodOwner returns the RequireAuthMethodOwner field if non-nil, zero value otherwise.
+
+### GetRequireAuthMethodOwnerOk
+
+`func (o *AccountGeneralSettings) GetRequireAuthMethodOwnerOk() (*bool, bool)`
+
+GetRequireAuthMethodOwnerOk returns a tuple with the RequireAuthMethodOwner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireAuthMethodOwner
+
+`func (o *AccountGeneralSettings) SetRequireAuthMethodOwner(v bool)`
+
+SetRequireAuthMethodOwner sets RequireAuthMethodOwner field to given value.
+
+### HasRequireAuthMethodOwner
+
+`func (o *AccountGeneralSettings) HasRequireAuthMethodOwner() bool`
+
+HasRequireAuthMethodOwner returns a boolean if a field has been set.
 
 ### GetRotationSecretMaxInterval
 

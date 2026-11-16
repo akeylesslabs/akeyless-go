@@ -40,6 +40,7 @@ type AuthMethod struct {
 	ExpirationEvents []AuthExpirationEvent `json:"expiration_events,omitempty"`
 	IsApproved *bool `json:"is_approved,omitempty"`
 	ModificationDate *time.Time `json:"modification_date,omitempty"`
+	Owner *string `json:"owner,omitempty"`
 	UidExpirationEvents []UidExpirationEvent `json:"uid_expiration_events,omitempty"`
 }
 
@@ -636,6 +637,38 @@ func (o *AuthMethod) SetModificationDate(v time.Time) {
 	o.ModificationDate = &v
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *AuthMethod) GetOwner() string {
+	if o == nil || IsNil(o.Owner) {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethod) GetOwnerOk() (*string, bool) {
+	if o == nil || IsNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *AuthMethod) HasOwner() bool {
+	if o != nil && !IsNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *AuthMethod) SetOwner(v string) {
+	o.Owner = &v
+}
+
 // GetUidExpirationEvents returns the UidExpirationEvents field value if set, zero value otherwise.
 func (o *AuthMethod) GetUidExpirationEvents() []UidExpirationEvent {
 	if o == nil || IsNil(o.UidExpirationEvents) {
@@ -731,6 +764,9 @@ func (o AuthMethod) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ModificationDate) {
 		toSerialize["modification_date"] = o.ModificationDate
+	}
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
 	}
 	if !IsNil(o.UidExpirationEvents) {
 		toSerialize["uid_expiration_events"] = o.UidExpirationEvents

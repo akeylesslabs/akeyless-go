@@ -54,6 +54,8 @@ type AuthMethodCreateSAML struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+	Owner *string `json:"owner,omitempty"`
 	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Access ID of the API Key auth method the IdP uses as the SCIM bearer
@@ -613,6 +615,38 @@ func (o *AuthMethodCreateSAML) SetName(v string) {
 	o.Name = v
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *AuthMethodCreateSAML) GetOwner() string {
+	if o == nil || IsNil(o.Owner) {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateSAML) GetOwnerOk() (*string, bool) {
+	if o == nil || IsNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *AuthMethodCreateSAML) HasOwner() bool {
+	if o != nil && !IsNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *AuthMethodCreateSAML) SetOwner(v string) {
+	o.Owner = &v
+}
+
 // GetProductType returns the ProductType field value if set, zero value otherwise.
 func (o *AuthMethodCreateSAML) GetProductType() []string {
 	if o == nil || IsNil(o.ProductType) {
@@ -981,6 +1015,9 @@ func (o AuthMethodCreateSAML) ToMap() (map[string]interface{}, error) {
 		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
+	}
 	if !IsNil(o.ProductType) {
 		toSerialize["product-type"] = o.ProductType
 	}

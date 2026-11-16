@@ -46,6 +46,8 @@ type CreateAuthMethod struct {
 	JwtTtl *int64 `json:"jwt-ttl,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+	Owner NullableString `json:"owner,omitempty"`
 	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -462,6 +464,48 @@ func (o *CreateAuthMethod) SetName(v string) {
 	o.Name = v
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateAuthMethod) GetOwner() string {
+	if o == nil || IsNil(o.Owner.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Owner.Get()
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateAuthMethod) GetOwnerOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Owner.Get(), o.Owner.IsSet()
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *CreateAuthMethod) HasOwner() bool {
+	if o != nil && o.Owner.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given NullableString and assigns it to the Owner field.
+func (o *CreateAuthMethod) SetOwner(v string) {
+	o.Owner.Set(&v)
+}
+// SetOwnerNil sets the value for Owner to be an explicit nil
+func (o *CreateAuthMethod) SetOwnerNil() {
+	o.Owner.Set(nil)
+}
+
+// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+func (o *CreateAuthMethod) UnsetOwner() {
+	o.Owner.Unset()
+}
+
 // GetProductType returns the ProductType field value if set, zero value otherwise.
 func (o *CreateAuthMethod) GetProductType() []string {
 	if o == nil || IsNil(o.ProductType) {
@@ -602,6 +646,9 @@ func (o CreateAuthMethod) ToMap() (map[string]interface{}, error) {
 		toSerialize["jwt-ttl"] = o.JwtTtl
 	}
 	toSerialize["name"] = o.Name
+	if o.Owner.IsSet() {
+		toSerialize["owner"] = o.Owner.Get()
+	}
 	if !IsNil(o.ProductType) {
 		toSerialize["product-type"] = o.ProductType
 	}

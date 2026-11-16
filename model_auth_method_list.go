@@ -24,6 +24,8 @@ type AuthMethodList struct {
 	Filter *string `json:"filter,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Filter by auth method owner or part of it
+	Owner *string `json:"owner,omitempty"`
 	// Next page reference
 	PaginationToken *string `json:"pagination-token,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
@@ -117,6 +119,38 @@ func (o *AuthMethodList) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *AuthMethodList) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *AuthMethodList) GetOwner() string {
+	if o == nil || IsNil(o.Owner) {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodList) GetOwnerOk() (*string, bool) {
+	if o == nil || IsNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *AuthMethodList) HasOwner() bool {
+	if o != nil && !IsNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *AuthMethodList) SetOwner(v string) {
+	o.Owner = &v
 }
 
 // GetPaginationToken returns the PaginationToken field value if set, zero value otherwise.
@@ -262,6 +296,9 @@ func (o AuthMethodList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
 	}
 	if !IsNil(o.PaginationToken) {
 		toSerialize["pagination-token"] = o.PaginationToken

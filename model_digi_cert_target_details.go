@@ -24,6 +24,8 @@ type DigiCertTargetDetails struct {
 	AccountKeyPem *string `json:"account_key_pem,omitempty"`
 	// ACME Account URL (returned after registration with DigiCert ACME). Used to retrieve existing account instead of re-registering.
 	AccountUrl *string `json:"account_url,omitempty"`
+	// DigiCert CertCentral API key (X-DC-DEVKEY). Optional. When set, renewals look up the DigiCert order of the existing certificate and ask DigiCert to reissue it (free, uses the existing order) instead of placing a new, billable ACME order.
+	CertCentralApiKey *string `json:"cert_central_api_key,omitempty"`
 	// ACMEChallengeType defines ACME challenge type for Let's Encrypt
 	ChallengeType *string `json:"challenge_type,omitempty"`
 	DigicertDirectoryType *string `json:"digicert_directory_type,omitempty"`
@@ -135,6 +137,38 @@ func (o *DigiCertTargetDetails) HasAccountUrl() bool {
 // SetAccountUrl gets a reference to the given string and assigns it to the AccountUrl field.
 func (o *DigiCertTargetDetails) SetAccountUrl(v string) {
 	o.AccountUrl = &v
+}
+
+// GetCertCentralApiKey returns the CertCentralApiKey field value if set, zero value otherwise.
+func (o *DigiCertTargetDetails) GetCertCentralApiKey() string {
+	if o == nil || IsNil(o.CertCentralApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.CertCentralApiKey
+}
+
+// GetCertCentralApiKeyOk returns a tuple with the CertCentralApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DigiCertTargetDetails) GetCertCentralApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.CertCentralApiKey) {
+		return nil, false
+	}
+	return o.CertCentralApiKey, true
+}
+
+// HasCertCentralApiKey returns a boolean if a field has been set.
+func (o *DigiCertTargetDetails) HasCertCentralApiKey() bool {
+	if o != nil && !IsNil(o.CertCentralApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertCentralApiKey gets a reference to the given string and assigns it to the CertCentralApiKey field.
+func (o *DigiCertTargetDetails) SetCertCentralApiKey(v string) {
+	o.CertCentralApiKey = &v
 }
 
 // GetChallengeType returns the ChallengeType field value if set, zero value otherwise.
@@ -664,6 +698,9 @@ func (o DigiCertTargetDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccountUrl) {
 		toSerialize["account_url"] = o.AccountUrl
+	}
+	if !IsNil(o.CertCentralApiKey) {
+		toSerialize["cert_central_api_key"] = o.CertCentralApiKey
 	}
 	if !IsNil(o.ChallengeType) {
 		toSerialize["challenge_type"] = o.ChallengeType

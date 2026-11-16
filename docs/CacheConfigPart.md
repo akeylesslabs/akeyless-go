@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CacheEnable** | Pointer to **bool** |  | [optional] 
 **CacheEncryptionKey** | Pointer to **string** |  | [optional] 
+**CacheItemMetadata** | Pointer to **bool** |  | [optional] 
 **CacheTtl** | Pointer to **string** |  | [optional] 
 **NewProactiveCacheEnable** | Pointer to **bool** |  | [optional] 
 **ProactiveCacheDumpInterval** | Pointer to **string** |  | [optional] 
@@ -80,6 +81,31 @@ SetCacheEncryptionKey sets CacheEncryptionKey field to given value.
 `func (o *CacheConfigPart) HasCacheEncryptionKey() bool`
 
 HasCacheEncryptionKey returns a boolean if a field has been set.
+
+### GetCacheItemMetadata
+
+`func (o *CacheConfigPart) GetCacheItemMetadata() bool`
+
+GetCacheItemMetadata returns the CacheItemMetadata field if non-nil, zero value otherwise.
+
+### GetCacheItemMetadataOk
+
+`func (o *CacheConfigPart) GetCacheItemMetadataOk() (*bool, bool)`
+
+GetCacheItemMetadataOk returns a tuple with the CacheItemMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCacheItemMetadata
+
+`func (o *CacheConfigPart) SetCacheItemMetadata(v bool)`
+
+SetCacheItemMetadata sets CacheItemMetadata field to given value.
+
+### HasCacheItemMetadata
+
+`func (o *CacheConfigPart) HasCacheItemMetadata() bool`
+
+HasCacheItemMetadata returns a boolean if a field has been set.
 
 ### GetCacheTtl
 

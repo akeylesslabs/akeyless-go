@@ -32,6 +32,8 @@ type Auth struct {
 	AdminEmail *string `json:"admin-email,omitempty"`
 	// Password (relevant only for access-type=password)
 	AdminPassword *string `json:"admin-password,omitempty"`
+	// Route the interactive OIDC/SAML browser login through the Gateway (gateway-url) instead of Akeyless Auth (relevant only for access-type=saml/oidc)
+	AuthViaGateway *bool `json:"auth-via-gateway,omitempty"`
 	// Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.
 	AzureCloud *string `json:"azure-cloud,omitempty"`
 	// Certificate challenge encoded in base64. (relevant only for access-type=cert)
@@ -311,6 +313,38 @@ func (o *Auth) HasAdminPassword() bool {
 // SetAdminPassword gets a reference to the given string and assigns it to the AdminPassword field.
 func (o *Auth) SetAdminPassword(v string) {
 	o.AdminPassword = &v
+}
+
+// GetAuthViaGateway returns the AuthViaGateway field value if set, zero value otherwise.
+func (o *Auth) GetAuthViaGateway() bool {
+	if o == nil || IsNil(o.AuthViaGateway) {
+		var ret bool
+		return ret
+	}
+	return *o.AuthViaGateway
+}
+
+// GetAuthViaGatewayOk returns a tuple with the AuthViaGateway field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Auth) GetAuthViaGatewayOk() (*bool, bool) {
+	if o == nil || IsNil(o.AuthViaGateway) {
+		return nil, false
+	}
+	return o.AuthViaGateway, true
+}
+
+// HasAuthViaGateway returns a boolean if a field has been set.
+func (o *Auth) HasAuthViaGateway() bool {
+	if o != nil && !IsNil(o.AuthViaGateway) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthViaGateway gets a reference to the given bool and assigns it to the AuthViaGateway field.
+func (o *Auth) SetAuthViaGateway(v bool) {
+	o.AuthViaGateway = &v
 }
 
 // GetAzureCloud returns the AzureCloud field value if set, zero value otherwise.
@@ -1172,6 +1206,9 @@ func (o Auth) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdminPassword) {
 		toSerialize["admin-password"] = o.AdminPassword
+	}
+	if !IsNil(o.AuthViaGateway) {
+		toSerialize["auth-via-gateway"] = o.AuthViaGateway
 	}
 	if !IsNil(o.AzureCloud) {
 		toSerialize["azure-cloud"] = o.AzureCloud

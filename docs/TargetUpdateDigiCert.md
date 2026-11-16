@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AcmeChallenge** | Pointer to **string** | ACME challenge type. Options: [dns] | [optional] [default to "dns"]
+**CertCentralApiKey** | Pointer to **string** | DigiCert CertCentral API key. Optional - when set, certificate renewal reissues the existing DigiCert order instead of placing a new (billable) order. DNS challenge and production endpoints only. On target update pass it again to keep it, omitting it clears it | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
 **DigicertUrl** | Pointer to **string** | DigiCert ACME endpoint selector. Options: [us-production/eu-production/us-demo/eu-demo] | [optional] [default to "us-production"]
@@ -76,6 +77,31 @@ SetAcmeChallenge sets AcmeChallenge field to given value.
 `func (o *TargetUpdateDigiCert) HasAcmeChallenge() bool`
 
 HasAcmeChallenge returns a boolean if a field has been set.
+
+### GetCertCentralApiKey
+
+`func (o *TargetUpdateDigiCert) GetCertCentralApiKey() string`
+
+GetCertCentralApiKey returns the CertCentralApiKey field if non-nil, zero value otherwise.
+
+### GetCertCentralApiKeyOk
+
+`func (o *TargetUpdateDigiCert) GetCertCentralApiKeyOk() (*string, bool)`
+
+GetCertCentralApiKeyOk returns a tuple with the CertCentralApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertCentralApiKey
+
+`func (o *TargetUpdateDigiCert) SetCertCentralApiKey(v string)`
+
+SetCertCentralApiKey sets CertCentralApiKey field to given value.
+
+### HasCertCentralApiKey
+
+`func (o *TargetUpdateDigiCert) HasCertCentralApiKey() bool`
+
+HasCertCentralApiKey returns a boolean if a field has been set.
 
 ### GetDeleteProtection
 

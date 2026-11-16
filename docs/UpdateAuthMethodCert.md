@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
+**Owner** | Pointer to **NullableString** | Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it | [optional] 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **RequireCrlDp** | Pointer to **bool** | Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication. | [optional] 
 **RevokedCertIds** | Pointer to **[]string** | A list of revoked cert ids | [optional] 
@@ -571,6 +572,41 @@ SetNewName sets NewName field to given value.
 
 HasNewName returns a boolean if a field has been set.
 
+### GetOwner
+
+`func (o *UpdateAuthMethodCert) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *UpdateAuthMethodCert) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *UpdateAuthMethodCert) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *UpdateAuthMethodCert) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
+
+### SetOwnerNil
+
+`func (o *UpdateAuthMethodCert) SetOwnerNil(b bool)`
+
+ SetOwnerNil sets the value for Owner to be an explicit nil
+
+### UnsetOwner
+`func (o *UpdateAuthMethodCert) UnsetOwner()`
+
+UnsetOwner ensures that no value is present for Owner, not even an explicit nil
 ### GetProductType
 
 `func (o *UpdateAuthMethodCert) GetProductType() []string`

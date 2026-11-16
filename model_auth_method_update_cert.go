@@ -64,6 +64,8 @@ type AuthMethodUpdateCert struct {
 	Name string `json:"name"`
 	// Auth Method new name
 	NewName *string `json:"new-name,omitempty"`
+	// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+	Owner *string `json:"owner,omitempty"`
 	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// Require certificate CRL distribution points (CDP) and enforce CRL validation during authentication.
@@ -775,6 +777,38 @@ func (o *AuthMethodUpdateCert) SetNewName(v string) {
 	o.NewName = &v
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *AuthMethodUpdateCert) GetOwner() string {
+	if o == nil || IsNil(o.Owner) {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodUpdateCert) GetOwnerOk() (*string, bool) {
+	if o == nil || IsNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *AuthMethodUpdateCert) HasOwner() bool {
+	if o != nil && !IsNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *AuthMethodUpdateCert) SetOwner(v string) {
+	o.Owner = &v
+}
+
 // GetProductType returns the ProductType field value if set, zero value otherwise.
 func (o *AuthMethodUpdateCert) GetProductType() []string {
 	if o == nil || IsNil(o.ProductType) {
@@ -1029,6 +1063,9 @@ func (o AuthMethodUpdateCert) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.NewName) {
 		toSerialize["new-name"] = o.NewName
+	}
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
 	}
 	if !IsNil(o.ProductType) {
 		toSerialize["product-type"] = o.ProductType

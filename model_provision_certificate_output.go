@@ -23,8 +23,13 @@ var _ MappedNullable = &ProvisionCertificateOutput{}
 type ProvisionCertificateOutput struct {
 	FailMessage *string `json:"FailMessage,omitempty"`
 	SuccessMessage *string `json:"SuccessMessage,omitempty"`
+	// AssociationID and TargetName identify the row of a Results entry.
+	AssociationId *string `json:"association_id,omitempty"`
 	HostNames []string `json:"host_names,omitempty"`
 	ProvisionedAt *time.Time `json:"provisioned_at,omitempty"`
+	// Results holds one entry per row. It is set only when several rows were handled; the top-level fields then summarize them.
+	Results []ProvisionCertificateOutput `json:"results,omitempty"`
+	TargetName *string `json:"target_name,omitempty"`
 }
 
 // NewProvisionCertificateOutput instantiates a new ProvisionCertificateOutput object
@@ -108,6 +113,38 @@ func (o *ProvisionCertificateOutput) SetSuccessMessage(v string) {
 	o.SuccessMessage = &v
 }
 
+// GetAssociationId returns the AssociationId field value if set, zero value otherwise.
+func (o *ProvisionCertificateOutput) GetAssociationId() string {
+	if o == nil || IsNil(o.AssociationId) {
+		var ret string
+		return ret
+	}
+	return *o.AssociationId
+}
+
+// GetAssociationIdOk returns a tuple with the AssociationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisionCertificateOutput) GetAssociationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AssociationId) {
+		return nil, false
+	}
+	return o.AssociationId, true
+}
+
+// HasAssociationId returns a boolean if a field has been set.
+func (o *ProvisionCertificateOutput) HasAssociationId() bool {
+	if o != nil && !IsNil(o.AssociationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssociationId gets a reference to the given string and assigns it to the AssociationId field.
+func (o *ProvisionCertificateOutput) SetAssociationId(v string) {
+	o.AssociationId = &v
+}
+
 // GetHostNames returns the HostNames field value if set, zero value otherwise.
 func (o *ProvisionCertificateOutput) GetHostNames() []string {
 	if o == nil || IsNil(o.HostNames) {
@@ -172,6 +209,70 @@ func (o *ProvisionCertificateOutput) SetProvisionedAt(v time.Time) {
 	o.ProvisionedAt = &v
 }
 
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *ProvisionCertificateOutput) GetResults() []ProvisionCertificateOutput {
+	if o == nil || IsNil(o.Results) {
+		var ret []ProvisionCertificateOutput
+		return ret
+	}
+	return o.Results
+}
+
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisionCertificateOutput) GetResultsOk() ([]ProvisionCertificateOutput, bool) {
+	if o == nil || IsNil(o.Results) {
+		return nil, false
+	}
+	return o.Results, true
+}
+
+// HasResults returns a boolean if a field has been set.
+func (o *ProvisionCertificateOutput) HasResults() bool {
+	if o != nil && !IsNil(o.Results) {
+		return true
+	}
+
+	return false
+}
+
+// SetResults gets a reference to the given []ProvisionCertificateOutput and assigns it to the Results field.
+func (o *ProvisionCertificateOutput) SetResults(v []ProvisionCertificateOutput) {
+	o.Results = v
+}
+
+// GetTargetName returns the TargetName field value if set, zero value otherwise.
+func (o *ProvisionCertificateOutput) GetTargetName() string {
+	if o == nil || IsNil(o.TargetName) {
+		var ret string
+		return ret
+	}
+	return *o.TargetName
+}
+
+// GetTargetNameOk returns a tuple with the TargetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProvisionCertificateOutput) GetTargetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TargetName) {
+		return nil, false
+	}
+	return o.TargetName, true
+}
+
+// HasTargetName returns a boolean if a field has been set.
+func (o *ProvisionCertificateOutput) HasTargetName() bool {
+	if o != nil && !IsNil(o.TargetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetName gets a reference to the given string and assigns it to the TargetName field.
+func (o *ProvisionCertificateOutput) SetTargetName(v string) {
+	o.TargetName = &v
+}
+
 func (o ProvisionCertificateOutput) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -188,11 +289,20 @@ func (o ProvisionCertificateOutput) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SuccessMessage) {
 		toSerialize["SuccessMessage"] = o.SuccessMessage
 	}
+	if !IsNil(o.AssociationId) {
+		toSerialize["association_id"] = o.AssociationId
+	}
 	if !IsNil(o.HostNames) {
 		toSerialize["host_names"] = o.HostNames
 	}
 	if !IsNil(o.ProvisionedAt) {
 		toSerialize["provisioned_at"] = o.ProvisionedAt
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	if !IsNil(o.TargetName) {
+		toSerialize["target_name"] = o.TargetName
 	}
 	return toSerialize, nil
 }

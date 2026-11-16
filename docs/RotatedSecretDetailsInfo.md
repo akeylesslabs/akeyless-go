@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **MaxVersions** | Pointer to **int64** |  | [optional] 
 **NextAutoRotateType** | Pointer to **string** |  | [optional] 
 **NumberOfVersionsToSave** | Pointer to **int32** |  | [optional] 
+**PublicKey** | Pointer to **string** | PublicKey is the OpenSSH authorized_keys line for an SSH rotated secret. Stored in the clear on item attributes so describe-item can return it under list permission. | [optional] 
 **PublicKeyRemotePath** | Pointer to **string** |  | [optional] 
 **RotationHour** | Pointer to **int32** |  | [optional] 
 **RotationIntervalMin** | Pointer to **bool** |  | [optional] 
@@ -424,6 +425,31 @@ SetNumberOfVersionsToSave sets NumberOfVersionsToSave field to given value.
 `func (o *RotatedSecretDetailsInfo) HasNumberOfVersionsToSave() bool`
 
 HasNumberOfVersionsToSave returns a boolean if a field has been set.
+
+### GetPublicKey
+
+`func (o *RotatedSecretDetailsInfo) GetPublicKey() string`
+
+GetPublicKey returns the PublicKey field if non-nil, zero value otherwise.
+
+### GetPublicKeyOk
+
+`func (o *RotatedSecretDetailsInfo) GetPublicKeyOk() (*string, bool)`
+
+GetPublicKeyOk returns a tuple with the PublicKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicKey
+
+`func (o *RotatedSecretDetailsInfo) SetPublicKey(v string)`
+
+SetPublicKey sets PublicKey field to given value.
+
+### HasPublicKey
+
+`func (o *RotatedSecretDetailsInfo) HasPublicKey() bool`
+
+HasPublicKey returns a boolean if a field has been set.
 
 ### GetPublicKeyRemotePath
 

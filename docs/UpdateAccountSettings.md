@@ -48,6 +48,7 @@ Name | Type | Description | Notes
 **PasswordLength** | Pointer to **int64** | Password length between 5 - to 50 characters | [optional] 
 **Phone** | Pointer to **string** | Phone number | [optional] 
 **PostalCode** | Pointer to **string** | Postal code | [optional] 
+**RequireAuthMethodOwner** | Pointer to **string** | Require an owner when creating or updating authentication methods [true/false] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **UidToken** | Pointer to **string** | The universal identity token, Required only for universal_identity authentication | [optional] 
 **UsageEventEnable** | Pointer to **string** | Enable event for objects that have not been used or changed [true/false] | [optional] 
@@ -1176,6 +1177,31 @@ SetPostalCode sets PostalCode field to given value.
 `func (o *UpdateAccountSettings) HasPostalCode() bool`
 
 HasPostalCode returns a boolean if a field has been set.
+
+### GetRequireAuthMethodOwner
+
+`func (o *UpdateAccountSettings) GetRequireAuthMethodOwner() string`
+
+GetRequireAuthMethodOwner returns the RequireAuthMethodOwner field if non-nil, zero value otherwise.
+
+### GetRequireAuthMethodOwnerOk
+
+`func (o *UpdateAccountSettings) GetRequireAuthMethodOwnerOk() (*string, bool)`
+
+GetRequireAuthMethodOwnerOk returns a tuple with the RequireAuthMethodOwner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireAuthMethodOwner
+
+`func (o *UpdateAccountSettings) SetRequireAuthMethodOwner(v string)`
+
+SetRequireAuthMethodOwner sets RequireAuthMethodOwner field to given value.
+
+### HasRequireAuthMethodOwner
+
+`func (o *UpdateAccountSettings) HasRequireAuthMethodOwner() bool`
+
+HasRequireAuthMethodOwner returns a boolean if a field has been set.
 
 ### GetToken
 

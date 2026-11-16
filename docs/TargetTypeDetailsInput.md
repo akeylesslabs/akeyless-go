@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AlicloudTargetDetails** | Pointer to [**AliCloudTargetDetails**](AliCloudTargetDetails.md) |  | [optional] 
 **AnthropicTargetDetails** | Pointer to [**AnthropicTargetDetails**](AnthropicTargetDetails.md) |  | [optional] 
 **ArtifactoryTargetDetails** | Pointer to [**ArtifactoryTargetDetails**](ArtifactoryTargetDetails.md) |  | [optional] 
+**AtlassianTargetDetails** | Pointer to [**AtlassianTargetDetails**](AtlassianTargetDetails.md) |  | [optional] 
 **AwsTargetDetails** | Pointer to [**AWSTargetDetails**](AWSTargetDetails.md) |  | [optional] 
 **AzureTargetDetails** | Pointer to [**AzureTargetDetails**](AzureTargetDetails.md) |  | [optional] 
 **BedrockTargetDetails** | Pointer to [**BedrockTargetDetails**](BedrockTargetDetails.md) |  | [optional] 
@@ -168,6 +169,31 @@ SetArtifactoryTargetDetails sets ArtifactoryTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasArtifactoryTargetDetails() bool`
 
 HasArtifactoryTargetDetails returns a boolean if a field has been set.
+
+### GetAtlassianTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetAtlassianTargetDetails() AtlassianTargetDetails`
+
+GetAtlassianTargetDetails returns the AtlassianTargetDetails field if non-nil, zero value otherwise.
+
+### GetAtlassianTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetAtlassianTargetDetailsOk() (*AtlassianTargetDetails, bool)`
+
+GetAtlassianTargetDetailsOk returns a tuple with the AtlassianTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAtlassianTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetAtlassianTargetDetails(v AtlassianTargetDetails)`
+
+SetAtlassianTargetDetails sets AtlassianTargetDetails field to given value.
+
+### HasAtlassianTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasAtlassianTargetDetails() bool`
+
+HasAtlassianTargetDetails returns a boolean if a field has been set.
 
 ### GetAwsTargetDetails
 

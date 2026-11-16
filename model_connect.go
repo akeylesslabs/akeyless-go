@@ -21,7 +21,7 @@ var _ MappedNullable = &Connect{}
 // Connect Connect is a command that performs secure remote access
 type Connect struct {
 	Helper map[string]interface{} `json:"Helper,omitempty"`
-	// used to override .akeyless-connect.rc in tests
+	// test only: the rc file to read instead of the home rc files
 	RcFileOverride *string `json:"RcFileOverride,omitempty"`
 	// Deprecated. use bastion-ctrl-path
 	BastionCtrlPath *string `json:"bastion-ctrl-path,omitempty"`

@@ -108,6 +108,8 @@ type UpdateAccountSettings struct {
 	Phone *string `json:"phone,omitempty"`
 	// Postal code
 	PostalCode *string `json:"postal-code,omitempty"`
+	// Require an owner when creating or updating authentication methods [true/false]
+	RequireAuthMethodOwner *string `json:"require-auth-method-owner,omitempty"`
 	// Authentication token (see `/auth` and `/configure`)
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
@@ -1560,6 +1562,38 @@ func (o *UpdateAccountSettings) SetPostalCode(v string) {
 	o.PostalCode = &v
 }
 
+// GetRequireAuthMethodOwner returns the RequireAuthMethodOwner field value if set, zero value otherwise.
+func (o *UpdateAccountSettings) GetRequireAuthMethodOwner() string {
+	if o == nil || IsNil(o.RequireAuthMethodOwner) {
+		var ret string
+		return ret
+	}
+	return *o.RequireAuthMethodOwner
+}
+
+// GetRequireAuthMethodOwnerOk returns a tuple with the RequireAuthMethodOwner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UpdateAccountSettings) GetRequireAuthMethodOwnerOk() (*string, bool) {
+	if o == nil || IsNil(o.RequireAuthMethodOwner) {
+		return nil, false
+	}
+	return o.RequireAuthMethodOwner, true
+}
+
+// HasRequireAuthMethodOwner returns a boolean if a field has been set.
+func (o *UpdateAccountSettings) HasRequireAuthMethodOwner() bool {
+	if o != nil && !IsNil(o.RequireAuthMethodOwner) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireAuthMethodOwner gets a reference to the given string and assigns it to the RequireAuthMethodOwner field.
+func (o *UpdateAccountSettings) SetRequireAuthMethodOwner(v string) {
+	o.RequireAuthMethodOwner = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *UpdateAccountSettings) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -1989,6 +2023,9 @@ func (o UpdateAccountSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PostalCode) {
 		toSerialize["postal-code"] = o.PostalCode
+	}
+	if !IsNil(o.RequireAuthMethodOwner) {
+		toSerialize["require-auth-method-owner"] = o.RequireAuthMethodOwner
 	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token

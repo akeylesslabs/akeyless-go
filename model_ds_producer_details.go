@@ -21,6 +21,8 @@ var _ MappedNullable = &DSProducerDetails{}
 
 // DSProducerDetails struct for DSProducerDetails
 type DSProducerDetails struct {
+	AccessKey *string `json:"access_key,omitempty"`
+	AccessKeyId *string `json:"access_key_id,omitempty"`
 	AccessTokenManagerId *string `json:"access_token_manager_id,omitempty"`
 	AclRules []string `json:"acl_rules,omitempty"`
 	Active *bool `json:"active,omitempty"`
@@ -46,6 +48,17 @@ type DSProducerDetails struct {
 	AerospikeSslConnectionCertificate *string `json:"aerospike_ssl_connection_certificate,omitempty"`
 	AerospikeSslConnectionMode *bool `json:"aerospike_ssl_connection_mode,omitempty"`
 	AgenticRules *AgenticRules `json:"agentic_rules,omitempty"`
+	AlicloudAccessMode *string `json:"alicloud_access_mode,omitempty"`
+	AlicloudExternalId *string `json:"alicloud_external_id,omitempty"`
+	AlicloudRoleArns *string `json:"alicloud_role_arns,omitempty"`
+	AlicloudSessionPolicy *string `json:"alicloud_session_policy,omitempty"`
+	AlicloudSetSourceIdentity *bool `json:"alicloud_set_source_identity,omitempty"`
+	AlicloudSite *string `json:"alicloud_site,omitempty"`
+	AlicloudUserConsoleAccess *bool `json:"alicloud_user_console_access,omitempty"`
+	AlicloudUserGroups *string `json:"alicloud_user_groups,omitempty"`
+	AlicloudUserInlinePolicy *string `json:"alicloud_user_inline_policy,omitempty"`
+	AlicloudUserPolicies *string `json:"alicloud_user_policies,omitempty"`
+	AlicloudUserProgrammaticAccess *bool `json:"alicloud_user_programmatic_access,omitempty"`
 	ApiKey *string `json:"api_key,omitempty"`
 	ApiKeyId *string `json:"api_key_id,omitempty"`
 	ArtifactoryAdminApikey *string `json:"artifactory_admin_apikey,omitempty"`
@@ -300,6 +313,7 @@ type DSProducerDetails struct {
 	RdpFixedUserNameSubClaimKey *string `json:"rdp_fixed_user_name_sub_claim_key,omitempty"`
 	RedirectUris []string `json:"redirect_uris,omitempty"`
 	RedshiftCreationStatements *string `json:"redshift_creation_statements,omitempty"`
+	Region *string `json:"region,omitempty"`
 	RestrictedScopes []string `json:"restricted_scopes,omitempty"`
 	RevokeSyncUrl *string `json:"revoke_sync_url,omitempty"`
 	RotateSyncUrl *string `json:"rotate_sync_url,omitempty"`
@@ -370,6 +384,70 @@ func NewDSProducerDetails() *DSProducerDetails {
 func NewDSProducerDetailsWithDefaults() *DSProducerDetails {
 	this := DSProducerDetails{}
 	return &this
+}
+
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAccessKey() string {
+	if o == nil || IsNil(o.AccessKey) {
+		var ret string
+		return ret
+	}
+	return *o.AccessKey
+}
+
+// GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAccessKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessKey) {
+		return nil, false
+	}
+	return o.AccessKey, true
+}
+
+// HasAccessKey returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAccessKey() bool {
+	if o != nil && !IsNil(o.AccessKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
+func (o *DSProducerDetails) SetAccessKey(v string) {
+	o.AccessKey = &v
+}
+
+// GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAccessKeyId() string {
+	if o == nil || IsNil(o.AccessKeyId) {
+		var ret string
+		return ret
+	}
+	return *o.AccessKeyId
+}
+
+// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAccessKeyIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AccessKeyId) {
+		return nil, false
+	}
+	return o.AccessKeyId, true
+}
+
+// HasAccessKeyId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAccessKeyId() bool {
+	if o != nil && !IsNil(o.AccessKeyId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessKeyId gets a reference to the given string and assigns it to the AccessKeyId field.
+func (o *DSProducerDetails) SetAccessKeyId(v string) {
+	o.AccessKeyId = &v
 }
 
 // GetAccessTokenManagerId returns the AccessTokenManagerId field value if set, zero value otherwise.
@@ -1170,6 +1248,358 @@ func (o *DSProducerDetails) HasAgenticRules() bool {
 // SetAgenticRules gets a reference to the given AgenticRules and assigns it to the AgenticRules field.
 func (o *DSProducerDetails) SetAgenticRules(v AgenticRules) {
 	o.AgenticRules = &v
+}
+
+// GetAlicloudAccessMode returns the AlicloudAccessMode field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudAccessMode() string {
+	if o == nil || IsNil(o.AlicloudAccessMode) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudAccessMode
+}
+
+// GetAlicloudAccessModeOk returns a tuple with the AlicloudAccessMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudAccessModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudAccessMode) {
+		return nil, false
+	}
+	return o.AlicloudAccessMode, true
+}
+
+// HasAlicloudAccessMode returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudAccessMode() bool {
+	if o != nil && !IsNil(o.AlicloudAccessMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudAccessMode gets a reference to the given string and assigns it to the AlicloudAccessMode field.
+func (o *DSProducerDetails) SetAlicloudAccessMode(v string) {
+	o.AlicloudAccessMode = &v
+}
+
+// GetAlicloudExternalId returns the AlicloudExternalId field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudExternalId() string {
+	if o == nil || IsNil(o.AlicloudExternalId) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudExternalId
+}
+
+// GetAlicloudExternalIdOk returns a tuple with the AlicloudExternalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudExternalIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudExternalId) {
+		return nil, false
+	}
+	return o.AlicloudExternalId, true
+}
+
+// HasAlicloudExternalId returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudExternalId() bool {
+	if o != nil && !IsNil(o.AlicloudExternalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudExternalId gets a reference to the given string and assigns it to the AlicloudExternalId field.
+func (o *DSProducerDetails) SetAlicloudExternalId(v string) {
+	o.AlicloudExternalId = &v
+}
+
+// GetAlicloudRoleArns returns the AlicloudRoleArns field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudRoleArns() string {
+	if o == nil || IsNil(o.AlicloudRoleArns) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudRoleArns
+}
+
+// GetAlicloudRoleArnsOk returns a tuple with the AlicloudRoleArns field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudRoleArnsOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudRoleArns) {
+		return nil, false
+	}
+	return o.AlicloudRoleArns, true
+}
+
+// HasAlicloudRoleArns returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudRoleArns() bool {
+	if o != nil && !IsNil(o.AlicloudRoleArns) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudRoleArns gets a reference to the given string and assigns it to the AlicloudRoleArns field.
+func (o *DSProducerDetails) SetAlicloudRoleArns(v string) {
+	o.AlicloudRoleArns = &v
+}
+
+// GetAlicloudSessionPolicy returns the AlicloudSessionPolicy field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudSessionPolicy() string {
+	if o == nil || IsNil(o.AlicloudSessionPolicy) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudSessionPolicy
+}
+
+// GetAlicloudSessionPolicyOk returns a tuple with the AlicloudSessionPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudSessionPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudSessionPolicy) {
+		return nil, false
+	}
+	return o.AlicloudSessionPolicy, true
+}
+
+// HasAlicloudSessionPolicy returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudSessionPolicy() bool {
+	if o != nil && !IsNil(o.AlicloudSessionPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudSessionPolicy gets a reference to the given string and assigns it to the AlicloudSessionPolicy field.
+func (o *DSProducerDetails) SetAlicloudSessionPolicy(v string) {
+	o.AlicloudSessionPolicy = &v
+}
+
+// GetAlicloudSetSourceIdentity returns the AlicloudSetSourceIdentity field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudSetSourceIdentity() bool {
+	if o == nil || IsNil(o.AlicloudSetSourceIdentity) {
+		var ret bool
+		return ret
+	}
+	return *o.AlicloudSetSourceIdentity
+}
+
+// GetAlicloudSetSourceIdentityOk returns a tuple with the AlicloudSetSourceIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudSetSourceIdentityOk() (*bool, bool) {
+	if o == nil || IsNil(o.AlicloudSetSourceIdentity) {
+		return nil, false
+	}
+	return o.AlicloudSetSourceIdentity, true
+}
+
+// HasAlicloudSetSourceIdentity returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudSetSourceIdentity() bool {
+	if o != nil && !IsNil(o.AlicloudSetSourceIdentity) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudSetSourceIdentity gets a reference to the given bool and assigns it to the AlicloudSetSourceIdentity field.
+func (o *DSProducerDetails) SetAlicloudSetSourceIdentity(v bool) {
+	o.AlicloudSetSourceIdentity = &v
+}
+
+// GetAlicloudSite returns the AlicloudSite field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudSite() string {
+	if o == nil || IsNil(o.AlicloudSite) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudSite
+}
+
+// GetAlicloudSiteOk returns a tuple with the AlicloudSite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudSiteOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudSite) {
+		return nil, false
+	}
+	return o.AlicloudSite, true
+}
+
+// HasAlicloudSite returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudSite() bool {
+	if o != nil && !IsNil(o.AlicloudSite) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudSite gets a reference to the given string and assigns it to the AlicloudSite field.
+func (o *DSProducerDetails) SetAlicloudSite(v string) {
+	o.AlicloudSite = &v
+}
+
+// GetAlicloudUserConsoleAccess returns the AlicloudUserConsoleAccess field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudUserConsoleAccess() bool {
+	if o == nil || IsNil(o.AlicloudUserConsoleAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.AlicloudUserConsoleAccess
+}
+
+// GetAlicloudUserConsoleAccessOk returns a tuple with the AlicloudUserConsoleAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudUserConsoleAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.AlicloudUserConsoleAccess) {
+		return nil, false
+	}
+	return o.AlicloudUserConsoleAccess, true
+}
+
+// HasAlicloudUserConsoleAccess returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudUserConsoleAccess() bool {
+	if o != nil && !IsNil(o.AlicloudUserConsoleAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudUserConsoleAccess gets a reference to the given bool and assigns it to the AlicloudUserConsoleAccess field.
+func (o *DSProducerDetails) SetAlicloudUserConsoleAccess(v bool) {
+	o.AlicloudUserConsoleAccess = &v
+}
+
+// GetAlicloudUserGroups returns the AlicloudUserGroups field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudUserGroups() string {
+	if o == nil || IsNil(o.AlicloudUserGroups) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudUserGroups
+}
+
+// GetAlicloudUserGroupsOk returns a tuple with the AlicloudUserGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudUserGroupsOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudUserGroups) {
+		return nil, false
+	}
+	return o.AlicloudUserGroups, true
+}
+
+// HasAlicloudUserGroups returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudUserGroups() bool {
+	if o != nil && !IsNil(o.AlicloudUserGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudUserGroups gets a reference to the given string and assigns it to the AlicloudUserGroups field.
+func (o *DSProducerDetails) SetAlicloudUserGroups(v string) {
+	o.AlicloudUserGroups = &v
+}
+
+// GetAlicloudUserInlinePolicy returns the AlicloudUserInlinePolicy field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudUserInlinePolicy() string {
+	if o == nil || IsNil(o.AlicloudUserInlinePolicy) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudUserInlinePolicy
+}
+
+// GetAlicloudUserInlinePolicyOk returns a tuple with the AlicloudUserInlinePolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudUserInlinePolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudUserInlinePolicy) {
+		return nil, false
+	}
+	return o.AlicloudUserInlinePolicy, true
+}
+
+// HasAlicloudUserInlinePolicy returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudUserInlinePolicy() bool {
+	if o != nil && !IsNil(o.AlicloudUserInlinePolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudUserInlinePolicy gets a reference to the given string and assigns it to the AlicloudUserInlinePolicy field.
+func (o *DSProducerDetails) SetAlicloudUserInlinePolicy(v string) {
+	o.AlicloudUserInlinePolicy = &v
+}
+
+// GetAlicloudUserPolicies returns the AlicloudUserPolicies field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudUserPolicies() string {
+	if o == nil || IsNil(o.AlicloudUserPolicies) {
+		var ret string
+		return ret
+	}
+	return *o.AlicloudUserPolicies
+}
+
+// GetAlicloudUserPoliciesOk returns a tuple with the AlicloudUserPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudUserPoliciesOk() (*string, bool) {
+	if o == nil || IsNil(o.AlicloudUserPolicies) {
+		return nil, false
+	}
+	return o.AlicloudUserPolicies, true
+}
+
+// HasAlicloudUserPolicies returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudUserPolicies() bool {
+	if o != nil && !IsNil(o.AlicloudUserPolicies) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudUserPolicies gets a reference to the given string and assigns it to the AlicloudUserPolicies field.
+func (o *DSProducerDetails) SetAlicloudUserPolicies(v string) {
+	o.AlicloudUserPolicies = &v
+}
+
+// GetAlicloudUserProgrammaticAccess returns the AlicloudUserProgrammaticAccess field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetAlicloudUserProgrammaticAccess() bool {
+	if o == nil || IsNil(o.AlicloudUserProgrammaticAccess) {
+		var ret bool
+		return ret
+	}
+	return *o.AlicloudUserProgrammaticAccess
+}
+
+// GetAlicloudUserProgrammaticAccessOk returns a tuple with the AlicloudUserProgrammaticAccess field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetAlicloudUserProgrammaticAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.AlicloudUserProgrammaticAccess) {
+		return nil, false
+	}
+	return o.AlicloudUserProgrammaticAccess, true
+}
+
+// HasAlicloudUserProgrammaticAccess returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasAlicloudUserProgrammaticAccess() bool {
+	if o != nil && !IsNil(o.AlicloudUserProgrammaticAccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlicloudUserProgrammaticAccess gets a reference to the given bool and assigns it to the AlicloudUserProgrammaticAccess field.
+func (o *DSProducerDetails) SetAlicloudUserProgrammaticAccess(v bool) {
+	o.AlicloudUserProgrammaticAccess = &v
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
@@ -8468,6 +8898,38 @@ func (o *DSProducerDetails) SetRedshiftCreationStatements(v string) {
 	o.RedshiftCreationStatements = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *DSProducerDetails) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DSProducerDetails) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *DSProducerDetails) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *DSProducerDetails) SetRegion(v string) {
+	o.Region = &v
+}
+
 // GetRestrictedScopes returns the RestrictedScopes field value if set, zero value otherwise.
 func (o *DSProducerDetails) GetRestrictedScopes() []string {
 	if o == nil || IsNil(o.RestrictedScopes) {
@@ -9950,6 +10412,12 @@ func (o DSProducerDetails) MarshalJSON() ([]byte, error) {
 
 func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessKey) {
+		toSerialize["access_key"] = o.AccessKey
+	}
+	if !IsNil(o.AccessKeyId) {
+		toSerialize["access_key_id"] = o.AccessKeyId
+	}
 	if !IsNil(o.AccessTokenManagerId) {
 		toSerialize["access_token_manager_id"] = o.AccessTokenManagerId
 	}
@@ -10024,6 +10492,39 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AgenticRules) {
 		toSerialize["agentic_rules"] = o.AgenticRules
+	}
+	if !IsNil(o.AlicloudAccessMode) {
+		toSerialize["alicloud_access_mode"] = o.AlicloudAccessMode
+	}
+	if !IsNil(o.AlicloudExternalId) {
+		toSerialize["alicloud_external_id"] = o.AlicloudExternalId
+	}
+	if !IsNil(o.AlicloudRoleArns) {
+		toSerialize["alicloud_role_arns"] = o.AlicloudRoleArns
+	}
+	if !IsNil(o.AlicloudSessionPolicy) {
+		toSerialize["alicloud_session_policy"] = o.AlicloudSessionPolicy
+	}
+	if !IsNil(o.AlicloudSetSourceIdentity) {
+		toSerialize["alicloud_set_source_identity"] = o.AlicloudSetSourceIdentity
+	}
+	if !IsNil(o.AlicloudSite) {
+		toSerialize["alicloud_site"] = o.AlicloudSite
+	}
+	if !IsNil(o.AlicloudUserConsoleAccess) {
+		toSerialize["alicloud_user_console_access"] = o.AlicloudUserConsoleAccess
+	}
+	if !IsNil(o.AlicloudUserGroups) {
+		toSerialize["alicloud_user_groups"] = o.AlicloudUserGroups
+	}
+	if !IsNil(o.AlicloudUserInlinePolicy) {
+		toSerialize["alicloud_user_inline_policy"] = o.AlicloudUserInlinePolicy
+	}
+	if !IsNil(o.AlicloudUserPolicies) {
+		toSerialize["alicloud_user_policies"] = o.AlicloudUserPolicies
+	}
+	if !IsNil(o.AlicloudUserProgrammaticAccess) {
+		toSerialize["alicloud_user_programmatic_access"] = o.AlicloudUserProgrammaticAccess
 	}
 	if !IsNil(o.ApiKey) {
 		toSerialize["api_key"] = o.ApiKey
@@ -10708,6 +11209,9 @@ func (o DSProducerDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RedshiftCreationStatements) {
 		toSerialize["redshift_creation_statements"] = o.RedshiftCreationStatements
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	if !IsNil(o.RestrictedScopes) {
 		toSerialize["restricted_scopes"] = o.RestrictedScopes

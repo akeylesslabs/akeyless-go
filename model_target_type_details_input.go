@@ -24,6 +24,7 @@ type TargetTypeDetailsInput struct {
 	AlicloudTargetDetails *AliCloudTargetDetails `json:"alicloud_target_details,omitempty"`
 	AnthropicTargetDetails *AnthropicTargetDetails `json:"anthropic_target_details,omitempty"`
 	ArtifactoryTargetDetails *ArtifactoryTargetDetails `json:"artifactory_target_details,omitempty"`
+	AtlassianTargetDetails *AtlassianTargetDetails `json:"atlassian_target_details,omitempty"`
 	AwsTargetDetails *AWSTargetDetails `json:"aws_target_details,omitempty"`
 	AzureTargetDetails *AzureTargetDetails `json:"azure_target_details,omitempty"`
 	BedrockTargetDetails *BedrockTargetDetails `json:"bedrock_target_details,omitempty"`
@@ -210,6 +211,38 @@ func (o *TargetTypeDetailsInput) HasArtifactoryTargetDetails() bool {
 // SetArtifactoryTargetDetails gets a reference to the given ArtifactoryTargetDetails and assigns it to the ArtifactoryTargetDetails field.
 func (o *TargetTypeDetailsInput) SetArtifactoryTargetDetails(v ArtifactoryTargetDetails) {
 	o.ArtifactoryTargetDetails = &v
+}
+
+// GetAtlassianTargetDetails returns the AtlassianTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetAtlassianTargetDetails() AtlassianTargetDetails {
+	if o == nil || IsNil(o.AtlassianTargetDetails) {
+		var ret AtlassianTargetDetails
+		return ret
+	}
+	return *o.AtlassianTargetDetails
+}
+
+// GetAtlassianTargetDetailsOk returns a tuple with the AtlassianTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetAtlassianTargetDetailsOk() (*AtlassianTargetDetails, bool) {
+	if o == nil || IsNil(o.AtlassianTargetDetails) {
+		return nil, false
+	}
+	return o.AtlassianTargetDetails, true
+}
+
+// HasAtlassianTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasAtlassianTargetDetails() bool {
+	if o != nil && !IsNil(o.AtlassianTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetAtlassianTargetDetails gets a reference to the given AtlassianTargetDetails and assigns it to the AtlassianTargetDetails field.
+func (o *TargetTypeDetailsInput) SetAtlassianTargetDetails(v AtlassianTargetDetails) {
+	o.AtlassianTargetDetails = &v
 }
 
 // GetAwsTargetDetails returns the AwsTargetDetails field value if set, zero value otherwise.
@@ -1545,6 +1578,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ArtifactoryTargetDetails) {
 		toSerialize["artifactory_target_details"] = o.ArtifactoryTargetDetails
+	}
+	if !IsNil(o.AtlassianTargetDetails) {
+		toSerialize["atlassian_target_details"] = o.AtlassianTargetDetails
 	}
 	if !IsNil(o.AwsTargetDetails) {
 		toSerialize["aws_target_details"] = o.AwsTargetDetails

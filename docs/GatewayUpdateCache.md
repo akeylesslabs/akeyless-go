@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BackupInterval** | Pointer to **string** | Secure backup interval in minutes. To ensure service continuity in case of power cycle and network outage secrets will be backed up periodically per backup interval | [optional] [default to "1"]
+**CacheItemMetadata** | Pointer to **string** | Serve item metadata (describe-item and classic key details) from an on-demand cache, refreshed after the minimum fetching interval [true/false] | [optional] 
 **EnableCache** | Pointer to **string** | Enable cache [true/false] | [optional] 
 **EnableProactive** | Pointer to **string** | Enable proactive caching [true/false] | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
@@ -56,6 +57,31 @@ SetBackupInterval sets BackupInterval field to given value.
 `func (o *GatewayUpdateCache) HasBackupInterval() bool`
 
 HasBackupInterval returns a boolean if a field has been set.
+
+### GetCacheItemMetadata
+
+`func (o *GatewayUpdateCache) GetCacheItemMetadata() string`
+
+GetCacheItemMetadata returns the CacheItemMetadata field if non-nil, zero value otherwise.
+
+### GetCacheItemMetadataOk
+
+`func (o *GatewayUpdateCache) GetCacheItemMetadataOk() (*string, bool)`
+
+GetCacheItemMetadataOk returns a tuple with the CacheItemMetadata field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCacheItemMetadata
+
+`func (o *GatewayUpdateCache) SetCacheItemMetadata(v string)`
+
+SetCacheItemMetadata sets CacheItemMetadata field to given value.
+
+### HasCacheItemMetadata
+
+`func (o *GatewayUpdateCache) HasCacheItemMetadata() bool`
+
+HasCacheItemMetadata returns a boolean if a field has been set.
 
 ### GetEnableCache
 

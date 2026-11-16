@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccountKeyPem** | Pointer to **string** | ACME Account Private Key (PEM-encoded). Supports ECDSA (P-256, P-384, P-521), RSA (2048+), and Ed25519. Auto-generated as ECDSA P-256 during first certificate issuance bootstrap. Stored encrypted, required for certificate operations and revocation. | [optional] 
 **AccountUrl** | Pointer to **string** | ACME Account URL (returned after registration with DigiCert ACME). Used to retrieve existing account instead of re-registering. | [optional] 
+**CertCentralApiKey** | Pointer to **string** | DigiCert CertCentral API key (X-DC-DEVKEY). Optional. When set, renewals look up the DigiCert order of the existing certificate and ask DigiCert to reissue it (free, uses the existing order) instead of placing a new, billable ACME order. | [optional] 
 **ChallengeType** | Pointer to **string** | ACMEChallengeType defines ACME challenge type for Let&#39;s Encrypt | [optional] 
 **DigicertDirectoryType** | Pointer to **string** |  | [optional] 
 **DnsPropagationWait** | Pointer to **int64** | A Duration represents the elapsed time between two instants as an int64 nanosecond count. The representation limits the largest representable duration to approximately 290 years. | [optional] 
@@ -91,6 +92,31 @@ SetAccountUrl sets AccountUrl field to given value.
 `func (o *DigiCertTargetDetails) HasAccountUrl() bool`
 
 HasAccountUrl returns a boolean if a field has been set.
+
+### GetCertCentralApiKey
+
+`func (o *DigiCertTargetDetails) GetCertCentralApiKey() string`
+
+GetCertCentralApiKey returns the CertCentralApiKey field if non-nil, zero value otherwise.
+
+### GetCertCentralApiKeyOk
+
+`func (o *DigiCertTargetDetails) GetCertCentralApiKeyOk() (*string, bool)`
+
+GetCertCentralApiKeyOk returns a tuple with the CertCentralApiKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertCentralApiKey
+
+`func (o *DigiCertTargetDetails) SetCertCentralApiKey(v string)`
+
+SetCertCentralApiKey sets CertCentralApiKey field to given value.
+
+### HasCertCentralApiKey
+
+`func (o *DigiCertTargetDetails) HasCertCentralApiKey() bool`
+
+HasCertCentralApiKey returns a boolean if a field has been set.
 
 ### GetChallengeType
 

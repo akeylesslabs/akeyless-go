@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
+**Owner** | Pointer to **string** | Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it | [optional] 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **ScimBearerAccessId** | Pointer to **string** | Access ID of the API Key auth method the IdP uses as the SCIM bearer | [optional] 
 **ScimEnabled** | Pointer to **string** | Enable SCIM provisioning for this auth method [true/false] | [optional] 
@@ -444,6 +445,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOwner
+
+`func (o *AuthMethodCreateSAML) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *AuthMethodCreateSAML) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *AuthMethodCreateSAML) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *AuthMethodCreateSAML) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 ### GetProductType
 

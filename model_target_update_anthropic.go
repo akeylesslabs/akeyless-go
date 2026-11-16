@@ -54,6 +54,20 @@ type TargetUpdateAnthropic struct {
 	Token *string `json:"token,omitempty"`
 	// The universal identity token, Required only for universal_identity authentication
 	UidToken *string `json:"uid-token,omitempty"`
+	// Use the Gateway's cloud identity (Anthropic Workload Identity Federation) instead of an API key
+	UseGwCloudIdentity *bool `json:"use-gw-cloud-identity,omitempty"`
+	// Identifier URI (api://<app-id>) of the Entra app registration for the Claude API audience, required with the azure source
+	WifAzureAudience *string `json:"wif-azure-audience,omitempty"`
+	// Federation rule ID (fdrl_...), required with use-gw-cloud-identity
+	WifFederationRuleId *string `json:"wif-federation-rule-id,omitempty"`
+	// Where the Gateway reads its identity token: file (default), gcp, aws or azure
+	WifIdentityTokenSource *string `json:"wif-identity-token-source,omitempty"`
+	// Anthropic organization ID (UUID), required with use-gw-cloud-identity
+	WifOrganizationId *string `json:"wif-organization-id,omitempty"`
+	// Claude service account ID (svac_...), required with use-gw-cloud-identity
+	WifServiceAccountId *string `json:"wif-service-account-id,omitempty"`
+	// Workspace ID (wrkspc_...), needed only when the federation rule covers more than one workspace
+	WifWorkspaceId *string `json:"wif-workspace-id,omitempty"`
 }
 
 type _TargetUpdateAnthropic TargetUpdateAnthropic
@@ -596,6 +610,230 @@ func (o *TargetUpdateAnthropic) SetUidToken(v string) {
 	o.UidToken = &v
 }
 
+// GetUseGwCloudIdentity returns the UseGwCloudIdentity field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetUseGwCloudIdentity() bool {
+	if o == nil || IsNil(o.UseGwCloudIdentity) {
+		var ret bool
+		return ret
+	}
+	return *o.UseGwCloudIdentity
+}
+
+// GetUseGwCloudIdentityOk returns a tuple with the UseGwCloudIdentity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetUseGwCloudIdentityOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseGwCloudIdentity) {
+		return nil, false
+	}
+	return o.UseGwCloudIdentity, true
+}
+
+// HasUseGwCloudIdentity returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasUseGwCloudIdentity() bool {
+	if o != nil && !IsNil(o.UseGwCloudIdentity) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseGwCloudIdentity gets a reference to the given bool and assigns it to the UseGwCloudIdentity field.
+func (o *TargetUpdateAnthropic) SetUseGwCloudIdentity(v bool) {
+	o.UseGwCloudIdentity = &v
+}
+
+// GetWifAzureAudience returns the WifAzureAudience field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetWifAzureAudience() string {
+	if o == nil || IsNil(o.WifAzureAudience) {
+		var ret string
+		return ret
+	}
+	return *o.WifAzureAudience
+}
+
+// GetWifAzureAudienceOk returns a tuple with the WifAzureAudience field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetWifAzureAudienceOk() (*string, bool) {
+	if o == nil || IsNil(o.WifAzureAudience) {
+		return nil, false
+	}
+	return o.WifAzureAudience, true
+}
+
+// HasWifAzureAudience returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasWifAzureAudience() bool {
+	if o != nil && !IsNil(o.WifAzureAudience) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifAzureAudience gets a reference to the given string and assigns it to the WifAzureAudience field.
+func (o *TargetUpdateAnthropic) SetWifAzureAudience(v string) {
+	o.WifAzureAudience = &v
+}
+
+// GetWifFederationRuleId returns the WifFederationRuleId field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetWifFederationRuleId() string {
+	if o == nil || IsNil(o.WifFederationRuleId) {
+		var ret string
+		return ret
+	}
+	return *o.WifFederationRuleId
+}
+
+// GetWifFederationRuleIdOk returns a tuple with the WifFederationRuleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetWifFederationRuleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WifFederationRuleId) {
+		return nil, false
+	}
+	return o.WifFederationRuleId, true
+}
+
+// HasWifFederationRuleId returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasWifFederationRuleId() bool {
+	if o != nil && !IsNil(o.WifFederationRuleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifFederationRuleId gets a reference to the given string and assigns it to the WifFederationRuleId field.
+func (o *TargetUpdateAnthropic) SetWifFederationRuleId(v string) {
+	o.WifFederationRuleId = &v
+}
+
+// GetWifIdentityTokenSource returns the WifIdentityTokenSource field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetWifIdentityTokenSource() string {
+	if o == nil || IsNil(o.WifIdentityTokenSource) {
+		var ret string
+		return ret
+	}
+	return *o.WifIdentityTokenSource
+}
+
+// GetWifIdentityTokenSourceOk returns a tuple with the WifIdentityTokenSource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetWifIdentityTokenSourceOk() (*string, bool) {
+	if o == nil || IsNil(o.WifIdentityTokenSource) {
+		return nil, false
+	}
+	return o.WifIdentityTokenSource, true
+}
+
+// HasWifIdentityTokenSource returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasWifIdentityTokenSource() bool {
+	if o != nil && !IsNil(o.WifIdentityTokenSource) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifIdentityTokenSource gets a reference to the given string and assigns it to the WifIdentityTokenSource field.
+func (o *TargetUpdateAnthropic) SetWifIdentityTokenSource(v string) {
+	o.WifIdentityTokenSource = &v
+}
+
+// GetWifOrganizationId returns the WifOrganizationId field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetWifOrganizationId() string {
+	if o == nil || IsNil(o.WifOrganizationId) {
+		var ret string
+		return ret
+	}
+	return *o.WifOrganizationId
+}
+
+// GetWifOrganizationIdOk returns a tuple with the WifOrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetWifOrganizationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WifOrganizationId) {
+		return nil, false
+	}
+	return o.WifOrganizationId, true
+}
+
+// HasWifOrganizationId returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasWifOrganizationId() bool {
+	if o != nil && !IsNil(o.WifOrganizationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifOrganizationId gets a reference to the given string and assigns it to the WifOrganizationId field.
+func (o *TargetUpdateAnthropic) SetWifOrganizationId(v string) {
+	o.WifOrganizationId = &v
+}
+
+// GetWifServiceAccountId returns the WifServiceAccountId field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetWifServiceAccountId() string {
+	if o == nil || IsNil(o.WifServiceAccountId) {
+		var ret string
+		return ret
+	}
+	return *o.WifServiceAccountId
+}
+
+// GetWifServiceAccountIdOk returns a tuple with the WifServiceAccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetWifServiceAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WifServiceAccountId) {
+		return nil, false
+	}
+	return o.WifServiceAccountId, true
+}
+
+// HasWifServiceAccountId returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasWifServiceAccountId() bool {
+	if o != nil && !IsNil(o.WifServiceAccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifServiceAccountId gets a reference to the given string and assigns it to the WifServiceAccountId field.
+func (o *TargetUpdateAnthropic) SetWifServiceAccountId(v string) {
+	o.WifServiceAccountId = &v
+}
+
+// GetWifWorkspaceId returns the WifWorkspaceId field value if set, zero value otherwise.
+func (o *TargetUpdateAnthropic) GetWifWorkspaceId() string {
+	if o == nil || IsNil(o.WifWorkspaceId) {
+		var ret string
+		return ret
+	}
+	return *o.WifWorkspaceId
+}
+
+// GetWifWorkspaceIdOk returns a tuple with the WifWorkspaceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateAnthropic) GetWifWorkspaceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WifWorkspaceId) {
+		return nil, false
+	}
+	return o.WifWorkspaceId, true
+}
+
+// HasWifWorkspaceId returns a boolean if a field has been set.
+func (o *TargetUpdateAnthropic) HasWifWorkspaceId() bool {
+	if o != nil && !IsNil(o.WifWorkspaceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWifWorkspaceId gets a reference to the given string and assigns it to the WifWorkspaceId field.
+func (o *TargetUpdateAnthropic) SetWifWorkspaceId(v string) {
+	o.WifWorkspaceId = &v
+}
+
 func (o TargetUpdateAnthropic) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -651,6 +889,27 @@ func (o TargetUpdateAnthropic) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UidToken) {
 		toSerialize["uid-token"] = o.UidToken
+	}
+	if !IsNil(o.UseGwCloudIdentity) {
+		toSerialize["use-gw-cloud-identity"] = o.UseGwCloudIdentity
+	}
+	if !IsNil(o.WifAzureAudience) {
+		toSerialize["wif-azure-audience"] = o.WifAzureAudience
+	}
+	if !IsNil(o.WifFederationRuleId) {
+		toSerialize["wif-federation-rule-id"] = o.WifFederationRuleId
+	}
+	if !IsNil(o.WifIdentityTokenSource) {
+		toSerialize["wif-identity-token-source"] = o.WifIdentityTokenSource
+	}
+	if !IsNil(o.WifOrganizationId) {
+		toSerialize["wif-organization-id"] = o.WifOrganizationId
+	}
+	if !IsNil(o.WifServiceAccountId) {
+		toSerialize["wif-service-account-id"] = o.WifServiceAccountId
+	}
+	if !IsNil(o.WifWorkspaceId) {
+		toSerialize["wif-workspace-id"] = o.WifWorkspaceId
 	}
 	return toSerialize, nil
 }

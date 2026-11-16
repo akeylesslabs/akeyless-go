@@ -141,6 +141,7 @@ Method | HTTP request | Description
 [**Detokenize**](V2Api.md#Detokenize) | **Post** /detokenize | 
 [**DetokenizeBatch**](V2Api.md#DetokenizeBatch) | **Post** /detokenize-batch | 
 [**DynamicSecretCreateAerospike**](V2Api.md#DynamicSecretCreateAerospike) | **Post** /dynamic-secret-create-aerospike | 
+[**DynamicSecretCreateAliCloud**](V2Api.md#DynamicSecretCreateAliCloud) | **Post** /dynamic-secret-create-alicloud | 
 [**DynamicSecretCreateArtifactory**](V2Api.md#DynamicSecretCreateArtifactory) | **Post** /dynamic-secret-create-artifactory | 
 [**DynamicSecretCreateAws**](V2Api.md#DynamicSecretCreateAws) | **Post** /dynamic-secret-create-aws | 
 [**DynamicSecretCreateAzure**](V2Api.md#DynamicSecretCreateAzure) | **Post** /dynamic-secret-create-azure | 
@@ -177,6 +178,7 @@ Method | HTTP request | Description
 [**DynamicSecretTmpCredsGet**](V2Api.md#DynamicSecretTmpCredsGet) | **Post** /dynamic-secret-tmp-creds-get | 
 [**DynamicSecretTmpCredsUpdate**](V2Api.md#DynamicSecretTmpCredsUpdate) | **Post** /dynamic-secret-tmp-creds-update | 
 [**DynamicSecretUpdateAerospike**](V2Api.md#DynamicSecretUpdateAerospike) | **Post** /dynamic-secret-update-aerospike | 
+[**DynamicSecretUpdateAliCloud**](V2Api.md#DynamicSecretUpdateAliCloud) | **Post** /dynamic-secret-update-alicloud | 
 [**DynamicSecretUpdateArtifactory**](V2Api.md#DynamicSecretUpdateArtifactory) | **Post** /dynamic-secret-update-artifactory | 
 [**DynamicSecretUpdateAws**](V2Api.md#DynamicSecretUpdateAws) | **Post** /dynamic-secret-update-aws | 
 [**DynamicSecretUpdateAzure**](V2Api.md#DynamicSecretUpdateAzure) | **Post** /dynamic-secret-update-azure | 
@@ -457,6 +459,10 @@ Method | HTTP request | Description
 [**RotatedSecretDeleteSync**](V2Api.md#RotatedSecretDeleteSync) | **Post** /rotated-secret-delete-sync | 
 [**RotatedSecretGetValue**](V2Api.md#RotatedSecretGetValue) | **Post** /rotated-secret-get-value | 
 [**RotatedSecretList**](V2Api.md#RotatedSecretList) | **Post** /rotated-secret-list | 
+[**RotatedSecretProvisionCreate**](V2Api.md#RotatedSecretProvisionCreate) | **Post** /rotated-secret-provision-create | 
+[**RotatedSecretProvisionDelete**](V2Api.md#RotatedSecretProvisionDelete) | **Post** /rotated-secret-provision-delete | 
+[**RotatedSecretProvisionPush**](V2Api.md#RotatedSecretProvisionPush) | **Post** /rotated-secret-provision-push | 
+[**RotatedSecretProvisionUpdate**](V2Api.md#RotatedSecretProvisionUpdate) | **Post** /rotated-secret-provision-update | 
 [**RotatedSecretSync**](V2Api.md#RotatedSecretSync) | **Post** /rotated-secret-sync | 
 [**RotatedSecretUpdateAerospike**](V2Api.md#RotatedSecretUpdateAerospike) | **Post** /rotated-secret-update-aerospike | 
 [**RotatedSecretUpdateAliCloud**](V2Api.md#RotatedSecretUpdateAliCloud) | **Post** /rotated-secret-update-alicloud | 
@@ -500,6 +506,7 @@ Method | HTTP request | Description
 [**TargetCreateAliCloud**](V2Api.md#TargetCreateAliCloud) | **Post** /target-create-alicloud | 
 [**TargetCreateAnthropic**](V2Api.md#TargetCreateAnthropic) | **Post** /target-create-anthropic | 
 [**TargetCreateArtifactory**](V2Api.md#TargetCreateArtifactory) | **Post** /target-create-artifactory | 
+[**TargetCreateAtlassian**](V2Api.md#TargetCreateAtlassian) | **Post** /target-create-atlassian | 
 [**TargetCreateAws**](V2Api.md#TargetCreateAws) | **Post** /target-create-aws | 
 [**TargetCreateAzure**](V2Api.md#TargetCreateAzure) | **Post** /target-create-azure | 
 [**TargetCreateBedrock**](V2Api.md#TargetCreateBedrock) | **Post** /target-create-bedrock | 
@@ -545,6 +552,7 @@ Method | HTTP request | Description
 [**TargetUpdateAliCloud**](V2Api.md#TargetUpdateAliCloud) | **Post** /target-update-alicloud | 
 [**TargetUpdateAnthropic**](V2Api.md#TargetUpdateAnthropic) | **Post** /target-update-anthropic | 
 [**TargetUpdateArtifactory**](V2Api.md#TargetUpdateArtifactory) | **Post** /target-update-artifactory | 
+[**TargetUpdateAtlassian**](V2Api.md#TargetUpdateAtlassian) | **Post** /target-update-atlassian | 
 [**TargetUpdateAws**](V2Api.md#TargetUpdateAws) | **Post** /target-update-aws | 
 [**TargetUpdateAzure**](V2Api.md#TargetUpdateAzure) | **Post** /target-update-azure | 
 [**TargetUpdateBedrock**](V2Api.md#TargetUpdateBedrock) | **Post** /target-update-bedrock | 
@@ -9443,6 +9451,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DynamicSecretCreateAliCloud
+
+> DynamicSecretCreateOutput DynamicSecretCreateAliCloud(ctx).DynamicSecretCreateAliCloud(dynamicSecretCreateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	dynamicSecretCreateAliCloud := *openapiclient.NewDynamicSecretCreateAliCloud("Name_example") // DynamicSecretCreateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.DynamicSecretCreateAliCloud(context.Background()).DynamicSecretCreateAliCloud(dynamicSecretCreateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretCreateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DynamicSecretCreateAliCloud`: DynamicSecretCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretCreateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretCreateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dynamicSecretCreateAliCloud** | [**DynamicSecretCreateAliCloud**](DynamicSecretCreateAliCloud.md) |  | 
+
+### Return type
+
+[**DynamicSecretCreateOutput**](DynamicSecretCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DynamicSecretCreateArtifactory
 
 > DynamicSecretCreateOutput DynamicSecretCreateArtifactory(ctx).DynamicSecretCreateArtifactory(dynamicSecretCreateArtifactory).Execute()
@@ -11724,6 +11796,70 @@ Other parameters are passed through a pointer to a apiDynamicSecretUpdateAerospi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **dynamicSecretUpdateAerospike** | [**DynamicSecretUpdateAerospike**](DynamicSecretUpdateAerospike.md) |  | 
+
+### Return type
+
+[**DynamicSecretUpdateOutput**](DynamicSecretUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DynamicSecretUpdateAliCloud
+
+> DynamicSecretUpdateOutput DynamicSecretUpdateAliCloud(ctx).DynamicSecretUpdateAliCloud(dynamicSecretUpdateAliCloud).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	dynamicSecretUpdateAliCloud := *openapiclient.NewDynamicSecretUpdateAliCloud("Name_example") // DynamicSecretUpdateAliCloud | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.DynamicSecretUpdateAliCloud(context.Background()).DynamicSecretUpdateAliCloud(dynamicSecretUpdateAliCloud).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.DynamicSecretUpdateAliCloud``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DynamicSecretUpdateAliCloud`: DynamicSecretUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.DynamicSecretUpdateAliCloud`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDynamicSecretUpdateAliCloudRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dynamicSecretUpdateAliCloud** | [**DynamicSecretUpdateAliCloud**](DynamicSecretUpdateAliCloud.md) |  | 
 
 ### Return type
 
@@ -29644,6 +29780,262 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RotatedSecretProvisionCreate
+
+> RotatedSecretProvisionAssocOutput RotatedSecretProvisionCreate(ctx).RotatedSecretProvisionCreate(rotatedSecretProvisionCreate).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretProvisionCreate := *openapiclient.NewRotatedSecretProvisionCreate("Name_example", "TargetName_example") // RotatedSecretProvisionCreate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretProvisionCreate(context.Background()).RotatedSecretProvisionCreate(rotatedSecretProvisionCreate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretProvisionCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretProvisionCreate`: RotatedSecretProvisionAssocOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretProvisionCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretProvisionCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretProvisionCreate** | [**RotatedSecretProvisionCreate**](RotatedSecretProvisionCreate.md) |  | 
+
+### Return type
+
+[**RotatedSecretProvisionAssocOutput**](RotatedSecretProvisionAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretProvisionDelete
+
+> RotatedSecretProvisionAssocOutput RotatedSecretProvisionDelete(ctx).RotatedSecretProvisionDelete(rotatedSecretProvisionDelete).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretProvisionDelete := *openapiclient.NewRotatedSecretProvisionDelete("Name_example", "TargetName_example") // RotatedSecretProvisionDelete | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretProvisionDelete(context.Background()).RotatedSecretProvisionDelete(rotatedSecretProvisionDelete).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretProvisionDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretProvisionDelete`: RotatedSecretProvisionAssocOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretProvisionDelete`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretProvisionDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretProvisionDelete** | [**RotatedSecretProvisionDelete**](RotatedSecretProvisionDelete.md) |  | 
+
+### Return type
+
+[**RotatedSecretProvisionAssocOutput**](RotatedSecretProvisionAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretProvisionPush
+
+> ProvisionSSHRotatedSecretOutput RotatedSecretProvisionPush(ctx).RotatedSecretProvisionPush(rotatedSecretProvisionPush).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretProvisionPush := *openapiclient.NewRotatedSecretProvisionPush("Name_example", "TargetName_example") // RotatedSecretProvisionPush | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretProvisionPush(context.Background()).RotatedSecretProvisionPush(rotatedSecretProvisionPush).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretProvisionPush``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretProvisionPush`: ProvisionSSHRotatedSecretOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretProvisionPush`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretProvisionPushRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretProvisionPush** | [**RotatedSecretProvisionPush**](RotatedSecretProvisionPush.md) |  | 
+
+### Return type
+
+[**ProvisionSSHRotatedSecretOutput**](ProvisionSSHRotatedSecretOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RotatedSecretProvisionUpdate
+
+> RotatedSecretProvisionAssocOutput RotatedSecretProvisionUpdate(ctx).RotatedSecretProvisionUpdate(rotatedSecretProvisionUpdate).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	rotatedSecretProvisionUpdate := *openapiclient.NewRotatedSecretProvisionUpdate("Name_example", "TargetName_example") // RotatedSecretProvisionUpdate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.RotatedSecretProvisionUpdate(context.Background()).RotatedSecretProvisionUpdate(rotatedSecretProvisionUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.RotatedSecretProvisionUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RotatedSecretProvisionUpdate`: RotatedSecretProvisionAssocOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.RotatedSecretProvisionUpdate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRotatedSecretProvisionUpdateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rotatedSecretProvisionUpdate** | [**RotatedSecretProvisionUpdate**](RotatedSecretProvisionUpdate.md) |  | 
+
+### Return type
+
+[**RotatedSecretProvisionAssocOutput**](RotatedSecretProvisionAssocOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RotatedSecretSync
 
 > map[string]interface{} RotatedSecretSync(ctx).RotatedSecretSync(rotatedSecretSync).Execute()
@@ -32377,6 +32769,70 @@ Other parameters are passed through a pointer to a apiTargetCreateArtifactoryReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetCreateArtifactory** | [**TargetCreateArtifactory**](TargetCreateArtifactory.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetCreateAtlassian
+
+> TargetCreateOutput TargetCreateAtlassian(ctx).TargetCreateAtlassian(targetCreateAtlassian).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateAtlassian := *openapiclient.NewTargetCreateAtlassian("Name_example") // TargetCreateAtlassian | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateAtlassian(context.Background()).TargetCreateAtlassian(targetCreateAtlassian).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateAtlassian``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateAtlassian`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateAtlassian`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateAtlassianRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateAtlassian** | [**TargetCreateAtlassian**](TargetCreateAtlassian.md) |  | 
 
 ### Return type
 
@@ -35257,6 +35713,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateArtifactoryReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateArtifactory** | [**TargetUpdateArtifactory**](TargetUpdateArtifactory.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateAtlassian
+
+> TargetUpdateOutput TargetUpdateAtlassian(ctx).TargetUpdateAtlassian(targetUpdateAtlassian).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateAtlassian := *openapiclient.NewTargetUpdateAtlassian("Name_example") // TargetUpdateAtlassian | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateAtlassian(context.Background()).TargetUpdateAtlassian(targetUpdateAtlassian).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateAtlassian``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateAtlassian`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateAtlassian`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateAtlassianRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateAtlassian** | [**TargetUpdateAtlassian**](TargetUpdateAtlassian.md) |  | 
 
 ### Return type
 

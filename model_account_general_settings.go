@@ -58,6 +58,8 @@ type AccountGeneralSettings struct {
 	PasswordScore *PasswordScoreSetting `json:"password_score,omitempty"`
 	PersonalFolderGlobalMapping *PersonalFolderGlobalMappingSettings `json:"personal_folder_global_mapping,omitempty"`
 	ProtectItemsByDefault *bool `json:"protect_items_by_default,omitempty"`
+	// RequireAuthMethodOwner makes an owner mandatory when creating auth methods and on general-info updates of auth methods (see AuthMethodGeneralInfoUpdateModes).
+	RequireAuthMethodOwner *bool `json:"require_auth_method_owner,omitempty"`
 	RotationSecretMaxInterval *RotationSecretMaxInterval `json:"rotation_secret_max_interval,omitempty"`
 	SharingPolicy *SharingPolicyInfo `json:"sharing_policy,omitempty"`
 }
@@ -1103,6 +1105,38 @@ func (o *AccountGeneralSettings) SetProtectItemsByDefault(v bool) {
 	o.ProtectItemsByDefault = &v
 }
 
+// GetRequireAuthMethodOwner returns the RequireAuthMethodOwner field value if set, zero value otherwise.
+func (o *AccountGeneralSettings) GetRequireAuthMethodOwner() bool {
+	if o == nil || IsNil(o.RequireAuthMethodOwner) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireAuthMethodOwner
+}
+
+// GetRequireAuthMethodOwnerOk returns a tuple with the RequireAuthMethodOwner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AccountGeneralSettings) GetRequireAuthMethodOwnerOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireAuthMethodOwner) {
+		return nil, false
+	}
+	return o.RequireAuthMethodOwner, true
+}
+
+// HasRequireAuthMethodOwner returns a boolean if a field has been set.
+func (o *AccountGeneralSettings) HasRequireAuthMethodOwner() bool {
+	if o != nil && !IsNil(o.RequireAuthMethodOwner) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireAuthMethodOwner gets a reference to the given bool and assigns it to the RequireAuthMethodOwner field.
+func (o *AccountGeneralSettings) SetRequireAuthMethodOwner(v bool) {
+	o.RequireAuthMethodOwner = &v
+}
+
 // GetRotationSecretMaxInterval returns the RotationSecretMaxInterval field value if set, zero value otherwise.
 func (o *AccountGeneralSettings) GetRotationSecretMaxInterval() RotationSecretMaxInterval {
 	if o == nil || IsNil(o.RotationSecretMaxInterval) {
@@ -1272,6 +1306,9 @@ func (o AccountGeneralSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProtectItemsByDefault) {
 		toSerialize["protect_items_by_default"] = o.ProtectItemsByDefault
+	}
+	if !IsNil(o.RequireAuthMethodOwner) {
+		toSerialize["require_auth_method_owner"] = o.RequireAuthMethodOwner
 	}
 	if !IsNil(o.RotationSecretMaxInterval) {
 		toSerialize["rotation_secret_max_interval"] = o.RotationSecretMaxInterval

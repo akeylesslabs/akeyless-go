@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **AllowedClientType** | Pointer to **[]string** | limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension] | [optional] 
 **AuditLogsClaims** | Pointer to **[]string** | Subclaims to include in audit logs, e.g \&quot;--audit-logs-claims email --audit-logs-claims username\&quot; | [optional] 
 **BoundIps** | Pointer to **[]string** | A CIDR whitelist with the IPs that the access is restricted to | [optional] 
-**ChildTtlLimit** | Pointer to **int32** | Maximum child token ttl allowed in uid-create-child-token | [optional] [default to 43200]
+**ChildTtlLimit** | Pointer to **int32** | Maximum child token ttl allowed in uid-create-child-token. A struct tag cannot hold a constant, so dft must stay equal to types.UniversalIdentityDefaultTTLChildLimit | [optional] [default to 43200]
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **DenyInheritance** | Pointer to **bool** | Deny from root to create children | [optional] 
 **DenyRotate** | Pointer to **bool** | Deny from the token to rotate | [optional] 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
+**Owner** | Pointer to **string** | Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it | [optional] 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
 **TreeLength** | Pointer to **int32** | Maximum UID tree depth allowed (child of child of ...) | [optional] [default to 200]
@@ -440,6 +441,31 @@ SetNewName sets NewName field to given value.
 `func (o *AuthMethodUpdateUniversalIdentity) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *AuthMethodUpdateUniversalIdentity) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *AuthMethodUpdateUniversalIdentity) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *AuthMethodUpdateUniversalIdentity) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *AuthMethodUpdateUniversalIdentity) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 ### GetProductType
 

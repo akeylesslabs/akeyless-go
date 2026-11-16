@@ -24,6 +24,8 @@ var _ MappedNullable = &TargetUpdateDigiCert{}
 type TargetUpdateDigiCert struct {
 	// ACME challenge type. Options: [dns]
 	AcmeChallenge *string `json:"acme-challenge,omitempty"`
+	// DigiCert CertCentral API key. Optional - when set, certificate renewal reissues the existing DigiCert order instead of placing a new (billable) order. DNS challenge and production endpoints only. On target update pass it again to keep it, omitting it clears it
+	CertCentralApiKey *string `json:"cert-central-api-key,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
@@ -147,6 +149,38 @@ func (o *TargetUpdateDigiCert) HasAcmeChallenge() bool {
 // SetAcmeChallenge gets a reference to the given string and assigns it to the AcmeChallenge field.
 func (o *TargetUpdateDigiCert) SetAcmeChallenge(v string) {
 	o.AcmeChallenge = &v
+}
+
+// GetCertCentralApiKey returns the CertCentralApiKey field value if set, zero value otherwise.
+func (o *TargetUpdateDigiCert) GetCertCentralApiKey() string {
+	if o == nil || IsNil(o.CertCentralApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.CertCentralApiKey
+}
+
+// GetCertCentralApiKeyOk returns a tuple with the CertCentralApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetUpdateDigiCert) GetCertCentralApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.CertCentralApiKey) {
+		return nil, false
+	}
+	return o.CertCentralApiKey, true
+}
+
+// HasCertCentralApiKey returns a boolean if a field has been set.
+func (o *TargetUpdateDigiCert) HasCertCentralApiKey() bool {
+	if o != nil && !IsNil(o.CertCentralApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertCentralApiKey gets a reference to the given string and assigns it to the CertCentralApiKey field.
+func (o *TargetUpdateDigiCert) SetCertCentralApiKey(v string) {
+	o.CertCentralApiKey = &v
 }
 
 // GetDeleteProtection returns the DeleteProtection field value if set, zero value otherwise.
@@ -1009,6 +1043,9 @@ func (o TargetUpdateDigiCert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.AcmeChallenge) {
 		toSerialize["acme-challenge"] = o.AcmeChallenge
+	}
+	if !IsNil(o.CertCentralApiKey) {
+		toSerialize["cert-central-api-key"] = o.CertCentralApiKey
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection

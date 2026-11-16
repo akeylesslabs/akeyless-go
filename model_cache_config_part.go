@@ -22,6 +22,7 @@ var _ MappedNullable = &CacheConfigPart{}
 type CacheConfigPart struct {
 	CacheEnable *bool `json:"cache_enable,omitempty"`
 	CacheEncryptionKey *string `json:"cache_encryption_key,omitempty"`
+	CacheItemMetadata *bool `json:"cache_item_metadata,omitempty"`
 	CacheTtl *string `json:"cache_ttl,omitempty"`
 	NewProactiveCacheEnable *bool `json:"new_proactive_cache_enable,omitempty"`
 	ProactiveCacheDumpInterval *string `json:"proactive_cache_dump_interval,omitempty"`
@@ -108,6 +109,38 @@ func (o *CacheConfigPart) HasCacheEncryptionKey() bool {
 // SetCacheEncryptionKey gets a reference to the given string and assigns it to the CacheEncryptionKey field.
 func (o *CacheConfigPart) SetCacheEncryptionKey(v string) {
 	o.CacheEncryptionKey = &v
+}
+
+// GetCacheItemMetadata returns the CacheItemMetadata field value if set, zero value otherwise.
+func (o *CacheConfigPart) GetCacheItemMetadata() bool {
+	if o == nil || IsNil(o.CacheItemMetadata) {
+		var ret bool
+		return ret
+	}
+	return *o.CacheItemMetadata
+}
+
+// GetCacheItemMetadataOk returns a tuple with the CacheItemMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CacheConfigPart) GetCacheItemMetadataOk() (*bool, bool) {
+	if o == nil || IsNil(o.CacheItemMetadata) {
+		return nil, false
+	}
+	return o.CacheItemMetadata, true
+}
+
+// HasCacheItemMetadata returns a boolean if a field has been set.
+func (o *CacheConfigPart) HasCacheItemMetadata() bool {
+	if o != nil && !IsNil(o.CacheItemMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetCacheItemMetadata gets a reference to the given bool and assigns it to the CacheItemMetadata field.
+func (o *CacheConfigPart) SetCacheItemMetadata(v bool) {
+	o.CacheItemMetadata = &v
 }
 
 // GetCacheTtl returns the CacheTtl field value if set, zero value otherwise.
@@ -285,6 +318,9 @@ func (o CacheConfigPart) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CacheEncryptionKey) {
 		toSerialize["cache_encryption_key"] = o.CacheEncryptionKey
+	}
+	if !IsNil(o.CacheItemMetadata) {
+		toSerialize["cache_item_metadata"] = o.CacheItemMetadata
 	}
 	if !IsNil(o.CacheTtl) {
 		toSerialize["cache_ttl"] = o.CacheTtl

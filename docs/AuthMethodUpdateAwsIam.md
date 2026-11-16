@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **JwtTtl** | Pointer to **int64** | Jwt TTL | [optional] [default to 0]
 **Name** | **string** | Auth Method name | 
 **NewName** | Pointer to **string** | Auth Method new name | [optional] 
+**Owner** | Pointer to **string** | Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it | [optional] 
 **ProductType** | Pointer to **[]string** | Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara] | [optional] 
 **StsUrl** | Pointer to **string** | sts URL | [optional] [default to "https://sts.amazonaws.com"]
 **Token** | Pointer to **string** | Authentication token (see &#x60;/auth&#x60; and &#x60;/configure&#x60;) | [optional] 
@@ -538,6 +539,31 @@ SetNewName sets NewName field to given value.
 `func (o *AuthMethodUpdateAwsIam) HasNewName() bool`
 
 HasNewName returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *AuthMethodUpdateAwsIam) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *AuthMethodUpdateAwsIam) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *AuthMethodUpdateAwsIam) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *AuthMethodUpdateAwsIam) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 ### GetProductType
 

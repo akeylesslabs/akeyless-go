@@ -58,6 +58,8 @@ type AuthMethodCreateKerberos struct {
 	LdapUrl *string `json:"ldap-url,omitempty"`
 	// Auth Method name
 	Name string `json:"name"`
+	// Auth Method owner (free text, up to 255 characters). On update, omit to keep the current owner and pass an empty value to clear it
+	Owner *string `json:"owner,omitempty"`
 	// Choose the relevant product type for the auth method [sm, sra, pm, dp, ca, ara]
 	ProductType []string `json:"product-type,omitempty"`
 	// A list of additional sub claims delimiters (relevant only for SAML, OIDC, OAuth2/JWT)
@@ -864,6 +866,38 @@ func (o *AuthMethodCreateKerberos) SetName(v string) {
 	o.Name = v
 }
 
+// GetOwner returns the Owner field value if set, zero value otherwise.
+func (o *AuthMethodCreateKerberos) GetOwner() string {
+	if o == nil || IsNil(o.Owner) {
+		var ret string
+		return ret
+	}
+	return *o.Owner
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthMethodCreateKerberos) GetOwnerOk() (*string, bool) {
+	if o == nil || IsNil(o.Owner) {
+		return nil, false
+	}
+	return o.Owner, true
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *AuthMethodCreateKerberos) HasOwner() bool {
+	if o != nil && !IsNil(o.Owner) {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given string and assigns it to the Owner field.
+func (o *AuthMethodCreateKerberos) SetOwner(v string) {
+	o.Owner = &v
+}
+
 // GetProductType returns the ProductType field value if set, zero value otherwise.
 func (o *AuthMethodCreateKerberos) GetProductType() []string {
 	if o == nil || IsNil(o.ProductType) {
@@ -1168,6 +1202,9 @@ func (o AuthMethodCreateKerberos) ToMap() (map[string]interface{}, error) {
 		toSerialize["ldap-url"] = o.LdapUrl
 	}
 	toSerialize["name"] = o.Name
+	if !IsNil(o.Owner) {
+		toSerialize["owner"] = o.Owner
+	}
 	if !IsNil(o.ProductType) {
 		toSerialize["product-type"] = o.ProductType
 	}

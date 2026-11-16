@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AccountId** | Pointer to **string** | Account id (relevant only for access-type&#x3D;password where the email address is associated with more than one account) | [optional] 
 **AdminEmail** | Pointer to **string** | Email (relevant only for access-type&#x3D;password) | [optional] 
 **AdminPassword** | Pointer to **string** | Password (relevant only for access-type&#x3D;password) | [optional] 
+**AuthViaGateway** | Pointer to **bool** | Route the interactive OIDC/SAML browser login through the Gateway (gateway-url) instead of Akeyless Auth (relevant only for access-type&#x3D;saml/oidc) | [optional] 
 **AzureCloud** | Pointer to **string** | Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud. | [optional] [default to "AzureCloud"]
 **CertChallenge** | Pointer to **string** | Certificate challenge encoded in base64. (relevant only for access-type&#x3D;cert) | [optional] 
 **CertData** | Pointer to **string** | Certificate data encoded in base64. Used if file was not provided. (relevant only for access-type&#x3D;cert) | [optional] 
@@ -205,6 +206,31 @@ SetAdminPassword sets AdminPassword field to given value.
 `func (o *Auth) HasAdminPassword() bool`
 
 HasAdminPassword returns a boolean if a field has been set.
+
+### GetAuthViaGateway
+
+`func (o *Auth) GetAuthViaGateway() bool`
+
+GetAuthViaGateway returns the AuthViaGateway field if non-nil, zero value otherwise.
+
+### GetAuthViaGatewayOk
+
+`func (o *Auth) GetAuthViaGatewayOk() (*bool, bool)`
+
+GetAuthViaGatewayOk returns a tuple with the AuthViaGateway field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthViaGateway
+
+`func (o *Auth) SetAuthViaGateway(v bool)`
+
+SetAuthViaGateway sets AuthViaGateway field to given value.
+
+### HasAuthViaGateway
+
+`func (o *Auth) HasAuthViaGateway() bool`
+
+HasAuthViaGateway returns a boolean if a field has been set.
 
 ### GetAzureCloud
 

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ExpirationEvents** | Pointer to [**[]AuthExpirationEvent**](AuthExpirationEvent.md) |  | [optional] 
 **IsApproved** | Pointer to **bool** |  | [optional] 
 **ModificationDate** | Pointer to **time.Time** |  | [optional] 
+**Owner** | Pointer to **string** |  | [optional] 
 **UidExpirationEvents** | Pointer to [**[]UidExpirationEvent**](UidExpirationEvent.md) |  | [optional] 
 
 ## Methods
@@ -492,6 +493,31 @@ SetModificationDate sets ModificationDate field to given value.
 `func (o *AuthMethod) HasModificationDate() bool`
 
 HasModificationDate returns a boolean if a field has been set.
+
+### GetOwner
+
+`func (o *AuthMethod) GetOwner() string`
+
+GetOwner returns the Owner field if non-nil, zero value otherwise.
+
+### GetOwnerOk
+
+`func (o *AuthMethod) GetOwnerOk() (*string, bool)`
+
+GetOwnerOk returns a tuple with the Owner field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOwner
+
+`func (o *AuthMethod) SetOwner(v string)`
+
+SetOwner sets Owner field to given value.
+
+### HasOwner
+
+`func (o *AuthMethod) HasOwner() bool`
+
+HasOwner returns a boolean if a field has been set.
 
 ### GetUidExpirationEvents
 

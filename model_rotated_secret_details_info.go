@@ -36,6 +36,8 @@ type RotatedSecretDetailsInfo struct {
 	MaxVersions *int64 `json:"max_versions,omitempty"`
 	NextAutoRotateType *string `json:"next_auto_rotate_type,omitempty"`
 	NumberOfVersionsToSave *int32 `json:"number_of_versions_to_save,omitempty"`
+	// PublicKey is the OpenSSH authorized_keys line for an SSH rotated secret. Stored in the clear on item attributes so describe-item can return it under list permission.
+	PublicKey *string `json:"public_key,omitempty"`
 	PublicKeyRemotePath *string `json:"public_key_remote_path,omitempty"`
 	RotationHour *int32 `json:"rotation_hour,omitempty"`
 	RotationIntervalMin *bool `json:"rotation_interval_min,omitempty"`
@@ -547,6 +549,38 @@ func (o *RotatedSecretDetailsInfo) SetNumberOfVersionsToSave(v int32) {
 	o.NumberOfVersionsToSave = &v
 }
 
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+func (o *RotatedSecretDetailsInfo) GetPublicKey() string {
+	if o == nil || IsNil(o.PublicKey) {
+		var ret string
+		return ret
+	}
+	return *o.PublicKey
+}
+
+// GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RotatedSecretDetailsInfo) GetPublicKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.PublicKey) {
+		return nil, false
+	}
+	return o.PublicKey, true
+}
+
+// HasPublicKey returns a boolean if a field has been set.
+func (o *RotatedSecretDetailsInfo) HasPublicKey() bool {
+	if o != nil && !IsNil(o.PublicKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+func (o *RotatedSecretDetailsInfo) SetPublicKey(v string) {
+	o.PublicKey = &v
+}
+
 // GetPublicKeyRemotePath returns the PublicKeyRemotePath field value if set, zero value otherwise.
 func (o *RotatedSecretDetailsInfo) GetPublicKeyRemotePath() string {
 	if o == nil || IsNil(o.PublicKeyRemotePath) {
@@ -953,6 +987,9 @@ func (o RotatedSecretDetailsInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NumberOfVersionsToSave) {
 		toSerialize["number_of_versions_to_save"] = o.NumberOfVersionsToSave
+	}
+	if !IsNil(o.PublicKey) {
+		toSerialize["public_key"] = o.PublicKey
 	}
 	if !IsNil(o.PublicKeyRemotePath) {
 		toSerialize["public_key_remote_path"] = o.PublicKeyRemotePath

@@ -22,6 +22,8 @@ var _ MappedNullable = &GatewayUpdateCache{}
 type GatewayUpdateCache struct {
 	// Secure backup interval in minutes. To ensure service continuity in case of power cycle and network outage secrets will be backed up periodically per backup interval
 	BackupInterval *string `json:"backup-interval,omitempty"`
+	// Serve item metadata (describe-item and classic key details) from an on-demand cache, refreshed after the minimum fetching interval [true/false]
+	CacheItemMetadata *string `json:"cache-item-metadata,omitempty"`
 	// Enable cache [true/false]
 	EnableCache *string `json:"enable-cache,omitempty"`
 	// Enable proactive caching [true/false]
@@ -101,6 +103,38 @@ func (o *GatewayUpdateCache) HasBackupInterval() bool {
 // SetBackupInterval gets a reference to the given string and assigns it to the BackupInterval field.
 func (o *GatewayUpdateCache) SetBackupInterval(v string) {
 	o.BackupInterval = &v
+}
+
+// GetCacheItemMetadata returns the CacheItemMetadata field value if set, zero value otherwise.
+func (o *GatewayUpdateCache) GetCacheItemMetadata() string {
+	if o == nil || IsNil(o.CacheItemMetadata) {
+		var ret string
+		return ret
+	}
+	return *o.CacheItemMetadata
+}
+
+// GetCacheItemMetadataOk returns a tuple with the CacheItemMetadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GatewayUpdateCache) GetCacheItemMetadataOk() (*string, bool) {
+	if o == nil || IsNil(o.CacheItemMetadata) {
+		return nil, false
+	}
+	return o.CacheItemMetadata, true
+}
+
+// HasCacheItemMetadata returns a boolean if a field has been set.
+func (o *GatewayUpdateCache) HasCacheItemMetadata() bool {
+	if o != nil && !IsNil(o.CacheItemMetadata) {
+		return true
+	}
+
+	return false
+}
+
+// SetCacheItemMetadata gets a reference to the given string and assigns it to the CacheItemMetadata field.
+func (o *GatewayUpdateCache) SetCacheItemMetadata(v string) {
+	o.CacheItemMetadata = &v
 }
 
 // GetEnableCache returns the EnableCache field value if set, zero value otherwise.
@@ -339,6 +373,9 @@ func (o GatewayUpdateCache) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.BackupInterval) {
 		toSerialize["backup-interval"] = o.BackupInterval
+	}
+	if !IsNil(o.CacheItemMetadata) {
+		toSerialize["cache-item-metadata"] = o.CacheItemMetadata
 	}
 	if !IsNil(o.EnableCache) {
 		toSerialize["enable-cache"] = o.EnableCache

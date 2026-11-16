@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AccessKey** | Pointer to **string** |  | [optional] 
+**AccessKeyId** | Pointer to **string** |  | [optional] 
 **AccessTokenManagerId** | Pointer to **string** |  | [optional] 
 **AclRules** | Pointer to **[]string** |  | [optional] 
 **Active** | Pointer to **bool** |  | [optional] 
@@ -29,6 +31,17 @@ Name | Type | Description | Notes
 **AerospikeSslConnectionCertificate** | Pointer to **string** |  | [optional] 
 **AerospikeSslConnectionMode** | Pointer to **bool** |  | [optional] 
 **AgenticRules** | Pointer to [**AgenticRules**](AgenticRules.md) |  | [optional] 
+**AlicloudAccessMode** | Pointer to **string** |  | [optional] 
+**AlicloudExternalId** | Pointer to **string** |  | [optional] 
+**AlicloudRoleArns** | Pointer to **string** |  | [optional] 
+**AlicloudSessionPolicy** | Pointer to **string** |  | [optional] 
+**AlicloudSetSourceIdentity** | Pointer to **bool** |  | [optional] 
+**AlicloudSite** | Pointer to **string** |  | [optional] 
+**AlicloudUserConsoleAccess** | Pointer to **bool** |  | [optional] 
+**AlicloudUserGroups** | Pointer to **string** |  | [optional] 
+**AlicloudUserInlinePolicy** | Pointer to **string** |  | [optional] 
+**AlicloudUserPolicies** | Pointer to **string** |  | [optional] 
+**AlicloudUserProgrammaticAccess** | Pointer to **bool** |  | [optional] 
 **ApiKey** | Pointer to **string** |  | [optional] 
 **ApiKeyId** | Pointer to **string** |  | [optional] 
 **ArtifactoryAdminApikey** | Pointer to **string** |  | [optional] 
@@ -257,6 +270,7 @@ Name | Type | Description | Notes
 **RdpFixedUserNameSubClaimKey** | Pointer to **string** |  | [optional] 
 **RedirectUris** | Pointer to **[]string** |  | [optional] 
 **RedshiftCreationStatements** | Pointer to **string** |  | [optional] 
+**Region** | Pointer to **string** |  | [optional] 
 **RestrictedScopes** | Pointer to **[]string** |  | [optional] 
 **RevokeSyncUrl** | Pointer to **string** |  | [optional] 
 **RotateSyncUrl** | Pointer to **string** |  | [optional] 
@@ -322,6 +336,56 @@ will change when the set of required properties is changed
 NewDSProducerDetailsWithDefaults instantiates a new DSProducerDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAccessKey
+
+`func (o *DSProducerDetails) GetAccessKey() string`
+
+GetAccessKey returns the AccessKey field if non-nil, zero value otherwise.
+
+### GetAccessKeyOk
+
+`func (o *DSProducerDetails) GetAccessKeyOk() (*string, bool)`
+
+GetAccessKeyOk returns a tuple with the AccessKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessKey
+
+`func (o *DSProducerDetails) SetAccessKey(v string)`
+
+SetAccessKey sets AccessKey field to given value.
+
+### HasAccessKey
+
+`func (o *DSProducerDetails) HasAccessKey() bool`
+
+HasAccessKey returns a boolean if a field has been set.
+
+### GetAccessKeyId
+
+`func (o *DSProducerDetails) GetAccessKeyId() string`
+
+GetAccessKeyId returns the AccessKeyId field if non-nil, zero value otherwise.
+
+### GetAccessKeyIdOk
+
+`func (o *DSProducerDetails) GetAccessKeyIdOk() (*string, bool)`
+
+GetAccessKeyIdOk returns a tuple with the AccessKeyId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccessKeyId
+
+`func (o *DSProducerDetails) SetAccessKeyId(v string)`
+
+SetAccessKeyId sets AccessKeyId field to given value.
+
+### HasAccessKeyId
+
+`func (o *DSProducerDetails) HasAccessKeyId() bool`
+
+HasAccessKeyId returns a boolean if a field has been set.
 
 ### GetAccessTokenManagerId
 
@@ -947,6 +1011,281 @@ SetAgenticRules sets AgenticRules field to given value.
 `func (o *DSProducerDetails) HasAgenticRules() bool`
 
 HasAgenticRules returns a boolean if a field has been set.
+
+### GetAlicloudAccessMode
+
+`func (o *DSProducerDetails) GetAlicloudAccessMode() string`
+
+GetAlicloudAccessMode returns the AlicloudAccessMode field if non-nil, zero value otherwise.
+
+### GetAlicloudAccessModeOk
+
+`func (o *DSProducerDetails) GetAlicloudAccessModeOk() (*string, bool)`
+
+GetAlicloudAccessModeOk returns a tuple with the AlicloudAccessMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudAccessMode
+
+`func (o *DSProducerDetails) SetAlicloudAccessMode(v string)`
+
+SetAlicloudAccessMode sets AlicloudAccessMode field to given value.
+
+### HasAlicloudAccessMode
+
+`func (o *DSProducerDetails) HasAlicloudAccessMode() bool`
+
+HasAlicloudAccessMode returns a boolean if a field has been set.
+
+### GetAlicloudExternalId
+
+`func (o *DSProducerDetails) GetAlicloudExternalId() string`
+
+GetAlicloudExternalId returns the AlicloudExternalId field if non-nil, zero value otherwise.
+
+### GetAlicloudExternalIdOk
+
+`func (o *DSProducerDetails) GetAlicloudExternalIdOk() (*string, bool)`
+
+GetAlicloudExternalIdOk returns a tuple with the AlicloudExternalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudExternalId
+
+`func (o *DSProducerDetails) SetAlicloudExternalId(v string)`
+
+SetAlicloudExternalId sets AlicloudExternalId field to given value.
+
+### HasAlicloudExternalId
+
+`func (o *DSProducerDetails) HasAlicloudExternalId() bool`
+
+HasAlicloudExternalId returns a boolean if a field has been set.
+
+### GetAlicloudRoleArns
+
+`func (o *DSProducerDetails) GetAlicloudRoleArns() string`
+
+GetAlicloudRoleArns returns the AlicloudRoleArns field if non-nil, zero value otherwise.
+
+### GetAlicloudRoleArnsOk
+
+`func (o *DSProducerDetails) GetAlicloudRoleArnsOk() (*string, bool)`
+
+GetAlicloudRoleArnsOk returns a tuple with the AlicloudRoleArns field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudRoleArns
+
+`func (o *DSProducerDetails) SetAlicloudRoleArns(v string)`
+
+SetAlicloudRoleArns sets AlicloudRoleArns field to given value.
+
+### HasAlicloudRoleArns
+
+`func (o *DSProducerDetails) HasAlicloudRoleArns() bool`
+
+HasAlicloudRoleArns returns a boolean if a field has been set.
+
+### GetAlicloudSessionPolicy
+
+`func (o *DSProducerDetails) GetAlicloudSessionPolicy() string`
+
+GetAlicloudSessionPolicy returns the AlicloudSessionPolicy field if non-nil, zero value otherwise.
+
+### GetAlicloudSessionPolicyOk
+
+`func (o *DSProducerDetails) GetAlicloudSessionPolicyOk() (*string, bool)`
+
+GetAlicloudSessionPolicyOk returns a tuple with the AlicloudSessionPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudSessionPolicy
+
+`func (o *DSProducerDetails) SetAlicloudSessionPolicy(v string)`
+
+SetAlicloudSessionPolicy sets AlicloudSessionPolicy field to given value.
+
+### HasAlicloudSessionPolicy
+
+`func (o *DSProducerDetails) HasAlicloudSessionPolicy() bool`
+
+HasAlicloudSessionPolicy returns a boolean if a field has been set.
+
+### GetAlicloudSetSourceIdentity
+
+`func (o *DSProducerDetails) GetAlicloudSetSourceIdentity() bool`
+
+GetAlicloudSetSourceIdentity returns the AlicloudSetSourceIdentity field if non-nil, zero value otherwise.
+
+### GetAlicloudSetSourceIdentityOk
+
+`func (o *DSProducerDetails) GetAlicloudSetSourceIdentityOk() (*bool, bool)`
+
+GetAlicloudSetSourceIdentityOk returns a tuple with the AlicloudSetSourceIdentity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudSetSourceIdentity
+
+`func (o *DSProducerDetails) SetAlicloudSetSourceIdentity(v bool)`
+
+SetAlicloudSetSourceIdentity sets AlicloudSetSourceIdentity field to given value.
+
+### HasAlicloudSetSourceIdentity
+
+`func (o *DSProducerDetails) HasAlicloudSetSourceIdentity() bool`
+
+HasAlicloudSetSourceIdentity returns a boolean if a field has been set.
+
+### GetAlicloudSite
+
+`func (o *DSProducerDetails) GetAlicloudSite() string`
+
+GetAlicloudSite returns the AlicloudSite field if non-nil, zero value otherwise.
+
+### GetAlicloudSiteOk
+
+`func (o *DSProducerDetails) GetAlicloudSiteOk() (*string, bool)`
+
+GetAlicloudSiteOk returns a tuple with the AlicloudSite field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudSite
+
+`func (o *DSProducerDetails) SetAlicloudSite(v string)`
+
+SetAlicloudSite sets AlicloudSite field to given value.
+
+### HasAlicloudSite
+
+`func (o *DSProducerDetails) HasAlicloudSite() bool`
+
+HasAlicloudSite returns a boolean if a field has been set.
+
+### GetAlicloudUserConsoleAccess
+
+`func (o *DSProducerDetails) GetAlicloudUserConsoleAccess() bool`
+
+GetAlicloudUserConsoleAccess returns the AlicloudUserConsoleAccess field if non-nil, zero value otherwise.
+
+### GetAlicloudUserConsoleAccessOk
+
+`func (o *DSProducerDetails) GetAlicloudUserConsoleAccessOk() (*bool, bool)`
+
+GetAlicloudUserConsoleAccessOk returns a tuple with the AlicloudUserConsoleAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudUserConsoleAccess
+
+`func (o *DSProducerDetails) SetAlicloudUserConsoleAccess(v bool)`
+
+SetAlicloudUserConsoleAccess sets AlicloudUserConsoleAccess field to given value.
+
+### HasAlicloudUserConsoleAccess
+
+`func (o *DSProducerDetails) HasAlicloudUserConsoleAccess() bool`
+
+HasAlicloudUserConsoleAccess returns a boolean if a field has been set.
+
+### GetAlicloudUserGroups
+
+`func (o *DSProducerDetails) GetAlicloudUserGroups() string`
+
+GetAlicloudUserGroups returns the AlicloudUserGroups field if non-nil, zero value otherwise.
+
+### GetAlicloudUserGroupsOk
+
+`func (o *DSProducerDetails) GetAlicloudUserGroupsOk() (*string, bool)`
+
+GetAlicloudUserGroupsOk returns a tuple with the AlicloudUserGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudUserGroups
+
+`func (o *DSProducerDetails) SetAlicloudUserGroups(v string)`
+
+SetAlicloudUserGroups sets AlicloudUserGroups field to given value.
+
+### HasAlicloudUserGroups
+
+`func (o *DSProducerDetails) HasAlicloudUserGroups() bool`
+
+HasAlicloudUserGroups returns a boolean if a field has been set.
+
+### GetAlicloudUserInlinePolicy
+
+`func (o *DSProducerDetails) GetAlicloudUserInlinePolicy() string`
+
+GetAlicloudUserInlinePolicy returns the AlicloudUserInlinePolicy field if non-nil, zero value otherwise.
+
+### GetAlicloudUserInlinePolicyOk
+
+`func (o *DSProducerDetails) GetAlicloudUserInlinePolicyOk() (*string, bool)`
+
+GetAlicloudUserInlinePolicyOk returns a tuple with the AlicloudUserInlinePolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudUserInlinePolicy
+
+`func (o *DSProducerDetails) SetAlicloudUserInlinePolicy(v string)`
+
+SetAlicloudUserInlinePolicy sets AlicloudUserInlinePolicy field to given value.
+
+### HasAlicloudUserInlinePolicy
+
+`func (o *DSProducerDetails) HasAlicloudUserInlinePolicy() bool`
+
+HasAlicloudUserInlinePolicy returns a boolean if a field has been set.
+
+### GetAlicloudUserPolicies
+
+`func (o *DSProducerDetails) GetAlicloudUserPolicies() string`
+
+GetAlicloudUserPolicies returns the AlicloudUserPolicies field if non-nil, zero value otherwise.
+
+### GetAlicloudUserPoliciesOk
+
+`func (o *DSProducerDetails) GetAlicloudUserPoliciesOk() (*string, bool)`
+
+GetAlicloudUserPoliciesOk returns a tuple with the AlicloudUserPolicies field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudUserPolicies
+
+`func (o *DSProducerDetails) SetAlicloudUserPolicies(v string)`
+
+SetAlicloudUserPolicies sets AlicloudUserPolicies field to given value.
+
+### HasAlicloudUserPolicies
+
+`func (o *DSProducerDetails) HasAlicloudUserPolicies() bool`
+
+HasAlicloudUserPolicies returns a boolean if a field has been set.
+
+### GetAlicloudUserProgrammaticAccess
+
+`func (o *DSProducerDetails) GetAlicloudUserProgrammaticAccess() bool`
+
+GetAlicloudUserProgrammaticAccess returns the AlicloudUserProgrammaticAccess field if non-nil, zero value otherwise.
+
+### GetAlicloudUserProgrammaticAccessOk
+
+`func (o *DSProducerDetails) GetAlicloudUserProgrammaticAccessOk() (*bool, bool)`
+
+GetAlicloudUserProgrammaticAccessOk returns a tuple with the AlicloudUserProgrammaticAccess field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAlicloudUserProgrammaticAccess
+
+`func (o *DSProducerDetails) SetAlicloudUserProgrammaticAccess(v bool)`
+
+SetAlicloudUserProgrammaticAccess sets AlicloudUserProgrammaticAccess field to given value.
+
+### HasAlicloudUserProgrammaticAccess
+
+`func (o *DSProducerDetails) HasAlicloudUserProgrammaticAccess() bool`
+
+HasAlicloudUserProgrammaticAccess returns a boolean if a field has been set.
 
 ### GetApiKey
 
@@ -6647,6 +6986,31 @@ SetRedshiftCreationStatements sets RedshiftCreationStatements field to given val
 `func (o *DSProducerDetails) HasRedshiftCreationStatements() bool`
 
 HasRedshiftCreationStatements returns a boolean if a field has been set.
+
+### GetRegion
+
+`func (o *DSProducerDetails) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *DSProducerDetails) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *DSProducerDetails) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *DSProducerDetails) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 
 ### GetRestrictedScopes
 
