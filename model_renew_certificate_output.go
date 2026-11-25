@@ -25,6 +25,8 @@ type RenewCertificateOutput struct {
 	ItemId *string `json:"item_id,omitempty"`
 	ParentCert *string `json:"parent_cert,omitempty"`
 	PrivateKey *string `json:"private_key,omitempty"`
+	// ProvisioningScheduleErrors lists the targets whose provisioning could not be scheduled, as \"<target>: <error>\". The renewal itself succeeded.
+	ProvisioningScheduleErrors []string `json:"provisioning_schedule_errors,omitempty"`
 	ReadingToken *string `json:"reading_token,omitempty"`
 }
 
@@ -205,6 +207,38 @@ func (o *RenewCertificateOutput) SetPrivateKey(v string) {
 	o.PrivateKey = &v
 }
 
+// GetProvisioningScheduleErrors returns the ProvisioningScheduleErrors field value if set, zero value otherwise.
+func (o *RenewCertificateOutput) GetProvisioningScheduleErrors() []string {
+	if o == nil || IsNil(o.ProvisioningScheduleErrors) {
+		var ret []string
+		return ret
+	}
+	return o.ProvisioningScheduleErrors
+}
+
+// GetProvisioningScheduleErrorsOk returns a tuple with the ProvisioningScheduleErrors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RenewCertificateOutput) GetProvisioningScheduleErrorsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProvisioningScheduleErrors) {
+		return nil, false
+	}
+	return o.ProvisioningScheduleErrors, true
+}
+
+// HasProvisioningScheduleErrors returns a boolean if a field has been set.
+func (o *RenewCertificateOutput) HasProvisioningScheduleErrors() bool {
+	if o != nil && !IsNil(o.ProvisioningScheduleErrors) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningScheduleErrors gets a reference to the given []string and assigns it to the ProvisioningScheduleErrors field.
+func (o *RenewCertificateOutput) SetProvisioningScheduleErrors(v []string) {
+	o.ProvisioningScheduleErrors = v
+}
+
 // GetReadingToken returns the ReadingToken field value if set, zero value otherwise.
 func (o *RenewCertificateOutput) GetReadingToken() string {
 	if o == nil || IsNil(o.ReadingToken) {
@@ -261,6 +295,9 @@ func (o RenewCertificateOutput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PrivateKey) {
 		toSerialize["private_key"] = o.PrivateKey
+	}
+	if !IsNil(o.ProvisioningScheduleErrors) {
+		toSerialize["provisioning_schedule_errors"] = o.ProvisioningScheduleErrors
 	}
 	if !IsNil(o.ReadingToken) {
 		toSerialize["reading_token"] = o.ReadingToken

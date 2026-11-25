@@ -21,6 +21,8 @@ var _ MappedNullable = &ImporterInfo{}
 // ImporterInfo struct for ImporterInfo
 type ImporterInfo struct {
 	ExternalItemId *string `json:"external_item_id,omitempty"`
+	// SourceVersion is the last version imported from the source system (Vault KV v2). 0 means not tracked.
+	SourceVersion *int64 `json:"source_version,omitempty"`
 	Version *int64 `json:"version,omitempty"`
 }
 
@@ -73,6 +75,38 @@ func (o *ImporterInfo) SetExternalItemId(v string) {
 	o.ExternalItemId = &v
 }
 
+// GetSourceVersion returns the SourceVersion field value if set, zero value otherwise.
+func (o *ImporterInfo) GetSourceVersion() int64 {
+	if o == nil || IsNil(o.SourceVersion) {
+		var ret int64
+		return ret
+	}
+	return *o.SourceVersion
+}
+
+// GetSourceVersionOk returns a tuple with the SourceVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ImporterInfo) GetSourceVersionOk() (*int64, bool) {
+	if o == nil || IsNil(o.SourceVersion) {
+		return nil, false
+	}
+	return o.SourceVersion, true
+}
+
+// HasSourceVersion returns a boolean if a field has been set.
+func (o *ImporterInfo) HasSourceVersion() bool {
+	if o != nil && !IsNil(o.SourceVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceVersion gets a reference to the given int64 and assigns it to the SourceVersion field.
+func (o *ImporterInfo) SetSourceVersion(v int64) {
+	o.SourceVersion = &v
+}
+
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ImporterInfo) GetVersion() int64 {
 	if o == nil || IsNil(o.Version) {
@@ -117,6 +151,9 @@ func (o ImporterInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ExternalItemId) {
 		toSerialize["external_item_id"] = o.ExternalItemId
+	}
+	if !IsNil(o.SourceVersion) {
+		toSerialize["source_version"] = o.SourceVersion
 	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version

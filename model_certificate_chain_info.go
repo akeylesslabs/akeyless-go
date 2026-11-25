@@ -41,6 +41,8 @@ type CertificateChainInfo struct {
 	IssuanceStatus *string `json:"issuance_status,omitempty"`
 	// LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled.
 	LeafCertificatePem *string `json:"leaf_certificate_pem,omitempty"`
+	// NextAutoRenewalDate is when auto-renewal will next renew the certificate. It is worked out when the certificate is described and never stored, and it is empty when the certificate will not be auto-renewed.
+	NextAutoRenewalDate *time.Time `json:"next_auto_renewal_date,omitempty"`
 	NotBefore *time.Time `json:"not_before,omitempty"`
 	RenewBeforeExpirationInDays *int64 `json:"renew_before_expiration_in_days,omitempty"`
 	// SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain).
@@ -640,6 +642,38 @@ func (o *CertificateChainInfo) SetLeafCertificatePem(v string) {
 	o.LeafCertificatePem = &v
 }
 
+// GetNextAutoRenewalDate returns the NextAutoRenewalDate field value if set, zero value otherwise.
+func (o *CertificateChainInfo) GetNextAutoRenewalDate() time.Time {
+	if o == nil || IsNil(o.NextAutoRenewalDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.NextAutoRenewalDate
+}
+
+// GetNextAutoRenewalDateOk returns a tuple with the NextAutoRenewalDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CertificateChainInfo) GetNextAutoRenewalDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.NextAutoRenewalDate) {
+		return nil, false
+	}
+	return o.NextAutoRenewalDate, true
+}
+
+// HasNextAutoRenewalDate returns a boolean if a field has been set.
+func (o *CertificateChainInfo) HasNextAutoRenewalDate() bool {
+	if o != nil && !IsNil(o.NextAutoRenewalDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetNextAutoRenewalDate gets a reference to the given time.Time and assigns it to the NextAutoRenewalDate field.
+func (o *CertificateChainInfo) SetNextAutoRenewalDate(v time.Time) {
+	o.NextAutoRenewalDate = &v
+}
+
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise.
 func (o *CertificateChainInfo) GetNotBefore() time.Time {
 	if o == nil || IsNil(o.NotBefore) {
@@ -799,6 +833,9 @@ func (o CertificateChainInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LeafCertificatePem) {
 		toSerialize["leaf_certificate_pem"] = o.LeafCertificatePem
+	}
+	if !IsNil(o.NextAutoRenewalDate) {
+		toSerialize["next_auto_renewal_date"] = o.NextAutoRenewalDate
 	}
 	if !IsNil(o.NotBefore) {
 		toSerialize["not_before"] = o.NotBefore

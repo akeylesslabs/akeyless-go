@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AuthType** | Pointer to **string** | AuthType is a non-secret auth indication (password | private_key). Prefer Target.Attributes[auth_type] for list responses; this field may be populated on get-target-details for convenience. | [optional] 
 **Host** | Pointer to **string** |  | [optional] 
 **Password** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **string** |  | [optional] 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewSSHTargetDetailsWithDefaults instantiates a new SSHTargetDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAuthType
+
+`func (o *SSHTargetDetails) GetAuthType() string`
+
+GetAuthType returns the AuthType field if non-nil, zero value otherwise.
+
+### GetAuthTypeOk
+
+`func (o *SSHTargetDetails) GetAuthTypeOk() (*string, bool)`
+
+GetAuthTypeOk returns a tuple with the AuthType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthType
+
+`func (o *SSHTargetDetails) SetAuthType(v string)`
+
+SetAuthType sets AuthType field to given value.
+
+### HasAuthType
+
+`func (o *SSHTargetDetails) HasAuthType() bool`
+
+HasAuthType returns a boolean if a field has been set.
 
 ### GetHost
 

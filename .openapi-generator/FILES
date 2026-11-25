@@ -267,6 +267,7 @@ docs/CreateWindowsTargetOutput.md
 docs/CreateZeroSSLTarget.md
 docs/CreateZeroSSLTargetOutput.md
 docs/CustomDnsTargetDetails.md
+docs/CustomLLMTargetDetails.md
 docs/CustomTargetDetails.md
 docs/CustomerFragmentConfig.md
 docs/CustomerFragmentsConfigJson.md
@@ -323,6 +324,7 @@ docs/Detokenize.md
 docs/DetokenizeOutput.md
 docs/DigiCertTargetDetails.md
 docs/DockerhubTargetDetails.md
+docs/DomainCoverage.md
 docs/DynamicSecretCreateAerospike.md
 docs/DynamicSecretCreateAliCloud.md
 docs/DynamicSecretCreateArtifactory.md
@@ -1054,6 +1056,7 @@ docs/TargetCreateAzure.md
 docs/TargetCreateBedrock.md
 docs/TargetCreateCloudflare.md
 docs/TargetCreateCustomDns.md
+docs/TargetCreateCustomLLM.md
 docs/TargetCreateDB.md
 docs/TargetCreateDigiCert.md
 docs/TargetCreateDockerhub.md
@@ -1106,6 +1109,7 @@ docs/TargetUpdateAzure.md
 docs/TargetUpdateBedrock.md
 docs/TargetUpdateCloudflare.md
 docs/TargetUpdateCustomDns.md
+docs/TargetUpdateCustomLLM.md
 docs/TargetUpdateDB.md
 docs/TargetUpdateDigiCert.md
 docs/TargetUpdateDockerhub.md
@@ -1571,6 +1575,7 @@ model_create_windows_target_output.go
 model_create_zero_ssl_target.go
 model_create_zero_ssl_target_output.go
 model_custom_dns_target_details.go
+model_custom_llm_target_details.go
 model_custom_target_details.go
 model_customer_fragment_config.go
 model_customer_fragments_config_json.go
@@ -1626,6 +1631,7 @@ model_detokenize.go
 model_detokenize_output.go
 model_digi_cert_target_details.go
 model_dockerhub_target_details.go
+model_domain_coverage.go
 model_ds_producer_details.go
 model_dynamic_secret_create_aerospike.go
 model_dynamic_secret_create_ali_cloud.go
@@ -2358,6 +2364,7 @@ model_target_create_azure.go
 model_target_create_bedrock.go
 model_target_create_cloudflare.go
 model_target_create_custom_dns.go
+model_target_create_custom_llm.go
 model_target_create_db.go
 model_target_create_digi_cert.go
 model_target_create_dockerhub.go
@@ -2410,6 +2417,7 @@ model_target_update_azure.go
 model_target_update_bedrock.go
 model_target_update_cloudflare.go
 model_target_update_custom_dns.go
+model_target_update_custom_llm.go
 model_target_update_db.go
 model_target_update_digi_cert.go
 model_target_update_dockerhub.go

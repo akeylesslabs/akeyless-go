@@ -26,7 +26,7 @@ type AssocTargetItem struct {
 	BindSslProfiles []string `json:"bind-ssl-profiles,omitempty"`
 	// The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning)
 	CertificateArn *string `json:"certificate-arn,omitempty"`
-	// The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning)
+	// The format the certificate will be provisioned with, available options: pem,pfx,jks (jks uses --jks-password); pfx requires gateway version 5.5.0 or higher, and jks and pfx for Azure Key Vault require 5.8.0 or higher, or the association is rejected (relevant only for certificate provisioning)
 	CertificateFormat *string `json:"certificate-format,omitempty"`
 	// The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning)
 	CertificateName *string `json:"certificate-name,omitempty"`
@@ -42,8 +42,24 @@ type AssocTargetItem struct {
 	F5SaveConfig *bool `json:"f5-save-config,omitempty"`
 	// Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning)
 	F5SyncDeviceGroup *string `json:"f5-sync-device-group,omitempty"`
+	// The optional host name of the IIS binding, which enables SNI for a binding that is created (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\<store>, for example Cert:\\LocalMachine\\My)
+	IisBindingHostname *string `json:"iis-binding-hostname,omitempty"`
+	// Comma-separated IP addresses of the IIS bindings to update (or create with --iis-create-binding), one binding per address, or * for all unassigned addresses; required with --iis-website-name (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\<store>, for example Cert:\\LocalMachine\\My)
+	IisBindingIpAddress *string `json:"iis-binding-ip-address,omitempty"`
+	// The port of the IIS binding, 443 when omitted (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\<store>, for example Cert:\\LocalMachine\\My)
+	IisBindingPort *int64 `json:"iis-binding-port,omitempty"`
+	// Create the IIS https binding if the website has none matching the given IP addresses, port and host name; without it the run fails when such a binding does not exist (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\<store>, for example Cert:\\LocalMachine\\My)
+	IisCreateBinding *bool `json:"iis-create-binding,omitempty"`
+	// Restart the IIS website after the certificate is bound (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\<store>, for example Cert:\\LocalMachine\\My)
+	IisRestartWebsite *bool `json:"iis-restart-website,omitempty"`
+	// The IIS website to bind the provisioned certificate to (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\<store>, for example Cert:\\LocalMachine\\My)
+	IisWebsiteName *string `json:"iis-website-name,omitempty"`
+	// JKS file password; required when certificate-format is jks (relevant only for certificate provisioning)
+	JksPassword *string `json:"jks-password,omitempty"`
 	// Set output format to JSON
 	Json *bool `json:"json,omitempty"`
+	// Alias the entry is stored under in the JKS file, default certificate (max 128 characters). Only relevant when --certificate-format=jks
+	KeyAlias *string `json:"key-alias,omitempty"`
 	// A list of allowed operations for the key (required for azure targets)
 	KeyOperations []string `json:"key-operations,omitempty"`
 	// The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning)
@@ -60,7 +76,7 @@ type AssocTargetItem struct {
 	MultiRegion *string `json:"multi-region,omitempty"`
 	// The item to associate
 	Name string `json:"name"`
-	// Password used to protect the provisioned PFX file. Required when --certificate-format=pfx (relevant only for certificate provisioning)
+	// PFX file password; required when certificate-format is pfx (relevant only for certificate provisioning)
 	PfxPassword *string `json:"pfx-password,omitempty"`
 	// A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP)
 	PostProvisionCommand *string `json:"post-provision-command,omitempty"`
@@ -70,6 +86,10 @@ type AssocTargetItem struct {
 	ProjectId *string `json:"project-id,omitempty"`
 	// Protection level of the key [software/hardware] (relevant for gcp targets)
 	ProtectionLevel *string `json:"protection-level,omitempty"`
+	// Comma-separated UTC weekdays (sun,mon,tue,wed,thu,fri,sat) on which the certificate is provisioned after a renewal, together with provisioning-schedule-time. Provisioning is not run when the association is created. Without a schedule, provisioning runs right away (relevant only for certificate provisioning)
+	ProvisioningScheduleDays *string `json:"provisioning-schedule-days,omitempty"`
+	// The UTC time of day, as HH:MM, at which the certificate is provisioned on the scheduled days. A renewed certificate waits for the first such time (relevant only for certificate provisioning)
+	ProvisioningScheduleTime *string `json:"provisioning-schedule-time,omitempty"`
 	// Purpose of the key in GCP KMS (required for gcp targets)
 	Purpose *string `json:"purpose,omitempty"`
 	// The list of regions to create a copy of the key in (relevant for aws targets)
@@ -102,6 +122,10 @@ func NewAssocTargetItem(name string, targetName string) *AssocTargetItem {
 	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
 	var f5SaveConfig bool = false
 	this.F5SaveConfig = &f5SaveConfig
+	var iisCreateBinding bool = false
+	this.IisCreateBinding = &iisCreateBinding
+	var iisRestartWebsite bool = false
+	this.IisRestartWebsite = &iisRestartWebsite
 	var json bool = false
 	this.Json = &json
 	var multiRegion string = "false"
@@ -126,6 +150,10 @@ func NewAssocTargetItemWithDefaults() *AssocTargetItem {
 	this.DisablePreviousKeyVersion = &disablePreviousKeyVersion
 	var f5SaveConfig bool = false
 	this.F5SaveConfig = &f5SaveConfig
+	var iisCreateBinding bool = false
+	this.IisCreateBinding = &iisCreateBinding
+	var iisRestartWebsite bool = false
+	this.IisRestartWebsite = &iisRestartWebsite
 	var json bool = false
 	this.Json = &json
 	var multiRegion string = "false"
@@ -457,6 +485,230 @@ func (o *AssocTargetItem) SetF5SyncDeviceGroup(v string) {
 	o.F5SyncDeviceGroup = &v
 }
 
+// GetIisBindingHostname returns the IisBindingHostname field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetIisBindingHostname() string {
+	if o == nil || IsNil(o.IisBindingHostname) {
+		var ret string
+		return ret
+	}
+	return *o.IisBindingHostname
+}
+
+// GetIisBindingHostnameOk returns a tuple with the IisBindingHostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetIisBindingHostnameOk() (*string, bool) {
+	if o == nil || IsNil(o.IisBindingHostname) {
+		return nil, false
+	}
+	return o.IisBindingHostname, true
+}
+
+// HasIisBindingHostname returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasIisBindingHostname() bool {
+	if o != nil && !IsNil(o.IisBindingHostname) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisBindingHostname gets a reference to the given string and assigns it to the IisBindingHostname field.
+func (o *AssocTargetItem) SetIisBindingHostname(v string) {
+	o.IisBindingHostname = &v
+}
+
+// GetIisBindingIpAddress returns the IisBindingIpAddress field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetIisBindingIpAddress() string {
+	if o == nil || IsNil(o.IisBindingIpAddress) {
+		var ret string
+		return ret
+	}
+	return *o.IisBindingIpAddress
+}
+
+// GetIisBindingIpAddressOk returns a tuple with the IisBindingIpAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetIisBindingIpAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.IisBindingIpAddress) {
+		return nil, false
+	}
+	return o.IisBindingIpAddress, true
+}
+
+// HasIisBindingIpAddress returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasIisBindingIpAddress() bool {
+	if o != nil && !IsNil(o.IisBindingIpAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisBindingIpAddress gets a reference to the given string and assigns it to the IisBindingIpAddress field.
+func (o *AssocTargetItem) SetIisBindingIpAddress(v string) {
+	o.IisBindingIpAddress = &v
+}
+
+// GetIisBindingPort returns the IisBindingPort field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetIisBindingPort() int64 {
+	if o == nil || IsNil(o.IisBindingPort) {
+		var ret int64
+		return ret
+	}
+	return *o.IisBindingPort
+}
+
+// GetIisBindingPortOk returns a tuple with the IisBindingPort field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetIisBindingPortOk() (*int64, bool) {
+	if o == nil || IsNil(o.IisBindingPort) {
+		return nil, false
+	}
+	return o.IisBindingPort, true
+}
+
+// HasIisBindingPort returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasIisBindingPort() bool {
+	if o != nil && !IsNil(o.IisBindingPort) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisBindingPort gets a reference to the given int64 and assigns it to the IisBindingPort field.
+func (o *AssocTargetItem) SetIisBindingPort(v int64) {
+	o.IisBindingPort = &v
+}
+
+// GetIisCreateBinding returns the IisCreateBinding field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetIisCreateBinding() bool {
+	if o == nil || IsNil(o.IisCreateBinding) {
+		var ret bool
+		return ret
+	}
+	return *o.IisCreateBinding
+}
+
+// GetIisCreateBindingOk returns a tuple with the IisCreateBinding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetIisCreateBindingOk() (*bool, bool) {
+	if o == nil || IsNil(o.IisCreateBinding) {
+		return nil, false
+	}
+	return o.IisCreateBinding, true
+}
+
+// HasIisCreateBinding returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasIisCreateBinding() bool {
+	if o != nil && !IsNil(o.IisCreateBinding) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisCreateBinding gets a reference to the given bool and assigns it to the IisCreateBinding field.
+func (o *AssocTargetItem) SetIisCreateBinding(v bool) {
+	o.IisCreateBinding = &v
+}
+
+// GetIisRestartWebsite returns the IisRestartWebsite field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetIisRestartWebsite() bool {
+	if o == nil || IsNil(o.IisRestartWebsite) {
+		var ret bool
+		return ret
+	}
+	return *o.IisRestartWebsite
+}
+
+// GetIisRestartWebsiteOk returns a tuple with the IisRestartWebsite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetIisRestartWebsiteOk() (*bool, bool) {
+	if o == nil || IsNil(o.IisRestartWebsite) {
+		return nil, false
+	}
+	return o.IisRestartWebsite, true
+}
+
+// HasIisRestartWebsite returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasIisRestartWebsite() bool {
+	if o != nil && !IsNil(o.IisRestartWebsite) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisRestartWebsite gets a reference to the given bool and assigns it to the IisRestartWebsite field.
+func (o *AssocTargetItem) SetIisRestartWebsite(v bool) {
+	o.IisRestartWebsite = &v
+}
+
+// GetIisWebsiteName returns the IisWebsiteName field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetIisWebsiteName() string {
+	if o == nil || IsNil(o.IisWebsiteName) {
+		var ret string
+		return ret
+	}
+	return *o.IisWebsiteName
+}
+
+// GetIisWebsiteNameOk returns a tuple with the IisWebsiteName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetIisWebsiteNameOk() (*string, bool) {
+	if o == nil || IsNil(o.IisWebsiteName) {
+		return nil, false
+	}
+	return o.IisWebsiteName, true
+}
+
+// HasIisWebsiteName returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasIisWebsiteName() bool {
+	if o != nil && !IsNil(o.IisWebsiteName) {
+		return true
+	}
+
+	return false
+}
+
+// SetIisWebsiteName gets a reference to the given string and assigns it to the IisWebsiteName field.
+func (o *AssocTargetItem) SetIisWebsiteName(v string) {
+	o.IisWebsiteName = &v
+}
+
+// GetJksPassword returns the JksPassword field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetJksPassword() string {
+	if o == nil || IsNil(o.JksPassword) {
+		var ret string
+		return ret
+	}
+	return *o.JksPassword
+}
+
+// GetJksPasswordOk returns a tuple with the JksPassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetJksPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.JksPassword) {
+		return nil, false
+	}
+	return o.JksPassword, true
+}
+
+// HasJksPassword returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasJksPassword() bool {
+	if o != nil && !IsNil(o.JksPassword) {
+		return true
+	}
+
+	return false
+}
+
+// SetJksPassword gets a reference to the given string and assigns it to the JksPassword field.
+func (o *AssocTargetItem) SetJksPassword(v string) {
+	o.JksPassword = &v
+}
+
 // GetJson returns the Json field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetJson() bool {
 	if o == nil || IsNil(o.Json) {
@@ -487,6 +739,38 @@ func (o *AssocTargetItem) HasJson() bool {
 // SetJson gets a reference to the given bool and assigns it to the Json field.
 func (o *AssocTargetItem) SetJson(v bool) {
 	o.Json = &v
+}
+
+// GetKeyAlias returns the KeyAlias field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetKeyAlias() string {
+	if o == nil || IsNil(o.KeyAlias) {
+		var ret string
+		return ret
+	}
+	return *o.KeyAlias
+}
+
+// GetKeyAliasOk returns a tuple with the KeyAlias field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetKeyAliasOk() (*string, bool) {
+	if o == nil || IsNil(o.KeyAlias) {
+		return nil, false
+	}
+	return o.KeyAlias, true
+}
+
+// HasKeyAlias returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasKeyAlias() bool {
+	if o != nil && !IsNil(o.KeyAlias) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeyAlias gets a reference to the given string and assigns it to the KeyAlias field.
+func (o *AssocTargetItem) SetKeyAlias(v string) {
+	o.KeyAlias = &v
 }
 
 // GetKeyOperations returns the KeyOperations field value if set, zero value otherwise.
@@ -897,6 +1181,70 @@ func (o *AssocTargetItem) SetProtectionLevel(v string) {
 	o.ProtectionLevel = &v
 }
 
+// GetProvisioningScheduleDays returns the ProvisioningScheduleDays field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetProvisioningScheduleDays() string {
+	if o == nil || IsNil(o.ProvisioningScheduleDays) {
+		var ret string
+		return ret
+	}
+	return *o.ProvisioningScheduleDays
+}
+
+// GetProvisioningScheduleDaysOk returns a tuple with the ProvisioningScheduleDays field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetProvisioningScheduleDaysOk() (*string, bool) {
+	if o == nil || IsNil(o.ProvisioningScheduleDays) {
+		return nil, false
+	}
+	return o.ProvisioningScheduleDays, true
+}
+
+// HasProvisioningScheduleDays returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasProvisioningScheduleDays() bool {
+	if o != nil && !IsNil(o.ProvisioningScheduleDays) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningScheduleDays gets a reference to the given string and assigns it to the ProvisioningScheduleDays field.
+func (o *AssocTargetItem) SetProvisioningScheduleDays(v string) {
+	o.ProvisioningScheduleDays = &v
+}
+
+// GetProvisioningScheduleTime returns the ProvisioningScheduleTime field value if set, zero value otherwise.
+func (o *AssocTargetItem) GetProvisioningScheduleTime() string {
+	if o == nil || IsNil(o.ProvisioningScheduleTime) {
+		var ret string
+		return ret
+	}
+	return *o.ProvisioningScheduleTime
+}
+
+// GetProvisioningScheduleTimeOk returns a tuple with the ProvisioningScheduleTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AssocTargetItem) GetProvisioningScheduleTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.ProvisioningScheduleTime) {
+		return nil, false
+	}
+	return o.ProvisioningScheduleTime, true
+}
+
+// HasProvisioningScheduleTime returns a boolean if a field has been set.
+func (o *AssocTargetItem) HasProvisioningScheduleTime() bool {
+	if o != nil && !IsNil(o.ProvisioningScheduleTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningScheduleTime gets a reference to the given string and assigns it to the ProvisioningScheduleTime field.
+func (o *AssocTargetItem) SetProvisioningScheduleTime(v string) {
+	o.ProvisioningScheduleTime = &v
+}
+
 // GetPurpose returns the Purpose field value if set, zero value otherwise.
 func (o *AssocTargetItem) GetPurpose() string {
 	if o == nil || IsNil(o.Purpose) {
@@ -1185,8 +1533,32 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.F5SyncDeviceGroup) {
 		toSerialize["f5-sync-device-group"] = o.F5SyncDeviceGroup
 	}
+	if !IsNil(o.IisBindingHostname) {
+		toSerialize["iis-binding-hostname"] = o.IisBindingHostname
+	}
+	if !IsNil(o.IisBindingIpAddress) {
+		toSerialize["iis-binding-ip-address"] = o.IisBindingIpAddress
+	}
+	if !IsNil(o.IisBindingPort) {
+		toSerialize["iis-binding-port"] = o.IisBindingPort
+	}
+	if !IsNil(o.IisCreateBinding) {
+		toSerialize["iis-create-binding"] = o.IisCreateBinding
+	}
+	if !IsNil(o.IisRestartWebsite) {
+		toSerialize["iis-restart-website"] = o.IisRestartWebsite
+	}
+	if !IsNil(o.IisWebsiteName) {
+		toSerialize["iis-website-name"] = o.IisWebsiteName
+	}
+	if !IsNil(o.JksPassword) {
+		toSerialize["jks-password"] = o.JksPassword
+	}
 	if !IsNil(o.Json) {
 		toSerialize["json"] = o.Json
+	}
+	if !IsNil(o.KeyAlias) {
+		toSerialize["key-alias"] = o.KeyAlias
 	}
 	if !IsNil(o.KeyOperations) {
 		toSerialize["key-operations"] = o.KeyOperations
@@ -1224,6 +1596,12 @@ func (o AssocTargetItem) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProtectionLevel) {
 		toSerialize["protection-level"] = o.ProtectionLevel
+	}
+	if !IsNil(o.ProvisioningScheduleDays) {
+		toSerialize["provisioning-schedule-days"] = o.ProvisioningScheduleDays
+	}
+	if !IsNil(o.ProvisioningScheduleTime) {
+		toSerialize["provisioning-schedule-time"] = o.ProvisioningScheduleTime
 	}
 	if !IsNil(o.Purpose) {
 		toSerialize["purpose"] = o.Purpose

@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
 **AlicloudAccessKeyId** | Pointer to **string** | AliCloud RAM access key ID | [optional] 
 **AlicloudAccessMode** | Pointer to **string** |  | [optional] 
 **AlicloudAccessSecretKey** | Pointer to **string** | AliCloud RAM access key secret | [optional] 
@@ -23,7 +22,6 @@ Name | Type | Description | Notes
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
 **EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
@@ -62,31 +60,6 @@ will change when the set of required properties is changed
 NewDynamicSecretCreateAliCloudWithDefaults instantiates a new DynamicSecretCreateAliCloud object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAdminRotationIntervalDays
-
-`func (o *DynamicSecretCreateAliCloud) GetAdminRotationIntervalDays() int64`
-
-GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field if non-nil, zero value otherwise.
-
-### GetAdminRotationIntervalDaysOk
-
-`func (o *DynamicSecretCreateAliCloud) GetAdminRotationIntervalDaysOk() (*int64, bool)`
-
-GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdminRotationIntervalDays
-
-`func (o *DynamicSecretCreateAliCloud) SetAdminRotationIntervalDays(v int64)`
-
-SetAdminRotationIntervalDays sets AdminRotationIntervalDays field to given value.
-
-### HasAdminRotationIntervalDays
-
-`func (o *DynamicSecretCreateAliCloud) HasAdminRotationIntervalDays() bool`
-
-HasAdminRotationIntervalDays returns a boolean if a field has been set.
 
 ### GetAlicloudAccessKeyId
 
@@ -537,31 +510,6 @@ SetDescription sets Description field to given value.
 `func (o *DynamicSecretCreateAliCloud) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetEnableAdminRotation
-
-`func (o *DynamicSecretCreateAliCloud) GetEnableAdminRotation() bool`
-
-GetEnableAdminRotation returns the EnableAdminRotation field if non-nil, zero value otherwise.
-
-### GetEnableAdminRotationOk
-
-`func (o *DynamicSecretCreateAliCloud) GetEnableAdminRotationOk() (*bool, bool)`
-
-GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableAdminRotation
-
-`func (o *DynamicSecretCreateAliCloud) SetEnableAdminRotation(v bool)`
-
-SetEnableAdminRotation sets EnableAdminRotation field to given value.
-
-### HasEnableAdminRotation
-
-`func (o *DynamicSecretCreateAliCloud) HasEnableAdminRotation() bool`
-
-HasEnableAdminRotation returns a boolean if a field has been set.
 
 ### GetEnableAgenticRuntimeAuthority
 

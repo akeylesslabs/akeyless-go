@@ -22,7 +22,7 @@ var _ MappedNullable = &CreateClassicKey{}
 
 // CreateClassicKey CreateClassicKey is a command that creates classic key
 type CreateClassicKey struct {
-	// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG]
+	// Classic Key type; options: [AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384, GPG, MLDSA44, MLDSA65, MLDSA87, MLKEM768, MLKEM1024, MLKEM768X25519]
 	Alg string `json:"alg"`
 	// Whether to automatically rotate every rotation_interval days, or disable existing automatic rotation [true/false]
 	AutoRotate *string `json:"auto-rotate,omitempty"`

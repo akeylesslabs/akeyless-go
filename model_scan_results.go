@@ -25,6 +25,8 @@ type ScanResults struct {
 	CountHosts *int64 `json:"CountHosts,omitempty"`
 	CountNew *int64 `json:"CountNew,omitempty"`
 	CountSubdomains *int64 `json:"CountSubdomains,omitempty"`
+	// DomainCoverage says, per public domain, how much of it subdomain discovery managed to cover. Clients that predate it ignore it, and a scan with no public domain omits it.
+	DomainCoverage []DomainCoverage `json:"DomainCoverage,omitempty"`
 	Error *string `json:"Error,omitempty"`
 	FailedTargets []TargetError `json:"FailedTargets,omitempty"`
 	ItemNames []string `json:"ItemNames,omitempty"`
@@ -207,6 +209,38 @@ func (o *ScanResults) SetCountSubdomains(v int64) {
 	o.CountSubdomains = &v
 }
 
+// GetDomainCoverage returns the DomainCoverage field value if set, zero value otherwise.
+func (o *ScanResults) GetDomainCoverage() []DomainCoverage {
+	if o == nil || IsNil(o.DomainCoverage) {
+		var ret []DomainCoverage
+		return ret
+	}
+	return o.DomainCoverage
+}
+
+// GetDomainCoverageOk returns a tuple with the DomainCoverage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScanResults) GetDomainCoverageOk() ([]DomainCoverage, bool) {
+	if o == nil || IsNil(o.DomainCoverage) {
+		return nil, false
+	}
+	return o.DomainCoverage, true
+}
+
+// HasDomainCoverage returns a boolean if a field has been set.
+func (o *ScanResults) HasDomainCoverage() bool {
+	if o != nil && !IsNil(o.DomainCoverage) {
+		return true
+	}
+
+	return false
+}
+
+// SetDomainCoverage gets a reference to the given []DomainCoverage and assigns it to the DomainCoverage field.
+func (o *ScanResults) SetDomainCoverage(v []DomainCoverage) {
+	o.DomainCoverage = v
+}
+
 // GetError returns the Error field value if set, zero value otherwise.
 func (o *ScanResults) GetError() string {
 	if o == nil || IsNil(o.Error) {
@@ -327,6 +361,9 @@ func (o ScanResults) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CountSubdomains) {
 		toSerialize["CountSubdomains"] = o.CountSubdomains
+	}
+	if !IsNil(o.DomainCoverage) {
+		toSerialize["DomainCoverage"] = o.DomainCoverage
 	}
 	if !IsNil(o.Error) {
 		toSerialize["Error"] = o.Error

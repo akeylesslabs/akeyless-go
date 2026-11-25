@@ -23,8 +23,6 @@ var _ MappedNullable = &GatewayUpdateProducerAws{}
 // GatewayUpdateProducerAws gatewayUpdateProducerAws is a command that Updates aws producer [Deprecated: Use dynamic-secret-update-aws command]
 type GatewayUpdateProducerAws struct {
 	AccessMode *string `json:"access-mode,omitempty"`
-	// Admin credentials rotation interval (days)
-	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
 	AraEnabled NullableBool `json:"ara-enabled,omitempty"`
 	// Access Key ID
@@ -47,8 +45,6 @@ type GatewayUpdateProducerAws struct {
 	CustomUsernameTemplate *string `json:"custom-username-template,omitempty"`
 	// Protection from accidental deletion of this object [true/false]
 	DeleteProtection *string `json:"delete_protection,omitempty"`
-	// Automatic admin credentials rotation
-	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
 	EnableAgenticRuntimeAuthority NullableBool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
@@ -122,14 +118,10 @@ type _GatewayUpdateProducerAws GatewayUpdateProducerAws
 // will change when the set of required properties is changed
 func NewGatewayUpdateProducerAws(name string) *GatewayUpdateProducerAws {
 	this := GatewayUpdateProducerAws{}
-	var adminRotationIntervalDays int64 = 0
-	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var awsUserConsoleAccess bool = false
 	this.AwsUserConsoleAccess = &awsUserConsoleAccess
 	var awsUserProgrammaticAccess bool = true
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
-	var enableAdminRotation bool = false
-	this.EnableAdminRotation = &enableAdminRotation
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -151,14 +143,10 @@ func NewGatewayUpdateProducerAws(name string) *GatewayUpdateProducerAws {
 // but it doesn't guarantee that properties required by API are set
 func NewGatewayUpdateProducerAwsWithDefaults() *GatewayUpdateProducerAws {
 	this := GatewayUpdateProducerAws{}
-	var adminRotationIntervalDays int64 = 0
-	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var awsUserConsoleAccess bool = false
 	this.AwsUserConsoleAccess = &awsUserConsoleAccess
 	var awsUserProgrammaticAccess bool = true
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
-	var enableAdminRotation bool = false
-	this.EnableAdminRotation = &enableAdminRotation
 	var json bool = false
 	this.Json = &json
 	var region string = "us-east-2"
@@ -204,38 +192,6 @@ func (o *GatewayUpdateProducerAws) HasAccessMode() bool {
 // SetAccessMode gets a reference to the given string and assigns it to the AccessMode field.
 func (o *GatewayUpdateProducerAws) SetAccessMode(v string) {
 	o.AccessMode = &v
-}
-
-// GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerAws) GetAdminRotationIntervalDays() int64 {
-	if o == nil || IsNil(o.AdminRotationIntervalDays) {
-		var ret int64
-		return ret
-	}
-	return *o.AdminRotationIntervalDays
-}
-
-// GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerAws) GetAdminRotationIntervalDaysOk() (*int64, bool) {
-	if o == nil || IsNil(o.AdminRotationIntervalDays) {
-		return nil, false
-	}
-	return o.AdminRotationIntervalDays, true
-}
-
-// HasAdminRotationIntervalDays returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerAws) HasAdminRotationIntervalDays() bool {
-	if o != nil && !IsNil(o.AdminRotationIntervalDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
-func (o *GatewayUpdateProducerAws) SetAdminRotationIntervalDays(v int64) {
-	o.AdminRotationIntervalDays = &v
 }
 
 // GetAraEnabled returns the AraEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -598,38 +554,6 @@ func (o *GatewayUpdateProducerAws) HasDeleteProtection() bool {
 // SetDeleteProtection gets a reference to the given string and assigns it to the DeleteProtection field.
 func (o *GatewayUpdateProducerAws) SetDeleteProtection(v string) {
 	o.DeleteProtection = &v
-}
-
-// GetEnableAdminRotation returns the EnableAdminRotation field value if set, zero value otherwise.
-func (o *GatewayUpdateProducerAws) GetEnableAdminRotation() bool {
-	if o == nil || IsNil(o.EnableAdminRotation) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableAdminRotation
-}
-
-// GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GatewayUpdateProducerAws) GetEnableAdminRotationOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAdminRotation) {
-		return nil, false
-	}
-	return o.EnableAdminRotation, true
-}
-
-// HasEnableAdminRotation returns a boolean if a field has been set.
-func (o *GatewayUpdateProducerAws) HasEnableAdminRotation() bool {
-	if o != nil && !IsNil(o.EnableAdminRotation) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
-func (o *GatewayUpdateProducerAws) SetEnableAdminRotation(v bool) {
-	o.EnableAdminRotation = &v
 }
 
 // GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1691,9 +1615,6 @@ func (o GatewayUpdateProducerAws) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessMode) {
 		toSerialize["access-mode"] = o.AccessMode
 	}
-	if !IsNil(o.AdminRotationIntervalDays) {
-		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
-	}
 	if o.AraEnabled.IsSet() {
 		toSerialize["ara-enabled"] = o.AraEnabled.Get()
 	}
@@ -1726,9 +1647,6 @@ func (o GatewayUpdateProducerAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeleteProtection) {
 		toSerialize["delete_protection"] = o.DeleteProtection
-	}
-	if !IsNil(o.EnableAdminRotation) {
-		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation
 	}
 	if o.EnableAgenticRuntimeAuthority.IsSet() {
 		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority.Get()

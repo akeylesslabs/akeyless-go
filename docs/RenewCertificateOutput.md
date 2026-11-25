@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ItemId** | Pointer to **string** |  | [optional] 
 **ParentCert** | Pointer to **string** |  | [optional] 
 **PrivateKey** | Pointer to **string** |  | [optional] 
+**ProvisioningScheduleErrors** | Pointer to **[]string** | ProvisioningScheduleErrors lists the targets whose provisioning could not be scheduled, as \&quot;&lt;target&gt;: &lt;error&gt;\&quot;. The renewal itself succeeded. | [optional] 
 **ReadingToken** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetPrivateKey sets PrivateKey field to given value.
 `func (o *RenewCertificateOutput) HasPrivateKey() bool`
 
 HasPrivateKey returns a boolean if a field has been set.
+
+### GetProvisioningScheduleErrors
+
+`func (o *RenewCertificateOutput) GetProvisioningScheduleErrors() []string`
+
+GetProvisioningScheduleErrors returns the ProvisioningScheduleErrors field if non-nil, zero value otherwise.
+
+### GetProvisioningScheduleErrorsOk
+
+`func (o *RenewCertificateOutput) GetProvisioningScheduleErrorsOk() (*[]string, bool)`
+
+GetProvisioningScheduleErrorsOk returns a tuple with the ProvisioningScheduleErrors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningScheduleErrors
+
+`func (o *RenewCertificateOutput) SetProvisioningScheduleErrors(v []string)`
+
+SetProvisioningScheduleErrors sets ProvisioningScheduleErrors field to given value.
+
+### HasProvisioningScheduleErrors
+
+`func (o *RenewCertificateOutput) HasProvisioningScheduleErrors() bool`
+
+HasProvisioningScheduleErrors returns a boolean if a field has been set.
 
 ### GetReadingToken
 

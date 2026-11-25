@@ -23,8 +23,6 @@ var _ MappedNullable = &DynamicSecretUpdateAws{}
 // DynamicSecretUpdateAws dynamicSecretUpdateAws is a command that Updates aws dynamic secret
 type DynamicSecretUpdateAws struct {
 	AccessMode *string `json:"access-mode,omitempty"`
-	// Admin credentials rotation interval (days)
-	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
 	// Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled.
 	AraEnabled *bool `json:"ara-enabled,omitempty"`
 	// Access Key ID
@@ -49,8 +47,6 @@ type DynamicSecretUpdateAws struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Automatic admin credentials rotation
-	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
 	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
@@ -124,14 +120,10 @@ type _DynamicSecretUpdateAws DynamicSecretUpdateAws
 // will change when the set of required properties is changed
 func NewDynamicSecretUpdateAws(name string) *DynamicSecretUpdateAws {
 	this := DynamicSecretUpdateAws{}
-	var adminRotationIntervalDays int64 = 0
-	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var awsUserConsoleAccess bool = false
 	this.AwsUserConsoleAccess = &awsUserConsoleAccess
 	var awsUserProgrammaticAccess bool = true
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
-	var enableAdminRotation bool = false
-	this.EnableAdminRotation = &enableAdminRotation
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -153,14 +145,10 @@ func NewDynamicSecretUpdateAws(name string) *DynamicSecretUpdateAws {
 // but it doesn't guarantee that properties required by API are set
 func NewDynamicSecretUpdateAwsWithDefaults() *DynamicSecretUpdateAws {
 	this := DynamicSecretUpdateAws{}
-	var adminRotationIntervalDays int64 = 0
-	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var awsUserConsoleAccess bool = false
 	this.AwsUserConsoleAccess = &awsUserConsoleAccess
 	var awsUserProgrammaticAccess bool = true
 	this.AwsUserProgrammaticAccess = &awsUserProgrammaticAccess
-	var enableAdminRotation bool = false
-	this.EnableAdminRotation = &enableAdminRotation
 	var json bool = false
 	this.Json = &json
 	var region string = "us-east-2"
@@ -206,38 +194,6 @@ func (o *DynamicSecretUpdateAws) HasAccessMode() bool {
 // SetAccessMode gets a reference to the given string and assigns it to the AccessMode field.
 func (o *DynamicSecretUpdateAws) SetAccessMode(v string) {
 	o.AccessMode = &v
-}
-
-// GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field value if set, zero value otherwise.
-func (o *DynamicSecretUpdateAws) GetAdminRotationIntervalDays() int64 {
-	if o == nil || IsNil(o.AdminRotationIntervalDays) {
-		var ret int64
-		return ret
-	}
-	return *o.AdminRotationIntervalDays
-}
-
-// GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DynamicSecretUpdateAws) GetAdminRotationIntervalDaysOk() (*int64, bool) {
-	if o == nil || IsNil(o.AdminRotationIntervalDays) {
-		return nil, false
-	}
-	return o.AdminRotationIntervalDays, true
-}
-
-// HasAdminRotationIntervalDays returns a boolean if a field has been set.
-func (o *DynamicSecretUpdateAws) HasAdminRotationIntervalDays() bool {
-	if o != nil && !IsNil(o.AdminRotationIntervalDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
-func (o *DynamicSecretUpdateAws) SetAdminRotationIntervalDays(v int64) {
-	o.AdminRotationIntervalDays = &v
 }
 
 // GetAraEnabled returns the AraEnabled field value if set, zero value otherwise.
@@ -622,38 +578,6 @@ func (o *DynamicSecretUpdateAws) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DynamicSecretUpdateAws) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetEnableAdminRotation returns the EnableAdminRotation field value if set, zero value otherwise.
-func (o *DynamicSecretUpdateAws) GetEnableAdminRotation() bool {
-	if o == nil || IsNil(o.EnableAdminRotation) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableAdminRotation
-}
-
-// GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DynamicSecretUpdateAws) GetEnableAdminRotationOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAdminRotation) {
-		return nil, false
-	}
-	return o.EnableAdminRotation, true
-}
-
-// HasEnableAdminRotation returns a boolean if a field has been set.
-func (o *DynamicSecretUpdateAws) HasEnableAdminRotation() bool {
-	if o != nil && !IsNil(o.EnableAdminRotation) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
-func (o *DynamicSecretUpdateAws) SetEnableAdminRotation(v bool) {
-	o.EnableAdminRotation = &v
 }
 
 // GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
@@ -1685,9 +1609,6 @@ func (o DynamicSecretUpdateAws) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessMode) {
 		toSerialize["access-mode"] = o.AccessMode
 	}
-	if !IsNil(o.AdminRotationIntervalDays) {
-		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
-	}
 	if !IsNil(o.AraEnabled) {
 		toSerialize["ara-enabled"] = o.AraEnabled
 	}
@@ -1723,9 +1644,6 @@ func (o DynamicSecretUpdateAws) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.EnableAdminRotation) {
-		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation
 	}
 	if !IsNil(o.EnableAgenticRuntimeAuthority) {
 		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority

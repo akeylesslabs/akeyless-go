@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ChefTargetDetails** | Pointer to [**ChefTargetDetails**](ChefTargetDetails.md) |  | [optional] 
 **CloudflareTargetDetails** | Pointer to [**CloudflareTargetDetails**](CloudflareTargetDetails.md) |  | [optional] 
 **CustomDnsTargetDetails** | Pointer to [**CustomDnsTargetDetails**](CustomDnsTargetDetails.md) |  | [optional] 
+**CustomLlmTargetDetails** | Pointer to [**CustomLLMTargetDetails**](CustomLLMTargetDetails.md) |  | [optional] 
 **CustomTargetDetails** | Pointer to [**CustomTargetDetails**](CustomTargetDetails.md) |  | [optional] 
 **DbTargetDetails** | Pointer to [**DbTargetDetails**](DbTargetDetails.md) |  | [optional] 
 **DigicertTargetDetails** | Pointer to [**DigiCertTargetDetails**](DigiCertTargetDetails.md) |  | [optional] 
@@ -344,6 +345,31 @@ SetCustomDnsTargetDetails sets CustomDnsTargetDetails field to given value.
 `func (o *TargetTypeDetailsInput) HasCustomDnsTargetDetails() bool`
 
 HasCustomDnsTargetDetails returns a boolean if a field has been set.
+
+### GetCustomLlmTargetDetails
+
+`func (o *TargetTypeDetailsInput) GetCustomLlmTargetDetails() CustomLLMTargetDetails`
+
+GetCustomLlmTargetDetails returns the CustomLlmTargetDetails field if non-nil, zero value otherwise.
+
+### GetCustomLlmTargetDetailsOk
+
+`func (o *TargetTypeDetailsInput) GetCustomLlmTargetDetailsOk() (*CustomLLMTargetDetails, bool)`
+
+GetCustomLlmTargetDetailsOk returns a tuple with the CustomLlmTargetDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomLlmTargetDetails
+
+`func (o *TargetTypeDetailsInput) SetCustomLlmTargetDetails(v CustomLLMTargetDetails)`
+
+SetCustomLlmTargetDetails sets CustomLlmTargetDetails field to given value.
+
+### HasCustomLlmTargetDetails
+
+`func (o *TargetTypeDetailsInput) HasCustomLlmTargetDetails() bool`
+
+HasCustomLlmTargetDetails returns a boolean if a field has been set.
 
 ### GetCustomTargetDetails
 

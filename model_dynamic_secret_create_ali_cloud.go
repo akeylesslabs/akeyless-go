@@ -22,8 +22,6 @@ var _ MappedNullable = &DynamicSecretCreateAliCloud{}
 
 // DynamicSecretCreateAliCloud dynamicSecretCreateAliCloud is a command that creates AliCloud dynamic secret
 type DynamicSecretCreateAliCloud struct {
-	// Admin credentials rotation interval (days)
-	AdminRotationIntervalDays *int64 `json:"admin-rotation-interval-days,omitempty"`
 	// AliCloud RAM access key ID
 	AlicloudAccessKeyId *string `json:"alicloud-access-key-id,omitempty"`
 	AlicloudAccessMode *string `json:"alicloud-access-mode,omitempty"`
@@ -59,8 +57,6 @@ type DynamicSecretCreateAliCloud struct {
 	DeleteProtection *string `json:"delete_protection,omitempty"`
 	// Description of the object
 	Description *string `json:"description,omitempty"`
-	// Automatic admin credentials rotation
-	EnableAdminRotation *bool `json:"enable-admin-rotation,omitempty"`
 	// EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias.
 	EnableAgenticRuntimeAuthority *bool `json:"enable-agentic-runtime-authority,omitempty"`
 	// Turns on AI Quorum checks for this item.
@@ -108,8 +104,6 @@ type _DynamicSecretCreateAliCloud DynamicSecretCreateAliCloud
 // will change when the set of required properties is changed
 func NewDynamicSecretCreateAliCloud(name string) *DynamicSecretCreateAliCloud {
 	this := DynamicSecretCreateAliCloud{}
-	var adminRotationIntervalDays int64 = 0
-	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var alicloudSetSourceIdentity bool = false
 	this.AlicloudSetSourceIdentity = &alicloudSetSourceIdentity
 	var alicloudSite string = "international"
@@ -118,8 +112,6 @@ func NewDynamicSecretCreateAliCloud(name string) *DynamicSecretCreateAliCloud {
 	this.AlicloudUserConsoleAccess = &alicloudUserConsoleAccess
 	var alicloudUserProgrammaticAccess bool = true
 	this.AlicloudUserProgrammaticAccess = &alicloudUserProgrammaticAccess
-	var enableAdminRotation bool = false
-	this.EnableAdminRotation = &enableAdminRotation
 	var json bool = false
 	this.Json = &json
 	this.Name = name
@@ -133,8 +125,6 @@ func NewDynamicSecretCreateAliCloud(name string) *DynamicSecretCreateAliCloud {
 // but it doesn't guarantee that properties required by API are set
 func NewDynamicSecretCreateAliCloudWithDefaults() *DynamicSecretCreateAliCloud {
 	this := DynamicSecretCreateAliCloud{}
-	var adminRotationIntervalDays int64 = 0
-	this.AdminRotationIntervalDays = &adminRotationIntervalDays
 	var alicloudSetSourceIdentity bool = false
 	this.AlicloudSetSourceIdentity = &alicloudSetSourceIdentity
 	var alicloudSite string = "international"
@@ -143,45 +133,11 @@ func NewDynamicSecretCreateAliCloudWithDefaults() *DynamicSecretCreateAliCloud {
 	this.AlicloudUserConsoleAccess = &alicloudUserConsoleAccess
 	var alicloudUserProgrammaticAccess bool = true
 	this.AlicloudUserProgrammaticAccess = &alicloudUserProgrammaticAccess
-	var enableAdminRotation bool = false
-	this.EnableAdminRotation = &enableAdminRotation
 	var json bool = false
 	this.Json = &json
 	var userTtl string = "60m"
 	this.UserTtl = &userTtl
 	return &this
-}
-
-// GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field value if set, zero value otherwise.
-func (o *DynamicSecretCreateAliCloud) GetAdminRotationIntervalDays() int64 {
-	if o == nil || IsNil(o.AdminRotationIntervalDays) {
-		var ret int64
-		return ret
-	}
-	return *o.AdminRotationIntervalDays
-}
-
-// GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DynamicSecretCreateAliCloud) GetAdminRotationIntervalDaysOk() (*int64, bool) {
-	if o == nil || IsNil(o.AdminRotationIntervalDays) {
-		return nil, false
-	}
-	return o.AdminRotationIntervalDays, true
-}
-
-// HasAdminRotationIntervalDays returns a boolean if a field has been set.
-func (o *DynamicSecretCreateAliCloud) HasAdminRotationIntervalDays() bool {
-	if o != nil && !IsNil(o.AdminRotationIntervalDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetAdminRotationIntervalDays gets a reference to the given int64 and assigns it to the AdminRotationIntervalDays field.
-func (o *DynamicSecretCreateAliCloud) SetAdminRotationIntervalDays(v int64) {
-	o.AdminRotationIntervalDays = &v
 }
 
 // GetAlicloudAccessKeyId returns the AlicloudAccessKeyId field value if set, zero value otherwise.
@@ -758,38 +714,6 @@ func (o *DynamicSecretCreateAliCloud) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DynamicSecretCreateAliCloud) SetDescription(v string) {
 	o.Description = &v
-}
-
-// GetEnableAdminRotation returns the EnableAdminRotation field value if set, zero value otherwise.
-func (o *DynamicSecretCreateAliCloud) GetEnableAdminRotation() bool {
-	if o == nil || IsNil(o.EnableAdminRotation) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableAdminRotation
-}
-
-// GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DynamicSecretCreateAliCloud) GetEnableAdminRotationOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableAdminRotation) {
-		return nil, false
-	}
-	return o.EnableAdminRotation, true
-}
-
-// HasEnableAdminRotation returns a boolean if a field has been set.
-func (o *DynamicSecretCreateAliCloud) HasEnableAdminRotation() bool {
-	if o != nil && !IsNil(o.EnableAdminRotation) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableAdminRotation gets a reference to the given bool and assigns it to the EnableAdminRotation field.
-func (o *DynamicSecretCreateAliCloud) SetEnableAdminRotation(v bool) {
-	o.EnableAdminRotation = &v
 }
 
 // GetEnableAgenticRuntimeAuthority returns the EnableAgenticRuntimeAuthority field value if set, zero value otherwise.
@@ -1402,9 +1326,6 @@ func (o DynamicSecretCreateAliCloud) MarshalJSON() ([]byte, error) {
 
 func (o DynamicSecretCreateAliCloud) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AdminRotationIntervalDays) {
-		toSerialize["admin-rotation-interval-days"] = o.AdminRotationIntervalDays
-	}
 	if !IsNil(o.AlicloudAccessKeyId) {
 		toSerialize["alicloud-access-key-id"] = o.AlicloudAccessKeyId
 	}
@@ -1458,9 +1379,6 @@ func (o DynamicSecretCreateAliCloud) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.EnableAdminRotation) {
-		toSerialize["enable-admin-rotation"] = o.EnableAdminRotation
 	}
 	if !IsNil(o.EnableAgenticRuntimeAuthority) {
 		toSerialize["enable-agentic-runtime-authority"] = o.EnableAgenticRuntimeAuthority

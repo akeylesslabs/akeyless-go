@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BindSslProfiles** | Pointer to **[]string** | Bind the provisioned certificate to an existing client-ssl/server-ssl profile, in the format &lt;type&gt;:&lt;partition&gt;:&lt;name&gt; (relevant only for F5 BIG-IP certificate provisioning). Leave the partition empty to use the certificate&#39;s partition. For a profile in a folder, add the folder to the partition, for example client-ssl:Common/Shared:my-profile. Repeat the parameter to bind several profiles. | [optional] 
 **CertificateArn** | Pointer to **string** | The ARN of an existing imported ACM certificate to re-import into, which replaces its certificate and key; if empty, a new ACM certificate is created on every provisioning, including after renewal (relevant only for AWS certificate provisioning) | [optional] 
-**CertificateFormat** | Pointer to **string** | The format the certificate will be provisioned with, available options: pem,pfx (relevant only for certificate provisioning) | [optional] [default to "pem"]
+**CertificateFormat** | Pointer to **string** | The format the certificate will be provisioned with, available options: pem,pfx,jks (jks uses --jks-password); pfx requires gateway version 5.5.0 or higher, and jks and pfx for Azure Key Vault require 5.8.0 or higher, or the association is rejected (relevant only for certificate provisioning) | [optional] [default to "pem"]
 **CertificateName** | Pointer to **string** | The name of the certificate object in the cloud provider (relevant only for AWS, Azure, and GCP certificate provisioning) | [optional] 
 **CertificatePath** | Pointer to **string** | A path on the target to store the certificate pem file (relevant only for certificate provisioning) | [optional] 
 **ChainPath** | Pointer to **string** | A path on the target to store the full chain pem file (relevant only for certificate provisioning) | [optional] 
@@ -14,7 +14,15 @@ Name | Type | Description | Notes
 **ExternalKeyName** | Pointer to **string** | The external key name to associate with the classic key (Relevant only for Classic Key AWS/Azure/GCP targets) | [optional] 
 **F5SaveConfig** | Pointer to **bool** | Save the F5 running configuration after each successful provisioning, so the certificate survives a reboot. This also saves any other unsaved change on the device (relevant only for F5 BIG-IP certificate provisioning) | [optional] [default to false]
 **F5SyncDeviceGroup** | Pointer to **string** | Sync the F5 configuration to this device group after each successful provisioning, so the HA peer serves the same certificate. This overwrites unsynced changes on the other members of the group. Implies f5-save-config (relevant only for F5 BIG-IP certificate provisioning) | [optional] 
+**IisBindingHostname** | Pointer to **string** | The optional host name of the IIS binding, which enables SNI for a binding that is created (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) | [optional] 
+**IisBindingIpAddress** | Pointer to **string** | Comma-separated IP addresses of the IIS bindings to update (or create with --iis-create-binding), one binding per address, or * for all unassigned addresses; required with --iis-website-name (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) | [optional] 
+**IisBindingPort** | Pointer to **int64** | The port of the IIS binding, 443 when omitted (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) | [optional] 
+**IisCreateBinding** | Pointer to **bool** | Create the IIS https binding if the website has none matching the given IP addresses, port and host name; without it the run fails when such a binding does not exist (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) | [optional] [default to false]
+**IisRestartWebsite** | Pointer to **bool** | Restart the IIS website after the certificate is bound (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) | [optional] [default to false]
+**IisWebsiteName** | Pointer to **string** | The IIS website to bind the provisioned certificate to (requires gateway version 5.8.0 or higher, or the association is rejected; relevant only for Windows certificate provisioning, requires --certificate-format pfx and a --certificate-path of the form Cert:\\LocalMachine\\&lt;store&gt;, for example Cert:\\LocalMachine\\My) | [optional] 
+**JksPassword** | Pointer to **string** | JKS file password; required when certificate-format is jks (relevant only for certificate provisioning) | [optional] 
 **Json** | Pointer to **bool** | Set output format to JSON | [optional] [default to false]
+**KeyAlias** | Pointer to **string** | Alias the entry is stored under in the JKS file, default certificate (max 128 characters). Only relevant when --certificate-format&#x3D;jks | [optional] 
 **KeyOperations** | Pointer to **[]string** | A list of allowed operations for the key (required for azure targets) | [optional] 
 **KeyVault** | Pointer to **string** | The Azure Key Vault name to provision the certificate to (relevant only for Azure certificate provisioning) | [optional] 
 **KeyringName** | Pointer to **string** | Keyring name of the GCP KMS (required for gcp targets) | [optional] 
@@ -23,11 +31,13 @@ Name | Type | Description | Notes
 **LocationScope** | Pointer to **string** | The GCP Certificate Manager location to provision the certificate to: global or a region such as us-central1 (relevant only for GCP certificate provisioning) | [optional] 
 **MultiRegion** | Pointer to **string** | Set to &#39;true&#39; to create a multi-region managed key. (Relevant only for Classic Key AWS targets) | [optional] [default to "false"]
 **Name** | **string** | The item to associate | 
-**PfxPassword** | Pointer to **string** | Password used to protect the provisioned PFX file. Required when --certificate-format&#x3D;pfx (relevant only for certificate provisioning) | [optional] 
+**PfxPassword** | Pointer to **string** | PFX file password; required when certificate-format is pfx (relevant only for certificate provisioning) | [optional] 
 **PostProvisionCommand** | Pointer to **string** | A custom command to run on the remote target after successful provisioning (relevant only for SSH and Windows certificate provisioning, not supported for F5 BIG-IP) | [optional] 
 **PrivateKeyPath** | Pointer to **string** | A path on the target to store the private key (relevant only for certificate provisioning) | [optional] 
 **ProjectId** | Pointer to **string** | Project id of the GCP KMS (required for gcp targets) | [optional] 
 **ProtectionLevel** | Pointer to **string** | Protection level of the key [software/hardware] (relevant for gcp targets) | [optional] [default to "software"]
+**ProvisioningScheduleDays** | Pointer to **string** | Comma-separated UTC weekdays (sun,mon,tue,wed,thu,fri,sat) on which the certificate is provisioned after a renewal, together with provisioning-schedule-time. Provisioning is not run when the association is created. Without a schedule, provisioning runs right away (relevant only for certificate provisioning) | [optional] 
+**ProvisioningScheduleTime** | Pointer to **string** | The UTC time of day, as HH:MM, at which the certificate is provisioned on the scheduled days. A renewed certificate waits for the first such time (relevant only for certificate provisioning) | [optional] 
 **Purpose** | Pointer to **string** | Purpose of the key in GCP KMS (required for gcp targets) | [optional] 
 **Regions** | Pointer to **[]string** | The list of regions to create a copy of the key in (relevant for aws targets) | [optional] 
 **SraAssociation** | Pointer to **bool** | Is the target to associate is for sra, relevant only for linked target association for ldap rotated secret | [optional] [default to false]
@@ -306,6 +316,181 @@ SetF5SyncDeviceGroup sets F5SyncDeviceGroup field to given value.
 
 HasF5SyncDeviceGroup returns a boolean if a field has been set.
 
+### GetIisBindingHostname
+
+`func (o *AssocTargetItem) GetIisBindingHostname() string`
+
+GetIisBindingHostname returns the IisBindingHostname field if non-nil, zero value otherwise.
+
+### GetIisBindingHostnameOk
+
+`func (o *AssocTargetItem) GetIisBindingHostnameOk() (*string, bool)`
+
+GetIisBindingHostnameOk returns a tuple with the IisBindingHostname field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisBindingHostname
+
+`func (o *AssocTargetItem) SetIisBindingHostname(v string)`
+
+SetIisBindingHostname sets IisBindingHostname field to given value.
+
+### HasIisBindingHostname
+
+`func (o *AssocTargetItem) HasIisBindingHostname() bool`
+
+HasIisBindingHostname returns a boolean if a field has been set.
+
+### GetIisBindingIpAddress
+
+`func (o *AssocTargetItem) GetIisBindingIpAddress() string`
+
+GetIisBindingIpAddress returns the IisBindingIpAddress field if non-nil, zero value otherwise.
+
+### GetIisBindingIpAddressOk
+
+`func (o *AssocTargetItem) GetIisBindingIpAddressOk() (*string, bool)`
+
+GetIisBindingIpAddressOk returns a tuple with the IisBindingIpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisBindingIpAddress
+
+`func (o *AssocTargetItem) SetIisBindingIpAddress(v string)`
+
+SetIisBindingIpAddress sets IisBindingIpAddress field to given value.
+
+### HasIisBindingIpAddress
+
+`func (o *AssocTargetItem) HasIisBindingIpAddress() bool`
+
+HasIisBindingIpAddress returns a boolean if a field has been set.
+
+### GetIisBindingPort
+
+`func (o *AssocTargetItem) GetIisBindingPort() int64`
+
+GetIisBindingPort returns the IisBindingPort field if non-nil, zero value otherwise.
+
+### GetIisBindingPortOk
+
+`func (o *AssocTargetItem) GetIisBindingPortOk() (*int64, bool)`
+
+GetIisBindingPortOk returns a tuple with the IisBindingPort field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisBindingPort
+
+`func (o *AssocTargetItem) SetIisBindingPort(v int64)`
+
+SetIisBindingPort sets IisBindingPort field to given value.
+
+### HasIisBindingPort
+
+`func (o *AssocTargetItem) HasIisBindingPort() bool`
+
+HasIisBindingPort returns a boolean if a field has been set.
+
+### GetIisCreateBinding
+
+`func (o *AssocTargetItem) GetIisCreateBinding() bool`
+
+GetIisCreateBinding returns the IisCreateBinding field if non-nil, zero value otherwise.
+
+### GetIisCreateBindingOk
+
+`func (o *AssocTargetItem) GetIisCreateBindingOk() (*bool, bool)`
+
+GetIisCreateBindingOk returns a tuple with the IisCreateBinding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisCreateBinding
+
+`func (o *AssocTargetItem) SetIisCreateBinding(v bool)`
+
+SetIisCreateBinding sets IisCreateBinding field to given value.
+
+### HasIisCreateBinding
+
+`func (o *AssocTargetItem) HasIisCreateBinding() bool`
+
+HasIisCreateBinding returns a boolean if a field has been set.
+
+### GetIisRestartWebsite
+
+`func (o *AssocTargetItem) GetIisRestartWebsite() bool`
+
+GetIisRestartWebsite returns the IisRestartWebsite field if non-nil, zero value otherwise.
+
+### GetIisRestartWebsiteOk
+
+`func (o *AssocTargetItem) GetIisRestartWebsiteOk() (*bool, bool)`
+
+GetIisRestartWebsiteOk returns a tuple with the IisRestartWebsite field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisRestartWebsite
+
+`func (o *AssocTargetItem) SetIisRestartWebsite(v bool)`
+
+SetIisRestartWebsite sets IisRestartWebsite field to given value.
+
+### HasIisRestartWebsite
+
+`func (o *AssocTargetItem) HasIisRestartWebsite() bool`
+
+HasIisRestartWebsite returns a boolean if a field has been set.
+
+### GetIisWebsiteName
+
+`func (o *AssocTargetItem) GetIisWebsiteName() string`
+
+GetIisWebsiteName returns the IisWebsiteName field if non-nil, zero value otherwise.
+
+### GetIisWebsiteNameOk
+
+`func (o *AssocTargetItem) GetIisWebsiteNameOk() (*string, bool)`
+
+GetIisWebsiteNameOk returns a tuple with the IisWebsiteName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIisWebsiteName
+
+`func (o *AssocTargetItem) SetIisWebsiteName(v string)`
+
+SetIisWebsiteName sets IisWebsiteName field to given value.
+
+### HasIisWebsiteName
+
+`func (o *AssocTargetItem) HasIisWebsiteName() bool`
+
+HasIisWebsiteName returns a boolean if a field has been set.
+
+### GetJksPassword
+
+`func (o *AssocTargetItem) GetJksPassword() string`
+
+GetJksPassword returns the JksPassword field if non-nil, zero value otherwise.
+
+### GetJksPasswordOk
+
+`func (o *AssocTargetItem) GetJksPasswordOk() (*string, bool)`
+
+GetJksPasswordOk returns a tuple with the JksPassword field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJksPassword
+
+`func (o *AssocTargetItem) SetJksPassword(v string)`
+
+SetJksPassword sets JksPassword field to given value.
+
+### HasJksPassword
+
+`func (o *AssocTargetItem) HasJksPassword() bool`
+
+HasJksPassword returns a boolean if a field has been set.
+
 ### GetJson
 
 `func (o *AssocTargetItem) GetJson() bool`
@@ -330,6 +515,31 @@ SetJson sets Json field to given value.
 `func (o *AssocTargetItem) HasJson() bool`
 
 HasJson returns a boolean if a field has been set.
+
+### GetKeyAlias
+
+`func (o *AssocTargetItem) GetKeyAlias() string`
+
+GetKeyAlias returns the KeyAlias field if non-nil, zero value otherwise.
+
+### GetKeyAliasOk
+
+`func (o *AssocTargetItem) GetKeyAliasOk() (*string, bool)`
+
+GetKeyAliasOk returns a tuple with the KeyAlias field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyAlias
+
+`func (o *AssocTargetItem) SetKeyAlias(v string)`
+
+SetKeyAlias sets KeyAlias field to given value.
+
+### HasKeyAlias
+
+`func (o *AssocTargetItem) HasKeyAlias() bool`
+
+HasKeyAlias returns a boolean if a field has been set.
 
 ### GetKeyOperations
 
@@ -650,6 +860,56 @@ SetProtectionLevel sets ProtectionLevel field to given value.
 `func (o *AssocTargetItem) HasProtectionLevel() bool`
 
 HasProtectionLevel returns a boolean if a field has been set.
+
+### GetProvisioningScheduleDays
+
+`func (o *AssocTargetItem) GetProvisioningScheduleDays() string`
+
+GetProvisioningScheduleDays returns the ProvisioningScheduleDays field if non-nil, zero value otherwise.
+
+### GetProvisioningScheduleDaysOk
+
+`func (o *AssocTargetItem) GetProvisioningScheduleDaysOk() (*string, bool)`
+
+GetProvisioningScheduleDaysOk returns a tuple with the ProvisioningScheduleDays field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningScheduleDays
+
+`func (o *AssocTargetItem) SetProvisioningScheduleDays(v string)`
+
+SetProvisioningScheduleDays sets ProvisioningScheduleDays field to given value.
+
+### HasProvisioningScheduleDays
+
+`func (o *AssocTargetItem) HasProvisioningScheduleDays() bool`
+
+HasProvisioningScheduleDays returns a boolean if a field has been set.
+
+### GetProvisioningScheduleTime
+
+`func (o *AssocTargetItem) GetProvisioningScheduleTime() string`
+
+GetProvisioningScheduleTime returns the ProvisioningScheduleTime field if non-nil, zero value otherwise.
+
+### GetProvisioningScheduleTimeOk
+
+`func (o *AssocTargetItem) GetProvisioningScheduleTimeOk() (*string, bool)`
+
+GetProvisioningScheduleTimeOk returns a tuple with the ProvisioningScheduleTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningScheduleTime
+
+`func (o *AssocTargetItem) SetProvisioningScheduleTime(v string)`
+
+SetProvisioningScheduleTime sets ProvisioningScheduleTime field to given value.
+
+### HasProvisioningScheduleTime
+
+`func (o *AssocTargetItem) HasProvisioningScheduleTime() bool`
+
+HasProvisioningScheduleTime returns a boolean if a field has been set.
 
 ### GetPurpose
 

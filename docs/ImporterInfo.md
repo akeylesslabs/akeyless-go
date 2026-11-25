@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExternalItemId** | Pointer to **string** |  | [optional] 
+**SourceVersion** | Pointer to **int64** | SourceVersion is the last version imported from the source system (Vault KV v2). 0 means not tracked. | [optional] 
 **Version** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetExternalItemId sets ExternalItemId field to given value.
 `func (o *ImporterInfo) HasExternalItemId() bool`
 
 HasExternalItemId returns a boolean if a field has been set.
+
+### GetSourceVersion
+
+`func (o *ImporterInfo) GetSourceVersion() int64`
+
+GetSourceVersion returns the SourceVersion field if non-nil, zero value otherwise.
+
+### GetSourceVersionOk
+
+`func (o *ImporterInfo) GetSourceVersionOk() (*int64, bool)`
+
+GetSourceVersionOk returns a tuple with the SourceVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSourceVersion
+
+`func (o *ImporterInfo) SetSourceVersion(v int64)`
+
+SetSourceVersion sets SourceVersion field to given value.
+
+### HasSourceVersion
+
+`func (o *ImporterInfo) HasSourceVersion() bool`
+
+HasSourceVersion returns a boolean if a field has been set.
 
 ### GetVersion
 

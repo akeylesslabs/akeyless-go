@@ -31,6 +31,7 @@ type TargetTypeDetailsInput struct {
 	ChefTargetDetails *ChefTargetDetails `json:"chef_target_details,omitempty"`
 	CloudflareTargetDetails *CloudflareTargetDetails `json:"cloudflare_target_details,omitempty"`
 	CustomDnsTargetDetails *CustomDnsTargetDetails `json:"custom_dns_target_details,omitempty"`
+	CustomLlmTargetDetails *CustomLLMTargetDetails `json:"custom_llm_target_details,omitempty"`
 	CustomTargetDetails *CustomTargetDetails `json:"custom_target_details,omitempty"`
 	DbTargetDetails *DbTargetDetails `json:"db_target_details,omitempty"`
 	DigicertTargetDetails *DigiCertTargetDetails `json:"digicert_target_details,omitempty"`
@@ -435,6 +436,38 @@ func (o *TargetTypeDetailsInput) HasCustomDnsTargetDetails() bool {
 // SetCustomDnsTargetDetails gets a reference to the given CustomDnsTargetDetails and assigns it to the CustomDnsTargetDetails field.
 func (o *TargetTypeDetailsInput) SetCustomDnsTargetDetails(v CustomDnsTargetDetails) {
 	o.CustomDnsTargetDetails = &v
+}
+
+// GetCustomLlmTargetDetails returns the CustomLlmTargetDetails field value if set, zero value otherwise.
+func (o *TargetTypeDetailsInput) GetCustomLlmTargetDetails() CustomLLMTargetDetails {
+	if o == nil || IsNil(o.CustomLlmTargetDetails) {
+		var ret CustomLLMTargetDetails
+		return ret
+	}
+	return *o.CustomLlmTargetDetails
+}
+
+// GetCustomLlmTargetDetailsOk returns a tuple with the CustomLlmTargetDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TargetTypeDetailsInput) GetCustomLlmTargetDetailsOk() (*CustomLLMTargetDetails, bool) {
+	if o == nil || IsNil(o.CustomLlmTargetDetails) {
+		return nil, false
+	}
+	return o.CustomLlmTargetDetails, true
+}
+
+// HasCustomLlmTargetDetails returns a boolean if a field has been set.
+func (o *TargetTypeDetailsInput) HasCustomLlmTargetDetails() bool {
+	if o != nil && !IsNil(o.CustomLlmTargetDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomLlmTargetDetails gets a reference to the given CustomLLMTargetDetails and assigns it to the CustomLlmTargetDetails field.
+func (o *TargetTypeDetailsInput) SetCustomLlmTargetDetails(v CustomLLMTargetDetails) {
+	o.CustomLlmTargetDetails = &v
 }
 
 // GetCustomTargetDetails returns the CustomTargetDetails field value if set, zero value otherwise.
@@ -1599,6 +1632,9 @@ func (o TargetTypeDetailsInput) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CustomDnsTargetDetails) {
 		toSerialize["custom_dns_target_details"] = o.CustomDnsTargetDetails
+	}
+	if !IsNil(o.CustomLlmTargetDetails) {
+		toSerialize["custom_llm_target_details"] = o.CustomLlmTargetDetails
 	}
 	if !IsNil(o.CustomTargetDetails) {
 		toSerialize["custom_target_details"] = o.CustomTargetDetails

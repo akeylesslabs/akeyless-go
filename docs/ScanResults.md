@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CountHosts** | Pointer to **int64** |  | [optional] 
 **CountNew** | Pointer to **int64** |  | [optional] 
 **CountSubdomains** | Pointer to **int64** |  | [optional] 
+**DomainCoverage** | Pointer to [**[]DomainCoverage**](DomainCoverage.md) | DomainCoverage says, per public domain, how much of it subdomain discovery managed to cover. Clients that predate it ignore it, and a scan with no public domain omits it. | [optional] 
 **Error** | Pointer to **string** |  | [optional] 
 **FailedTargets** | Pointer to [**[]TargetError**](TargetError.md) |  | [optional] 
 **ItemNames** | Pointer to **[]string** |  | [optional] 
@@ -156,6 +157,31 @@ SetCountSubdomains sets CountSubdomains field to given value.
 `func (o *ScanResults) HasCountSubdomains() bool`
 
 HasCountSubdomains returns a boolean if a field has been set.
+
+### GetDomainCoverage
+
+`func (o *ScanResults) GetDomainCoverage() []DomainCoverage`
+
+GetDomainCoverage returns the DomainCoverage field if non-nil, zero value otherwise.
+
+### GetDomainCoverageOk
+
+`func (o *ScanResults) GetDomainCoverageOk() (*[]DomainCoverage, bool)`
+
+GetDomainCoverageOk returns a tuple with the DomainCoverage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDomainCoverage
+
+`func (o *ScanResults) SetDomainCoverage(v []DomainCoverage)`
+
+SetDomainCoverage sets DomainCoverage field to given value.
+
+### HasDomainCoverage
+
+`func (o *ScanResults) HasDomainCoverage() bool`
+
+HasDomainCoverage returns a boolean if a field has been set.
 
 ### GetError
 

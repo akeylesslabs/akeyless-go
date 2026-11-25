@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ExternalCaId** | Pointer to [**NullString**](NullString.md) |  | [optional] 
 **IssuanceStatus** | Pointer to **string** |  | [optional] 
 **LeafCertificatePem** | Pointer to **string** | LeafCertificatePem contains only the leaf certificate, derived from CertificatePem. Populated only when the certificate was issued with SplitCertificateChain enabled. | [optional] 
+**NextAutoRenewalDate** | Pointer to **time.Time** | NextAutoRenewalDate is when auto-renewal will next renew the certificate. It is worked out when the certificate is described and never stored, and it is empty when the certificate will not be auto-renewed. | [optional] 
 **NotBefore** | Pointer to **time.Time** |  | [optional] 
 **RenewBeforeExpirationInDays** | Pointer to **int64** |  | [optional] 
 **SplitCertificateChain** | Pointer to **bool** | SplitCertificateChain reflects whether this certificate was issued while its PKI Cert Issuer had split-certificate-chain enabled. When true, LeafCertificatePem is populated in addition to CertificatePem (which always holds the full chain). | [optional] 
@@ -494,6 +495,31 @@ SetLeafCertificatePem sets LeafCertificatePem field to given value.
 `func (o *CertificateChainInfo) HasLeafCertificatePem() bool`
 
 HasLeafCertificatePem returns a boolean if a field has been set.
+
+### GetNextAutoRenewalDate
+
+`func (o *CertificateChainInfo) GetNextAutoRenewalDate() time.Time`
+
+GetNextAutoRenewalDate returns the NextAutoRenewalDate field if non-nil, zero value otherwise.
+
+### GetNextAutoRenewalDateOk
+
+`func (o *CertificateChainInfo) GetNextAutoRenewalDateOk() (*time.Time, bool)`
+
+GetNextAutoRenewalDateOk returns a tuple with the NextAutoRenewalDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextAutoRenewalDate
+
+`func (o *CertificateChainInfo) SetNextAutoRenewalDate(v time.Time)`
+
+SetNextAutoRenewalDate sets NextAutoRenewalDate field to given value.
+
+### HasNextAutoRenewalDate
+
+`func (o *CertificateChainInfo) HasNextAutoRenewalDate() bool`
+
+HasNextAutoRenewalDate returns a boolean if a field has been set.
 
 ### GetNotBefore
 

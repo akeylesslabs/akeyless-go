@@ -512,6 +512,7 @@ Method | HTTP request | Description
 [**TargetCreateBedrock**](V2Api.md#TargetCreateBedrock) | **Post** /target-create-bedrock | 
 [**TargetCreateCloudflare**](V2Api.md#TargetCreateCloudflare) | **Post** /target-create-cloudflare | 
 [**TargetCreateCustomDns**](V2Api.md#TargetCreateCustomDns) | **Post** /target-create-custom-dns | 
+[**TargetCreateCustomLLM**](V2Api.md#TargetCreateCustomLLM) | **Post** /target-create-custom-llm | 
 [**TargetCreateDB**](V2Api.md#TargetCreateDB) | **Post** /target-create-db | 
 [**TargetCreateDigiCert**](V2Api.md#TargetCreateDigiCert) | **Post** /target-create-digicert | 
 [**TargetCreateDockerhub**](V2Api.md#TargetCreateDockerhub) | **Post** /target-create-dockerhub | 
@@ -558,6 +559,7 @@ Method | HTTP request | Description
 [**TargetUpdateBedrock**](V2Api.md#TargetUpdateBedrock) | **Post** /target-update-bedrock | 
 [**TargetUpdateCloudflare**](V2Api.md#TargetUpdateCloudflare) | **Post** /target-update-cloudflare | 
 [**TargetUpdateCustomDns**](V2Api.md#TargetUpdateCustomDns) | **Post** /target-update-custom-dns | 
+[**TargetUpdateCustomLLM**](V2Api.md#TargetUpdateCustomLLM) | **Post** /target-update-custom-llm | 
 [**TargetUpdateDB**](V2Api.md#TargetUpdateDB) | **Post** /target-update-db | 
 [**TargetUpdateDigiCert**](V2Api.md#TargetUpdateDigiCert) | **Post** /target-update-digicert | 
 [**TargetUpdateDockerhub**](V2Api.md#TargetUpdateDockerhub) | **Post** /target-update-dockerhub | 
@@ -33172,6 +33174,70 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## TargetCreateCustomLLM
+
+> TargetCreateOutput TargetCreateCustomLLM(ctx).TargetCreateCustomLLM(targetCreateCustomLLM).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetCreateCustomLLM := *openapiclient.NewTargetCreateCustomLLM("Name_example") // TargetCreateCustomLLM | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetCreateCustomLLM(context.Background()).TargetCreateCustomLLM(targetCreateCustomLLM).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetCreateCustomLLM``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetCreateCustomLLM`: TargetCreateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetCreateCustomLLM`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetCreateCustomLLMRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetCreateCustomLLM** | [**TargetCreateCustomLLM**](TargetCreateCustomLLM.md) |  | 
+
+### Return type
+
+[**TargetCreateOutput**](TargetCreateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## TargetCreateDB
 
 > TargetCreateOutput TargetCreateDB(ctx).TargetCreateDB(targetCreateDB).Execute()
@@ -36097,6 +36163,70 @@ Other parameters are passed through a pointer to a apiTargetUpdateCustomDnsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **targetUpdateCustomDns** | [**TargetUpdateCustomDns**](TargetUpdateCustomDns.md) |  | 
+
+### Return type
+
+[**TargetUpdateOutput**](TargetUpdateOutput.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TargetUpdateCustomLLM
+
+> TargetUpdateOutput TargetUpdateCustomLLM(ctx).TargetUpdateCustomLLM(targetUpdateCustomLLM).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/akeylesslabs/akeyless-go"
+)
+
+func main() {
+	targetUpdateCustomLLM := *openapiclient.NewTargetUpdateCustomLLM("Name_example") // TargetUpdateCustomLLM | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.V2Api.TargetUpdateCustomLLM(context.Background()).TargetUpdateCustomLLM(targetUpdateCustomLLM).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `V2Api.TargetUpdateCustomLLM``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TargetUpdateCustomLLM`: TargetUpdateOutput
+	fmt.Fprintf(os.Stdout, "Response from `V2Api.TargetUpdateCustomLLM`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTargetUpdateCustomLLMRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetUpdateCustomLLM** | [**TargetUpdateCustomLLM**](TargetUpdateCustomLLM.md) |  | 
 
 ### Return type
 

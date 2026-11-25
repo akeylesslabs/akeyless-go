@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessMode** | Pointer to **string** |  | [optional] 
-**AdminRotationIntervalDays** | Pointer to **int64** | Admin credentials rotation interval (days) | [optional] [default to 0]
 **AraEnabled** | Pointer to **bool** | Enable or disable Agentic Runtime Authority rule enforcement for this item. Mirrors commands.AgenticRulesParams.AraEnabled. | [optional] 
 **AwsAccessKeyId** | Pointer to **string** | Access Key ID | [optional] 
 **AwsAccessSecretKey** | Pointer to **string** | Secret Access Key | [optional] 
@@ -18,7 +17,6 @@ Name | Type | Description | Notes
 **CustomUsernameTemplate** | Pointer to **string** | Customize how temporary usernames are generated using go template | [optional] 
 **DeleteProtection** | Pointer to **string** | Protection from accidental deletion of this object [true/false] | [optional] 
 **Description** | Pointer to **string** | Description of the object | [optional] 
-**EnableAdminRotation** | Pointer to **bool** | Automatic admin credentials rotation | [optional] [default to false]
 **EnableAgenticRuntimeAuthority** | Pointer to **bool** | EnableAra is the documented spelling of AraEnabled; --ara-enabled shipped first and stays as an undocumented alias. | [optional] 
 **EnableAiQuorum** | Pointer to **bool** | Turns on AI Quorum checks for this item. | [optional] 
 **InputRule** | Pointer to **[]string** | Agentic input rule in name&#x3D;...,rule&#x3D;... format (e.g. name&#x3D;rule1,rule&#x3D;Sanitize input) Mirrors commands.AgenticRulesParams — kept separate because ResourceDS cannot embed it (different package, different struct layout). | [optional] 
@@ -94,31 +92,6 @@ SetAccessMode sets AccessMode field to given value.
 `func (o *DynamicSecretCreateAws) HasAccessMode() bool`
 
 HasAccessMode returns a boolean if a field has been set.
-
-### GetAdminRotationIntervalDays
-
-`func (o *DynamicSecretCreateAws) GetAdminRotationIntervalDays() int64`
-
-GetAdminRotationIntervalDays returns the AdminRotationIntervalDays field if non-nil, zero value otherwise.
-
-### GetAdminRotationIntervalDaysOk
-
-`func (o *DynamicSecretCreateAws) GetAdminRotationIntervalDaysOk() (*int64, bool)`
-
-GetAdminRotationIntervalDaysOk returns a tuple with the AdminRotationIntervalDays field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAdminRotationIntervalDays
-
-`func (o *DynamicSecretCreateAws) SetAdminRotationIntervalDays(v int64)`
-
-SetAdminRotationIntervalDays sets AdminRotationIntervalDays field to given value.
-
-### HasAdminRotationIntervalDays
-
-`func (o *DynamicSecretCreateAws) HasAdminRotationIntervalDays() bool`
-
-HasAdminRotationIntervalDays returns a boolean if a field has been set.
 
 ### GetAraEnabled
 
@@ -419,31 +392,6 @@ SetDescription sets Description field to given value.
 `func (o *DynamicSecretCreateAws) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
-### GetEnableAdminRotation
-
-`func (o *DynamicSecretCreateAws) GetEnableAdminRotation() bool`
-
-GetEnableAdminRotation returns the EnableAdminRotation field if non-nil, zero value otherwise.
-
-### GetEnableAdminRotationOk
-
-`func (o *DynamicSecretCreateAws) GetEnableAdminRotationOk() (*bool, bool)`
-
-GetEnableAdminRotationOk returns a tuple with the EnableAdminRotation field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableAdminRotation
-
-`func (o *DynamicSecretCreateAws) SetEnableAdminRotation(v bool)`
-
-SetEnableAdminRotation sets EnableAdminRotation field to given value.
-
-### HasEnableAdminRotation
-
-`func (o *DynamicSecretCreateAws) HasEnableAdminRotation() bool`
-
-HasEnableAdminRotation returns a boolean if a field has been set.
 
 ### GetEnableAgenticRuntimeAuthority
 

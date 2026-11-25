@@ -20,6 +20,8 @@ var _ MappedNullable = &SSHTargetDetails{}
 
 // SSHTargetDetails struct for SSHTargetDetails
 type SSHTargetDetails struct {
+	// AuthType is a non-secret auth indication (password | private_key). Prefer Target.Attributes[auth_type] for list responses; this field may be populated on get-target-details for convenience.
+	AuthType *string `json:"auth_type,omitempty"`
 	Host *string `json:"host,omitempty"`
 	Password *string `json:"password,omitempty"`
 	Port *string `json:"port,omitempty"`
@@ -43,6 +45,38 @@ func NewSSHTargetDetails() *SSHTargetDetails {
 func NewSSHTargetDetailsWithDefaults() *SSHTargetDetails {
 	this := SSHTargetDetails{}
 	return &this
+}
+
+// GetAuthType returns the AuthType field value if set, zero value otherwise.
+func (o *SSHTargetDetails) GetAuthType() string {
+	if o == nil || IsNil(o.AuthType) {
+		var ret string
+		return ret
+	}
+	return *o.AuthType
+}
+
+// GetAuthTypeOk returns a tuple with the AuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SSHTargetDetails) GetAuthTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthType) {
+		return nil, false
+	}
+	return o.AuthType, true
+}
+
+// HasAuthType returns a boolean if a field has been set.
+func (o *SSHTargetDetails) HasAuthType() bool {
+	if o != nil && !IsNil(o.AuthType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthType gets a reference to the given string and assigns it to the AuthType field.
+func (o *SSHTargetDetails) SetAuthType(v string) {
+	o.AuthType = &v
 }
 
 // GetHost returns the Host field value if set, zero value otherwise.
@@ -247,6 +281,9 @@ func (o SSHTargetDetails) MarshalJSON() ([]byte, error) {
 
 func (o SSHTargetDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AuthType) {
+		toSerialize["auth_type"] = o.AuthType
+	}
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
 	}
